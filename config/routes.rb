@@ -1,4 +1,4 @@
-gtActionController::Routing::Routes.draw do |map|
+ActionController::Routing::Routes.draw do |map|
   map.root :controller => :tests, :action => :index
   # The priority is based upon order of creation: first created -> highest priority.
 
