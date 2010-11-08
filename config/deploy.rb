@@ -1,4 +1,4 @@
-server = "184.106.134.129" # 'demo.sochurch.com'
+server = "184.106.134.129" 
 set :port, 6969
 
 set :user,      'deploy'

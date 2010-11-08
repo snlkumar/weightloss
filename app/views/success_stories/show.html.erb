@@ -1,0 +1,18 @@
+<p>
+  <b>Title:</b>
+  <%=h @success_story.title %>
+</p>
+
+<p>
+  <b>Summary:</b>
+  <%=h @success_story.summary %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @success_story.body %>
+</p>
+
+
+<%= link_to 'Edit', edit_success_story_path(@success_story) %> |
+<%= link_to 'Back', success_stories_path %>

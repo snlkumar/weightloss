@@ -1,0 +1,28 @@
+<h1>Listing text_files</h1>
+
+<table>
+  <tr>
+    <th>Headline</th>
+    <th>Page title</th>
+    <th>Summary</th>
+    <th>Teaser</th>
+    <th>Body</th>
+  </tr>
+
+<% @text_files.each do |text_file| %>
+  <tr>
+    <td><%=h text_file.headline %></td>
+    <td><%=h text_file.page_title %></td>
+    <td><%=h text_file.summary %></td>
+    <td><%=h text_file.teaser %></td>
+    <td><%=h text_file.body %></td>
+    <td><%= link_to 'Show', text_file %></td>
+    <td><%= link_to 'Edit', edit_text_file_path(text_file) %></td>
+    <td><%= link_to 'Destroy', text_file, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New text_file', new_text_file_path %>

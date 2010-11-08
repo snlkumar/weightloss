@@ -1,5 +1,17 @@
 ActionController::Routing::Routes.draw do |map|
-  map.root :controller => :tests, :action => :index
+  map.resources :flash_files
+
+  map.resources :success_stories
+
+  map.resources :tip_of_days
+
+  map.resources :text_files
+
+  map.resources :items
+
+  map.resources :departments
+
+  map.root :controller => :items, :action => :index
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

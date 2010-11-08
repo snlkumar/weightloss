@@ -1,0 +1,28 @@
+<p>
+  <b>Headline:</b>
+  <%=h @text_file.headline %>
+</p>
+
+<p>
+  <b>Page title:</b>
+  <%=h @text_file.page_title %>
+</p>
+
+<p>
+  <b>Summary:</b>
+  <%=h @text_file.summary %>
+</p>
+
+<p>
+  <b>Teaser:</b>
+  <%=h @text_file.teaser %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @text_file.body %>
+</p>
+
+
+<%= link_to 'Edit', edit_text_file_path(@text_file) %> |
+<%= link_to 'Back', text_files_path %>
