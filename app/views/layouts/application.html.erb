@@ -6,9 +6,22 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Departments: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
+  
+  <style type="text/css" media="screen">
+    ul {list-style:none;}
+    li { float:left; padding: 5px;}
+  </style>
 </head>
 <body>
 
+<ul>
+  <li><%= link_to 'Items', items_path %></li>
+  <li><%= link_to 'Departments', departments_path %></li>
+  <li><%= link_to 'Flash Files', flash_files_path %></li>
+  <li><%= link_to 'Text Files', text_files_path %></li>
+  <li><%= link_to 'Tips of the Day', tip_of_days_path %></li>
+</ul>
+<div style="clear:both;"></div>
 <p style="color: green"><%= notice %></p>
 
 <%= yield %>
