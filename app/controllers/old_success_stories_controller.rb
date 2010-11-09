@@ -42,7 +42,7 @@ class OldSuccessStoriesController < ApplicationController
   # POST /success_stories
   # POST /success_stories.xml
   def create
-    @success_story = OldSuccessStory.new(params[:old_ success_story])
+    @success_story = OldSuccessStory.new(params[:old_success_story])
 
     respond_to do |format|
       if @success_story.save
@@ -61,7 +61,7 @@ class OldSuccessStoriesController < ApplicationController
     @success_story = OldSuccessStory.find(params[:id])
 
     respond_to do |format|
-      if @success_story.update_attributes(params[:old_ success_story])
+      if @success_story.update_attributes(params[:old_success_story])
         format.html { redirect_to(@success_story, :notice => 'SuccessStory was successfully updated.') }
         format.xml  { head :ok }
       else
