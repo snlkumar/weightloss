@@ -1,0 +1,13 @@
+<p>
+  <b>Title:</b>
+  <%=h @tip_of_day.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @tip_of_day.body %>
+</p>
+
+
+<%= link_to 'Edit', edit_old_tip_of_day_path(@tip_of_day) %> |
+<%= link_to 'Back', old_tip_of_days_path %>

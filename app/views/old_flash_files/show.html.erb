@@ -1,0 +1,18 @@
+<p>
+  <b>Title:</b>
+  <%=h @flash_file.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @flash_file.description %>
+</p>
+
+<p>
+  <b>Teaser:</b>
+  <%=h @flash_file.teaser %>
+</p>
+
+
+<%= link_to 'Edit', edit_old_flash_file_path(@flash_file) %> |
+<%= link_to 'Back', old_flash_files_path %>

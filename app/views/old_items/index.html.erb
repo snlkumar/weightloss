@@ -1,0 +1,42 @@
+<h1>Listing Items</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Sku</th>
+    <th>Meta description</th>
+    <th>Meta keywords</th>
+    <th>Unit</th>
+    <th>Price</th>
+    <th>Weight</th>
+    <th>Length</th>
+    <th>Width</th>
+    <th>Height</th>
+    <th>Keywords</th>
+    <th>Long description</th>
+  </tr>
+
+<% @items.each do |item| %>
+  <tr class="<%= cycle('', 'odd') %>">
+    <td><%=h item.name %></td>
+    <td><%=h item.sku %></td>
+    <td><%=h item.meta_description %></td>
+    <td><%=h item.meta_keywords %></td>
+    <td><%=h item.unit %></td>
+    <td><%=h item.price %></td>
+    <td><%=h item.weight %></td>
+    <td><%=h item.length %></td>
+    <td><%=h item.width %></td>
+    <td><%=h item.height %></td>
+    <td><%=h item.keywords %></td>
+    <td><%=h item.long_description %></td>
+    <td><%= link_to 'Show', item %></td>
+    <td><%= link_to 'Edit', edit_old_item_path(item) %></td>
+    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New item', new_old_item_path %>
