@@ -35,10 +35,11 @@
         </td>
         <td>
           <p>
-            <%= f.label :file1, 'File 1' %><br />
-            <%= f.file_field :file1 %><br />
-            <% if @item.file1.file? %>
-              <%= image_tag "file.png"  %> <%= @item.file1.original_filename %> <%= f.check_box :remove_file_1 %> Delete?
+            <%= f.label :image1, 'Screenshot/Thumbnail 1' %><br />
+            <%= f.file_field :image1 %><br />
+            <% if @item.image1.file? %>
+              <%= image_tag @item.image1.url(:preview)  %> <%= @item.image1.original_filename %>&nbsp;
+              <%= f.check_box :remove_image1 %> Delete?
             <% end %>
           </p>
           <p>

@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(:version => 20101114034000) do
     t.string   "meta_description"
     t.string   "meta_keywords"
     t.string   "unit"
-    t.integer  "price",              :limit => 10, :precision => 10, :scale => 0
+    t.integer  "price",               :limit => 10, :precision => 10, :scale => 0
     t.integer  "weight"
     t.integer  "length"
     t.integer  "width"
@@ -61,10 +61,10 @@ ActiveRecord::Schema.define(:version => 20101114034000) do
     t.text     "long_description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "file1_file_size"
-    t.datetime "file1_updated_at"
-    t.string   "file1_file_name"
-    t.string   "file1_content_type"
+    t.integer  "image1_file_size"
+    t.datetime "image1_updated_at"
+    t.string   "image1_file_name"
+    t.string   "image1_content_type"
     t.integer  "category_id"
   end
 

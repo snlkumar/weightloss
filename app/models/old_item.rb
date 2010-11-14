@@ -1,11 +1,11 @@
 class OldItem < ActiveRecord::Base
-  attr_accessor :remove_file_1, :remove_file_2
+  attr_accessor :remove_image1
   
   acts_as_taggable
   
-  has_attached_file :file1, :url => "/system/:class/:attachment/:id/:filename"
+  has_attached_file :image1, :styles => {:preview => '50x50!'}, :url => "/system/:class/:attachment/:id/:style/:filename"
   
-  def remove_file_1=(value)
-    self.file1 = nil if value == '1'
+  def remove_image1=(value)
+    self.image1 = nil if value == '1'
   end
 end
