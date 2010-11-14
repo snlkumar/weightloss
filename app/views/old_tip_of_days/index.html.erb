@@ -2,19 +2,23 @@
 
 <table id="old_tips">
   <tr>
+    <th>#</th>
     <th>Title</th>
     <th>Body</th>
+    <th> </th>
   </tr>
-
-<% @tip_of_days.each do |tip_of_day| %>
-  <tr class="<%= cycle('', 'odd') %>">
-    <td><%=h tip_of_day.title %></td>
-    <td><%=h tip_of_day.body %></td>
-    <td><%= link_to 'Show', tip_of_day %></td>
-    <td><%= link_to 'Edit', edit_old_tip_of_day_path(tip_of_day) %></td>
-    <td><%= link_to 'Destroy', tip_of_day, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+  
+  <% @tip_of_days.each_with_index do |tip_of_day, index| %>
+    <tr class="<%= cycle('', 'odd') %>">
+      <td><%= index + 1 %></td>
+      <td><%=h tip_of_day.title %></td>
+      <td><%=h tip_of_day.body %></td>
+      <td>
+        <%= link_to 'Edit', edit_old_tip_of_day_path(tip_of_day) %> | 
+        <%= link_to 'Destroy', tip_of_day, :confirm => 'Are you sure?', :method => :delete %>
+      </td>
+    </tr>
+  <% end %>
 </table>
 
 <br />

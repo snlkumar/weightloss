@@ -57,3 +57,7 @@ table#old_departments { width: 50%; }
 table#old_tips { width: 50%; }
 table th { background-color: #ccc; }
 tr.odd td{ background-color: #eee; }
+
+input[type=text] { width: 450px; }
+textarea { width: 450px; height: 150px; }
+td { vertical-align: top; }

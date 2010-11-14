@@ -9,7 +9,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101108071819) do
+ActiveRecord::Schema.define(:version => 20101114034000) do
+
+  create_table "categories", :force => true do |t|
+    t.integer "parent_id"
+    t.integer "ancestors_count",   :default => 0
+    t.integer "descendants_count", :default => 0
+    t.integer "children_count",    :default => 0
+    t.boolean "hidden"
+    t.string  "name"
+    t.string  "description"
+    t.integer "position"
+    t.integer "pictures_count"
+  end
 
   create_table "old_departments", :force => true do |t|
     t.string   "name"
@@ -23,6 +35,15 @@ ActiveRecord::Schema.define(:version => 20101108071819) do
     t.text     "teaser"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "file1_file_size"
+    t.datetime "file1_updated_at"
+    t.string   "file1_file_name"
+    t.string   "file1_content_type"
+    t.integer  "file2_file_size"
+    t.datetime "file2_updated_at"
+    t.string   "file2_file_name"
+    t.string   "file2_content_type"
+    t.integer  "category_id"
   end
 
   create_table "old_items", :force => true do |t|
@@ -40,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20101108071819) do
     t.text     "long_description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "category_id"
   end
 
   create_table "old_success_stories", :force => true do |t|
@@ -58,6 +80,19 @@ ActiveRecord::Schema.define(:version => 20101108071819) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "image1_file_size"
+    t.datetime "image1_updated_at"
+    t.string   "image1_file_name"
+    t.string   "image1_content_type"
+    t.integer  "image2_file_size"
+    t.datetime "image2_updated_at"
+    t.string   "image2_file_name"
+    t.string   "image2_content_type"
+    t.integer  "file1_file_size"
+    t.datetime "file1_updated_at"
+    t.string   "file1_file_name"
+    t.string   "file1_content_type"
+    t.integer  "category_id"
   end
 
   create_table "old_tip_of_days", :force => true do |t|
@@ -65,6 +100,20 @@ ActiveRecord::Schema.define(:version => 20101108071819) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
   end
 
 end

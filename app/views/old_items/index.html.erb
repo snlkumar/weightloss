@@ -2,8 +2,9 @@
 
 <table>
   <tr>
+    <th>#</th>
     <th>Name</th>
-    <th>Sku</th>
+    <th>Long description</th>
     <th>Meta description</th>
     <th>Meta keywords</th>
     <th>Unit</th>
@@ -13,11 +14,13 @@
     <th>Width</th>
     <th>Height</th>
     <th>Keywords</th>
-    <th>Long description</th>
+    <th>Sku</th>
+    <th> </th>
   </tr>
 
-<% @items.each do |item| %>
+<% @items.each_with_index do |item, index| %>
   <tr class="<%= cycle('', 'odd') %>">
+    <td><%= index + 1 %></td>
     <td><%=h item.name %></td>
     <td><%=h item.sku %></td>
     <td><%=h item.meta_description %></td>
@@ -30,9 +33,10 @@
     <td><%=h item.height %></td>
     <td><%=h item.keywords %></td>
     <td><%=h item.long_description %></td>
-    <td><%= link_to 'Show', item %></td>
-    <td><%= link_to 'Edit', edit_old_item_path(item) %></td>
-    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+      <%= link_to 'Edit', edit_old_item_path(item) %> | 
+      <%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %>
+    </td>
   </tr>
 <% end %>
 </table>

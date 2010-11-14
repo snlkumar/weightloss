@@ -2,7 +2,7 @@
 
 <% form_for(@tip_of_day) do |f| %>
   <%= f.error_messages %>
-
+  
   <p>
     <%= f.label :title %><br />
     <%= f.text_field :title %>
@@ -16,5 +16,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @tip_of_day %> |
 <%= link_to 'Back', old_tip_of_days_path %>

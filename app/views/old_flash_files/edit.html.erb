@@ -1,24 +1,63 @@
-<h1>Editing flash_file</h1>
+<h1>Editing Flash File</h1>
 
-<% form_for(@flash_file) do |f| %>
+<% form_for(@flash_file, :html => {:multipart => true}) do |f| %>
   <%= f.error_messages %>
-
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :teaser %><br />
-    <%= f.text_area :teaser %>
-  </p>
+  
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <p>
+            <%= f.label :title %><br />
+            <%= f.text_field :title %>
+          </p>
+          <p>
+            <%= f.label :tag_list, "Tag List (comma seperated)" %><br />
+            <%= f.text_field :tag_list %>
+          </p>
+          <p>
+            <%= label_tag 'Category' %>
+            <%= aac_select(Category.roots, {:selected => @flash_file.category_id, :name => 'old_flash_file[category_id]', 
+                                            :parents_nil => true, :option_nil => '--'}) %>
+          </p>
+          
+        </td>
+        <td>
+          <p>
+            <%= f.label :file1, 'File 1' %><br />
+            <%= f.file_field :file1 %><br />
+            <% if @flash_file.file1.file? %>
+              <%= image_tag "file.png"  %> <%= @flash_file.file1.original_filename %> <%= f.check_box :remove_file_1 %> Delete?
+            <% end %>
+          </p>
+          <p>
+            <%= f.label :file2, 'File 2' %><br />
+            <%= f.file_field :file2 %><br />
+            <% if @flash_file.file2.file? %>
+              <%= image_tag "file.png"  %> <%= @flash_file.file2.original_filename %> <%= f.check_box :remove_file_2 %> Delete?
+            <% end %>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>
+            <%= f.label :description %><br />
+            <%= f.text_area :description %>
+          </p>
+        </td>
+        <td>
+          <p>
+            <%= f.label :teaser %><br />
+            <%= f.text_area :teaser %>
+          </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
   <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @flash_file %> |
 <%= link_to 'Back', old_flash_files_path %>
