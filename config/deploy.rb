@@ -34,3 +34,9 @@ deploy.task :restart do
   run "mkdir -p #{current_release}/tmp"
   run "touch #{current_release}/tmp/restart.txt"
 end
+
+Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'hoptoad_notifier-*')].each do |vendored_notifier|
+  $: << File.join(vendored_notifier, 'lib')
+end
+
+require 'hoptoad_notifier/capistrano'

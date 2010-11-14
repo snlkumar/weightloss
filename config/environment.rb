@@ -15,6 +15,7 @@ Rails::Initializer.run do |config|
   # config.autoload_paths += %W( #{RAILS_ROOT}/extras )
   
   config.gem 'paperclip', :version => '2.3.5'
+  config.gem 'hoptoad_notifier'
   
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
