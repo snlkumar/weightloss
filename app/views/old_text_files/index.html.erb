@@ -17,10 +17,10 @@
 <% @text_files.each_with_index do |text_file, index| %>
   <tr class="<%= cycle('', 'odd') %>">
     <td><%= index + 1 %></td>
-    <td><%=h text_file.page_title %></td>
-    <td><%=h text_file.summary %></td>
-    <td><%=h text_file.teaser %></td>
-    <td><%=h text_file.body %></td>
+    <td><%= truncate(h(text_file.page_title), :length => 50) %></td>
+    <td><%= truncate(h(text_file.summary), :length => 50) %></td>
+    <td><%= truncate(h(text_file.teaser), :length => 50) %></td>
+    <td><%= truncate(h(text_file.body), :length => 50) %></td>
     <td>
       <%= image_tag(text_file.image1.url(:preview)) if text_file.image1.file? %>&nbsp;
       <%= image_tag(text_file.image2.url(:preview)) if text_file.image2.file? %><br />
