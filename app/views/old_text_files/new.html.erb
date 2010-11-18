@@ -39,6 +39,10 @@
             <%= aac_select(Category.roots, {:selected => @text_file.category_id, :name => 'old_text_file[category_id]', 
                                             :parents_nil => true, :option_nil => '--'}) %>
           </p>
+          <p>
+            <%= label_tag 'Sub Category' %><br />
+            <%= f.select :subcategory_id, [['--', '--']]+Subcategory.all.map{|cat| [cat.name,cat.id]} %>
+          </p>
         </td>
       </tr>
       <tr>

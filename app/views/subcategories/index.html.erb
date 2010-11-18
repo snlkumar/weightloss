@@ -1,0 +1,23 @@
+<h1>Listing SubCategories</h1>
+
+<%= link_to 'New SubCategory', new_subcategory_path %>
+<br /><br />
+
+<table id="categories">
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th> </th>
+  </tr>
+  
+  <% Subcategory.all.each_with_index do |subcategory, index | %>
+    <tr class="<%= cycle('', 'odd') %>">
+      <td><%= index + 1 %></td>
+      <td><%=h subcategory.name %></td>
+      <td>
+        <%= link_to 'Edit', edit_subcategory_path(subcategory) %> | 
+        <%= link_to 'Destroy', subcategory_path(subcategory), :confirm => 'Are you sure?', :method => :delete %>
+      </td>
+    </tr>
+  <% end %>
+</table>

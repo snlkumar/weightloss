@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101118053730) do
+ActiveRecord::Schema.define(:version => 20101118060224) do
 
   create_table "categories", :force => true do |t|
     t.integer "parent_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20101118053730) do
     t.string   "file2_file_name"
     t.string   "file2_content_type"
     t.integer  "category_id"
+    t.integer  "subcategory_id"
   end
 
   create_table "old_items", :force => true do |t|
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20101118053730) do
     t.string   "image1_file_name"
     t.string   "image1_content_type"
     t.integer  "category_id"
+    t.integer  "subcategory_id"
   end
 
   create_table "old_success_stories", :force => true do |t|
@@ -96,11 +98,18 @@ ActiveRecord::Schema.define(:version => 20101118053730) do
     t.string   "file1_file_name"
     t.string   "file1_content_type"
     t.integer  "category_id"
+    t.integer  "subcategory_id"
   end
 
   create_table "old_tip_of_days", :force => true do |t|
     t.string   "title"
     t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subcategories", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

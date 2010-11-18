@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :old_items
   map.resources :old_departments
   map.resources :categories
+  map.resources :subcategories
   
   map.root :controller => :old_items, :action => :index
   
