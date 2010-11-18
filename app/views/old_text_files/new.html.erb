@@ -39,7 +39,7 @@
           </p>
           <p>
             <%= label_tag 'Category' %><br />
-            <%= aac_select(Category.roots, {:selected => @text_file.category_id, :name => 'old_flash_file[category_id]', 
+            <%= aac_select(Category.roots, {:selected => @text_file.category_id, :name => 'old_text_file[category_id]', 
                                             :parents_nil => true, :option_nil => '--'}) %>
           </p>
         </td>
