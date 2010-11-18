@@ -16,9 +16,9 @@
 <% @flash_files.each_with_index do |flash_file, index| %>
   <tr class="<%= cycle('', 'odd') %>">
     <td><%= index + 1 %></td>
-    <td><%=h flash_file.title %></td>
-    <td><%=h flash_file.description %></td>
-    <td><%=h flash_file.teaser %></td>
+    <td><%= truncate(h(flash_file.title),       :length => 50) %></td>
+    <td><%= truncate(h(flash_file.description), :length => 50) %></td>
+    <td><%= truncate(h(flash_file.teaser),      :length => 50) %></td>
     <td>
       <%= image_tag('file.png') + " #{flash_file.file1.original_filename}" if flash_file.file1.file? %><br />
       <%= image_tag('file.png') + " #{flash_file.file2.original_filename}" if flash_file.file2.file? %>

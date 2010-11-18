@@ -25,10 +25,10 @@
 <% @items.each_with_index do |item, index| %>
   <tr class="<%= cycle('', 'odd') %>">
     <td><%= index + 1 %></td>
-    <td><%=h item.name %></td>
-    <td><%=h item.long_description %></td>
-    <td><%=h item.meta_description %></td>
-    <td><%=h item.meta_keywords %></td>
+    <td><%= truncate(h(item.name),             :length => 50) %></td>
+    <td><%= truncate(h(item.long_description), :length => 50) %></td>
+    <td><%= truncate(h(item.meta_description), :length => 50) %></td>
+    <td><%= truncate(h(item.meta_keywords),    :length => 50) %></td>
     <td><%=h item.unit %></td>
     <td><%=h item.price %></td>
     <td><%=h item.weight %></td>

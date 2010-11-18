@@ -6,7 +6,6 @@
 <table>
   <tr>
     <th>#</th>
-    <th>Headline</th>
     <th>Page title</th>
     <th>Summary</th>
     <th>Teaser</th>
@@ -18,7 +17,6 @@
 <% @text_files.each_with_index do |text_file, index| %>
   <tr class="<%= cycle('', 'odd') %>">
     <td><%= index + 1 %></td>
-    <td><%=h text_file.headline %></td>
     <td><%=h text_file.page_title %></td>
     <td><%=h text_file.summary %></td>
     <td><%=h text_file.teaser %></td>
