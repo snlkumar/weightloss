@@ -3,6 +3,7 @@ class OldTextFile < ActiveRecord::Base
   
   acts_as_taggable
   
+  belongs_to :category
   belongs_to :subcategory
   
   has_attached_file :image1, :styles => {:preview => '50x50!'}, :url => "/system/:class/:attachment/:id/:style/:filename"
