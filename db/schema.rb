@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101118060224) do
+ActiveRecord::Schema.define(:version => 20101124081229) do
 
   create_table "categories", :force => true do |t|
     t.integer "parent_id"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(:version => 20101118060224) do
     t.string   "file1_content_type"
     t.integer  "category_id"
     t.integer  "subcategory_id"
+    t.string   "book_title"
   end
 
   create_table "old_tip_of_days", :force => true do |t|
