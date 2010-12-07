@@ -27,14 +27,14 @@
         </td>
         <td>
           <p>
-            <%= f.label :file1, 'File 1' %><br />
+            <%= f.label :file1, 'Video File' %><br />
             <%= f.file_field :file1 %><br />
             <% if @flash_file.file1.file? %>
               <%= image_tag "file.png"  %> <%= @flash_file.file1.original_filename %> <%= f.check_box :remove_file_1 %> Delete?
             <% end %>
           </p>
           <p>
-            <%= f.label :file2, 'File 2' %><br />
+            <%= f.label :file2, 'JPEG' %><br />
             <%= f.file_field :file2 %><br />
             <% if @flash_file.file2.file? %>
               <%= image_tag "file.png"  %> <%= @flash_file.file2.original_filename %> <%= f.check_box :remove_file_2 %> Delete?
