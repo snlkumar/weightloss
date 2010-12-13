@@ -8,12 +8,16 @@
       <tr>
         <td>
           <p>
+            <%= f.label :sku %><br />
+            <%= f.text_field :sku %>
+          </p>
+          <p>
             <%= f.label :name %><br />
             <%= f.text_field :name %>
           </p>
           <p>
-            <%= f.label :long_description %><br />
-            <%= f.text_area :long_description %>
+            <%= f.label :title %><br />
+            <%= f.text_field :title %>
           </p>
           <p>
             <%= f.label :meta_description %><br />
@@ -24,23 +28,12 @@
             <%= f.text_field :meta_keywords %>
           </p>
           <p>
-            <%= label_tag 'Category' %><br />
-            <%= aac_select(Category.roots, {:selected => @item.category_id, :name => 'old_item[category_id]', 
-                                            :parents_nil => true, :option_nil => '--'}) %>
+            <%= f.label :inventory %><br />
+            <%= f.text_field :inventory %>
           </p>
           <p>
-            <%= label_tag 'Sub Category' %><br />
-            <%= f.select :subcategory_id, [['--', '--']]+Subcategory.all.map{|cat| [cat.name,cat.id]} %>
-          </p>
-          <p>
-            <%= f.label :tag_list, "Tag List (comma seperated)" %><br />
-            <%= f.text_field :tag_list %>
-          </p>
-        </td>
-        <td>
-          <p>
-            <%= f.label :image1, 'Screenshot/Thumbnail 1' %><br />
-            <%= f.file_field :image1 %><br />
+            <%= f.label :warning_qty %><br />
+            <%= f.text_field :warning_qty %>
           </p>
           <p>
             <%= f.label :unit %><br />
@@ -50,6 +43,32 @@
             <%= f.label :price %><br />
             <%= f.text_field :price %>
           </p>
+          <p>
+            <%= f.label :on_sale %><br />
+            <%= f.check_box :on_sale %>
+          </p>
+          <p>
+            <%= f.label :on_msrp %><br />
+            <%= f.check_box :on_msrp %>
+          </p>
+          <p>
+            <%= f.label :tax_exempt %><br />
+            <%= f.check_box :tax_exempt %>
+          </p>
+          <p>
+            <%= f.label :free_shipping %><br />
+            <%= f.check_box :free_shipping %>
+          </p>
+          <p>
+            <%= f.label :image1, 'Image 1' %><br />
+            <%= f.file_field :image1 %><br />
+          </p>
+          <p>
+            <%= f.label :image2, 'Image 2' %><br />
+            <%= f.file_field :image2 %><br />
+          </p>
+        </td>
+        <td>
           <p>
             <%= f.label :weight %><br />
             <%= f.text_field :weight %>
@@ -67,13 +86,55 @@
             <%= f.text_field :height %>
           </p>
           <p>
+            <%= f.label :shipping_1st_item %><br />
+            <%= f.text_field :shipping_1st_item %>
+          </p>
+          <p>
+            <%= f.label :shipping_2nd_item %><br />
+            <%= f.text_field :shipping_2nd_item %>
+          </p>
+          <p>
+            <%= label_tag 'Category' %><br />
+            <%= aac_select(Category.roots, {:selected => @item.category_id, :name => 'old_item[category_id]', 
+                                            :parents_nil => true, :option_nil => '--'}) %>
+          </p>
+          <p>
+            <%= label_tag 'Sub Category' %><br />
+            <%= f.select :subcategory_id, [['--', '--']]+Subcategory.all.map{|cat| [cat.name,cat.id]} %>
+          </p>
+          <p>
+            <%= f.label :active %><br />
+            <%= f.check_box :active %>
+          </p>
+          <p>
+            <%= f.label :featured %><br />
+            <%= f.check_box :featured %>
+          </p>
+          <p>
+            <%= f.label :best_seller %><br />
+            <%= f.check_box :best_seller %>
+          </p>
+          <p>
+            <%= f.label :latest_and_greatest %><br />
+            <%= f.check_box :latest_and_greatest %>
+          </p>
+          <p>
+            <%= f.label :recommended %><br />
+            <%= f.check_box :recommended %>
+          </p>
+          <p>
+            <%= f.label :additional_features %><br />
+            <%= f.check_box :additional_features %>
+          </p>
+          <p>
             <%= f.label :keywords %><br />
             <%= f.text_field :keywords %>
           </p>
           <p>
-            <%= f.label :sku %><br />
-            <%= f.text_field :sku %>
+            <%= f.label :long_description %><br />
+            <%= f.text_area :long_description %>
           </p>
+          
         </td>
       </tr>
     </tbody>

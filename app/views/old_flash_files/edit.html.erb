@@ -40,6 +40,10 @@
               <%= image_tag "file.png"  %> <%= @flash_file.file2.original_filename %> <%= f.check_box :remove_file_2 %> Delete?
             <% end %>
           </p>
+          <p>
+            <%= f.label :vendor_name, 'Vendor Name' %><br />
+            <%= f.text_field :vendor_name %>
+          </p>
         </td>
       </tr>
       <tr>

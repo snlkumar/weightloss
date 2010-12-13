@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101124081229) do
+ActiveRecord::Schema.define(:version => 20101213065612) do
 
   create_table "categories", :force => true do |t|
     t.integer "parent_id"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20101124081229) do
     t.string   "file2_content_type"
     t.integer  "category_id"
     t.integer  "subcategory_id"
+    t.string   "vendor_name"
   end
 
   create_table "old_items", :force => true do |t|
@@ -66,6 +67,28 @@ ActiveRecord::Schema.define(:version => 20101124081229) do
     t.datetime "image1_updated_at"
     t.string   "image1_file_name"
     t.string   "image1_content_type"
+    t.integer  "shipping_2nx_item",   :limit => 10, :precision => 10, :scale => 0
+    t.string   "title"
+    t.integer  "inventory"
+    t.integer  "warning_qty"
+    t.boolean  "on_sale"
+    t.boolean  "on_msrp"
+    t.boolean  "tax_exempt"
+    t.boolean  "free_shipping"
+    t.integer  "shipping_1st_item",   :limit => 10, :precision => 10, :scale => 0
+    t.integer  "shipping_2nd_item",   :limit => 10, :precision => 10, :scale => 0
+    t.string   "country_unit"
+    t.boolean  "active"
+    t.boolean  "featured"
+    t.boolean  "best_seller"
+    t.boolean  "latest_and_greatest"
+    t.boolean  "recommended"
+    t.string   "column_name"
+    t.string   "additional_features"
+    t.integer  "image2_file_size"
+    t.datetime "image2_updated_at"
+    t.string   "image2_file_name"
+    t.string   "image2_content_type"
     t.integer  "category_id"
     t.integer  "subcategory_id"
   end
@@ -100,6 +123,8 @@ ActiveRecord::Schema.define(:version => 20101124081229) do
     t.integer  "category_id"
     t.integer  "subcategory_id"
     t.string   "book_title"
+    t.string   "url"
+    t.string   "author"
   end
 
   create_table "old_tip_of_days", :force => true do |t|
