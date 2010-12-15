@@ -1,0 +1,24 @@
+<p>
+  <%= f.label :gender %>
+  <%= f.select :gender, [['Choose', 0], ['Male', 'male'], ['Female', 'female']] %>
+</p>
+
+<p>
+  <%= f.label :birthdate %>
+  <%= f.date_select :birthdate %>
+</p>
+
+<p>
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar %>
+</p>
+
+<p>
+  <%= f.label :height %>
+  <%= f.text_field :height %>
+</p>
+
+<p>
+  <%= f.label :weight %>
+  <%= f.text_field :weight %>
+</p>

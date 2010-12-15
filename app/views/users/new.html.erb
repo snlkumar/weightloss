@@ -1,0 +1,9 @@
+<h1>Join The Community</h1>
+
+<% form_for @user do |f| %>
+  <%= f.error_messages %>
+  
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  
+  <%= f.submit 'Create' %>
+<% end %>

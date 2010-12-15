@@ -1,0 +1,9 @@
+<h1>Tell Us About Yourself</h1>
+
+<% form_for current_user, :url => "/finalize", :html => { :multipart => true } do |f| %>
+  <%= f.error_messages %>
+  
+  <%= render :partial => "step_two", :locals => {:f => f} %>
+  
+  <%= f.submit "Continue" %>
+<% end %>
