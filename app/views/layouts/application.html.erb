@@ -8,9 +8,9 @@
   <body>
     <div id="header">
       <% if logged_in? %>
-        <%= current_user.full_name %> (<%= link_to 'logout', user_session_path, :method => :delete %>)
+        <%= current_user.full_name %> (<%= link_to 'Logout', user_session_path, :method => :delete %>)
       <% else %>
-        <%= link_to 'login', new_user_session_path %> | <%= link_to 'sign up', new_user_path %>
+        <%= link_to 'Already a User? Sign in', new_user_session_path %> | <%= link_to 'Sign up', new_user_path %>
       <% end %>
     </div>
     
