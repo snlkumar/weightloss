@@ -10,4 +10,10 @@ ActionController::Routing::Routes.draw do |map|
   
   map.root :controller => :old_items, :action => :index
   
+  map.resource  :user_session
+  map.resources :users
+  
+  map.connect '/step_two', :controller => :users, :action => :step_two
+  map.connect '/finalize', :controller => :users, :action => :finalize
+  map.connect '/next',     :controller => :users, :action => :next
 end

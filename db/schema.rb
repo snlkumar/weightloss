@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101213065612) do
+ActiveRecord::Schema.define(:version => 20101215063053) do
 
   create_table "categories", :force => true do |t|
     t.integer "parent_id"
@@ -152,6 +152,38 @@ ActiveRecord::Schema.define(:version => 20101213065612) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "email",                                :null => false
+    t.string   "username"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "password"
+    t.string   "password_confirmation"
+    t.string   "status"
+    t.string   "crypted_password",                     :null => false
+    t.string   "password_salt",                        :null => false
+    t.string   "persistence_token",                    :null => false
+    t.string   "single_access_token",                  :null => false
+    t.string   "perishable_token",                     :null => false
+    t.integer  "login_count",           :default => 0, :null => false
+    t.integer  "failed_login_count",    :default => 0, :null => false
+    t.integer  "weight"
+    t.integer  "avatar_file_size"
+    t.datetime "last_request_at"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.datetime "birthdate"
+    t.datetime "avatar_updated_at"
+    t.string   "current_login_ip"
+    t.string   "last_login_ip"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.string   "gender"
+    t.string   "height"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
