@@ -4,18 +4,50 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
     <title><%= yield(:title) || "MyWeightWorld" %></title> 
     <!-- <link rel="shortcut icon" href="/favicon.ico" /> -->
+    <%= stylesheet_link_tag 'reset', '960', 'screen.css', :media => "screen, projection" %>
   </head>
   <body>
-    <div id="header">
-      <% if logged_in? %>
-        <%= current_user.full_name %> (<%= link_to 'Logout', user_session_path, :method => :delete %>)
-      <% else %>
-        <%= link_to 'Already a User? Sign in', new_user_session_path %> | <%= link_to 'Sign up', new_user_path %>
-      <% end %>
+    <div class="header">
+
+      <div id="small-nav" class="full">
+        <div class="small-nav container_16">
+
+          <div class="grid_16">
+            <% if logged_in? %>
+              <%= current_user.full_name %> (<%= link_to 'Logout', user_session_path, :method => :delete %>)
+            <% else %>
+              <%= link_to 'Already a User? Sign in', new_user_session_path %> | <%= link_to 'Sign up', new_user_path %>
+            <% end %>
+          </div>
+          <div style="clear:both">&nbsp;</div>
+          
+        </div>
+      </div>
+      
+      <div id="main-nav" class="full">
+        <div class="main-nav container_16">
+          
+          <div class="grid_16">
+            <h1 class="logo"><a href="">myweightworld</a></h1>
+          </div>
+          <div style="clear:both">&nbsp;</div>
+          
+        </div>
+      </div>
+    </div>
+    <!-- DONE HEADER -->
+    
+    <div class="full">
+      <div id="content" class="container_16">
+        <%= yield %>
+      </div>
     </div>
     
-    <div>
-      <%= yield %>
+    <div class="full">
+      <div id="footer" class="container_16">
+
+        <div style="clear:both">&nbsp;</div>
+      </div>
     </div>
   </body>
 </html>
