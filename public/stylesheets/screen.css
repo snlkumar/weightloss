@@ -49,9 +49,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-	font-size: 2.5em;
+	font-size: 2em;
 	font-weight: bold;
-	line-height: 1.1;
+	line-height: 2em;
 }
 
 h2 {
@@ -194,6 +194,7 @@ a:focus {
   ------------------------------------------------------ */
 div.signup-process {
   border: 1px solid #999;
+  margin-top: 25px;
 }
 
 ul.signup-progressbar {

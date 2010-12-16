@@ -10,7 +10,7 @@
 
 .container_12,
 .container_16 {
-  background: transparent url('../img/16_col.png') repeat-y;
+  /*background: transparent url('../img/16_col.png') repeat-y;*/
 	margin-left: auto;
 	margin-right: auto;
 	width: 960px;
