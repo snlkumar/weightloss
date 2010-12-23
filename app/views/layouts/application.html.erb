@@ -5,6 +5,7 @@
     <title><%= yield(:title) || "MyWeightWorld" %></title> 
     <!-- <link rel="shortcut icon" href="/favicon.ico" /> -->
     <%= stylesheet_link_tag 'reset', '960', 'screen.css', :media => "screen, projection" %>
+    <%= javascript_include_tag "jquery-1.4.4.dev", "application" %>
   </head>
   <body>
     <div class="header">
@@ -45,9 +46,15 @@
     
     <div class="full">
       <div id="footer" class="container_16">
-
+        
         <div style="clear:both">&nbsp;</div>
       </div>
     </div>
+    
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function() {
+        <%= yield :js %>
+      });
+    </script>
   </body>
 </html>

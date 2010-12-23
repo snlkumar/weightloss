@@ -1,16 +1,20 @@
-<h1>Login</h1>
-
-<% form_for @user_session, :url => user_session_path do |f| %>
-  <%= f.error_messages %>
+<div id="sign-up-form" class="center">
   
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %><br />
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %><br />
-  </p>
+  <h2>Sign In</h2>
   
-  <%= f.submit "Login" %>
-<% end %>
+  <% form_for @user_session, :url => user_session_path do |f| %>
+    <%= f.error_messages %>
+    
+    <p>
+      <%= f.label :email %><br />
+      <%= f.text_field :email %><br />
+    </p>
+    <p>
+      <%= f.label :password %><br />
+      <%= f.password_field :password %><br />
+    </p>
+    
+    <%= f.submit "Sign In" %>
+  <% end %>
+  
+</div>

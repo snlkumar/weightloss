@@ -203,7 +203,8 @@ ul.signup-progressbar {
   padding: 40px 60px;
 }
 
-div.signup-process h2, div.signup-process p {
+div.signup-process h2, 
+div.signup-process p {
   padding-left: 120px;
 }
 
@@ -389,3 +390,7 @@ form .fieldError, form .fieldWithErrors {
   border: 1px solid #ff0000 !important;
   color: #e76a6a;
 }
+
+/*Sign In */
+#sign-up-form { width: 400px; margin-top: 25px; }
+.center { margin: 0 auto; }

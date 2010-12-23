@@ -9,17 +9,17 @@
 </li>
 
 <li>
-  <%= f.label :username, %Q{Username  <span class="help-text">(Minimum of X Characters)</span> } %>
+  <%= f.label :username, %Q{Username  <span class="help-text">(Minimum of 4 Characters)</span> } %>
   <%= f.text_field :username, :placeholder => "Ex: Nickname" %>
 </li>
 
 <li>
-  <%= f.label :password, %Q{Password  <span class="help-text">(Minimum of X Characters)</span> } %>
+  <%= f.label :password, %Q{Password  <span class="help-text">(Minimum of 6 Characters)</span> } %>
   <%= f.text_field :password, :placeholder => "Your password" %>
 </li>
 
 <li>
-  <%= f.label :password_confirmation, %Q{ Confirm Password <span class="help-text">(Minimum of X Characters)</span> } %>
+  <%= f.label :password_confirmation, %Q{ Confirm Password <span class="help-text">(Minimum of 6 Characters)</span> } %>
   <%= f.text_field :password_confirmation, :placeholder => "Confirm Your Password" %>
 </li>
 
@@ -27,6 +27,7 @@
   <%= f.label :email, %Q{ Email <span class="help-text">(Note: Email will not be publicly displayed.)</span> } %>
   <%= f.text_field :email, :placeholder => "Ex: email@address.com" %>
 </li>
+
 <li>
   Terms of Service
 </li>

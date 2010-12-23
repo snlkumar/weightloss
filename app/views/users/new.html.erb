@@ -1,9 +1,7 @@
 
-
-
-<!-- SIGN UP BOX BEGINS -->      
+<!-- SIGN UP BOX BEGINS -->
 <div class="signup-process grid_12 push_2">
-
+  
   <div class="grid_12 alpha omega">
     <ul class="signup-progressbar grid_10 alpha">
       <li class="grid_3 alpha"><strong>1.</strong> Join In</li>
@@ -12,13 +10,15 @@
       <li class="grid_1 omega"><strong>;)</strong></li>
     </ul>
   </div>
-
+  
   <div class="grid_10 alpha push_1">
     <h2>Join the community!</h2>
-    <p>Suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>
+    <p>
+      Suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.
+    </p>
 
     <% form_for @user do |f| %>
-      <%#= f.error_messages %>
+      <%= f.error_messages %>
       <fieldset>
         <ol class="forms">
           <%= render :partial => 'form', :locals => {:f => f} %>
@@ -33,3 +33,4 @@
 
 
 <div style="clear:both">&nbsp;</div>
+</div>
