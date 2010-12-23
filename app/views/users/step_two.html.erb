@@ -10,9 +10,8 @@
   </div>
 
   <div class="grid_10 alpha push_1">
-    <h2>Tell Us About Yourself</h2>
-
-    <% form_for current_user, :url => "/finalize", :html => { :multipart => true } do |f| %>
+    
+    <% form_for current_user, :url => "/finalize", :html => { :multipart => true, :class => "forms" } do |f| %>
       <%#= f.error_messages %>
       <fieldset>
         <ol class="forms">

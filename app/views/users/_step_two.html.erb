@@ -1,24 +1,61 @@
-<li>
-  <%= f.label :gender %>
-  <%= f.select :gender, [['Choose', 0], ['Male', 'male'], ['Female', 'female']] %>
-</li>
+<div style="float:left; width: 125px;" >
+  <%= image_tag 'you.png' %>
+</div>
 
-<li>
-  <%= f.label :birthdate %>
-  <%= f.date_select :birthdate %>
-</li>
+<div style="float:left; width: 450px;">
+  <h2 style="padding-left: 0px;">Tell Us About Yourself</h2>
+  <p style="padding-left: 0px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
+</div>
 
-<li>
-  <%= f.label :avatar %>
-  <%= f.file_field :avatar %>
-</li>
+<div style="clear:both">&nbsp;</div>
 
-<li>
-  <%= f.label :height %>
-  <%= f.text_field :height %>
-</li>
+<div style="float:left; width: 225px;" >
+  <%= label_tag 'Profile Photo' %>
+  <div style="-moz-border-radius: 5px; -webkit-border-radius: 5px 5px; height: 160px; width: 160px; border: 1px solid black; background: url(/images/avatar_placeholder.png) no-repeat center center">
+    
+  </div>
+  <%= label_tag '', %Q{<span class="help-text">File types: .png, .jpg, .gif</span> } %>
+  <%= f.file_field :avatar, :size => '6' %>
+</div>
 
-<li>
-  <%= f.label :weight %>
-  <%= f.text_field :weight %>
-</li>
+<div style="float:left;" >
+  <ol class="forms">
+    <li>
+      <%= f.label :gender %>
+      <%= f.select :gender, [['Choose', 0], ['Male', 'male'], ['Female', 'female']] %>
+      <br/><br/>
+    </li>
+
+    <li>
+      <%= f.label :birthdate %>
+      <%= f.date_select :birthdate %>
+    </li>
+  </ol>
+</div>
+
+<div style="clear:both; margin-bottom: 25px;">&nbsp;</div>
+
+<%= image_tag 'signup_personal_seperator.png' %>
+
+<div style="float:left; width: 125px;" >
+  <p style="font-weight:bold; font-size: 2em; padding: 24px;">goals.</p>
+</div>
+
+<div style="float:left; width: 450px;">
+  <h2 style="padding-left: 0px;">Create a baseline to work against</h2>
+  <p style="padding-left: 0px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
+</div>
+
+<div style="clear:both">&nbsp;</div>
+
+<ol class="forms">
+  <li>
+    <%= f.label :height, %Q{Height <span class="help-text">(Height will not be publicly displayed)</span> } %>
+    <%= f.text_field :height, :style => 'width: 112px' %>
+  </li>
+
+  <li>
+    <%= f.label :weight, %Q{Weight <span class="help-text">(Weight will not be publicly displayed)</span> } %>
+    <%= f.text_field :weight, :style => 'width: 112px' %>
+  </li>
+</ol>

@@ -237,7 +237,7 @@ div.signup-process ol li input {
   width: 448px;
 }
 
-div.signup-process ol li span.help-text{
+span.help-text{
   color:#AAA;
   font-weight: normal;
 }
@@ -358,6 +358,8 @@ textarea {
 	text-align: left;
 	line-height: 1.25;
 }
+
+select { padding: 4px; }
 
 /* Table
 ---------------------------------------- */

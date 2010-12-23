@@ -7,8 +7,6 @@ class ApplicationController < ActionController::Base
 
   layout 'application' 
   
-  what is this!!!!
-  
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :password_confirmation
   
