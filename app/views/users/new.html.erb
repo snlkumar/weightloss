@@ -18,7 +18,7 @@
     </p>
 
     <% form_for @user do |f| %>
-      <%= f.error_messages %>
+      <%#= f.error_messages %>
       <fieldset>
         <ol class="forms">
           <%= render :partial => 'form', :locals => {:f => f} %>
