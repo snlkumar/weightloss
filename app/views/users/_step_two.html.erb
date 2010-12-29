@@ -29,7 +29,7 @@
 
     <li>
       <%= f.label :birthdate %>
-      <%= f.date_select :birthdate %>
+      <%= f.date_select :birthdate, :start_year => 100.years.ago.year, :end_year => Time.zone.now.year %>
     </li>
   </ol>
 </div>

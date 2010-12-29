@@ -3,21 +3,29 @@
 <%= link_to 'New success_story', new_old_success_story_path %>
 <br /><br />
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Summary</th>
-    <th>Body</th>
-  </tr>
-
-<% @success_stories.each do |success_story| %>
-  <tr class="<%= cycle('', 'odd') %>">
-    <td><%= truncate(h(success_story.title),   :length => 50) %></td>
-    <td><%= truncate(h(success_story.summary), :length => 50) %></td>
-    <td><%= truncate(h(success_story.body),    :length => 50) %></td>
-    <td><%= link_to 'Edit', edit_old_success_story_path(success_story) %></td>
-    <td><%= link_to 'Destroy', success_story, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+<table class="sort-table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Summary</th>
+      <th>Body</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @success_stories.each do |success_story| %>
+      <tr class="<%= cycle('', 'odd') %>">
+        <td><%= truncate(h(success_story.title),   :length => 50) %></td>
+        <td><%= truncate(h(success_story.summary), :length => 50) %></td>
+        <td><%= truncate(h(success_story.body),    :length => 50) %></td>
+        <td><%= link_to 'Edit', edit_old_success_story_path(success_story) %></td>
+        <td><%= link_to 'Destroy', success_story, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    $('.sort-table').tablesorter();
+  <% end %>
+</script>

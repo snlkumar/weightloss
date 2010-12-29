@@ -5,7 +5,8 @@
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>Departments: <%= controller.action_name %></title>
-    <%= stylesheet_link_tag 'scaffold' %>
+    <%= stylesheet_link_tag 'scaffold', "tablesort_themes/blue/style.css" %>
+    <%= javascript_include_tag "jquery-1.4.4.dev", "jquery.tablesorter.js" %>
     
     <style type="text/css" media="screen">
       ul {list-style:none;}
@@ -14,20 +15,25 @@
   </head>
   <body class="old">
     
-  <ul>
-    <li><%= link_to 'Store',           old_items_path %></li>
-    <li><%= link_to 'Departments',     old_departments_path %></li>
-    <li><%= link_to 'Flash Files',     old_flash_files_path %></li>
-    <li><%= link_to 'Text Files',      old_text_files_path %></li>
-    <li><%= link_to 'Tips of the Day', old_tip_of_days_path %></li>
-    <li><%= link_to 'Categories',      categories_path %></li>
-    <li><%= link_to 'SubCategories',   subcategories_path %></li>
-  </ul>
-  
-  <div style="clear:both;"></div>
-  <p style="color: green"><%= notice %></p>
-  
-  <%= yield %>
-  
+    <ul>
+      <li><%= link_to 'Store',           old_items_path %></li>
+      <li><%= link_to 'Departments',     old_departments_path %></li>
+      <li><%= link_to 'Flash Files',     old_flash_files_path %></li>
+      <li><%= link_to 'Text Files',      old_text_files_path %></li>
+      <li><%= link_to 'Tips of the Day', old_tip_of_days_path %></li>
+      <li><%= link_to 'Categories',      categories_path %></li>
+      <li><%= link_to 'SubCategories',   subcategories_path %></li>
+    </ul>
+    
+    <div style="clear:both;"></div>
+    <p style="color: green"><%= notice %></p>
+    
+    <%= yield %>
+    
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function() {
+        <%= yield :js %>
+      });
+    </script>
   </body>
 </html>

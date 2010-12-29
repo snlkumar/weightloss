@@ -3,21 +3,30 @@
 <%= link_to 'New department', new_old_department_path %>
 <br /><br />
 
-<table id="old_departments">
-  <tr>
-    <th>#</th>
-    <th>Name</th>
-    <th> </th>
-  </tr>
-  
-  <% @departments.each_with_index do |department, index | %>
-    <tr class="<%= cycle('', 'odd') %>">
-      <td><%= index + 1 %></td>
-      <td><%=h department.name %></td>
-      <td>
-        <%= link_to 'Edit', edit_old_department_path(department) %> | 
-        <%= link_to 'Destroy', department, :confirm => 'Are you sure?', :method => :delete %>
-      </td>
+<table id="old_departments" class="sort-table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th> </th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @departments.each_with_index do |department, index | %>
+      <tr class="<%= cycle('', 'odd') %>">
+        <td><%= index + 1 %></td>
+        <td><%=h department.name %></td>
+        <td>
+          <%= link_to 'Edit', edit_old_department_path(department) %> | 
+          <%= link_to 'Destroy', department, :confirm => 'Are you sure?', :method => :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
+
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    $('.sort-table').tablesorter();
+  <% end %>
+</script>

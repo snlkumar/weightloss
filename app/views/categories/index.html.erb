@@ -3,21 +3,30 @@
 <%= link_to 'New category', new_category_path %>
 <br /><br />
 
-<table id="categories">
-  <tr>
-    <th>#</th>
-    <th>Name</th>
-    <th> </th>
-  </tr>
-  
-  <% Category.roots.each_with_index do |category, index | %>
-    <tr class="<%= cycle('', 'odd') %>">
-      <td><%= index + 1 %></td>
-      <td><%=h category.name %></td>
-      <td>
-        <%= link_to 'Edit', edit_category_path(category) %> | 
-        <%= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete %>
-      </td>
+<table id="categories" class="sort-table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th> </th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% Category.roots.each_with_index do |category, index | %>
+      <tr class="<%= cycle('', 'odd') %>">
+        <td><%= index + 1 %></td>
+        <td><%=h category.name %></td>
+        <td>
+          <%= link_to 'Edit', edit_category_path(category) %> | 
+          <%= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
+
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    $('.sort-table').tablesorter();
+  <% end %>
+</script>
