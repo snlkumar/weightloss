@@ -25,6 +25,7 @@ class UsersController < ApplicationController
       current_user.update_attribute(:status, 'finalize')
       redirect_to :action => :next
     else
+      p current_user.errors.full_messages
       render :action => :step_two
     end
   end

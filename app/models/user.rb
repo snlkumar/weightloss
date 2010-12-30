@@ -21,9 +21,18 @@ class User < ActiveRecord::Base
   validates_length_of       :username, :in => 4..25
   validates_attachment_presence :avatar, :if => Proc.new { |u| !['step_one'].include?(u.status) }
   
+  # Callbacks
+  before_save :strip_lbs
+  
   default_values :status => "step_one"
   
   def full_name
     "#{self.first_name} #{self.last_name}"
+  end
+  
+  def strip_lbs
+    if self.weight.is_a?(String) && self.weight.match(/lbs/)
+      self.weight = self.weight.gsub('lbs', '').to_i
+    end
   end
 end

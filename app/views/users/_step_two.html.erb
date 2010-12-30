@@ -44,7 +44,9 @@
 
 <div style="float:left; width: 450px;">
   <h2 style="padding-left: 0px;">Create a baseline to work against</h2>
-  <p style="padding-left: 0px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
+  <p style="padding-left: 0px;">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.
+  </p>
 </div>
 
 <div style="clear:both">&nbsp;</div>
@@ -52,11 +54,49 @@
 <ol class="forms">
   <li>
     <%= f.label :height, %Q{Height <span class="help-text">(Height will not be publicly displayed)</span> } %>
-    <%= f.text_field :height, :style => 'width: 112px' %>
+    <div id="height-slider" style="height: 15px; width: 200px; margin-bottom: 10px;"></div>
+    <%= text_field_tag "", "", :id => "height-view", :disabled => true, :style => 'width: 30px;' %>
+    <%= f.hidden_field :height, :id => 'height-val' %>
   </li>
 
   <li>
     <%= f.label :weight, %Q{Weight <span class="help-text">(Weight will not be publicly displayed)</span> } %>
-    <%= f.text_field :weight, :style => 'width: 112px' %>
+    <div id="weight-slider" style="height: 15px; width: 200px; margin-bottom: 10px;"></div>
+    <%= text_field_tag "", "", :id => "weight-view", :disabled => true, :style => 'width: 45px;' %>
+    <%= f.hidden_field :weight, :id => 'weight-val' %>
   </li>
 </ol>
+
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    $('#height-slider').slider({
+          range: "min",
+          value: 60,
+          min: 48,
+          max: 84,
+          slide: function( event, ui ) {
+            var feet   = Math.floor($( "#height-slider" ).slider( "value" ) / 12);
+            var inches = Math.round(($( "#height-slider" ).slider( "value" ) / 12 - feet) * 12);
+            $( "#height-view" ).val( feet+"'"+inches+'"' );
+            $( "#height-val" ).val( feet+"'"+inches+'"' );
+          }
+        });
+        
+    var feet = Math.floor($( "#height-slider" ).slider( "value" ) / 12);
+    var inches = Math.round(($( "#height-slider" ).slider( "value" ) / 12 - feet) * 12);
+    $( "#height-view" ).val( feet+"'"+inches+'"' );
+    
+    $('#weight-slider').slider({
+          range: "min",
+          value: 150,
+          min: 100,
+          max: 600,
+          slide: function( event, ui ) {
+            $( "#weight-view" ).val( ui.value + ' lbs' );
+            $( "#weight-val" ).val( ui.value + ' lbs');
+          }
+        });
+    $( "#weight-view" ).val( $( "#weight-slider" ).slider( "value" ) + ' lbs' );
+    
+  <% end %>
+</script>
