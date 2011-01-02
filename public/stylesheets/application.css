@@ -1,0 +1,20 @@
+.avatar-placeholder { margin-bottom: 10px; -moz-border-radius: 5px; -webkit-border-radius: 5px 5px; height: 160px; width: 160px; border: 1px solid black; background: url(/images/avatar_placeholder.png) no-repeat center center }
+
+#content { padding-top: 22px; }
+
+#profile-tabs {
+  margin-bottom: 0px;
+}
+
+#profile-tabs li{
+  display: inline-block;
+  width:   118px;
+  height:  14px;
+  padding:  14px;
+  margin-top:   15px;
+  border-left:  1px solid gray;
+  border-top:   1px solid gray;
+  border-right: 1px solid gray;
+}
+
+#profile-center { margin-top: 30px; }
