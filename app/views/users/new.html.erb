@@ -19,15 +19,13 @@
 
     <% form_for @user do |f| %>
       <%#= f.error_messages %>
-      <fieldset>
-        <ol class="forms">
-          <%= render :partial => 'form', :locals => {:f => f} %>
-        </ol>
-      </fieldset>
 
-      <fieldset>
-        <%= f.submit 'On to the Next Step!' %>
-      </fieldset>
+      <ol class="forms">
+        <%= render :partial => 'form', :locals => {:f => f} %>
+      </ol>
+
+      <%= f.submit 'On to the Next Step!' %>
+
     <% end %>
   </div>
 

@@ -1,3 +1,99 @@
+
+/*  =UNIVERSAL
+  ------------------------------------------------------ */
+.full {
+  width: 100%;
+  min-width: 1040px;
+}
+
+
+/*  =HEADER
+  ------------------------------------------------------ */
+.header {
+  background:pink;
+  display: block;
+  width: 100%;
+}
+
+#small-nav {
+  background: #ebebeb;
+}
+
+.small-nav {
+  height: 26px;
+}
+
+#main-nav {
+  background: #cccccc;
+}
+
+.main-nav {
+  height: 60px;
+}
+
+#logo { margin-top: 10px; }
+
+/*  =SIGN UP BOX
+  ------------------------------------------------------ */
+div.signup-process {
+  border: 1px solid #999;
+  margin-top: 25px;
+}
+
+ul.signup-progressbar {
+  background: #ebebeb;
+  font-size: 1.5em;
+  padding: 40px 60px;
+}
+
+div.signup-process h2, 
+div.signup-process p {
+  padding-left: 120px;
+}
+
+
+/*  =FORMS
+  ------------------------------------------------------ */
+div.signup-process ol {
+  
+}
+
+div.signup-process ol li {
+  display:block;
+  font-weight: bold;
+}
+
+div.signup-process ol li label, div.signup-process ol li input {
+  display:block;
+}
+
+div.signup-process ol li label {
+  margin-bottom: 5px;
+}
+
+div.signup-process ol li input {
+  border: 1px solid #cdcdcd;
+  height: 25px;
+  line-height: 1em;
+  margin-bottom: 24px;
+  padding: 5px;
+  width: 448px;
+}
+
+span.help-text{
+  color:#AAA;
+  font-weight: normal;
+}
+
+form .fieldError, form .fieldWithErrors {
+  border: 1px solid #ff0000 !important;
+  color: #e76a6a;
+}
+
+/*Sign In */
+#sign-up-form { width: 400px; margin-top: 25px; }
+.center { margin: 0 auto; }
+
 .avatar-placeholder { margin-bottom: 10px; -moz-border-radius: 5px; -webkit-border-radius: 5px 5px; height: 160px; width: 160px; border: 1px solid black; background: url(/images/avatar_placeholder.png) no-repeat center center }
 
 #content { padding-top: 22px; }
@@ -18,3 +114,7 @@
 }
 
 #profile-center { margin-top: 30px; }
+
+/*TERMS PAGE */
+h3 a { text-decoration: none; color: black; }
+h4 a { text-decoration: none; color: black; }

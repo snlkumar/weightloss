@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
     <title><%= yield(:title) || "MyWeightWorld" %></title> 
     <!-- <link rel="shortcut icon" href="/favicon.ico" /> -->
-    <%= stylesheet_link_tag 'reset', '960', 'screen.css', "ui-lightness/jquery-ui-1.8.7.custom.css", :media => "screen, projection" %>
+    <%= stylesheet_link_tag 'reset', '960', "ui-lightness/jquery-ui-1.8.7.custom.css", 'application', :media => "screen, projection" %>
     <%= javascript_include_tag "jquery-1.4.4.dev", "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.js", "application" %>
     
     <script type="text/javascript" charset="utf-8">
@@ -12,10 +12,12 @@
         window.gOverride = {
           gColor: '#FF0000',
           pColor: '#0000FF',
-          gOpacity: 0.45,
-          pOpacity: 0.55,
+          gOpacity: 0.15,
+          pOpacity: 0.25,
           pHeight: 18,
-          pOffset: -2
+          pOffset: -2,
+          gColumns: 16,
+          invert: false
         }
       
         createGridder = function() {
@@ -49,7 +51,7 @@
         <div class="main-nav container_16">
           
           <div class="grid_16">
-            <h1 class="logo"><a href="">myweightworld</a></h1>
+            <h2 id="logo"><a href="">myweightworld</a></h2>
           </div>
           <div style="clear:both">&nbsp;</div>
           

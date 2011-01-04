@@ -13,6 +13,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resource  :user_session
   map.resources :users
   
+  map.privacy '/privacy', :controller => :home, :action => :privacy
+  map.terms   '/terms',   :controller => :home, :action => :terms
+  
   map.connect '/step_two', :controller => :users, :action => :step_two
   map.connect '/finalize', :controller => :users, :action => :finalize
   map.connect '/next',     :controller => :users, :action => :next
