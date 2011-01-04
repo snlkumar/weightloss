@@ -9,8 +9,8 @@
   <ul id="privacy-links">
     <li><%= link_to "ABOUT THIS PRIVACY POLICY AND USING OUR SITE AND TOOLS", '#about' %><br/></li>
     <li><%= link_to "NON-PERSONAL INFORMATION WE COLLECT ABOUT YOU", '#non-personal' %><br/></li>
-    <li><%= link_to "PERSONALLY IDENTIFIABLE INFORMATION WE COLLECT ABOUT YOU", '#personal_info' %><br/></li>
-    <li><%= link_to "INFORMATION COLLECTED BY THIRD PARTIES NOT ACTING ON BEHALF OF MYWEIGHTWORLD HEALTH", '#third_parties' %><br/></li>
+    <li><%= link_to "PERSONALLY IDENTIFIABLE INFORMATION WE COLLECT ABOUT YOU", '#personal-info' %><br/></li>
+    <li><%= link_to "INFORMATION COLLECTED BY THIRD PARTIES NOT ACTING ON BEHALF OF MYWEIGHTWORLD HEALTH", '#third-parties' %><br/></li>
     <li><%= link_to "DISCLOSURE OF YOUR INFORMATION", '#disclosure' %><br/></li>
     <li><%= link_to "HOW MYWEIGHTWORLD HANDLES PRIVACY AND SECURITY INTERNALLY", '#internal' %><br/></li>
     <li><%= link_to "UPDATING YOUR INFORMATION AND CONTACTING MYWEIGHTWORLD HEALTH", '#contact' %><br/></li>
@@ -46,7 +46,7 @@
     We also may use Web Beacons to collect Non-Personal Information about your use of our Web site and the Web sites of selected sponsors and advertisers, and your use of special promotions or newsletters. The information collected by Web Beacons (i) allows us to statistically monitor how many people are using our website and selected sponsors' and advertisers' sites, (ii) how many people open our emails, and (iii) for what purposes these actions are being taken. Our Web Beacons are not used to track your activity outside of our Web sites or those of our sponsors'. We do not link Non-Personal Information from Web Beacons to Personally Identifiable Information without your permission and do not use Web Beacons to collect or store Personal Health Information about you.
   </p>
   
-  <h3>PERSONALLY IDENTIFIABLE INFORMATION WE COLLECT ABOUT YOU</h3>
+  <h3><%= link_to 'PERSONALLY IDENTIFIABLE INFORMATION WE COLLECT ABOUT YOU', {}, :name => 'personal-info' %></h3>
   
   <p>We collect Personally Identifiable Information that you provide to us when you register as a member of MyWeightWorld and/or when you update your member profile. We use the Personally Identifiable Information that you provide to respond to your questions, provide you the specific services you select, send you emails about Web site maintenance and updates, and inform you of significant changes to this Privacy Policy. We also use specific Personally Identifiable Information that you identify for public areas of the website.</p>
   
@@ -91,12 +91,12 @@
   When participating in a survey, we may ask you to submit Personally Identifiable Information. This Personally Identifiable Information is used for research purposes, and is not used for sales solicitations. When a survey is sponsored by a third party, Aggregate Information of the survey results is reported to the sponsor. Personally Identifiable Information collected through market research will be used only by MyWeightWorld and its service providers and contractors and will not be given or sold to a third party without your consent or as otherwise permitted by this Privacy Policy. For market research surveys we will not knowingly accept survey responses from or conduct interviews with any person under the age of 18. Some surveys may provide remuneration to participants such as a small cash fee for your time or an entry into a sweepstakes for a larger prize. Each survey will disclose whether or not it is a paid survey.<br/><br/>
   In addition to collecting survey responses from our members, Cookies may be used to authenticate respondents or to help you pick up where you left off in a survey. If you have Cookies disabled you may not be able to participate in some studies. Cookies may be used to connect survey data with MyWeightWorld site usage characteristics. You will be notified when we would like to use Cookies in this way and your consent will be requested for these Cookies.</p>
   
-  <h3>INFORMATION COLLECTED BY THIRD PARTIES NOT ACTING ON MYWEIGHTWORLD’S BEHALF</h3>
+  <h3><%= link_to 'INFORMATION COLLECTED BY THIRD PARTIES NOT ACTING ON MYWEIGHTWORLD’S BEHALF', {}, :name => 'third-parties' %></h3>
   
   <p>Sponsors or advertisers on MyWeightWorld may use their own Cookies, Web Beacons or other online tracking technologies in advertisements appearing on the site and in emails, special promotions or newsletters we send you. Some advertisers use companies other than MyWeightWorld to serve their ads and to monitor users' responses to ads, and these companies ("Ad Servers") may also collect Non-Personal Information through the use of Cookies or Web Beacons on our Web site. In certain situations, information collection may be facilitated by momentarily directing your browser to the Web site of an Ad Server or other third party acting on behalf of the sponsor, partner, or advertiser before re-directing your browser to its selected destination (e.g., back to MyWeightWorld to show the ad, or to the advertiser's website); this re-direction process will not be apparent to you.<br/><br/>
   We do not control these third parties' use of cookies or Web Beacons, or how they manage the non-personal information they gather through them. You should review the privacy policy of other sites you visit or link to from our site to understand how these other sites use cookies and how they use the information they collect through the use of cookies or web beacons on their own sites. Certain Ad Servers allow you to prevent them from collecting data through the use of cookies. In order to do so, you must opt-out of such data collection with each individual site.</p>
   
-  <h3>DISCLOSURE OF YOUR INFORMATION</h3>
+  <h3><%= link_to 'DISCLOSURE OF YOUR INFORMATION', {}, :name => 'disclosure' %></h3>
   
   <p>Except as set forth in this Privacy Policy or as specifically agreed to by you, MyWeightWorld will not disclose any Personally Identifiable or Personal Health Information it gathers from you on our website. We may only release Personally Identifiable or Personal Health Information to third parties: (1) to comply with valid legal requirements such as a law, regulation, search warrant, subpoena or court order; or (2) in special cases, such as in response to a physical threat to you or others, to protect property or defend or assert legal rights. In the event that we are legally compelled to disclose your Personally Identifiable or Personal Health Information to a third party, we will attempt to notify you unless doing so would violate the law or court order. In addition, we may disclose Personal Information as described below.</p>
   
@@ -104,7 +104,7 @@
   
   <p>MyWeightWorld operations and maintenance contractors sometimes have limited access to your Personally Identifiable Information in the course of providing products or services to MyWeightWorld. These contractors include vendors and suppliers that provide us with technology, services, and/or content for the operation and maintenance of our Web site. Unless you have Opted-out of receiving emails and newsletters from MyWeightWorld, these contractors also may have access to your email address to send newsletters or special promotions to you on our behalf or to send emails to you for purposes such as conducting market research on our behalf. Access to your Personally Identifiable Information by these contractors is limited to the information reasonably necessary for the contractor to perform its limited function for MyWeightWorld. We also contractually require that our operations and maintenance contractors 1) protect the privacy of your Personally Identifiable Information consistent with this Privacy Policy, and 2) not use or disclose your Personally Identifiable Information for any purpose other than providing us with products and services as required by law.</p>
   
-  <h4>Disclosure to Third Party Contractor Websites</h4>
+  <h4><%= link_to 'Disclosure to Third Party Contractor Websites', {}, :name => 'third-parties' %></h4>
   
   <p>Certain content and services offered to you through the site are served on Web sites hosted and operated by a company other than MyWeightWorld ("Third Party Contractor Web sites"). MyWeightWorld does not disclose your Personally Identifiable Information to these Third Party Contractor Web sites without your consent, but you should be aware that any information you disclose once you access these other Web sites is not subject to this Privacy Policy. MyWeightWorld does not endorse and is not responsible for the privacy practices of these Third Party Contractor Web sites. You should review the privacy policy posted on the other Web site to understand how that Third Party Contractor Website collects and uses your Personally Identifiable Information. MyWeightWorld makes an effort to make it obvious to you when you leave our website and enter a Third Party Contractor Web site, either by requiring you to click on a link or by notifying you on the site before you visit the third party site. In addition, if you see a phrase such as "Powered by" or "in association with" or a similiar phrase or reference followed by the name of a company other than MyWeightWorld, then you are on a Web site hosted by a company other than MyWeightWorld.<br/><br/>
   MyWeightWorld also provides links to sites provided by Third Party Contractor Websites that have business arrangements with MyWeightWorld to pay commissions based on sales of products or services generated through MyWeightWorld.</p>
@@ -117,7 +117,7 @@
   
   <p>MyWeightWorld may provide Aggregate Information to third parties. For example, we might inform third parties regarding the number of users of our website and the activities they conduct while on our site. We might also inform a pharmaceutical company (that may or may not be an advertiser on our site) that "30% of our users live east of the Colorado" or that "25% of our users have tried weight loss drugs." Depending on the circumstances, we may or may not charge third parties for this Aggregate Information.</p>
   
-  <h3>HOW MYWEIGHTWORLD HANDLES PRIVACY AND SECURITY INTERNALLY</h3>
+  <h3><%= link_to 'HOW MYWEIGHTWORLD HANDLES PRIVACY AND SECURITY INTERNALLY', {}, :name => 'internal' %></h3>
   
   Listed below are some of the security procedures that MyWeightWorld uses to protect your privacy:
   <ul>
@@ -130,7 +130,7 @@
   
   <p>Despite MyWeightWorld Health's efforts to protect your Personally Identifiable Information and Personal Health Information, there is always some risk that an unauthorized third party may find a way around our security systems or that transmissions of your information over the Internet may be intercepted.</p>
   
-  <h3>UPDATING YOUR INFORMATION AND CONTACTING MYWEIGHTWORLD</h3>
+  <h3><%= link_to 'UPDATING YOUR INFORMATION AND CONTACTING MYWEIGHTWORLD', {}, :name => 'contact' %></h3>
   
   <h4>Updating Your Personally Identifiable Information</h4>
   
@@ -153,13 +153,13 @@
   
   <p>If you have contacted MyWeightWorld about a privacy related concern and you do not believe that the problem has been addressed, you may file a complaint with TRUSTe at www.truste.org.</p>
   
-  <h3>CHANGES TO THIS PRIVACY POLICY</h3>
+  <h3><%= link_to 'CHANGES TO THIS PRIVACY POLICY', {}, :name => 'changes' %></h3>
   
   <p>Personally Identifiable Information - We will inform you if a material change to the Privacy Policy, which means a change that expands the permissible uses or disclosures of Personally Identifiable Information allowed by the prior version of the Privacy Policy. Your continued use of the MyWeightWorld Web site will indicate acceptance of the changes. You may of course choose to Opt-out of continuing to use the MyWeightWorld Web site. Please exit the site immediately if you do not agree to the terms of this Privacy Policy or any revised policy.<br/><br/>
   Personal Health Information - We will inform you if a material change in the Privacy Policy is made that involves the use of your Personal Health Information, and your express Opt-in authorization will be requested. If you choose to not accept the new privacy policy, then the current privacy policy conditions will remain in effect, so long as MyWeightWorld continues to make the functionality available. MyWeightWorld reserves the right to discontinue or limit functionality in all its products and services.<br/><br/>
   Non-Significant Changes – MyWeightWorld may make non-significant changes to the Privacy Policy that do no affect Personally Identifiable Information or Personal Health Information. For these instances, MyWeightWorld may not notify the user of such non-significant changes.</p>
   
-  <h3>GLOSSARY</h3>
+  <h3><%= link_to 'GLOSSARY', {}, :name => 'glossary' %></h3>
   
   <b>Aggregate Information or Data:</b> As a website gathers individual pieces of Non-Personal Information (see definition below) from its users, it may combine similar data from many or all the users of the website into one big "batch". For example, the site may add up the total number of people in Peoria, Illinois, (but not their names) who are seeking information about weight loss and compare that to the number of people in Petaluma, California seeking the same information.<br/><br/>
   This sort of statistical information is called aggregate data because it reflects the habits and characteristics of a large group of anonymous people. Web sites may use aggregate data or share it with their business partners so that the information and services they provide best meet the needs of the users. Aggregate data also helps advertisers and sponsors on the Web know how effectively they are reaching and meeting the needs of their target audience.<br/><br/>

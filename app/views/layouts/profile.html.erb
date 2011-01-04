@@ -25,7 +25,7 @@
             document.createElement('script'))
             .src='/javascripts/960.gridder.js';
         }
-        createGridder();
+        <% if Rails.env.development? %>createGridder();<% end %>
       <% end %>
     </script>
     
