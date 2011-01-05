@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
     <title><%= yield(:title) || "MyWeightWorld" %></title> 
     <!-- <link rel="shortcut icon" href="/favicon.ico" /> -->
-    <%= stylesheet_link_tag 'reset', '960', 'screen.css', "ui-lightness/jquery-ui-1.8.7.custom.css", 'application', :media => "screen, projection" %>
+    <%= stylesheet_link_tag 'reset', '960', "ui-lightness/jquery-ui-1.8.7.custom.css", 'application', :media => "screen, projection" %>
     <%= javascript_include_tag "jquery-1.4.4.dev", "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.js", "application" %>
     
     <script type="text/javascript" charset="utf-8">
@@ -35,11 +35,14 @@
       <div class="small-nav container_16">
         
         <div class="grid_16">
-          <% if logged_in? %>
-            <%= current_user.full_name %> (<%= link_to 'Logout', user_session_path, :method => :delete %>)
-          <% else %>
-            <%= link_to 'Already a User? Sign in', new_user_session_path %> | <%= link_to 'Sign up', new_user_path %>
-          <% end %>
+          <div class="grid_4 push_12 prefix_1">
+            <% if logged_in? %>
+              Hi, <%= current_user.full_name %> | <%= link_to 'Sign Out', user_session_path, :method => :delete %>
+            <% else %>
+              <%= link_to 'Already a User? Sign in', new_user_session_path %> | <%= link_to 'Sign up', new_user_path %>
+            <% end %>
+          </div>
+          
         </div>
         <div class="clear">&nbsp;</div>
       </div>
@@ -48,15 +51,15 @@
         <div class="main-nav container_16">
           
           <div class="grid_4">
-            <h1 class="logo"><%= link_to 'myweightworld', {} %></h1>
+            <h3 id="logo"><%= link_to 'myweightworld', {} %></h3>
           </div>
           <div class="grid_8">
             <ul id="profile-tabs">
-              <li>
-                Profile
+              <li class="<%= 'active' if request.request_uri.match(user_path(current_user)) %>">
+                <div><%= link_to 'Profile', user_path(@user) %></div>
               </li>
-              <li>&nbsp;</li>
-              <li>&nbsp;</li>
+              <li><div><%= link_to 'News Feed', {} %></div></li>
+              <li><div><%= link_to 'Tracking', {} %></div></li>
             </ul>
           </div>
           <div class="grid_4">
@@ -71,8 +74,8 @@
     
     <div class="clear">&nbsp;</div>
     
-    <div class="full">
-      <div id="content" class="container_16">
+    <div id="active-tab-content" class="full">
+      <div id="content" class="container_16 profile">
         <%= yield %>
       </div>
     </div>

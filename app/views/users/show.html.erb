@@ -1,17 +1,26 @@
-<div class="grid_4">
-  <div class="avatar-placeholder"></div>
-</div>
+<div  class="full">
+  <div class="grid_4">
+    &nbsp;
+    <% if @user.avatar.file? %>
+      <%= image_tag(@user.avatar.url(:large), :class => "profile-avatar") %>
+    <% else %>
+      <div class="profile-avatar"></div>
+    <% end %>
+    
+  </div>
 
-<div id="profile-center" class="grid_8">
-  <h2>Tyler Durden</h2>
+  <div id="profile-center" class="grid_8">
+    <h2><%= @user.full_name %></h2>
   
-  <p>Chandler, AZ | Web Developer | Married | 29</p>
+    <div id="personal-stats"><span><%= 'Chandler' %>, <%= 'AZ' %></span> | <span>Web Developer</span> | <span>Married</span> | <span>29</span></div>
   
-  <p><b>Goal as of 11/2010:</b> Lose 25lbs by March 15, 2011</p>
-</div>
+    <p id="latest-goal"><b>Goal as of 11/2010:</b> Lose 25lbs by March 15, 2011</p>
+  </div>
 
-<div class="grid_4">
-  def
+  <div class="grid_4">
+    &nbsp;
+  </div>
+
 </div>
 
 <div class="clear"></div>
@@ -25,16 +34,41 @@
     <h5>Friends</h5> -->
 </div>
 
-<div class="grid_8">
-  <h2>Personal Info</h2>
-  
+<div class="grid_8 profile-center-content">
+  <h2 id="personal-info">Personal Info</h2>
   
   <div class="grid_2 alpha">Bio</div>
   <div class="grid_6 omega">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
   
   <div class="clear"></div>
+  
+  <div class="grid_2 alpha">Employer</div>
+  <div class="grid_6 omega">Burst Web Development</div>
+  <div class="grid_2 alpha">Position</div>
+  <div class="grid_6 omega">Developer</div>
+  
+  <div class="clear"></div>
+  
+  <div class="grid_2 alpha">College</div>
+  <div class="grid_6 omega">Arizona State University</div>
+  
+  <div class="clear"></div>
+  <div class="grid_2 alpha">High School</div>
+  <div class="grid_6 omega">Highland High School</div>
+  
+  <div class="clear"></div>
+  
+  <div class="grid_2 alpha">Relationship<br/>Status</div>
+  <div class="grid_6 omega">Single</div>
+  
+  <div class="clear"></div>
+  
+  <div class="grid_2 alpha">Interested In</div>
+  <div class="grid_6 omega">Friendship</div>
+  
+  <div class="clear"></div>
 </div>
 
 <div class="grid_4">
-  def
+  &nbsp;
 </div>

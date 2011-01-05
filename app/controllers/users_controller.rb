@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_filter :require_user,    :only => [:show, :edit, :update, :finalize, :next, :step_two]
   
   def show
+    @user = User.find(params[:id])
     render :layout => "profile"
   end
   
@@ -16,6 +17,7 @@ class UsersController < ApplicationController
       @user.update_attribute(:status, 'step_two')
       redirect_to :action => :step_two
     else
+      p @user.errors.full_messages
       render :action => :new
     end
   end
@@ -27,7 +29,7 @@ class UsersController < ApplicationController
   def finalize
     if current_user.update_attributes(params[:user])
       current_user.update_attribute(:status, 'finalize')
-      redirect_to :action => :next
+      redirect_to user_path(current_user)
     else
       p current_user.errors.full_messages
       render :action => :step_two

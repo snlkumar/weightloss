@@ -31,7 +31,7 @@
   height: 60px;
 }
 
-#logo { margin-top: 10px; }
+#logo { margin-top: 15px; }
 
 /*  =SIGN UP BOX
   ------------------------------------------------------ */
@@ -94,9 +94,25 @@ form .fieldError, form .fieldWithErrors {
 #sign-up-form { width: 400px; margin-top: 25px; }
 .center { margin: 0 auto; }
 
-.avatar-placeholder { margin-bottom: 10px; -moz-border-radius: 5px; -webkit-border-radius: 5px 5px; height: 160px; width: 160px; border: 1px solid black; background: url(/images/avatar_placeholder.png) no-repeat center center }
+.avatar-placeholder { 
+  -moz-border-radius: 5px; 
+  -webkit-border-radius: 5px 5px; 
+  margin-bottom: 10px; 
+  height: 160px; width: 160px; 
+  border: 1px solid black; background: url(/images/avatar_placeholder.png) no-repeat center center }
+  
+.profile-avatar {
+  -moz-border-radius: 5px; 
+  -webkit-border-radius: 5px 5px; 
+  margin-bottom: 10px; 
+  height: 214px; width: 214px; 
+  border: 1px solid black; background: url(/images/profile-avatar-placeholder.png) no-repeat center center;
+  position: absolute;
+  left: 4px;
+  top: 3px;
+}
 
-#content { padding-top: 22px; }
+#content { padding-top: 22px; position: relative; }
 
 #profile-tabs {
   margin-bottom: 0px;
@@ -105,16 +121,38 @@ form .fieldError, form .fieldWithErrors {
 #profile-tabs li{
   display: inline-block;
   width:   118px;
-  height:  14px;
+  height:  16px;
   padding:  14px;
+  margin: 0px;
   margin-top:   15px;
   border-left:  1px solid gray;
   border-top:   1px solid gray;
   border-right: 1px solid gray;
+  
 }
 
+#profile-tabs li div { width: 80px; margin: 0 auto; text-align: center; font-size: 1em; font-weight: bold; background-color: #D9D9D9; }
+#profile-tabs li a, #profile-tabs li a:visited { color: #1C75C9; text-decoration: none; }
+#profile-tabs li { background-color: #D9D9D9; }
+#profile-tabs li.active { background-color: #EBEBEB; }
+#profile-tabs li.active div { background-color: #EBEBEB; }
+
+.active-tab-content { background-color: #EBEBEB; }
+
+.profile-center-content .alpha { font-weight:bold; }
+.profile-center-content div { margin-bottom: 10px; }
+
 #profile-center { margin-top: 30px; }
+.profile h2 { font-size: 1.5em; }
+p#latest-goal { margin-top: 4px; }
+
+#personal-stats span { color: #1C75C9; }
+h2#personal-info {margin-top: 33px; margin-bottom: 12px; }
+
+div#active-tab-content { background-color: #EBEBEB; }
 
 /*TERMS PAGE */
 h3 a { text-decoration: none; color: black; }
 h4 a { text-decoration: none; color: black; }
+
+/*PROFILE */

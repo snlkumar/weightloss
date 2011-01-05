@@ -75,8 +75,8 @@
           min: 36,
           max: 98,
           slide: function( event, ui ) {
-            var feet   = Math.floor($( "#height-slider" ).slider( "value" ) / 12);
-            var inches = Math.round(($( "#height-slider" ).slider( "value" ) / 12 - feet) * 12);
+            var feet   = Math.floor( ui.value / 12);
+            var inches = Math.round((ui.value / 12 - feet) * 12);
             $( "#height-view" ).val( feet+"'"+inches+'"' );
             $( "#height-val" ).val( feet+"'"+inches+'"' );
           }
