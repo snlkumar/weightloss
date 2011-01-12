@@ -35,36 +35,79 @@
 </div>
 
 <div class="grid_8 profile-center-content">
-  <h2 id="personal-info">Personal Info</h2>
+  <h2 id="personal-info">Personal Info <%= link_to 'edit', user_edit_personal_info_path(current_user) if @user == current_user %></h2>
   
   <div class="grid_2 alpha">Bio</div>
-  <div class="grid_6 omega">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+  <div class="grid_6 omega"><%= @user.bio %></div>
   
   <div class="clear"></div>
   
   <div class="grid_2 alpha">Employer</div>
-  <div class="grid_6 omega">Burst Web Development</div>
+  <div class="grid_6 omega"><%= @user.employer %>&nbsp;</div>
   <div class="grid_2 alpha">Position</div>
-  <div class="grid_6 omega">Developer</div>
+  <div class="grid_6 omega"><%= @user.employment_position %>&nbsp;</div>
   
   <div class="clear"></div>
   
   <div class="grid_2 alpha">College</div>
-  <div class="grid_6 omega">Arizona State University</div>
+  <div class="grid_6 omega"><%= @user.college %>&nbsp;</div>
   
   <div class="clear"></div>
   <div class="grid_2 alpha">High School</div>
-  <div class="grid_6 omega">Highland High School</div>
+  <div class="grid_6 omega"><%= @user.high_school %>&nbsp;</div>
   
   <div class="clear"></div>
   
   <div class="grid_2 alpha">Relationship<br/>Status</div>
-  <div class="grid_6 omega">Single</div>
+  <div class="grid_6 omega"><%= @user.marital_status.try :titleize %>&nbsp;</div>
   
   <div class="clear"></div>
   
   <div class="grid_2 alpha">Interested In</div>
-  <div class="grid_6 omega">Friendship</div>
+  <div class="grid_6 omega"><%= @user.interested_in.try :titleize %>&nbsp;</div>
+  
+  <div class="clear"></div>
+  
+  <h2 id="personal-info">Nutrition Info <%= link_to 'edit', user_edit_nutrition_info_path(current_user) if @user == current_user %></h2>
+  
+  <div class="grid_2 alpha">Goals</div>
+  <div class="grid_6 omega"><%= @user.goals %></div>
+  
+  <div class="clear"></div>
+  
+  <div class="grid_2 alpha">Nutritional Goals</div>
+  <div class="grid_6 omega"><%= @user.nutritional_goals %>&nbsp;</div>
+  
+  <div class="clear"></div>
+  
+  <div class="grid_2 alpha">Diet</div>
+  <div class="grid_6 omega"><%= @user.diet %>&nbsp;</div>
+  
+  <div class="clear"></div>
+  
+  <div class="grid_2 alpha">Supplements</div>
+  <div class="grid_6 omega"><%= @user.supplements %>&nbsp;</div>
+  
+  <div class="clear"></div>
+  <div class="grid_2 alpha">Favorite Restaurants</div>
+  <div class="grid_6 omega"><%= @user.favorite_restaurants %>&nbsp;</div>
+  
+  <div class="clear"></div>
+  
+  <h2 id="personal-info">Exercise Info <%= link_to 'edit', user_edit_exercise_info_path(current_user) if @user == current_user %></h2>
+  
+  <div class="grid_2 alpha">Goals</div>
+  <div class="grid_6 omega"><%= @user.exercise_goals %></div>
+  
+  <div class="clear"></div>
+  
+  <div class="grid_2 alpha">Exercise Types</div>
+  <div class="grid_6 omega"><%= @user.exercise_types %>&nbsp;</div>
+  
+  <div class="clear"></div>
+  
+  <div class="grid_2 alpha">Recreational Activities</div>
+  <div class="grid_6 omega"><%= @user.activities %>&nbsp;</div>
   
   <div class="clear"></div>
 </div>

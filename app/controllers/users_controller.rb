@@ -47,9 +47,21 @@ class UsersController < ApplicationController
   def update
     @user = @current_user # makes our views "cleaner" and more consistent
     if @user.update_attributes(params[:user])
-      redirect_to account_url
+      redirect_to user_path(@user)
     else
       render :action => :edit
     end
+  end
+  
+  def personal_info
+    
+  end
+  
+  def nutrition_info
+    
+  end
+  
+  def exercise_info
+    
   end
 end

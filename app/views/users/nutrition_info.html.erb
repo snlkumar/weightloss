@@ -1,0 +1,40 @@
+<%= render :partial => 'edit_profile_tabs' %>
+
+
+<div class="grid_12">
+  <h2>Nutrition Info</h2>
+
+  <% form_for current_user, :html => {:class => 'edit'} do |f| %>
+    <p>
+      <%= f.label :goals %><br/>
+      <%= f.text_area :goals, :class => 'grid_6 alpha' %>
+      <span class="clear"></span>
+    </p>
+    
+    <p>
+      <%= f.label :nutritional_goals %><br/>
+      <%= f.text_field :nutritional_goals, :class => 'grid_6 alpha' %>
+      <span class="clear"></span>
+    </p>
+    
+    <p>
+      <%= f.label :diet %><br/>
+      <%= f.text_field :diet, :class => 'grid_6 alpha' %>
+      <span class="clear"></span>
+    </p>
+    
+    <p>
+      <%= f.label :supplements %><br/>
+      <%= f.text_field :supplements, :class => 'grid_6 alpha' %>
+      <span class="clear"></span>
+    </p>
+    
+    <p>
+      <%= f.label :favorite_restaurants %><br/>
+      <%= f.text_field :favorite_restaurants, :class => 'grid_6 alpha' %>
+      <span class="clear"></span>
+    </p>
+    
+    <%= f.submit 'Save' %>
+  <% end %>
+</div>

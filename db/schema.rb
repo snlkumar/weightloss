@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101215063053) do
+ActiveRecord::Schema.define(:version => 20110112080616) do
 
   create_table "categories", :force => true do |t|
     t.integer "parent_id"
@@ -184,6 +184,21 @@ ActiveRecord::Schema.define(:version => 20101215063053) do
     t.string   "height"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "nutritional_goals"
+    t.text     "exercise_goals"
+    t.text     "bio"
+    t.string   "employer"
+    t.string   "employment_position"
+    t.string   "college"
+    t.string   "high_school"
+    t.string   "marital_status"
+    t.string   "interested_in"
+    t.text     "goals"
+    t.string   "diet"
+    t.text     "supplements"
+    t.text     "favorite_restaurants"
+    t.text     "exercise_types"
+    t.text     "activities"
   end
 
 end
