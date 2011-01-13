@@ -15,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
     user.edit_personal_info  '/info/edit',      :controller => :users, :action => :personal_info
     user.edit_nutrition_info '/nutrition/edit', :controller => :users, :action => :nutrition_info
     user.edit_exercise_info  '/exercise/edit',  :controller => :users, :action => :exercise_info
+    user.edit_account_info   '/account/edit',   :controller => :users, :action => :account_info
   end
   
   map.privacy '/privacy', :controller => :home, :action => :privacy
