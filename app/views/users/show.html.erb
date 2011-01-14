@@ -13,7 +13,7 @@
     <h2><%= @user.full_name %></h2>
   
     <div id="personal-stats">
-      <%= [@user.employment_position, @user.marital_status.try(:titleize), @user.birthdate ? (@user.birthdate - Time.zone.now).years : nil].compact.map{|u| "<span>#{u}</span>" }.join(" | ") %>
+      <%= [@user.employment_position, @user.marital_status.try(:titleize), @user.birthdate ? "#{@user.age} yrs old" : nil].compact.map{|u| "<span>#{u}</span>" }.join(" | ") %>
     </div>
   
     <p id="latest-goal"><b>Goal as of 11/2010:</b> Lose 25lbs by March 15, 2011</p>

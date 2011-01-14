@@ -35,4 +35,9 @@ class User < ActiveRecord::Base
       self.weight = self.weight.gsub('lbs', '').to_i
     end
   end
+  
+  def age
+    temp = Time.zone.now.year - birthdate.year
+    temp -= 1 if Time.zone.now < birthdate + temp.years
+  end
 end
