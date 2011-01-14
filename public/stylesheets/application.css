@@ -32,6 +32,7 @@
 }
 
 #logo { margin-top: 15px; }
+#logo a { text-decoration: none; }
 
 /*  =SIGN UP BOX
   ------------------------------------------------------ */
