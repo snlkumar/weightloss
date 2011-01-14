@@ -6,8 +6,9 @@
 
   <% form_for current_user, :html => {:multipart => true, :class => 'edit'} do |f| %>
     <p>
+      <%= f.label :avatar %><br/>
       <%= image_tag current_user.avatar.url(:medium) %>
-      <%= f.label :avatar %>
+      
       <%= f.file_field :avatar, :size => '6' %>
     </p>
     

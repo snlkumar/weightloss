@@ -64,4 +64,9 @@ class UsersController < ApplicationController
   def exercise_info
     
   end
+  
+  def bmi
+    @user = current_user
+    render :layout => "profile"
+  end
 end
