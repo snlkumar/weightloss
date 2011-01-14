@@ -1,0 +1,78 @@
+<h1>BMI Calculator</h1>
+
+<table id="bmi">
+  <tbody>
+    <tr>
+      <td>Weight (lbs):</td>
+      <td><div id="weight-slider" style="height: 15px; width: 200px; margin-bottom: 10px;"></div></td>
+      <td><%= text_field_tag :weight, nil, :id => "weight-view" %></td>
+    </tr>
+    <tr>
+      <td>Height</td>
+      <td><div id="height-slider" style="height: 15px; width: 200px; margin-bottom: 10px;"></div></td>
+      <td>
+        <%= hidden_field_tag :inches %>
+        <%= text_field_tag :height, nil, :id => "height-view" %>
+      </td>
+    </tr>
+    <tr>
+      <td>BMI:</td>
+      <td>
+        <%= text_field_tag "bmi", nil, :id => "bmi_score" %>
+        <%= submit_tag 'Calculate', :id => 'calculate' %>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    $("#calculate").click(function(evt){
+      var bmi = 0;
+      
+      var height = parseInt($("#inches").val());
+      var weight = parseInt($("#weight-view").val().replace(/lbs/, ''));
+      console.log(height);
+      console.log(weight);
+      
+      bmi = Math.round( (weight * 703) / (height * height) )
+      console.log(bmi);
+      $("#bmi_score").val(bmi);
+    })
+  
+    $('#height-slider').slider({
+          range: "min",
+          value: 60,
+          min: 36,
+          max: 98,
+          slide: function( event, ui ) {
+            var feet   = Math.floor( ui.value / 12);
+            var inches = Math.round((ui.value / 12 - feet) * 12);
+            $( "#inches" ).val((feet*12) + inches);
+            $( "#height-view" ).val( feet+"'"+inches+'"' );
+            $( "#height-val" ).val( feet+"'"+inches+'"' );
+          }
+        });
+        
+    var feet = Math.floor($( "#height-slider" ).slider( "value" ) / 12);
+    var inches = Math.round(($( "#height-slider" ).slider( "value" ) / 12 - feet) * 12);
+    $( "#inches" ).val((feet*12) + inches);
+    $( "#height-view" ).val( feet+"'"+inches+'"' );
+    
+    $('#weight-slider').slider({
+          range: "min",
+          value: 150,
+          min: 0,
+          max: 1000,
+          slide: function( event, ui ) {
+            $( "#weight-view" ).val( ui.value + ' lbs' );
+            $( "#weight-val" ).val( ui.value + ' lbs');
+          }
+        });
+    $( "#weight-view" ).val( $( "#weight-slider" ).slider( "value" ) + ' lbs' );
+    
+  <% end %>
+</script>

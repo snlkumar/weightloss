@@ -5,7 +5,7 @@
     <title><%= yield(:title) || "MyWeightWorld" %></title> 
     <!-- <link rel="shortcut icon" href="/favicon.ico" /> -->
     <%= stylesheet_link_tag 'reset', '960', "ui-lightness/jquery-ui-1.8.7.custom.css", 'application', :media => "screen, projection" %>
-    <%= javascript_include_tag "jquery-1.4.4.dev", "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.js", "application" %>
+    <%= javascript_include_tag "jquery-1.4.4.dev", "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.js", "underscore", "application" %>
     
     <script type="text/javascript" charset="utf-8">
       <% content_for :js do %>

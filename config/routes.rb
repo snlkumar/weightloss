@@ -11,7 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => :old_items, :action => :index
   
   map.resource  :user_session
-  map.resources :users do |user|
+  map.resources :users, :collection => {:bmi => :get} do |user|
     user.edit_personal_info  '/info/edit',      :controller => :users, :action => :personal_info
     user.edit_nutrition_info '/nutrition/edit', :controller => :users, :action => :nutrition_info
     user.edit_exercise_info  '/exercise/edit',  :controller => :users, :action => :exercise_info
