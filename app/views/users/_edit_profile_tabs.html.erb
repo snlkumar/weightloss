@@ -1,6 +1,9 @@
 <div class="grid_4">
   <ul>
     <li>
+      <%= link_to 'Account Info', user_edit_account_info_path(current_user) %>
+    </li>
+    <li>
       <%= link_to 'Personal Info', user_edit_personal_info_path(current_user) %>
     </li>
     <li>
@@ -8,9 +11,6 @@
     </li>
     <li>
       <%= link_to 'Exercise Info', user_edit_exercise_info_path(current_user) %>
-    </li>
-    <li>
-      <%= link_to 'Account Info', user_edit_account_info_path(current_user) %>
     </li>
     <li>
       <%= link_to 'Back to Profile', user_path(current_user) %>
