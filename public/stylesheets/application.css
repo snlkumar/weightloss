@@ -1,3 +1,6 @@
+a         { text-decoration: none; }
+a:visited { color: #355BBC; }
+a:hover   { text-decoration: underline; }
 
 /*  =UNIVERSAL
   ------------------------------------------------------ */
@@ -145,12 +148,13 @@ form .fieldError, form .fieldWithErrors {
 
 #profile-center { margin-top: 30px; }
 .profile h2 { font-size: 1.5em; }
-p#latest-goal { margin-top: 4px; }
+#latest-goal { margin-top: 4px; }
 
 #personal-stats span { color: #1C75C9; }
 h2#personal-info {margin-top: 33px; margin-bottom: 12px; }
 
-div#active-tab-content { background-color: #EBEBEB; }
+#active-tab-content { background-color: #EBEBEB; height: 105px; }
+#active-tab-content #page-description { margin-top: 38px; }
 
 .profile-center-content h2 a { font-size: .6em; text-decoration: none; }
 
@@ -162,8 +166,13 @@ h4 a { text-decoration: none; color: black; }
 
 /*EDIT PERSONAL INFO*/
 .edit textarea { height: 75px; }
+#settings-content { margin-top: 15px; }
 
 td { border:none; }
+
+#user-settings-tabs li        { border-top: 1px solid #E6E5E6; list-style: none; margin: 0; padding: 15px 10px; }
+#user-settings-tabs li.active { background-color: #EFEFF0; }
+#user-settings-tabs a         { font-weight: bold; }
 
 /*BMI TABLE*/
 table#bmi input[type=text] { width: 50px; }

@@ -53,16 +53,20 @@ class UsersController < ApplicationController
     end
   end
   
+  def account_info
+    render :layout => 'user_settings'
+  end
+  
   def personal_info
-    
+    render :layout => 'user_settings'
   end
   
   def nutrition_info
-    
+    render :layout => 'user_settings'
   end
   
   def exercise_info
-    
+    render :layout => 'user_settings'
   end
   
   def bmi
