@@ -19,19 +19,18 @@
   <%= f.file_field :avatar, :size => '6' %>
 </div>
 
-<div style="float:left;" >
-  <ol class="forms">
-    <li>
-      <%= f.label :gender %>
-      <%= f.select :gender, [['Choose', 0], ['Male', 'male'], ['Female', 'female']] %>
-      <br/><br/>
-    </li>
+<div style="float:left; width: 260px;" >
 
-    <li>
-      <%= f.label :birthdate %>
-      <%= f.date_select :birthdate, :start_year => Time.zone.now.year, :end_year => 100.years.ago.year %>
-    </li>
-  </ol>
+  <p>
+    <%= f.label :gender %><br/>
+    <%= f.select :gender, [['Choose', 0], ['Male', 'male'], ['Female', 'female']] %>
+  </p>
+  
+  <p>
+    <%= f.label :birthdate %><br/>
+    <%= f.date_select :birthdate, :start_year => Time.zone.now.year, :end_year => 100.years.ago.year %>
+  </p>
+
 </div>
 
 <div style="clear:both; margin-bottom: 25px;">&nbsp;</div>
@@ -51,52 +50,4 @@
 
 <div style="clear:both">&nbsp;</div>
 
-<ol class="forms">
-  <li>
-    <%= f.label :height, %Q{Height <span class="help-text">(Height will not be publicly displayed)</span> } %>
-    <div id="height-slider" style="height: 15px; width: 200px; margin-bottom: 10px;"></div>
-    <%= text_field_tag "", "", :id => "height-view", :disabled => true, :style => 'width: 30px;' %>
-    <%= f.hidden_field :height, :id => 'height-val' %>
-  </li>
-
-  <li>
-    <%= f.label :weight, %Q{Weight <span class="help-text">(Weight will not be publicly displayed)</span> } %>
-    <div id="weight-slider" style="height: 15px; width: 200px; margin-bottom: 10px;"></div>
-    <%= text_field_tag "", "", :id => "weight-view", :disabled => true, :style => 'width: 45px;' %>
-    <%= f.hidden_field :weight, :id => 'weight-val' %>
-  </li>
-</ol>
-
-<script type="text/javascript" charset="utf-8">
-  <% content_for :js do %>
-    $('#height-slider').slider({
-          range: "min",
-          value: 60,
-          min: 36,
-          max: 98,
-          slide: function( event, ui ) {
-            var feet   = Math.floor( ui.value / 12);
-            var inches = Math.round((ui.value / 12 - feet) * 12);
-            $( "#height-view" ).val( feet+"'"+inches+'"' );
-            $( "#height-val" ).val( feet+"'"+inches+'"' );
-          }
-        });
-        
-    var feet = Math.floor($( "#height-slider" ).slider( "value" ) / 12);
-    var inches = Math.round(($( "#height-slider" ).slider( "value" ) / 12 - feet) * 12);
-    $( "#height-view" ).val( feet+"'"+inches+'"' );
-    
-    $('#weight-slider').slider({
-          range: "min",
-          value: 150,
-          min: 0,
-          max: 1000,
-          slide: function( event, ui ) {
-            $( "#weight-view" ).val( ui.value + ' lbs' );
-            $( "#weight-val" ).val( ui.value + ' lbs');
-          }
-        });
-    $( "#weight-view" ).val( $( "#weight-slider" ).slider( "value" ) + ' lbs' );
-    
-  <% end %>
-</script>
+<%= render :partial => 'personal_measurements', :locals => {:f => f} %>

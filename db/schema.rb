@@ -125,7 +125,8 @@ ActiveRecord::Schema.define(:version => 20110120225834) do
     t.datetime "image1_updated_at"
     t.string   "image1_file_name"
     t.string   "image1_content_type"
-    t.integer  "shipping_2nx_item",   :limit => 10, :precision => 10, :scale => 0
+    t.integer  "category_id"
+    t.integer  "subcategory_id"
     t.string   "title"
     t.integer  "inventory"
     t.integer  "warning_qty"
@@ -147,8 +148,6 @@ ActiveRecord::Schema.define(:version => 20110120225834) do
     t.datetime "image2_updated_at"
     t.string   "image2_file_name"
     t.string   "image2_content_type"
-    t.integer  "category_id"
-    t.integer  "subcategory_id"
   end
 
   create_table "old_success_stories", :force => true do |t|
@@ -242,8 +241,6 @@ ActiveRecord::Schema.define(:version => 20110120225834) do
     t.string   "height"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "nutritional_goals"
-    t.text     "exercise_goals"
     t.text     "bio"
     t.string   "employer"
     t.string   "employment_position"
@@ -252,9 +249,11 @@ ActiveRecord::Schema.define(:version => 20110120225834) do
     t.string   "marital_status"
     t.string   "interested_in"
     t.text     "goals"
+    t.string   "nutritional_goals"
     t.string   "diet"
     t.text     "supplements"
     t.text     "favorite_restaurants"
+    t.text     "exercise_goals"
     t.text     "exercise_types"
     t.text     "activities"
   end

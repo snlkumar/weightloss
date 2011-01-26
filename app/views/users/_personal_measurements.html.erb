@@ -1,0 +1,47 @@
+<div style="margin-bottom: 21px;">
+  <%= f.label :height, %Q{Height <span class="help-text">(Height will not be publicly displayed)</span> } %><br/>
+  <span id="height-view"></span>
+  <div id="height-slider" style="height: 15px; width: 200px; margin-bottom: 10px;"></div>
+  <%= f.hidden_field :height, :id => 'height-val',  :value => @initial_height %>
+</div>
+
+<div style="margin-bottom: 21px;">
+  <%= f.label :weight, %Q{Weight <span class="help-text">(Weight will not be publicly displayed)</span> } %><br/>
+  <span id="weight-view"></span>
+  <div id="weight-slider" style="height: 15px; width: 200px; margin-bottom: 10px;"></div>
+  <%= f.hidden_field :weight, :id => 'weight-val',  :value => @initial_weight %>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    $('#height-slider').slider({
+          range: "min",
+          value: <%= @initial_height %>,
+          min: 36,
+          max: 98,
+          slide: function( event, ui ) {
+            var feet   = Math.floor( ui.value / 12);
+            var inches = Math.round((ui.value / 12 - feet) * 12);
+            $( "#height-view" ).html( feet+"'"+inches+'"' );
+            $( "#height-val" ).val( ui.value );
+          }
+        });
+        
+    var feet   = Math.floor($( "#height-slider" ).slider( "value" ) / 12);
+    var inches = Math.round(($( "#height-slider" ).slider( "value" ) / 12 - feet) * 12);
+    $( "#height-view" ).html( feet+"'"+inches+'"' );
+    
+    $('#weight-slider').slider({
+          range: "min",
+          value: <%= @initial_weight %>,
+          min: 0,
+          max: 1000,
+          slide: function( event, ui ) {
+            $( "#weight-view" ).html( ui.value + ' lbs' );
+            $( "#weight-val" ).val( ui.value );
+          }
+        });
+    $( "#weight-view" ).html( $( "#weight-slider" ).slider( "value" ) + ' lbs' );
+    
+  <% end %>
+</script>

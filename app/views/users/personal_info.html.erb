@@ -29,6 +29,8 @@
       <%= f.select :gender, [['Choose', 0], ['Male', 'male'], ['Female', 'female']] %>
       <span class="clear"></span>
     </p>
+    
+    <%= render :partial => 'personal_measurements', :locals => {:f => f} %>
 
     <p>
       <%= f.label :birthdate %><br/>

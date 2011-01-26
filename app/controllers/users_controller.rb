@@ -23,7 +23,8 @@ class UsersController < ApplicationController
   end
   
   def step_two
-    
+    @initial_height = 60
+    @initial_weight = 150
   end
   
   def finalize
@@ -58,6 +59,8 @@ class UsersController < ApplicationController
   end
   
   def personal_info
+    @initial_height = current_user.height || 60
+    @initial_weight = current_user.weight || 150
     render :layout => 'user_settings'
   end
   
