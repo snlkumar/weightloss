@@ -7,44 +7,25 @@
     <%= stylesheet_link_tag 'reset', '960', "ui-lightness/jquery-ui-1.8.9.custom.css", 'application', :media => "screen, projection" %>
     <%= javascript_include_tag "jquery-1.4.4.dev", "jquery-ui-1.8.9.min.js", "underscore", "application" %>
     
-    <script type="text/javascript" charset="utf-8">
-      <% content_for :js do %>
-        window.gOverride = {
-          gColor: '#FF0000',
-          pColor: '#0000FF',
-          gOpacity: 0.15,
-          pOpacity: 0.25,
-          pHeight: 18,
-          pOffset: -2,
-          gColumns: 16,
-          invert: false
-        }
-      
-        createGridder = function() {
-          document.body.appendChild(
-            document.createElement('script'))
-            .src='/javascripts/960.gridder.js';
-        }
-        <% if Rails.env.development? %>createGridder();<% end %>
-      <% end %>
-    </script>
+    <%= render :partial => "shared/gridder" %>
+
   </head>
   <body>
-    <div class="header">
+    <div class="header" class="full">
       
-      <div id="small-nav" class="full">
-        <div class="small-nav container_16">
-          
-          <div class="grid_16">
+      <div class="small-nav container_16">
+        
+        <div class="grid_16">
+          <div class="grid_4 push_12 prefix_1">
             <% if logged_in? %>
-              <%= current_user.full_name %> (<%= link_to 'Logout', user_session_path, :method => :delete %>)
+              Hi, <%= current_user.full_name %> | <%= link_to 'Sign Out', user_session_path, :method => :delete %>
             <% else %>
               <%= link_to 'Already a User? Sign in', new_user_session_path %> | <%= link_to 'Sign up', new_user_path %>
             <% end %>
           </div>
-          <div style="clear:both">&nbsp;</div>
           
         </div>
+        <div class="clear">&nbsp;</div>
       </div>
       
       <div id="main-nav" class="full">
@@ -60,11 +41,11 @@
     </div>
     <!-- DONE HEADER -->
     
-    <div id="active-tab-content" class="full">
+    <!-- <div id="active-tab-content" class="full"> -->
       <div id="content" class="container_16">
         <%= yield %>
       </div>
-    </div>
+    <!-- </div> -->
     
     <div class="full">
       <div id="footer" class="container_16">

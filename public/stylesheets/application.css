@@ -12,11 +12,7 @@ a:hover   { text-decoration: underline; }
 
 /*  =HEADER
   ------------------------------------------------------ */
-.header {
-  background:pink;
-  display: block;
-  width: 100%;
-}
+
 
 #small-nav {
   background: #ebebeb;
@@ -94,7 +90,7 @@ form .fieldError, form .fieldWithErrors {
   color: #e76a6a;
 }
 
-/*Sign In */
+/* Sign In */
 #sign-up-form { width: 400px; margin-top: 25px; }
 .center { margin: 0 auto; }
 
@@ -156,23 +152,37 @@ h2#personal-info {margin-top: 33px; margin-bottom: 12px; }
 #active-tab-content { background-color: #EBEBEB; height: 105px; }
 #active-tab-content #page-description { margin-top: 38px; }
 
+#profile-sub-header { background-color: #EBEBEB; height: 150px; border-bottom: 1px solid #D0D0D0; }
+
 .profile-center-content h2 a { font-size: .6em; text-decoration: none; }
 
-/*TERMS PAGE */
+/* TERMS PAGE */
 h3 a { text-decoration: none; color: black; }
 h4 a { text-decoration: none; color: black; }
 
-/*PROFILE */
+/* PROFILE */
 
-/*EDIT PERSONAL INFO*/
+/* EDIT PERSONAL INFO */
 .edit textarea { height: 75px; }
 #settings-content { margin-top: 15px; }
 
 td { border:none; }
 
 #user-settings-tabs li        { border-top: 1px solid #E6E5E6; list-style: none; margin: 0; padding: 15px 10px; }
-#user-settings-tabs li.active { background-color: #EFEFF0; }
+#user-settings-tabs li.active, #user-settings-tabs li:hover { background-color: #EFEFF0; }
 #user-settings-tabs a         { font-weight: bold; }
 
-/*BMI TABLE*/
+/* BMI TABLE */
 table#bmi input[type=text] { width: 50px; }
+
+/* TRACKING PAGE */
+/*#tracking-center { margin-top: 5px; }*/
+#tracking-calories-header { background-color: white; text-align: center; border: 1px solid #CCC; padding: 18px; }
+#tracking-calories-header h2 { margin: 0px; }
+
+#calorie-table { background-color: white; border: 1px solid #CCC; width: 100%; }
+#calorie-table tr > td { border-right: 1px solid #CCC; }
+#calorie-table td {  border-collapse: collapse; font-size: 13pt; text-align: center; text-decoration: line-through; width: 50%; }
+#calorie-table span.count { font-size: 2em; font-weight: bold; }
+
+.tracking-button { background-color: #0D87D0; margin: 5px; padding: 10px 5px; }

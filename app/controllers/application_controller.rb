@@ -12,6 +12,12 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_user_session, :current_user, :logged_in?
   
+  before_filter :set_grid
+  
+  def set_grid
+    @grid = false
+  end
+  
   def logged_in?
     !!current_user
   end
