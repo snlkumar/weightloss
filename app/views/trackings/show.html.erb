@@ -15,7 +15,7 @@
     <table id="calorie-table" >
       <tbody>
         <tr>
-          <td id="tracking-calories-header" colspan="2">
+          <td id="header" colspan="2">
             <h2><%= current_user.full_name %>'s Calories</h2>
           </td>
         </tr>
@@ -54,9 +54,9 @@
   </div>
   
   <div class="grid_4">
-    <div style="border: 1px solid #CCC">
-      BMI
-    </div>
+
+    <%= render :partial => 'users/bmi' %>
+
   </div>
 
 </div>

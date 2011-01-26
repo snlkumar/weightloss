@@ -1,0 +1,79 @@
+
+<table id="BMI-table">
+  <tbody>
+    <td id="header">
+      <h2>BMI</h2>
+    </td>
+    <tr>
+      <td>
+        <span id="bmi-score" class="count"></span>
+        <br/>
+        Your Current BMI
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= hidden_field_tag :inches %>
+        <p id="height-view"></p>
+
+        <div id="height-slider" style="height: 15px; width: 200px; margin-bottom: 10px;"></div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p id="weight-view"></p>
+
+        <div id="weight-slider" style="height: 15px; width: 200px; margin-bottom: 10px;"></div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    function find_bmi(){
+      var bmi    = 0;
+      var height = parseInt($("#inches").html());
+      var weight = parseInt($("#weight-view").html().replace(/pounds/, ''));
+      bmi        = Math.round( (weight * 703) / (height * height) )
+      
+      $("#bmi-score").html(bmi);
+    };
+    
+    $('#height-slider').slider({
+          range: "min",
+          value: 60,
+          min: 36,
+          max: 98,
+          slide: function( event, ui ) {
+            var feet   = Math.floor( ui.value / 12);
+            var inches = Math.round((ui.value / 12 - feet) * 12);
+            $( "#inches" ).html((feet*12) + inches);
+            $( "#height-view" ).html( feet + "'" + inches + '"' + ' tall' );
+            $( "#height-val" ).html( feet + "'" + inches + '"' );
+          },
+          change: find_bmi
+        });
+        
+    var feet   = Math.floor($( "#height-slider" ).slider( "value" ) / 12);
+    var inches = Math.round(($( "#height-slider" ).slider( "value" ) / 12 - feet) * 12);
+    $( "#inches" ).html((feet*12) + inches);
+    $( "#height-view" ).html( feet + "'" + inches + '"' + ' tall' );
+    
+    $('#weight-slider').slider({
+          range: "min",
+          value: 150,
+          min: 0,
+          max: 1000,
+          slide: function( event, ui ) {
+            $( "#weight-view" ).html( ui.value + ' pounds' );
+            $( "#weight-val" ).html( ui.value + ' pounds');
+          },
+          change: find_bmi
+        });
+    
+    $( "#weight-view" ).html( $( "#weight-slider" ).slider( "value" ) + ' pounds' );
+    
+    find_bmi();
+  <% end %>
+</script>

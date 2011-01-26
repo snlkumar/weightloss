@@ -173,16 +173,18 @@ td { border:none; }
 #user-settings-tabs a         { font-weight: bold; }
 
 /* BMI TABLE */
-table#bmi input[type=text] { width: 50px; }
 
 /* TRACKING PAGE */
-/*#tracking-center { margin-top: 5px; }*/
-#tracking-calories-header { background-color: white; text-align: center; border: 1px solid #CCC; padding: 18px; }
-#tracking-calories-header h2 { margin: 0px; }
 
-#calorie-table { background-color: white; border: 1px solid #CCC; width: 100%; }
+#calorie-table #header,    #BMI-table #header { background-color: white; text-align: center; border: 1px solid #CCC; padding: 18px; }
+#calorie-table #header h2, #BMI-table #header h2 { margin: 0px; }
+
+#calorie-table, #BMI-table { background-color: white; border: 1px solid #CCC; width: 100%; }
+#calorie-table p, #BMI-table p { margin-bottom: .5em; }
 #calorie-table tr > td { border-right: 1px solid #CCC; }
-#calorie-table td {  border-collapse: collapse; font-size: 13pt; text-align: center; text-decoration: line-through; width: 50%; }
-#calorie-table span.count { font-size: 2em; font-weight: bold; }
+#calorie-table td, #BMI-table td {  border-collapse: collapse; font-size: 13pt; text-align: center;  width: 50%; } 
+#calorie-table span.count, #BMI-table span.count { font-size: 2em; font-weight: bold; }
 
 .tracking-button { background-color: #0D87D0; margin: 5px; padding: 10px 5px; }
+#height-slider   { width: 180px !important; }
+#weight-slider    { width: 180px !important; }
