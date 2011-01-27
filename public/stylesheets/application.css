@@ -7,6 +7,11 @@ a:hover   { text-decoration: underline; }
 
 fieldset  { border: 0px; }
 
+/* jQuery Overrides */
+.ui-slider, .ui-slider-range { background: #AAA; }
+.ui-slider .ui-slider-handle { background: #0D87D0 !important; border: 1px solid #0D87D0 !important; width: .8em; }
+.ui-slider-horizontal .ui-slider-handle { top: -0.4em; }
+
 /*  =HEADER
   ------------------------------------------------------ */
 #small-nav { background: #ebebeb; }
@@ -117,6 +122,6 @@ td { border:none; }
 #calorie-table td, #BMI-table td {  border-collapse: collapse; font-size: 13pt; text-align: center;  width: 50%; } 
 #calorie-table span.count, #BMI-table span.count { font-size: 2em; font-weight: bold; }
 
-.tracking-button { background-color: #0D87D0; margin: 5px; padding: 10px 5px; }
-#height-slider   { width: 180px !important; }
-#weight-slider    { width: 180px !important; }
+.tracking-button { background-color: #0D87D0; margin: 5px; -moz-border-radius: 5px; padding: 10px 5px; }
+#height-slider, #weight-slider   { height: 10px; margin-bottom: 10px; width: 180px !important; }
+
