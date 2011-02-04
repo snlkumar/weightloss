@@ -32,7 +32,7 @@ ul.signup-progressbar { background: #ebebeb; font-size: 1.5em; padding: 40px 60p
 
 /*  =FORMS
   ------------------------------------------------------ */
-input[type=text] { border: 1px solid #cdcdcd; height: 25px; line-height: 1em; padding: 5px; }
+input[type=text], input[type=password] { border: 1px solid #cdcdcd; height: 25px; line-height: 1em; padding: 5px; }
   
 div.signup-process ol li       { display:block; }
 
