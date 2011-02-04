@@ -7,11 +7,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :old_departments
   map.resources :categories
   map.resources :subcategories
+  map.resources :meals
   
   map.root :controller => :old_items, :action => :index
   
   map.resource  :user_session
   map.resource  :tracking
+  
   map.resources :users, :collection => {:bmi => :get} do |user|
     user.edit_personal_info  '/info/edit',      :controller => :users, :action => :personal_info
     user.edit_nutrition_info '/nutrition/edit', :controller => :users, :action => :nutrition_info
@@ -19,10 +21,15 @@ ActionController::Routing::Routes.draw do |map|
     user.edit_account_info   '/account/edit',   :controller => :users, :action => :account_info
   end
   
-  map.privacy '/privacy', :controller => :home, :action => :privacy
-  map.terms   '/terms',   :controller => :home, :action => :terms
+  map.with_options :controller => :home do |home|
+    home.privacy '/privacy', :action => :privacy
+    home.terms   '/terms',   :action => :terms
+  end
   
-  map.connect '/step_two', :controller => :users, :action => :step_two
-  map.connect '/finalize', :controller => :users, :action => :finalize
-  map.connect '/next',     :controller => :users, :action => :next
+  map.with_options :controller => :users do |users|
+    users.connect '/step_two', :action => :step_two
+    users.connect '/finalize', :action => :finalize
+    users.connect '/next',     :action => :next
+  end
+  
 end

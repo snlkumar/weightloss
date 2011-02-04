@@ -1,0 +1,70 @@
+<!-- Tracking Show -->
+<div class="full">
+  <div class="grid_12">
+    <h3>Hey <%= current_user.first_name %>, what did you eat?</h3>
+    
+    <% form_for @meal, :html => {:class => 'meal'} do |f| %>
+      <div id="meal-entry">
+        <table>
+          <tbody>
+            <tr>
+              <td><%= label_tag 'Food' %></td>
+              <td><%= label_tag 'Serving Amount' %></td>
+              <td><%= label_tag 'Measure' %></td>
+            </tr>
+            <tr>
+              <td><%= text_field_tag :food, "", :id => 'food-item-entry' %></td>
+              <td>
+                <%= select_tag :quantity_whole, options_for_select(Meal::QUANTITY_WHOLE), :id => 'quantity-whole-entry' %>
+                <%= select_tag :quantity_part,  options_for_select(Meal::QUANTITY_PARTS), :id => 'quantity-part-entry' %>
+              </td>
+              <td><%= select_tag :unit, options_for_select(Meal::UNITS), :id => 'unit-entry' %></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <div class="button" style="float: right; width: 162px;">Add Another Item</div>
+        
+        <table>
+          <tbody id="meal-items">
+            <tr>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div style="padding: 15px;">
+        <br/>
+        
+        <%= text_field_tag "", Time.zone.now.strftime("%m/%d/%Y"), :id => "calendar-box" %>
+        
+        <div id="selected-date-help"><span class="bold">Was the date of the meal today?</span> Feel free to edit the date of this meal.</div>
+        
+        <div class="clear"></div>
+        <br/>
+        
+        <p>
+          <%= f.label :note, 'Meal Note' %><br/>
+          <%= f.text_area :note %>
+        </p>
+        
+        <p>
+          <%= f.submit "Save This Meal" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="grid_4">
+    &nbsp;
+    
+  </div>
+
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    $('#calendar-box').datepicker();
+  <% end %>
+</script>

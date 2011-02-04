@@ -34,13 +34,7 @@
             <h2 id="logo"><%= link_to 'myweightworld', {} %></h2>
           </div>
           <div class="grid_8">
-            <ul id="profile-tabs">
-              <li class="<%= 'active' if request.request_uri.match(user_path(current_user)) %>">
-                <div><%= link_to 'Profile', user_path(@user) %></div>
-              </li>
-              <li><div><%= link_to 'News Feed', {} %></div></li>
-              <li><div><%= link_to 'Tracking', tracking_path %></div></li>
-            </ul>
+            <%= render :partial => 'shared/profile_tabs' %>
           </div>
           <div class="grid_4">
             

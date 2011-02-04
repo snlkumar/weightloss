@@ -8,22 +8,26 @@ class User < ActiveRecord::Base
     config.merge_validates_length_of_password_confirmation_field_options :minimum => 6
     config.merge_validates_length_of_password_field_options              :minimum => 6
   end
+  
+  # Associations
+  has_many :meals
 
   # Validations
-  validates_presence_of     :first_name, :last_name, :email, :username
-  validates_presence_of     :gender, :height, :weight,   :if => Proc.new { |u| u.status != 'step_one' }
-  validates_inclusion_of    :gender,   :in => ['male', 'female'], :if => Proc.new { |u| u.status != 'step_one' }, :message => 'please select'
-  validates_presence_of     :password, :if => Proc.new { |u| u.password_confirmation.present? }
-  validates_confirmation_of :password, :if => Proc.new { |u| u.password_confirmation.present? }
-  validates_uniqueness_of   :email, :username
-  validates_confirmation_of :email
-  validates_length_of       :email,    :in => 6..100
-  validates_length_of       :username, :in => 4..25
+  validates_presence_of         :first_name, :last_name, :email, :username
+  validates_presence_of         :gender, :height, :weight,   :if => Proc.new { |u| u.status != 'step_one' }
+  validates_inclusion_of        :gender,   :in => ['male', 'female'], :if => Proc.new { |u| u.status != 'step_one' }, :message => 'please select'
+  validates_presence_of         :password, :if => Proc.new { |u| u.password_confirmation.present? }
+  validates_confirmation_of     :password, :if => Proc.new { |u| u.password_confirmation.present? }
+  validates_uniqueness_of       :email, :username
+  validates_confirmation_of     :email
+  validates_length_of           :email,    :in => 6..100
+  validates_length_of           :username, :in => 4..25
   validates_attachment_presence :avatar, :if => Proc.new { |u| !['step_one'].include?(u.status) }
   
   # Callbacks
   before_save :strip_lbs
   
+  # Defaults
   default_values :status => "step_one"
   
   def full_name

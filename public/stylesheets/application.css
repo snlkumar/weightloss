@@ -4,8 +4,10 @@ a:hover   { text-decoration: underline; }
 
 .center   { margin: 0 auto; }
 .full     { width: 100%; min-width: 1040px; }
+.bold     { font-weight: bold; }
 
 fieldset  { border: 0px; }
+label     { font-weight: bold; }
 
 /* jQuery Overrides */
 .ui-slider, .ui-slider-range { background: #AAA; }
@@ -25,17 +27,20 @@ fieldset  { border: 0px; }
 
 /*  =SIGN UP BOX
   ------------------------------------------------------ */
-div.signup-process { border: 1px solid #999; margin-top: 25px; }
-
+div.signup-process    { border: 1px solid #999; margin-top: 25px; }
 ul.signup-progressbar { background: #ebebeb; font-size: 1.5em; padding: 40px 60px; }
 
 /*  =FORMS
   ------------------------------------------------------ */
-div.signup-process ol li       { display:block; font-weight: bold; }
+input[type=text] { border: 1px solid #cdcdcd; height: 25px; line-height: 1em; padding: 5px; }
+  
+div.signup-process ol li       { display:block; }
+
 div.signup-process ol li label,
 div.signup-process ol li input { display:block; }
+
 div.signup-process ol li label { margin-bottom: 5px; }
-div.signup-process ol li input { border: 1px solid #cdcdcd; height: 25px; line-height: 1em; margin-bottom: 24px; padding: 5px; width: 448px; }
+div.signup-process ol li input { margin-bottom: 24px; width: 448px; }
 
 span.help-text { color:#AAA; font-weight: normal; }
 
@@ -86,10 +91,10 @@ form .fieldError, form .fieldWithErrors { border: 1px solid #ff0000 !important; 
 #personal-stats span { color: #1C75C9; }
 h2#personal-info     { margin-top: 33px; margin-bottom: 12px; }
 
-#active-tab-content { background-color: #EBEBEB; height: 105px; }
+#active-tab-content  { background-color: #EBEBEB; height: 105px; }
 #active-tab-content #page-description { margin-top: 38px; }
 
-#profile-sub-header { background-color: #EBEBEB; height: 150px; border-bottom: 1px solid #D0D0D0; }
+#profile-sub-header  { background-color: #EBEBEB; height: 150px; border-bottom: 1px solid #D0D0D0; }
 
 .profile-center-content h2 a { font-size: .6em; text-decoration: none; }
 
@@ -106,7 +111,8 @@ h4 a { text-decoration: none; color: black; }
 td { border:none; }
 
 #user-settings-tabs li        { border-top: 1px solid #E6E5E6; list-style: none; margin: 0; padding: 15px 10px; }
-#user-settings-tabs li.active, #user-settings-tabs li:hover { background-color: #EFEFF0; }
+#user-settings-tabs li.active, 
+#user-settings-tabs li:hover  { background-color: #EFEFF0; }
 #user-settings-tabs a         { font-weight: bold; }
 
 /* BMI TABLE */
@@ -122,6 +128,21 @@ td { border:none; }
 #calorie-table td, #BMI-table td {  border-collapse: collapse; font-size: 13pt; text-align: center;  width: 50%; } 
 #calorie-table span.count, #BMI-table span.count { font-size: 2em; font-weight: bold; }
 
-.tracking-button { background-color: #0D87D0; margin: 5px; -moz-border-radius: 5px; padding: 10px 5px; }
+.button { background-color: #0D87D0; margin: 5px; -moz-border-radius: 5px; padding: 10px 5px; text-align: center; }
+.button a { color: black; text-decoration: none; }
 #height-slider, #weight-slider   { height: 10px; margin-bottom: 10px; width: 180px !important; }
 
+/* New Meal Entry */
+#meal-entry      { background-color: #F6F6F6; border: 2px solid #006597; min-height: 325px; padding: 15px; width: 100%; }
+#calendar-box    { background: url("/images/calendar.png") no-repeat scroll 95% 50% transparent; border: 1px solid #A6A6A6; 
+                   float: left; font-size: 1.3em; height: 34px; line-height: 44px; margin-right: 10px; width: 148px; }
+#selected-date      { padding-left: 14px; }
+#selected-date-help { font-size: 1em; padding-top: 12px; }
+#food-item-entry { width: 337px; }
+#quantity-whole-entry { width: 70px; }
+#quantity-part-entry  { width: 70px; }
+
+form.meal textarea { height: 75px; width: 655px; }
+form.meal select   { padding: 5px; }
+
+.ui-datepicker { z-index: 10000; }

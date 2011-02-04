@@ -31,7 +31,7 @@
 
 <script type="text/javascript" charset="utf-8">
   <% content_for :js do %>
-    function find_bmi(){
+    function calc_bmi(){
       var bmi    = 0;
       var height = parseInt($("#inches").html());
       var weight = parseInt($("#weight-view").html().replace(/pounds/, ''));
@@ -42,7 +42,7 @@
     
     $('#height-slider').slider({
           range: "min",
-          value: 60,
+          value: <%= current_user.height || 60 %>,
           min: 36,
           max: 98,
           slide: function( event, ui ) {
@@ -52,7 +52,7 @@
             $( "#height-view" ).html( feet + "'" + inches + '"' + ' tall' );
             $( "#height-val" ).html( feet + "'" + inches + '"' );
           },
-          change: find_bmi
+          change: calc_bmi
         });
         
     var feet   = Math.floor($( "#height-slider" ).slider( "value" ) / 12);
@@ -62,18 +62,18 @@
     
     $('#weight-slider').slider({
           range: "min",
-          value: 150,
+          value: <%= current_user.weight || 150 %>,
           min: 0,
           max: 1000,
           slide: function( event, ui ) {
             $( "#weight-view" ).html( ui.value + ' pounds' );
             $( "#weight-val" ).html( ui.value + ' pounds');
           },
-          change: find_bmi
+          change: calc_bmi
         });
     
     $( "#weight-view" ).html( $( "#weight-slider" ).slider( "value" ) + ' pounds' );
     
-    find_bmi();
+    calc_bmi();
   <% end %>
 </script>
