@@ -42,10 +42,10 @@
     
     $('#height-slider').slider({
           range: "min",
-          value: <%= current_user.height || 60 %>,
+          value: "<%= current_user.height || 60 %>",
           min: 36,
           max: 98,
-          slide: function( event, ui ) {
+          slide: function( event, ui ) { 
             var feet   = Math.floor( ui.value / 12);
             var inches = Math.round((ui.value / 12 - feet) * 12);
             $( "#inches" ).html((feet*12) + inches);
