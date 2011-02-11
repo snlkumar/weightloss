@@ -1,0 +1,14 @@
+<tr>
+  <td>
+    <%= @food.shrt_desc %>
+    <%= meal_item_form.hidden_field :food_id %>
+  </td>
+  <td>
+    <%= "#{params[:quantity_whole].to_f + params[:quantity_part].to_f}" %>
+    <%= meal_item_form.hidden_field :quantity, :value => params[:quantity_whole] + params[:quantity_part] %>
+  </td>
+  <td>
+    <%= params[:unit] %>
+    <%= meal_item_form.hidden_field :units, :value => params[:unit] %>
+  </td>
+</tr>

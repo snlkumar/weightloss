@@ -7,7 +7,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :old_departments
   map.resources :categories
   map.resources :subcategories
-  map.resources :meals
+  map.resources :meals, :collection => { :meal_item => :post}
+  map.resources :foods, :collection => {:search => :get}
   
   map.root :controller => :old_items, :action => :index
   

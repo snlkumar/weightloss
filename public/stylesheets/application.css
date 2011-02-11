@@ -142,7 +142,7 @@ td { border:none; }
 #quantity-whole-entry { width: 70px; }
 #quantity-part-entry  { width: 70px; }
 
-form.meal textarea { height: 75px; width: 655px; }
-form.meal select   { padding: 5px; }
+form#meal-new-item textarea { height: 75px; width: 655px; }
+form#meal-new-item select   { padding: 5px; }
 
 .ui-datepicker { z-index: 10000; }

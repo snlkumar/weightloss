@@ -3,7 +3,8 @@
   <div class="grid_12">
     <h3>Hey <%= current_user.first_name %>, what did you eat?</h3>
     
-    <% form_for @meal, :html => {:class => 'meal'} do |f| %>
+    <% form_tag "/meals/meal_item", :id => 'meal-new-item' do %>
+      <%= hidden_field_tag :food_id, "" %>
       <div id="meal-entry">
         <table>
           <tbody>
@@ -23,15 +24,19 @@
           </tbody>
         </table>
         
-        <div class="button" style="float: right; width: 162px;">Add Another Item</div>
         
+      <% end %>
+      
+      <% form_for @meal do |meal_form| %>
         <table>
           <tbody id="meal-items">
-            <tr>
-              <td></td>
-            </tr>
+            <% meal_form.fields_for :meal_items do |meal_item_form| %>
+              <%= render :partial => 'meal_items/meal_item_fields', :locals => { :meal_item_form => meal_item_form } %>
+            <% end %>
           </tbody>
         </table>
+        
+        <div id="add-meal-item" class="button" style="float: right; width: 162px;">Add Item</div>
       </div>
       
       <div style="padding: 15px;">
@@ -45,12 +50,12 @@
         <br/>
         
         <p>
-          <%= f.label :note, 'Meal Note' %><br/>
-          <%= f.text_area :note %>
+          <%= meal_form.label :note, 'Meal Note' %><br/>
+          <%= meal_form.text_area :note %>
         </p>
         
         <p>
-          <%= f.submit "Save This Meal" %>
+          <%= meal_form.submit "Save This Meal" %>
         </p>
       </div>
     <% end %>
@@ -66,5 +71,21 @@
 <script type="text/javascript" charset="utf-8">
   <% content_for :js do %>
     $('#calendar-box').datepicker();
+    
+    $('#food-item-entry').autocomplete({
+      source: "/foods/search",
+      minLength: 2,
+      select: function(evt, ui){
+        $("#food_id").val(ui.item.id);
+      }
+    });
+    
+    $("#add-meal-item").click(function(evt){
+      evt.preventDefault();
+      
+      var form = $("form#meal-new-item");
+      $.post("<%= meal_item_meals_path() %>", form.serialize() )
+      return false;
+    })
   <% end %>
 </script>
