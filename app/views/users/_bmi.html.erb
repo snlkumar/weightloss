@@ -35,7 +35,7 @@
       var bmi    = 0;
       var height = parseInt($("#inches").html());
       var weight = parseInt($("#weight-view").html().replace(/pounds/, ''));
-      bmi        = Math.round( (weight * 703) / (height * height) )
+      bmi        = Math.round( parseFloat(weight * 703) / parseFloat(height * height) )
       
       $("#bmi-score").html(bmi);
     };
