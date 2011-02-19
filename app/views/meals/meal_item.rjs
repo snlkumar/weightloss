@@ -1,9 +1,7 @@
 test_output = 
-  @template.fields_for MealItem.new do |f|
-    render :partial => 'meal_items/meal_item_fields', :object => Meal.new, :locals => {:meal_item_form => f}
+
+  @template.fields_for :meal_items, Meal.new.meal_items.new, :child_index => "new_meal_items" do |f|
+    render :partial => 'meal_items/meal_item_fields_ajax', :locals => {:meal_item_form => f}
   end
 
-
-
-page.insert_html :top, "#meal-items", test_output
-
+page.insert_html :bottom, "#meal-items", test_output

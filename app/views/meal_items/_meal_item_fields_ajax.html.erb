@@ -1,0 +1,14 @@
+<% unique_id = Time.now.to_i %>
+<tr>
+  <td class="food_name">
+    <%= @food.try(:shrt_desc) %>
+  </td>
+  <td class="food_amt">
+    <%= params[:quantity_whole].to_f + params[:quantity_part].to_f %>
+    <%= hidden_field_tag "meal[meal_items_attributes][#{unique_id}][quantity]", params[:quantity_whole].to_f + params[:quantity_part].to_f %>
+  </td>
+  <td class="foot_measure">
+    <%= params[:unit] %>
+    <%= hidden_field_tag "meal[meal_items_attributes][#{unique_id}][units]", params[:unit] %>
+  </td>
+</tr>

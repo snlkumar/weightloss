@@ -1,9 +1,11 @@
 
 <table id="BMI-table">
   <tbody>
-    <td id="header">
-      <h2>BMI</h2>
-    </td>
+    <tr>
+      <td id="header">
+        <h2>BMI</h2>
+      </td>
+    </tr>
     <tr>
       <td>
         <span id="bmi-score" class="count"></span>
@@ -13,16 +15,16 @@
     </tr>
     <tr>
       <td>
-        <%= hidden_field_tag :inches %>
+        <%= hidden_field_tag :inches, (current_user.height || 60) %>
         <p id="height-view"></p>
-
+        
         <div id="height-slider" ></div>
       </td>
     </tr>
     <tr>
       <td>
         <p id="weight-view"></p>
-
+        
         <div id="weight-slider" ></div>
       </td>
     </tr>
@@ -33,9 +35,9 @@
   <% content_for :js do %>
     function calc_bmi(){
       var bmi    = 0;
-      var height = parseInt($("#inches").html());
+      var height = parseInt($("#inches").val());
       var weight = parseInt($("#weight-view").html().replace(/pounds/, ''));
-      bmi        = Math.round( parseFloat(weight * 703) / parseFloat(height * height) )
+      bmi        = Math.round( (weight * 703) / (height * height) )
       
       $("#bmi-score").html(bmi);
     };
@@ -54,11 +56,6 @@
           },
           change: calc_bmi
         });
-        
-    var feet   = Math.floor($( "#height-slider" ).slider( "value" ) / 12);
-    var inches = Math.round(($( "#height-slider" ).slider( "value" ) / 12 - feet) * 12);
-    $( "#inches" ).html((feet*12) + inches);
-    $( "#height-view" ).html( feet + "'" + inches + '"' + ' tall' );
     
     $('#weight-slider').slider({
           range: "min",
@@ -72,6 +69,10 @@
           change: calc_bmi
         });
     
+    var feet   = Math.floor($( "#height-slider" ).slider( "value" ) / 12);
+    var inches = Math.round(($( "#height-slider" ).slider( "value" ) / 12 - feet) * 12);
+    $( "#inches" ).val((feet*12) + inches);
+    $( "#height-view" ).html( feet + "'" + inches + '"' + ' tall' );
     $( "#weight-view" ).html( $( "#weight-slider" ).slider( "value" ) + ' pounds' );
     
     calc_bmi();

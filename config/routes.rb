@@ -20,6 +20,8 @@ ActionController::Routing::Routes.draw do |map|
     user.edit_nutrition_info '/nutrition/edit', :controller => :users, :action => :nutrition_info
     user.edit_exercise_info  '/exercise/edit',  :controller => :users, :action => :exercise_info
     user.edit_account_info   '/account/edit',   :controller => :users, :action => :account_info
+    
+    user.resources :meals
   end
   
   map.with_options :controller => :home do |home|

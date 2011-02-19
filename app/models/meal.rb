@@ -1,6 +1,6 @@
 class Meal < ActiveRecord::Base
   QUANTITY_WHOLE = (0..10).map{|i| [i, i] }
-  QUANTITY_PARTS = [['0', 0], ['1/4', 0.25], ['1/2', 0.5], ['3/4', 0.75]]
+  QUANTITY_PARTS = [['.0', 0], ['.25', 0.25], ['.5', 0.5], ['.75', 0.75]]
   UNITS = ['teaspoon', 'tablespoon', 'cup', 'ounce', 'pound']
   
   # Associations
@@ -10,5 +10,5 @@ class Meal < ActiveRecord::Base
   has_many :foods,      :through => :meal_items
   
   # Nested Attributes
-  accepts_nested_attributes_for :meal_items
+  accepts_nested_attributes_for :meal_items, :allow_destroy => true
 end

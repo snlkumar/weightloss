@@ -1,14 +1,15 @@
 <tr>
   <td>
-    <%= @food.shrt_desc %>
+    <%= @food.try(:shrt_desc) %>
     <%= meal_item_form.hidden_field :food_id %>
   </td>
   <td>
-    <%= "#{params[:quantity_whole].to_f + params[:quantity_part].to_f}" %>
-    <%= meal_item_form.hidden_field :quantity, :value => params[:quantity_whole] + params[:quantity_part] %>
+    <%= params[:quantity_whole].try(:to_f) %>
+    <%= params[:quantity_part].try(:to_f) %>
+    <%= meal_item_form.hidden_field :quantity %>
   </td>
   <td>
     <%= params[:unit] %>
-    <%= meal_item_form.hidden_field :units, :value => params[:unit] %>
+    <%= meal_item_form.hidden_field :units %>
   </td>
 </tr>
