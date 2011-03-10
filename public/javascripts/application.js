@@ -7,6 +7,11 @@ jQuery.ajaxSetup({
   }
 });
 
+function remove_meal_item(link){
+  $(link).prev("input[type=hidden]").val("1");  
+  $(link).closest("tr").fadeOut();
+}
+
 // Global OnReady callbacks
 $(document).ready(function() {
 

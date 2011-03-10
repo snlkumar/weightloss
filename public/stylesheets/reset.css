@@ -16,7 +16,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 }
 
 p, blockquote, q, pre, address, hr, code, samp,
-dl, ol, ul, form, table, fieldset, menu {
+dl, ol, ul, table, fieldset, menu {
   margin-bottom: 1.5em;
 }
 

@@ -1,15 +1,20 @@
 <tr>
   <td>
-    <%= @food.try(:shrt_desc) %>
+    <%= meal_item_form.object.food.try(:shrt_desc) %>
     <%= meal_item_form.hidden_field :food_id %>
   </td>
   <td>
+    <%= meal_item_form.object.quantity %>
     <%= params[:quantity_whole].try(:to_f) %>
     <%= params[:quantity_part].try(:to_f) %>
     <%= meal_item_form.hidden_field :quantity %>
   </td>
   <td>
+    <%= meal_item_form.object.units %>
     <%= params[:unit] %>
+    <%= meal_item_form.hidden_field :_destroy %>
+    <%= link_to_function image_tag('delete.png'), "remove_meal_item(this)", :class => 'delete' %>
+    
     <%= meal_item_form.hidden_field :units %>
   </td>
 </tr>

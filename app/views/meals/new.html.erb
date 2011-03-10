@@ -14,7 +14,7 @@
               <td class="foot_measure"><%= label_tag 'Measure' %></td>
             </tr>
             <tr>
-              <td><%= text_field_tag :food, "", :id => 'food-item-entry' %></td>
+              <td><%= text_field_tag :food, "", :id => 'food-item-entry', :title => "Try one or more keywords" %></td>
               <td>
                 <%= select_tag :quantity_whole, options_for_select(Meal::QUANTITY_WHOLE), :id => 'quantity-whole-entry' %>
                 <%= select_tag :quantity_part,  options_for_select(Meal::QUANTITY_PARTS), :id => 'quantity-part-entry' %>
@@ -23,11 +23,9 @@
             </tr>
           </tbody>
         </table>
-        
-        
       <% end %>
       
-      <% form_for @meal do |meal_form| %>
+      <% form_for @meal, :html => {:id => 'meal'} do |meal_form| %>
         <table>
           <tbody id="meal-items">
             <% meal_form.fields_for :meal_items do |meal_item_form| %>
@@ -37,6 +35,7 @@
         </table>
         
         <div id="add-meal-item" class="button" style="float: right; width: 162px;">Add Item</div>
+        <div class="clear"></div>
       </div>
       
       <div style="padding: 15px;">
@@ -55,7 +54,7 @@
         </p>
         
         <p>
-          <%= meal_form.submit "Save This Meal" %>
+          <%= meal_form.submit @meal.new_record? ? "Save This Meal" : "Update This Meal" %>
         </p>
       </div>
     <% end %>
@@ -70,6 +69,7 @@
 
 <script type="text/javascript" charset="utf-8">
   <% content_for :js do %>
+    $('#food-item-entry').labelify({ labelledClass: "labelHighlight" });
     $('#calendar-box').datepicker();
     
     $('#food-item-entry').autocomplete({
@@ -81,11 +81,20 @@
     });
     
     $("#add-meal-item").click(function(evt){
-      evt.preventDefault();
-      
       var form = $("form#meal-new-item");
-      $.post("<%= meal_item_meals_path() %>", form.serialize() )
+      
+      if($("#quantity-whole-entry").val() == "0" && $("#quantity-part-entry").val() == "0"){
+        alert("Please select a serving amount and measure before adding");
+      }else{
+        $.post("<%= meal_item_meals_path() %>", form.serialize() )
+      }
+      
       return false;
-    })
+    });
+    
+    $(".remove_ajax_meal_item").live('click', function(evt){
+      evt.preventDefault();
+      $(this).closest('tr').detach();
+    });
   <% end %>
 </script>

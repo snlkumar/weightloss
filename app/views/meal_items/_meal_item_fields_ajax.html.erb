@@ -5,10 +5,14 @@
   </td>
   <td class="food_amt">
     <%= params[:quantity_whole].to_f + params[:quantity_part].to_f %>
-    <%= hidden_field_tag "meal[meal_items_attributes][#{unique_id}][quantity]", params[:quantity_whole].to_f + params[:quantity_part].to_f %>
+    
   </td>
   <td class="foot_measure">
     <%= params[:unit] %>
+    <%= link_to image_tag('delete.png'), {}, :class => 'remove_meal_item delete' %>
+    
+    <%= hidden_field_tag "meal[meal_items_attributes][#{unique_id}][food_id]", @food.id %>
+    <%= hidden_field_tag "meal[meal_items_attributes][#{unique_id}][quantity]", params[:quantity_whole].to_f + params[:quantity_part].to_f %>
     <%= hidden_field_tag "meal[meal_items_attributes][#{unique_id}][units]", params[:unit] %>
   </td>
 </tr>

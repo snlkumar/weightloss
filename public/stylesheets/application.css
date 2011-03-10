@@ -9,6 +9,9 @@ a:hover   { text-decoration: underline; }
 fieldset  { border: 0px; }
 label     { font-weight: bold; }
 
+/* help text in text fields */
+input.labelHighlight { color: #999; }
+
 /* jQuery Overrides */
 .ui-slider, .ui-slider-range { background: #AAA; }
 .ui-slider .ui-slider-handle { background: #0D87D0 !important; border: 1px solid #0D87D0 !important; width: .8em; }
@@ -149,7 +152,10 @@ td { border: none; }
 #quantity-whole-entry { width: 70px; }
 #quantity-part-entry  { width: 70px; }
 
+form#meal .delete { float: right; }
+
 form#meal-new-item textarea { height: 75px; width: 655px; }
 form#meal-new-item select   { padding: 5px; }
 
 .ui-datepicker { z-index: 10000; }
+ul.ui-autocomplete { height: 200px; overflow-y: scroll; }

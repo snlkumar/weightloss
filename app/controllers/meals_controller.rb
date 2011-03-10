@@ -20,12 +20,19 @@ class MealsController < ApplicationController
     redirect_to new_meal_path
   end
   
+  def update
+    @meal = current_user.meals.find(params[:id])
+    @meal.update_attributes(params[:meal])
+    redirect_to new_meal_path
+  end
+  
   def destroy
     
   end
   
+  # Ajax add to meal
   def meal_item
-    @food = Food.find(params[:food_id])
+    @food      = Food.find(params[:food_id])
     @meal_item = Meal.new.meal_items.new(:food => @food)
   end
 end
