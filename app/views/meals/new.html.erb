@@ -34,19 +34,29 @@
           </tbody>
         </table>
         
-        <div id="add-meal-item" class="button" style="float: right; width: 162px;">Add Item</div>
+        <div id="add-meal-item" class="button" style="float: right; width: 162px;">Add This To The Meal</div>
         <div class="clear"></div>
       </div>
       
       <div style="padding: 15px;">
         <br/>
         
-        <%= text_field_tag "", Time.zone.now.strftime("%m/%d/%Y"), :id => "calendar-box" %>
+        <%= text_field_tag "meal[ate_on]", ate_on_start_date, :id => "calendar-box" %>
         
         <div id="selected-date-help"><span class="bold">Was the date of the meal today?</span> Feel free to edit the date of this meal.</div>
         
         <div class="clear"></div>
         <br/>
+        
+        <p>
+          <%= meal_form.label :time_of_day, 'Meal Time' %><br/>
+          <%= meal_form.time_select :time_of_day, :twelve_hour => true %>
+        </p>
+        
+        <p>
+          <%= meal_form.label :meal_type %><br/>
+          <%= meal_form.select :meal_type, options_for_select(Meal::TYPES) %>
+        </p>
         
         <p>
           <%= meal_form.label :note, 'Meal Note' %><br/>

@@ -23,7 +23,7 @@ class MealsController < ApplicationController
   def update
     @meal = current_user.meals.find(params[:id])
     @meal.update_attributes(params[:meal])
-    redirect_to new_meal_path
+    redirect_to meals_path
   end
   
   def destroy

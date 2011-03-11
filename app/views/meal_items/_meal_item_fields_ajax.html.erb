@@ -8,7 +8,7 @@
     
   </td>
   <td class="foot_measure">
-    <%= params[:unit] %>
+    <%= meal_item_form.select :units, options_for_select([@food.gmwt_desc1, @food.gmwt_desc2]) %>
     <%= link_to image_tag('delete.png'), {}, :class => 'remove_meal_item delete' %>
     
     <%= hidden_field_tag "meal[meal_items_attributes][#{unique_id}][food_id]", @food.id %>

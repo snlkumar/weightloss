@@ -2,6 +2,7 @@ class Meal < ActiveRecord::Base
   QUANTITY_WHOLE = (0..10).map{|i| [i, i] }
   QUANTITY_PARTS = [['.0', 0], ['.25', 0.25], ['.5', 0.5], ['.75', 0.75]]
   UNITS = ['teaspoon', 'tablespoon', 'cup', 'ounce', 'pound']
+  TYPES = ['Snack', 'Breakfast', 'Lunch', 'Dinner']
   
   # Associations
   belongs_to :user

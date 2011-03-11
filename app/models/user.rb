@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_attached_file :avatar, :styles      => { :medium => "50x50!", :large => "214x214!" }, 
+  has_attached_file :avatar, :styles      => { :thumb => "16x16!", :small => "40x40!", :medium => "50x50!", :large => "214x214!" }, 
                              :url         => "/system/:class/:attachment/:id/:style/:filename"
   
   # Auth Logic

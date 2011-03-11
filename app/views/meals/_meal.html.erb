@@ -1,0 +1,21 @@
+<div class="grid_1">
+  <%= image_tag current_user.avatar.url(:small) %>
+</div>
+
+<div class="grid_7">
+  <p><span class="bold"><%= meal.meal_type %></span> - <%= meal.note %></p>
+  
+  <ul class="grid_7 alpha omega meal-items">
+    <% meal.meal_items.each do |meal_item| %>
+      <li><%= meal_item.food.shrt_desc %> <span class="meal-item-calories">25</span></li>
+    <% end %>
+    <li>&nbsp;</li>
+    <li class="bold">Total Calories <span class="meal-total-calories">1000</span></li>
+  </ul>
+  
+  <p><%= meal.time_of_day.strftime("%I:%M %p") %> &middot; <%= link_to 'Edit', edit_meal_path(meal) %></p>
+</div>
+
+<% unless @meals.last == meal %><hr class="grid_8 omega day_seperator"/><% end %>
+
+<div class="clear"></div>

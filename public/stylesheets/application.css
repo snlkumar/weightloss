@@ -3,6 +3,7 @@ a:visited { color: blue; }
 a:hover   { text-decoration: underline; }
 
 .center   { margin: 0 auto; }
+.textcenter { text-align: center; }
 .full     { width: 100%; min-width: 1040px; }
 .bold     { font-weight: bold; }
 
@@ -131,12 +132,12 @@ td { border: none; }
 #calorie-table td, #BMI-table td {  border-collapse: collapse; font-size: 13pt; text-align: center;  width: 50%; } 
 #calorie-table span.count, #BMI-table span.count { font-size: 2em; font-weight: bold; }
 
-.button   { background-color: #0D87D0; margin: 5px; -moz-border-radius: 5px; padding: 10px 5px; text-align: center; }
-.button a { color: black; text-decoration: none; }
+.button   { color: white; background-color: #0D87D0; margin: 5px; -moz-border-radius: 5px; padding: 10px 5px; text-align: center; }
+.button a { color: white; text-decoration: none; }
 #height-slider, #weight-slider   { height: 10px; margin-bottom: 10px; width: 180px !important; }
 
 /* New Meal Entry */
-#meal-entry          { background-color: #F6F6F6; border: 2px solid #006597; min-height: 325px; padding: 15px; width: 100%; }
+#meal-entry          { background-color: #F6F6F6; border: 2px solid #006597; padding: 15px; width: 100%; }
 #meal-entry table    { width: 100%; }
 #meal-entry table td { vertical-align: middle; }
 #meal-entry .food_name    { width: 355px; }
@@ -155,7 +156,17 @@ td { border: none; }
 form#meal .delete { float: right; }
 
 form#meal-new-item textarea { height: 75px; width: 655px; }
-form#meal-new-item select   { padding: 5px; }
+/*form#meal-new-item select   { padding: 5px; }*/
 
 .ui-datepicker { z-index: 10000; }
 ul.ui-autocomplete { height: 200px; overflow-y: scroll; }
+
+/* Food Journal */
+.date_of_day { font-size: 3em; line-height: 0.8em; }
+.day_seperator { background-color: #CCC; height: 3px; -moz-border-radius: 3px; }
+.meal-item-calories  { float: right; }
+.meal-total-calories { float:right; }
+.meal-items { margin: 0; }
+.meal-items li { list-style: none; margin: 0; }
+
+.h3 { font-size: 1.5em; line-height: 1.2; margin-bottom: 0.476em; font-weight: normal; margin: 0; padding: 0; }

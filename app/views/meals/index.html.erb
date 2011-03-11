@@ -1,5 +1,33 @@
-<h1>Your Meals</h1>
 
-<% @meals.each do |meal| %>
-  <%= debug(meal) %>
-<% end %>
+<!-- Tracking Show -->
+<div class="full">
+  <div class="grid_4">
+    <div id="inline-calendar"></div>
+    
+  </div>
+  
+  <div class="grid_12">
+    <p class="h3" style="margin: 50px 0px;">
+      Hi <%= current_user.first_name %>, what did you eat? <%= select_tag "", options_for_select(Meal::TYPES) %>
+    </p>
+    
+    <br/>
+    
+    <% Date.today.downto(Date.today-6.days) do |day| %>
+      
+      <%= render :partial => 'day', :locals => { :day => day } %>
+      
+    <% end %>
+  </div>
+  
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    $('#inline-calendar').datepicker();
+  <% end %>
+</script>
+
+<style type="text/css" media="screen">
+  .ui-datepicker { width: auto !important; }
+</style>
