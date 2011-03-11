@@ -13,7 +13,7 @@
     
     <br/>
     
-    <% Date.today.downto(Date.today-6.days) do |day| %>
+    <% Time.zone.now.to_date.downto(Time.zone.now.to_date-6.days) do |day| %>
       
       <%= render :partial => 'day', :locals => { :day => day } %>
       
