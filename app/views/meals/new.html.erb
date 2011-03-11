@@ -41,7 +41,7 @@
       <div style="padding: 15px;">
         <br/>
         
-        <%= text_field_tag "meal[ate_on]", ate_on_start_date, :id => "calendar-box" %>
+        <%= text_field_tag "meal[ate_on_date][date]", ate_on_start_date, :id => "calendar-box" %>
         
         <div id="selected-date-help"><span class="bold">Was the date of the meal today?</span> Feel free to edit the date of this meal.</div>
         
@@ -49,8 +49,13 @@
         <br/>
         
         <p>
-          <%= meal_form.label :time_of_day, 'Meal Time' %><br/>
-          <%= meal_form.time_select :time_of_day, :twelve_hour => true %>
+          <%= label_tag 'Meal Time' %><br/>
+          <%= select_tag "meal[ate_on_date][time][hour]",     
+                         options_for_select((1..12).map{|n| "%02d" % n}, meal_form.object.ate_on.try(:strftime, "%I").to_i) %>:
+          <%= select_tag "meal[ate_on_date][time][minute]",   
+                         options_for_select((0..59).map{|n| "%02d" % n}, meal_form.object.ate_on.try(:strftime, "%M").to_i) %>&nbsp;
+          <%= select_tag "meal[ate_on_date][time][meridian]", 
+                         options_for_select(['AM', 'PM'], meal_form.object.ate_on.try(:strftime, "%p")) %>
         </p>
         
         <p>

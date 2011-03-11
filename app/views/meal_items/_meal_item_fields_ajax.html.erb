@@ -1,15 +1,16 @@
 <% unique_id = Time.now.to_i %>
 <tr>
   <td class="food_name">
-    <%= @food.try(:shrt_desc) %>
+    <%= truncate(@food.try(:shrt_desc), :length => 55) %>
   </td>
   <td class="">
     <%= params[:quantity_whole].to_f + params[:quantity_part].to_f %>
     
   </td>
   <td class="">
-    <%= meal_item_form.select :units, options_for_select([@food.gmwt_desc1, @food.gmwt_desc2]) %>
-    <%= link_to image_tag('delete.png'), {}, :class => 'remove_meal_item delete' %>
+    <%= link_to image_tag('delete.png'), {}, :class => 'remove_ajax_meal_item delete' %>
+    <%= meal_item_form.select :units, options_for_select([[truncate(@food.gmwt_desc1, :length => 25), @food.gmwt_desc1], 
+                                                          [truncate(@food.gmwt_desc2, :length => 25), @food.gmwt_desc2]]) %>
     
     <%= hidden_field_tag "meal[meal_items_attributes][#{unique_id}][food_id]", @food.id %>
     <%= hidden_field_tag "meal[meal_items_attributes][#{unique_id}][quantity]", params[:quantity_whole].to_f + params[:quantity_part].to_f %>
