@@ -3,11 +3,11 @@
   <td class="food_name">
     <%= @food.try(:shrt_desc) %>
   </td>
-  <td class="food_amt">
+  <td class="">
     <%= params[:quantity_whole].to_f + params[:quantity_part].to_f %>
     
   </td>
-  <td class="foot_measure">
+  <td class="">
     <%= meal_item_form.select :units, options_for_select([@food.gmwt_desc1, @food.gmwt_desc2]) %>
     <%= link_to image_tag('delete.png'), {}, :class => 'remove_meal_item delete' %>
     
