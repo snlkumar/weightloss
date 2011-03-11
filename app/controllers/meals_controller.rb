@@ -2,7 +2,13 @@ class MealsController < ApplicationController
   layout 'tracking'
   
   def index
-    @meals = current_user.meals
+    if params[:date]
+      @start_date = params[:date].to_date
+      @meals      = current_user.meals.starting_from(params[:date])
+    else
+      @start_date = Time.zone.now.to_date
+      @meals      = current_user.meals
+    end
   end
   
   def new

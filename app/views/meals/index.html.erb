@@ -13,7 +13,7 @@
     
     <br/>
     
-    <% Time.zone.now.to_date.downto(Time.zone.now.to_date-6.days) do |day| %>
+    <% @start_date.downto(@start_date - 6.days) do |day| %>
       
       <%= render :partial => 'day', :locals => { :day => day } %>
       
@@ -24,7 +24,13 @@
 
 <script type="text/javascript" charset="utf-8">
   <% content_for :js do %>
-    $('#inline-calendar').datepicker();
+    $('#inline-calendar').datepicker({
+       dateFormat: "yy-mm-dd",
+       defaultDate: "<%= @start_date %>",
+       onSelect: function(dateText, inst) { 
+         window.location = "<%= meals_path %>?date=" + dateText;
+       }
+    });
   <% end %>
 </script>
 
