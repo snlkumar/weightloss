@@ -13,7 +13,10 @@
     <li class="bold">Total Calories <span class="meal-total-calories">1000</span></li>
   </ul>
   
-  <p><%= meal.ate_on.strftime("%I:%M %p") %> &middot; <%= link_to 'Edit', edit_meal_path(meal) %></p>
+  <p>
+    <%= meal.ate_on.strftime("%I:%M %p") %> &middot; 
+    <%= link_to 'Edit', edit_meal_path(meal) %> &middot; 
+    <%= link_to 'Delete', meal_path(meal), :method => :delete, :confirm => "Are you sure you want to delete this meal?" %></p>
 </div>
 
 <% unless @meals.last == meal %><hr class="grid_8 omega day_seperator"/><% end %>

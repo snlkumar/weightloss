@@ -10,16 +10,15 @@
           <tbody>
             <tr>
               <td class="food_name"><%= label_tag 'Food' %></td>
-              <td class=""><%= label_tag 'Serving Amount' %></td>
-              <td class=""><%= label_tag 'Measure' %></td>
+              <td ></td>
+              <td></td>
             </tr>
             <tr>
-              <td><%= text_field_tag :food, "", :id => 'food-item-entry', :title => "Try one or more keywords" %></td>
-              <td>
-                <%= select_tag :quantity_whole, options_for_select(Meal::QUANTITY_WHOLE), :id => 'quantity-whole-entry' %>
-                <%= select_tag :quantity_part,  options_for_select(Meal::QUANTITY_PARTS), :id => 'quantity-part-entry' %>
+              <td style="width: 350px; padding-right: 0px"><%= text_field_tag :food, "", :id => 'food-item-entry', :title => "Try one or more keywords" %></td>
+              <td style="padding-left: 0px">
+                <div id="add-meal-item" class="button" style="width: 162px;">Add This To The Meal</div>
               </td>
-              <td><%= select_tag :unit, options_for_select(Meal::UNITS), :id => 'unit-entry' %></td>
+              <td ><%#= select_tag :unit, options_for_select(Meal::UNITS), :id => 'unit-entry' %></td>
             </tr>
           </tbody>
         </table>
@@ -34,7 +33,7 @@
           </tbody>
         </table>
         
-        <div id="add-meal-item" class="button" style="float: right; width: 162px;">Add This To The Meal</div>
+        
         <div class="clear"></div>
       </div>
       
@@ -60,7 +59,7 @@
         
         <p>
           <%= meal_form.label :meal_type %><br/>
-          <%= meal_form.select :meal_type, options_for_select(Meal::TYPES) %>
+          <%= meal_form.select :meal_type, options_for_select(Meal::TYPES, params[:meal_type]) %>
         </p>
         
         <p>
@@ -98,13 +97,26 @@
     $("#add-meal-item").click(function(evt){
       var form = $("form#meal-new-item");
       
-      if($("#quantity-whole-entry").val() == "0" && $("#quantity-part-entry").val() == "0"){
-        alert("Please select a serving amount and measure before adding");
+      if( $("#food_id").val() == "" ){
+        alert("Please choose a food item");
       }else{
         $.post("<%= meal_item_meals_path() %>", form.serialize() )
       }
       
+
       return false;
+    });
+    
+    $("#meal").submit(function(evt){
+      var form = $("form#meal-new-item");
+      var min_possible_quantity = (0.25 * $(".meal-item-quantity").length) / 2;
+      
+      // ensure a quantity and measure has been provided for every item added to the meal, before we allow submitting
+      if( _.inject($(".meal-item-quantity"), function(memo, num){ return memo + parseFloat($(num).val()); }, 0) < min_possible_quantity || 
+          _.any($(".meal-item-units"),    function(el){ return $(el).val() == ""}) ){
+        alert("Please make sure all food items have a serving amount and measure before submitting the meal");
+        return false;
+      }
     });
     
     $(".remove_ajax_meal_item").live('click', function(evt){

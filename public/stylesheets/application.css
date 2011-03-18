@@ -147,8 +147,8 @@ td { border: none; }
 #selected-date      { padding-left: 14px; }
 #selected-date-help { font-size: 1em; padding-top: 12px; }
 #food-item-entry    { width: 337px; }
-#quantity-whole-entry { width: 70px; }
-#quantity-part-entry  { width: 70px; }
+/*#quantity-whole-entry { width: 70px; }
+#quantity-part-entry  { width: 70px; }*/
 
 form#meal .delete { float: right; }
 

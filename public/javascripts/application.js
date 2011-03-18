@@ -26,4 +26,10 @@ $(document).ready(function() {
     }
   });
   
+  // All links with class 'submit', submit their parent form
+  $('a.submit').live('click', function(evt){
+    evt.preventDefault();
+    $(this).closest('form').submit();
+  });
+  
 });

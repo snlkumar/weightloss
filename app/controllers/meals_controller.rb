@@ -33,7 +33,9 @@ class MealsController < ApplicationController
   end
   
   def destroy
-    
+    @meal = current_user.meals.find(params[:id])
+    @meal.destroy
+    redirect_to meals_path
   end
   
   # Ajax add to meal
