@@ -4,10 +4,10 @@
     <%= meal_item_form.hidden_field :food_id %>
   </td>
   <td>
-    <%= meal_item_form.object.quantity %>
-    <%= params[:quantity_whole].try(:to_f) %>
-    <%= params[:quantity_part].try(:to_f) %>
-    <%= meal_item_form.hidden_field :quantity %>
+    <%= meal_item_form.object.serving %>
+    <%= params[:serving_whole].try(:to_f) %>
+    <%= params[:serving_part].try(:to_f) %>
+    <%= meal_item_form.hidden_field :serving %>
   </td>
   <td>
     <%= meal_item_form.object.units %>

@@ -4,18 +4,17 @@
     <%= truncate(@food.try(:shrt_desc), :length => 55) %>
   </td>
   <td class="">
-    <%= select_tag :quantity_whole, options_for_select(Meal::QUANTITY_WHOLE), :id => 'quantity-whole-entry', :class => 'meal-item-quantity' %>
-    <%= select_tag :quantity_part,  options_for_select(Meal::QUANTITY_PARTS), :id => 'quantity-part-entry',  :class => 'meal-item-quantity' %>
+    <%= select_tag "meal[meal_items_attributes][#{unique_id}][serving_whole]", options_for_select(Meal::QUANTITY_WHOLE), :id => 'quantity-whole-entry', :class => 'meal-item-quantity' %>
+    <%= select_tag "meal[meal_items_attributes][#{unique_id}][serving_part]",  options_for_select(Meal::QUANTITY_PARTS), :id => 'quantity-part-entry',  :class => 'meal-item-quantity' %>
   </td>
   <td class="">
     <%= link_to image_tag('delete.png'), {}, :class => 'remove_ajax_meal_item delete' %>
     
-    <%= meal_item_form.select :units, options_for_select([[truncate(@food.gmwt_desc1, :length => 25), @food.gmwt_desc1], 
-                                                          [truncate(@food.gmwt_desc2, :length => 25), @food.gmwt_desc2]]),
-                              {}, {:class => 'meal-item-units'} %>
+    <%= select_tag "meal[meal_items_attributes][#{unique_id}][units]", 
+                   options_for_select([[truncate(@food.gmwt_desc1, :length => 25), @food.gmwt_desc1], 
+                                       [truncate(@food.gmwt_desc2, :length => 25), @food.gmwt_desc2]]),
+                   {:class => 'meal-item-units'} %>
     
     <%= hidden_field_tag "meal[meal_items_attributes][#{unique_id}][food_id]", @food.id %>
-    <%= hidden_field_tag "meal[meal_items_attributes][#{unique_id}][quantity]", params[:quantity_whole].to_f + params[:quantity_part].to_f %>
-    <%= hidden_field_tag "meal[meal_items_attributes][#{unique_id}][units]", params[:unit] %>
   </td>
 </tr>
