@@ -25,7 +25,7 @@
             Burned Today
           </td>
           <td>
-            <span class="count">0</span><br/>
+            <span class="count"><%= calories_consumed_today(current_user.meals.today) %></span><br/>
             Consumed Today
           </td>
         </tr>
@@ -35,7 +35,7 @@
             Burned This Week
           </td>
           <td>
-            <span class="count">2000</span><br/>
+            <span class="count"><%= 2000 - calories_consumed_today(current_user.meals.today) %></span><br/>
             Left Today
           </td>
         </tr>

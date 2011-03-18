@@ -23,7 +23,7 @@ class MealsController < ApplicationController
   def create
     @meal = current_user.meals.build(params[:meal])
     @meal.save
-    redirect_to new_meal_path
+    redirect_to meals_path
   end
   
   def update

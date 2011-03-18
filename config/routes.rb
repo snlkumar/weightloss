@@ -1,21 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :old_flash_files
-  map.resources :old_success_stories
-  map.resources :old_tip_of_days
-  map.resources :old_text_files
-  map.resources :old_items
-  map.resources :old_departments
-  map.resources :categories
-  map.resources :subcategories
+  map.resources :old_flash_files, :old_success_stories, :old_tip_of_days, :old_text_files, :old_items, :old_departments
+  map.resources :categories, :subcategories
   map.resources :meals, :collection => { :meal_item => :post}
   map.resources :foods, :collection => {:search => :get}
   
-  map.root :controller => :old_items, :action => :index
+  map.resource  :user_session, :tracking
   
-  map.resource  :user_session
-  map.resource  :tracking
-  
-  map.resources :users, :collection => {:bmi => :get} do |user|
+  map.resources :users, :member => {:bmi_update => :put}, :collection => {:bmi => :get} do |user|
     user.edit_personal_info  '/info/edit',      :controller => :users, :action => :personal_info
     user.edit_nutrition_info '/nutrition/edit', :controller => :users, :action => :nutrition_info
     user.edit_exercise_info  '/exercise/edit',  :controller => :users, :action => :exercise_info
@@ -35,4 +26,5 @@ ActionController::Routing::Routes.draw do |map|
     users.connect '/next',     :action => :next
   end
   
+  map.root :controller => :old_items, :action => :index
 end

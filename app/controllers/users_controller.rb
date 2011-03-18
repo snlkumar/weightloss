@@ -76,4 +76,10 @@ class UsersController < ApplicationController
     @user = current_user
     render :layout => "profile"
   end
+  
+  def bmi_update
+    @user = User.find(params[:id])
+    @user.update_attributes(params[:user])
+    head(200)
+  end
 end

@@ -42,17 +42,24 @@
       $("#bmi-score").html(bmi);
     };
     
+    function calc_inches(value){
+      var feet   = Math.floor( value / 12);
+      var inches = Math.round((value / 12 - feet) * 12);
+      $( "#inches" ).val((feet*12) + inches);
+      return {'feet':feet, 'inches':inches}
+    };
+    
     $('#height-slider').slider({
           range: "min",
           value: "<%= current_user.height || 60 %>",
           min: 36,
           max: 98,
           slide: function( event, ui ) { 
-            var feet   = Math.floor( ui.value / 12);
-            var inches = Math.round((ui.value / 12 - feet) * 12);
-            $( "#inches" ).html((feet*12) + inches);
-            $( "#height-view" ).html( feet + "'" + inches + '"' + ' tall' );
-            $( "#height-val" ).html( feet + "'" + inches + '"' );
+            var vals = calc_inches(ui.value);
+            $( "#height-view" ).html( vals.feet + "'" + vals.inches + '"' + ' tall' );
+          },
+          stop: function( event, ui ){
+            $.post("<%= bmi_update_user_path(current_user) %>", {"_method": 'put', "user[height]": ui.value });
           },
           change: calc_bmi
         });
@@ -66,13 +73,14 @@
             $( "#weight-view" ).html( ui.value + ' pounds' );
             $( "#weight-val" ).html( ui.value + ' pounds');
           },
+          stop: function( event, ui ){
+            $.post("<%= bmi_update_user_path(current_user) %>", {"_method": 'put', "user[weight]": ui.value});
+          },
           change: calc_bmi
         });
     
-    var feet   = Math.floor($( "#height-slider" ).slider( "value" ) / 12);
-    var inches = Math.round(($( "#height-slider" ).slider( "value" ) / 12 - feet) * 12);
-    $( "#inches" ).val((feet*12) + inches);
-    $( "#height-view" ).html( feet + "'" + inches + '"' + ' tall' );
+    vals = calc_inches($( "#height-slider" ).slider( "value" ));
+    $( "#height-view" ).html( vals.feet + "'" + vals.inches + '"' + ' tall' );
     $( "#weight-view" ).html( $( "#weight-slider" ).slider( "value" ) + ' pounds' );
     
     calc_bmi();
