@@ -50,9 +50,9 @@
         <p>
           <%= label_tag 'Meal Time' %><br/>
           <%= select_tag "meal[ate_on_date][time][hour]",     
-                         options_for_select((1..12).map{|n| "%02d" % n}, meal_form.object.ate_on.try(:strftime, "%I").to_i) %>:
+                         options_for_select((1..12).map{|n| ["%02d" % n, n]}, meal_form.object.ate_on.try(:strftime, "%I").to_i) %>:
           <%= select_tag "meal[ate_on_date][time][minute]",   
-                         options_for_select((0..59).map{|n| "%02d" % n}, meal_form.object.ate_on.try(:strftime, "%M").to_i) %>&nbsp;
+                         options_for_select((0..59).map{|n| ["%02d" % n, n]}, meal_form.object.ate_on.try(:strftime, "%M").to_i) %>&nbsp;
           <%= select_tag "meal[ate_on_date][time][meridian]", 
                          options_for_select(['AM', 'PM'], meal_form.object.ate_on.try(:strftime, "%p")) %>
         </p>
