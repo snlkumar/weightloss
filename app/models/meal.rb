@@ -13,7 +13,7 @@ class Meal < ActiveRecord::Base
   has_many :foods,      :through => :meal_items
   
   # Scopes
-  named_scope :starting_from, lambda { |date| {:conditions => ["ate_on <= date", date]}}
+  named_scope :starting_from, lambda { |date| {:conditions => ["ate_on <= ?", date]}}
   
   # Nested Attributes
   accepts_nested_attributes_for :meal_items, :allow_destroy => true
