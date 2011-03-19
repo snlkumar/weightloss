@@ -9,16 +9,18 @@
         <table>
           <tbody>
             <tr>
-              <td class="food_name"><%= label_tag 'Food' %></td>
-              <td ></td>
+              <td class="food_name" style="padding-bottom: 0px;"><%= label_tag 'Find a food' %></td>
+              <td></td>
               <td></td>
             </tr>
             <tr>
-              <td style="width: 350px; padding-right: 0px"><%= text_field_tag :food, "", :id => 'food-item-entry', :title => "Try one or more keywords" %></td>
-              <td style="padding-left: 0px">
+              <td style="width: 350px; padding-top: 0px; padding-right: 0px">
+                <%= text_field_tag :food, "", :id => 'food-item-entry', :title => "Try one or more keywords" %>
+              </td>
+              <td style="padding-top: 0px; padding-left: 0px">
                 <div id="add-meal-item" class="button" style="width: 162px;">Add This To The Meal</div>
               </td>
-              <td ><%#= select_tag :unit, options_for_select(Meal::UNITS), :id => 'unit-entry' %></td>
+              <td><%#= select_tag :unit, options_for_select(Meal::UNITS), :id => 'unit-entry' %></td>
             </tr>
           </tbody>
         </table>
@@ -27,6 +29,11 @@
       <% form_for @meal, :html => {:id => 'meal'} do |meal_form| %>
         <table>
           <tbody id="meal-items">
+            <tr>
+              <td class="bold">Food</td>
+              <td class="bold">Serving Amount</td>
+              <td class="bold">Serving Size</td>
+            </tr>
             <% meal_form.fields_for :meal_items do |meal_item_form| %>
               <%= render :partial => 'meal_items/meal_item_fields', :locals => { :meal_item_form => meal_item_form } %>
             <% end %>
@@ -42,16 +49,18 @@
         
         <%= text_field_tag "meal[ate_on_date][date]", ate_on_start_date, :id => "calendar-box" %>
         
-        <div id="selected-date-help"><span class="bold">Was the date of the meal today?</span> Feel free to edit the date of this meal.</div>
+        <div id="selected-date-help">
+          <span class="bold">Was the date of the meal today?</span> Feel free to edit the date of this meal.
+        </div>
         
         <div class="clear"></div>
         <br/>
         
         <p>
           <%= label_tag 'Meal Time' %><br/>
-          <%= select_tag "meal[ate_on_date][time][hour]",     
+          <%= select_tag "meal[ate_on_date][time][hour]", 
                          options_for_select((1..12).map{|n| ["%02d" % n, n]}, meal_form.object.ate_on.try(:strftime, "%I").to_i) %>:
-          <%= select_tag "meal[ate_on_date][time][minute]",   
+          <%= select_tag "meal[ate_on_date][time][minute]", 
                          options_for_select((0..59).map{|n| ["%02d" % n, n]}, meal_form.object.ate_on.try(:strftime, "%M").to_i) %>&nbsp;
           <%= select_tag "meal[ate_on_date][time][meridian]", 
                          options_for_select(['AM', 'PM'], meal_form.object.ate_on.try(:strftime, "%p")) %>

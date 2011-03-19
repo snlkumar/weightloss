@@ -12,7 +12,7 @@ class MealsController < ApplicationController
   end
   
   def new
-    @meal = current_user.meals.new
+    @meal = current_user.meals.new(:ate_on => Time.zone.now)
   end
   
   def edit
