@@ -1,4 +1,5 @@
 class TrackingsController < ApplicationController
+  before_filter :require_user
   
   def show
     

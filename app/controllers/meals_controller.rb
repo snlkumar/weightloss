@@ -1,6 +1,8 @@
 class MealsController < ApplicationController
   layout 'tracking'
   
+  before_filter :require_user
+  
   def index
     if params[:date]
       @start_date = params[:date].to_date

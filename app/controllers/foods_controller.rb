@@ -1,4 +1,6 @@
 class FoodsController < ApplicationController
+  before_filter :require_user
+  
   def search
     terms  = params[:term].split(/,|\s/).reject(&:blank?)
     conds  = terms.collect{|t| "shrt_desc LIKE ?"}.join(' AND ')
