@@ -1,22 +1,27 @@
 <tr>
-  <td>
+  <td class="food-name">
     <%= meal_item_form.object.food.try(:shrt_desc) %>
     
     <%= meal_item_form.hidden_field :food_id %>
   </td>
-  <td>
+  <td class="calories">
+    <%= meal_item_form.object.calories %>
+  </td>
+  <td class="servings">
     <%= meal_item_form.object.serving %>
     <%= params[:serving_whole].try(:to_f) %>
     <%= params[:serving_part].try(:to_f) %>
     
     <%= meal_item_form.hidden_field :serving %>
   </td>
-  <td>
+  <td class="serving-size">
+    <!-- Must be immediately before delete image for js to set _destroy attribute -->
+    <%= meal_item_form.hidden_field :_destroy %>
     <%= link_to_function image_tag('delete.png'), "remove_meal_item(this)", :class => 'delete' %>
+    
     <%= meal_item_form.object.units %>
     <%= params[:unit] %>
     
-    <%= meal_item_form.hidden_field :_destroy %>
     <%= meal_item_form.hidden_field :units %>
   </td>
 </tr>

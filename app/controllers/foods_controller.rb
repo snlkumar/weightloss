@@ -9,4 +9,10 @@ class FoodsController < ApplicationController
     render :json => @foods.map{|f| {:value => f.shrt_desc, :id => f.id} }.to_json
   end
 
+  def meal_item_calories
+    meal_item = MealItem.new(params[:meal][:meal_items_attributes].first.last)
+    meal_item.determine_quantity
+    meal_item.calculate_calories
+    render :json => {:calories => meal_item.calories}
+  end
 end

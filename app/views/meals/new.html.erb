@@ -31,6 +31,7 @@
           <tbody id="meal-items">
             <tr>
               <td class="bold">Food</td>
+              <td class="bold">KCals</td>
               <td class="bold"># of Servings</td>
               <td class="bold">Serving Size</td>
             </tr>
@@ -39,7 +40,6 @@
             <% end %>
           </tbody>
         </table>
-        
         
         <div class="clear"></div>
       </div>
@@ -112,7 +112,6 @@
         $.post("<%= meal_item_meals_path() %>", form.serialize() )
       }
       
-
       return false;
     });
     
@@ -130,7 +129,17 @@
     
     $(".remove_ajax_meal_item").live('click', function(evt){
       evt.preventDefault();
-      $(this).closest('tr').detach();
+      $(this).closest('tr').fadeOut('slow', function(){
+        $(this).detach();
+      });
+    });
+    
+    $("#meal-items select").live('change', function(evt){
+      var row = $(this).closest('tr');
+      var inputs = row.find("input, select");
+      $.post("<%= meal_item_calories_foods_path %>", inputs.serialize(), function(data){
+        row.find("td.calories").html(data["calories"]);
+      });
     });
   <% end %>
 </script>

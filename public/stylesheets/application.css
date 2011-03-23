@@ -139,16 +139,19 @@ td { border: none; }
 /* New Meal Entry */
 #meal-entry          { background-color: #F6F6F6; border: 2px solid #006597; padding: 15px; width: 100%; }
 #meal-entry table    { width: 100%; }
-#meal-entry table td { vertical-align: middle; white-space: nowrap; }
+#meal-entry table td { vertical-align: middle; }
 
-#meal-items td      { border-bottom: 1px solid #CCC; }
-#calendar-box        { background: url("/images/calendar.png") no-repeat scroll 95% 50% transparent; border: 1px solid #A6A6A6; 
-                       float: left; font-size: 1.3em; height: 34px; line-height: 44px; margin-right: 10px; width: 148px; }
+#meal-items td        { border-bottom: 1px solid #CCC; }
+#meal-items .servings { width: 115px; }
+#meal-items .serving-size { width: 210px; }
+/*#meal-items .food-name { width: 295px; }*/
+
+#calendar-box         { background: url("/images/calendar.png") no-repeat scroll 95% 50% transparent; border: 1px solid #A6A6A6; 
+                        float: left; font-size: 1.3em; height: 34px; line-height: 44px; margin-right: 10px; width: 148px; }
 #selected-date      { padding-left: 14px; }
 #selected-date-help { font-size: 1em; padding-top: 12px; }
 #food-item-entry    { width: 337px; }
-/*#quantity-whole-entry { width: 70px; }
-#quantity-part-entry  { width: 70px; }*/
+
 
 form#meal .delete { float: right; }
 

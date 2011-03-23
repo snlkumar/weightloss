@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :old_flash_files, :old_success_stories, :old_tip_of_days, :old_text_files, :old_items, :old_departments
   map.resources :categories, :subcategories
   map.resources :meals, :collection => { :meal_item => :post}
-  map.resources :foods, :collection => {:search => :get}
+  map.resources :foods, :collection => {:search => :get, :meal_item_calories => :post}
   
   map.resource  :user_session, :tracking
   

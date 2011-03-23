@@ -1,17 +1,21 @@
 <% unique_id = Time.now.to_i %>
 <tr>
-  <td class="food_name">
+  <td class="food-name">
     <%= truncate(@food.try(:shrt_desc), :length => 55) %>
   </td>
-  <td class="">
+  <td class="calories">
+    
+  </td>
+  <td class="servings">
     <%= select_tag "meal[meal_items_attributes][#{unique_id}][serving_whole]", options_for_select(Meal::QUANTITY_WHOLE), :id => 'quantity-whole-entry', :class => 'meal-item-quantity' %>
     <%= select_tag "meal[meal_items_attributes][#{unique_id}][serving_part]",  options_for_select(Meal::QUANTITY_PARTS), :id => 'quantity-part-entry',  :class => 'meal-item-quantity' %>
   </td>
-  <td class="">
+  <td class="serving-size">
     <%= link_to image_tag('delete.png'), {}, :class => 'remove_ajax_meal_item delete' %>
     
     <%= select_tag "meal[meal_items_attributes][#{unique_id}][units]", 
-                   options_for_select([[truncate(@food.gmwt_desc1, :length => 25), @food.gmwt_desc1], 
+                   options_for_select([["", ""],
+                                       [truncate(@food.gmwt_desc1, :length => 25), @food.gmwt_desc1], 
                                        [truncate(@food.gmwt_desc2, :length => 25), @food.gmwt_desc2]]),
                    {:class => 'meal-item-units'} %>
     

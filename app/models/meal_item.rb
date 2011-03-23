@@ -15,7 +15,7 @@ class MealItem < ActiveRecord::Base
   
   def calculate_calories
     energ_kcal          = food.energ_kcal
-    weight_for_quantity = food.gmwt_desc1.eql?(self.units) ? food.gmwt_1 : food.gmwt_2
+    weight_for_quantity = self.units.blank? ? 0 : (food.gmwt_desc1.eql?(self.units) ? food.gmwt_1 : food.gmwt_2)
     self.calories       = (energ_kcal * (weight_for_quantity * serving) / 100)
   end
   
