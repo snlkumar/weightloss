@@ -5,7 +5,7 @@
     
     <% form_tag "/meals/meal_item", :id => 'meal-new-item' do %>
       <%= hidden_field_tag :food_id, "" %>
-      <div id="meal-entry">
+      <div id="meal-entry" style="position: relative">
         <table>
           <tbody>
             <tr>
@@ -17,8 +17,10 @@
               <td style="width: 350px; padding-top: 0px; padding-right: 0px">
                 <%= text_field_tag :food, "", :id => 'food-item-entry', :title => "Try one or more keywords" %>
               </td>
-              <td style="padding-top: 0px; padding-left: 0px">
+              <td style="padding-top: 0px; padding-left: 0px;">
+                <%= image_tag "ajax-loader.gif", :id => 'ajax-spinner', :style => 'display:none; position: absolute; top: 56px; right: 150px;' %>
                 <div id="add-meal-item" class="button" style="width: 162px;">Add This To The Meal</div>
+                
               </td>
               <td><%#= select_tag :unit, options_for_select(Meal::UNITS), :id => 'unit-entry' %></td>
             </tr>

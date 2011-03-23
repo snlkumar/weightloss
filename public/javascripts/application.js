@@ -1,11 +1,15 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
-// jQuery.ajaxSetup({
-//   'beforeSend': function(xhr) {
-//     xhr.setRequestHeader("Accept", "text/javascript")
-//   }
-// });
+jQuery.ajaxSetup({
+  'beforeSend': function(xhr) {
+    $('#ajax-spinner').show();
+    // xhr.setRequestHeader("Accept", "text/javascript");
+  },
+  'complete': function(xhr, textstatus){
+    $('#ajax-spinner').hide();
+  }
+});
 
 function remove_meal_item(link){
   $(link).prev("input[type=hidden]").val("1");  
