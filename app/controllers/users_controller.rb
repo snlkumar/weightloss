@@ -50,7 +50,17 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       redirect_to user_path(@user)
     else
-      render :action => :edit
+      case request.referrer
+      when /info/
+        render :action => :personal_info
+      when /nutrition/
+        render :action => :nutrition_info
+      when /exercise/
+        render :action => :exercise_info
+      when /account/
+        render :action => :account_info
+      end
+      
     end
   end
   
