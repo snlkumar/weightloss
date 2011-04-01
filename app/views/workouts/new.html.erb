@@ -3,9 +3,9 @@
   <div class="grid_12">
     <h3>Hey <%= current_user.first_name %>, describe the workout you did today.</h3>
     
-    <% form_tag "/workouts/workout_item", :id => 'meal-new-item' do %>
+    <% form_tag "/workouts/workout_item", :id => 'workout-new-item' do %>
       <%= hidden_field_tag :exercise_id, "" %>
-      <div id="meal-entry" style="position: relative">
+      <div id="workout-entry" style="position: relative">
         <table>
           <tbody>
             <tr>
@@ -22,7 +22,7 @@
               </td>
               <td style="padding-top: 0px; padding-left: 0px;">
                 <%= image_tag "ajax-loader.gif", :id => 'ajax-spinner', :style => 'display:none; position: absolute; top: 56px; right: 150px;' %>
-                <div id="add-meal-item" class="button" style="width: 162px;">Record This Exercise</div>
+                <div id="add-workout-item" class="button" style="width: 162px;">Record This Exercise</div>
                 
               </td>
               
@@ -31,7 +31,7 @@
         </table>
       <% end %>
       
-      <% form_for @workout, :html => {:id => 'meal'} do |workout_form| %>
+      <% form_for @workout, :html => {:id => 'workout'} do |workout_form| %>
         <table>
           <tbody id="workout-items">
             <tr>
@@ -51,7 +51,7 @@
       <div style="padding: 15px;">
         <br/>
         
-        <%= text_field_tag "meal[trained_on_date][date]", trained_on_start_date, :id => "calendar-box" %>
+        <%= text_field_tag "workout[trained_on_date][date]", trained_on_start_date, :id => "calendar-box" %>
         
         <div id="selected-date-help">
           <span class="bold">Was the date of the workout today?</span> Feel free to edit the date of this workout.
@@ -61,11 +61,11 @@
         <br/>
         <p>
           <%= label_tag 'Workout Time' %><br/>
-          <%= select_tag "meal[trained_on_date][time][hour]", 
+          <%= select_tag "workout[trained_on_date][time][hour]", 
                          options_for_select((1..12).map{|n| ["%02d" % n, n]}, workout_form.object.trained_on.try(:strftime, "%I").to_i) %>:
-          <%= select_tag "meal[trained_on_date][time][minute]", 
+          <%= select_tag "workout[trained_on_date][time][minute]", 
                          options_for_select((0..59).map{|n| ["%02d" % n, n]}, workout_form.object.trained_on.try(:strftime, "%M").to_i) %>&nbsp;
-          <%= select_tag "meal[trained_on_date][time][meridian]", 
+          <%= select_tag "workout[trained_on_date][time][meridian]", 
                          options_for_select(['AM', 'PM'], workout_form.object.trained_on.try(:strftime, "%p")) %>
         </p>
         
@@ -101,8 +101,8 @@
       }
     });
     
-    $("#add-meal-item").click(function(evt){
-      var form = $("form#meal-new-item");
+    $("#add-workout-item").click(function(evt){
+      var form = $("form#workout-new-item");
       
       if( $("#exercise_id").val() == "" ){
         alert("Please choose an activity");
@@ -113,26 +113,26 @@
       return false;
     });
     
-    $("#meal").submit(function(evt){
-      var form = $("form#meal-new-item");
-      var min_possible_quantity = (0.25 * $(".meal-item-quantity").length) / 2;
+    $("#workout").submit(function(evt){
+      var form = $("form#workout-new-item");
+      var min_possible_quantity = (0.25 * $(".workout-item-quantity").length) / 2;
       
-      // ensure a quantity and measure has been provided for every item added to the meal, before we allow submitting
-      if( _.inject($(".meal-item-quantity"), function(memo, num){ return memo + parseFloat($(num).val()); }, 0) < min_possible_quantity || 
-          _.any($(".meal-item-units"),    function(el){ return $(el).val() == ""}) ){
+      // ensure a quantity and measure has been provided for every item added to the workout, before we allow submitting
+      if( _.inject($(".workout-item-quantity"), function(memo, num){ return memo + parseFloat($(num).val()); }, 0) < min_possible_quantity || 
+          _.any($(".workout-item-units"),    function(el){ return $(el).val() == ""}) ){
         alert("Please make sure all exercises have a duration and intensity before submitting the exercise");
         return false;
       }
     });
     
-    $(".remove_ajax_meal_item").live('click', function(evt){
+    $(".remove_ajax_workout_item").live('click', function(evt){
       evt.preventDefault();
       $(this).closest('tr').fadeOut('slow', function(){
         $(this).detach();
       });
     });
     
-    $("#meal-items select").live('change', function(evt){
+    $("#workout-items select").live('change', function(evt){
       var row = $(this).closest('tr');
       var inputs = row.find("input, select");
       $.post("<%= workout_item_calories_exercises_path %>", inputs.serialize(), function(data){
