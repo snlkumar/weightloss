@@ -1,6 +1,6 @@
 <tr>
   <td class="exercise-name">
-    <%= workout_item_form.object.food.try(:description) %>
+    <%= workout_item_form.object.exercise.try(:description) %>
     
     <%= workout_item_form.hidden_field :exercise_id %>
   </td>
@@ -10,9 +10,9 @@
   <td class="duration">
     <!-- Must be immediately before delete image for js to set _destroy attribute -->
     <%= workout_item_form.hidden_field :_destroy %>
-    <%= link_to_function image_tag('delete.png'), "remove_exercise_item(this)", :class => 'delete' %>
+    <%= link_to_function image_tag('delete.png'), "remove_meal_or_exercise_item(this)", :class => 'delete' %>
     
-    <%= workout_item_form.object.duration %> Mins
+    <%= workout_item_form.object.duration %> (mins)
     <%= workout_item_form.hidden_field :duration %>
   </td>
   

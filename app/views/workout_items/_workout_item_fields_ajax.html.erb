@@ -9,7 +9,8 @@
   <td class="duration">
     <%= link_to image_tag('delete.png'), {}, :class => 'remove_ajax_meal_item delete' %>
     
-    <%= @workout_item.duration %>
+    <%= @workout_item.duration %> (mins)
+    <%= hidden_field_tag "workout[workout_items_attributes][#{unique_id}][duration]", @workout_item.duration %>
     <%= hidden_field_tag "workout[workout_items_attributes][#{unique_id}][exercise_id]", @exercise.id %>
   </td>
 </tr>

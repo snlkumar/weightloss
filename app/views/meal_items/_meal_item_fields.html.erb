@@ -17,7 +17,7 @@
   <td class="serving-size">
     <!-- Must be immediately before delete image for js to set _destroy attribute -->
     <%= meal_item_form.hidden_field :_destroy %>
-    <%= link_to_function image_tag('delete.png'), "remove_meal_item(this)", :class => 'delete' %>
+    <%= link_to_function image_tag('delete.png'), "remove_meal_or_exercise_item(this)", :class => 'delete' %>
     
     <%= meal_item_form.object.units %>
     <%= params[:unit] %>
