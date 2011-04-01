@@ -10,19 +10,22 @@
           <tbody>
             <tr>
               <td class="food_name" style="padding-bottom: 0px;"><%= label_tag 'Find an activity' %></td>
-              <td></td>
+              <td class="food_name" style="padding-bottom: 0px;"><%= label_tag 'Duration' %></td>
               <td></td>
             </tr>
             <tr>
               <td style="width: 350px; padding-top: 0px; padding-right: 0px">
-                <%= text_field_tag :food, "", :id => 'food-item-entry', :title => "Try one or more keywords" %>
+                <%= text_field_tag :exercise, "", :id => 'exercise-item-entry', :title => "Try one or more keywords" %>
+              </td>
+              <td style="padding-top: 0px; padding-right: 0px">
+                <%= text_field_tag :duration, '', :style => 'width: 75px' %>
               </td>
               <td style="padding-top: 0px; padding-left: 0px;">
                 <%= image_tag "ajax-loader.gif", :id => 'ajax-spinner', :style => 'display:none; position: absolute; top: 56px; right: 150px;' %>
                 <div id="add-meal-item" class="button" style="width: 162px;">Record This Exercise</div>
                 
               </td>
-              <td><%#= select_tag :unit, options_for_select(Meal::UNITS), :id => 'unit-entry' %></td>
+              
             </tr>
           </tbody>
         </table>
@@ -30,12 +33,11 @@
       
       <% form_for @workout, :html => {:id => 'meal'} do |workout_form| %>
         <table>
-          <tbody id="meal-items">
+          <tbody id="workout-items">
             <tr>
-              <td class="bold">Exercise</td>
+              <td class="bold exercise-name">Exercise</td>
               <td class="bold">KCals</td>
               <td class="bold">Duration</td>
-              <td class="bold">Intensity</td>
             </tr>
             <% workout_form.fields_for :workout_items do |workout_item_form| %>
               <%= render :partial => 'workout_items/workout_item_fields', :locals => { :workout_item_form => workout_item_form } %>
@@ -57,7 +59,6 @@
         
         <div class="clear"></div>
         <br/>
-        
         <p>
           <%= label_tag 'Workout Time' %><br/>
           <%= select_tag "meal[trained_on_date][time][hour]", 
@@ -67,11 +68,6 @@
           <%= select_tag "meal[trained_on_date][time][meridian]", 
                          options_for_select(['AM', 'PM'], workout_form.object.trained_on.try(:strftime, "%p")) %>
         </p>
-        
-        <!-- <p>
-                  <%#= workout_form.label :meal_type %><br/>
-                  <%#= workout_form.select :meal_type, options_for_select(Meal::TYPES, params[:meal_type]) %>
-                </p> -->
         
         <p>
           <%= workout_form.label :note, 'Workout Note' %><br/>
@@ -94,21 +90,21 @@
 
 <script type="text/javascript" charset="utf-8">
   <% content_for :js do %>
-    $('#food-item-entry').labelify({ labelledClass: "labelHighlight" });
+    $('#exercise-item-entry').labelify({ labelledClass: "labelHighlight" });
     $('#calendar-box').datepicker();
     
-    $('#food-item-entry').autocomplete({
-      source: "/foods/search",
+    $('#exercise-item-entry').autocomplete({
+      source: "/exercises/search",
       minLength: 2,
       select: function(evt, ui){
-        $("#food_id").val(ui.item.id);
+        $("#exercise_id").val(ui.item.id);
       }
     });
     
     $("#add-meal-item").click(function(evt){
       var form = $("form#meal-new-item");
       
-      if( $("#food_id").val() == "" ){
+      if( $("#exercise_id").val() == "" ){
         alert("Please choose an activity");
       }else{
         $.post("<%= workout_item_workouts_path() %>", form.serialize() )

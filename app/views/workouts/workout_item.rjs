@@ -1,0 +1,7 @@
+test_output = 
+
+  @template.fields_for :workout_items, Workout.new.workout_items.new, :child_index => "new_workout_items" do |f|
+    render :partial => 'workout_items/workout_item_fields_ajax', :locals => {:workout_item_form => f}
+  end
+
+page.insert_html :bottom, "#workout-items", test_output

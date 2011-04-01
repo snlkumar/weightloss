@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(:version => 20110401005701) do
   end
 
   create_table "exercises", :force => true do |t|
+    t.string   "description"
+    t.string   "category"
+    t.decimal  "mets",        :precision => 5, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -286,7 +289,8 @@ ActiveRecord::Schema.define(:version => 20110401005701) do
   create_table "workout_items", :force => true do |t|
     t.integer  "workout_id"
     t.integer  "exercise_id"
-    t.integer  "minutes"
+    t.integer  "calories"
+    t.integer  "duration"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

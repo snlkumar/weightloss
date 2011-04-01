@@ -17,6 +17,7 @@ Rails::Initializer.run do |config|
   config.gem 'paperclip', :version => '2.3.5'
   config.gem 'hoptoad_notifier'
   config.gem 'fastercsv'
+  config.gem 'linguistics'
   
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer

@@ -1,0 +1,810 @@
+METS,heading,description
+8.5,bicycling,"bicycling, BMX or mountain"
+4.0,bicycling,"bicycling, <10 mph, leisure, to work or for pleasure (Taylor Code 115"
+8.0,bicycling,"bicycling, general"
+6.0,bicycling,"bicycling, 10-11.9 mph, leisure, slow, light effort"
+8.0,bicycling,"bicycling, 12-13.9 mph, leisure, moderate effort"
+10.0,bicycling,"bicycling, 14-15.9 mph, racing or leisure, fast, vigorous effort"
+12.0,bicycling,"bicycling, 16-19 mph, racing/not drafting or >19 mph drafting, very fast, racing genera"
+16.0,bicycling,"bicycling, >20 mph, racing, not drafting"
+5.0,bicycling,unicycling
+7.0,conditioning exercise,"bicycling, stationary, general"
+3.0,conditioning exercise,"bicycling, stationary, 50 watts, very light effort"
+5.5,conditioning exercise,"bicycling, stationary, 100 watts, light effort"
+7.0,conditioning exercise,"bicycling, stationary, 150 watts, moderate effort"
+10.5,conditioning exercise,"bicycling, stationary, 200 watts, vigorous effort"
+12.5,conditioning exercise,"bicycling, stationary, 250 watts, very vigorous effort"
+8.0,conditioning exercise,"calisthenics (e.g. pushups, situps, pullups, jumping jacks), heavy, vigorous effort"
+3.5,conditioning exercise,"calisthenics, home exercise, light or moderate effort, general (example: back exercises), going up & down from floor (Taylor Code 150"
+8.0,conditioning exercise,"circuit training, including some aerobic movement with minimal rest, general"
+6.0,conditioning exercise,"weight lifting (free weight, nautilus or universal-type), power lifting or body building, vigorous effort (Taylor Code 210"
+5.5,conditioning exercise,"health club exercise, general (Taylor Code 160"
+9.0,conditioning exercise,"stair-treadmill ergometer, general"
+7.0,conditioning exercise,"rowing, stationary ergometer, genera"
+3.5,conditioning exercise,"rowing, stationary, 50 watts, light effort"
+7.0,conditioning exercise,"rowing, stationary, 100 watts, moderate effort"
+8.5,conditioning exercise,"rowing, stationary, 150 watts, vigorous effort"
+12.0,conditioning exercise,"rowing, stationary, 200 watts, very vigorous effort"
+7.0,conditioning exercise,"ski machine, general"
+6.0,conditioning exercise,"slimnastics, jazzercise"
+2.5,conditioning exercise,"stretching, hatha yoga"
+2.5,conditioning exercise,mild stretching
+6.0,conditioning exercise,teaching aerobic exercise class
+4.0,conditioning exercise,"water aerobics, water calisthenics"
+3.0,conditioning exercise,"weight lifting (free, nautilus or universal-type), light or moderate effort, light workout, genera"
+1.0,conditioning exercise,"whirlpool, sitting"
+4.8,dancing,"ballet or modern, twist, jazz, tap, jitterbug"
+6.5,dancing,"aerobic, general"
+8.5,dancing,"aerobic, step, with 6 – 8 inch step"
+10.0,dancing,"aerobic, step, with 10 – 12 inch step"
+5.0,dancing,"aerobic, low impact"
+7.0,dancing,"aerobic, high impact"
+4.5,dancing,"general, Greek, Middle Eastern, hula, flamenco, belly, and swing dancing"
+5.5,dancing,"ballroom, dancing fast (Taylor Code 125)"
+4.5,dancing,"ballroom, fast (disco, folk, square), line dancing, Irish step dancing, polka, contra, country"
+3.0,dancing,"ballroom, slow (e.g. waltz, foxtrot, slow dancing),samba, tango, 19th C, mambo, chacha"
+5.5,dancing,Anishinaabe Jingle Dancing or other traditional American Indian dancing
+3.0,fishing and hunting,"fishing, general"
+4.0,fishing and hunting,"digging worms, with shovel"
+4.0,fishing and hunting,fishing from river bank and walking
+2.5,fishing and hunting,"fishing from boat, sitting"
+3.5,fishing and hunting,"fishing from river bank, standing (Taylor Code 660)"
+6.0,fishing and hunting,"fishing in stream, in waders (Taylor Code 670)"
+2.0,fishing and hunting,"fishing, ice, sitting"
+2.5,fishing and hunting,"hunting, bow and arrow or crossbow"
+6.0,fishing and hunting,"hunting, deer, elk, large game (Taylor Code 170)"
+2.5,fishing and hunting,"hunting, duck, wading"
+5.0,fishing and hunting,"hunting, general"
+6.0,fishing and hunting,"hunting, pheasants or grouse (Taylor Code 680"
+5.0,fishing and hunting,"hunting, rabbit, squirrel, prairie chick, raccoon, small game (Taylor Code 690)"
+2.5,fishing and hunting,"pistol shooting or trap shooting, standing"
+3.3,home activities,"carpet sweeping, sweeping floors"
+3.0,home activities,"cleaning, heavy or major (e.g. wash car, wash windows, clean garage), vigorous effort"
+3.5,home activities,mopping
+2.5,home activities,"multiple household tasks all at once, light effort"
+3.5,home activities,"multiple household tasks all at once, moderate effort"
+4.0,home activities,"multiple household tasks all at once, vigorous effort"
+3.0,home activities,"cleaning, house or cabin, genera"
+2.5,home activities,"cleaning, light (dusting, straightening up, changing linen, carrying out trash"
+2.3,home activities,wash dishes - standing or in general (not broken into stand/walk components
+2.5,home activities,wash dishes; clearing dishes from table – walking
+3.5,home activities,vacuuming
+6.0,home activities,butchering animals
+2.0,home activities,"cooking or food preparation - standing or sitting or in general (not broken into stand/walk components), manual appliance"
+2.5,home activities,"serving food, setting table - implied walking or standing"
+2.5,home activities,cooking or food preparation - walking
+2.5,home activities,feeding animals
+2.5,home activities,"putting away groceries (e.g. carrying groceries, shopping without a grocery cart), carrying packages"
+7.5,home activities,carrying groceries upstairs
+3.0,home activities,cooking Indian bread on an outside stove
+2.3,home activities,"food shopping with or without a grocery cart, standing or walking"
+2.3,home activities,"non-food shopping, standing or walking"
+ ,home activities,walking shopping (non-grocery shopping)
+2.3,home activities,ironing
+1.5,home activities,"sitting - knitting, sewing, lt. wrapping (presents)"
+2.0,home activities,"implied standing - laundry, fold or hang clothes, put clothes in washer or dryer, packing suitcase"
+2.3,home activities,"implied walking - putting away clothes, gathering clothes to pack, putting away laundry"
+2.0,home activities,making bed
+5.0,home activities,"maple syruping/sugar bushing (including carrying buckets, carrying wood)"
+6.0,home activities,"moving furniture, household items,carrying boxes"
+3.8,home activities,"scrubbing floors, on hands and knees, scrubbing bathroom, bathtub"
+4.0,home activities,"sweeping garage, sidewalk or outside of house"
+ ,home activities,"moving household items, carrying boxes"
+3.5,home activities,"standing - packing/unpacking boxes, occasional lifting of household items light - moderate effort"
+3.0,home activities,implied walking - putting away household items - moderate effort
+2.5,home activities,watering plants
+2.5,home activities,building a fire inside
+9.0,home activities,"moving household items upstairs, carrying boxes or furniture"
+2.0,home activities,"standing - light (pump gas, change light bulb, etc.)"
+3.0,home activities,"walking - light, non-cleaning (readying to leave, shut/lock doors, close windows, etc."
+2.5,home activities,"sitting - playing with child(ren) – light, only active periods"
+2.8,home activities,"standing - playing with child(ren) – light, only active periods"
+4.0,home activities,"walk/run - playing with child(ren) – moderate, only active periods"
+5.0,home activities,"walk/run - playing with child(ren) – vigorous, only active periods"
+3.0,home activities,carrying small children
+2.5,home activities,"child care: sitting/kneeling - dressing, bathing, grooming, feeding, occasional lifting of child-light effort, genera"
+3.0,home activities,"child care: standing - dressing, bathing, grooming, feeding, occasional lifting of child-light effort"
+4.0,home activities,"elder care, disabled adult, only active periods"
+1.5,home activities,reclining with baby
+2.5,home activities,"sit, playing with animals, light, only active periods"
+2.8,home activities,"stand, playing with animals, light, only active periods"
+2.8,home activities,"walk/run, playing with animals, light, only active periods"
+4.0,home activities,"walk/run, playing with animals, moderate, only active periods"
+5.0,home activities,"walk/run, playing with animals, vigorous, only active periods"
+3.5,home activities,standing - bathing dog
+3.0,home repair,airplane repair
+4.0,home repair,automobile body work
+3.0,home repair,automobile repair
+3.0,home repair,"carpentry, general, workshop (Taylor Code 620)"
+6.0,home repair,"carpentry, outside house, installing rain gutters,building a fence, (Taylor Code 640)"
+4.5,home repair,"carpentry, finishing or refinishing cabinets or furniture"
+7.5,home repair,"carpentry, sawing hardwood"
+5.0,home repair,"caulking, chinking log cabin"
+4.5,home repair,"caulking, except log cabin"
+5.0,home repair,cleaning gutters
+5.0,home repair,excavating garage
+5.0,home repair,hanging storm windows
+4.5,home repair,laying or removing carpet
+4.5,home repair,"laying tile or linoleum, repairing appliances"
+5.0,home repair,"painting, outside home (Taylor Code 650)"
+3.0,home repair,"painting, papering, plastering, scraping, inside house, hanging sheet rock, remodeling"
+4.5,home repair,"painting, (Taylor Code 630)"
+3.0,home repair,put on and removal of tarp - sailboat
+6.0,home repair,roofing
+4.5,home repair,sanding floors with a power sander
+4.5,home repair,scraping and painting sailboat or powerboat
+5.0,home repair,spreading dirt with a shovel
+4.5,home repair,"washing and waxing hull of sailboat, car, powerboat, airplane"
+4.5,home repair,"washing fence, painting fence"
+3.0,home repair,"wiring, plumbing"
+1.0,inactivity quiet,"lying quietly, watching television"
+1.0,inactivity quiet,"lying quietly, doing nothing, lying in bed awake, listening to music (not talking or reading)"
+1.0,inactivity quiet,sitting quietly and watching television
+1.0,inactivity quiet,"sitting quietly, sitting smoking, listening to music (not talking or reading), watching a movie in a theater"
+0.9,inactivity quiet,sleeping
+1.2,inactivity quiet,standing quietly (standing in a line)
+1.0,inactivity light,reclining - writing
+1.0,inactivity light,reclining - talking or talking on phone
+1.0,inactivity light,reclining - reading
+1.0,inactivity light,meditating
+5.0,lawn and garden,"carrying, loading or stacking wood, loading/unloading or carrying lumber"
+6.0,lawn and garden,"chopping wood, splitting logs"
+5.0,lawn and garden,"clearing land, hauling branches, wheelbarrow chores"
+5.0,lawn and garden,digging sandbox
+5.0,lawn and garden,"digging, spading, filling garden, composting, (Taylor Code 590)"
+6.0,lawn and garden,"gardening with heavy power tools, tilling a garden, chain saw"
+5.0,lawn and garden,laying crushed rock
+5.0,lawn and garden,laying sod
+5.5,lawn and garden,"mowing lawn, general"
+2.5,lawn and garden,"mowing lawn, riding mower (Taylor Code 550)"
+6.0,lawn and garden,"mowing lawn, walk, hand mower (Taylor Code 570)"
+5.5,lawn and garden,"mowing lawn, walk, power mower"
+4.5,lawn and garden,"mowing lawn, power mower (Taylor Code 590)"
+4.5,lawn and garden,"operating snow blower, walking"
+4.5,lawn and garden,"planting seedlings, shrubs"
+4.5,lawn and garden,planting trees
+4.3,lawn and garden,raking lawn
+4.0,lawn and garden,raking lawn (Taylor Code 600)
+4.0,lawn and garden,raking roof with snow rake
+3.0,lawn and garden,riding snow blower
+4.0,lawn and garden,"sacking grass, leaves"
+6.0,lawn and garden,"shoveling snow, by hand (Taylor Code 610)"
+4.5,lawn and garden,"trimming shrubs or trees, manual cutter"
+3.5,lawn and garden,"trimming shrubs or trees, power cutter, using leaf blower, edger"
+2.5,lawn and garden,"walking, applying fertilizer or seeding a lawn"
+1.5,lawn and garden,"watering lawn or garden, standing or walking"
+4.5,lawn and garden,"weeding, cultivating garden (Taylor Code 580)"
+4.0,lawn and garden,"gardening, general"
+3.0,lawn and garden,"picking fruit off trees, picking fruits/vegetables, moderate effort"
+3.0,lawn and garden,"implied walking/standing - picking up yard, light, picking flowers or vegetables"
+3.0,lawn and garden,"walking, gathering gardening tools"
+1.5,miscellaneous,"sitting - card playing, playing board games"
+2.3,miscellaneous,"standing - drawing (writing), casino gambling, duplicating machine"
+1.3,miscellaneous,"sitting - reading, book, newspaper, etc."
+1.8,miscellaneous,"sitting - writing, desk work, typing"
+1.8,miscellaneous,standing - talking or talking on the phone
+1.5,miscellaneous,sitting - talking or talking on the phone
+1.8,miscellaneous,"sitting - studying, general, including reading and/or writing"
+1.8,miscellaneous,"sitting - in class, general, including note-taking or class discussion"
+1.8,miscellaneous,standing - reading
+2.0,miscellaneous,standing - miscellaneous
+1.5,miscellaneous,"sitting - arts and crafts, light effort"
+2.0,miscellaneous,"sitting - arts and crafts, moderate effort"
+1.8,miscellaneous,"standing - arts and crafts, light effort"
+3.0,miscellaneous,"standing - arts and crafts, moderate effort"
+3.5,miscellaneous,"standing - arts and crafts, vigorous effort"
+1.5,miscellaneous,"retreat/family reunion activities involving sitting, relaxing, talking, eating"
+2.0,miscellaneous,touring/traveling/vacation involving walking and riding
+2.5,miscellaneous,"camping involving standing, walking, sitting, light-to-moderate effort"
+1.5,miscellaneous,"sitting at a sporting event, spectator"
+1.8,music playing,accordion
+2.0,music playing,cello
+2.5,music playing,conducting
+4.0,music playing,drums
+2.0,music playing,flute (sitting)
+2.0,music playing,horn
+2.5,music playing,piano or organ
+3.5,music playing,trombone
+2.5,music playing,trumpet
+2.5,music playing,violin
+2.0,music playing,woodwind
+2.0,music playing,"guitar, classical, folk (sitting)"
+3.0,music playing,"guitar, rock and roll band (standing)"
+4.0,music playing,"marching band, playing an instrument, baton twirling (walking)"
+3.5,music playing,"marching band, drum major (walking)"
+4.0,occupation,"bakery, general, moderate effort"
+2.5,occupation,"bakery, light effort"
+2.3,occupation,bookbinding
+6.0,occupation,"building road (including hauling debris, driving heavy machinery)"
+2.0,occupation,"building road, directing traffic (standing)"
+3.5,occupation,"carpentry, general"
+8.0,occupation,"carrying heavy loads, such as bricks"
+8.0,occupation,"carrying moderate loads up stairs, moving boxes (16-40 pounds)"
+2.5,occupation,"chambermaid, making bed (nursing)"
+6.5,occupation,"coal mining, drilling coal, rock"
+6.5,occupation,"coal mining, erecting supports"
+6.0,occupation,"coal mining, general"
+7.0,occupation,"coal mining, shoveling coal"
+5.5,occupation,"construction, outside, remodeling"
+3.0,occupation,custodial work - buffing the floor with electric buffer
+2.5,occupation,"custodial work - cleaning sink and toilet, light effort"
+2.5,occupation,"custodial work - dusting, light effort"
+4.0,occupation,"custodial work – feathering arena floor, moderate effor"
+3.5,occupation,"custodial work - general cleaning, moderate effort"
+3.5,occupation,"custodial work - mopping, moderate effort"
+3.0,occupation,"custodial work - take out trash, moderate effor"
+2.5,occupation,"custodial work - vacuuming, light effort"
+3.0,occupation,"custodial work - vacuuming, moderate effort"
+3.5,occupation,"electrical work, plumbing"
+8.0,occupation,"farming, baling hay, cleaning barn, poultry work,vigorous effort"
+3.5,occupation,"farming, chasing cattle, non-strenuous(walking), moderate effort"
+4.0,occupation,"farming, chasing cattle or other livestock on horseback, moderate effor"
+2.0,occupation,"farming, chasing cattle or other livestock, driving, light effort"
+2.5,occupation,"farming, driving harvester, cutting hay, irrigation work"
+2.5,occupation,"farming, driving tractor"
+4.0,occupation,"farming, feeding small animals"
+4.5,occupation,"farming, feeding cattle, horses"
+4.5,occupation,"farming, hauling water for animals, general hauling water"
+6.0,occupation,"farming, taking care of animals (grooming, brushing, shearing sheep, assisting with birthing, medical care, branding)"
+8.0,occupation,"farming, forking straw bales, cleaning corral or barn, vigorous effort"
+3.0,occupation,"farming, milking by hand, moderate effort"
+1.5,occupation,"farming, milking by machine, light effort"
+5.5,occupation,"farming, shoveling grain, moderate effort"
+12.0,occupation,"fire fighter, general"
+11.0,occupation,"fire fighter, climbing ladder with full gear"
+8.0,occupation,"fire fighter, hauling hoses on ground"
+17.0,occupation,"forestry, ax chopping, fast"
+5.0,occupation,"forestry, ax chopping, slow"
+7.0,occupation,"forestry, barking trees"
+11.0,occupation,"forestry, carrying logs"
+8.0,occupation,"forestry, felling trees"
+8.0,occupation,"forestry, general"
+5.0,occupation,"forestry, hoeing"
+6.0,occupation,"forestry, planting by hand"
+7.0,occupation,"forestry, sawing by hand"
+4.5,occupation,"forestry, sawing, power"
+9.0,occupation,"forestry, trimming trees"
+4.0,occupation,"forestry, weeding"
+4.5,occupation,furriery
+6.0,occupation,horse grooming
+8.0,occupation,"horse racing, galloping"
+6.5,occupation,"horse racing, trotting"
+2.6,occupation,"horse racing, walking"
+3.5,occupation,locksmith
+2.5,occupation,"machine tooling, machining, working sheet meta"
+3.0,occupation,"machine tooling, operating lathe"
+5.0,occupation,"machine tooling, operating punch press"
+4.0,occupation,"machine tooling, tapping and drilling"
+3.0,occupation,"machine tooling, welding"
+7.0,occupation,"masonry, concrete"
+4.0,occupation,"masseur, masseuse (standing)"
+7.5,occupation,"moving, pushing heavy objects, 75 lbs or more (desks, moving van work)"
+12.0,occupation,skindiving or SCUBA diving as a frogman (Navy Seal)
+2.5,occupation,"operating heavy duty equipment/automated, not driving"
+4.5,occupation,orange grove work
+2.3,occupation,printing (standing)
+2.5,occupation,"police, directing traffic (standing)"
+2.0,occupation,"police, driving a squad car (sitting)"
+1.3,occupation,"police, riding in a squad car (sitting)"
+4.0,occupation,"police, making an arrest (standing)"
+2.5,occupation,"shoe repair, general"
+8.5,occupation,"shoveling, digging ditches"
+9.0,occupation,"shoveling, heavy (more than 16 pounds/minute"
+6.0,occupation,"shoveling, light (less than 10 pounds/minute)"
+7.0,occupation,"shoveling, moderate (10 to 15 pounds/minute)"
+1.5,occupation,"sitting - light office work, general (chemistry lab work, light use of hand tools, watch repair or micro-assembly, light assembly/repair), sitting, reading, driving at work"
+1.5,occupation,"sitting meetings, general, and/or with talking involved,eatting at a business meeting"
+2.5,occupation,"sitting; moderate (heavy levers, riding mower/forklift, crane operation) teaching stretching or yoga"
+2.3,occupation,"standing; light (bartending, store clerk, assembling, filing, duplicating, putting up a Christmas tree), standing and talking at work, changing clothes when teaching physical education"
+3.0,occupation,"standing; light/moderate (assemble/repair heavy parts, welding, stocking, auto repair, pack boxes for moving, etc.), patient care (as in nursing"
+4.0,occupation,"lifting items continuously, 10 – 20 lbs, with limited walking or resting"
+3.5,occupation,"standing; moderate (assembling at fast rate, intermittent, lifting 50 lbs, hitch/twisting ropes)"
+4.0,occupation,"standing; moderate/heavy (lifting more than 50 lbs, masonry, painting, paper hanging"
+5.0,occupation,"steel mill, fettling"
+5.5,occupation,"steel mill, forging"
+8.0,occupation,"steel mill, hand rolling"
+8.0,occupation,"steel mill, merchant mill rolling"
+11.0,occupation,"steel mill, removing slag"
+7.5,occupation,"steel mill, tending furnace"
+5.5,occupation,"steel mill, tipping molds"
+8.0,occupation,"steel mill, working in general"
+2.5,occupation,"tailoring, cutting"
+2.5,occupation,"tailoring, general"
+2.0,occupation,"tailoring, hand sewing"
+2.5,occupation,"tailoring, machine sewing"
+4.0,occupation,"tailoring, pressing"
+3.5,occupation,"tailoring, weaving"
+6.5,occupation,"truck driving, loading and unloading truck (standing)"
+1.5,occupation,"typing, electric, manual or computer"
+6.0,occupation,"using heavy power tools such as pneumatic tools (jackhammers, drills, etc."
+8.0,occupation,"using heavy tools (not power) such as shovel, pick, tunnel bar, spade"
+2.0,occupation,"walking on job, less than 2.0 mph (in office or lab area), very slow"
+3.3,occupation,"walking on job, 3.0 mph, in office, moderate speed, not carrying anything"
+3.8,occupation,"walking on job, 3.5 mph, in office, brisk speed, not carrying anything"
+3.0,occupation,"walking, 2.5 mph, slowly and carrying light objects less than 25 pounds"
+3.0,occupation,"walking, gathering things at work, ready to leave"
+4.0,occupation,"walking, 3.0 mph, moderately and carrying light objects less than 25 lbs"
+3.5,occupation,locksmith
+2.5,occupation,"machine tooling, machining, working sheet meta"
+3.0,occupation,"machine tooling, operating lathe"
+5.0,occupation,"machine tooling, operating punch press"
+4.0,occupation,"machine tooling, tapping and drilling"
+3.0,occupation,"machine tooling, welding"
+7.0,occupation,"masonry, concrete"
+4.0,occupation,"masseur, masseuse (standing)"
+7.5,occupation,"moving, pushing heavy objects, 75 lbs or more (desks, moving van work)"
+12.0,occupation,skindiving or SCUBA diving as a frogman (Navy Seal)
+2.5,occupation,"operating heavy duty equipment/automated, not driving"
+4.5,occupation,orange grove work
+2.3,occupation,printing (standing)
+2.5,occupation,"police, directing traffic (standing)"
+2.0,occupation,"police, driving a squad car (sitting)"
+1.3,occupation,"police, riding in a squad car (sitting)"
+4.0,occupation,"police, making an arrest (standing)"
+2.5,occupation,"shoe repair, general"
+8.5,occupation,"shoveling, digging ditches"
+9.0,occupation,"shoveling, heavy (more than 16 pounds/minute"
+6.0,occupation,"shoveling, light (less than 10 pounds/minute)"
+7.0,occupation,"shoveling, moderate (10 to 15 pounds/minute)"
+1.5,occupation,"sitting - light office work, general (chemistry lab work, light use of hand tools, watch repair or micro-assembly, light assembly/repair), sitting, reading, driving at work"
+1.5,occupation,"sitting meetings, general, and/or with talking involved,eatting at a business meeting"
+2.5,occupation,"sitting; moderate (heavy levers, riding mower/forklift, crane operation) teaching stretching or yoga"
+2.3,occupation,"standing; light (bartending, store clerk, assembling, filing, duplicating, putting up a Christmas tree), standing and talking at work, changing clothes when teaching physical education"
+3.0,occupation,"standing; light/moderate (assemble/repair heavy parts, welding, stocking, auto repair, pack boxes for moving, etc.), patient care (as in nursing"
+4.0,occupation,"lifting items continuously, 10 – 20 lbs, with limited walking or resting"
+3.5,occupation,"standing; moderate (assembling at fast rate, intermittent, lifting 50 lbs, hitch/twisting ropes)"
+4.0,occupation,"standing; moderate/heavy (lifting more than 50 lbs, masonry, painting, paper hanging"
+5.0,occupation,"steel mill, fettling"
+5.5,occupation,"steel mill, forging"
+8.0,occupation,"steel mill, hand rolling"
+8.0,occupation,"steel mill, merchant mill rolling"
+11.0,occupation,"steel mill, removing slag"
+7.5,occupation,"steel mill, tending furnace"
+5.5,occupation,"steel mill, tipping molds"
+8.0,occupation,"steel mill, working in general"
+2.5,occupation,"tailoring, cutting"
+2.5,occupation,"tailoring, general"
+2.0,occupation,"tailoring, hand sewing"
+2.5,occupation,"tailoring, machine sewing"
+4.0,occupation,"tailoring, pressing"
+3.5,occupation,"tailoring, weaving"
+6.5,occupation,"truck driving, loading and unloading truck (standing)"
+1.5,occupation,"typing, electric, manual or computer"
+6.0,occupation,"using heavy power tools such as pneumatic tools (jackhammers, drills, etc."
+8.0,occupation,"using heavy tools (not power) such as shovel, pick, tunnel bar, spade"
+2.0,occupation,"walking on job, less than 2.0 mph (in office or lab area), very slow"
+3.3,occupation,"walking on job, 3.0 mph, in office, moderate speed, not carrying anything"
+3.8,occupation,"walking on job, 3.5 mph, in office, brisk speed, not carrying anything"
+3.0,occupation,"walking, 2.5 mph, slowly and carrying light objects less than 25 pounds"
+3.0,occupation,"walking, gathering things at work, ready to leave"
+4.0,occupation,"walking, 3.0 mph, moderately and carrying light objects less than 25 lbs"
+6.0,sports,"boxing, punching bag"
+9.0,sports,"boxing, sparring"
+7.0,sports,broomball
+5.0,sports,"children’s games (hopscotch, 4-square, dodge ball, playground apparatus, t-ball, tetherball, marbles, jacks, acrace games"
+4.0,sports,"coaching: football, soccer, basketball, baseball, swimming, etc."
+5.0,sports,"cricket (batting, bowling)"
+2.5,sports,croquet
+4.0,sports,curling
+2.5,sports,"darts, wall or lawn"
+6.0,sports,"drag racing, pushing or driving a car"
+6.0,sports,fencing
+9.0,sports,"football, competitive"
+8.0,sports,"football, touch, flag, general (Taylor Code 510"
+2.5,sports,"football or baseball, playing catch"
+3.0,sports,"frisbee playing, general"
+8.0,sports,"frisbee, ultimate"
+4.5,sports,"golf, general"
+ ,sports,golf carrying clubs
+4.5,sports,"golf, walking and carrying clubs (See footnote at end of the Compendium"
+3.0,sports,"golf, miniature, driving range"
+ ,sports,"golf, pulling clubs"
+4.3,sports,"golf, walking and pulling clubs (See footnote at end of the Compendium"
+3.5,sports,"golf, using power cart (Taylor Code 070)"
+4.0,sports,"gymnastics, general"
+4.0,sports,hacky sack
+12.0,sports,"handball, general (Taylor Code 520)"
+8.0,sports,"handball, team"
+3.5,sports,hand gliding
+8.0,sports,"hockey, field"
+8.0,sports,"hockey, ice"
+4.0,sports,"horseback riding, general"
+3.5,sports,"horseback riding, saddling horse, grooming horse"
+6.5,sports,"horseback riding, trotting"
+2.5,sports,"horseback riding, walking"
+3.0,sports,"horseshoe pitching, quoits"
+12.0,sports,jai alai
+10.0,sports,"judo, jujitsu, karate, kick boxing, tae kwan do"
+4.0,sports,juggling
+7.0,sports,kickball
+8.0,sports,lacrosse
+4.0,sports,motor-cross
+9.0,sports,orienteering
+10.0,sports,"paddleball, competitive"
+6.0,sports,"paddleball, casual, general (Taylor Code 460)"
+8.0,sports,polo
+10.0,sports,"racquetball, competitive"
+7.0,sports,"racquetball, casual, general (Taylor Code 470)"
+11.0,sports,"rock climbing, ascending rock"
+8.0,sports,"rock climbing, rappelling"
+12.0,sports,"rope jumping, fast"
+10.0,sports,"rope jumping, moderate, general"
+8.0,sports,"rope jumping, slow"
+10.0,sports,rugby
+3.0,sports,"shuffleboard, lawn bowling"
+5.0,sports,skateboarding
+7.0,sports,"skating, roller (Taylor Code 360)"
+12.0,sports,roller blading (in-line skating)
+3.5,sports,sky diving
+10.0,sports,"soccer, competitive"
+7.0,sports,"soccer, casual, general (Taylor Code 540)"
+5.0,sports,"softball or baseball, fast or slow pitch, general (Taylor Code 440)"
+4.0,sports,"softball, officiating"
+6.0,sports,"softball, pitching"
+12.0,sports,squash (Taylor Code 530)
+4.0,sports,"table tennis, ping pong (Taylor Code 410)"
+4.0,sports,tai chi
+7.0,sports,"tennis, general"
+6.0,sports,"tennis, doubles (Taylor Code 430)"
+5.0,sports,"tennis, doubles"
+8.0,sports,"tennis, singles (Taylor Code 420)"
+3.5,sports,trampoline
+4.0,sports,volleyball (Taylor Code 400)
+8.0,sports,"volleyball, competitive, in gymnasium"
+3.0,sports,"volleyball, non-competitive, 6 - 9 member team, general"
+8.0,sports,"volleyball, beach"
+6.0,sports,wrestling (one match = 5 minutes)
+7.0,sports,"wallyball, general"
+4.0,sports,"track and field (shot, discus, hammer throw)"
+6.0,sports,"track and field (high jump, long jump, triple jump, javelin, pole vault)"
+10.0,sports,"track and field (steeplechase, hurdles)"
+2.0,transportation,automobile or light truck (not a semi) driving
+1.0,transportation,riding in a car or truck
+1.0,transportation,riding in a bus
+2.0,transportation,flying airplane
+2.5,transportation,"motor scooter, motorcycle"
+6.0,transportation,pushing plane in and out of hangar
+3.0,transportation,"driving heavy truck, tractor, bus"
+7.0,walking,backpacking (Taylor Code 050)
+3.5,walking,"carrying infant or 15 pound load (e.g. suitcase), level ground or downstairs"
+9.0,walking,"carrying load upstairs, general"
+5.0,walking,"carrying 1 to 15 lb load, upstairs"
+6.0,walking,"carrying 16 to 24 lb load, upstairs"
+8.0,walking,"carrying 25 to 49 lb load, upstairs"
+10.0,walking,"carrying 50 to 74 lb load, upstairs"
+12.0,walking,"carrying 74+ lb load, upstairs"
+3.0,walking,loading /unloading a car
+7.0,walking,climbing hills with 0 to 9 pound load
+7.5,walking,climbing hills with 10 to 20 pound load
+8.0,walking,climbing hills with 21 to 42 pound load
+9.0,walking,climbing hills with 42+ pound load
+3.0,walking,downstairs
+6.0,walking,"hiking, cross country (Taylor Code 040)"
+2.5,walking,bird watching
+6.5,walking,"marching, rapidly, military"
+2.5,walking,pushing or pulling stroller with child or walking with children
+4.0,walking,"pushing a wheelchair, non-occupational setting"
+6.5,walking,race walking
+8.0,walking,rock or mountain climbing (Taylor Code 060)
+8.0,walking,"up stairs, using or climbing up ladder (Taylor Code 030)"
+5.0,walking,using crutches
+2.0,walking,"walking, household walking"
+2.0,walking,"walking, less than 2.0 mph, level ground, strolling, very slow"
+2.5,walking,"walking, 2.0 mph, level, slow pace, firm surface"
+3.5,walking,walking for pleasure (Taylor Code 010)
+2.5,walking,"walking from house to car or bus, from car or bus to go places, from car or bus to and from the worksite"
+2.5,walking,walking to neighbor’s house or family’s house for social reasons
+3.0,walking,walking the dog
+3.0,walking,"walking, 2.5 mph, firm surface"
+2.8,walking,"walking, 2.5 mph, downhill"
+3.3,walking,"walking, 3.0 mph, level, moderate pace, firm surface"
+3.8,walking,"walking, 3.5 mph, level, brisk, firm surface, walking for exercise"
+6.0,walking,"walking, 3.5 mph, uphill"
+5.0,walking,"walking, 4.0 mph, level, firm surface, very brisk pace"
+6.3,walking,"walking, 4.5 mph, level, firm surface, very, very brisk"
+8.0,walking,"walking, 5.0 mph"
+3.5,walking,"walking, for pleasure, work break"
+5.0,walking,"walking, grass track"
+4.0,walking,"walking, to work or class (Taylor Code 015)"
+2.5,walking,walking to and from an outhouse
+2.5,water activities,"boating, power"
+4.0,water activities,"canoeing, on camping trip (Taylor Code 270)"
+3.3,water activities,"canoeing, harvesting wild rice, knocking rice off the stalks"
+7.0,water activities,"canoeing, portaging"
+3.0,water activities,"canoeing, rowing, 2.0-3.9 mph, light effort"
+7.0,water activities,"canoeing, rowing, 4.0-5.9 mph, moderate effort"
+12.0,water activities,"canoeing, rowing, >6 mph, vigorous effort"
+3.5,water activities,"canoeing, rowing, for pleasure, general (Taylor Code 250"
+12.0,water activities,"canoeing, rowing, in competition, or crew or sculling (Taylor Code 260"
+3.0,water activities,"diving, springboard or platform"
+5.0,water activities,kayaking
+4.0,water activities,paddle boat
+3.0,water activities,"sailing, boat and board sailing, windsurfing, ice sailing, general (Taylor Code 235)"
+5.0,water activities,"sailing, in competition"
+3.0,water activities,"sailing, Sunfish/Laser/Hobby Cat, Keel boats, ocean sailing, yachting"
+6.0,water activities,"skiing, water (Taylor Code 220)"
+7.0,water activities,skimobiling
+ ,water activities,
+16.0,water activities,"skindiving, fast"
+12.5,water activities,"skindiving, moderate"
+7.0,water activities,"skindiving, scuba diving, general (Taylor Code 310)"
+5.0,water activities,snorkeling (Taylor Code 320)
+3.0,water activities,"surfing, body or board"
+10.0,water activities,"swimming laps, freestyle, fast, vigorous effort"
+7.0,water activities,"swimming laps, freestyle, slow, moderate or light effort"
+7.0,water activities,"swimming, backstroke, general"
+10.0,water activities,"swimming, breaststroke, general"
+11.0,water activities,"swimming, butterfly, general"
+11.0,water activities,"swimming, crawl, fast (75 yards/minute), vigorous effort"
+8.0,water activities,"swimming, crawl, slow (50 yards/minute), moderate or light effort"
+6.0,water activities,"swimming, lake, ocean, river (Taylor Codes 280, 295)"
+6.0,water activities,"swimming, leisurely, not lap swimming, general"
+8.0,water activities,"swimming, sidestroke, general"
+8.0,water activities,"swimming, synchronized"
+10.0,water activities,"swimming, treading water, fast vigorous effort"
+4.0,water activities,"swimming, treading water, moderate effort, general"
+4.0,water activities,"water aerobics, water calisthenics"
+10.0,water activities,water polo
+3.0,water activities,water volleyball
+8.0,water activities,water jogging
+5.0,water activities,"whitewater rafting, kayaking, or canoeing"
+6.0,winter activities,"moving ice house (set up/drill holes, etc.)"
+5.5,winter activities,"skating, ice, 9 mph or less"
+7.0,winter activities,"skating, ice, general (Taylor Code 360)"
+9.0,winter activities,"skating, ice, rapidly, more than 9 mph"
+15.0,winter activities,"skating, speed, competitive"
+7.0,winter activities,ski jumping (climb up carrying skis)
+7.0,winter activities,"skiing, general"
+7.0,winter activities,"skiing, cross country, 2.5 mph, slow or light effort, ski walking"
+8.0,winter activities,"skiing, cross country, 4.0-4.9 mph, moderate speed and effort, genera"
+9.0,winter activities,"skiing, cross country, 5.0-7.9 mph, brisk speed, vigorous effort"
+14.0,winter activities,"skiing, cross country, >8.0 mph, racing"
+16.5,winter activities,"skiing, cross country, hard snow, uphill, maximum, snow mountaineering"
+5.0,winter activities,"skiing, downhill, light effort"
+6.0,winter activities,"skiing, downhill, moderate effort, general"
+8.0,winter activities,"skiing, downhill, vigorous effort, racing"
+7.0,winter activities,"sledding, tobogganing, bobsledding, luge (Taylor Code 370)"
+8.0,winter activities,snow shoeing
+3.5,winter activities,snowmobiling
+1.0,religious activities,"sitting in church, in service, attending a ceremony, sitting quietly"
+2.5,religious activities,"sitting, playing an instrument at church"
+1.5,religious activities,"sitting in church, talking or singing, attending a ceremony, sitting, active participation"
+1.3,religious activities,"sitting, reading religious materials at home"
+1.2,religious activities,"standing in church (quietly), attending a ceremony, standing quietly"
+2.0,religious activities,"standing, singing in church, attending a ceremony, standing, active participation"
+1.0,religious activities,kneeling in church/at home (praying)
+1.8,religious activities,"standing, talking in church"
+2.0,religious activities,walking in church
+2.0,religious activities,"walking, less than 2.0 mph - very slow"
+3.3,religious activities,"walking, 3.0 mph, moderate speed, not carrying anything"
+3.8,religious activities,"walking, 3.5 mph, brisk speed, not carrying anything"
+2.0,religious activities,"walk/stand combination for religious purposes, usher"
+5.0,religious activities,"praise with dance or run, spiritual dancing in church"
+2.5,religious activities,serving food at church
+2.0,religious activities,preparing food at church
+2.3,religious activities,washing dishes/cleaning kitchen at church
+1.5,religious activities,eating at church
+2.0,religious activities,"eating/talking at church or standing eating, American Indian Feast days"
+3.0,religious activities,cleaning church
+5.0,religious activities,general yard work at church
+2.5,religious activities,"standing - moderate (lifting 50 lbs., assembling at fast rate)"
+4.0,religious activities,standing - moderate/heavy work
+1.5,religious activities,"typing, electric, manual, or computer"
+1.5,volunteer activities,"sitting - meeting, general, and/or with talking involved"
+1.5,volunteer activities,"sitting - light office work, in general"
+2.5,volunteer activities,sitting - moderate work
+2.3,volunteer activities,"standing - light work (filing, talking, assembling)"
+2.5,volunteer activities,"sitting, child care, only active periods"
+3.0,volunteer activities,"standing, child care, only active periods"
+4.0,volunteer activities,"walk/run play with children, moderate, only active periods"
+5.0,volunteer activities,"walk/run play with children, vigorous, only active periods"
+3.0,volunteer activities,"standing - light/moderate work (pack boxes, assemble/repair, set up chairs/furniture)"
+3.5,volunteer activities,"standing - moderate (lifting 50 lbs., assembling at fast rate)"
+4.0,volunteer activities,standing - moderate/heavy work
+1.5,volunteer activities,"typing, electric, manual, or computer"
+2.0,volunteer activities,"walking, less than 2.0 mph, very slow"
+3.3,volunteer activities,"walking, 3.0 mph, moderate speed, not carrying anything"
+3.8,volunteer activities,"walking, 3.5 mph, brisk speed, not carrying anything"
+3.0,volunteer activities,"walking, 2.5 mph slowly and carrying objects less than 25 pounds"
+4.0,volunteer activities,"walking, 3.0 mph moderately and carrying objects less than 25 pounds, pushing something"
+4.5,volunteer activities,"walking, 3.5 mph, briskly and carrying objects less than 25 pounds"
+3.0,volunteer activities,"walk/stand combination, for volunteer purposes"
+6,running ,jog/walk combination (jogging component of less than 10 minutes) (Taylor Code 180 
+7,running ,"jogging, general "
+8,running ,"jogging, in place "
+4.5,running ,jogging on a mini-tramp 
+8,running ,"running, 5 mph (12 min/mile) "
+9,running ,"running, 5.2 mph (11.5 min/mile) "
+10,running ,"running, 6 mph (10 min/mile) "
+11,running ,"running, 6.7 mph (9 min/mile) "
+11.5,running ,"running, 7 mph (8.5 min/mile) "
+12.5,running ,"running, 7.5 mph (8 min/mile) "
+13.5,running ,"running, 8 mph (7.5 min/mile) "
+14,running ,"running, 8.6 mph (7 min/mile) "
+15,running ,"running, 9 mph (6.5 min/mile) "
+16,running ,"running, 10 mph (6 min/mile) "
+18,running ,"running, 10.9 mph (5.5 min/mile) "
+9,running ,"running, cross country "
+8,running ,running (Taylor Code 200) 
+,running ,"running, in place "
+15,running ,"running, stairs, up "
+10,running ,"running, on a track, team practice "
+8,running ,"running, training, pushing a wheelchair "
+,running ,"running, wheeling, general "
+2,self care ,"standing - getting ready for bed, in general "
+1,self care ,sitting on toilet 
+1.5,self care ,bathing (sitting) 
+2,self care ,"dressing, undressing (standing or sitting) "
+1.5,self care ,eating (sitting) 
+2,self care ,talking and eating or eating only (standing) 
+1,self care ,"taking medication, sitting or standing "
+2,self care ,"grooming (washing, shaving, brushing teeth, urinating, washing hands, putting on make-up), sitting or standing "
+2.5,self care ,hairstyling 
+1,self care ,"having hair or nails done by someone else, sitting "
+2,self care ,"showering, toweling off (standing) "
+1.5,sexual activity ,"active, vigorous effort "
+1.3,sexual activity ,"general, moderate effort "
+1,sexual activity ,"passive, light effort, kissing, hugging "
+8,water activities ,water jogging 
+5,water activities ,"whitewater rafting, kayaking, or canoeing "
+6,winter activities ,"moving ice house (set up/drill holes, etc.) "
+5.5,winter activities ,"skating, ice, 9 mph or less "
+7,winter activities ,"skating, ice, general (Taylor Code 360) "
+9,winter activities ,"skating, ice, rapidly, more than 9 mph "
+15,winter activities ,"skating, speed, competitive "
+7,winter activities ,ski jumping (climb up carrying skis) 
+7,winter activities ,"skiing, general "
+7,winter activities ,"skiing, cross country, 2.5 mph, slow or light effort, ski walking "
+8,winter activities ,"skiing, cross country, 4.0-4.9 mph, moderate speed and effort, genera "
+9,winter activities ,"skiing, cross country, 5.0-7.9 mph, brisk speed, vigorous effort "
+14,winter activities ,"skiing, cross country, >8.0 mph, racing "
+16.5,winter activities ,"skiing, cross country, hard snow, uphill, maximum, snow mountaineering "
+5,winter activities ,"skiing, downhill, light effort "
+6,winter activities ,"skiing, downhill, moderate effort, general "
+8,winter activities ,"skiing, downhill, vigorous effort, racing "
+7,winter activities ,"sledding, tobogganing, bobsledding, luge (Taylor Code 370) "
+8,winter activities ,snow shoeing 
+3.5,winter activities ,snowmobiling 
+1,religious activities ,"sitting in church, in service, attending a ceremony, sitting quietly "
+2.5,religious activities ,"sitting, playing an instrument at church "
+1.5,religious activities ,"sitting in church, talking or singing, attending a ceremony, sitting, active participation "
+1.3,religious activities ,"sitting, reading religious materials at home "
+1.2,religious activities ,"standing in church (quietly), attending a ceremony, standing quietly "
+2,religious activities ,"standing, singing in church, attending a ceremony, standing, active participation "
+1,religious activities ,kneeling in church/at home (praying) 
+1.8,religious activities ,"standing, talking in church "
+2,religious activities ,walking in church 
+2,religious activities ,"walking, less than 2.0 mph - very slow "
+3.3,religious activities ,"walking, 3.0 mph, moderate speed, not carrying anything "
+3.8,religious activities ,"walking, 3.5 mph, brisk speed, not carrying anything "
+2,religious activities ,"walk/stand combination for religious purposes, usher "
+5,religious activities ,"praise with dance or run, spiritual dancing in church "
+2.5,religious activities ,serving food at church 
+2,religious activities ,preparing food at church 
+2.3,religious activities ,washing dishes/cleaning kitchen at church 
+1.5,religious activities ,eating at church 
+2,religious activities ,"eating/talking at church or standing eating, American Indian Feast days "
+3,religious activities ,cleaning church 
+5,religious activities ,general yard work at church 
+2.5,religious activities ,"standing - moderate (lifting 50 lbs., assembling at fast rate) "
+4,religious activities ,standing - moderate/heavy work 
+1.5,religious activities ,"typing, electric, manual, or computer "
+1.5,volunteer activities ,"sitting - meeting, general, and/or with talking involved "
+1.5,volunteer activities ,"sitting - light office work, in general "
+2.5,volunteer activities ,sitting - moderate work 
+2.3,volunteer activities ,"standing - light work (filing, talking, assembling) "
+2.5,volunteer activities ,"sitting, child care, only active periods "
+3,volunteer activities ,"standing, child care, only active periods "
+4,volunteer activities ,"walk/run play with children, moderate, only active periods "
+3.5,sports ,archery (non-hunting) 
+7,sports ,"badminton, competitive (Taylor Code 450) "
+4.5,sports ,"badminton, social singles and doubles, general "
+8,sports ,"basketball, game (Taylor Code 490) "
+6,sports ,"basketball, non-game, general (Taylor Code 480) "
+7,sports ,"basketball, officiating (Taylor Code 500) "
+4.5,sports ,"basketball, shooting baskets "
+6.5,sports ,"basketball, wheelchair "
+2.5,sports ,billiards 
+3,sports ,bowling (Taylor Code 390) 
+12,sports ,"boxing, in ring, general "
+4,fishing and hunting ,fishing from river bank and walking 
+2.5,fishing and hunting ,"fishing from boat, sitting "
+3.5,fishing and hunting ,"fishing from river bank, standing (Taylor Code 660) "
+6,fishing and hunting ,"fishing in stream, in waders (Taylor Code 670) "
+2,fishing and hunting ,"fishing, ice, sitting "
+2.5,fishing and hunting ,"hunting, bow and arrow or crossbow "
+6,fishing and hunting ,"hunting, deer, elk, large game (Taylor Code 170) "
+2.5,fishing and hunting ,"hunting, duck, wading "
+5,fishing and hunting ,"hunting, general "
+6,fishing and hunting ,"hunting, pheasants or grouse (Taylor Code 680 "
+5,fishing and hunting ,"hunting, rabbit, squirrel, prairie chick, raccoon, small game (Taylor Code 690) "
+2.5,fishing and hunting ,"pistol shooting or trap shooting, standing "
+3.3,home activities ,"carpet sweeping, sweeping floors "
+3,home activities ,"cleaning, heavy or major (e.g. wash car, wash windows, clean garage), vigorous effor "
+3.5,home activities ,mopping 
+2.5,home activities ,"multiple household tasks all at once, light effor "
+3.5,home activities ,"multiple household tasks all at once, moderate effor "
+4,home activities ,"multiple household tasks all at once, vigorous effor "
+3,home activities ,"cleaning, house or cabin, genera "
+2.5,home activities ,"cleaning, light (dusting, straightening up, changing linen, carrying out trash "
+2.3,home activities ,wash dishes - standing or in general (not broken into stand/walk components 
+2.5,home activities ,wash dishes; clearing dishes from table – walking 
+3.5,home activities ,vacuuming 
+6,home activities ,butchering animals 
+2,home activities ,"cooking or food preparation - standing or sitting or in general (not broken into stand/walk components), manual appliance "
+2.5,home activities ,"serving food, setting table - implied walking or standing "
+2.5,home activities ,cooking or food preparation - walking 
+2.5,home activities ,feeding animals 
+2.5,home activities ,"putting away groceries (e.g. carrying groceries, shopping without a grocery cart), carrying packages "
+7.5,home activities ,carrying groceries upstairs 
+3,home activities ,cooking Indian bread on an outside stove 
+2.3,home activities ,"food shopping with or without a grocery cart, standing or walking "
+2.3,home activities ,"non-food shopping, standing or walking "
+,home activities ,walking shopping (non-grocery shopping) 
+2.3,home activities ,ironing 
+1.5,home activities ,"sitting - knitting, sewing, lt. wrapping (presents) "
+2,home activities ,"implied standing - laundry, fold or hang clothes, put clothes in washer or dryer, packing suitcase "
+2.3,home activities ,"implied walking - putting away clothes, gathering clothes to pack, putting away laundry "
+2,home activities ,making bed 
+5,home activities ,"maple syruping/sugar bushing (including carrying buckets, carrying wood) "
+6,home activities ,"moving furniture, household items,carrying boxes "
+3.8,home activities ,"scrubbing floors, on hands and knees, scrubbing bathroom, bathtub "
+4,home activities ,"sweeping garage, sidewalk or outside of house "
+,home activities ,"moving household items, carrying boxes "
+3.5,home activities ,"standing - packing/unpacking boxes, occasional lifting of household items light - moderate effor "
+3,home activities ,implied walking - putting away household items - moderate effort 
+2.5,home activities ,watering plants 
+2.5,home activities ,building a fire inside 
+9,home activities ,"moving household items upstairs, carrying boxes or furniture "
+2,home activities ,"standing - light (pump gas, change light bulb, etc.) "
+3,home activities ,"walking - light, non-cleaning (readying to leave, shut/lock doors, close windows, etc. "
+2.5,home activities ,"sitting - playing with child(ren) – light, only active periods "
+2.8,home activities ,"standing - playing with child(ren) – light, only active periods "
+4,home activities ,"walk/run - playing with child(ren) – moderate, only active periods "
+5,home activities ,"walk/run - playing with child(ren) – vigorous, only active periods "
+3,home activities ,carrying small children 
+8,bicycling ,"bicycling, general "
+6,bicycling ,"bicycling, 10-11.9 mph, leisure, slow, light effort "
+8,bicycling ,"bicycling, 12-13.9 mph, leisure, moderate effort "
+10,bicycling ,"bicycling, 14-15.9 mph, racing or leisure, fast, vigorous effor "
+12,bicycling ,"bicycling, 16-19 mph, racing/not drafting or >19 mph drafting, very fast, racing genera "
+16,bicycling ,"bicycling, >20 mph, racing, not drafting "
+5,bicycling ,unicycling 
+7,conditioning exercise ,"bicycling, stationary, general "
+3,conditioning exercise ,"bicycling, stationary, 50 watts, very light effor "
+5.5,conditioning exercise ,"bicycling, stationary, 100 watts, light effor "
+7,conditioning exercise ,"bicycling, stationary, 150 watts, moderate effor "
+10.5,conditioning exercise ,"bicycling, stationary, 200 watts, vigorous effor "
+12.5,conditioning exercise ,"bicycling, stationary, 250 watts, very vigorous effor "
+8,conditioning exercise ,"calisthenics (e.g. pushups, situps, pullups, jumping jacks), heavy, vigorous effort "
+3.5,conditioning exercise ,"calisthenics, home exercise, light or moderate effort, general (example: back exercises), going up & down from floor (Taylor Code 150 "
+8,conditioning exercise ,"circuit training, including some aerobic movement with minimal rest, general "
+6,conditioning exercise ,"weight lifting (free weight, nautilus or universal-type), power lifting or body building, vigorous effort (Taylor Code 210 "
+5.5,conditioning exercise ,"health club exercise, general (Taylor Code 160 "
+9,conditioning exercise ,"stair-treadmill ergometer, general "
+7,conditioning exercise ,"rowing, stationary ergometer, genera "
+3.5,conditioning exercise ,"rowing, stationary, 50 watts, light effort "
+7,conditioning exercise ,"rowing, stationary, 100 watts, moderate effor "
+8.5,conditioning exercise ,"rowing, stationary, 150 watts, vigorous effor "
+12,conditioning exercise ,"rowing, stationary, 200 watts, very vigorous effor "
+7,conditioning exercise ,"ski machine, general "
+6,conditioning exercise ,"slimnastics, jazzercise "
+2.5,conditioning exercise ,"stretching, hatha yoga "
+2.5,conditioning exercise ,mild stretching 
+6,conditioning exercise ,teaching aerobic exercise class 
+4,conditioning exercise ,"water aerobics, water calisthenics "
+3,conditioning exercise ,"weight lifting (free, nautilus or universal-type), light or moderate effort, light workout, genera "
+1,conditioning exercise ,"whirlpool, sitting "
+4.8,dancing ,"ballet or modern, twist, jazz, tap, jitterbug "
+6.5,dancing ,"aerobic, general "
+8.5,dancing ,"aerobic, step, with 6 – 8 inch step "
+10,dancing ,"aerobic, step, with 10 – 12 inch step "
+5,dancing ,"aerobic, low impact "
+7,dancing ,"aerobic, high impact "
+4.5,dancing ,"general, Greek, Middle Eastern, hula, flamenco, belly, and swing dancing "
+5.5,dancing ,"ballroom, dancing fast (Taylor Code 125) "
+4.5,dancing ,"ballroom, fast (disco, folk, square), line dancing, Irish step dancing, polka, contra, country "
+3,dancing ,"ballroom, slow (e.g. waltz, foxtrot, slow dancing),samba, tango, 19th C, mambo, chacha "
+5.5,dancing ,Anishinaabe Jingle Dancing or other traditional American Indian dancing 
+3,fishing and hunting ,"fishing, general "
+4,fishing and hunting ,"digging worms, with shovel "

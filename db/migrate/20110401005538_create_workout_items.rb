@@ -4,7 +4,8 @@ class CreateWorkoutItems < ActiveRecord::Migration
       t.belongs_to :workout
       t.belongs_to :exercise
       
-      t.integer :minutes
+      t.integer :calories
+      t.integer :duration
       t.timestamps
     end
   end

@@ -137,9 +137,12 @@ td { border: none; }
 #height-slider, #weight-slider   { height: 10px; margin-bottom: 10px; width: 180px !important; }
 
 /* New Meal Entry */
-#meal-entry          { background-color: #F6F6F6; border: 2px solid #006597; padding: 15px; width: 100%; }
-#meal-entry table    { width: 100%; }
-#meal-entry table td { vertical-align: middle; }
+#meal-entry,
+#workout-entry          { background-color: #F6F6F6; border: 2px solid #006597; padding: 15px; width: 100%; }
+#meal-entry table,
+#workout-entry table    { width: 100%; }
+#meal-entry table td,
+#workout-entry table td { vertical-align: middle; }
 
 #meal-items td        { border-bottom: 1px solid #CCC; }
 #meal-items .servings { width: 115px; }
@@ -150,13 +153,16 @@ td { border: none; }
                         float: left; font-size: 1.3em; height: 34px; line-height: 44px; margin-right: 10px; width: 148px; }
 #selected-date      { padding-left: 14px; }
 #selected-date-help { font-size: 1em; padding-top: 12px; }
-#food-item-entry    { width: 337px; }
+#food-item-entry,
+#exercise-item-entry    { width: 337px; }
 
 
 form#meal .delete { float: right; }
 
 form#meal-new-item textarea { height: 75px; width: 655px; }
 /*form#meal-new-item select   { padding: 5px; }*/
+
+#workout-items .exercise-name { width: 465px; }
 
 .ui-datepicker { z-index: 10000; }
 ul.ui-autocomplete { height: 200px; overflow-y: scroll; }
