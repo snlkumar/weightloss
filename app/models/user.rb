@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   
   # Associations
   has_many :meals
+  has_many :workouts
 
   # Validations
   validates_presence_of         :first_name, :last_name, :email, :username

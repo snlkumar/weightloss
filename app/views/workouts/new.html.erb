@@ -1,0 +1,147 @@
+<!-- Tracking Show -->
+<div class="full">
+  <div class="grid_12">
+    <h3>Hey <%= current_user.first_name %>, describe the workout you did today</h3>
+    
+    <% form_tag "/workouts/workout_item", :id => 'meal-new-item' do %>
+      <%= hidden_field_tag :exercise_id, "" %>
+      <div id="meal-entry" style="position: relative">
+        <table>
+          <tbody>
+            <tr>
+              <td class="food_name" style="padding-bottom: 0px;"><%= label_tag 'Find an activity' %></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td style="width: 350px; padding-top: 0px; padding-right: 0px">
+                <%= text_field_tag :food, "", :id => 'food-item-entry', :title => "Try one or more keywords" %>
+              </td>
+              <td style="padding-top: 0px; padding-left: 0px;">
+                <%= image_tag "ajax-loader.gif", :id => 'ajax-spinner', :style => 'display:none; position: absolute; top: 56px; right: 150px;' %>
+                <div id="add-meal-item" class="button" style="width: 162px;">Record This Exercise</div>
+                
+              </td>
+              <td><%#= select_tag :unit, options_for_select(Meal::UNITS), :id => 'unit-entry' %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+      
+      <% form_for @workout, :html => {:id => 'meal'} do |workout_form| %>
+        <table>
+          <tbody id="meal-items">
+            <tr>
+              <td class="bold">Exercise</td>
+              <td class="bold">KCals</td>
+              <td class="bold">Duration</td>
+              <td class="bold">Intensity</td>
+            </tr>
+            <% workout_form.fields_for :workout_items do |workout_item_form| %>
+              <%= render :partial => 'workout_items/workout_item_fields', :locals => { :workout_item_form => workout_item_form } %>
+            <% end %>
+          </tbody>
+        </table>
+        
+        <div class="clear"></div>
+      </div>
+      
+      <div style="padding: 15px;">
+        <br/>
+        
+        <%= text_field_tag "meal[trained_on_date][date]", trained_on_start_date, :id => "calendar-box" %>
+        
+        <div id="selected-date-help">
+          <span class="bold">Was the date of the workout today?</span> Feel free to edit the date of this workout.
+        </div>
+        
+        <div class="clear"></div>
+        <br/>
+        
+        <p>
+          <%= label_tag 'Workout Time' %><br/>
+          <%= select_tag "meal[trained_on_date][time][hour]", 
+                         options_for_select((1..12).map{|n| ["%02d" % n, n]}, workout_form.object.trained_on.try(:strftime, "%I").to_i) %>:
+          <%= select_tag "meal[trained_on_date][time][minute]", 
+                         options_for_select((0..59).map{|n| ["%02d" % n, n]}, workout_form.object.trained_on.try(:strftime, "%M").to_i) %>&nbsp;
+          <%= select_tag "meal[trained_on_date][time][meridian]", 
+                         options_for_select(['AM', 'PM'], workout_form.object.trained_on.try(:strftime, "%p")) %>
+        </p>
+        
+        <!-- <p>
+                  <%#= workout_form.label :meal_type %><br/>
+                  <%#= workout_form.select :meal_type, options_for_select(Meal::TYPES, params[:meal_type]) %>
+                </p> -->
+        
+        <p>
+          <%= workout_form.label :note, 'Workout Note' %><br/>
+          <%= workout_form.text_area :note %>
+        </p>
+        
+        <p>
+          <%= workout_form.submit @workout.new_record? ? "Save This Workout" : "Update This Workout" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="grid_4">
+    &nbsp;
+    
+  </div>
+
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    $('#food-item-entry').labelify({ labelledClass: "labelHighlight" });
+    $('#calendar-box').datepicker();
+    
+    $('#food-item-entry').autocomplete({
+      source: "/foods/search",
+      minLength: 2,
+      select: function(evt, ui){
+        $("#food_id").val(ui.item.id);
+      }
+    });
+    
+    $("#add-meal-item").click(function(evt){
+      var form = $("form#meal-new-item");
+      
+      if( $("#food_id").val() == "" ){
+        alert("Please choose an activity");
+      }else{
+        $.post("<%= workout_item_workouts_path() %>", form.serialize() )
+      }
+      
+      return false;
+    });
+    
+    $("#meal").submit(function(evt){
+      var form = $("form#meal-new-item");
+      var min_possible_quantity = (0.25 * $(".meal-item-quantity").length) / 2;
+      
+      // ensure a quantity and measure has been provided for every item added to the meal, before we allow submitting
+      if( _.inject($(".meal-item-quantity"), function(memo, num){ return memo + parseFloat($(num).val()); }, 0) < min_possible_quantity || 
+          _.any($(".meal-item-units"),    function(el){ return $(el).val() == ""}) ){
+        alert("Please make sure all exercises have a duration and intensity before submitting the exercise");
+        return false;
+      }
+    });
+    
+    $(".remove_ajax_meal_item").live('click', function(evt){
+      evt.preventDefault();
+      $(this).closest('tr').fadeOut('slow', function(){
+        $(this).detach();
+      });
+    });
+    
+    $("#meal-items select").live('change', function(evt){
+      var row = $(this).closest('tr');
+      var inputs = row.find("input, select");
+      $.post("<%= workout_item_calories_exercises_path %>", inputs.serialize(), function(data){
+        row.find("td.calories").html(data["calories"]);
+      });
+    });
+  <% end %>
+</script>
