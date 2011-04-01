@@ -1,7 +1,7 @@
 <!-- Tracking Show -->
 <div class="full">
   <div class="grid_12">
-    <h3>Hey <%= current_user.first_name %>, describe the workout you did today</h3>
+    <h3>Hey <%= current_user.first_name %>, describe the workout you did today.</h3>
     
     <% form_tag "/workouts/workout_item", :id => 'meal-new-item' do %>
       <%= hidden_field_tag :exercise_id, "" %>
