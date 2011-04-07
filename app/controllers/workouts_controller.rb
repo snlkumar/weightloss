@@ -43,6 +43,6 @@ class WorkoutsController < ApplicationController
   # Ajax add to workout
   def workout_item
     @exercise     = Exercise.find(params[:exercise_id])
-    @workout_item = Workout.new.workout_items.new(:exercise => @exercise, :duration => params[:duration])
+    @workout_item = current_user.workouts.build.workout_items.build(:exercise => @exercise, :duration => params[:duration], :user => current_user)
   end
 end

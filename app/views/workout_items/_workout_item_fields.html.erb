@@ -1,6 +1,6 @@
 <tr>
   <td class="exercise-name">
-    <%= workout_item_form.object.exercise.try(:description) %>
+    <%= truncate(workout_item_form.object.exercise.try(:description), :length => 70) %>
     
     <%= workout_item_form.hidden_field :exercise_id %>
   </td>

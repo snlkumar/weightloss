@@ -3,14 +3,14 @@
 </div>
 
 <div class="grid_7">
-  <p><span class="bold"><%= workout.note %></p>
+  <p><%= workout.note %></p>
   
   <ul class="grid_7 alpha omega meal-items">
     <% workout.workout_items.each do |workout_item| %>
       <li><%= truncate(workout_item.exercise.description, :length => 55) %> <span class="meal-item-calories"><%= workout_item.calories %></span></li>
     <% end %>
     <li>&nbsp;</li>
-    <li class="bold">Total Calories <span class="meal-total-calories"><%= workout.total_calories %></span></li>
+    <li class="bold">Total Calories Burned<span class="meal-total-calories"><%= workout.total_calories %></span></li>
   </ul>
   
   <p>

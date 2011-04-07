@@ -1,21 +1,20 @@
 class WorkoutItem < ActiveRecord::Base
-  
 # Associations
   belongs_to :workout
   belongs_to :exercise
-
+  belongs_to :user
+  
 # Callbacks
   before_save :calculate_calories
-
+  
 # Instance Methods
   def after_initialize
     calculate_calories
   end
-
+  
   def calculate_calories
-    # mets          = exercise.mets
-    # weight_for_quantity = self.units.blank? ? 0 : (food.gmwt_desc1.eql?(self.units) ? food.gmwt_1 : food.gmwt_2)
-    #     self.calories       = (energ_kcal * (weight_for_quantity * serving) / 100)
-    self.calories = 123
+    mets                = exercise.mets
+    weight_in_kilograms = (self.user ? self.user.weight : User.find(self.user_id).weight ) * 0.45
+    self.calories       = self.duration * ((mets * 3.5 * weight_in_kilograms)/200)
   end
 end

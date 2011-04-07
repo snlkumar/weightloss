@@ -21,11 +21,9 @@
                 <%= text_field_tag :duration, '', :style => 'width: 75px' %>
               </td>
               <td style="padding-top: 0px; padding-left: 0px;">
-                <%= image_tag "ajax-loader.gif", :id => 'ajax-spinner', :style => 'display:none; position: absolute; top: 56px; right: 150px;' %>
+                <%= image_tag "ajax-loader.gif", :id => 'ajax-spinner', :style => 'display:none; position: absolute; top: 56px; right: 40px;' %>
                 <div id="add-workout-item" class="button" style="width: 162px;">Record This Exercise</div>
-                
               </td>
-              
             </tr>
           </tbody>
         </table>
@@ -90,6 +88,7 @@
 
 <script type="text/javascript" charset="utf-8">
   <% content_for :js do %>
+    $("#exercise_id").val("");
     $('#exercise-item-entry').labelify({ labelledClass: "labelHighlight" });
     $('#calendar-box').datepicker();
     
