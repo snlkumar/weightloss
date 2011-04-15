@@ -14,6 +14,15 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_grid
   
+  def require_admin
+    unless current_user.admin?
+      store_location
+      flash[:notice] = "You must be an admin to access this page"
+      redirect_to root_path
+      return false
+    end
+  end
+  
   def set_grid
     @grid = false
   end

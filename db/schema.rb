@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110407220011) do
+ActiveRecord::Schema.define(:version => 20110415010110) do
 
   create_table "categories", :force => true do |t|
     t.integer "parent_id"
@@ -284,6 +284,7 @@ ActiveRecord::Schema.define(:version => 20110407220011) do
     t.text     "exercise_goals"
     t.text     "exercise_types"
     t.text     "activities"
+    t.boolean  "admin"
   end
 
   create_table "workout_items", :force => true do |t|

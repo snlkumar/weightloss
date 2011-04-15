@@ -18,6 +18,7 @@ Rails::Initializer.run do |config|
   config.gem 'hoptoad_notifier'
   config.gem 'fastercsv'
   config.gem 'linguistics'
+  config.gem 'will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org'
   
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer

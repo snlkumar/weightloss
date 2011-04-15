@@ -1,4 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
+  
+  map.namespace :admin do |admin|
+    admin.resources :exercises, :foods, :users
+    admin.resource :dashboard
+  end
+  
+  map.resources :exercises, :foods, :users
+
   map.resources :old_flash_files, :old_success_stories, :old_tip_of_days, :old_text_files, :old_items, :old_departments
   map.resources :categories, :subcategories
   map.resources :meals,     :collection => { :meal_item => :post }

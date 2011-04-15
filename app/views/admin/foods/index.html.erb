@@ -1,0 +1,27 @@
+<h1>Listing foods</h1>
+
+<%= link_to 'New food', new_food_path %>
+
+<br/>
+
+<% paginated_section @foods do %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    
+    <% @foods.each do |food| %>
+      <tr>
+        <td><%= food.shrt_desc %></td>
+        <td class="actions">
+          <%= link_to 'Edit', edit_admin_food_path(food) %>
+          <%= link_to 'Destroy', food, :confirm => 'Are you sure?', :method => :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+<% end %>
