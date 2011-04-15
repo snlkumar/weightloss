@@ -18,7 +18,7 @@
         <td><%=h subcategory.name %></td>
         <td>
           <%= link_to 'Edit', edit_subcategory_path(subcategory) %> | 
-          <%= link_to 'Destroy', subcategory_path(subcategory), :confirm => 'Are you sure?', :method => :delete %>
+          <%= link_to 'Delete', subcategory_path(subcategory), :confirm => 'Are you sure?', :method => :delete %>
         </td>
       </tr>
     <% end %>

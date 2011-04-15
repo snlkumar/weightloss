@@ -3,10 +3,10 @@ class FoodsController < ApplicationController
   
   def search
     terms  = params[:term].split(/,|\s/).reject(&:blank?)
-    conds  = terms.collect{|t| "shrt_desc LIKE ?"}.join(' AND ')
-    @foods = Food.with_serving_sizes.find(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}])
+    conds  = terms.collect{|t| "name LIKE ?"}.join(' AND ')
+    @foods = Food.with_a_serving_size.find(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}])
     
-    render :json => @foods.map{|f| {:value => f.shrt_desc, :id => f.id} }.to_json
+    render :json => @foods.map{|f| {:value => f.name, :id => f.id} }.to_json
   end
 
   def meal_item_calories

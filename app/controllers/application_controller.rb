@@ -14,6 +14,11 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_grid
   
+  def set_defaults
+    @slider_height = current_user.height || 60
+    @slider_weight = current_user.weight || 150
+  end
+  
   def require_admin
     unless current_user.admin?
       store_location
@@ -24,7 +29,7 @@ class ApplicationController < ActionController::Base
   end
   
   def set_grid
-    @grid = false
+    @grid = true
   end
   
   def logged_in?

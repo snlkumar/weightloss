@@ -136,7 +136,8 @@ td { border: none; }
 .button a { color: white; text-decoration: none; }
 #height-slider, 
   #weight-slider   { height: 10px; margin-bottom: 10px; width: 180px !important; }
-
+form.edit #height-slider, 
+  form.edit #weight-slider   { width: 300px !important; }
 /* New Meal Entry */
 #meal-entry,
 #workout-entry          { background-color: #F6F6F6; border: 2px solid #006597; padding: 15px; width: 100%; }
@@ -233,3 +234,4 @@ ul.ui-autocomplete { height: 200px; overflow-y: scroll; }
 }
 
 td.actions { white-space: nowrap; }
+tr.odd td  { background-color: #F0F0F6; }

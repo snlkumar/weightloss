@@ -8,17 +8,17 @@
     <% end %>
     
   </div>
-
+  
   <div id="profile-center" class="grid_8">
     <h2><%= @user.full_name %></h2>
-  
+    
     <div id="personal-stats">
-      <%= [@user.employment_position, @user.marital_status.try(:titleize), @user.birthdate ? "#{@user.age} yrs old" : nil].compact.map{|u| "<span>#{u}</span>" }.join(" | ") %>
+      <%= user_mini_info(@user) %>
     </div>
-  
+    
     <p id="latest-goal"><b>Goal as of 11/2010:</b> Lose 25lbs by March 15, 2011</p>
   </div>
-
+  
   <div class="grid_4">
     &nbsp;
   </div>
@@ -44,29 +44,8 @@
   
   <div class="clear"></div>
   
-  <div class="grid_2 alpha">Employer</div>
-  <div class="grid_6 omega"><%= @user.employer %>&nbsp;</div>
   <div class="grid_2 alpha">Position</div>
   <div class="grid_6 omega"><%= @user.employment_position %>&nbsp;</div>
-  
-  <div class="clear"></div>
-  
-  <div class="grid_2 alpha">College</div>
-  <div class="grid_6 omega"><%= @user.college %>&nbsp;</div>
-  
-  <div class="clear"></div>
-  <div class="grid_2 alpha">High School</div>
-  <div class="grid_6 omega"><%= @user.high_school %>&nbsp;</div>
-  
-  <div class="clear"></div>
-  
-  <div class="grid_2 alpha">Relationship<br/>Status</div>
-  <div class="grid_6 omega"><%= @user.marital_status.try :titleize %>&nbsp;</div>
-  
-  <div class="clear"></div>
-  
-  <div class="grid_2 alpha">Interested In</div>
-  <div class="grid_6 omega"><%= @user.interested_in.try :titleize %>&nbsp;</div>
   
   <div class="clear"></div>
   

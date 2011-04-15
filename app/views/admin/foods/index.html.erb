@@ -1,27 +1,55 @@
-<h1>Listing foods</h1>
-
-<%= link_to 'New food', new_food_path %>
-
-<br/>
-
-<% paginated_section @foods do %>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-    </thead>
+<div class="grid_16">
+  <%= link_to 'Back', admin_dashboard_path %>
+  
+  <br/>
+  
+  <h2>Listing Foods</h2>
+  
+  <%= link_to 'New food', new_admin_food_path %>
+  
+  <br/>
+  
+  <% form_tag(search_admin_foods_path) do %>
+    <%= text_field_tag 'terms', '', :id => 'food-search' %>
+  
+    <%= submit_tag 'Search' %>
+  <% end %>
+  
+  <br/>
+  
+  <%= page_entries_info(@foods) %>
+  
+  <% paginated_section(@foods, :params => pagination_params(request)) do %>
+  
+    <table class="admin">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @foods.each do |food| %>
+          <tr  class="<%= cycle('odd', '') %>">
+            <td><%= food.name %></td>
+            <td class="actions">
+              <%= link_to 'Edit', edit_admin_food_path(food) %> | 
+              <%= link_to 'Delete', [:admin, food], :confirm => 'Are you sure?', :method => :delete %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
     
-    <% @foods.each do |food| %>
-      <tr>
-        <td><%= food.shrt_desc %></td>
-        <td class="actions">
-          <%= link_to 'Edit', edit_admin_food_path(food) %>
-          <%= link_to 'Destroy', food, :confirm => 'Are you sure?', :method => :delete %>
-        </td>
-      </tr>
+  <% end %>
+  
+  <script type="text/javascript" charset="utf-8">
+    <% content_for :js do %>
+      $('#food-search').autocomplete({
+        source: "<%= search_foods_url %>"
+      });
+    
     <% end %>
-  </table>
+  </script>
 
-<% end %>
+</div>

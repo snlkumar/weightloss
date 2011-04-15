@@ -1,20 +1,20 @@
 ActionController::Routing::Routes.draw do |map|
   
   map.namespace :admin do |admin|
-    admin.resources :exercises, :foods, :users
+    admin.resources :exercises, :collection => {:search => [:post, :get]}
+    admin.resources :foods,     :collection => {:search => [:post, :get]}
+    admin.resources :users
     admin.resource :dashboard
   end
   
-  map.resources :exercises, :foods, :users
-
+  map.resource  :user_session, :tracking
+  
   map.resources :old_flash_files, :old_success_stories, :old_tip_of_days, :old_text_files, :old_items, :old_departments
   map.resources :categories, :subcategories
-  map.resources :meals,     :collection => { :meal_item => :post }
-  map.resources :foods,     :collection => { :search => :get, :meal_item_calories => :post }
+  map.resources :meals,     :collection => { :meal_item    => :post }
   map.resources :workouts,  :collection => { :workout_item => :post }
+  map.resources :foods,     :collection => { :search => :get, :meal_item_calories => :post }
   map.resources :exercises, :collection => { :search => :get, :workout_item_calories => :post }
-  
-  map.resource  :user_session, :tracking
   
   map.resources :users, :member => {:bmi_update => :put}, :collection => {:bmi => :get} do |user|
     user.edit_personal_info  '/info/edit',      :controller => :users, :action => :personal_info

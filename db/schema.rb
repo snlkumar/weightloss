@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110415010110) do
+ActiveRecord::Schema.define(:version => 20110415214457) do
 
   create_table "categories", :force => true do |t|
     t.integer "parent_id"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20110415010110) do
     t.decimal  "refuse_pct",  :precision => 8, :scale => 3
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   create_table "meal_items", :force => true do |t|

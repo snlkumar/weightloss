@@ -3,83 +3,12 @@
 
 <div id="settings-content" class="grid_12">
   <h3>Personal Information</h3>
-
+  
   <% form_for current_user, :html => {:multipart => true, :class => 'edit'} do |f| %>
-    <p>
-      <%= f.label :avatar %><br/>
-      <%= image_tag current_user.avatar.url(:medium) %>
-      
-      <%= f.file_field :avatar, :size => '6' %>
-    </p>
+    <%= render :partial => 'personal_info', :locals => {:f => f} %>
     
     <p>
-      <%= f.label :first_name, %Q{First Name} %><br/>
-      <%= f.text_field :first_name, :placeholder => "First Name", :class => 'grid_6 alpha' %>
-      <span class="clear"></span>
+      <%= f.submit 'Save' %>
     </p>
-
-    <p>
-      <%= f.label :last_name, %Q{Last Name} %><br/>
-      <%= f.text_field :last_name, :placeholder => "Last name", :class => 'grid_6 alpha' %>
-      <span class="clear"></span>
-    </p>
-    
-    <p>
-      <%= f.label :gender %><br/>
-      <%= f.select :gender, [['Choose', 0], ['Male', 'male'], ['Female', 'female']] %>
-      <span class="clear"></span>
-    </p>
-    
-    <%= render :partial => 'personal_measurements', :locals => {:f => f} %>
-
-    <p>
-      <%= f.label :birthdate %><br/>
-      <%= f.date_select :birthdate, :start_year => Time.zone.now.year, :end_year => 100.years.ago.year %>
-      <span class="clear"></span>
-    </p>
-    
-    <p>
-      <%= f.label :bio %><br/>
-      <%= f.text_area :bio, :class => 'grid_6 alpha' %>
-      <span class="clear"></span>
-    </p>
-    
-    <p>
-      <%= f.label :employer %><br/>
-      <%= f.text_field :employer, :class => 'grid_6 alpha' %>
-      <span class="clear"></span>
-    </p>
-    
-    <p>
-      <%= f.label :employment_position %><br/>
-      <%= f.text_field :employment_position, :class => 'grid_6 alpha' %>
-      <span class="clear"></span>
-    </p>
-    
-    <p>
-      <%= f.label :college %><br/>
-      <%= f.text_field :college, :class => 'grid_6 alpha' %>
-      <span class="clear"></span>
-    </p>
-    
-    <p>
-      <%= f.label :high_school %><br/>
-      <%= f.text_field :high_school, :class => 'grid_6 alpha' %>
-      <span class="clear"></span>
-    </p>
-    
-    <p>
-      <%= f.label :marital_status, 'Relationship Status' %><br/>
-      <%= f.select :marital_status, options_for_select([['Single', 'single'], ['Married', 'married']]) %>
-      <span class="clear"></span>
-    </p>
-    
-    <p>
-      <%= f.label :interested_in %><br/>
-      <%= f.select :interested_in, [['Friendship', 'friendship']] %>
-      <span class="clear"></span>
-    </p>
-    
-    <%= f.submit 'Save' %>
   <% end %>
 </div>

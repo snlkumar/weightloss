@@ -1,7 +1,7 @@
 <% unique_id = Time.now.to_i %>
 <tr>
   <td class="food-name">
-    <%= truncate(@food.try(:shrt_desc), :length => 55) %>
+    <%= truncate(@food.try(:name), :length => 55) %>
   </td>
   <td class="calories">
     

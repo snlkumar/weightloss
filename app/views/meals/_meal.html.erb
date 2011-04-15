@@ -7,7 +7,7 @@
   
   <ul class="grid_7 alpha omega meal-items">
     <% meal.meal_items.each do |meal_item| %>
-      <li><%= truncate(meal_item.food.shrt_desc, :length => 55) %> <span class="meal-item-calories"><%= meal_item.calories %></span></li>
+      <li><%= truncate(meal_item.food.name, :length => 55) %> <span class="meal-item-calories"><%= meal_item.calories %></span></li>
     <% end %>
     <li>&nbsp;</li>
     <li class="bold">Total Calories <span class="meal-total-calories"><%= meal.total_calories %></span></li>

@@ -1,12 +1,10 @@
 class Admin::UsersController < Admin::BaseController
+  before_filter :set_defaults, :only => [:new, :edit]
+  
   layout 'application'
   
   def index
     @users = User.paginate :per_page => 50, :page => params[:page] || 1
-  end
-  
-  def show
-    @user = User.find(params[:id])
   end
   
   def new

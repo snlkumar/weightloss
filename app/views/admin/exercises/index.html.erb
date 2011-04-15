@@ -1,29 +1,55 @@
-<h1>Listing exercises</h1>
-
-<%= link_to 'New exercise', new_exercise_path %>
-<br />
-
-
-<% paginated_section @exercises do %>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th> </th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @exercises.each do |exercise| %>
+<div class="grid_16">
+  <%= link_to 'Back', admin_dashboard_path %>
+  
+  <br/>
+  
+  <h2>Listing Exercises</h2>
+  
+  <%= link_to 'New exercise', new_exercise_path %>
+  
+  <br/>
+  
+  <% form_tag(search_admin_exercises_path) do %>
+    <%= text_field_tag 'terms', '', :id => 'exercise-search' %>
+  
+    <%= submit_tag 'Search' %>
+  <% end %>
+  
+  <br/>
+  
+  
+  <%= page_entries_info(@exercises) %>
+  
+  <% paginated_section(@exercises, :params => pagination_params(request)) do %>
+  
+    <table class="admin">
+      <thead>
         <tr>
-          <td><%= exercise.description %></td>
-          <td class="actions">
-            <%= link_to 'Edit', edit_admin_exercise_path(exercise) %> | 
-            <%= link_to 'Destroy', exercise, :confirm => 'Are you sure?', :method => :delete %>
-          </td>
+          <th>Name</th>
+          <th> </th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-<% end %>
+      </thead>
+      <tbody>
+        <% @exercises.each do |exercise| %>
+          <tr class="<%= cycle('odd', '') %>">
+            <td><%= exercise.description %></td>
+            <td class="actions">
+              <%= link_to 'Edit', edit_admin_exercise_path(exercise) %> | 
+              <%= link_to 'Delete', exercise, :confirm => 'Are you sure?', :method => :delete %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+  <% end %>
+  
+  <script type="text/javascript" charset="utf-8">
+    <% content_for :js do %>
+      $('#exercise-search').autocomplete({
+        source: "<%= search_exercises_url %>"
+      });
+    
+    <% end %>
+  </script>
+</div>

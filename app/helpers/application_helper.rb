@@ -18,4 +18,8 @@ module ApplicationHelper
   def active_settings_tab?(page)
     settings_page?(page) ? 'active' : ''
   end
+  
+  def pagination_params(request)
+    request.params.reject{|key, val| ['authenticity_token', 'commit'].include?(key.to_s) }
+  end
 end

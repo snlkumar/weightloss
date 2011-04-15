@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user,    :only => [:show, :edit, :update, :finalize, :next, :step_two]
+  before_filter :set_defaults,    :only => [:step_two, :edit, :personal_info]
   
   def show
     @user = User.find(params[:id])
@@ -23,8 +24,8 @@ class UsersController < ApplicationController
   end
   
   def step_two
-    @initial_height = 60
-    @initial_weight = 150
+    @slider_height = 60
+    @slider_weight = 150
   end
   
   def finalize
@@ -69,8 +70,7 @@ class UsersController < ApplicationController
   end
   
   def personal_info
-    @initial_height = current_user.height || 60
-    @initial_weight = current_user.weight || 150
+    
     render :layout => 'user_settings'
   end
   

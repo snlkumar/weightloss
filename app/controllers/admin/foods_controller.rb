@@ -5,10 +5,6 @@ class Admin::FoodsController < Admin::BaseController
     @foods = Food.paginate :per_page => 50, :page => params[:page] || 1
   end
   
-  def show
-    @food = Food.find(params[:id])
-  end
-  
   def new
     @food = Food.new
   end
@@ -42,4 +38,13 @@ class Admin::FoodsController < Admin::BaseController
     @food.destroy
     redirect_to(admin_foods_url)
   end
+  
+  def search
+    terms  = params[:terms].split(/,|\s/).reject(&:blank?)
+    conds  = terms.collect{|t| "name LIKE ?"}.join(' AND ')
+    @foods = Food.paginate(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}], :per_page => 50, :page => params[:page] || 1)
+    
+    render :action => :index
+  end
+  
 end
