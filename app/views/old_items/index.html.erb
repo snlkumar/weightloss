@@ -44,7 +44,7 @@
       <td><%=h item.sku %></td>
       <td>
         <%= link_to 'Edit', edit_old_item_path(item) %> | 
-        <%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %>
+        <%= link_to 'Delete', item, :confirm => 'Are you sure?', :method => :delete %>
       </td>
     </tr>
   <% end %>

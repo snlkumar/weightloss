@@ -18,7 +18,7 @@
         <td><%=h department.name %></td>
         <td>
           <%= link_to 'Edit', edit_old_department_path(department) %> | 
-          <%= link_to 'Destroy', department, :confirm => 'Are you sure?', :method => :delete %>
+          <%= link_to 'Delete', department, :confirm => 'Are you sure?', :method => :delete %>
         </td>
       </tr>
     <% end %>

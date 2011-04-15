@@ -18,7 +18,7 @@
         <td><%= truncate(h(success_story.summary), :length => 50) %></td>
         <td><%= truncate(h(success_story.body),    :length => 50) %></td>
         <td><%= link_to 'Edit', edit_old_success_story_path(success_story) %></td>
-        <td><%= link_to 'Destroy', success_story, :confirm => 'Are you sure?', :method => :delete %></td>
+        <td><%= link_to 'Delete', success_story, :confirm => 'Are you sure?', :method => :delete %></td>
       </tr>
     <% end %>
   </tbody>

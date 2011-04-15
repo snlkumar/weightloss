@@ -20,7 +20,7 @@
         <td><%=truncate(h(tip_of_day.body), :length => 50) %></td>
         <td>
           <%= link_to 'Edit', edit_old_tip_of_day_path(tip_of_day) %> | 
-          <%= link_to 'Destroy', tip_of_day, :confirm => 'Are you sure?', :method => :delete %>
+          <%= link_to 'Delete', tip_of_day, :confirm => 'Are you sure?', :method => :delete %>
         </td>
       </tr>
     <% end %>
