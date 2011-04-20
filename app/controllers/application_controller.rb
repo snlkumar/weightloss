@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   end
   
   def set_grid
-    @grid = true
+    @grid = false
   end
   
   def logged_in?

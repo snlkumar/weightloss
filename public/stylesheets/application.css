@@ -233,5 +233,6 @@ ul.ui-autocomplete { height: 200px; overflow-y: scroll; }
   list-style: square;
 }
 
-td.actions { white-space: nowrap; }
+td.actions { white-space: nowrap; width: 80px; }
 tr.odd td  { background-color: #F0F0F6; }
+table.admin { width: 100%;}

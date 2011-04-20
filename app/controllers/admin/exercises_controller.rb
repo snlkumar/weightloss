@@ -40,4 +40,12 @@ class Admin::ExercisesController < Admin::BaseController
     
     redirect_to(admin_exercises_url)
   end
+  
+  def search
+    terms  = params[:terms].split(/,|\s/).reject(&:blank?)
+    conds  = terms.collect{|t| "description LIKE ?"}.join(' AND ')
+    @exercises = Exercise.paginate(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}], :per_page => 50, :page => params[:page] || 1)
+    
+    render :action => :index
+  end
 end

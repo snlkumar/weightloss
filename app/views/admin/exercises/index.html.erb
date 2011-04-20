@@ -35,7 +35,7 @@
             <td><%= exercise.description %></td>
             <td class="actions">
               <%= link_to 'Edit', edit_admin_exercise_path(exercise) %> | 
-              <%= link_to 'Delete', exercise, :confirm => 'Are you sure?', :method => :delete %>
+              <%= link_to 'Delete', [:admin, exercise], :confirm => 'Are you sure?', :method => :delete %>
             </td>
           </tr>
         <% end %>
