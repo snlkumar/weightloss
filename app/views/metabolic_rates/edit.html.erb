@@ -47,9 +47,11 @@
   </p>
 <% end %>
 
+<% if current_user.bmr && current_user.rmr %>
 BMR: <%= current_user.bmr %> This is the total number of calories you need in order to maintain your current weight.<br/>
 RMR: <%= current_user.rmr %>
 <br/>
 If you limit your calorie intake to <%= five_hundred_calorie_deficit(current_user) %> calories a day.  You can reach your goal of losing <%= pounds_to_lose(current_user) %> lbs in <%= days_to_goal(current_user, 500) %> days (<%= days_to_goal(current_user, 500).days.from_now.strftime("%b %d") %>)
 <br/>
 If you limit your calorie intake to <%= one_thousand_calorie_deficit(current_user) %> calories a day.  You can reach your goal of losing <%= pounds_to_lose(current_user) %> lbs in <%= days_to_goal(current_user, 1000) %> days (<%= days_to_goal(current_user, 1000).days.from_now.strftime("%b %d") %>)
+<% end %>
