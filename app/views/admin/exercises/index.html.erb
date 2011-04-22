@@ -16,7 +16,9 @@
   <% end %>
   
   <br/>
-  
+  <% if params['terms'] && !params['terms'].blank? %>
+    Displaying results for "<%= params['terms'] %>"<br/>
+  <% end %>
   
   <%= page_entries_info(@exercises) %>
   
