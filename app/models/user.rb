@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
       self.bmr = ((13.75 * weight_in_kilograms) + (5 * height_in_centimeters) - (6.76 * age) + 66) * BMR_MULTIPLIERS[self.activity_level - 1]
       self.rmr = (10 * weight_in_kilograms) + (6.25 * height_in_centimeters) - (5 * age) + 5
     else
-      self.bmr = (9.56 * weight_in_kilograms) + (1.85 * height_in_centimeters) - (4.68 * age) + 655
+      self.bmr = ((9.56 * weight_in_kilograms) + (1.85 * height_in_centimeters) - (4.68 * age) + 655)  * BMR_MULTIPLIERS[self.activity_level - 1]
       self.rmr = (10 * weight_in_kilograms) + (6.25 * height_in_centimeters) - (5 * age) - 161
     end
   end
