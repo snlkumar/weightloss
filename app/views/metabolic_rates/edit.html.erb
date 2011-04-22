@@ -1,0 +1,55 @@
+<% form_for current_user, :url => metabolic_rates_path do |f| %>
+  <%= f.error_messages %>
+  
+  <p>
+    <%= f.radio_button :activity_level, 1 %>
+    <%= f.label :activity_level, 'Sendentary' %><br/>
+    
+    <%= f.radio_button :activity_level, 2 %>
+    <%= f.label :activity_level, 'Lightly Active' %><br/>
+    
+    <%= f.radio_button :activity_level, 3 %>
+    <%= f.label :activity_level, 'Moderately Active' %><br/>
+    
+    <%= f.radio_button :activity_level, 4 %>
+    <%= f.label :activity_level, 'Very Active' %><br/>
+    
+    <%= f.radio_button :activity_level, 5 %>
+    <%= f.label :activity_level, 'Extra Active' %><br/>
+  </p>
+  
+  <p>
+    <%= f.label :gender %><br/>
+    <%= f.select :gender, [['Choose', 0], ['Male', 'male'], ['Female', 'female']] %>
+    <span class="clear"></span>
+  </p>
+
+  <p>
+    <%= f.label :height, "Height (inches)" %><br/>
+    <%= f.text_field :height, :class => 'grid_1 alpha' %>
+    <span class="clear"></span>
+  </p>
+  
+  <p>
+    <%= f.label :weight %><br/>
+    <%= f.text_field :weight, :class => 'grid_1 alpha' %>
+    <span class="clear"></span>
+  </p>
+  
+  <p>
+    <%= f.label :desired_weight, 'Desired Weight' %><br/>
+    <%= f.text_field :desired_weight, :class => 'grid_1 alpha' %>
+    <span class="clear"></span>
+  </p>
+  
+  <p>
+    <%= f.submit 'Set Goal' %>
+  </p>
+<% end %>
+
+BMR: <%= current_user.bmr %> This is the total number of calories you need in order to maintain your current weight.<br/>
+RMR: <%= current_user.rmr %>
+<br/>
+If you limit your calorie intake to <%= five_hundred_calorie_deficit(current_user) %> calories a day.  You can reach your goal of losing <%= pounds_to_lose(current_user) %> lbs in <%= days_to_goal(current_user, 500) %> days (<%= days_to_goal(current_user, 500).days.from_now.strftime("%b %d") %>)
+<br/>
+If you limit your calorie intake to <%= one_thousand_calorie_deficit(current_user) %> calories a day.  You can reach your goal of losing <%= pounds_to_lose(current_user) %> lbs in <%= days_to_goal(current_user, 1000) %> days (<%= days_to_goal(current_user, 1000).days.from_now.strftime("%b %d") %>)

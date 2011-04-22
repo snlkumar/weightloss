@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.resource  :user_session, :tracking
+  map.resource  :metabolic_rates, :path_prefix => '/user'
   
   map.resources :old_flash_files, :old_success_stories, :old_tip_of_days, :old_text_files, :old_items, :old_departments
   map.resources :categories, :subcategories
