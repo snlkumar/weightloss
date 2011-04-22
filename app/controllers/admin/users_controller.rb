@@ -9,10 +9,14 @@ class Admin::UsersController < Admin::BaseController
   
   def new
     @user = User.new
+    @slider_height = @user.height || 60
+    @slider_weight = @user.weight || 150
   end
   
   def edit
     @user = User.find(params[:id])
+    @slider_height = @user.height || 60
+    @slider_weight = @user.weight || 150
   end
   
   def create

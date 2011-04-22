@@ -1,6 +1,6 @@
 <p>
   <%= f.label :avatar %><br/>
-  <%= image_tag current_user.avatar.url(:medium) %>
+  <%= image_tag f.object.avatar.url(:medium) %>
   
   <%= f.file_field :avatar, :size => '6' %>
 </p>
