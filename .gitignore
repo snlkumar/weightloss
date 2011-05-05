@@ -1,7 +1,7 @@
-webrat*
+
 *.sql
 .DS_Store
-coverage.data
+
 log/*.log
 tmp/**/*
 tmp/*
