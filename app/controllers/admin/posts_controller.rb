@@ -14,10 +14,10 @@ class Admin::PostsController < ApplicationController
   end
   
   def create
-    @post = Post.new(params[:user])
+    @post = Post.new(params[:post])
     
     if @post.save
-      redirect_to(@post, :notice => 'Post was successfully created.')
+      redirect_to(admin_posts_path, :notice => 'Post was successfully created.')
     else
       render :action => "new"
     end
@@ -26,7 +26,7 @@ class Admin::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     
-    if @post.update_attributes(params[:user])
+    if @post.update_attributes(params[:post])
       redirect_to(admin_posts_path, :notice => 'Post was successfully updated.')
     else
       render :action => "edit"
