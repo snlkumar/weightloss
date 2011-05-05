@@ -1,7 +1,7 @@
 require "bundler/capistrano"
 require 'hoptoad_notifier/capistrano'
 
-server = "184.106.134.129" 
+server = "myweightworlddemo.com" 
 
 set :application, "myweightworld"
 set :repository,  "git@myweightworld.unfuddle.com:myweightworld/myww.git"
@@ -11,7 +11,7 @@ set :use_sudo,  false
 
 set :scm, "git"
 set :user,      'deploy'
-set :password,  'rails4myweightworld'
+# set :password,  'rails4myweightworld'
 
 set :keep_releases, 4
 set :branch, "master"
