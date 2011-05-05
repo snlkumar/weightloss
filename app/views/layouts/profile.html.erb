@@ -6,6 +6,7 @@
     <!-- <link rel="shortcut icon" href="/favicon.ico" /> -->
     <%= stylesheet_link_tag 'reset', '960', "ui-lightness/jquery-ui-1.8.9.custom.css", 'application', :media => "screen, projection" %>
     <%= javascript_include_tag "jquery-1.4.4.dev", "jquery-ui-1.8.9.min.js", "underscore", "application" %>
+    <%= init_tinymce_hammer_if_required %>
     
     <%= render :partial => "shared/gridder" %>
     
