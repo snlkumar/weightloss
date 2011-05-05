@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.resources :exercises, :collection => {:search => [:post, :get]}
     admin.resources :foods,     :collection => {:search => [:post, :get]}
-    admin.resources :users
+    admin.resources :users, :posts
     admin.resource :dashboard
   end
   
