@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110505205727) do
+ActiveRecord::Schema.define(:version => 20110511183112) do
 
   create_table "categories", :force => true do |t|
     t.integer "parent_id"
@@ -300,6 +300,9 @@ ActiveRecord::Schema.define(:version => 20110505205727) do
     t.integer  "rmr"
     t.integer  "bmr"
     t.integer  "desired_weight"
+    t.string   "city"
+    t.string   "state"
+    t.string   "twitter_name"
   end
 
   create_table "workout_items", :force => true do |t|

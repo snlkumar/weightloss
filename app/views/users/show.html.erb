@@ -1,98 +1,59 @@
-<div class="full">
-  <div class="grid_4">
-    &nbsp;
-    <% if @user.avatar.file? %>
-      <%= image_tag(@user.avatar.url(:large), :class => "profile-avatar") %>
-    <% else %>
-      <div class="profile-avatar"></div>
-    <% end %>
-    
-  </div>
-  
-  <div id="profile-center" class="grid_8">
-    <h2><%= @user.full_name %></h2>
-    
-    <div id="personal-stats">
-      <%= user_mini_info(@user) %>
-    </div>
-    
-    <p id="latest-goal"><b>Goal as of 11/2010:</b> Lose 25lbs by March 15, 2011</p>
-  </div>
-  
-  <div class="grid_4">
-    &nbsp;
-  </div>
 
-</div>
+<h3>Your Profile</h3>
 
-<div class="clear"></div>
+<h3 id="personal-info">Personal Info</h3>
 
-<div class="grid_4">
-  &nbsp;
-  <!-- <h5>Percentage of Profile Complete</h5>
-    
-    <p style="width: 210px; height: 30px; background-color: blue;">&nbsp;</p>
-    
-    <h5>Friends</h5> -->
-</div>
+<div class="profile-label ">Bio</div>
+<div class="grid_8 omega"><%= @user.bio %></div>
 
-<div class="grid_8 profile-center-content">
-  <h2 id="personal-info">Personal Info <%= link_to 'edit', user_edit_personal_info_path(current_user) if @user == current_user %></h2>
-  
-  <div class="grid_2 alpha">Bio</div>
-  <div class="grid_6 omega"><%= @user.bio %></div>
-  
-  <div class="clear"></div>
-  
-  <div class="grid_2 alpha">Position</div>
-  <div class="grid_6 omega"><%= @user.employment_position %>&nbsp;</div>
-  
-  <div class="clear"></div>
-  
-  <h2 id="personal-info">Nutrition Info <%= link_to 'edit', user_edit_nutrition_info_path(current_user) if @user == current_user %></h2>
-  
-  <div class="grid_2 alpha">Goals</div>
-  <div class="grid_6 omega"><%= @user.goals %></div>
-  
-  <div class="clear"></div>
-  
-  <div class="grid_2 alpha">Nutritional Goals</div>
-  <div class="grid_6 omega"><%= @user.nutritional_goals %>&nbsp;</div>
-  
-  <div class="clear"></div>
-  
-  <div class="grid_2 alpha">Diet</div>
-  <div class="grid_6 omega"><%= @user.diet %>&nbsp;</div>
-  
-  <div class="clear"></div>
-  
-  <div class="grid_2 alpha">Supplements</div>
-  <div class="grid_6 omega"><%= @user.supplements %>&nbsp;</div>
-  
-  <div class="clear"></div>
-  <div class="grid_2 alpha">Favorite Restaurants</div>
-  <div class="grid_6 omega"><%= @user.favorite_restaurants %>&nbsp;</div>
-  
-  <div class="clear"></div>
-  
-  <h2 id="personal-info">Exercise Info <%= link_to 'edit', user_edit_exercise_info_path(current_user) if @user == current_user %></h2>
-  
-  <div class="grid_2 alpha">Goals</div>
-  <div class="grid_6 omega"><%= @user.exercise_goals %></div>
-  
-  <div class="clear"></div>
-  
-  <div class="grid_2 alpha">Exercise Types</div>
-  <div class="grid_6 omega"><%= @user.exercise_types %>&nbsp;</div>
-  
-  <div class="clear"></div>
-  
-  <div class="grid_2 alpha">Recreational Activities</div>
-  <div class="grid_6 omega"><%= @user.activities %>&nbsp;</div>
-  
-  <div class="clear"></div>
-</div>
+<div class="clear space"></div>
 
-<div class="grid_4">
-  &nbsp;
-</div>
+<div class="profile-label">Position</div>
+<div class="grid_8 omega"><%= @user.employment_position %>&nbsp;</div>
+
+<div class="clear space"></div>
+<br/>
+<h3 id="personal-info">Nutrition Info</h3>
+
+<div class="profile-label ">Goals</div>
+<div class="grid_8 omega"><%= @user.goals %></div>
+
+<div class="clear space"></div>
+
+<div class="profile-label ">Nutritional Goals</div>
+<div class="grid_8 omega"><%= @user.nutritional_goals %>&nbsp;</div>
+
+<div class="clear space"></div>
+
+<div class="profile-label ">Diet</div>
+<div class="grid_8 omega"><%= @user.diet %>&nbsp;</div>
+
+<div class="clear space"></div>
+
+<div class="profile-label ">Supplements</div>
+<div class="grid_8 omega"><%= @user.supplements %>&nbsp;</div>
+
+<div class="clear space"></div>
+
+<div class="profile-label ">Favorite Restaurants</div>
+<div class="grid_8 omega"><%= @user.favorite_restaurants %>&nbsp;</div>
+
+<div class="clear space"></div>
+<br/>
+<h3 id="personal-info">Exercise Info</h3>
+
+<div class="profile-label ">Goals</div>
+<div class="grid_8 omega"><%= @user.exercise_goals %></div>
+
+<div class="clear space"></div>
+
+<div class="profile-label ">Exercise Types</div>
+<div class="grid_8 omega"><%= @user.exercise_types %>&nbsp;</div>
+
+<div class="clear space"></div>
+
+<div class="profile-label ">Recreational Activities</div>
+<div class="grid_8 omega"><%= @user.activities %>&nbsp;</div>
+
+<div class="clear space"></div>
+
