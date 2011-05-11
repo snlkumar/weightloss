@@ -319,6 +319,9 @@ h1, h2, h3, h4, h5, h6 { font-weight: bold; }
  p#permalink      { margin: 9px 0px 0px 22px; padding-left: 29px; background: url(/images/icon-shortlink.png) no-repeat left center }
  p#twitter-handle { margin: 9px 0px 0px 22px; padding-left: 29px; background: url(/images/icon-twitter.png) no-repeat left center }
  p#location       { margin: 9px 0px 0px 22px; padding-left: 29px; background-image: url(/images/icon-location.png); background-position: 2px 0px; background-repeat: no-repeat; }
+ #achievement-calendar { height: 94px; position: relative; background-image: url(/images/calendar-large.png); background-position: 2px 0px; background-repeat: no-repeat; }
+ #achievement-calendar div { position: absolute; top: 34px; left: 28px; text-align: center; }
+ 
  .space          { margin-bottom: 20px; }
  .profile h3     { margin-left: 20px; }
  .profile-label  { display: inline; float: left; margin: 0px 10px 0px 20px; width: 140px; }
