@@ -18,7 +18,6 @@ class UsersController < ApplicationController
       @user.update_attribute(:status, 'step_two')
       redirect_to :action => :step_two
     else
-      p @user.errors.full_messages
       render :action => :new
     end
   end
@@ -33,7 +32,6 @@ class UsersController < ApplicationController
       current_user.update_attribute(:status, 'finalize')
       redirect_to user_path(current_user)
     else
-      p current_user.errors.full_messages
       render :action => :step_two
     end
   end
