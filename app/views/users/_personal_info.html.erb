@@ -26,6 +26,18 @@
 <%= render :partial => '/users/personal_measurements', :locals => {:f => f} %>
 
 <p>
+  <%= f.label :city %><br/>
+  <%= f.text_area :city, :class => 'grid_6 alpha' %>
+  <span class="clear"></span>
+</p>
+
+<p>
+  <%= f.label :state %><br/>
+  <%= f.text_area :state, :class => 'grid_6 alpha' %>
+  <span class="clear"></span>
+</p>
+
+<p>
   <%= f.label :birthdate %><br/>
   <%= f.date_select :birthdate, :start_year => Time.zone.now.year, :end_year => 100.years.ago.year %>
   <span class="clear"></span>
