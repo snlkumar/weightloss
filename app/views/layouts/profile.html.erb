@@ -49,7 +49,26 @@
             <%= link_to "Back to Overview", {} %>
           </div>
           
-          <div id="nav-bar" class="grid_11">&nbsp;</div>
+          <div id="nav-bar" class="grid_11">
+            <ul>
+              <li>
+                <%= link_to "", {}, :id => 'profile-tab' %>
+              </li>
+              <li>
+                <%= link_to "", {}, :id => 'food-tab' %>
+              </li>
+              <li>
+                <%= link_to "", {}, :id => 'exercise-tab' %>
+              </li>
+              <li style="width: 120px">
+                <%= link_to 'Community Feed', {} %>
+              </li>
+              <li style="width: 120px">
+                <%= link_to 'Acheivements', {} %>
+              </li>
+            </ul>
+            
+          </div>
           
           <div class="clear">&nbsp;</div>
         </div>

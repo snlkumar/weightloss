@@ -81,8 +81,8 @@ a:link { -webkit-tap-highlight-color: #FF5E99; }
 /* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active { outline: none; }
 
-a, a:active, a:visited { color: #607890; }
-a:hover { color: #036; }
+/*a, a:active, a:visited { color: #607890; }
+a:hover { color: #036; }*/
 
 ul, ol { margin-left: 2em; }
 ol { list-style-type: decimal; }
@@ -201,7 +201,6 @@ h1, h2, h3, h4, h5, h6 { font-weight: bold; }
  
  body      { background-color: #f0f0f0; }
  a         { text-decoration: none; }
- a:visited { color: blue; }
  a:hover   { text-decoration: underline; }
  
  .center   { margin: 0 auto; }
@@ -301,13 +300,20 @@ h1, h2, h3, h4, h5, h6 { font-weight: bold; }
  
  /* PROFILE */
  #logo      { height: 60px; line-height: 60px; background-color: #fff; margin-bottom: 0px; text-align: center; }
- #logo a    { text-decoration: none; }
+ #logo a    { color: #444; text-decoration: none; }
  
  #back-bar  { color: #444; display: block; height: 52px; line-height: 52px; font-size: 14pt; text-align: center; 
               background: -moz-linear-gradient(0% 15% 90deg,#91D1E8, #91D1E8, #7fb8cc 100%);
               background: -webkit-gradient(linear, 0% 0%, 0% 15%, from(#91D1E8), to(#91D1E8), color-stop(0,#7FB8CC)) }
- #back-bar a { display: block; background-image: url(/images/icon-backarrow.png); background-position: 39px 16px; background-repeat: no-repeat; }
- #nav-bar   { height: 52px; background-color: #fff; }
+ #back-bar a { color: #444; display: block; background-image: url(/images/icon-backarrow.png); background-position: 39px 16px; background-repeat: no-repeat; }
+ #nav-bar    { height: 52px; }
+ #nav-bar ul { margin: 0; padding: 0; list-style: none; }
+ #nav-bar ul li { background-color: #fff; display: inline; float: left; margin: 0px 1px 0px 0px; width: 40px; padding: 0px 10px; text-align: center; }
+ #nav-bar a  { color: #444; display: block; height: 52px; line-height: 52px; }
+ #nav-bar a#profile-tab { background-image: url(/images/icon-myprofile.png); background-repeat: no-repeat; background-position: 9px 15px; }
+ #nav-bar a#food-tab { background-image: url(/images/icon-food.png); background-repeat: no-repeat; background-position: 12px 15px; }
+ #nav-bar a#exercise-tab { background-image: url(/images/icon-exercise.png); background-repeat: no-repeat; background-position: 9px 15px; }
+ 
  #user-name { font-size: 18pt; margin: 29px 0px 0px 19px; }
  
  p#permalink      { margin: 9px 0px 0px 22px; padding-left: 29px; background: url(/images/icon-shortlink.png) no-repeat left center }
