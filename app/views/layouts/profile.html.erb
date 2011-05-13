@@ -104,24 +104,29 @@
         <div class="clear">&nbsp;</div>
         <br/>
         
-        <div class="sidebar-container" style="padding-top: 20px; background-color: white;">
-          Achievement Date
+        <div class="sidebar-container" style="padding: 18px 0px 18px 20px; background-color: white;">
+          <h4 id="achievement-date">Achievement Date</h4>
           
-          <div id="achievement-calendar" class="grid_2">
-            <div>June<br/><span style="font-size: 30pt;">9</span></div>
+          <div id="achievement-calendar" class="">
+            <div>
+              Iris<br/>
+              <span>X</span>
+            </div>
           </div>
-          <div class="grid_3">
-            <span>186 lbs</span><br/>
+          <div id='achievement-text' class="grid_3">
+            <span>XXX lbs</span><br/>
             recorded X days ago
             
-            <%= link_to 'Update Weight', {}, :class => 'grid_3 alpha omega' %>
+            <%= link_to 'Update Weight', {}, :id => 'update-weight', :class => 'light-blue' %>
           </div>
           
           <div class="clear">&nbsp;</div>
         </div>
+        
       </div>
       
       
+    </div>
       
       <div id="content" class="grid_11 profile">
         <%= yield %>
