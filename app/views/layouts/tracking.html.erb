@@ -39,11 +39,11 @@
         <div class="main-nav container_16" style="position:relative;">
           
           <div class="button" style="padding: 2px 5px; width: 130px; height: 31px; float:right; line-height: 29px; margin-top: 12px;">
-            <%= link_to "+ Add Meal", new_meal_path, :class => 'submit', :style => "font-size: 12pt;" %>
+            <%= link_to "+ Add Meal", new_meal_path, :style => "font-size: 12pt;" %>
           </div>
           
           <div class="button" style="padding: 2px 5px;  width: 130px;  height: 31px; float:right; line-height: 29px; margin-top: 12px;">
-            <%= link_to "+ Add Workout", new_workout_path, :class => 'submit', :style => "font-size: 12pt;" %>
+            <%= link_to "+ Add Workout", new_workout_path, :style => "font-size: 12pt;" %>
           </div>
           
           <h2 id="logo" class="grid_5 sidebar-container"><%= link_to 'myweightworld', tracking_path %></h2>
@@ -137,11 +137,11 @@
           <h4 class="sidebar-subheader">Burned Calories</h4>
           
           <div class="large-calories">
-            <span style="color: #f26c4f"><%= current_user.calories_burned_today %></span>/XXX
+            <span style="color: #f26c4f"><%= current_user.calories_burned_today %></span>
           </div>
           <div class="small-text">burned today</div>
           <div class="calories-this-week">
-            <span style="color: #f26c4f"><%= current_user.calories_burned_this_week %></span>/XXX this week
+            <span style="color: #f26c4f"><%= current_user.calories_burned_this_week %></span> this week
           </div>
           <div class="clear">&nbsp;</div>
         </div>
@@ -150,11 +150,11 @@
           <h4 class="sidebar-subheader">Consumed Calories</h4>
           
           <div class="large-calories">
-            <span style="color: #7cc576"><%= current_user.calories_consumed_today %></span>/XXX
+            <span style="color: #7cc576"><%= current_user.calories_consumed_today %></span>/<%= five_hundred_calorie_deficit(current_user) %>
           </div>
           <div class="small-text">consumed today</div>
           <div class="calories-this-week">
-            <span style="color: #7cc576"><%= current_user.calories_burned_this_week %></span>/XXX this week
+            <span style="color: #7cc576"><%= current_user.calories_burned_this_week %></span>/<%= five_hundred_calorie_deficit(current_user) * 7 %> this week
           </div>
           
           <div class="clear">&nbsp;</div>
