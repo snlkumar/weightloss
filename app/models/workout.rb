@@ -17,7 +17,7 @@ class Workout < ActiveRecord::Base
 
 # Instance Methods
   def trained_on_date=(hash)
-    write_attribute(:trained_on, Time.zone.parse("#{hash[:date]} #{hash[:time][:hour]}:#{hash[:time][:minute]} #{hash[:time][:meridian]}") )
+    self.trained_on, Time.zone.parse("#{hash[:date]} #{hash[:time][:hour]}:#{hash[:time][:minute]} #{hash[:time][:meridian]}")
   end
 
   def total_calories

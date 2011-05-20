@@ -22,7 +22,7 @@ class Meal < ActiveRecord::Base
   
 # Instance Methods
   def ate_on_date=(hash)
-    write_attribute(:ate_on, Time.zone.parse("#{hash[:date]} #{hash[:time][:hour]}:#{hash[:time][:minute]} #{hash[:time][:meridian]}") )
+    self.ate_on, Time.zone.parse("#{hash[:date]} #{hash[:time][:hour]}:#{hash[:time][:minute]} #{hash[:time][:meridian]}")
   end
   
   def total_calories
