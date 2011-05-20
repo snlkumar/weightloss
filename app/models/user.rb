@@ -73,4 +73,25 @@ class User < ActiveRecord::Base
     self.gender == 'male'
   end
   
+  def calories_consumed_today
+    self.meals.today.inject(0){|tot, meal| tot += meal.meal_items.inject(0){|meal_tot, meal_item| meal_tot += meal_item.calories } }
+  end
+  
+  def calories_burned_this_week
+    self.workouts.past_week.inject(0){|tot, workout| 
+      tot += workout.workout_items.inject(0){|workout_tot, workout_item| 
+        workout_tot += workout_item.calories 
+      }
+    }
+  end
+  
+  def calories_burned_today
+    self.workouts.today.inject(0){|tot, workout| 
+      tot += workout.workout_items.inject(0){|workout_tot, workout_item| 
+        workout_tot += workout_item.calories
+      }
+    }
+  end
+  
+  # CLass Methods  
 end
