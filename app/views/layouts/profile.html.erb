@@ -117,7 +117,7 @@
             <span>XXX lbs</span><br/>
             recorded X days ago
             
-            <%= link_to 'Update Weight', {}, :id => 'update-weight', :class => 'light-blue' %>
+            <%= link_to 'Update Weight', edit_metabolic_rates_path, :id => 'update-weight', :class => 'light-blue' %>
           </div>
           
           <div class="clear">&nbsp;</div>
@@ -126,7 +126,6 @@
       </div>
       
       <%= yield :sidebar %>
-    </div>
       
       <div id="content" class="grid_11 profile">
         <%= yield %>

@@ -336,7 +336,6 @@ h1, h2, h3, h4, h5, h6 { font-weight: bold; }
  #update-weight             { color: #444; display: block; text-align: center; width: 100px; margin: 11px auto; padding: 7px 20px; }
  
  .space             { margin-bottom: 20px; }
- .profile h3        { margin-left: 20px; }
  .profile-label     { display: inline; float: left; margin: 0px 10px 0px 20px; width: 140px; }
  .sidebar-container { -moz-box-shadow: 2px 2px 2px #666;
                       -webkit-box-shadow: 2px 2px 2px #666;
@@ -346,10 +345,10 @@ h1, h2, h3, h4, h5, h6 { font-weight: bold; }
                     }
   .sidebar-container.subsection { padding: 18px 0px 18px 20px; margin-bottom: 2px;}
   h4.sidebar-subheader { margin-bottom: 0px; }
-  .large-calories      { font-size: 48pt; }
+  .large-calories      { font-size: 36pt; }
   .large-calories span { color: #f26c4f; }
-  .small-text          { font-size: 12pt; }
-  .calories-this-week  { font-size: 18pt; }
+  .small-text          { font-size: 10pt; }
+  .calories-this-week  { font-size: 16pt; }
 
  /* EDIT PERSONAL INFO */
  .edit textarea    { height: 75px; }
@@ -381,15 +380,14 @@ h1, h2, h3, h4, h5, h6 { font-weight: bold; }
    #weight-slider   { height: 10px; margin-bottom: 10px; width: 180px !important; }
  form.edit #height-slider, 
    form.edit #weight-slider   { width: 300px !important; }
+   
  /* New Meal Entry */
- #meal-entry,
- #workout-entry          { background-color: #F6F6F6; border: 2px solid #006597; padding: 15px; width: 100%; }
-   #meal-entry table,
- #workout-entry table    { width: 100%; }
-   #meal-entry table td,
- #workout-entry table td { vertical-align: middle; }
+ #meal-entry, #workout-entry                   { background-color: #F6F6F6; border: 2px solid #006597; padding: 15px; width: 100%; }
+ #meal-entry table, #workout-entry table       { width: 100%; }
+ #meal-entry table td, #workout-entry table td { vertical-align: middle; }
 
- #meal-items td        { border-bottom: 1px solid #CCC; }
+ #meal-items td, 
+   #workout-items td        { border-bottom: 1px solid #CCC; }
  #meal-items .servings { width: 115px; }
  #meal-items .serving-size { width: 210px; }
  /*#meal-items .food-name { width: 295px; }*/
@@ -403,7 +401,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: bold; }
 
 
  form#meal .delete,
-   form#workout .delete { float: right; }
+   form#workout .delete { float: right; margin-top: 8px; }
 
  form#meal-new-item textarea,
    form#workout-new-item textarea { height: 75px; width: 655px; }

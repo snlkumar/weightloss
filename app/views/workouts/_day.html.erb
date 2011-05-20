@@ -4,7 +4,7 @@
   <div class="button" style="padding: 5px;"><%= link_to "+ Add Workout", new_workout_path(:date => day) %></div>
 </div>
 
-<div class="grid_10 omega">
+<div class="grid_9 omega">
   <% @workouts = current_user.workouts.find(:all, :conditions => ["trained_on LIKE ?", "#{day}%"], :order => "trained_on ASC") %>
   <% if @workouts.empty? %>
     <h3>You haven't entered any workouts for this day</h3>
@@ -15,6 +15,6 @@
   
 </div>
 
-<hr class="grid_12 day_seperator"/>
+<hr class="grid_11 day_seperator"/>
 
 <div class="clear"></div>

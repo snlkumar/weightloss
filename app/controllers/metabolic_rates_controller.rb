@@ -1,5 +1,5 @@
 class MetabolicRatesController < ApplicationController
-  layout 'application'
+  layout 'tracking'
   
   before_filter :require_user
   

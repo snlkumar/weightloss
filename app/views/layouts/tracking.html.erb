@@ -34,7 +34,17 @@
       </div>
       
       <div id="main-nav" class="full">
-        <div class="main-nav container_16">
+        
+        
+        <div class="main-nav container_16" style="position:relative;">
+          
+          <div class="button" style="padding: 2px 5px; width: 130px; height: 31px; float:right; line-height: 29px; margin-top: 12px;">
+            <%= link_to "+ Add Meal", new_meal_path, :class => 'submit', :style => "font-size: 12pt;" %>
+          </div>
+          
+          <div class="button" style="padding: 2px 5px;  width: 130px;  height: 31px; float:right; line-height: 29px; margin-top: 12px;">
+            <%= link_to "+ Add Workout", new_workout_path, :class => 'submit', :style => "font-size: 12pt;" %>
+          </div>
           
           <h2 id="logo" class="grid_5 sidebar-container"><%= link_to 'myweightworld', tracking_path %></h2>
           
@@ -52,13 +62,13 @@
           <div id="nav-bar" class="grid_11">
             <ul>
               <li>
-                <%= link_to "", {}, :id => 'profile-tab' %>
+                <%= link_to "", user_path(current_user), :id => 'profile-tab' %>
               </li>
               <li>
-                <%= link_to "", {}, :id => 'food-tab' %>
+                <%= link_to "", meals_path, :id => 'food-tab' %>
               </li>
               <li>
-                <%= link_to "", {}, :id => 'exercise-tab' %>
+                <%= link_to "", workouts_path, :id => 'exercise-tab' %>
               </li>
               <li style="width: 120px">
                 <%= link_to 'Community Feed', {} %>
@@ -115,7 +125,7 @@
             <span>XXX lbs</span><br/>
             recorded X days ago
             
-            <%= link_to 'Update Weight', {}, :id => 'update-weight', :class => 'light-blue' %>
+            <%= link_to 'Update Weight', edit_metabolic_rates_path, :id => 'update-weight', :class => 'light-blue' %>
           </div>
           
           <div class="clear">&nbsp;</div>
@@ -153,7 +163,6 @@
       </div>
       
       <%= yield :sidebar %>
-    </div>
       
       <div id="content" class="grid_11 profile">
         <%= yield %>
@@ -178,7 +187,7 @@
     <!-- // <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js"></script>
         //     <script>window.jQuery || document.write("<script src='/javascripts/jquery-1.6.min.js'>\x3C/script>")</script> -->
     
-    <%= javascript_include_tag "jquery-1.4.4.dev.js", "jquery-ui-1.8.9.min.js", "underscore", "application" %>
+    <%= javascript_include_tag "jquery-1.4.4.dev.js", "jquery-ui-1.8.9.min.js", "underscore", "jquery.labelify.js", "application" %>
     <%= init_tinymce_hammer_if_required %>
     
     <%= render :partial => "shared/gridder" %>

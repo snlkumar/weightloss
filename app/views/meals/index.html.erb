@@ -1,32 +1,13 @@
+<div id="inline-calendar" style="display:none;"></div>
+Meal Tracker
+<hr class="grid_11 day_seperator"/>
 
-<!-- Tracking Show -->
-<div class="full">
-  <div class="grid_4">
-    <div id="inline-calendar"></div>
-    
-  </div>
-  
-  <div class="grid_12">
-    <% form_tag new_meal_path, :method => :get do %>
-      <p class="h3" style="margin: 50px 0px; position: relative">
-        Hi <%= current_user.first_name %>, what did you eat? 
-        <%= select_tag "meal_type", options_for_select(Meal::TYPES) %>
-        <div class="button" style="padding: 2px 5px; position: absolute; top: 46px; left: 400px;">
-          <%= link_to "+ Add Meal", new_meal_path, :class => 'submit' %>
-        </div>
-      </p>
-    <% end %>
-    
-    <br/>
-    
-    <% @start_date.downto(@start_date - 6.days) do |day| %>
-      
-      <%= render :partial => 'day', :locals => { :day => day } %>
-      
-    <% end %>
-  </div>
-  
+<div class="grid_11">
+  <% @start_date.downto(@start_date - 6.days) do |day| %>
+    <%= render :partial => 'day', :locals => { :day => day } %>
+  <% end %>
 </div>
+
 
 <script type="text/javascript" charset="utf-8">
   <% content_for :js do %>
