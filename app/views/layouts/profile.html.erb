@@ -52,13 +52,13 @@
           <div id="nav-bar" class="grid_11">
             <ul>
               <li>
-                <%= link_to "", {}, :id => 'profile-tab' %>
+                <%= link_to "", user_path(current_user), :id => 'profile-tab' %>
               </li>
               <li>
-                <%= link_to "", {}, :id => 'food-tab' %>
+                <%= link_to "", new_meal_path, :id => 'food-tab' %>
               </li>
               <li>
-                <%= link_to "", {}, :id => 'exercise-tab' %>
+                <%= link_to "", new_workout_path, :id => 'exercise-tab' %>
               </li>
               <li style="width: 120px">
                 <%= link_to 'Community Feed', {} %>
