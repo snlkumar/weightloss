@@ -1,78 +1,39 @@
-<!-- Tracking Show -->
-<div class="full">
-  <div class="grid_4">
-    &nbsp;
-    <% if current_user.avatar.file? %>
-      <%= image_tag(current_user.avatar.url(:large), :class => "profile-avatar") %>
-    <% else %>
-      <div class="profile-avatar"></div>
-    <% end %>
-    
-  </div>
-  
-  <div id="tracking-center" class="grid_8">
-    
-    <table id="calorie-table" >
-      <tbody>
-        <tr>
-          <td id="header" colspan="2">
-            <h2><%= current_user.full_name %>'s Calories</h2>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <span class="count"><%= calories_burned_today(current_user.workouts.today) %></span><br/>
-            Burned Today
-          </td>
-          <td>
-            <span class="count"><%= calories_consumed_today(current_user.meals.today) %></span><br/>
-            Consumed Today
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <span class="count"><%= calories_burned_this_week(current_user.workouts.past_week) %></span><br/>
-            Burned This Week
-          </td>
-          <td>
-            <span class="count"><%= 2000 - calories_consumed_today(current_user.meals.today) %></span><br/>
-            Left Today
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="button"><%= link_to 'Track My Exercise', workouts_path %></div>
-          </td>
-          <td>
-            <div class="button"><%= link_to 'Track My Diet', meals_path %></div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    
-    <div class="clear"></div>
-  </div>
-  
-  <div class="grid_4">
+<!-- <table id="calorie-table" >
+  <tbody>
+    <tr>
+      <td id="header" colspan="2">
+        <h2><%#= current_user.full_name %>'s Calories</h2>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="count"><%#= calories_burned_today(current_user.workouts.today) %></span><br/>
+        Burned Today
+      </td>
+      <td>
+        <span class="count"><%#= calories_consumed_today(current_user.meals.today) %></span><br/>
+        Consumed Today
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="count"><%#= calories_burned_this_week(current_user.workouts.past_week) %></span><br/>
+        Burned This Week
+      </td>
+      <td>
+        <span class="count"><%#= 2000 - calories_consumed_today(current_user.meals.today) %></span><br/>
+        Left Today
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="button"><%#= link_to 'Track My Exercise', workouts_path %></div>
+      </td>
+      <td>
+        <div class="button"><%#= link_to 'Track My Diet', meals_path %></div>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-    <%= render :partial => 'users/bmi' %>
-
-  </div>
-
-</div>
-
-<div class="clear"></div>
-
-<div class="grid_4">
-  &nbsp;
-</div>
-
-<div class="grid_8 profile-center-content">
-  &nbsp;
-  <%= link_to 'Metabolic Rates', edit_metabolic_rates_path %>
-  
-</div>
-
-<div class="grid_4">
-  &nbsp;
-</div>
+<%#= link_to 'Metabolic Rates', edit_metabolic_rates_path %> -->

@@ -80,7 +80,7 @@
     
     <div class="container_16">
       <div class="grid_5 ">
-        <div class="sidebar-container" style="background-color: white;">
+        <div class="sidebar-container" style="">
           <p id="user-name" class="grid_5"><%= @user.full_name %></p>
           
           <div class="clear">&nbsp;</div>
@@ -105,7 +105,7 @@
         <br/>
         
         <div class="sidebar-container" style="padding: 18px 0px 18px 20px; background-color: white;">
-          <h4 id="achievement-date">Achievement Date</h4>
+          <h4 class="sidebar-subheader">Achievement Date</h4>
           
           <div id="achievement-calendar" class="">
             <div>
@@ -125,7 +125,7 @@
         
       </div>
       
-      
+      <%= yield :sidebar %>
     </div>
       
       <div id="content" class="grid_11 profile">
