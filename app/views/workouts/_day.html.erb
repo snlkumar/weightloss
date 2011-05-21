@@ -5,7 +5,7 @@
 </div>
 
 <div class="grid_9 omega">
-  <% @workouts = current_user.workouts.find(:all, :conditions => ["trained_on LIKE ?", "#{day}%"], :order => "trained_on ASC") %>
+  <% @workouts = current_user.workouts.on(day) %>
   <% if @workouts.empty? %>
     <h3>You haven't entered any workouts for this day</h3>
   <% end %>

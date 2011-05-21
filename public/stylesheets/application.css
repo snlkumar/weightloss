@@ -345,9 +345,9 @@ h1, h2, h3, h4, h5, h6 { font-weight: bold; }
                     }
   .sidebar-container.subsection { padding: 18px 0px 18px 20px; margin-bottom: 2px;}
   h4.sidebar-subheader { margin-bottom: 0px; }
-  .large-calories      { font-size: 36pt; }
+  .large-calories      { font-size: 36pt; height: 47px; }
   .large-calories span { color: #f26c4f; }
-  .small-text          { font-size: 10pt; }
+  .small-text          { font-size: 10pt; margin-bottom: 5px; }
   .calories-this-week  { font-size: 16pt; }
 
  /* EDIT PERSONAL INFO */

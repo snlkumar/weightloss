@@ -9,6 +9,8 @@ class Workout < ActiveRecord::Base
 
 # Scopes
   named_scope :starting_from, lambda { |date| {:conditions => ["trained_on <= ?", date] }}
+  named_scope :on,            lambda { |date| {:conditions => ["trained_on >= ? AND trained_on <= ?", date.beginning_of_day, date.end_of_day], 
+                                               :order => "trained_on ASC"} }
   named_scope :today, :conditions => ["trained_on >= ? AND trained_on <= ?", Time.zone.today.beginning_of_day, Time.zone.today.end_of_day]
   named_scope :past_week, :conditions => ["trained_on >= ?", 6.days.ago]
 

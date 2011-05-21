@@ -5,11 +5,11 @@ class WorkoutsController < ApplicationController
   
   def index
     if params[:date]
-      @start_date = params[:date].to_date
-      @workouts      = current_user.workouts.starting_from(params[:date]).all(:order => 'trained_on DESC')
+      @start_date = Time.zone.parse params[:date]
+      @workouts   = current_user.workouts.starting_from(params[:date]).all(:order => 'trained_on DESC')
     else
-      @start_date = Time.zone.now.to_date
-      @workouts      = current_user.workouts.all(:order => 'trained_on DESC')
+      @start_date = Time.zone.now
+      @workouts   = current_user.workouts.all(:order => 'trained_on DESC')
     end
   end
   

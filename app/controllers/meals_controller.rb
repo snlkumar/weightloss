@@ -5,10 +5,10 @@ class MealsController < ApplicationController
   
   def index
     if params[:date]
-      @start_date = params[:date].to_date
+      @start_date = Time.zone.parse params[:date]
       @meals      = current_user.meals.starting_from(params[:date]).all(:order => 'time_of_day DESC')
     else
-      @start_date = Time.zone.now.to_date
+      @start_date = Time.zone.now
       @meals      = current_user.meals.all(:order => 'time_of_day DESC')
     end
   end

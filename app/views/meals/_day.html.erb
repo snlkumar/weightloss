@@ -5,7 +5,7 @@
 </div>
 
 <div class="grid_9 omega">
-  <% @meals = current_user.meals.find(:all, :conditions => ["ate_on LIKE ?", "#{day}%"], :order => "time_of_day ASC") %>
+  <% @meals = current_user.meals.on(day) %>
   <% if @meals.empty? %>
     <h3>You haven't entered any meals for this day</h3>
   <% end %>

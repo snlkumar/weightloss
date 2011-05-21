@@ -77,20 +77,28 @@ class User < ActiveRecord::Base
     self.meals.today.inject(0){|tot, meal| tot += meal.meal_items.inject(0){|meal_tot, meal_item| meal_tot += meal_item.calories } }
   end
   
+  def calories_consumed_this_week
+    self.meals.past_week.inject(0) do |tot, meal|
+      tot += meal.meal_items.inject(0) do | meal_tot, meal_item|
+        meal_tot += meal_item.calories
+      end
+    end
+  end
+  
   def calories_burned_this_week
-    self.workouts.past_week.inject(0){|tot, workout| 
-      tot += workout.workout_items.inject(0){|workout_tot, workout_item| 
+    self.workouts.past_week.inject(0) do |tot, workout| 
+      tot += workout.workout_items.inject(0) do |workout_tot, workout_item| 
         workout_tot += workout_item.calories 
-      }
-    }
+      end
+    end
   end
   
   def calories_burned_today
-    self.workouts.today.inject(0){|tot, workout| 
-      tot += workout.workout_items.inject(0){|workout_tot, workout_item| 
+    self.workouts.today.inject(0) do |tot, workout| 
+      tot += workout.workout_items.inject(0) do |workout_tot, workout_item| 
         workout_tot += workout_item.calories
-      }
-    }
+      end
+    end
   end
   
   # CLass Methods  

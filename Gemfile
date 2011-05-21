@@ -10,6 +10,7 @@ gem 'will_paginate', '2.3.11'
 gem 'authlogic', '2.1.6'
 gem 'mysql'
 gem 'chronic'
+gem 'ruby-debug'
 
 group :cucumber do
   gem 'cucumber'

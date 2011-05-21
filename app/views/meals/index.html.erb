@@ -3,11 +3,10 @@ Meal Tracker
 <hr class="grid_11 day_seperator"/>
 
 <div class="grid_11">
-  <% @start_date.downto(@start_date - 6.days) do |day| %>
-    <%= render :partial => 'day', :locals => { :day => day } %>
+  <% (0..6).each do |index| %>
+    <%= render :partial => 'day', :locals => { :day => index.days.ago } %>
   <% end %>
 </div>
-
 
 <script type="text/javascript" charset="utf-8">
   <% content_for :js do %>
