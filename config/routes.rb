@@ -17,7 +17,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :foods,     :collection => { :search => :get, :meal_item_calories => :post }
   map.resources :exercises, :collection => { :search => :get, :workout_item_calories => :post }
   
-  map.resources :users, :member => {:bmi_update => :put}, :collection => {:bmi => :get} do |user|
+  map.resources :users, :member => {:bmi_update => :put, :weight_update => :put}, :collection => {:bmi => :get} do |user|
     user.edit_personal_info  '/info/edit',      :controller => :users, :action => :personal_info
     user.edit_nutrition_info '/nutrition/edit', :controller => :users, :action => :nutrition_info
     user.edit_exercise_info  '/exercise/edit',  :controller => :users, :action => :exercise_info

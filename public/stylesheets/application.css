@@ -332,7 +332,8 @@ h1, h2, h3, h4, h5, h6 { font-weight: bold; }
  #achievement-calendar div  { font-size: 17pt; padding: 28px 0px 0px 0px; text-align: center; }
  #achievement-calendar span { font-size: 26pt; line-height: 16pt; }
  #achievement-text          { text-align: center; font-size: 11pt; padding-top: 9px; }
- #achievement-text span     { font-weight: bold; font-size: 14pt; }
+ #achievement-text span#pounds     { font-weight: bold; font-size: 14pt; }
+ #achievement-text .edit form { font-size: 10pt; }
  #update-weight             { color: #444; display: block; text-align: center; width: 100px; margin: 11px auto; padding: 7px 20px; }
  
  .space             { margin-bottom: 20px; }

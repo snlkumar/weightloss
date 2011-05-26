@@ -63,6 +63,12 @@ class UsersController < ApplicationController
     end
   end
   
+  def weight_update
+    current_user.update_attributes(params[:user])
+    
+    render :text => current_user.weight
+  end
+  
   def account_info
     render :layout => 'user_settings'
   end
