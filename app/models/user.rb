@@ -47,7 +47,12 @@ class User < ActiveRecord::Base
   end
   
   def weight=(val)
-    self.weights.create(:weight => val)
+    if Weight.exists?(:user_id => self.id, :created_at => Time.zone.now)
+      temp = self.weights.find(:first, :conditions => ["weights.created_at BETWEEN ? AND ?", Time.zone.now.beginning_of_day, Time.zone.now.end_of_day])
+      temp.update_attribute(:weight, val)
+    else
+      self.weights.create(:weight => val)
+    end
   end
   
   def to_param

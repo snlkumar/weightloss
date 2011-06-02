@@ -1,0 +1,24 @@
+$('#update-weight').click(function(evt){
+  $('.edit').trigger('click');
+  return false;
+});
+
+$('.edit').editable("<%= weight_update_user_path(current_user) %>", {
+  method: 'PUT',
+  name: 'user[weight]',
+  submit: 'Save',
+  cancel: 'Cancel',
+  onblur: 'ignore',
+  indicator: '<%= image_tag("ajax-loader.gif") %>',
+  ajaxoptions: {complete: function(data, textStatus){
+      $('#days-ago').html('today')
+      
+       $.ajax({
+          url: "<%= achievement_date_user_path(current_user) %>",
+          beforeSend: function(xhr, settings){ $('#achievement-date').html('<%= image_tag("ajax-loader.gif") %>'); },
+          success:    function(data, status) { $('#achievement-date').html(data); },
+          dataType: 'html'
+        });
+    }
+  }
+});
