@@ -17,8 +17,9 @@ class User < ActiveRecord::Base
   end
   
   # Associations
-  has_many :meals
-  has_many :workouts
+  has_many :meals,    :dependent => :destroy
+  has_many :workouts, :dependent => :destroy
+  has_many :weights,  :dependent => :destroy, :order => 'created_at DESC'
   
   # Validations
   validates_presence_of         :first_name, :last_name, :email, :username
@@ -41,6 +42,14 @@ class User < ActiveRecord::Base
                  :private => false
   
   # Instance Methods
+  def weight
+    self.weights.first.try(:weight)
+  end
+  
+  def weight=(val)
+    self.weights.create(:weight => val)
+  end
+  
   def to_param
     self.permalink
   end
@@ -118,6 +127,10 @@ class User < ActiveRecord::Base
   
   def remove_avatar=(value)
     self.avatar = nil if value == '1'
+  end
+  
+  def trying_to_lose_weight?
+    self.desired_weight < self.weight
   end
   
   # CLass Methods  
