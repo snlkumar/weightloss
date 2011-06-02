@@ -50,21 +50,7 @@
           </div>
           
           <div id="nav-bar" class="grid_11">
-            <ul>
-              <li>
-                <%= link_to "", user_path(current_user), :id => 'profile-tab' %>
-              </li>
-              <li>
-                <%= link_to "", meals_path, :id => 'food-tab' %>
-              </li>
-              <li>
-                <%= link_to "", workouts_path, :id => 'exercise-tab' %>
-              </li>
-              <li style="width: 400px">
-                <%= link_to '', {} %>
-              </li>
-            </ul>
-            
+            <%= render :partial => 'shared/nav_bar' %>
           </div>
           
           <div class="clear">&nbsp;</div>
