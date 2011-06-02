@@ -1,11 +1,18 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user,    :only => [:show, :edit, :update, :finalize, :next, :step_two]
+  before_filter :require_user,    :except => [:show, :new, :create, :next, :bmi_update, :weight_update]
   before_filter :set_defaults,    :only => [:step_two, :edit, :personal_info]
   
   def show
     @user = User.find(params[:id])
-    render :layout => "profile"
+    
+    if current_user
+      render :layout => "profile"
+    elsif !@user.private?
+      render :action => :public_profile, :layout => "private_profile"
+    else
+      render :action => :private, :layout => "private_profile"
+    end
   end
   
   def new
@@ -30,6 +37,7 @@ class UsersController < ApplicationController
   def finalize
     if current_user.update_attributes(params[:user])
       current_user.update_attribute(:status, 'finalize')
+      current_user.save # TODO: needed?
       redirect_to user_path(current_user)
     else
       render :action => :step_two
@@ -38,10 +46,6 @@ class UsersController < ApplicationController
   
   def next
     
-  end
-  
-  def edit
-    @user = @current_user
   end
   
   def update
@@ -63,32 +67,35 @@ class UsersController < ApplicationController
     end
   end
   
-  def weight_update
-    current_user.update_attributes(params[:user])
-    
-    render :text => current_user.weight
-  end
-  
   def account_info
+    @user = current_user
     render :layout => 'user_settings'
   end
   
   def personal_info
-    
+    @user = current_user
     render :layout => 'user_settings'
   end
   
   def nutrition_info
+    @user = current_user
     render :layout => 'user_settings'
   end
   
   def exercise_info
+    @user = current_user
     render :layout => 'user_settings'
   end
   
   def bmi
     @user = current_user
     render :layout => "profile"
+  end
+  
+  def weight_update
+    current_user.update_attributes(params[:user])
+    
+    render :text => current_user.weight
   end
   
   def bmi_update
