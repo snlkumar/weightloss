@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110511183112) do
+ActiveRecord::Schema.define(:version => 20110601210007) do
 
   create_table "categories", :force => true do |t|
     t.integer "parent_id"
@@ -303,6 +303,8 @@ ActiveRecord::Schema.define(:version => 20110511183112) do
     t.string   "city"
     t.string   "state"
     t.string   "twitter_name"
+    t.boolean  "private"
+    t.string   "permalink"
   end
 
   create_table "workout_items", :force => true do |t|
