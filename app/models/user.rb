@@ -133,5 +133,9 @@ class User < ActiveRecord::Base
     self.desired_weight < self.weight
   end
   
+  def public?
+    !self.private?
+  end
+  
   # CLass Methods  
 end

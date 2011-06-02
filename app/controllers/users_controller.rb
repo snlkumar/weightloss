@@ -7,12 +7,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     flash.clear
     
-    if current_user
-      render :layout => "profile"
-    elsif !@user.private?
-      render :action => :public_profile, :layout => "private_profile"
+    if current_user == @user
+      p 'profile' if Rails.env.development?
+      render :layout => :profile
+    elsif @user.private?
+      p 'private profile' if Rails.env.development?
+      render :action => :private, :layout => :private_profile
+    elsif @user.public?
+      p 'public profile' if Rails.env.development?
+      render :action => :public_profile, :layout => :public_profile
     else
-      render :action => :private, :layout => "private_profile"
+      p 'private profile' if Rails.env.development?
+      render :action => :private, :layout => :private_profile
     end
   end
   

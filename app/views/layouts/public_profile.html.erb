@@ -50,7 +50,7 @@
           </div>
           
           <div id="nav-bar" class="grid_11">
-            <%= render :partial => 'shared/nav_bar' %>
+            
           </div>
           
           <div class="clear">&nbsp;</div>
@@ -64,54 +64,31 @@
     <div class="container_16">
       <div class="grid_5 ">
         <div class="sidebar-container" style="">
-          <p id="user-name" class="grid_5"><%= current_user.full_name %></p>
+          <p id="user-name" class="grid_5"><%= @user.full_name %></p>
           
           <div class="clear">&nbsp;</div>
           
-          <% if current_user.avatar.file? %>
-            <div class="profile-avatar avatar"><%= image_tag(current_user.avatar.url(:profile)) %></div>
+          <% if @user.avatar.file? %>
+            <div class="profile-avatar avatar"><%= image_tag(@user.avatar.url(:profile)) %></div>
           <% else %>
-            <div class="profile-avatar"></div>
+            <div class="profile-avatar avatar"></div>
           <% end %>
           
-          <%= link_to 'Edit', user_edit_personal_info_path(current_user), :id => 'edit-profile', :class => 'light-blue' %>
-          
           <div class="clear">&nbsp;</div>
           
-          <%= render :partial => 'users/details', :locals => {:user => current_user} %>
+          <%= render :partial => 'details', :locals => {:user => @user} %>
           <br/>
-          
-          <ul id="user-settings-tabs">
-            <li class="<%= active_settings_tab?('account') %>">
-              <%= link_to 'Account Info', user_edit_account_info_path(current_user) %>
-            </li>
-            <li class="<%= active_settings_tab?('personal') %>">
-              <%= link_to 'Personal Info', user_edit_personal_info_path(current_user) %>
-            </li>
-            <li class="<%= active_settings_tab?('nutrition') %>">
-              <%= link_to 'Nutritional Info', user_edit_nutrition_info_path(current_user) %>
-            </li>
-            <li class="<%= active_settings_tab?('exercise') %>">
-              <%= link_to 'Exercise Info', user_edit_exercise_info_path(current_user) %>
-            </li>
-            <li>
-              <%= link_to 'Back to Profile', user_path(current_user) %>
-            </li>
-          </ul>
         </div>
         
         <div class="clear">&nbsp;</div>
         <br/>
+        
         
       </div>
       
       <%= yield :sidebar %>
       
       <div id="content" class="grid_11 profile">
-        <%- flash.each do |name, msg| -%>
-          <p id="flash_<%= name %>" class="flash"><%= msg %></p>
-        <%- end -%>
-        
         <%= yield %>
       </div>
       
@@ -140,7 +117,6 @@
     <script type="text/javascript" charset="utf-8">
       $(document).ready(function() {
         <%= yield :js %>
-        
       });
     </script>
   </body>
