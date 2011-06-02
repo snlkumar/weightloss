@@ -9,7 +9,11 @@ module MetabolicRatesHelper
   end
   
   def pounds_to_lose(user)
-    user.weight - user.desired_weight
+    if user.desired_weight
+      user.weight - user.desired_weight
+    else
+      0
+    end
   end
   
   def days_to_goal(user, daily_deficity)
