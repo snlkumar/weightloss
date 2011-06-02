@@ -20,13 +20,13 @@
 
 <p>
   <%= f.label :first_name, %Q{First Name} %><br/>
-  <%= f.text_field :first_name, :placeholder => "First Name", :class => 'grid_6 alpha' %>
+  <%= f.text_field :first_name, :title => "First Name", :class => 'grid_6 alpha' %>
   <span class="clear"></span>
 </p>
 
 <p>
   <%= f.label :last_name, %Q{Last Name} %><br/>
-  <%= f.text_field :last_name, :placeholder => "Last name", :class => 'grid_6 alpha' %>
+  <%= f.text_field :last_name, :title => "Last name", :class => 'grid_6 alpha' %>
   <span class="clear"></span>
 </p>
 
@@ -59,6 +59,12 @@
 <p>
   <%= f.label :bio %><br/>
   <%= f.text_area :bio, :class => 'grid_6 alpha' %>
+  <span class="clear"></span>
+</p>
+
+<p>
+  <%= f.label :twitter %><br/>
+  <%= f.text_field :twitter_name, :class => 'grid_6 alpha' %>
   <span class="clear"></span>
 </p>
 
