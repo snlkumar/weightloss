@@ -1,9 +1,13 @@
 class User < ActiveRecord::Base
+  attr_accessor :remove_avatar
+  
   BMR_MULTIPLIERS = [1.2, 1.375, 1.55, 1.725, 1.9]
   
-  has_attached_file :avatar, :styles      => { :thumb   => "16x16!",   :small => "40x40!", :medium => "50x50!", 
-                                               :profile => '137x137!', :large => "214x214!" }, 
+  has_attached_file :avatar, :styles      => { :thumb   => "16x16#",   :small => "40x40#", :medium => "50x50#", :tracking => "78x78#",
+                                               :profile => '137x137#', :large => "214x214#" }, 
                              :url         => "/system/:class/:attachment/:id/:style/:filename"
+
+  has_permalink [:id, :first_name, :last_name], :update => true
   
   # Auth Logic
   acts_as_authentic do |config|
@@ -30,14 +34,25 @@ class User < ActiveRecord::Base
   
   # Callbacks
   before_save :strip_lbs
+  before_save :ensure_id_in_permalink
   
   # Defaults
-  default_values :status => "step_one"
+  default_values :status => "step_one",
+                 :private => false
   
   # Instance Methods
+  def to_param
+    self.permalink
+  end
   
   def full_name
     "#{self.first_name} #{self.last_name}"
+  end
+  
+  def ensure_id_in_permalink
+    if self.id.nil?
+      self.permalink = nil
+    end
   end
   
   def strip_lbs
@@ -101,7 +116,9 @@ class User < ActiveRecord::Base
     end
   end
   
-  
+  def remove_avatar=(value)
+    self.avatar = nil if value == '1'
+  end
   
   # CLass Methods  
 end
