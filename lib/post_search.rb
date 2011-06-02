@@ -2,7 +2,6 @@ class PostSearch
   attr_accessor :keywords
   
   def initialize(params = {})
-    debugger
     @keywords     = params[:keywords] ? params[:keywords].gsub(/[^a-zA-Z0-9\s]/, '').split(/\s/) : []
     @per_page     = 15
     @page         = params[:page] || 1
