@@ -93,7 +93,7 @@
           <div class="clear">&nbsp;</div>
           
           <% if @user.city.present? || @user.state.present? %>
-            <p id="location"><%= [@user.city, @user.state].join(', ') %></p>
+            <p id="location"><%= [@user.city, @user.state].compact.join(', ') %></p>
           <% end %>
           <p id="permalink"><%= user_url(@user) %></p>
           <% if @user.twitter_name? %>
