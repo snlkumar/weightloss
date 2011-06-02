@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    flash.clear
     
     if current_user
       render :layout => "profile"
@@ -76,7 +77,6 @@ class UsersController < ApplicationController
       end
     end
     
-    
   end
   
   def account_info
@@ -114,5 +114,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update_attributes(params[:user])
     head(200)
+  end
+  
+  def achievement_date
+    render :partial => 'shared/achievement_date', :locals => {:user => current_user}
   end
 end
