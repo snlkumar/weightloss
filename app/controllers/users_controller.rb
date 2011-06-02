@@ -51,7 +51,18 @@ class UsersController < ApplicationController
   def update
     @user = @current_user # makes our views "cleaner" and more consistent
     if @user.update_attributes(params[:user])
-      redirect_to user_path(@user)
+      flash[:notice] = 'Update successful'
+      
+      case request.referrer
+      when /info/
+        redirect_to user_edit_personal_info_path(current_user)
+      when /nutrition/
+        redirect_to user_edit_nutrition_info_path(current_user)
+      when /exercise/
+        redirect_to user_edit_exercise_info_path(current_user)
+      when /account/
+        redirect_to user_edit_account_info_path(current_user)
+      end
     else
       case request.referrer
       when /info/
@@ -63,8 +74,9 @@ class UsersController < ApplicationController
       when /account/
         render :action => :account_info
       end
-      
     end
+    
+    
   end
   
   def account_info

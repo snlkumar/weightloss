@@ -279,7 +279,7 @@ form .fieldError, form .fieldWithErrors { border: 1px solid #ff0000 !important; 
 
 #edit-profile.wide { width: 138px; height: 31px; line-height: 33px; }
 
-#content      { padding-top: 36px; position: relative; }
+#content      { padding-top: 15px; position: relative; }
 /*#profile-tabs { margin: 0px; }
 
 #profile-tabs li { border-left: 1px solid gray; border-top: 1px solid gray; border-right: 1px solid gray; display: inline-block; 
@@ -355,7 +355,6 @@ h4.sidebar-subheader { margin-bottom: 0px; }
 
 /* EDIT PERSONAL INFO */
 .edit textarea    { height: 75px; }
-#settings-content { margin-top: 15px; }
 
 td { border: none; }
 
