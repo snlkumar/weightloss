@@ -7,7 +7,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resource :dashboard
   end
   
-  map.resource  :user_session, :tracking
+  map.resource  :user_session
+  map.resource  :tracking, :member => {:charts => :get}
   map.resource  :metabolic_rates, :path_prefix => '/user'
   
   map.resources :old_flash_files, :old_success_stories, :old_tip_of_days, :old_text_files, :old_items, :old_departments

@@ -1,0 +1,34 @@
+
+
+<div id="chart-container-1" style="width: 100%; height: 400px"></div>
+
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    chart1 = new Highcharts.Chart({
+             chart: {
+                renderTo: 'chart-container-1',
+                defaultSeriesType: 'line'
+             },
+             title: {
+                text: 'Weight Over Time'
+             },
+             xAxis: {
+                categories: [<%= (current_user.weights.reverse.map{|w| "\'#{w.created_at.strftime('%m/%d')}\'"}.join(', ')) %>]
+             },
+             yAxis: {
+                title: {
+                   text: 'Weight'
+                },
+                plotLines: [{
+                   value: 0,
+                   width: 1,
+                   color: '#808080'
+                }]
+             },
+             series: [{
+                name: '<%= current_user.full_name %>',
+                data: [<%= (current_user.weights.reverse.map{|w| w.weight }.join(', ')) %>]
+             }]
+          });
+  <% end %>
+</script>
