@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110601210007) do
+ActiveRecord::Schema.define(:version => 20110602181518) do
 
   create_table "categories", :force => true do |t|
     t.integer "parent_id"
@@ -305,6 +305,13 @@ ActiveRecord::Schema.define(:version => 20110601210007) do
     t.string   "twitter_name"
     t.boolean  "private"
     t.string   "permalink"
+  end
+
+  create_table "weights", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "workout_items", :force => true do |t|
