@@ -34,8 +34,6 @@
       </div>
       
       <div id="main-nav" class="full">
-        
-        
         <div class="main-nav container_16" style="position:relative;">
           
           <div class="button" style="padding: 2px 5px; width: 130px; height: 31px; float:right; line-height: 29px; margin-top: 12px;">
@@ -60,21 +58,7 @@
           </div>
           
           <div id="nav-bar" class="grid_11">
-            <ul>
-              <li>
-                <%= link_to "", user_path(current_user), :id => 'profile-tab' %>
-              </li>
-              <li>
-                <%= link_to "", meals_path, :id => 'food-tab' %>
-              </li>
-              <li>
-                <%= link_to "", workouts_path, :id => 'exercise-tab' %>
-              </li>
-              <li style="width: 400px">
-                <%= link_to '', {} %>
-              </li>
-            </ul>
-            
+            <%= render :partial => 'shared/nav_bar' %>
           </div>
           
           <div class="clear">&nbsp;</div>
@@ -93,16 +77,16 @@
           <div class="clear">&nbsp;</div>
           
           <% if current_user.avatar.file? %>
-            <%= image_tag(current_user.avatar.url(:profile), :class => "profile-avatar small-avatar") %>
+            <div class="small-avatar avatar"><%= image_tag(current_user.avatar.url(:tracking)) %></div>
           <% else %>
-            <div class="profile-avatar"></div>
+            <div class="small-avatar"></div>
           <% end %>
           
           <%= link_to 'Edit Profile', user_edit_personal_info_path(current_user), :id => 'edit-profile', :class => 'light-blue wide' %>
           <p id="location" class="right-side"><%= current_user.city %>, <%= current_user.state %></p>
           
           <div class="clear">&nbsp;</div>
-          
+          <div class="clear">&nbsp;</div>
           <br/>
         </div>
         
