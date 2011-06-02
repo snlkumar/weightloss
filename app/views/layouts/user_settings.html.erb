@@ -92,7 +92,7 @@
           
           <div class="clear">&nbsp;</div>
           
-          <% if @user.city || @user.state %>
+          <% if @user.city.present? || @user.state.present? %>
             <p id="location"><%= [@user.city, @user.state].join(', ') %></p>
           <% end %>
           <p id="permalink"><%= user_url(@user) %></p>
