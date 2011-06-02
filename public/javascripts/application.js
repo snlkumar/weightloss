@@ -36,4 +36,6 @@ $(document).ready(function() {
     $(this).closest('form').submit();
   });
   
+  $('input[type=text]').labelify({labelledClass: "label-highlight"});
+
 });
