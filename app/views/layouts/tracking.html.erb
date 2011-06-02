@@ -93,24 +93,7 @@
         <div class="clear">&nbsp;</div>
         <br/>
         
-        <div class="sidebar-container achievement-calendar subsection" >
-          <h4 class="sidebar-subheader">Achievement Date</h4>
-          
-          <div id="achievement-calendar" class="">
-            <div>
-              Iris<br/>
-              <span>X</span>
-            </div>
-          </div>
-          <div id='achievement-text' class="grid_3">
-            <span id="pounds"><span class="edit"><%= current_user.weight %></span> lbs</span><br/>
-            recorded <span id="days-ago">X days ago</span>
-            
-            <%= link_to 'Update Weight', edit_metabolic_rates_path, :id => 'update-weight', :class => 'light-blue' %>
-          </div>
-          
-          <div class="clear">&nbsp;</div>
-        </div>
+        <%= render :partial => 'shared/achievement_sidebar_section' %>
         
         <div class="clear">&nbsp;</div>
         
@@ -150,7 +133,6 @@
       </div>
       
       <br/>
-      
       
     </div>
     

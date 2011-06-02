@@ -85,25 +85,7 @@
         <div class="clear">&nbsp;</div>
         <br/>
         
-        <div class="sidebar-container" style="padding: 18px 0px 18px 20px; background-color: white;">
-          <h4 class="sidebar-subheader">Achievement Date</h4>
-          
-          <div id="achievement-calendar" class="">
-            <div>
-              Iris<br/>
-              <span>X</span>
-            </div>
-          </div>
-          
-          <div id='achievement-text' class="grid_3">
-            <span id="pounds"><span class="edit"><%= current_user.weight %></span> lbs</span><br/>
-            recorded <span id="days-ago">X days ago</span>
-            
-            <%= link_to 'Update Weight', edit_metabolic_rates_path, :id => 'update-weight', :class => 'light-blue' %>
-          </div>
-          
-          <div class="clear">&nbsp;</div>
-        </div>
+        <%= render :partial => 'shared/achievement_sidebar_section' %>
         
       </div>
       
@@ -151,8 +133,15 @@
           cancel: 'Cancel',
           onblur: 'ignore',
           indicator: '<%= image_tag("ajax-loader.gif") %>',
-          ajaxoptions: {complete: function(data, textStatus){
-              $('#days-ago').html('today')
+          ajaxoptions: {complete: function(data, status){
+              $('#days-ago').html('today');
+              
+              $.ajax({
+                url: "<%= achievement_date_user_path(current_user) %>",
+                beforeSend: function(xhr, settings){ $('#achievement-date').html('<%= image_tag("ajax-loader.gif") %>'); },
+                success:    function(data, status) { $('#achievement-date').html(data); },
+                dataType: 'html'
+              });
             }
           }
         });
