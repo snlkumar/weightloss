@@ -12,23 +12,29 @@
   </div>
   
   <div class="grid_10 alpha push_1">
+    <br/>
     <h2>Join the community!</h2>
     <p>
       Suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.
     </p>
-
+    
     <% form_for @user do |f| %>
-      <%#= f.error_messages %>
-
+      <%= f.error_messages %>
+      
       <ol class="forms">
         <%= render :partial => 'form', :locals => {:f => f} %>
       </ol>
-
+      
       <%= f.submit 'On to the Next Step!' %>
-
+      
     <% end %>
   </div>
-
-
-<div style="clear:both">&nbsp;</div>
+  
+  <div style="clear:both">&nbsp;</div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    $('input[type=text]').labelify({labelledClass: "label-highlight"});
+  <% end %>
+</script>
