@@ -92,9 +92,13 @@
           
           <div class="clear">&nbsp;</div>
           
-          <p id="location"><%= @user.city %>, <%= @user.state %></p>
+          <% if @user.city || @user.state %>
+            <p id="location"><%= [@user.city, @user.state].join(', ') %></p>
+          <% end %>
           <p id="permalink"><%= user_url(@user) %></p>
-          <p id="twitter-handle"><%= twitter_handle(@user) %></p>
+          <% if @user.twitter_name? %>
+            <p id="twitter-handle"><%= twitter_handle(@user) %></p>
+          <% end %>
           <br/>
           
           <ul id="user-settings-tabs">
