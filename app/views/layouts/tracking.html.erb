@@ -83,8 +83,10 @@
           <% end %>
           
           <%= link_to 'Edit Profile', user_edit_personal_info_path(current_user), :id => 'edit-profile', :class => 'light-blue wide' %>
-          <p id="location" class="right-side"><%= current_user.city %>, <%= current_user.state %></p>
           
+          <% if @user.city.present? || @user.state.present? %>
+            <p id="location" class="right-side"><%= [@user.city, @user.state].compact.join(', ') %></p>
+          <% end %>
           <div class="clear">&nbsp;</div>
           <div class="clear">&nbsp;</div>
           <br/>
