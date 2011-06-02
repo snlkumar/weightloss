@@ -1,11 +1,19 @@
 module MetabolicRatesHelper
   
   def five_hundred_calorie_deficit(user)
-    user.bmr - 500
+    if user.bmr
+      user.bmr - 500
+    else
+      0
+    end
   end
   
   def one_thousand_calorie_deficit(user)
-    user.bmr - 1000
+    if user.bmr
+      user.bmr - 1000
+    else
+      0
+    end
   end
   
   def pounds_to_lose(user)
