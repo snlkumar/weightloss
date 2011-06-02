@@ -1,0 +1,37 @@
+<h1>Post &amp; Video Search</h1>
+
+<% form_tag(searches_path) do %>
+  
+  <p>
+    <%= label_tag 'Keywords' %><br/>
+    <%= text_field_tag 'search[keywords]', (params[:search] ? params[:search][:keywords] : ''), :class => 'grid_6 alpha' %>
+    <span class="clear"></span>
+  </p>
+  
+  <p>
+    <%= submit_tag 'Search' %>
+  </p>
+<% end %>
+<br/>
+
+<% if defined?(@posts) && defined?(@videos) %>
+  <h2>Posts</h2>
+  <% unless @posts.empty? %>
+    <ul>
+      <%= render :partial => 'post', :collection => @posts %>
+    </ul>
+  <% else %>
+    No Posts were found for your keywords.
+  <% end %>
+  
+  <br/><br/>
+  
+  <h2>Videos</h2>
+  <% unless @videos.empty? %>
+    <ul>
+      <%= render :partial => 'post', :collection => @videos %>
+    </ul>
+  <% else %>
+    No Videos were found for your keywords
+  <% end %>
+<% end %>
