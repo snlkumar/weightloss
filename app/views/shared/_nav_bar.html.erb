@@ -1,0 +1,19 @@
+<ul>
+  <% if current_user %>
+    <li>
+      <%= link_to "", user_path(current_user), :id => 'profile-tab' %>
+    </li>
+    <li>
+      <%= link_to "", meals_path, :id => 'food-tab' %>
+    </li>
+    <li>
+      <%= link_to "", workouts_path, :id => 'exercise-tab' %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to "Search", new_search_path %>
+  </li>
+  <li style="width: 340px">
+    <%= link_to '', {} %>
+  </li>
+</ul>
