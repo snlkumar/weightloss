@@ -9,7 +9,7 @@
   
   <div id='achievement-text' class="grid_3">
     <span id="pounds"><span class="edit"><%= current_user.weight %></span> lbs</span><br/>
-    recorded <span id="days-ago">X days ago</span>
+    recorded <span id="days-ago"><%= distance_of_time_in_words_to_now(current_user.weights.first.try(:created_at)) %> ago</span>
     
     <%= link_to 'Update Weight', edit_metabolic_rates_path, :id => 'update-weight', :class => 'light-blue' %>
   </div>
