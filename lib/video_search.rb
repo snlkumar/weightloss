@@ -23,8 +23,7 @@ class VideoSearch
     
     temp = @keywords.collect do |term|
       @query_params << "%#{term}%"
-      @query_params << "%#{term}%"
-      "title LIKE ? OR description LIKE ?"
+      "title LIKE ?"
     end
     
     @query_string << "(#{ temp.join(' OR ') })"

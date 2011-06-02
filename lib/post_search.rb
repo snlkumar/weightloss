@@ -24,8 +24,7 @@ class PostSearch
     
     temp = @keywords.collect do |term|
       @query_params << "%#{term}%"
-      @query_params << "%#{term}%"
-      "page_title LIKE ? OR summary LIKE ?"
+      "page_title LIKE ?"
     end
     
     @query_string << "(#{ temp.join(' OR ') })"
