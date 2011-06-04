@@ -1,6 +1,6 @@
 <tr>
   <td class="food-name">
-    <%= meal_item_form.object.food.try(:name) %>
+    <%= food_name(meal_item_form.object.food) %>
     
     <%= meal_item_form.hidden_field :food_id %>
   </td>

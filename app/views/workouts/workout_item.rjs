@@ -5,3 +5,4 @@ test_output =
   end
 
 page.insert_html :bottom, "#workout-items", test_output
+page << "$('#workout-items').show()"

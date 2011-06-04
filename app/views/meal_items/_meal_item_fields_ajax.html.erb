@@ -1,7 +1,7 @@
 <% unique_id = Time.now.to_i %>
 <tr>
   <td class="food-name">
-    <%= truncate(@food.try(:name), :length => 55) %>
+    <%= truncate(food_name(@food), :length => 55) %>
   </td>
   <td class="calories">
     
@@ -14,9 +14,7 @@
     <%= link_to image_tag('delete.png'), {}, :class => 'remove_ajax_meal_item delete' %>
     
     <%= select_tag "meal[meal_items_attributes][#{unique_id}][units]", 
-                   options_for_select([["", ""],
-                                       [truncate(@food.gmwt_desc1, :length => 25), @food.gmwt_desc1], 
-                                       [truncate(@food.gmwt_desc2, :length => 25), @food.gmwt_desc2]]),
+                   options_for_select(serving_options(@food)),
                    {:class => 'meal-item-units'} %>
     
     <%= hidden_field_tag "meal[meal_items_attributes][#{unique_id}][food_id]", @food.id %>

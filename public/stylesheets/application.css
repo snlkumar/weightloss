@@ -186,7 +186,7 @@ select {background-color:#fff;border-width:1px;border-style:solid;}
 input[type=text], input[type=password], input[type=url], input[type=email], input.text, input.title, textarea, select {margin:0.5em 0;}
 input.text, input.title {width:300px;padding:5px;}
 input.title {font-size:1.5em;}
-textarea {width:390px;height:250px;padding:5px;}
+textarea {padding:5px;}
 form.inline {line-height:3;}
 form.inline p {margin-bottom:0;}
 .error, .alert, .notice, .success, .info {padding:0.8em;margin-bottom:1em;border:2px solid #ddd;}
@@ -220,6 +220,7 @@ input.label-highlight { color: #999; }
 .ui-slider, .ui-slider-range { background: #AAA; }
 .ui-slider .ui-slider-handle { background: #0D87D0 !important; border: 1px solid #0D87D0 !important; width: .8em; }
 .ui-slider-horizontal .ui-slider-handle { top: -0.4em; }
+.ui-widget-content { background: #fff !important; }
 
 /*  =HEADER
  ------------------------------------------------------ */
@@ -313,9 +314,9 @@ h4 a { text-decoration: none; color: black; }
             background: -moz-linear-gradient(0% 15% 90deg,#91D1E8, #91D1E8, #7fb8cc 100%);
             background: -webkit-gradient(linear, 0% 0%, 0% 15%, from(#91D1E8), to(#91D1E8), color-stop(0,#7FB8CC)) }
 #back-bar a { color: #444; display: block; background-image: url(/images/icon-backarrow.png); background-position: 39px 16px; background-repeat: no-repeat; }
-#nav-bar    { height: 52px; }
+#nav-bar    { height: 52px; background-color: #fff; }
 #nav-bar ul { margin: 0; padding: 0; list-style: none; }
-#nav-bar ul li { background-color: #fff; display: inline; float: left; margin: 0px 1px 0px 0px; width: 40px; padding: 0px 10px; text-align: center; }
+#nav-bar ul li { display: inline; float: left;  text-align: center; } /* margin: 0px 1px 0px 0px; padding: 0px 10px;*/
 #nav-bar a  { color: #444; display: block; height: 52px; line-height: 52px; }
 #nav-bar a#profile-tab { background-image: url(/images/icon-myprofile.png); background-repeat: no-repeat; background-position: 9px 15px; }
 #nav-bar a#food-tab { background-image: url(/images/icon-food.png); background-repeat: no-repeat; background-position: 12px 15px; }
@@ -354,7 +355,7 @@ h4.sidebar-subheader { margin-bottom: 0px; }
 .calories-this-week  { font-size: 16pt; }
 
 /* EDIT PERSONAL INFO */
-.edit textarea    { height: 75px; }
+textarea    { height: 75px; }
 
 td { border: none; }
 
@@ -377,7 +378,7 @@ td { border: none; }
 #calorie-table td, #BMI-table td {  border-collapse: collapse; font-size: 13pt; text-align: center;  width: 50%; } 
 #calorie-table span.count, #BMI-table span.count { font-size: 2em; font-weight: bold; }
 
-.button   { color: white; background-color: #0D87D0; margin: 5px; -moz-border-radius: 5px; padding: 10px 5px; text-align: center; }
+.button   { color: white; background-color: #0D87D0; margin: 5px; -moz-border-radius: 5px; padding: 10px 5px; text-align: center; cursor: pointer; }
 .button a { color: white; text-decoration: none; }
 #height-slider, 
  #weight-slider   { height: 10px; margin-bottom: 10px; width: 180px !important; }
@@ -393,14 +394,14 @@ form.edit #height-slider,
  #workout-items td        { border-bottom: 1px solid #CCC; }
 #meal-items .servings { width: 115px; }
 #meal-items .serving-size { width: 210px; }
-/*#meal-items .food-name { width: 295px; }*/
 
-#calendar-box       { background: url("/images/calendar.png") no-repeat scroll 95% 50% transparent; border: 1px solid #A6A6A6; 
-                     float: left; font-size: 1.3em; height: 34px; line-height: 44px; margin-right: 10px; width: 148px; }
+#calendar-box-wrapper { background-color: #fff; border: 1px solid #A6A6A6; height: 44px; padding: 0 5px; }
+#calendar-box       { background: url("/images/calendar.png") no-repeat scroll 95% 50% transparent; border: 0px; 
+                      font-size: 1.3em; height: 34px; line-height: 44px; padding: 5px 0px; margin: 0px; }
 #selected-date      { padding-left: 14px; }
-#selected-date-help { font-size: 1em; padding-top: 22px; }
+#selected-date-help { font-size: 1em; padding-top: 15px; }
 #food-item-entry,
- #exercise-item-entry    { width: 337px; }
+ #exercise-item-entry    { width: 358px; }
 
 
 form#meal .delete,
@@ -410,10 +411,12 @@ form#meal-new-item textarea,
  form#workout-new-item textarea { height: 75px; width: 655px; }
 /*form#meal-new-item select   { padding: 5px; }*/
 
+#workout-items { display: none; }
 #workout-items .exercise-name { width: 465px; }
 
 .ui-datepicker { z-index: 10000; }
 ul.ui-autocomplete { height: 200px; overflow-y: scroll; }
+ul.ui-autocomplete a { text-decoration: underline; }
 
 /* Food Journal */
 .date_of_day    { font-size: 3em; line-height: 0.8em; }
@@ -424,6 +427,11 @@ ul.ui-autocomplete { height: 200px; overflow-y: scroll; }
 .meal-items li  { list-style: none; margin: 0; }
 
 .h3 { font-size: 1.5em; line-height: 1.2; margin-bottom: 0.476em; font-weight: normal; margin: 0; padding: 0; }
+
+form#meal-new-item #ajax-spinner,
+  form#workout-new-item #ajax-spinner { display: none; position: absolute; right: 88px; top: 49px; }
+form#meal-new-item #ajax-spinner    { right: 88px; top: 49px; }
+form#workout-new-item #ajax-spinner { right: 57px; top: 49px; }
 
 /* Flash Messags */
 .flash {

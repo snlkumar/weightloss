@@ -6,7 +6,12 @@ class FoodsController < ApplicationController
     conds  = terms.collect{|t| "name LIKE ?"}.join(' AND ')
     @foods = Food.with_a_serving_size.find(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}])
     
-    render :json => @foods.map{|f| {:value => f.name, :id => f.id} }.to_json
+    if @foods.empty?
+      render :json => [{:value => 'No Results', :id => nil}].to_json
+    else
+      render :json => @foods.map{|f| {:value => (f.custom? ? "#{f.name} **" : f.name), :id => f.id} }.to_json
+    end
+    
   end
 
   def meal_item_calories

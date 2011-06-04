@@ -1,0 +1,14 @@
+<div class="grid_12">
+  <h3>New food</h3>
+  
+  <% form_for(@food, :url => custom_foods_path) do |f| %>
+    <%= f.error_messages %>
+    
+    <%= render :partial => 'form', :locals => {:f => f} %>
+    
+    <p>
+      <%= f.submit 'Create' %> | <%= link_to 'Cancel', new_meal_path %>
+    </p>
+  <% end %>
+  
+</div>

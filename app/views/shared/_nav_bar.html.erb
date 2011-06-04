@@ -1,25 +1,25 @@
 <ul>
   <% if current_user %>
-    <li>
+    <li class="grid_1">
       <%= link_to "", user_path(current_user), :id => 'profile-tab' %>
     </li>
-    <li>
+    <li class="grid_1">
       <%= link_to "", meals_path, :id => 'food-tab' %>
     </li>
-    <li>
+    <li class="grid_1">
       <%= link_to "", workouts_path, :id => 'exercise-tab' %>
     </li>
   <% end %>
-  <li>
+  <li class="grid_1">
     <%= link_to "Search", new_search_path %>
   </li>
-  <li>
+  <li class="grid_1">
     <%= link_to 'Goal', edit_metabolic_rates_path %>
   </li>
-  <li>
+  <li class="grid_1">
     <%= link_to 'Charts', charts_tracking_path %>
   </li>
-  <li style="width: 220px">
+  <li class="grid_4">
     <%= link_to '', {} %>
   </li>
 </ul>

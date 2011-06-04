@@ -1,0 +1,2 @@
+module CustomFoodsHelper
+end

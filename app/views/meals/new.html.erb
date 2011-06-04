@@ -1,87 +1,90 @@
-<div class="grid_12">
-  <h3>Hey <%= current_user.first_name %>, what did you eat?</h3>
-  
-  <% form_tag "/meals/meal_item", :id => 'meal-new-item' do %>
-    <%= hidden_field_tag :food_id, "" %>
-    <div id="meal-entry" style="position: relative">
-      <table>
-        <tbody>
-          <tr>
-            <td class="food_name" style="padding-bottom: 0px;"><%= label_tag 'Find a food' %></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td style="width: 350px; padding-top: 0px; padding-right: 0px">
-              <%= text_field_tag :food, "", :id => 'food-item-entry', :title => "Try one or more keywords" %>
-            </td>
-            <td style="padding-top: 0px; padding-left: 0px;">
-              <%= image_tag "ajax-loader.gif", :id => 'ajax-spinner', :style => 'display:none; position: absolute; top: 56px; right: 150px;' %>
-              <div id="add-meal-item" class="button" style="width: 162px;">Add This To The Meal</div>
-              
-            </td>
-            <td><%#= select_tag :unit, options_for_select(Meal::UNITS), :id => 'unit-entry' %></td>
-          </tr>
-        </tbody>
-      </table>
-    <% end %>
-    
-    <% form_for @meal, :html => {:id => 'meal'} do |meal_form| %>
-      <table>
-        <tbody id="meal-items">
-          <tr>
-            <td class="bold">Food</td>
-            <td class="bold">KCals</td>
-            <td class="bold"># of Servings</td>
-            <td class="bold">Serving Size</td>
-          </tr>
-          <% meal_form.fields_for :meal_items do |meal_item_form| %>
-            <%= render :partial => 'meal_items/meal_item_fields', :locals => { :meal_item_form => meal_item_form } %>
-          <% end %>
-        </tbody>
-      </table>
-      
-      <div class="clear"></div>
-    </div>
-    
-    <div style="padding: 15px;">
-      <br/>
-      
-      <%= text_field_tag "meal[ate_on_date][date]", ate_on_start_date, :id => "calendar-box" %>
-      
-      <div id="selected-date-help">
-        <span class="bold">Was the date of the meal today?</span> Feel free to edit the date of this meal.
-      </div>
-      
-      <div class="clear"></div>
-      <br/>
-      
-      <p>
-        <%= label_tag 'Meal Time' %><br/>
-        <%= select_tag "meal[ate_on_date][time][hour]", 
-                       options_for_select((1..12).map{|n| ["%02d" % n, n]}, meal_form.object.ate_on.try(:strftime, "%I").to_i) %>:
-        <%= select_tag "meal[ate_on_date][time][minute]", 
-                       options_for_select((0..59).map{|n| ["%02d" % n, n]}, meal_form.object.ate_on.try(:strftime, "%M").to_i) %>&nbsp;
-        <%= select_tag "meal[ate_on_date][time][meridian]", 
-                       options_for_select(['AM', 'PM'], meal_form.object.ate_on.try(:strftime, "%p")) %>
-      </p>
-      
-      <p>
-        <%= meal_form.label :meal_type %><br/>
-        <%= meal_form.select :meal_type, options_for_select(Meal::TYPES, params[:meal_type]) %>
-      </p>
-      
-      <p>
-        <%= meal_form.label :note, 'Meal Note' %><br/>
-        <%= meal_form.text_area :note %>
-      </p>
-      
-      <p>
-        <%= meal_form.submit @meal.new_record? ? "Save This Meal" : "Update This Meal" %>
-      </p>
-    </div>
+
+<h3>Hey <%= current_user.first_name %>, what did you eat?</h3>
+
+<% form_tag "/meals/meal_item", :id => 'meal-new-item' do %>
+  <%= hidden_field_tag :food_id, "" %>
+  <div id="meal-entry" style="position: relative">
+    <table>
+      <tbody>
+        <tr>
+          <td class="food_name" style="padding-bottom: 0px;"><%= label_tag 'Find a food' %></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td style="width: 350px; padding-top: 0px; padding-right: 0px">
+            <%= text_field_tag :food, "", :id => 'food-item-entry', :title => "Try one or more keywords" %>
+          </td>
+          <td style="padding-top: 0px; padding-left: 0px;">
+            <%= image_tag "ajax-loader.gif", :id => 'ajax-spinner' %>
+            <div id="add-meal-item" class="button" style="width: 162px;">Add This To The Meal</div>
+            
+          </td>
+          <td><%#= select_tag :unit, options_for_select(Meal::UNITS), :id => 'unit-entry' %></td>
+        </tr>
+      </tbody>
+    </table>
   <% end %>
-</div>
+  
+  <% form_for @meal, :html => {:id => 'meal'} do |meal_form| %>
+    <table>
+      <tbody id="meal-items" style="<%= @meal.new_record? ? 'display:none;' : '' %>">
+        <tr>
+          <td class="bold">Food</td>
+          <td class="bold">KCals</td>
+          <td class="bold"># of Servings</td>
+          <td class="bold">Serving Size</td>
+        </tr>
+        <% meal_form.fields_for :meal_items do |meal_item_form| %>
+          <%= render :partial => 'meal_items/meal_item_fields', :locals => { :meal_item_form => meal_item_form } %>
+        <% end %>
+      </tbody>
+    </table>
+    
+    <div class="clear"></div>
+  </div>
+  
+  <div class="grid_11">
+    <br/>
+    
+    <div id="calendar-box-wrapper" class="grid_3 alpha">
+      <%= text_field_tag "meal[ate_on_date][date]", ate_on_start_date, :id => "calendar-box" %>
+    </div>
+    
+    <div id="selected-date-help">
+      <span class="bold">Was the date of the meal today?</span> Feel free to edit the date of this meal.
+    </div>
+    
+    <div class="clear"></div>
+    <br/>
+    
+    <p>
+      <%= label_tag 'Meal Time' %><br/>
+      <%= select_tag "meal[ate_on_date][time][hour]", 
+                     options_for_select((1..12).map{|n| ["%02d" % n, n]}, meal_form.object.ate_on.try(:strftime, "%I").to_i) %>:
+      <%= select_tag "meal[ate_on_date][time][minute]", 
+                     options_for_select((0..59).map{|n| ["%02d" % n, n]}, meal_form.object.ate_on.try(:strftime, "%M").to_i) %>&nbsp;
+      <%= select_tag "meal[ate_on_date][time][meridian]", 
+                     options_for_select(['AM', 'PM'], meal_form.object.ate_on.try(:strftime, "%p")) %>
+    </p>
+    
+    <p>
+      <%= meal_form.label :meal_type %><br/>
+      <%= meal_form.select :meal_type, options_for_select(Meal::TYPES, params[:meal_type]) %>
+    </p>
+    
+    <p>
+      <%= meal_form.label :note, 'Meal Note' %><br/>
+      <%= meal_form.text_area :note, :class => 'grid_6 alpha' %>
+      <div class="clear"></div>
+    </p>
+    
+    <p>
+      <%= meal_form.submit @meal.new_record? ? "Save This Meal" : "Update This Meal" %>
+    </p>
+  </div>
+<% end %>
+
 
 
 
@@ -90,11 +93,23 @@
     $('#food-item-entry').labelify({ labelledClass: "label-highlight" });
     $('#calendar-box').datepicker();
     
+    $("#meal-new-item").keydown(function(event){
+      if(event.keyCode == 13) {
+        event.preventDefault();
+        return false;
+      }
+    });
+    
     $('#food-item-entry').autocomplete({
       source: "/foods/search",
       minLength: 2,
       select: function(evt, ui){
         $("#food_id").val(ui.item.id);
+      },
+      open: function(event, ui){
+        var url = "<a href=\"<%= new_custom_food_path %>\">Can\'t find an item? Add a new item to our database</a>!"; 
+        var last_item = $("<li></li>").append(url)
+        $("ul.ui-autocomplete.ui-menu").append(last_item);
       }
     });
     

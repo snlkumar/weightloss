@@ -17,11 +17,11 @@
               <td style="width: 350px; padding-top: 0px; padding-right: 0px">
                 <%= text_field_tag :exercise, "", :id => 'exercise-item-entry', :title => "Try one or more keywords" %>
               </td>
-              <td style="padding-top: 0px; padding-right: 0px">
+              <td style="width: 90px; padding-top: 0px; padding-right: 0px">
                 <%= text_field_tag :duration, '', :style => 'width: 75px' %>
               </td>
               <td style="padding-top: 0px; padding-left: 0px;">
-                <%= image_tag "ajax-loader.gif", :id => 'ajax-spinner', :style => 'display:none; position: absolute; top: 56px; right: 40px;' %>
+                <%= image_tag "ajax-loader.gif", :id => 'ajax-spinner' %>
                 <div id="add-workout-item" class="button" style="width: 162px;">Record This Exercise</div>
               </td>
             </tr>
@@ -49,7 +49,9 @@
       <div style="padding: 15px;">
         <br/>
         
-        <%= text_field_tag "workout[trained_on_date][date]", trained_on_start_date, :id => "calendar-box" %>
+        <div id="calendar-box-wrapper" class="grid_3 alpha">
+          <%= text_field_tag "workout[trained_on_date][date]", trained_on_start_date, :id => "calendar-box" %>
+        </div>
         
         <div id="selected-date-help">
           <span class="bold">Was the date of the workout today?</span> Feel free to edit the date of this workout.
