@@ -348,8 +348,8 @@ p#location.right-side { float: left; margin: 10px 0px 0px 20px; }
                     
                   }
 .sidebar-container.subsection { padding: 18px 0px 18px 20px; margin-bottom: 2px;}
-h4.sidebar-subheader { margin-bottom: 0px; }
-.large-calories      { font-size: 36pt; height: 47px; }
+h4.sidebar-subheader { margin-bottom: 10px; }
+.large-calories      { font-size: 36pt; height: 43px; line-height: 47px; }
 .large-calories span { color: #f26c4f; }
 .small-text          { font-size: 10pt; margin-bottom: 5px; }
 .calories-this-week  { font-size: 16pt; }
