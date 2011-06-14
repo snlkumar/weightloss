@@ -22,4 +22,8 @@ module ApplicationHelper
   def pagination_params(request)
     request.params.reject{|key, val| ['authenticity_token', 'commit'].include?(key.to_s) }
   end
+  
+  def in_admin?
+    request.path.match(/admin/)
+  end
 end

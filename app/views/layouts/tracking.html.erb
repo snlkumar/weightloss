@@ -36,13 +36,19 @@
       <div id="main-nav" class="full">
         <div class="main-nav container_16" style="position:relative;">
           
-          <div class="button" style="padding: 2px 5px; width: 130px; height: 31px; float:right; line-height: 29px; margin-top: 12px;">
+          
+          
+          <div class="button" style="position: absolute; top:10px; left: 306px; padding: 0px 5px; width: 101px; height: 31px; float:right; line-height: 29px;">
             <%= link_to "+ Add Meal", new_meal_path, :style => "font-size: 12pt;" %>
           </div>
           
-          <div class="button" style="padding: 2px 5px;  width: 130px;  height: 31px; float:right; line-height: 29px; margin-top: 12px;">
-            <%= link_to "+ Add Workout", new_workout_path, :style => "font-size: 12pt;" %>
+          <div class="button" style="position: absolute; top:10px; left: 429px; padding: 0px 5px; width: 117px;  height: 31px; float:right; line-height: 29px;">
+            <%= link_to "+ Add Activity", new_workout_path, :style => "font-size: 12pt;" %>
           </div>
+          
+          <% form_tag "" do %>
+            <%= text_field_tag "", "", :style => 'position:absolute; top: 7px; right: 49px; height: 29px; width: 240px; padding: 0px;' %>
+          <% end %>
           
           <h2 id="logo" class="grid_5 sidebar-container"><%= link_to 'myweightworld', tracking_path %></h2>
           

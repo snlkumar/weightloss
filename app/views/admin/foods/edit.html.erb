@@ -1,18 +1,23 @@
 <div class="grid_12">
-  <%= link_to 'Back', admin_foods_path %>
   
-  <h3>Editing food</h3>
+  <h3>Editing <%= @food.name %></h3>
+  
+  <% if not @food.custom? %>
+    <p>This is a food item from the USDA food database.</p>
+  <% end %>
   
   <% form_for(@food) do |f| %>
     <%= f.error_messages %>
     
-    <%= render :partial => 'form', :locals => {:f => f} %>
+    <% if @food.custom? %>
+      <%= render :partial => '/custom_foods/form', :locals => {:f => f} %>
+    <% else %>
+      <%= render :partial => 'form', :locals => {:f => f} %>
+    <% end %>
     
     <p>
-      <%= f.submit 'Update' %>
+      <%= f.submit 'Update' %> | <%= link_to 'Cancel', admin_foods_path %>
     </p>
   <% end %>
-  
-  <%= link_to 'Back', admin_foods_path %>
   
 </div>

@@ -48,10 +48,15 @@
   
   <script type="text/javascript" charset="utf-8">
     <% content_for :js do %>
+      
       $('#food-search').autocomplete({
-        source: "<%= search_foods_url %>"
+        source: "<%= search_foods_url %>",
+        select: function( event, ui ) {
+          $( "#food-search" ).val( ui.item.label.replace(" **", '') );
+          return false;
+        }
       });
-    
+      
     <% end %>
   </script>
 
