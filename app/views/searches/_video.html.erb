@@ -1,4 +1,4 @@
 <div class="search-result">
-  <h4><%= video.title %></h4>
-  <p><%= truncate(video.description, :length => 150) %></p>
+  <h4><%= link_to video.title, {} %></h4>
+  <p><%= truncate(video.description, :length => 250) %></p>
 </div>

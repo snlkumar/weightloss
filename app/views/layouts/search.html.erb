@@ -9,77 +9,52 @@
     <%= render :partial => '/layouts/head' %>
   </head>
   <body>
-    <div id="header" class="full">
-      <div class="small-nav container_16">
-        <div class="grid_5 sidebar-container" style="background-color: #fff; height: 26px;">
-          &nbsp;
-        </div>
-        <div class="grid_11">
-          <%= render :partial => 'shared/session_menu_bar' %>
-        </div>
-        <div class="clear">&nbsp;</div>
-      </div>
-      
-      <div id="main-nav" class="full">
-        <div class="main-nav container_16">
-          
-          <h2 id="logo" class="grid_5 sidebar-container"><%= link_to 'myweightworld', tracking_path %></h2>
-          
-          <div class="clear">&nbsp;</div>
-          
-          <div class="grid_5 sidebar-container" style="height:25px; background-color: #fff;">&nbsp;</div>
-          <div class="grid_11" style="height:25px;">&nbsp;</div>
-          
-          <div class="clear">&nbsp;</div>
-          
-          <div id="back-bar" class="grid_5 light-blue sidebar-container">
-            <%= link_to "Back to Overview", {} %>
-          </div>
-          
-          <div id="nav-bar" class="grid_11">
-            
-          </div>
-          
-          <div class="clear">&nbsp;</div>
-        </div>
-      </div>
-    </div>
-    <!-- DONE HEADER -->
-    
-    <div class="clear">&nbsp;</div>
+    <%= render :partial => '/layouts/header' %>
     
     <div class="container_16">
       <div class="grid_5 ">
-        <div class="sidebar-container" style="">
-          <p id="user-name" class="grid_5"><%= @user.full_name %></p>
+        <div class="sidebar-container">
+          <p id="user-name" class="grid_5"><%= current_user.full_name %></p>
           
           <div class="clear">&nbsp;</div>
           
-          <% if @user.avatar.file? %>
-            <div class="profile-avatar avatar"><%= image_tag(@user.avatar.url(:profile)) %></div>
+          <% if current_user.avatar.file? %>
+            <div class="small-avatar avatar"><%= image_tag(current_user.avatar.url(:tracking)) %></div>
           <% else %>
-            <div class="profile-avatar avatar"></div>
+            <div class="small-avatar"></div>
           <% end %>
           
+          <%= link_to 'Edit Profile', user_edit_personal_info_path(current_user), :id => 'edit-profile', :class => 'light-blue wide' %>
+          
+          <% if current_user.city.present? || current_user.state.present? %>
+            <p id="location" class="right-side"><%= [current_user.city, current_user.state].compact.join(', ') %></p>
+          <% end %>
           <div class="clear">&nbsp;</div>
           
-          <%= render :partial => 'details', :locals => {:user => @user} %>
           <br/>
         </div>
         
         <div class="clear">&nbsp;</div>
         <br/>
         
+        <%= render :partial => 'shared/achievement_sidebar_section' %>
+        
+        <div class="clear">&nbsp;</div>
         
       </div>
       
       <%= yield :sidebar %>
       
       <div id="content" class="grid_11 profile">
+        <%- flash.each do |name, msg| -%>
+          <p id="flash_<%= name %>" class="flash grid_15"><%= msg %></p>
+        <%- end -%>
+        
         <%= yield %>
       </div>
       
       <br/>
+      
     </div>
     
     <div class="full">
@@ -96,7 +71,7 @@
     <!-- // <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js"></script>
         //     <script>window.jQuery || document.write("<script src='/javascripts/jquery-1.6.min.js'>\x3C/script>")</script> -->
     
-    <%= javascript_include_tag "jquery-1.4.4.dev.js", "jquery-ui-1.8.9.min.js", "underscore", "jquery.labelify.js", "jquery.jeditable", "application" %>
+    <%= javascript_include_tag "jquery-1.4.4.dev.js", "jquery-ui-1.8.9.min.js", "underscore", "jquery.labelify.js", "jquery.jeditable", "highcharts", "application" %>
     <%= init_tinymce_hammer_if_required %>
     
     <%= render :partial => "shared/gridder" %>
@@ -104,6 +79,8 @@
     <script type="text/javascript" charset="utf-8">
       $(document).ready(function() {
         <%= yield :js %>
+        
+        <%= render :partial => 'shared/weight_update_js' %>
       });
     </script>
   </body>

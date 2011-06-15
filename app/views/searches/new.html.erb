@@ -1,37 +1,29 @@
-<h2>Post &amp; Video Search</h2>
-
-<% form_tag(searches_path) do %>
+<% form_tag searches_path , :id => 'content-search' do %>
   
   <p>
-    <%= label_tag 'Keywords' %><br/>
-    <%= text_field_tag 'search[keywords]', (params[:search] ? params[:search][:keywords] : ''), :class => 'grid_6 alpha' %>
+    <%= label_tag 'Search' %><br/>
+    <%= text_field_tag 'search[keywords]', (params[:search] ? params[:search][:keywords] : ''), :id => 'search-keywords', :class => 'grid_8 alpha' %>
+    <button class="button grid_3" type="submit" style="margin: 11px 0px 0px 8px; height:37px; font-size: 13pt;">
+      <%= image_tag 'delete.png' %>
+      Search
+    </button>
     <span class="clear"></span>
   </p>
   
-  <p>
-    <%= submit_tag 'Search' %>
-  </p>
-<% end %>
-<br/>
-
-<% if defined?(@posts) && defined?(@videos) %>
-  <h2>Posts</h2>
-  <% unless @posts.empty? %>
-    <ul>
-      <%= render :partial => 'post', :collection => @posts %>
-    </ul>
-  <% else %>
-    No Posts were found for your keywords.
+  <% if defined?(@posts) && defined?(@videos) %>
+    <%= select_tag 'search[filter]', options_for_select([['All Results', 'all']]), :style => "position: absolute" %>
+    <div id="results-summary"><span id="count"><%= @total %> results</span> for "<%= params[:search][:keywords] %>"</div>
   <% end %>
-  
-  <br/><br/>
-  
-  <h2>Videos</h2>
-  <% unless @videos.empty? %>
-    <ul>
-      <%= render :partial => 'video', :collection => @videos %>
-    </ul>
+<% end %>
+
+<hr/>
+
+<% if defined?(@results) %>
+  <% if @results.empty? %>
+    <p>No results were found for your keywords.</p>
   <% else %>
-    No Videos were found for your keywords
+    <ul id='search-results'>
+      <%= render :partial => 'result', :collection => @results %>
+    </ul>
   <% end %>
 <% end %>

@@ -227,10 +227,17 @@ input.label-highlight { color: #999; }
 #small-nav { background: #ebebeb; }
 .small-nav { height: 26px; text-align: right; }
 
-#main-nav  { background: #cccccc; }
-.main-nav  { height: 60px; }
+#main-nav                  { background: #cccccc; }
+.main-nav-spacer           { height: 30px; }
+.main-nav                  { height: 60px; }
+.main-nav .button          { position: absolute; padding: 0px 5px; width: 101px; height: 31px; float: right; line-height: 29px; }
 
+#add-meal                  { top:10px; left: 306px; }
+#add-activity              { top:10px; left: 429px; width: 117px; }
+#add-meal a, #add-activity { font-size: 12pt; }
 
+form#global-search input   { position: absolute; top: 7px; right: 49px; height: 30px; width: 230px; padding: 0px 5px; }
+form#global-search input[type=submit] { position: absolute; top: 14px; right: 10px; }
 
 /*  =SIGN UP BOX
  ------------------------------------------------------ */
@@ -280,20 +287,7 @@ form .fieldError, form .fieldWithErrors { border: 1px solid #ff0000 !important; 
 
 #edit-profile.wide { width: 138px; height: 31px; line-height: 33px; }
 
-#content      { padding-top: 15px; position: relative; }
-/*#profile-tabs { margin: 0px; }
-
-#profile-tabs li { border-left: 1px solid gray; border-top: 1px solid gray; border-right: 1px solid gray; display: inline-block; 
-                   height: 16px; margin: 0px; margin-top: 15px; padding: 14px; width: 118px; }
-
-#profile-tabs li div { width: 80px; margin: 0 auto; text-align: center; font-size: 1em; font-weight: bold; background-color: #D9D9D9; }
-#profile-tabs li a, 
-#profile-tabs li a:visited  { color: blue; text-decoration: none; }
-#profile-tabs li            { background-color: #D9D9D9; }
-#profile-tabs li.active     { background-color: #EBEBEB; }
-#profile-tabs li.active div { background-color: #EBEBEB; }
-
-.active-tab-content { background-color: #EBEBEB; }*/
+#content      { padding-top: 25px; position: relative; }
 
 h2#personal-info     { margin-top: 33px; margin-bottom: 12px; }
 
@@ -301,6 +295,18 @@ h2#personal-info     { margin-top: 33px; margin-bottom: 12px; }
 #active-tab-content #page-description { margin-top: 38px; }
 
 #profile-sub-header  { background-color: #EBEBEB; height: 150px; border-bottom: 1px solid #D0D0D0; }
+
+/* SEARCH */
+form#content-search label { font-size: 13pt; position: relative; }
+form#content-search #search-keywords { margin-top: 11px; }
+form#content-search select { right: 0px; top: 141px; }
+#results-summary          { margin-top: 44px; font-size: 14pt; display: inline-block; }
+#results-summary #count   { font-weight: bold; }
+ul#search-results { margin: 0px; }
+ul#search-results .search-result { border-bottom: 1px solid #CCC; min-height: 108px; }
+ul#search-results .search-result h4 { font-size: 15pt; margin-top: 20px; }
+ul#search-results .search-result h4 a { color: #1198CB; }
+
 
 /* TERMS PAGE */
 h3 a { text-decoration: none; color: black; }
@@ -500,13 +506,63 @@ form#workout-new-item #ajax-spinner { right: 57px; top: 49px; }
  list-style: disc;
 }
 
-td.actions { white-space: nowrap; width: 80px; }
-tr.odd td  { background-color: #F0F0F6; }
-table.admin { width: 100%;}
+td.actions  { white-space: nowrap; width: 80px; }
+tr.odd td   { background-color: #F0F0F6; }
+table.admin { width: 100%; }
 
 
 
-.search-result h4, .search-result p { margin-bottom: .5em; }
+.search-result h4, 
+  .search-result p         { margin-bottom: .5em; }
+
+
+
+/*  Inspired by http://particletree.com/features/rediscovering-the-button-element */
+
+a.button:link, a.button:visited, a.button:hover, a.button:active, button.button {
+  color: #222;
+  display:block;
+  float:left;
+  margin:0 7px 0 0;
+  background-color: #eee;
+  border:1px solid #bfbfbf;
+  font-size: 1em;
+  line-height: 1.3em;
+  font-weight:bold;
+  cursor:pointer;
+  padding:5px 10px 6px 7px;
+  text-decoration: none;
+}
+
+button.button {
+  width:auto;
+  overflow:visible;
+  padding:4px 10px 3px 7px; /* IE6 */
+}
+button.button[type] {
+  padding:5px 10px 5px 7px; /* Firefox */
+  line-height:17px; /* Safari */
+}
+
+*:first-child+html button.button[type] {
+  padding:4px 10px 3px 7px; /* IE7 */
+}
+
+button.button img, a.button img {
+  margin:0 3px -3px 0 !important;
+  padding:0;
+  border:none;
+  width:16px;
+  height:16px;
+}
+
+button.button:hover, a.button:hover {
+  background-color:#dedede;
+}
+
+button.button:active, a.button:active {
+  background-color:#e5e5e5;
+}
 
 
 
