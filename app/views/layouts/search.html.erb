@@ -43,6 +43,18 @@
         
         <div class="clear">&nbsp;</div>
         
+        <!-- Categories  -->
+        <div id="search-categories-sidebar" class="sidebar-container subsection" >
+          <h4 class="sidebar-subheader">Categories</h4>
+          
+          <p>We have an extensive library to help you with many facets of fitness and wellness - peruse by category</p>
+          
+          <ul id="search-categories">
+            <%= render :partial => '/searches/category', :collection => @categories %>
+          </ul>
+          
+          <div class="clear">&nbsp;</div>
+        </div>
       </div>
       
       <%= yield :sidebar %>
@@ -67,7 +79,7 @@
     </div>
     
     <!-- JavaScript at the bottom for fast page loading -->
-    <%= javascript_include_tag "modernizr-1.7.min.js", "respond.min.js" %>
+    <%= javascript_include_tag "modernizr-1.7.min.js", "respond.min.js", 'flowplayer-3.2.6.min.js' %>
     
     <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
     <!-- // <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js"></script>

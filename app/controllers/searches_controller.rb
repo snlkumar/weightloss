@@ -1,5 +1,7 @@
 class SearchesController < ApplicationController
-  layout 'tracking'
+  layout 'search'
+  
+  before_filter :get_categories
   
   def new
     
@@ -16,5 +18,6 @@ class SearchesController < ApplicationController
     
     render :action => :new
   end
+  
   
 end

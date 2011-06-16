@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_grid
   
+  def get_categories
+    @categories = Category.all + Subcategory.all
+  end
+  
   def set_defaults
     @slider_height = current_user.height || 60
     @slider_weight = current_user.weight || 150
