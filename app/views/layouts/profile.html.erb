@@ -35,7 +35,7 @@
         <div class="clear">&nbsp;</div>
         <br/>
         
-        <% if @user.has_goal? %>
+        <% if @user && @user.has_goal? %>
           <%= render :partial => 'shared/achievement_sidebar_section' %>
         <% end %>
         
