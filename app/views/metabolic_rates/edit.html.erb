@@ -55,6 +55,7 @@
     If you limit your calorie intake to <%= five_hundred_calorie_deficit(current_user) %> calories a day (a 500 calorie deficit).  You can reach your goal of losing <%= pounds_to_lose(current_user) %> lbs in <%= days_to_goal(current_user, 500) %> days (<%= days_to_goal(current_user, 500).days.from_now.strftime("%b %d") %>)
     <br/>
     If you limit your calorie intake to <%= one_thousand_calorie_deficit(current_user) %> calories a day (a 1000 calorie deficit).  You can reach your goal of losing <%= pounds_to_lose(current_user) %> lbs in <%= days_to_goal(current_user, 1000) %> days (<%= days_to_goal(current_user, 1000).days.from_now.strftime("%b %d") %>)
+    <% # TODO: finish weight gain calculations %>
   <% elsif 1 == 0 %>
     If you exceed your BMR calorie intake by <%= five_hundred_calorie_surplus(current_user) %> calories a day (a 500 calorie surplus).  You can reach your goal of gaining <%= pounds_to_gain(current_user) %> lbs in <%= days_to_goal(current_user, 500) %> days (<%= days_to_goal(current_user, 500).days.from_now.strftime("%b %d") %>)
     <br/>

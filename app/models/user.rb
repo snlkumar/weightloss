@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
                  :private => false
   
   # Instance Methods
+  def has_goal?
+    !self.desired_weight.blank?
+  end
+  
   def weight
     self.weights.first.try(:weight)
   end
@@ -135,6 +139,7 @@ class User < ActiveRecord::Base
   end
   
   def trying_to_lose_weight?
+    return false if self.desired_weight.nil?
     self.desired_weight < self.weight
   end
   

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110614175233) do
+ActiveRecord::Schema.define(:version => 20110616192942) do
 
   create_table "categories", :force => true do |t|
     t.integer "parent_id"
@@ -32,64 +32,67 @@ ActiveRecord::Schema.define(:version => 20110614175233) do
   end
 
   create_table "foods", :force => true do |t|
-    t.decimal  "ndb_no",      :precision => 8, :scale => 3
+    t.decimal  "ndb_no",        :precision => 8, :scale => 3
     t.string   "shrt_desc"
-    t.decimal  "water",       :precision => 8, :scale => 3
-    t.decimal  "energ_kcal",  :precision => 8, :scale => 3
-    t.decimal  "protein",     :precision => 8, :scale => 3
-    t.decimal  "lipid_tot",   :precision => 8, :scale => 3
-    t.decimal  "ash",         :precision => 8, :scale => 3
-    t.decimal  "carbohydrt",  :precision => 8, :scale => 3
-    t.decimal  "fiber_td",    :precision => 8, :scale => 3
-    t.decimal  "sugar_tot",   :precision => 8, :scale => 3
-    t.decimal  "calcium",     :precision => 8, :scale => 3
-    t.decimal  "iron",        :precision => 8, :scale => 3
-    t.decimal  "magnesium",   :precision => 8, :scale => 3
-    t.decimal  "phosphorus",  :precision => 8, :scale => 3
-    t.decimal  "potassium",   :precision => 8, :scale => 3
-    t.decimal  "sodium",      :precision => 8, :scale => 3
-    t.decimal  "zinc",        :precision => 8, :scale => 3
-    t.decimal  "copper",      :precision => 8, :scale => 3
-    t.decimal  "manganese",   :precision => 8, :scale => 3
-    t.decimal  "selenium",    :precision => 8, :scale => 3
-    t.decimal  "vit_c",       :precision => 8, :scale => 3
-    t.decimal  "thiamin",     :precision => 8, :scale => 3
-    t.decimal  "riboflavin",  :precision => 8, :scale => 3
-    t.decimal  "niacin",      :precision => 8, :scale => 3
-    t.decimal  "panto_acid",  :precision => 8, :scale => 3
-    t.decimal  "vit_b6",      :precision => 8, :scale => 3
-    t.decimal  "folate_tot",  :precision => 8, :scale => 3
-    t.decimal  "folic_acid",  :precision => 8, :scale => 3
-    t.decimal  "food_folate", :precision => 8, :scale => 3
-    t.decimal  "folate_dfe",  :precision => 8, :scale => 3
-    t.decimal  "choline_tot", :precision => 8, :scale => 3
-    t.decimal  "vit_b12",     :precision => 8, :scale => 3
-    t.decimal  "vit_a_iu",    :precision => 8, :scale => 3
-    t.decimal  "vit_a_rae",   :precision => 8, :scale => 3
-    t.decimal  "retinol",     :precision => 8, :scale => 3
-    t.decimal  "alpha_carot", :precision => 8, :scale => 3
-    t.decimal  "beta_carot",  :precision => 8, :scale => 3
-    t.decimal  "beta_crypt",  :precision => 8, :scale => 3
-    t.decimal  "lycopene",    :precision => 8, :scale => 3
-    t.decimal  "lut_and_zea", :precision => 8, :scale => 3
-    t.decimal  "vit_e",       :precision => 8, :scale => 3
-    t.decimal  "vit_d_mcg",   :precision => 8, :scale => 3
-    t.decimal  "vivit_d_iu",  :precision => 8, :scale => 3
-    t.decimal  "vit_k",       :precision => 8, :scale => 3
-    t.decimal  "fa_sat",      :precision => 8, :scale => 3
-    t.decimal  "fa_mono",     :precision => 8, :scale => 3
-    t.decimal  "fa_poly",     :precision => 8, :scale => 3
-    t.decimal  "cholestrl",   :precision => 8, :scale => 3
-    t.decimal  "gmwt_1",      :precision => 8, :scale => 3
+    t.decimal  "water",         :precision => 8, :scale => 3
+    t.decimal  "energ_kcal",    :precision => 8, :scale => 3
+    t.decimal  "protein",       :precision => 8, :scale => 3
+    t.decimal  "lipid_tot",     :precision => 8, :scale => 3
+    t.decimal  "ash",           :precision => 8, :scale => 3
+    t.decimal  "carbohydrt",    :precision => 8, :scale => 3
+    t.decimal  "fiber_td",      :precision => 8, :scale => 3
+    t.decimal  "sugar_tot",     :precision => 8, :scale => 3
+    t.decimal  "calcium",       :precision => 8, :scale => 3
+    t.decimal  "iron",          :precision => 8, :scale => 3
+    t.decimal  "magnesium",     :precision => 8, :scale => 3
+    t.decimal  "phosphorus",    :precision => 8, :scale => 3
+    t.decimal  "potassium",     :precision => 8, :scale => 3
+    t.decimal  "sodium",        :precision => 8, :scale => 3
+    t.decimal  "zinc",          :precision => 8, :scale => 3
+    t.decimal  "copper",        :precision => 8, :scale => 3
+    t.decimal  "manganese",     :precision => 8, :scale => 3
+    t.decimal  "selenium",      :precision => 8, :scale => 3
+    t.decimal  "vit_c",         :precision => 8, :scale => 3
+    t.decimal  "thiamin",       :precision => 8, :scale => 3
+    t.decimal  "riboflavin",    :precision => 8, :scale => 3
+    t.decimal  "niacin",        :precision => 8, :scale => 3
+    t.decimal  "panto_acid",    :precision => 8, :scale => 3
+    t.decimal  "vit_b6",        :precision => 8, :scale => 3
+    t.decimal  "folate_tot",    :precision => 8, :scale => 3
+    t.decimal  "folic_acid",    :precision => 8, :scale => 3
+    t.decimal  "food_folate",   :precision => 8, :scale => 3
+    t.decimal  "folate_dfe",    :precision => 8, :scale => 3
+    t.decimal  "choline_tot",   :precision => 8, :scale => 3
+    t.decimal  "vit_b12",       :precision => 8, :scale => 3
+    t.decimal  "vit_a_iu",      :precision => 8, :scale => 3
+    t.decimal  "vit_a_rae",     :precision => 8, :scale => 3
+    t.decimal  "retinol",       :precision => 8, :scale => 3
+    t.decimal  "alpha_carot",   :precision => 8, :scale => 3
+    t.decimal  "beta_carot",    :precision => 8, :scale => 3
+    t.decimal  "beta_crypt",    :precision => 8, :scale => 3
+    t.decimal  "lycopene",      :precision => 8, :scale => 3
+    t.decimal  "lut_and_zea",   :precision => 8, :scale => 3
+    t.decimal  "vit_e",         :precision => 8, :scale => 3
+    t.decimal  "vit_d_mcg",     :precision => 8, :scale => 3
+    t.decimal  "vivit_d_iu",    :precision => 8, :scale => 3
+    t.decimal  "vit_k",         :precision => 8, :scale => 3
+    t.decimal  "fa_sat",        :precision => 8, :scale => 3
+    t.decimal  "fa_mono",       :precision => 8, :scale => 3
+    t.decimal  "fa_poly",       :precision => 8, :scale => 3
+    t.decimal  "cholestrl",     :precision => 8, :scale => 3
+    t.decimal  "gmwt_1",        :precision => 8, :scale => 3
     t.string   "gmwt_desc1"
-    t.decimal  "gmwt_2",      :precision => 8, :scale => 3
+    t.decimal  "gmwt_2",        :precision => 8, :scale => 3
     t.string   "gmwt_desc2"
-    t.decimal  "refuse_pct",  :precision => 8, :scale => 3
+    t.decimal  "refuse_pct",    :precision => 8, :scale => 3
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
     t.boolean  "custom"
-    t.decimal  "total_fat",   :precision => 6, :scale => 1
+    t.decimal  "total_fat",     :precision => 6, :scale => 1
+    t.decimal  "saturated_fat", :precision => 6, :scale => 1
+    t.decimal  "trans_fat",     :precision => 6, :scale => 1
+    t.decimal  "sugar_alchol",  :precision => 6, :scale => 1
   end
 
   create_table "meal_items", :force => true do |t|

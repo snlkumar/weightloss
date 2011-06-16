@@ -4,11 +4,11 @@ class TrackingsController < ApplicationController
   before_filter :require_user
   
   def show
-    
+    @user = current_uer
     render
   end
   
   def charts
-    
+    @user = current_user
   end
 end
