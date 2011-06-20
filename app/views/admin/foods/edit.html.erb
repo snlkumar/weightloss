@@ -3,10 +3,15 @@
   <h3>Editing <%= @food.name %></h3>
   
   <% if not @food.custom? %>
-    <p>This is a food item from the USDA food database.</p>
+    
+    <div class="flash">
+      <div class="warning message">
+        <p>This is a food item from the <b>USDA food database</b>.  All values are based off <b>100 grams</b>.</p>
+      </div>
+    </div>
   <% end %>
   
-  <% form_for(@food) do |f| %>
+  <% form_for([:admin, @food]) do |f| %>
     <%= f.error_messages %>
     
     <% if @food.custom? %>

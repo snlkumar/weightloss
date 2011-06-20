@@ -3,7 +3,7 @@
   
   <h3>New food</h3>
   
-  <% form_for(@food) do |f| %>
+  <% form_for([:admin, @food]) do |f| %>
     <%= f.error_messages %>
     
     <%= render :partial => '/custom_foods/form', :locals => {:f => f} %>
