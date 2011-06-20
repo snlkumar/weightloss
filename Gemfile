@@ -1,7 +1,6 @@
-
 source :rubygems
-gem "rails", "~>2.3.11"
 
+gem "rails", "~>2.3.11"
 gem 'paperclip', '~>2.3.5'
 gem 'hoptoad_notifier'
 gem 'fastercsv'
@@ -10,7 +9,7 @@ gem 'will_paginate', '2.3.11'
 gem 'authlogic', '2.1.6'
 gem 'mysql'
 gem 'chronic'
-gem 'ruby-debug'
+
 
 group :cucumber do
   gem 'cucumber'
@@ -23,6 +22,10 @@ group :cucumber do
   gem 'fakeweb'
   gem 'launchy'
   gem 'factory_girl'
+end
+
+group :development do
+  gem 'ruby-debug'
 end
 
 # group :test do # Rails 3

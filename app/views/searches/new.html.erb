@@ -1,4 +1,5 @@
 <% form_tag searches_path , :id => 'content-search' do %>
+  <%= hidden_field_tag :category_id, (params[:search] ? params[:search][:keywords] : ''), :id => 'category-id' %>
   
   <p>
     <%= label_tag 'Search' %><br/>

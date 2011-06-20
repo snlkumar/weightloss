@@ -5,6 +5,7 @@ class PostSearch
     @keywords     = params[:keywords] ? params[:keywords].gsub(/[^a-zA-Z0-9\s]/, '').split(/\s/) : []
     @per_page     = 15
     @page         = params[:page] || 1
+    @category     = params[:category_id] || nil
     
     @query_string = []
     @query_params = []
@@ -29,8 +30,16 @@ class PostSearch
     @query_string << "(#{ temp.join(' OR ') })"
   end
   
+  def add_category
+    return if @category.nil?
+    
+    @query_params << ''
+    @query_string << ''
+  end
+  
   def build_query
     add_keywords
+    add_category
   end
   
   def go
