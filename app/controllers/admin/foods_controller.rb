@@ -6,7 +6,7 @@ class Admin::FoodsController < Admin::BaseController
   end
   
   def new
-    @food = Food.new
+    @food = Food.new(:custom => true)
   end
   
   def edit
@@ -17,7 +17,7 @@ class Admin::FoodsController < Admin::BaseController
     @food = Food.new(params[:food])
     
     if @food.save
-      redirect_to(@food, :notice => 'Food was successfully created.')
+      redirect_to(admin_foods_path, :notice => 'Food was successfully created.')
     else
       render :action => "new"
     end
@@ -27,7 +27,7 @@ class Admin::FoodsController < Admin::BaseController
     @food = Food.find(params[:id])
     
     if @food.update_attributes(params[:food])
-      redirect_to(@food, :notice => 'Food was successfully updated.')
+      redirect_to(admin_foods_path, :notice => 'Food was successfully updated.')
     else
       render :action => "edit"
     end
