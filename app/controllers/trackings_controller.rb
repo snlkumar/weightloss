@@ -4,7 +4,7 @@ class TrackingsController < ApplicationController
   before_filter :require_user
   
   def show
-    @user = current_uer
+    @user = current_user
     render
   end
   
