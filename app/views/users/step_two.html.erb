@@ -12,7 +12,8 @@
   <div class="grid_10 alpha push_1">
     
     <% form_for current_user, :url => "/finalize", :html => { :multipart => true, :class => "forms" } do |f| %>
-      <%#= f.error_messages %>
+      <%= f.error_messages %>
+      
       <fieldset>
         <ol class="forms">
           <%= render :partial => "step_two", :locals => {:f => f} %>

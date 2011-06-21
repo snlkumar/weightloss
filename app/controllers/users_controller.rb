@@ -47,6 +47,8 @@ class UsersController < ApplicationController
       current_user.save # TODO: needed?
       redirect_to user_path(current_user)
     else
+      @slider_height = current_user.height || 60
+      @slider_weight = current_user.weight || 150
       render :action => :step_two
     end
   end
