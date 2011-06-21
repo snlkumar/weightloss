@@ -8,16 +8,12 @@ class UsersController < ApplicationController
     flash.clear
     
     if current_user == @user
-      p 'profile' if Rails.env.development?
       render :layout => "profile"
     elsif @user.private?
-      p 'private profile' if Rails.env.development?
       render :action => :private, :layout => "private_profile"
     elsif @user.public?
-      p 'public profile' if Rails.env.development?
       render :action => :public_profile, :layout => "public_profile"
     else
-      p 'private profile' if Rails.env.development?
       render :action => :private, :layout => "private_profile"
     end
   end
