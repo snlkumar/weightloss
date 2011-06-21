@@ -1,11 +1,11 @@
 <% form_tag searches_path , :id => 'content-search' do %>
-  <%= hidden_field_tag :category_id, (params[:search] ? params[:search][:keywords] : ''), :id => 'category-id' %>
+  <%= hidden_field_tag "search[category_id]", (params[:search] ? params[:search][:category_id] : ''), :id => 'category-id' %>
   
   <p>
     <%= label_tag 'Search' %><br/>
     <%= text_field_tag 'search[keywords]', (params[:search] ? params[:search][:keywords] : ''), :id => 'search-keywords', :class => 'grid_8 alpha' %>
-    <button class="button grid_3" type="submit" style="margin: 11px 0px 0px 8px; height:37px; font-size: 13pt;">
-      <%= image_tag 'delete.png' %>
+    <button id="search" class="button grid_3" type="submit" style="margin: 11px 0px 0px 8px; height:37px; font-size: 13pt;">
+      <%= image_tag 'search.png' %>
       Search
     </button>
     <span class="clear"></span>
@@ -13,7 +13,15 @@
   
   <% if defined?(@posts) && defined?(@videos) %>
     <%= select_tag 'search[filter]', options_for_select([['All Results', 'all']]), :style => "position: absolute" %>
-    <div id="results-summary"><span id="count"><%= @total %> results</span> for "<%= params[:search][:keywords] %>"</div>
+    <div id="results-summary">
+      <span id="count"><%= @total %> results</span>
+      <% if params[:search][:keywords].present? %>
+        for "<%= params[:search][:keywords] %>"
+      <% end %>
+      <% if @post_search.category %>
+        in <%= @post_search.category.name %>
+      <% end %>
+    </div>
   <% end %>
 <% end %>
 
@@ -28,3 +36,13 @@
     </ul>
   <% end %>
 <% end %>
+
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    jQuery("#search-categories a").click(function(evt){
+      evt.preventDefault();
+      $("#category-id").val($(this).attr("data-id"));
+      jQuery("#content-search").trigger("submit");
+    })
+  <% end %>
+</script>

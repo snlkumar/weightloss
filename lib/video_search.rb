@@ -5,6 +5,7 @@ class VideoSearch
     @keywords     = params[:keywords] ? params[:keywords].gsub(/[^a-zA-Z0-9\s]/, '').split(/\s/) : []
     @per_page     = 15
     @page         = params[:page] || 1
+    @category_id     = params[:category_id] || nil
     
     @query_string = []
     @query_params = []
@@ -29,14 +30,22 @@ class VideoSearch
     @query_string << "(#{ temp.join(' OR ') })"
   end
   
+  def add_category
+    return if @category_id.blank?
+    
+    @query_params << @category_id
+    @query_string << 'categories.id = ?'
+  end
+  
   def build_query
     add_keywords
+    add_category
   end
   
   def go
     return [] if @query_string.nil?
     build_query
-    OldFlashFile.paginate(:all, :conditions => query, :per_page => @per_page, :page => @page)
+    OldFlashFile.paginate(:all, :include => :category, :conditions => query, :per_page => @per_page, :page => @page)
   end
   
 end

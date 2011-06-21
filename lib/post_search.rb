@@ -1,11 +1,12 @@
 class PostSearch
-  attr_accessor :keywords
+  attr_accessor :keywords, :category
   
   def initialize(params = {})
     @keywords     = params[:keywords] ? params[:keywords].gsub(/[^a-zA-Z0-9\s]/, '').split(/\s/) : []
     @per_page     = 15
     @page         = params[:page] || 1
-    @category     = params[:category_id] || nil
+    @category_id  = params[:category_id] || nil
+    @category     = Category.find_by_id(@category_id)
     
     @query_string = []
     @query_params = []
@@ -31,10 +32,10 @@ class PostSearch
   end
   
   def add_category
-    return if @category.nil?
+    return if @category_id.blank?
     
-    @query_params << ''
-    @query_string << ''
+    @query_params << @category_id
+    @query_string << 'categories.id = ?'
   end
   
   def build_query
@@ -45,7 +46,7 @@ class PostSearch
   def go
     return [] if @query_string.nil?
     build_query
-    OldTextFile.paginate(:all, :conditions => query, :per_page => @per_page, :page => @page)
+    OldTextFile.paginate(:all, :include => :category, :conditions => query, :per_page => @per_page, :page => @page)
   end
   
 end

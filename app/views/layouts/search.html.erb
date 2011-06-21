@@ -88,11 +88,7 @@
         
         <%= render :partial => 'shared/weight_update_js' %>
         
-        jQuery("#search-categories a").click(function(evt){
-          evt.preventDefault();
-          $("#category-id").val($(this).attr("data-id"));
-          jQuery("#content-search").trigger("submit");
-        })
+        
       });
     </script>
   </body>

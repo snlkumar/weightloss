@@ -3,6 +3,7 @@ class OldFlashFile < ActiveRecord::Base
   
   acts_as_taggable
   
+  belongs_to :category
   belongs_to :subcategory
   
   has_attached_file :file1, :url => "/system/:class/:attachment/:id/:filename"
