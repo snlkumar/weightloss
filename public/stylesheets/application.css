@@ -81,7 +81,7 @@ a:link { -webkit-tap-highlight-color: #FF5E99; }
 /* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active { outline: none; }
 
-a, a:active, a:visited { color: #607890; }
+a, a:active, a:visited { color: #1198CB; }
 a:hover { color: #036; }
 
 ul, ol { margin-left: 2em; }
@@ -227,7 +227,7 @@ input.label-highlight { color: #999; }
 #add-activity              { top:10px; left: 429px; width: 117px; }
 #add-meal a, #add-activity { font-size: 12pt; }
 
-form#global-search input   { position: absolute; top: 7px; right: 49px; height: 30px; width: 230px; padding: 0px 5px; }
+form#global-search input   { position: absolute; top: 7px; right: 49px; height: 30px; width: 230px; padding: 0px 5px; border: 1px solid #384C68;}
 form#global-search input[type=submit] { position: absolute; top: 14px; right: 10px; }
 
 /*  =SIGN UP BOX
@@ -289,7 +289,7 @@ h2#personal-info     { margin-top: 33px; margin-bottom: 12px; }
 
 /* SEARCH */
 form#content-search label { font-size: 13pt; position: relative; }
-form#content-search #search-keywords { margin-top: 11px; }
+form#content-search #search-keywords { margin-top: 11px; border: 1px solid #384C68;}
 form#content-search select { right: 0px; top: 141px; }
 #results-summary          { margin-top: 44px; font-size: 14pt; display: inline-block; }
 #results-summary #count   { font-weight: bold; }
@@ -302,8 +302,14 @@ ul#search-results .search-result h4 a { color: #1198CB; }
 #search-categories-sidebar p { font-size: 11pt; }
 ul#search-categories { margin: 15px 0px 0px 0px; padding: 0px; width: 240px; }
 ul#search-categories li { list-style: none; height: 22px; line-height: 22px; padding-left: 10px; }
-ul#search-categories li.selected { background-color: #1198CB; -moz-border-radius: 10px; -webkit-border-radius: 10px 10px;}
-
+ul#search-categories li.selected { background-color: #1198CB; -moz-border-radius: 10px; -webkit-border-radius: 10px 10px; }
+ul#search-categories li.selected a,
+  ul#search-categories li.selected a:active,
+  ul#search-categories li.selected a:visited { color: black; }
+  
+button#search { background: url(/images/button.png); color: #FFF; border: 1px solid #384C68; }
+button#search:hover { background: url(/images/button-hover.png); }
+  
 /* TERMS PAGE */
 h3 a { text-decoration: none; color: black; }
 h4 a { text-decoration: none; color: black; }
@@ -316,13 +322,15 @@ h4 a { text-decoration: none; color: black; }
             background: -moz-linear-gradient(0% 15% 90deg,#91D1E8, #91D1E8, #7fb8cc 100%);
             background: -webkit-gradient(linear, 0% 0%, 0% 15%, from(#91D1E8), to(#91D1E8), color-stop(0,#7FB8CC)) }
 #back-bar a { color: #444; display: block; background-image: url(/images/icon-backarrow.png); background-position: 39px 16px; background-repeat: no-repeat; }
-#nav-bar    { height: 52px; background-color: #fff; }
+#nav-bar    { height: 51px; width: 630px; float: left; margin: 0px 10px; background-color: #fff; border: 1px solid #BFC9D2; }
 #nav-bar ul { margin: 0; padding: 0; list-style: none; }
-#nav-bar ul li { display: inline; float: left;  text-align: center; } /* margin: 0px 1px 0px 0px; padding: 0px 10px;*/
+#nav-bar ul li { display: inline; float: left; width: 60px; text-align: center; background: url(/images/user-nav-bar.png) repeat-x; }
 #nav-bar a  { color: #444; display: block; height: 52px; line-height: 52px; }
-#nav-bar a#profile-tab { background-image: url(/images/icon-myprofile.png); background-repeat: no-repeat; background-position: 9px 15px; }
-#nav-bar a#food-tab { background-image: url(/images/icon-food.png); background-repeat: no-repeat; background-position: 12px 15px; }
-#nav-bar a#exercise-tab { background-image: url(/images/icon-exercise.png); background-repeat: no-repeat; background-position: 9px 15px; }
+#nav-bar a#profile-tab { background-image: url(/images/profile.png); background-repeat: no-repeat; background-position: 20px 15px; }
+#nav-bar a#food-tab { background-image: url(/images/fork-knife.png); background-repeat: no-repeat; background-position: 20px 15px; }
+#nav-bar a#exercise-tab { background-image: url(/images/icon-exercise.png); background-repeat: no-repeat; background-position: 20px 15px; }
+#nav-bar a#charts-tab { background-image: url(/images/charts.png); background-repeat: no-repeat; background-position: 20px 15px; }
+#nav-bar li:last-child { width: 330px; }
 
 #user-name { font-size: 18pt; margin: 29px 0px 0px 19px; }
 
