@@ -1,12 +1,16 @@
 <div id="header" class="full">
-  <div class="small-nav container_16">
-    <div class="grid_5 sidebar-container" style="height: 26px;">
-      &nbsp;
+  <div class="small-nav full">
+    <div class="container_16">
+      <div id="sidebar-top" class="grid_5 sidebar-container">
+        &nbsp;
+      </div>
+      <div class="grid_11">
+        <%= render :partial => 'shared/session_menu_bar' %>
+      </div>
+      <div class="clear">&nbsp;</div>
     </div>
-    <div class="grid_11">
-      <%= render :partial => 'shared/session_menu_bar' %>
-    </div>
-    <div class="clear">&nbsp;</div>
+    
+    
   </div>
   
   <div id="main-nav" class="full">
@@ -52,5 +56,7 @@
       <div class="clear">&nbsp;</div>
     </div>
   </div>
+  
+  <div class="full" style="height: 1px; background-color: #FFF;"></div>
 </div>
 <div class="clear">&nbsp;</div>

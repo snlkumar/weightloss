@@ -216,9 +216,9 @@ input.label-highlight { color: #999; }
 /*  =HEADER
  ------------------------------------------------------ */
 #small-nav { background: #ebebeb; }
-.small-nav { height: 26px; text-align: right; }
+.small-nav { height: 26px; text-align: right; color: #1198CB; background: url(/images/log-in-bar.png); border-bottom: 1px solid #1a5f85}
 
-#main-nav                  { background: #cccccc; }
+#main-nav                  { background: url(/images/nav-bar.png); border-top: 1px solid #38a5d4; border-bottom: 1px solid #bcd4e0; }
 .main-nav-spacer           { height: 30px; }
 .main-nav                  { height: 60px; }
 .main-nav .button          { position: absolute; padding: 0px 5px; width: 101px; height: 31px; float: right; line-height: 29px; }
@@ -352,12 +352,14 @@ p#location.right-side { float: left; margin: 10px 0px 0px 20px; }
 .space             { margin-bottom: 20px; }
 .profile-label     { display: inline; float: left; margin: 0px 10px 0px 20px; width: 140px; }
 .sidebar-container { -moz-box-shadow: 2px 2px 2px #666;
-                    -webkit-box-shadow: 2px 2px 2px #666;
-                    box-shadow: 2px 2px 2px #666;
-                    background-color: white;
+                     -webkit-box-shadow: 2px 2px 2px #666;
+                     box-shadow: 2px 2px 2px #666;
+                     background-color: white;
+                    }
                     
-                  }
-.sidebar-container.subsection { padding: 18px 0px 18px 20px; margin-bottom: 2px;}
+#sidebar-top         { height: 28px; }
+.sidebar-container.subsection { padding: 18px 0px 18px 20px; margin-bottom: 2px; }
+
 h4.sidebar-subheader { margin-bottom: 10px; }
 .large-calories      { font-size: 36pt; height: 43px; line-height: 47px; }
 .large-calories span { color: #f26c4f; }
