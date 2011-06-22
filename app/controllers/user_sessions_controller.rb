@@ -1,4 +1,6 @@
 class UserSessionsController < ApplicationController
+  layout 'login'
+  
   before_filter :require_user,    :only => :destroy
   
   def new

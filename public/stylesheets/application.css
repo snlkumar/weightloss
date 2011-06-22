@@ -254,32 +254,28 @@ span.help-text { color:#AAA; font-weight: normal; }
 form .fieldError, form .fieldWithErrors { border: 1px solid #ff0000 !important; color: #e76a6a; }
 
 /* Sign In */
-#sign-up-form { width: 400px; margin-top: 25px; }
+#sign-in-form { margin-top: 25px; background-color: #FFF; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+                -moz-border-radius: 9px; -webkit-border-radius: 9px 9px; }
+#sign-in-form h2 { background: url("/images/nav-bar.png") repeat scroll 0 0 transparent; 
+                   -moz-border-radius: 9px 9px 0px 0px;
+                   -webkit-border-radius: 9px 9px 0px 0px; color: #FFF; margin: 0; padding: 10px 15px; }
+#sign-in-form div.content { padding: 10px 20px; }
+#sign-in-form button:hover { box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); }
 
-.avatar-placeholder { 
- -moz-border-radius: 5px; 
- -webkit-border-radius: 5px 5px; 
- margin-bottom: 10px; 
- border: 1px solid #fff; background: url(/images/avatar_placeholder.png) no-repeat center center }
-
-.avatar {
- display: inline;
- float: left;
- -moz-border-radius: 5px; 
- -webkit-border-radius: 5px 5px; 
- margin: 12px 0px 10px 19px; 
- border: 1px solid #fff;
-}
+.avatar-placeholder { -moz-border-radius: 5px; -webkit-border-radius: 5px 5px; margin-bottom: 10px; 
+                      border: 1px solid #fff; background: url(/images/avatar_placeholder.png) no-repeat center center }
+.avatar { display: inline; float: left; -moz-border-radius: 5px; -webkit-border-radius: 5px 5px; 
+          margin: 12px 0px 10px 19px; border: 1px solid #fff; }
 
 .profile-avatar { height: 140px; width: 140px; }
-.small-avatar { height: 78px; width: 78px; }
+.small-avatar   { height: 78px; width: 78px; }
 
 #edit-profile { font-size: 12pt; color: #444; display: inline-block; float: left; width: 77px; 
-               height: 44px; line-height: 44px; margin: 12px 0px 0px 20px; text-align: center; }
+                height: 44px; line-height: 44px; margin: 12px 0px 0px 20px; text-align: center; }
 
-#edit-profile.wide { width: 138px; height: 31px; line-height: 33px; }
+#edit-profile.wide   { width: 138px; height: 31px; line-height: 33px; }
 
-#content      { padding-top: 25px; position: relative; }
+#content             { padding-top: 25px; position: relative; }
 
 h2#personal-info     { margin-top: 33px; margin-bottom: 12px; }
 
@@ -541,6 +537,9 @@ button.button {
   width:auto;
   overflow:visible;
   padding:4px 10px 3px 7px; /* IE6 */
+  margin: 11px 0px 0px 8px; 
+  height:37px; 
+  font-size: 13pt;
 }
 button.button[type] {
   padding:5px 10px 5px 7px; /* Firefox */

@@ -1,19 +1,30 @@
-<div id="sign-up-form" class="center">
+<div id="sign-in-form" class="push_4 grid_7">
   
   <h2>Sign In</h2>
   
-  <% form_for @user_session, :url => user_session_path do |f| %>
-    <p>
-      <%= f.label :email %><br />
-      <%= f.text_field :email %><br />
-    </p>
+  <div class="content">
+    <%= render :partial => '/shared/flash', :locals => {:flash => flash} %>
     
-    <p>
-      <%= f.label :password %><br />
-      <%= f.password_field :password %><br />
-    </p>
+    <% form_for @user_session, :url => user_session_path do |f| %>
+      <p>
+        <%= f.label :email %><br />
+        <%= f.text_field :email, :class => 'grid_6', :autofocus => 'autofocus' %>
+        <div class="clear">&nbsp;</div>
+      </p>
+      
+      <p>
+        <%= f.label :password %><br />
+        <%= f.password_field :password, :class => 'grid_6' %>
+        <div class="clear">&nbsp;</div>
+      </p>
+      
+      <button class="button grid_2" type="submit" style="margin: 11px 0px 0px 8px; height:37px; font-size: 13pt;">
+        Sign In
+      </button>
+    <% end %>
     
-    <%= f.submit "Sign In" %>
-  <% end %>
+    <div class="clear">&nbsp;</div>
+  </div>
+  
   
 </div>

@@ -1,0 +1,71 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js" lang="en"> <!--<![endif]-->
+  <head>
+    <%= render :partial => '/layouts/head' %>
+  </head>
+  <body>
+    <div class="header" class="full">
+      <div class="small-nav full">
+        <div class="container_16">
+          <div id="sidebar-top" class="grid_5 sidebar-container">
+            &nbsp;
+          </div>
+          <div class="grid_11">
+            <%= render :partial => 'shared/session_menu_bar' %>
+          </div>
+          <div class="clear">&nbsp;</div>
+        </div>
+      </div>
+      
+      <div id="main-nav" class="full">
+        <div class="main-nav container_16" style="position:relative;">
+
+          <h2 id="logo" class="grid_5 sidebar-container"><%= link_to 'myweightworld', tracking_path %></h2>
+
+          <div class="clear">&nbsp;</div>
+
+          <div class="grid_5 sidebar-container main-nav-spacer">&nbsp;</div>
+          <div class="grid_11 main-nav-spacer">&nbsp;</div>
+          <div class="clear">&nbsp;</div>
+        </div>
+      </div>
+
+      <div class="full" style="height: 1px; background-color: #FFF;"></div>
+    </div>
+    <!-- DONE HEADER -->
+    
+    <div id="content" class="container_16">
+      <%= yield %>
+    </div>
+    
+    <div class="full">
+      <div id="footer" class="container_16">
+        
+        <div style="clear:both">&nbsp;</div>
+      </div>
+    </div>
+    
+    <!-- JavaScript at the bottom for fast page loading -->
+    <%= javascript_include_tag "modernizr-1.7.min.js", "respond.min.js" %>
+    
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+    <!-- // <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js"></script>
+        //     <script>window.jQuery || document.write("<script src='/javascripts/jquery-1.6.min.js'>\x3C/script>")</script> -->
+    
+    <%= javascript_include_tag "jquery-1.4.4.dev.js", "jquery-ui-1.8.9.min.js", "underscore", "jquery.labelify.js", "jquery.jeditable", "application" %>
+    <%= init_tinymce_hammer_if_required %>
+    
+    <%= render :partial => "shared/gridder" %>
+    
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function() {
+        <%= yield :js %>
+      });
+    </script>
+  </body>
+</html>
