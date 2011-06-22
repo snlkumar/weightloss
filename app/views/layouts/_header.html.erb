@@ -16,11 +16,11 @@
       
       <% if logged_in? %>
         <div id="add-meal" class="button">
-          <%= link_to "+ Add Meal", new_meal_path %>
+          <%= link_to "+ Add Meal", new_meal_path, :title => 'Add a Meal' %>
         </div>
       
         <div id="add-activity" class="button">
-          <%= link_to "+ Add Activity", new_workout_path %>
+          <%= link_to "+ Add Activity", new_workout_path, :title => 'Add a Workout' %>
         </div>
       <% end %>
       

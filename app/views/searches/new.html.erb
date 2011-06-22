@@ -3,7 +3,7 @@
   
   <p>
     <%= label_tag 'Search' %><br/>
-    <%= text_field_tag 'search[keywords]', (params[:search] ? params[:search][:keywords] : ''), :id => 'search-keywords', :class => 'grid_8 alpha' %>
+    <%= text_field_tag 'search[keywords]', (params[:search] ? params[:search][:keywords] : ''), :id => 'search-keywords', :class => 'grid_8 alpha', :title => "Search our wellness library" %>
     <button id="search" class="button grid_3" type="submit" style="margin: 11px 0px 0px 8px; height:37px; font-size: 13pt;">
       <%= image_tag 'search.png' %>
       Search
@@ -11,15 +11,21 @@
     <span class="clear"></span>
   </p>
   
-  <% if defined?(@posts) && defined?(@videos) %>
-    <%= select_tag 'search[filter]', options_for_select([['All Results', 'all']]), :style => "position: absolute" %>
+  <% if defined?(@search) %>
+    <%= select_tag 'search[filter]', options_for_select(ContentSearch::FILTERS, @search.filter), :id => 'search-filter', :style => "position: absolute" %>
+    
     <div id="results-summary">
       <span id="count"><%= @total %> results</span>
       <% if params[:search][:keywords].present? %>
         for "<%= params[:search][:keywords] %>"
       <% end %>
-      <% if @post_search.category %>
-        in <%= @post_search.category.name %>
+      
+      <% if @search.category %>
+        in <%= @search.category.name %>
+      <% end %>
+      
+      <% if @search.filter && !@search.filter.eql?('all')%>
+        (only <%= @search.filter %>)
       <% end %>
     </div>
   <% end %>
@@ -43,6 +49,13 @@
       evt.preventDefault();
       $("#category-id").val($(this).attr("data-id"));
       jQuery("#content-search").trigger("submit");
-    })
+    });
+    
+    jQuery("#search-filter").change(function(evt){
+      jQuery("#content-search").trigger("submit");
+    });
+    
+    // TODO: Use this?
+    // jQuery("#search-filter").selectBox();
   <% end %>
 </script>

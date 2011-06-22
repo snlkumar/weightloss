@@ -2,9 +2,9 @@
   <% if logged_in? %>
     Hi, <%= current_user.full_name %> 
     <% if current_user.admin %>
-      | <%= link_to 'Admin', admin_dashboard_path %>
+      | <%= link_to 'Admin', admin_dashboard_path, :title => 'Admin Dashboard' %>
     <% end %>
-    | <%= link_to 'Sign Out', user_session_path, :method => :delete %> 
+    | <%= link_to 'Sign Out', user_session_path, :method => :delete, :title => 'Sign Out' %> 
   <% else %>
     <%= link_to 'Already a User? Sign in', new_user_session_path %> | <%= link_to 'Sign up', new_user_path %>
   <% end %>

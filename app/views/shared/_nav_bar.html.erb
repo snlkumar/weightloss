@@ -1,19 +1,19 @@
 <ul>
   <% if current_user %>
     <li>
-      <%= link_to "", user_path(current_user), :id => 'profile-tab' %>
+      <%= link_to "", user_path(current_user), :id => 'profile-tab', :title => 'Profile' %>
     </li>
     <li>
-      <%= link_to "", meals_path, :id => 'food-tab' %>
+      <%= link_to "", meals_path, :id => 'food-tab', :title => 'Meals' %>
     </li>
     <li>
-      <%= link_to "", workouts_path, :id => 'exercise-tab' %>
+      <%= link_to "", workouts_path, :id => 'exercise-tab', :title => 'Workouts' %>
     </li>
     <li>
-      <%= link_to '', charts_tracking_path, :id => 'charts-tab' %>
+      <%= link_to '', charts_tracking_path, :id => 'charts-tab', :title => 'Charts' %>
     </li>
     <li>
-      <%= link_to 'Goal', edit_metabolic_rates_path %>
+      <%= link_to 'Goal', edit_metabolic_rates_path, :title => 'Goal' %>
     </li>
   <% end %>
   

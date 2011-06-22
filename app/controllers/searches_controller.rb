@@ -14,13 +14,10 @@ class SearchesController < ApplicationController
   def create
     (redirect_to(new_search_path) && return) if params[:search].nil?
     
-    @post_search  = PostSearch.new(params[:search])
-    @posts        = @post_search.go
-    @video_search = VideoSearch.new(params[:search])
-    @videos       = @video_search.go
+    @search  = ContentSearch.new(params)
     
-    @results = [@posts, @videos].flatten.sort_by{|rec| rec.created_at }
-    @total   = @posts.total_entries + @videos.total_entries
+    @results = @search.results
+    @total   = @search.total
     
     render :action => :new
   end

@@ -1,5 +1,5 @@
 class PostSearch
-  attr_accessor :keywords, :category
+  attr_accessor :keywords, :category, :per_page
   
   def initialize(params = {})
     @keywords     = params[:keywords] ? params[:keywords].gsub(/[^a-zA-Z0-9\s]/, '').split(/\s/) : []

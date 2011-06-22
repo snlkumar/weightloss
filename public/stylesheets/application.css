@@ -189,6 +189,7 @@ input.title {font-size:1.5em;}
 textarea {padding:5px;}
 form.inline {line-height:3;}
 form.inline p {margin-bottom:0;}
+form p { margin-bottom: 5px; }
 
 body      { background-color: #f0f0f0; }
 a         { text-decoration: none; }
@@ -209,8 +210,8 @@ input.label-highlight { color: #999; }
 
 /* jQuery Overrides */
 .ui-slider, .ui-slider-range { background: #AAA; }
-.ui-slider .ui-slider-handle { background: #0D87D0 !important; border: 1px solid #0D87D0 !important; width: .8em; }
-.ui-slider-horizontal .ui-slider-handle { top: -0.4em; }
+.ui-slider .ui-slider-handle { background: #0D87D0 !important; border: 1px solid #0D87D0 !important; width: .7em; }
+.ui-slider-horizontal .ui-slider-handle { top: -0.3em; }
 .ui-widget-content { background: #fff !important; }
 
 /*  =HEADER
@@ -328,7 +329,7 @@ h4 a { text-decoration: none; color: black; }
 #nav-bar a  { color: #444; display: block; height: 52px; line-height: 52px; }
 #nav-bar a#profile-tab { background-image: url(/images/profile.png); background-repeat: no-repeat; background-position: 20px 15px; }
 #nav-bar a#food-tab { background-image: url(/images/fork-knife.png); background-repeat: no-repeat; background-position: 20px 15px; }
-#nav-bar a#exercise-tab { background-image: url(/images/icon-exercise.png); background-repeat: no-repeat; background-position: 20px 15px; }
+#nav-bar a#exercise-tab { background-image: url(/images/running-guy.png); background-repeat: no-repeat; background-position: 20px 15px; }
 #nav-bar a#charts-tab { background-image: url(/images/charts.png); background-repeat: no-repeat; background-position: 20px 15px; }
 #nav-bar li:last-child { width: 330px; }
 
@@ -393,17 +394,15 @@ td { border: none; }
 .button   { color: white; background-color: #0D87D0; margin: 5px; -moz-border-radius: 5px; padding: 10px 5px; text-align: center; cursor: pointer; }
 .button a { color: white; text-decoration: none; }
 #height-slider, 
- #weight-slider   { height: 10px; margin-bottom: 10px; width: 180px !important; }
-form.edit #height-slider, 
- form.edit #weight-slider   { width: 300px !important; }
- 
+  #weight-slider   { height: 10px; margin-bottom: 10px; width: 180px !important; width: 400px !important; }
+
 /* New Meal Entry */
 #meal-entry, #workout-entry                   { background-color: #F6F6F6; border: 2px solid #006597; padding: 15px; width: 100%; }
 #meal-entry table, #workout-entry table       { width: 100%; }
 #meal-entry table td, #workout-entry table td { vertical-align: middle; }
 
 #meal-items td, 
- #workout-items td        { border-bottom: 1px solid #CCC; }
+  #workout-items td        { border-bottom: 1px solid #CCC; }
 #meal-items .servings { width: 115px; }
 #meal-items .serving-size { width: 210px; }
 

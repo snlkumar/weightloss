@@ -37,7 +37,5 @@ $(document).ready(function() {
   });
   
   $('input[type=text]').labelify({labelledClass: "label-highlight"});
-
-  
   
 });
