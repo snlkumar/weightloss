@@ -28,11 +28,16 @@ role :app, server
 role :db,  server, :primary => true
 
 after "deploy:update_code", "deploy:symlink_config"
+after "deploy:update_code", "deploy:generate_tinymce_cache"
 after "deploy",             "deploy:cleanup"
 
 deploy.task :symlink_config, :roles => :app, :except => {:no_release => true, :no_symlink => true} do
   run "ln -nsf #{shared_path}/config/database.yml #{current_release}/config"
   # run "cd #{current_release} && RAILS_ENV=production rake db:migrate --trace"
+end
+
+deploy.task :generate_tinymce_cache, :roles => :app do
+  run "cd #{current_release} && RAILS_ENV=production rake tinymce:cache_js"
 end
 
 deploy.task :restart, :roles => :app, :except => { :no_release => true } do
