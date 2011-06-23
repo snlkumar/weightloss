@@ -12,6 +12,7 @@ module Tinymce::Hammer::ControllerMethods
   end
 
   def tinymce_hammer_required?
+    Rails.logger.error("TINYMCE Activated?: #{@tinymce_hammer_required == true}")
     @tinymce_hammer_required == true
   end
 
