@@ -27,8 +27,8 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
   
-  config.action_view.sanitized_allowed_attributes = "target"
-  config.action_view.sanitized_allowed_tags       = 'b', 'ol', 'ul', 'li', 'em', 'i', 'strong', 'p', 'br', 'a'
+  # config.action_view.sanitized_allowed_attributes = "target"
+  config.action_view.sanitized_allowed_tags       = 'b', 'ol', 'ul', 'li', 'em', 'i', 'strong', 'p', 'br', 'a', 'blockquote', 'caption', 'cite', 'code', 'dl', 'dt', 'dd', 'img', 'pre', 'q', 'small', 'strike', 'param', 'embed', 'object', 'sub', 'sup', 'u'
 end
 
 ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
