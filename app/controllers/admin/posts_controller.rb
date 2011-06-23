@@ -26,8 +26,6 @@ class Admin::PostsController < ApplicationController
   def update
     @post = OldTextFile.find(params[:id])
     
-    debugger
-    
     if @post.update_attributes(params[:post])
       redirect_to(admin_posts_path, :notice => "Successfully updated Post: #{@post.page_title}")
     else
