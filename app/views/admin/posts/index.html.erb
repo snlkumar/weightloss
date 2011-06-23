@@ -7,26 +7,24 @@
   
   <%= link_to 'New post', new_admin_post_path %>
   
-  <br/>
+  <br/><br/>
   
-  <%= page_entries_info(@posts) %>
+  <%= page_entries_info(@posts, :entry_name => 'post') %>
   
-  <% paginated_section(@posts, :params => pagination_params(request)) do %>
-  
+  <% paginated_section(@posts, :params => pagination_params(request) ) do %>
+    <br />
     <table class="admin">
       <thead>
         <tr>
           <th>Title</th>
-          <th>Author</th>
-          <th>Snippet</th>
+          <th>Body</th>
           <th> </th>
         </tr>
       </thead>
       <tbody>
         <% @posts.each do |post| %>
           <tr  class="<%= cycle('odd', '') %>">
-            <td><%= post.title %></td>
-            <td><%= post.author %></td>
+            <td><%= post.page_title %></td>
             <td><%= truncate(strip_tags(post.body), :length => 50) %></td>
             <td class="actions">
               <%= link_to 'Edit', edit_admin_post_path(post) %> | 

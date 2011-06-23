@@ -1,20 +1,20 @@
 class Admin::PostsController < ApplicationController
-  layout 'application'
+  layout 'admin'
   
   def index
-    @posts = Post.paginate :per_page => 50, :page => params[:page] || 1
+    @posts = OldTextFile.paginate :per_page => 50, :page => params[:page] || 1
   end
   
   def new
-    @post = Post.new
+    @post = OldTextFile.new
   end
   
   def edit
-    @post = Post.find(params[:id])
+    @post = OldTextFile.find(params[:id])
   end
   
   def create
-    @post = Post.new(params[:post])
+    @post = OldTextFile.new(params[:post])
     
     if @post.save
       redirect_to(admin_posts_path, :notice => 'Post was successfully created.')
@@ -24,17 +24,19 @@ class Admin::PostsController < ApplicationController
   end
   
   def update
-    @post = Post.find(params[:id])
+    @post = OldTextFile.find(params[:id])
+    
+    debugger
     
     if @post.update_attributes(params[:post])
-      redirect_to(admin_posts_path, :notice => 'Post was successfully updated.')
+      redirect_to(admin_posts_path, :notice => "Successfully updated Post: #{@post.page_title}")
     else
       render :action => "edit"
     end
   end
   
   def destroy
-    @post = Post.find(params[:id])
+    @post = OldTextFile.find(params[:id])
     @post.destroy
     redirect_to(admin_posts_path)
   end

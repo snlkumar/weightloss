@@ -1,17 +1,14 @@
 <div class="grid_12">
-  <%= link_to 'Back', admin_posts_path %>
-  
   <h3>Edit Post</h3>
   
-  <% form_for [:admin, @post], :html => {:class => 'edit'} do |f| %>
+  <% form_for(:post, @post, :url => admin_old_text_file_path(@post), :html => {:method => :put, :class => 'edit'}) do |f| %>
     <%= f.error_messages %>
     
     <%= render :partial => 'form', :locals => {:f => f} %>
     
     <p>
-      <%= f.submit 'Update' %>
+      <%= f.submit 'Update' %> | <%= link_to 'Cancel', admin_posts_path %>
     </p>
   <% end %>
   
-  <%= link_to 'Back', admin_posts_path %>
 </div>

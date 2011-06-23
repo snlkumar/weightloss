@@ -186,7 +186,7 @@ select {background-color:#fff;border-width:1px;border-style:solid;}
 input[type=text], input[type=password], input[type=url], input[type=email], input.text, input.title, textarea, select {margin:0.5em 0;}
 input.text, input.title {width:300px;padding:5px;}
 input.title {font-size:1.5em;}
-textarea {padding:5px;}
+textarea { padding:5px; height: 75px; }
 form.inline {line-height:3;}
 form.inline p {margin-bottom:0;}
 form p { margin-bottom: 5px; }
@@ -203,6 +203,9 @@ a:hover   { text-decoration: underline; }
 .light-blue { background-color: #91D1E8; }
 
 fieldset  { border: 0px; }
+.admin textarea { height: 400px; }
+.admin #content { padding-top: 15px; }
+.admin th { text-align: left; }
 ul.forms, ol.forms { margin-left: 0em; }
 
 /* help text in text fields */
@@ -364,8 +367,6 @@ h4.sidebar-subheader { margin-bottom: 10px; }
 .calories-this-week  { font-size: 16pt; }
 
 /* EDIT PERSONAL INFO */
-textarea    { height: 75px; }
-
 td { border: none; }
 
 #user-settings-tabs           { margin-left: 2px; }

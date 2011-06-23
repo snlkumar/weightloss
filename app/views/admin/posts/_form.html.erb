@@ -1,17 +1,20 @@
 <p>
-  <%= f.label :title %><br/>
-  <%= f.text_field :title, :class => 'grid_8 alpha' %>
-  <span class="clear"></span>
-</p>
-
-<p>
-  <%= f.label :author %><br/>
-  <%= f.text_field :author, :class => 'grid_8 alpha' %>
+  <%= f.label :page_title, 'Title' %><br/>
+  <%= f.text_field :page_title, :class => 'grid_14 alpha' %>
   <span class="clear"></span>
 </p>
 
 <p>
   <%= f.label :body %><br/>
-  <%= f.tinymce :body, :rows => 10, :class => 'grid_10 alpha' %>
+  <%= f.tinymce :body, :rows => 30, :class => 'grid_14 alpha' %>
   <span class="clear"></span>
+</p>
+
+<p>
+  <%= f.label :image1, 'Content Image' %><br />
+  <%= f.file_field :image1 %><br />
+  <% if f.object.image1.file? %>
+    <%= image_tag f.object.image1.url(:preview)  %> <%= f.object.image1.original_filename %>&nbsp;
+    <%= f.check_box :remove_image1 %> Delete?
+  <% end %>
 </p>

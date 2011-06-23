@@ -7,6 +7,8 @@ Tinymce::Hammer.init = [
   [:paste_remove_spans, true],
   [:paste_remove_styles, true],
   [:paste_strip_class_attributes, true],
+  [:convert_newlines_to_brs, true],
+  [:remove_redundant_brs, true],
   [:theme, 'advanced'],
   [:theme_advanced_toolbar_align, 'left'],
   [:theme_advanced_toolbar_location, 'top'],
