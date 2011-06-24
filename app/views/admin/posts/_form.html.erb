@@ -14,6 +14,7 @@
   <%= f.label :image1, 'Content Image' %><br />
   <%= f.file_field :image1 %><br />
   <% if f.object.image1.file? %>
+    <%= f.object.image1.url %>
     <%= image_tag f.object.image1.url(:preview)  %> <%= f.object.image1.original_filename %>&nbsp;
     <%= f.check_box :remove_image1 %> Delete?
   <% end %>

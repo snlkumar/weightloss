@@ -5,3 +5,21 @@
 <h1><%= @post.page_title %></h1>
 
 <%= @post.body.html_safe %>
+
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    $("object").each(function(index, el){
+      
+      var width  = $(this).attr("width") || 527;
+      var height = $(this).attr("height") || 350;
+      var path   = $(this).find("param[name]=src").attr('value').replace(/^(\.\.\/)+(?!\/system)/, "");
+      path     = '/'+path;
+      data     = {'path': path, 'height': height, 'width': width};
+      template = "<a href='{{path}}' id='player' style='height:{{height}}px; width:{{width}}px; display: block;'></a>";
+      
+      $(el).replaceWith(Mustache.to_html(template, data));
+    });
+    
+    flowplayer("player", "/flowplayer-3.2.7.swf", {clip: {scaling: 'orig'}});
+  <% end %>
+</script>
