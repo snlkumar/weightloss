@@ -18,3 +18,13 @@
     <%= f.check_box :remove_image1 %> Delete?
   <% end %>
 </p>
+
+<p>
+  <%= f.label :file1, 'Video' %><br />
+  <%= f.file_field :file1 %><br />
+  <% if f.object.file1.file? %>
+    <%= f.object.file1.url %>
+    <%= image_tag "file.png"  %> <%= f.object.file1.original_filename %>&nbsp;
+    <%= f.check_box :remove_file1 %> Delete?
+  <% end %>
+</p>
