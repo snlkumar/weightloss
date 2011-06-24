@@ -15,7 +15,7 @@
       var path   = $(this).find("param[name]=src").attr('value').replace(/^(\.\.\/)+(?!\/system)/, "");
       path     = '/'+path;
       data     = {'path': path, 'height': height, 'width': width};
-      template = "<a href='{{path}}' id='player' style='height:{{height}}px; width:{{width}}px; display: block;'></a>";
+      template = "<a href='{{path}}' id='player' style='margin: 0 auto; height:{{height}}px; width:{{width}}px; display: block;'></a>";
       
       $(el).replaceWith(Mustache.to_html(template, data));
     });
