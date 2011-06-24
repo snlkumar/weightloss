@@ -30,7 +30,7 @@ module Tinymce::Hammer::ViewHelpers
     setup = "init.setup = #{Tinymce::Hammer.setup};" if Tinymce::Hammer.setup
 
     return "
-<script src='#{tinymce_hammer_js_path}' type='text/javascript'></script>
+<script src='#{tinymce_hammer_js_path}?#{Time.now.to_i}' type='text/javascript'></script>
 <script type='text/javascript'>
   TinymceHammer = {
     init : function() {
