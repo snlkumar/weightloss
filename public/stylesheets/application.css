@@ -419,7 +419,7 @@ form#meal-new-item textarea,
  form#workout-new-item textarea { height: 75px; width: 655px; }
 /*form#meal-new-item select   { padding: 5px; }*/
 
-#workout-items { display: none; }
+/*#workout-items { display: none; }*/
 #workout-items .exercise-name { width: 465px; }
 
 .ui-datepicker { z-index: 10000; }

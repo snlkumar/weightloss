@@ -50,7 +50,7 @@
         <br/>
         
         <div id="calendar-box-wrapper" class="grid_3 alpha">
-          <%= text_field_tag "workout[trained_on_date][date]", trained_on_start_date, :id => "calendar-box" %>
+          <%= text_field_tag "workout[trained_on_date][date]", trained_on_start_date(workout_form.object), :id => "calendar-box" %>
         </div>
         
         <div id="selected-date-help">
