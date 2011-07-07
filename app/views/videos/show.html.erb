@@ -7,3 +7,9 @@
 <%= @video.description.html_safe %>
 
 <%= link_to '', @video.file1.url , :id => 'player', :style => 'display: block; width: 527px; height: 350px; margin: 15px; ' %>
+
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    flowplayer("player", "/flowplayer-3.2.7.swf", {clip: {scaling: 'orig'}});
+  <% end %>
+</script>
