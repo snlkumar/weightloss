@@ -146,8 +146,14 @@
              yAxis: {
                title: {
                  text: 'Calories'
+               },
+               labels: {
+                 formatter: function() { return Math.abs(this.value); },
                }
              },
+             tooltip: {
+                      formatter: function(){ return '' + this.x +'<br/>'+ this.series.name + ': ' + Math.abs(this.y); }
+                   },
              series: [{
                name: 'Consumed',
                color: '#7CC576',
