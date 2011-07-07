@@ -51,8 +51,8 @@ class User < ActiveRecord::Base
   end
   
   def weight=(val)
-    if Weight.exists?(:user_id => self.id, :created_at => Time.zone.now)
-      temp = self.weights.find(:first, :conditions => ["weights.created_at BETWEEN ? AND ?", Time.zone.now.beginning_of_day, Time.zone.now.end_of_day])
+    if Weight.exists?(:user_id => self.id, :created_at => (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day))
+      temp = self.weights.find(:first, :conditions => {:created_at => (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)})
       temp.update_attribute(:weight, val)
     else
       self.weights.create(:weight => val)
@@ -132,6 +132,18 @@ class User < ActiveRecord::Base
         workout_tot += workout_item.calories 
       end
     end
+  end
+  
+  def total_calories_burned_on(day)
+    self.workouts.on(day).inject(0){|sum, wout| sum += wout.total_calories }
+  end
+  
+  def total_calories_consumed_on(day)
+    self.meals.on(day).inject(0){|sum, meal| sum += meal.total_calories }
+  end
+  
+  def net_calories_on(day)
+    total_calories_consumed_on(day) - total_calories_burned_on(day)
   end
   
   def remove_avatar=(value)

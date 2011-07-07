@@ -1,9 +1,108 @@
 
 
 <div id="chart-container-1" style="width: 100%; height: 400px"></div>
+<br/>
+<div id="chart-container-2" style="width: 100%; height: 400px"></div>
 
 <script type="text/javascript" charset="utf-8">
   <% content_for :js do %>
+    /**
+     * Grid theme for Highcharts JS
+     * @author Torstein Hønsi
+     */
+
+    Highcharts.theme = {
+       colors: ['#058DC7', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'],
+       chart: {
+          backgroundColor: {
+             linearGradient: [0, 0, 500, 500],
+             stops: [
+                [0, 'rgb(255, 255, 255)'],
+                [1, 'rgb(240, 240, 255)']
+             ]
+          }
+    ,
+          borderWidth: 2,
+          plotBackgroundColor: 'rgba(255, 255, 255, .9)',
+          plotShadow: true,
+          plotBorderWidth: 1
+       },
+       title: {
+          style: { 
+             color: '#000',
+             font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
+          }
+       },
+       subtitle: {
+          style: { 
+             color: '#666666',
+             font: 'bold 12px "Trebuchet MS", Verdana, sans-serif'
+          }
+       },
+       xAxis: {
+          gridLineWidth: 1,
+          lineColor: '#000',
+          tickColor: '#000',
+          labels: {
+             style: {
+                color: '#000',
+                font: '11px Trebuchet MS, Verdana, sans-serif'
+             }
+          },
+          title: {
+             style: {
+                color: '#333',
+                fontWeight: 'bold',
+                fontSize: '12px',
+                fontFamily: 'Trebuchet MS, Verdana, sans-serif'
+
+             }            
+          }
+       },
+       yAxis: {
+          minorTickInterval: 'auto',
+          lineColor: '#000',
+          lineWidth: 1,
+          tickWidth: 1,
+          tickColor: '#000',
+          labels: {
+             style: {
+                color: '#000',
+                font: '11px Trebuchet MS, Verdana, sans-serif'
+             }
+          },
+          title: {
+             style: {
+                color: '#333',
+                fontWeight: 'bold',
+                fontSize: '12px',
+                fontFamily: 'Trebuchet MS, Verdana, sans-serif'
+             }            
+          }
+       },
+       legend: {
+          itemStyle: {         
+             font: '9pt Trebuchet MS, Verdana, sans-serif',
+             color: 'black'
+
+          },
+          itemHoverStyle: {
+             color: '#039'
+          },
+          itemHiddenStyle: {
+             color: 'gray'
+          }
+       },
+       labels: {
+          style: {
+             color: '#99b'
+          }
+       }
+    };
+
+    // Apply the theme
+    var highchartsOptions = Highcharts.setOptions(Highcharts.theme);
+    
     chart1 = new Highcharts.Chart({
              chart: {
                 renderTo: 'chart-container-1',
@@ -30,5 +129,51 @@
                 data: [<%= (current_user.weights.reverse.map{|w| w.weight }.join(', ')) %>]
              }]
           });
+          
+    <% days = (0..6).to_a.reverse.collect{|num| num.days.ago } %>
+    
+    chart2 = new Highcharts.Chart({
+             chart: {
+               renderTo: 'chart-container-2',
+               defaultSeriesType: 'column'
+             },
+             title: {
+               text: 'Net Calories'
+             },
+             xAxis: {
+               categories: [<%= days.collect{|day| "\'#{day.strftime("%a")}\'" }.join(', ') %>]
+             },
+             yAxis: {
+               title: {
+                 text: 'Calories'
+               }
+             },
+             series: [{
+               name: 'Consumed',
+               color: '#7CC576',
+               type: 'column',
+               data: [<%= days.collect{|day| current_user.total_calories_consumed_on(day) }.join(', ') %>]
+             },{
+               name: 'Burned',
+               color: '#F26C4F',
+               type: 'column',
+               data: [<%= days.collect{|day| -1 * current_user.total_calories_burned_on(day) }.join(', ') %>]
+             }, {
+               name: 'Net Calories',
+               type: 'spline',
+               data: [<%= days.collect{|day| current_user.net_calories_on(day) }.join(', ') %>]
+             }
+             <% if current_user.bmr.present? %>
+             ,{
+               name: 'BMR',
+               color: '#999',
+               type: 'line',
+               data: [<%= current_user.bmr %>, <%= current_user.bmr %>, <%= current_user.bmr %>, <%= current_user.bmr %>, <%= current_user.bmr %>, <%= current_user.bmr %>, <%= current_user.bmr %>]
+             }
+             <% end %>
+             ]
+    });
+    
+    
   <% end %>
 </script>
