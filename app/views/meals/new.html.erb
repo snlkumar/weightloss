@@ -3,6 +3,7 @@
 
 <% form_tag "/meals/meal_item", :id => 'meal-new-item' do %>
   <%= hidden_field_tag :food_id, "" %>
+  
   <div id="meal-entry" style="position: relative">
     <table>
       <tbody>
@@ -48,7 +49,7 @@
     <br/>
     
     <div id="calendar-box-wrapper" class="grid_3 alpha">
-      <%= text_field_tag "meal[ate_on_date][date]", ate_on_start_date, :id => "calendar-box" %>
+      <%= text_field_tag "meal[ate_on_date][date]", ate_on_start_date(meal_form.object), :id => "calendar-box" %>
     </div>
     
     <div id="selected-date-help">
@@ -70,7 +71,7 @@
     
     <p>
       <%= meal_form.label :meal_type %><br/>
-      <%= meal_form.select :meal_type, options_for_select(Meal::TYPES, params[:meal_type]) %>
+      <%= meal_form.select :meal_type, options_for_select(Meal::TYPES, meal_form.object.meal_type) %>
     </p>
     
     <p>
