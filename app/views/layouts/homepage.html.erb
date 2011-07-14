@@ -84,14 +84,74 @@
       <div style="clear:both">&nbsp;</div>
       <hr style="width: 640px; margin: 0 auto; margin-top: 6px; clear: both"/>
       
+      <div class="container_16">
+        <p style="text-align: center; margin: 0 auto; margin-top: 43px; width: 900px;">
+          <span style="display: inline-block; font-size: 24px; font-weight: bold; color: #222;">We're building a community for guidance in fitness & wellness.</span>
+          <span style="display: inline-block; font-size: 18px; font: helvetica; margin-top: 7px;">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.
+          </span>
+        </p>
+        <div style="clear:both">&nbsp;</div>
+        
+        <div class="grid_8" style="margin-top: 34px;">
+          <div class="grid_3 alpha" style="height: 148px; background-color: #CCC;"></div>
+          <div class="grid_5 omega">
+            <span style="display: inline-block; font-size: 14px; font-weight: bold; font-face: helvetica; color: #000;">This describes the feature from a quippy sentence level.</span>
+            <span style="font-size: 14px; font-face: helvetica; color: #222">This is the general and more specific descripiton of the feature and gives greater insight to why and how a user would use the thing we're talking about so that the person knows more accurately why they care.</span>
+          </div>
+          
+          <div style="clear:both">&nbsp;</div>
+        </div>
+        
+        <div class="grid_8" style="margin-top: 34px;">
+          <div class="grid_3 alpha" style="height: 148px; background-color: #CCC;"></div>
+          <div class="grid_5 omega">
+            <span style="display: inline-block; font-size: 14px; font-weight: bold; font-face: helvetica; color: #000;">This describes the feature from a quippy sentence level.</span>
+            <span style="font-size: 14px; font-face: helvetica; color: #222">This is the general and more specific descripiton of the feature and gives greater insight to why and how a user would use the thing we're talking about so that the person knows more accurately why they care.</span>
+          </div>
+          
+          <div style="clear:both">&nbsp;</div>
+        </div>
+        
+        <div style="clear:both">&nbsp;</div>
+        
+        <div class="grid_8" style="margin-top: 10px;">
+          <div class="grid_3 alpha" style="height: 148px; background-color: #CCC;"></div>
+          <div class="grid_5 omega">
+            <span style="display: inline-block; font-size: 14px; font-weight: bold; font-face: helvetica; color: #000;">This describes the feature from a quippy sentence level.</span>
+            <span style="font-size: 14px; font-face: helvetica; color: #222">This is the general and more specific descripiton of the feature and gives greater insight to why and how a user would use the thing we're talking about so that the person knows more accurately why they care.</span>
+          </div>
+          
+          <div style="clear:both">&nbsp;</div>
+        </div>
+        
+        <div class="grid_8" style="margin-top: 10px;">
+          <div class="grid_3 alpha" style="height: 148px; background-color: #CCC;"></div>
+          <div class="grid_5 omega">
+            <span style="display: inline-block; font-size: 14px; font-weight: bold; font-face: helvetica; color: #000;">This describes the feature from a quippy sentence level.</span>
+            <span style="font-size: 14px; font-face: helvetica; color: #222">This is the general and more specific descripiton of the feature and gives greater insight to why and how a user would use the thing we're talking about so that the person knows more accurately why they care.</span>
+          </div>
+          
+          <div style="clear:both">&nbsp;</div>
+        </div>
+        
+        <div style="clear:both">&nbsp;</div>
+      </div>
+      
+      
       <div style="clear:both">&nbsp;</div>
     </div>
     
-    <div class="full">
+    <!-- Footer -->
+    <div class="full" style="height: 280px; background: url('/images/gradient-footer.png')">
       <div id="footer" class="container_16">
         
         <div style="clear:both">&nbsp;</div>
       </div>
+    </div>
+    <!-- Copyright -->
+    <div class="full" style="height: 41px; background: url('/images/gradient-copyright.png')">
+      &nbsp;
     </div>
     
     <!-- JavaScript at the bottom for fast page loading -->
@@ -99,15 +159,8 @@
     <!-- // <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js"></script>
         //     <script>window.jQuery || document.write("<script src='/javascripts/jquery-1.6.min.js'>\x3C/script>")</script> -->
     
-    <%= javascript_include_tag "jquery-1.4.4.dev.js", "jquery-ui-1.8.9.min.js", "underscore", "jquery.labelify.js", "jquery.jeditable", "application" %>
-    <%= init_tinymce_hammer_if_required %>
+    <%= javascript_include_tag "jquery-1.4.4.dev.js", "jquery-ui-1.8.9.min.js", "underscore" %>
     
     <%= render :partial => "shared/gridder" %>
-    
-    <script type="text/javascript" charset="utf-8">
-      $(document).ready(function() {
-        <%= yield :js %>
-      });
-    </script>
   </body>
 </html>
