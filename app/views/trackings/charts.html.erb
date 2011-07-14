@@ -127,10 +127,19 @@
              series: [{
                 name: '<%= current_user.full_name %>',
                 data: [<%= (current_user.weights.reverse.map{|w| w.weight }.join(', ')) %>]
-             }]
+             }
+             <% if current_user.desired_weight.present? %>
+               ,{
+                 name: 'Desired Weight',
+                 color: '#999',
+                 type: 'line',
+                 data: [<%= (current_user.weights.map{|w| current_user.desired_weight }.join(', ')) %>]
+               }
+             <% end %>
+             ]
           });
           
-    <% days = (0..6).to_a.reverse.collect{|num| num.days.ago } %>
+    <% days = (0..6).to_a.reverse.map{|num| num.days.ago } %>
     
     chart2 = new Highcharts.Chart({
              chart: {
@@ -141,7 +150,7 @@
                text: 'Net Calories'
              },
              xAxis: {
-               categories: [<%= days.collect{|day| "\'#{day.strftime("%a")}\'" }.join(', ') %>]
+               categories: [<%= days.map{|day| "\'#{day.strftime("%a")}\'" }.join(', ') %>]
              },
              yAxis: {
                title: {
@@ -158,23 +167,23 @@
                name: 'Consumed',
                color: '#7CC576',
                type: 'column',
-               data: [<%= days.collect{|day| current_user.total_calories_consumed_on(day) }.join(', ') %>]
+               data: [<%= days.map{|day| current_user.total_calories_consumed_on(day) }.join(', ') %>]
              },{
                name: 'Burned',
                color: '#F26C4F',
                type: 'column',
-               data: [<%= days.collect{|day| -1 * current_user.total_calories_burned_on(day) }.join(', ') %>]
+               data: [<%= days.map{|day| -1 * current_user.total_calories_burned_on(day) }.join(', ') %>]
              }, {
                name: 'Net Calories',
                type: 'spline',
-               data: [<%= days.collect{|day| current_user.net_calories_on(day) }.join(', ') %>]
+               data: [<%= days.map{|day| current_user.net_calories_on(day) }.join(', ') %>]
              }
              <% if current_user.bmr.present? %>
              ,{
                name: 'BMR',
                color: '#999',
                type: 'line',
-               data: [<%= current_user.bmr %>, <%= current_user.bmr %>, <%= current_user.bmr %>, <%= current_user.bmr %>, <%= current_user.bmr %>, <%= current_user.bmr %>, <%= current_user.bmr %>]
+               data: [<%= days.map{|d| current_user.bmr }.join(', ') %>]
              }
              <% end %>
              ]
