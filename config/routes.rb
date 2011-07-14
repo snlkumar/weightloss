@@ -43,5 +43,5 @@ ActionController::Routing::Routes.draw do |map|
     users.connect '/next',     :action => :next
   end
   
-  map.root :controller => :user_sessions, :action => :new
+  map.root :controller => :home, :action => :index
 end
