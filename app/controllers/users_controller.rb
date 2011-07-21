@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_filter :require_user,    :except => [:show, :new, :create, :next, :bmi_update, :weight_update]
   before_filter :set_defaults,    :only => [:step_two, :edit, :personal_info]
   
+  layout 'signup', :only => [:new, :create, :step_two, :finalize]
+  
   def show
     @user = User.find(params[:id])
     flash.clear
