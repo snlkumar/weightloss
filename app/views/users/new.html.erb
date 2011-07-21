@@ -1,17 +1,15 @@
 
 <!-- SIGN UP BOX BEGINS -->
-<div class="signup-process grid_12 push_2">
+<div class="signup-process grid_11 alpha">
   
-  <div class="grid_12 alpha omega">
-    <ul class="signup-progressbar grid_10 alpha">
+  <div class="grid_11 alpha omega signup-form-header">
+    <ul class="signup-progressbar grid_9 alpha">
       <li class="grid_3 alpha"><strong>1.</strong> Join In</li>
-      <li class="grid_3"><strong>2.</strong> Personal</li>
-      <li class="grid_3"><strong>3.</strong> follow</li>
-      <li class="grid_1 omega"><strong>;)</strong></li>
+      <li class="grid_3 push_2"><strong>2.</strong> Personal</li>
     </ul>
   </div>
   
-  <div class="grid_10 alpha push_1">
+  <div id="signup-content" class="grid_10 alpha push_1">
     <br/>
     <h2>Join the community!</h2>
     <p>
@@ -25,7 +23,9 @@
         <%= render :partial => 'form', :locals => {:f => f} %>
       </ol>
       
-      <%= f.submit 'On to the Next Step!' %>
+      <button class="button grid_4 alpha" type="submit">
+        On to the Next Step!
+      </button>
       
     <% end %>
   </div>

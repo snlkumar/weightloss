@@ -236,9 +236,15 @@ form#global-search input[type=submit] { position: absolute; top: 14px; right: 10
 
 /*  =SIGN UP BOX
  ------------------------------------------------------ */
-div.signup-process    { border: 1px solid #999; margin-top: 25px; background-color: #fff; }
-div.signup-process p  { margin-bottom: 15px; }
-ul.signup-progressbar { background: #ebebeb; font-size: 1.5em; padding: 40px 60px; }
+div.signup-process      { border: 1px solid #999; margin-top: 6px; background-color: #fff; }
+div.signup-process p    { margin-bottom: 15px; }
+ul.signup-progressbar   { font-size: 1.5em; padding: 35px 60px; }
+#signup-content         { padding-top: 20px; }
+  
+#signup-sidebar         { padding: 65px 0px 0px 20px; }
+.signup-sidebar-header  { color: #366F96; font-size: 23px; margin-bottom: 19px }
+.signup-form-header     { background-color: #91D1E8; }
+.personal-info-desc     { font-size: 14px; margin-top: 21px; }
 
 /*  =FORMS
  ------------------------------------------------------ */
@@ -252,29 +258,31 @@ div.signup-process ol li input { display:block; }
 div.signup-process ol li label { margin-bottom: 5px; }
 div.signup-process ol li input { margin-bottom: 24px; width: 448px; }
 
-span.help-text { color:#AAA; font-weight: normal; }
+span.help-text        { color:#AAA; font-weight: normal; }
 
-form .fieldError, form .fieldWithErrors { border: 1px solid #ff0000 !important; color: #e76a6a; }
+form .fieldError, 
+form .fieldWithErrors { border: 1px solid #ff0000 !important; color: #e76a6a; }
 
 /* Sign In */
-#sign-in-form { margin-top: 25px; background-color: #FFF; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-                -moz-border-radius: 9px; -webkit-border-radius: 9px 9px; }
-#sign-in-form h2 { background: url("/images/nav-bar.png") repeat scroll 0 0 transparent; 
-                   -moz-border-radius: 9px 9px 0px 0px;
-                   -webkit-border-radius: 9px 9px 0px 0px; color: #FFF; margin: 0; padding: 10px 15px; }
-#sign-in-form div.content { padding: 10px 20px; }
-#sign-in-form button:hover { box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); }
+#sign-in-form               { margin-top: 25px; background-color: #FFF; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+                              -moz-border-radius: 9px; -webkit-border-radius: 9px 9px; }
+#sign-in-form h2            { background: url("/images/nav-bar.png") repeat scroll 0 0 transparent; 
+                              -moz-border-radius: 9px 9px 0px 0px;
+                              -webkit-border-radius: 9px 9px 0px 0px; color: #FFF; margin: 0; padding: 10px 15px; }
+#sign-in-form div.content   { padding: 10px 20px; }
+#sign-in-form button:hover  { box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); }
 
-.avatar-placeholder { -moz-border-radius: 5px; -webkit-border-radius: 5px 5px; margin-bottom: 10px; 
-                      border: 1px solid #fff; background: url(/images/avatar_placeholder.png) no-repeat center center }
-.avatar { display: inline; float: left; -moz-border-radius: 5px; -webkit-border-radius: 5px 5px; 
-          margin: 12px 0px 10px 19px; border: 1px solid #fff; }
+.avatar-placeholder { -moz-border-radius: 5px; -webkit-border-radius: 5px 5px; 
+                      border: 1px solid #fff; margin-bottom: 10px; height: 73px; width: 73px;
+                      background: url(/images/avatar_placeholder.png) no-repeat center center }
+.avatar             { display: inline; float: left; -moz-border-radius: 5px; -webkit-border-radius: 5px 5px; 
+                      margin: 12px 0px 10px 19px; border: 1px solid #fff; }
 
 .profile-avatar { height: 140px; width: 140px; }
 .small-avatar   { height: 78px; width: 78px; }
 
-#edit-profile { font-size: 12pt; color: #444; display: inline-block; float: left; width: 77px; 
-                height: 44px; line-height: 44px; margin: 12px 0px 0px 20px; text-align: center; }
+#edit-profile        { font-size: 12pt; color: #444; display: inline-block; float: left; width: 77px; 
+                       height: 44px; line-height: 44px; margin: 12px 0px 0px 20px; text-align: center; }
 
 #edit-profile.wide   { width: 138px; height: 31px; line-height: 33px; }
 
@@ -288,26 +296,26 @@ h2#personal-info     { margin-top: 33px; margin-bottom: 12px; }
 #profile-sub-header  { background-color: #EBEBEB; height: 150px; border-bottom: 1px solid #D0D0D0; }
 
 /* SEARCH */
-form#content-search label { font-size: 13pt; position: relative; }
+form#content-search label   { font-size: 13pt; position: relative; }
 form#content-search #search-keywords { margin-top: 11px; border: 1px solid #384C68;}
-form#content-search select { right: 0px; top: 141px; }
-#results-summary          { margin-top: 44px; font-size: 14pt; display: inline-block; }
-#results-summary #count   { font-weight: bold; }
-ul#search-results { margin: 0px; }
-ul#search-results .search-result { border-bottom: 1px solid #CCC; min-height: 108px; }
-ul#search-results .search-result h4 { font-size: 15pt; margin-top: 20px; }
+form#content-search select  { right: 0px; top: 141px; }
+#results-summary            { margin-top: 44px; font-size: 14pt; display: inline-block; }
+#results-summary #count     { font-weight: bold; }
+ul#search-results           { margin: 0px; }
+ul#search-results .search-result      { border-bottom: 1px solid #CCC; min-height: 108px; }
+ul#search-results .search-result h4   { font-size: 15pt; margin-top: 20px; }
 ul#search-results .search-result h4 a { color: #1198CB; }
 
-#search-categories-sidebar h4 { font-size: 14pt; }
-#search-categories-sidebar p { font-size: 11pt; }
-ul#search-categories { margin: 15px 0px 0px 0px; padding: 0px; width: 240px; }
-ul#search-categories li { list-style: none; height: 22px; line-height: 22px; padding-left: 10px; }
-ul#search-categories li.selected { background-color: #1198CB; -moz-border-radius: 10px; -webkit-border-radius: 10px 10px; }
+#search-categories-sidebar h4     { font-size: 14pt; }
+#search-categories-sidebar p      { font-size: 11pt; }
+ul#search-categories              { margin: 15px 0px 0px 0px; padding: 0px; width: 240px; }
+ul#search-categories li           { list-style: none; height: 22px; line-height: 22px; padding-left: 10px; }
+ul#search-categories li.selected  { background-color: #1198CB; -moz-border-radius: 10px; -webkit-border-radius: 10px 10px; }
 ul#search-categories li.selected a,
-  ul#search-categories li.selected a:active,
-  ul#search-categories li.selected a:visited { color: black; }
+ul#search-categories li.selected a:active,
+ul#search-categories li.selected a:visited { color: black; }
   
-button#search { background: url(/images/button.png); color: #FFF; border: 1px solid #384C68; }
+button#search       { background: url(/images/button.png); color: #FFF; border: 1px solid #384C68; }
 button#search:hover { background: url(/images/button-hover.png); }
   
 /* TERMS PAGE */
@@ -315,29 +323,28 @@ h3 a { text-decoration: none; color: black; }
 h4 a { text-decoration: none; color: black; }
 
 /* PROFILE */
-#logo      { height: 60px; line-height: 60px; background-color: #fff; margin-bottom: 0px; text-align: center; }
-#logo a    { color: #444; text-decoration: none; font-size: 25pt; }
-
-#back-bar  { color: #444; display: block; height: 52px; line-height: 52px; font-size: 14pt; text-align: center; 
-            background: -moz-linear-gradient(0% 15% 90deg,#91D1E8, #91D1E8, #7fb8cc 100%);
-            background: -webkit-gradient(linear, 0% 0%, 0% 15%, from(#91D1E8), to(#91D1E8), color-stop(0,#7FB8CC)) }
-#back-bar a { color: #444; display: block; background-image: url(/images/icon-backarrow.png); background-position: 39px 16px; background-repeat: no-repeat; }
-#nav-bar    { height: 51px; width: 630px; float: left; margin: 0px 10px; background-color: #fff; border: 1px solid #BFC9D2; }
-#nav-bar ul { margin: 0; padding: 0; list-style: none; }
-#nav-bar ul li { display: inline; float: left; width: 60px; text-align: center; background: url(/images/user-nav-bar.png) repeat-x; }
-#nav-bar a  { color: #444; display: block; height: 52px; line-height: 52px; }
-#nav-bar a#profile-tab { background-image: url(/images/profile.png); background-repeat: no-repeat; background-position: 20px 15px; }
-#nav-bar a#food-tab { background-image: url(/images/fork-knife.png); background-repeat: no-repeat; background-position: 20px 15px; }
+#logo       { height: 60px; line-height: 60px; background-color: #fff; margin-bottom: 0px; text-align: center; }
+#logo a     { color: #444; text-decoration: none; font-size: 25pt; }
+#back-bar   { color: #444; display: block; height: 52px; line-height: 52px; font-size: 14pt; text-align: center; 
+              background: -moz-linear-gradient(0% 15% 90deg,#91D1E8, #91D1E8, #7fb8cc 100%);
+              background: -webkit-gradient(linear, 0% 0%, 0% 15%, from(#91D1E8), to(#91D1E8), color-stop(0,#7FB8CC)) }
+              
+#back-bar a             { color: #444; display: block; background-image: url(/images/icon-backarrow.png); background-position: 39px 16px; background-repeat: no-repeat; }
+#nav-bar                { height: 51px; width: 630px; float: left; margin: 0px 10px; background-color: #fff; border: 1px solid #BFC9D2; }
+#nav-bar ul             { margin: 0; padding: 0; list-style: none; }
+#nav-bar ul li          { display: inline; float: left; width: 60px; text-align: center; background: url(/images/user-nav-bar.png) repeat-x; }
+#nav-bar a              { color: #444; display: block; height: 52px; line-height: 52px; }
+#nav-bar a#profile-tab  { background-image: url(/images/profile.png); background-repeat: no-repeat; background-position: 20px 15px; }
+#nav-bar a#food-tab     { background-image: url(/images/fork-knife.png); background-repeat: no-repeat; background-position: 20px 15px; }
 #nav-bar a#exercise-tab { background-image: url(/images/running-guy.png); background-repeat: no-repeat; background-position: 20px 15px; }
-#nav-bar a#charts-tab { background-image: url(/images/charts.png); background-repeat: no-repeat; background-position: 20px 15px; }
-#nav-bar li:last-child { width: 330px; }
+#nav-bar a#charts-tab   { background-image: url(/images/charts.png); background-repeat: no-repeat; background-position: 20px 15px; }
+#nav-bar li:last-child  { width: 330px; }
+#user-name              { font-size: 18pt; margin: 29px 0px 0px 19px; }
 
-#user-name { font-size: 18pt; margin: 29px 0px 0px 19px; }
-
-p#permalink      { margin: 9px 0px 0px 22px; padding-left: 29px; background: url(/images/icon-shortlink.png) no-repeat left center }
-p#twitter-handle { margin: 9px 0px 0px 22px; padding-left: 29px; background: url(/images/icon-twitter.png) no-repeat left center }
-p#location       { margin: 9px 0px 0px 22px; padding-left: 29px; background-image: url(/images/icon-location.png); 
-                  background-position: 2px 0px; background-repeat: no-repeat; }
+p#permalink       { margin: 9px 0px 0px 22px; padding-left: 29px; background: url(/images/icon-shortlink.png) no-repeat left center }
+p#twitter-handle  { margin: 9px 0px 0px 22px; padding-left: 29px; background: url(/images/icon-twitter.png) no-repeat left center }
+p#location        { margin: 9px 0px 0px 22px; padding-left: 29px; background-image: url(/images/icon-location.png); 
+                    background-position: 2px 0px; background-repeat: no-repeat; }
 p#location.right-side { float: left; margin: 10px 0px 0px 20px; }
 
 #achievement-calendar      { display: inline; float: left; width: 80px; height: 94px; position: relative; 
@@ -351,11 +358,8 @@ p#location.right-side { float: left; margin: 10px 0px 0px 20px; }
 
 .space             { margin-bottom: 20px; }
 .profile-label     { display: inline; float: left; margin: 0px 10px 0px 20px; width: 140px; }
-.sidebar-container { -moz-box-shadow: 2px 2px 2px #666;
-                     -webkit-box-shadow: 2px 2px 2px #666;
-                     box-shadow: 2px 2px 2px #666;
-                     background-color: white;
-                    }
+.sidebar-container { -moz-box-shadow: 2px 2px 2px #666; -webkit-box-shadow: 2px 2px 2px #666;
+                     box-shadow: 2px 2px 2px #666; background-color: white; }
                     
 #sidebar-top         { height: 28px; }
 .sidebar-container.subsection { padding: 18px 0px 18px 20px; margin-bottom: 2px; }
