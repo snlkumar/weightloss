@@ -10,7 +10,6 @@ gem 'will_paginate', '>=2.3.11'
 gem 'authlogic', '>=2.1.6'
 gem 'mysql'
 gem 'chronic'
-gem 'test-unit', '1.2.3'
 
 group :cucumber do
   # gem 'cucumber'
@@ -26,7 +25,10 @@ group :cucumber do
 end
 
 group :development do
-  # gem 'ruby-debug'
+  gem 'ruby-debug'
+  gem 'thin'
+  gem 'capistrano'
+  gem 'capistrano_colors'
 end
 
 # group :test do # Rails 3
