@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
   has_many :workouts, :dependent => :destroy
   has_many :weights,  :dependent => :destroy, :order => 'created_at DESC'
   
+  # Scopes
+  named_scope :recent, :conditions => {:status => 'finalize'}, :order => 'created_at DESC', :limit => 5
+  
   # Validations
   validates_presence_of         :first_name, :last_name, :email, :username
   validates_presence_of         :gender, :height, :weight,            :if => Proc.new { |u| u.status != 'step_one' }
@@ -60,7 +63,7 @@ class User < ActiveRecord::Base
   end
   
   def to_param
-    self.permalink
+    self.permalink || self.id.to_s
   end
   
   def full_name

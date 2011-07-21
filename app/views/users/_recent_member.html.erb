@@ -1,0 +1,8 @@
+
+<%= image_tag user.avatar.url(:medium), :style => 'margin-bottom: 13px; display: inline; float: left;' %>
+<p class="grid_4 omega">
+  <%= user.full_name %><br/>
+  <%= distance_of_time_in_words_to_now(user.created_at) %>
+</p>
+
+<div style="clear:both"></div>

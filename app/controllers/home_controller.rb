@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   
   def index
+    @recent_members = User.recent
     render :layout => 'homepage'
   end
   
