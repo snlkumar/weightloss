@@ -1,6 +1,7 @@
 source :rubygems
 
 gem "rails", "~>2.3.12"
+gem "rake", "0.8.7"
 gem "rdoc"
 gem 'paperclip', '>=2.3.5'
 gem 'hoptoad_notifier'
