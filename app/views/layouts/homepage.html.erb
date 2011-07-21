@@ -149,7 +149,7 @@
           </span>
         </div>
         
-        <%= render :partial => 'large_orange_button' %>
+        <%= render :partial => 'large_orange_button', :locals => {:klass => "push_3"} %>
         
         <div style="clear:both">&nbsp;</div>
         
@@ -204,12 +204,12 @@
         
         <div class="grid_5">
           <p class="footer-header">Site Navigation</p>
-          <%= link_to 'Sign In', new_user_session_path, :class => 'footer-link' %>
-          <%= link_to 'Sign Up', new_user_path, :class => 'footer-link' %>
+          <%= link_to 'Sign In', new_user_session_path, :class => 'footer-link' %><br/>
+          <%= link_to 'Sign Up', new_user_path, :class => 'footer-link' %><br/>
           <%= link_to 'Content', new_search_path, :class => 'footer-link' %>
         </div>
         
-        <%= render 'large_orange_button' %>
+        <%= render :partial => 'large_orange_button', :locals => {:klass => "omega", :style => "margin-top: 5px"} %>
         
         <div style="clear:both">&nbsp;</div>
       </div>
