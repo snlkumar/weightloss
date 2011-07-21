@@ -14,7 +14,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :old_flash_files, :old_success_stories, :old_tip_of_days, :old_text_files, :old_items, :old_departments
   map.resources :categories, :subcategories
-  map.connect '/searches', :controller => :searches, :action => :create, :conditions => {:method => :get}
+  map.new_search '/searches/new', :controller => :searches, :action => :new
+  map.connect    '/searches',     :controller => :searches, :action => :create, :conditions => {:method => :get}
   map.resources :searches
   map.resources :posts, :videos
   map.resources :meals,     :collection => { :meal_item    => :post }

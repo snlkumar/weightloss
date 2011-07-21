@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   has_many :weights,  :dependent => :destroy, :order => 'created_at DESC'
   
   # Scopes
-  named_scope :recent, :conditions => {:status => 'finalize'}, :order => 'created_at DESC', :limit => 5
+  named_scope :recent, :conditions => {:status => 'finalize'}, :order => 'created_at DESC', :limit => 7
   
   # Validations
   validates_presence_of         :first_name, :last_name, :email, :username
