@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
   end
   
   def to_param
-    self.permalink || self.id.to_s
+    self.permalink.blank? ? self.id.to_s : self.permalink
   end
   
   def full_name
@@ -107,6 +107,10 @@ class User < ActiveRecord::Base
   
   def male?
     self.gender == 'male'
+  end
+  
+  def female?
+    !self.male?
   end
   
   def calories_consumed_today
