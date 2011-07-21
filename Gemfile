@@ -2,7 +2,7 @@ source :rubygems
 
 gem "rails", "~>2.3.12"
 gem "rake", "0.8.7"
-gem "rdoc"
+gem "rdoc", '2.4.3'
 gem 'paperclip', '>=2.3.5'
 gem 'hoptoad_notifier'
 gem 'fastercsv'

@@ -58,7 +58,7 @@ GEM
       rake (>= 0.8.3)
     rake (0.8.7)
     rbx-require-relative (0.0.5)
-    rdoc (3.8)
+    rdoc (2.4.3)
     ruby-debug (0.10.4)
       columnize (>= 0.1)
       ruby-debug-base (~> 0.10.4.0)
@@ -85,7 +85,7 @@ DEPENDENCIES
   paperclip (>= 2.3.5)
   rails (~> 2.3.12)
   rake (= 0.8.7)
-  rdoc
+  rdoc (= 2.4.3)
   ruby-debug
   thin
   will_paginate (>= 2.3.11)
