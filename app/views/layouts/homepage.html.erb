@@ -24,25 +24,24 @@
       
       <div id="main-nav" class="full">
         <div class="main-nav container_16" style="position:relative;">
-
+          
           <h2 id="logo" class="grid_5 sidebar-container"><%= link_to 'myweightworld', root_path %></h2>
-
+          
           <div class="clear">&nbsp;</div>
-
+          
           <div class="grid_5 sidebar-container main-nav-spacer">&nbsp;</div>
           <div class="grid_11 main-nav-spacer">&nbsp;</div>
           <div class="clear">&nbsp;</div>
         </div>
       </div>
-
+      
       <div class="full" style="height: 1px; background-color: #FFF;"></div>
     </div>
     <!-- DONE HEADER -->
     
     <div class="full" style="height: 364px; background: url('/images/gradient-header.png') repeat-x;">
       <div class="container_16" style="margin-top: -2px;">
-        <%= render :partial => '/shared/flash', :locals => {:flash => flash} %>
-      
+        
         <div class="grid_5">
           <span style="display: inline-block; margin-top: 33px; line-height: 29px; color: #FFF; font-size: 25px; font-weight: bold; font: helvetica;">
             We're building a community for guidance in fitness & wellness.</span>
@@ -53,7 +52,7 @@
         <div class="grid_11">
           <%= image_tag 'screenshot.png', :style => 'display: block; margin-top: 10px;', :class => 'grid_10 alpha omega push_1' %>
         </div>
-      
+        
         <div style="clear:both">&nbsp;</div>
       </div>
     </div>
@@ -70,10 +69,12 @@
           <div style="height: 225px; background-color: #CCC;"></div>
           <span style="font-size: 18px; font: helvetica; display: inline-block; line-height: 22px; padding: 17px 10px;">Set goals, track calories, get feedback, find helpful content - partake in bettering the community and the community will help build a better you.</span>
         </div>
+        
         <div class=" push_1" style="display: inline; position: relative; float: left; width: 240px; margin-right: 60px;">
           <div style="height: 225px; background-color: #CCC;"></div>
           <span style="font-size: 18px; font: helvetica; display: inline-block; line-height: 22px; padding: 17px 10px;">Set goals, track calories, get feedback, find helpful content - partake in bettering the community and the community will help build a better you.</span>
         </div>
+        
         <div class=" push_1" style="display: inline; position: relative; float: left; width: 240px;">
           <div style="height: 225px; background-color: #CCC;"></div>
           <span style="font-size: 18px; font: helvetica; display: inline-block; line-height: 22px; padding: 17px 10px;">Set goals, track calories, get feedback, find helpful content - partake in bettering the community and the community will help build a better you.</span>
@@ -135,8 +136,37 @@
           <div style="clear:both">&nbsp;</div>
         </div>
         
+        <div style="clear:both; margin-bottom: 13px;">&nbsp;</div>
+        
+        <div class="grid_5 push_3">
+          <span style="display: inline-block; font-size: 24px; font-weight: bold; color: #222; margin-top: 4px;">
+            Accomplish goals, track fitness, better yourself
+          </span>
+        </div>
+        <a href="" class="grid_5 push_3" id="large-orange-button" >
+          <div>Start tracking!</div>
+          <span>It's super easy and fun.</span>
+          <%= image_tag 'arrow.png' %>
+        </a>
+        <div style="clear:both">&nbsp;</div>
+        
+        <hr style="width: 640px; margin: 0 auto; margin-top: 26px; margin-bottom: 47px; clear: both"/>
+        
+        <div id="recent-members-wrapper" class="grid_5 push_1">
+          <p style="font-size: 18px; color: #000; margin-bottom: 17px;">Most Recent Members</p>
+          <%= render :partial => '/users/recent_member', :collection => @recent_members, :as => :user %>
+        </div>
+        <div id="helpful-content-wrapper" class="grid_10 push_1">
+          
+        </div>
+        
+        
         <div style="clear:both">&nbsp;</div>
       </div>
+      
+      
+      
+      
       
       
       <div style="clear:both">&nbsp;</div>
