@@ -5,7 +5,7 @@ $('#update-weight').click(function(evt){
 
 $('.edit').editable("<%= weight_update_user_path(current_user) %>", {
   method: 'PUT',
-  name: 'user[weight]',
+  name:   'user[weight]',
   submit: 'Save',
   cancel: 'Cancel',
   onblur: 'ignore',

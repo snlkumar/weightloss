@@ -18,6 +18,8 @@
     <%= image_tag f.object.image1.url(:preview)  %>&nbsp;
     <%= f.check_box :remove_image1 %> Delete?<br/>
     <b>URL: </b><%= f.object.image1.url %>
+    
+    <%= clippy(f.object.image1.url, '#F0F0F0') %>
   <% end %>
 </p>
 
