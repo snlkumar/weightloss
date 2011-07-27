@@ -202,11 +202,15 @@ a:hover   { text-decoration: underline; }
 
 .light-blue { background-color: #91D1E8; }
 
-fieldset  { border: 0px; }
+fieldset            { border: 0px; }
+
+/* Admin Specific */
 .admin textarea { height: 400px; }
 .admin #content { padding-top: 15px; }
-.admin th { text-align: left; }
-ul.forms, ol.forms { margin-left: 0em; }
+.admin th       { text-align: left; }
+.admin .flash   { margin-top: 25px; }
+ul.forms, 
+ol.forms        { margin-left: 0em; }
 
 /* help text in text fields */
 input.label-highlight { color: #999; }
@@ -287,6 +291,7 @@ form .fieldWithErrors { border: 1px solid #ff0000 !important; color: #e76a6a; }
 #edit-profile.wide   { width: 138px; height: 31px; line-height: 33px; }
 
 #content             { padding-top: 25px; position: relative; }
+#post-content img    { padding: 0px 10px; }
 
 h2#personal-info     { margin-top: 33px; margin-bottom: 12px; }
 

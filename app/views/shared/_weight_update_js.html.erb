@@ -15,10 +15,10 @@ $('.edit').editable("<%= weight_update_user_path(current_user) %>", {
       $('#days-ago').html('today');
       
       $.ajax({
-        url: "<%= achievement_date_user_path(current_user) %>",
+        url:        "<%= achievement_date_user_path(current_user) %>",
         beforeSend: function(xhr, settings){ $('#achievement-date').html('<%= image_tag("ajax-loader.gif") %>'); },
         success:    function(data, status) { $('#achievement-date').html(data); },
-        dataType: 'html'
+        dataType:   'html'
       });
     }
   }
