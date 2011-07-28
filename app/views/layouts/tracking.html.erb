@@ -24,7 +24,7 @@
             <div class="small-avatar"></div>
           <% end %>
           
-          <%= link_to 'Edit Profile', user_edit_personal_info_path(current_user), :id => 'edit-profile', :class => 'light-blue wide' %>
+          <%= link_to 'Edit Profile', user_edit_personal_info_path(current_user), :id => 'edit-profile', :class => 'outlined-fade wide' %>
           
           <% if current_user.city.present? || current_user.state.present? %>
             <p id="location" class="right-side"><%= [current_user.city, current_user.state].compact.join(', ') %></p>
@@ -47,11 +47,11 @@
           <h4 class="sidebar-subheader">Burned Calories</h4>
           
           <div class="large-calories">
-            <span><%= current_user.calories_burned_today %></span>
+            <span><%= number_with_delimiter(current_user.calories_burned_today) %></span>
           </div>
           <div class="small-text">burned today</div>
           <div class="calories-this-week">
-            <span><%= current_user.calories_burned_this_week %></span> this week
+            <span><%= number_with_delimiter(current_user.calories_burned_this_week) %></span> this week
           </div>
           <div class="clear">&nbsp;</div>
         </div>
@@ -60,11 +60,11 @@
           <h4 class="sidebar-subheader">Consumed Calories</h4>
           
           <div class="large-calories">
-            <span style="color: #7cc576"><%= current_user.calories_consumed_today %></span>
+            <span style="color: #7cc576"><%= number_with_delimiter(current_user.calories_consumed_today) %></span>
           </div>
           <div class="small-text">consumed today</div>
           <div class="calories-this-week">
-            <span style="color: #7cc576"><%= current_user.calories_consumed_this_week %></span>/<%= five_hundred_calorie_deficit(current_user) * 7 %> this week
+            <span style="color: #7cc576"><%= number_with_delimiter(current_user.calories_consumed_this_week) %></span>/<%= number_with_delimiter(five_hundred_calorie_deficit(current_user) * 7) %> this week
           </div>
           
           <div class="clear">&nbsp;</div>

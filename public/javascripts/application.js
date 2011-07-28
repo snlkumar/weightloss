@@ -12,8 +12,16 @@ jQuery.ajaxSetup({
 });
 
 function remove_meal_or_exercise_item(link){
-  $(link).prev("input[type=hidden]").val("1");  
+  $(link).prev("input[type=hidden]").val("1");
   $(link).closest("tr").fadeOut();
+}
+
+function preloadImages(images){
+  if (images.length > 0) {
+    jQuery("<img>").attr("src", images.splice(0,1)).load(function() {
+      preloadImages(images);
+    });
+  }
 }
 
 // Global OnReady callbacks

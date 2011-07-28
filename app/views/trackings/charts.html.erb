@@ -1,4 +1,13 @@
 
+<ul class="grid_11 graph-button-bar">
+  <li id="start" class="<%= date_range_selected?('1wk', @range) %>"><%= link_to '1 Week', charts_tracking_path(:range => '1wk') %></li>
+  <li class="<%= date_range_selected?('2wk', @range) %>"><%= link_to '2 Weeks', charts_tracking_path(:range => '2wk') %></li>
+  <li class="<%= date_range_selected?('1mth', @range) %>"><%= link_to '1 Month', charts_tracking_path(:range => '1mth') %></li>
+  <li class="<%= date_range_selected?('2mth', @range) %>"><%= link_to '2 Months', charts_tracking_path(:range => '2mth') %></li>
+  <li class="<%= date_range_selected?('3mth', @range) %>"><%= link_to '3 Months', charts_tracking_path(:range => '3mth') %></li>
+  <li id="end" class="<%= date_range_selected?('6mth', @range) %>"><%= link_to '6 Months', charts_tracking_path(:range => '6mth') %></li>
+</ul>
+<div class="clear"></div>
 
 <div id="chart-container-1" style="width: 100%; height: 400px"></div>
 <br/>
@@ -112,7 +121,8 @@
                 text: 'Weight Over Time'
              },
              xAxis: {
-                categories: [<%= (current_user.weights.reverse.map{|w| "\'#{w.created_at.strftime('%m/%d')}\'"}.join(', ')) %>]
+                // categories: ['',<%= (current_user.weights.reverse.map{|w| "\'#{w.created_at.strftime('%m/%d')}\'"}.join(', ')) %>]
+                categories: [<%= (test_date_range(@range).join(', ')) %>]
              },
              yAxis: {
                 title: {
@@ -126,14 +136,16 @@
              },
              series: [{
                 name: '<%= current_user.full_name %>',
-                data: [<%= (current_user.weights.reverse.map{|w| w.weight }.join(', ')) %>]
+                // data: [<%= (current_user.weights.reverse.map{|w| w.weight }.join(', ')) %>]
+                data: [<%= (test_date_range(@range).each_with_index.map{|w, i| 250-i-rand(10) < 185 ? 185+rand(10) : 250-i-rand(10) }.join(', ')) %>]
              }
              <% if current_user.desired_weight.present? %>
                ,{
                  name: 'Desired Weight',
                  color: '#999',
                  type: 'line',
-                 data: [<%= (current_user.weights.map{|w| current_user.desired_weight }.join(', ')) %>]
+                 // data: [<%= (current_user.weights.map{|w| current_user.desired_weight }.join(', ')) %>]
+                 data: [<%= (test_date_range(@range).map{|w| 185 }.join(', ')) %>]
                }
              <% end %>
              ]

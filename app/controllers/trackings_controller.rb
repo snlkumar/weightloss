@@ -10,5 +10,6 @@ class TrackingsController < ApplicationController
   
   def charts
     @user = current_user
+    @range = params[:range]
   end
 end

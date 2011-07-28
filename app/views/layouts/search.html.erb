@@ -24,7 +24,7 @@
             <div class="small-avatar"></div>
           <% end %>
           
-          <%= link_to 'Edit Profile', user_edit_personal_info_path(current_user), :id => 'edit-profile', :class => 'light-blue wide' %>
+          <%= link_to 'Edit Profile', user_edit_personal_info_path(current_user), :id => 'edit-profile', :class => 'outlined-fade wide' %>
           
           <% if current_user.city.present? || current_user.state.present? %>
             <p id="location" class="right-side"><%= [current_user.city, current_user.state].compact.join(', ') %></p>
