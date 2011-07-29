@@ -6,7 +6,11 @@ class UsersController < ApplicationController
   layout 'signup', :only => [:new, :create, :step_two, :finalize]
   
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by_permalink(params[:id]) || current_user
+    if @user.nil?
+      redirect_to(root_path) and return
+    end
+    
     flash.clear
     
     if current_user == @user

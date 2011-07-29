@@ -48,4 +48,5 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.root :controller => :home, :action => :index
+  map.home '/home', :controller => :users, :action => :show
 end
