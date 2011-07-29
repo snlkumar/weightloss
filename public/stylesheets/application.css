@@ -295,6 +295,7 @@ form .fieldWithErrors { border: 1px solid #ff0000 !important; color: #e76a6a; }
 
 #content              { padding-top: 25px; position: relative; }
 #post-content img     { padding: 0px 10px; }
+#post-content p       { margin-bottom: 10px; }
 
 h2#personal-info      { margin-top: 33px; margin-bottom: 12px; }
 
