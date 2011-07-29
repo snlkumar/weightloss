@@ -9,7 +9,10 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.resource  :user_session
-  map.resource  :tracking, :member => {:charts => :get}
+  map.resource  :tracking, :member => {:charts => :get} do |tracking|
+    map.weight_over_time '/charts/weight',       :controller => :trackings, :action => :weight_over_time
+    map.net_calories     '/charts/net_calories', :controller => :trackings, :action => :net_calories
+  end
   map.resource  :metabolic_rates, :path_prefix => '/user'
   
   map.resources :old_flash_files, :old_success_stories, :old_tip_of_days, :old_text_files, :old_items, :old_departments

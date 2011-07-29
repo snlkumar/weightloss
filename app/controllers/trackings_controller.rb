@@ -9,7 +9,18 @@ class TrackingsController < ApplicationController
   end
   
   def charts
-    @user = current_user
+    @user  = current_user
+    @range = params[:range]
+  end
+  
+  def weight_over_time
+    @user  = current_user
+    @range = params[:range]
+    @grapher = WeightGrapher.new( @range, current_user )
+  end
+  
+  def net_calories
+    @user  = current_user
     @range = params[:range]
   end
 end
