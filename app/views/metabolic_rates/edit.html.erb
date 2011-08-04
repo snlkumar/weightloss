@@ -54,31 +54,30 @@
       <span class="clear"></span>
     </p>
     
-    <button class="button grid_2 alpha" type="submit" style="margin-top: 25px;">
-      Save
-    </button>
+    <%= submit_tag 'Save', :style => "margin-top: 25px;" %>
   </div>
 <% end %>
 
 <div style="padding: 20px; width: 240px; position: absolute; right: 0px; top: 106px; background-color: #FFF;">
   <% if current_user.bmr && current_user.rmr %>
-    <p class="goal-explanation-header">BMR: <span class="bold"><%= current_user.bmr %></span></p>
+    <p class="goal-explanation-header">BMR: <span class="bold"><%= current_user.bmr %> / </span>day</p>
     <p class="goal-explanation-text">This is the total number of calories you need in order to maintain your current weight.</p>
     
-    <p class="goal-explanation-header">RMR: <span class="bold"><%= current_user.rmr %></span></p>
-    <p class="goal-explanation-text">This is the total number of calories you need in order to maintain your current weight.</p>
+    <p class="goal-explanation-header">Goal: <span class="bold"><%= five_hundred_calorie_deficit(current_user) %> / </span>day</p>
+    <p class="goal-explanation-text">Performing this will give you 1lb of weight loss per week. If you want to lose 2lbs of weight per week we recommend you burn an additional 500 calories per day.</p>
     
     <hr></hr>
-    <br/>
-    <% if current_user.trying_to_lose_weight? %>
-      If you manage<br/>
-      <%= five_hundred_calorie_deficit(current_user) %> total daily calories<br/>
-      You can reach your goal in <%= days_to_goal(current_user, 500) %> days.
-      Losing <%= pounds_to_lose(current_user) %> lbs by <%= days_to_goal(current_user, 500).days.from_now.strftime("%b %d") %>
+    <p>
+      <% if current_user.trying_to_lose_weight? %>
+        <span style="font-size: 14px;">If you manage</span><br/>
+        <p style="font-size: 20px; font-weight: bold; color: #3399cc;"><%= five_hundred_calorie_deficit(current_user) %> total daily calories</p>
+        <p style="margin-top: 18px;">You can reach your goal in <%= days_to_goal(current_user, 500) %> days.</p>
+        <span style="font-size: 20px; font-weight: bold; color: #66cc66;">Losing <%= pounds_to_lose(current_user) %> lbs by <%= days_to_goal(current_user, 500).days.from_now.strftime("%b %d") %></span>
     
-    <% elsif 1 == 0 %>
-      If you exceed your BMR calorie intake by <%= five_hundred_calorie_surplus(current_user) %> calories a day (a 500 calorie surplus).  You can reach your goal of gaining <%= pounds_to_gain(current_user) %> lbs in <%= days_to_goal(current_user, 500) %> days (<%= days_to_goal(current_user, 500).days.from_now.strftime("%b %d") %>)
+      <% elsif 1 == 0 %>
+        If you exceed your BMR calorie intake by <%= five_hundred_calorie_surplus(current_user) %> calories a day (a 500 calorie surplus).  You can reach your goal of gaining <%= pounds_to_gain(current_user) %> lbs in <%= days_to_goal(current_user, 500) %> days (<%= days_to_goal(current_user, 500).days.from_now.strftime("%b %d") %>)
       
-    <% end %>
+      <% end %>
+    </p>
   <% end %>
 </div>
