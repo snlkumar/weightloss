@@ -274,7 +274,7 @@ form .fieldWithErrors { border: 1px solid #ff0000 !important; color: #e76a6a; }
                               -moz-border-radius: 9px 9px 0px 0px;
                               -webkit-border-radius: 9px 9px 0px 0px; color: #FFF; margin: 0; padding: 10px 15px; }
 #sign-in-form div.content   { padding: 10px 20px; }
-#sign-in-form button:hover  { box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); }
+button:hover  { box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); }
 
 .avatar-placeholder   { -moz-border-radius: 5px; -webkit-border-radius: 5px 5px; 
                         border: 1px solid #fff; margin-bottom: 10px; height: 73px; width: 73px;
@@ -453,6 +453,14 @@ form#meal-new-item #ajax-spinner,
   form#workout-new-item #ajax-spinner { display: none; position: absolute; right: 88px; top: 49px; }
 form#meal-new-item #ajax-spinner    { right: 88px; top: 49px; }
 form#workout-new-item #ajax-spinner { right: 57px; top: 49px; }
+
+
+/*Goal Setting*/
+form#goal input[type=radio] { margin-bottom: 26px; }
+.goal-step-num            { font-size: 36px; font-weight: bold; }
+.goal-step-text           { font-size: 14px; font-weight: bold; margin-bottom: 24px; }
+.goal-explanation-header  { font-size: 24px; font-weight: normal; }
+.goal-explanation-text    { font-size: 14px; font-weight: normal; margin-bottom: 15px; }
 
 /* Flash Messags */
 .flash .error {
