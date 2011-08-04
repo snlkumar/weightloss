@@ -47,7 +47,8 @@
                  name:  'Desired Weight',
                  color: '#999',
                  type:  'line',
-                 data:  [<%= @grapher.ruby_data.map{|arr| "[#{arr.first}, 185]" }.join(', ') %>]
+                 data:  [<%= ["[#{ @grapher.ruby_data.first.first }, #{ current_user.desired_weight }]",
+                             "[#{ @grapher.ruby_data.last.first }, #{ current_user.desired_weight }]"].join(', ') %>]
                }
              <% end %>
              ]
