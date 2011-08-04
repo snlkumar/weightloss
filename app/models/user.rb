@@ -142,10 +142,12 @@ class User < ActiveRecord::Base
   end
   
   def total_calories_burned_on(day)
+    return 0 if self.workouts.on(day).empty?
     self.workouts.on(day).inject(0){|sum, wout| sum += wout.total_calories }
   end
   
   def total_calories_consumed_on(day)
+    return 0 if self.meals.on(day).empty?
     self.meals.on(day).inject(0){|sum, meal| sum += meal.total_calories }
   end
   

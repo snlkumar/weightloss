@@ -22,5 +22,6 @@ class TrackingsController < ApplicationController
   def net_calories
     @user  = current_user
     @range = params[:range]
+    @grapher = NetCaloriesGrapher.new( @range, current_user )
   end
 end

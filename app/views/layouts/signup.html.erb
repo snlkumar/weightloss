@@ -24,17 +24,17 @@
       
       <div id="main-nav" class="full">
         <div class="main-nav container_16" style="position:relative;">
-
+          
           <h2 id="logo" class="grid_5 sidebar-container"><%= link_to 'myweightworld', home_path %></h2>
-
+          
           <div class="clear">&nbsp;</div>
-
+          
           <div class="grid_5 sidebar-container main-nav-spacer">&nbsp;</div>
           <div class="grid_11 main-nav-spacer">&nbsp;</div>
           <div class="clear">&nbsp;</div>
         </div>
       </div>
-
+      
       <div class="full" style="height: 1px; background-color: #FFF;"></div>
     </div>
     <!-- DONE HEADER -->
@@ -43,14 +43,12 @@
       <div class="grid_5">
         <div id="signup-sidebar" >
           <div class="signup-sidebar-header">Quick &amp; easy sign up.</div>
-        
+          
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-        
+          
           <%= yield :sidebar %>
         </div>
       </div>
-      
-      
       
       <div id="content" class="grid_11 profile">
         <%= yield %>
@@ -66,15 +64,7 @@
       </div>
     </div>
     
-    <!-- JavaScript at the bottom for fast page loading -->
-    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
-    <!-- // <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js"></script>
-        //     <script>window.jQuery || document.write("<script src='/javascripts/jquery-1.6.min.js'>\x3C/script>")</script> -->
-    
-    <%= javascript_include_tag "jquery-1.4.4.dev.js", "jquery-ui-1.8.9.min.js", "underscore", "jquery.labelify.js", "jquery.jeditable", "application" %>
-    <%= init_tinymce_hammer_if_required %>
-    
-    <%= render :partial => "shared/gridder" %>
+    <%= render :partial => "layouts/js_libs" %>
     
     <script type="text/javascript" charset="utf-8">
       $(document).ready(function() {

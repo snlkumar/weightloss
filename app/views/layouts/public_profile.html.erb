@@ -89,17 +89,7 @@
       </div>
     </div>
     
-    <!-- JavaScript at the bottom for fast page loading -->
-    <%= javascript_include_tag "modernizr-1.7.min.js", "respond.min.js" %>
-    
-    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
-    <!-- // <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js"></script>
-        //     <script>window.jQuery || document.write("<script src='/javascripts/jquery-1.6.min.js'>\x3C/script>")</script> -->
-    
-    <%= javascript_include_tag "jquery-1.4.4.dev.js", "jquery-ui-1.8.9.min.js", "underscore", "jquery.labelify.js", "jquery.jeditable", "application" %>
-    <%= init_tinymce_hammer_if_required %>
-    
-    <%= render :partial => "shared/gridder" %>
+    <%= render :partial => "layouts/js_libs" %>
     
     <script type="text/javascript" charset="utf-8">
       $(document).ready(function() {

@@ -11,6 +11,7 @@ module TrackingsHelper
     ['2mth', '3mth', '6mth'].include?(range)
   end
   
+  # TODO: delete (for testing)
   def test_date_range(range)
     range         = '1wk' if range.nil?
     temp          = Time.zone.today.beginning_of_day
