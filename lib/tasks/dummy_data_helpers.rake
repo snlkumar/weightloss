@@ -15,10 +15,11 @@ namespace :dummy do
   task :net_calories => :environment do
     temp   = Time.zone.today.beginning_of_day
     user   = User.find_by_email('user@example.com')
+    user.meals.destroy_all
     
     while temp > 6.months.ago
       temp -= 1.day
-      3.times do
+      2.times do
         food      = Food.find(rand(7000)+1)
         unit      = food.gmwt_desc1
         meal_type = ['Breakfast', 'Lunch', 'Snack', 'Dinner'][rand(3)+1]
