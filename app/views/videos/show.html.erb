@@ -8,8 +8,15 @@
 
 <%= link_to '', @video.file1.url , :id => 'player', :style => 'display: block; width: 527px; height: 350px; margin: 15px; ' %>
 
+<p>
+  <span  class='st_twitter' displayText='Tweet'></span>
+  <span  class='st_facebook' displayText='Facebook'></span>
+  <span  class='st_email' displayText='Email'></span>
+  <span  class="st_plusone_button" displayText="Google +1"></span>
+</p>
+
 <script type="text/javascript" charset="utf-8">
   <% content_for :js do %>
-    flowplayer("player", "/flowplayer-3.2.7.swf", {clip: {scaling: 'orig'}});
+    flowplayer("player", "/flowplayer-3.2.7.swf", {clip: {scaling: 'orig', autoPlay: false}});
   <% end %>
 </script>

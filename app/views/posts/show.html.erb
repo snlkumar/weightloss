@@ -1,29 +1,35 @@
 <div id="post-content">
   <%= link_to 'Back to Search', :back %>
-
+  
   <hr/>
-
+  
   <h1><%= @post.page_title %></h1>
-
+  
   <%= @post.body.html_safe %>
-
+  
+  <p>
+    <span  class='st_twitter' displayText='Tweet'></span>
+    <span  class='st_facebook' displayText='Facebook'></span>
+    <span  class='st_email' displayText='Email'></span>
+    <span  class="st_plusone_button" displayText="Google +1"></span>
+  </p>
+  
   <script type="text/javascript" charset="utf-8">
     <% content_for :js do %>
       $("object").each(function(index, el){
-        if($(this).find("param[name*=youtube]")){
+        if( $(this).find("param[name*=youtube]") ){
           return;
         }
-        var width  = $(this).attr("width") || 527;
+        var width  = $(this).attr("width")  || 527;
         var height = $(this).attr("height") || 350;
         var path   = $(this).find("param[name]=src").attr('value').replace(/^(\.\.\/)+(?!\/system)/, "");
         path     = '/'+path;
         data     = {'path': path, 'height': height, 'width': width};
         template = "<a href='{{path}}' id='player' style='margin: 0 auto; height:{{height}}px; width:{{width}}px; display: block;'></a>";
-      
+        
         $(el).replaceWith(Mustache.to_html(template, data));
-        flowplayer("player", "/flowplayer-3.2.7.swf", {clip: {scaling: 'orig'}});
+        flowplayer("player", "/flowplayer-3.2.7.swf", {clip: {scaling: 'orig', autoPlay: false}});
       });
-    
     
     <% end %>
   </script>

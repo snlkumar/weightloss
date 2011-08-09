@@ -74,6 +74,13 @@
     
     <%= javascript_include_tag 'flowplayer-3.2.6.min.js', "highcharts", 'jquery.selectBox', 'mustache.js' %>
     
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+      stLight.options({publisher:'6b97e80a-7bcf-4bfa-a0d8-2992f8b043a5'});
+      
+    </script>
+    
     <script type="text/javascript" charset="utf-8">
       $(document).ready(function() {
         <%= yield :js %>
