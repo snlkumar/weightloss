@@ -6,7 +6,9 @@ class OldFlashFile < ActiveRecord::Base
   belongs_to :category
   belongs_to :subcategory
   
+  # video file
   has_attached_file :file1, :url => "/system/:class/:attachment/:id/:filename"
+  # attachment
   has_attached_file :file2, :url => "/system/:class/:attachment/:id/:filename"
 
   def remove_file_1=(value)

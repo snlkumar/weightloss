@@ -5,7 +5,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :foods,     :collection => {:search => [:post, :get]}
     admin.resources :users, :posts
     admin.resources :old_text_files, :controller => :posts
-    admin.resource :dashboard
+    admin.resource  :dashboard
   end
   
   map.resource  :user_session
