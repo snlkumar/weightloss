@@ -1,0 +1,19 @@
+development:
+  adapter: mysql
+  encoding: utf8
+  database: myweightworld_development
+  username: root
+  password:
+  host: localhost
+  pool: 5
+  timeout: 5000
+  
+test:
+  adapter: mysql
+  encoding: utf8
+  database: myweightworld_development
+  username: root
+  password:
+  host: localhost
+  pool: 5
+  timeout: 5000
