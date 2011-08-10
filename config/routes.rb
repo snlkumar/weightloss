@@ -1,52 +1,107 @@
-ActionController::Routing::Routes.draw do |map|
-  
-  map.namespace :admin do |admin|
-    admin.resources :exercises, :collection => {:search => [:post, :get]}
-    admin.resources :foods,     :collection => {:search => [:post, :get]}
-    admin.resources :users, :posts
-    admin.resources :old_text_files, :controller => :posts
-    admin.resource  :dashboard
-  end
-  
-  map.resource  :user_session
-  map.resource  :tracking, :member => {:charts => :get} do |tracking|
-    map.weight_over_time '/charts/weight',       :controller => :trackings, :action => :weight_over_time
-    map.net_calories     '/charts/net_calories', :controller => :trackings, :action => :net_calories
-  end
-  map.resource  :metabolic_rates, :path_prefix => '/user'
-  
-  map.resources :old_flash_files, :old_success_stories, :old_tip_of_days, :old_text_files, :old_items, :old_departments
-  map.resources :categories, :subcategories
-  map.new_search '/searches/new', :controller => :searches, :action => :new
-  map.connect    '/searches',     :controller => :searches, :action => :create, :conditions => {:method => :get}
-  map.resources :searches
-  map.resources :posts, :videos
-  map.resources :meals,     :collection => { :meal_item    => :post }
-  map.resources :workouts,  :collection => { :workout_item => :post }
-  map.resources :foods,     :collection => { :search => :get, :meal_item_calories => :post }
-  map.resources :custom_foods
-  map.resources :exercises, :collection => { :search => :get, :workout_item_calories => :post }
-  
-  map.resources :users, :member => {:bmi_update => :put, :weight_update => :put, :achievement_date => :get}, :collection => {:bmi => :get} do |user|
-    user.edit_personal_info  '/info/edit',      :controller => :users, :action => :personal_info
-    user.edit_nutrition_info '/nutrition/edit', :controller => :users, :action => :nutrition_info
-    user.edit_exercise_info  '/exercise/edit',  :controller => :users, :action => :exercise_info
-    user.edit_account_info   '/account/edit',   :controller => :users, :action => :account_info
+Myweightworld::Application.routes.draw do
+  namespace :admin do
+      resources :exercises do
+        collection do
+    post :search
+    get :search
+    end
     
-    user.resources :meals
+    
+    end
+      resources :foods do
+        collection do
+    post :search
+    get :search
+    end
+    
+    
+    end
+      resources :users
+      resources :posts
+      resources :old_text_files
+      resource :dashboard
+  end
+
+  resource :user_session
+  resource :tracking do
+  
+    member do
+  get :charts
+  end
+      match '/charts/weight' => 'trackings#weight_over_time', :as => :weight_over_time
+    match '/charts/net_calories' => 'trackings#net_calories', :as => :net_calories
+  end
+
+  resource :metabolic_rates
+  resources :old_flash_files
+  resources :old_success_stories
+  resources :old_tip_of_days
+  resources :old_text_files
+  resources :old_items
+  resources :old_departments
+  resources :categories
+  resources :subcategories
+  match '/searches/new' => 'searches#new', :as => :new_search
+  match '/searches' => 'searches#create', :via => :get
+  resources :searches
+  resources :posts
+  resources :videos
+  resources :meals do
+    collection do
+  post :meal_item
   end
   
-  map.with_options :controller => :home do |home|
-    home.privacy '/privacy', :action => :privacy
-    home.terms   '/terms',   :action => :terms
+  
+  end
+
+  resources :workouts do
+    collection do
+  post :workout_item
   end
   
-  map.with_options :controller => :users do |users|
-    users.connect '/step_two', :action => :step_two
-    users.connect '/finalize', :action => :finalize
-    users.connect '/next',     :action => :next
+  
+  end
+
+  resources :foods do
+    collection do
+  get :search
+  post :meal_item_calories
   end
   
-  map.root :controller => :home, :action => :index
-  map.home '/home', :controller => :users, :action => :show
+  
+  end
+
+  resources :custom_foods
+  resources :exercises do
+    collection do
+  get :search
+  post :workout_item_calories
+  end
+  
+  
+  end
+
+  resources :users do
+    collection do
+  get :bmi
+  end
+    member do
+  put :weight_update
+  get :achievement_date
+  put :bmi_update
+  end
+      match '/info/edit' => 'users#personal_info', :as => :edit_personal_info
+    match '/nutrition/edit' => 'users#nutrition_info', :as => :edit_nutrition_info
+    match '/exercise/edit' => 'users#exercise_info', :as => :edit_exercise_info
+    match '/account/edit' => 'users#account_info', :as => :edit_account_info
+    resources :meals
+  end
+
+  match '/privacy' => 'home#privacy', :as => :privacy
+  match '/terms' => 'home#terms', :as => :terms
+  match '/step_two' => 'users#step_two'
+  match '/finalize' => 'users#finalize'
+  match '/next' => 'users#next'
+  match '/' => 'home#index'
+  match '/home' => 'users#show', :as => :home
 end
