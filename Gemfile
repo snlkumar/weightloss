@@ -1,16 +1,18 @@
 source :rubygems
 
-gem "rails", "~>2.3.12"
-gem "rake", "0.8.7"
-gem "rdoc", '2.4.3'
-gem 'paperclip', '>=2.3.5'
+gem "rails", "3.0.9"
+gem "rake"
+gem "rdoc"
+gem 'paperclip'
 gem 'hoptoad_notifier'
 gem 'fastercsv'
 gem 'linguistics'
-gem 'will_paginate', '>=2.3.11'
-gem 'authlogic', '>=2.1.6'
+gem 'will_paginate'
+gem 'authlogic'
 gem 'mysql'
 gem 'chronic'
+gem "jquery-rails"
+gem "friendly_id"
 
 group :cucumber do
   # gem 'cucumber'
