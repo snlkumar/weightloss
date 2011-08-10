@@ -53,6 +53,10 @@
       
       <%= yield :sidebar %>
       
+      <div id="nav-bar">
+        <%= render :partial => 'shared/nav_bar' %>
+      </div>
+      
       <div id="content" class="grid_11 profile">
         <%= render :partial => '/shared/flash', :locals => {:flash => flash} %>
         

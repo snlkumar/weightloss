@@ -38,20 +38,6 @@
       <div class="grid_11 main-nav-spacer">&nbsp;</div>
       <div class="clear">&nbsp;</div>
       
-      <% content = yield(:back_bar) %>
-      <% if content.nil? %>
-        <div id="back-bar" class="grid_5 sidebar-container light-blue">
-          <%= link_to "Back to Overview", {} %>
-        </div>
-      <% else %>
-        <%= content %>
-      <% end %>
-      
-      <div id="nav-bar">
-        <%= render :partial => 'shared/nav_bar' %>
-      </div>
-      
-      <div class="clear">&nbsp;</div>
     </div>
   </div>
   
