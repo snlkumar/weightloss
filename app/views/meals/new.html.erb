@@ -1,7 +1,7 @@
 
 <h3>Hey <%= current_user.first_name %>, what did you eat?</h3>
 
-<% form_tag "/meals/meal_item", :id => 'meal-new-item' do %>
+<%= form_tag "/meals/meal_item", :id => 'meal-new-item' do %>
   <%= hidden_field_tag :food_id, "" %>
   
   <div id="meal-entry" style="position: relative">
@@ -27,7 +27,7 @@
     </table>
   <% end %>
   
-  <% form_for @meal, :html => {:id => 'meal'} do |meal_form| %>
+  <%= form_for @meal, :html => {:id => 'meal'} do |meal_form| %>
     <table>
       <tbody id="meal-items" style="<%= @meal.new_record? ? 'display:none;' : '' %>">
         <tr>

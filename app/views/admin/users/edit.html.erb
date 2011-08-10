@@ -3,7 +3,7 @@
   
   <h3>Edit User</h3>
   
-  <% form_for [:admin, @user], :html => {:class => 'edit', :multipart => true} do |f| %>
+  <%= form_for [:admin, @user], :html => {:class => 'edit', :multipart => true} do |f| %>
     <%= f.error_messages %>
     
     <%= render :partial => 'form', :locals => {:f => f} %>

@@ -11,7 +11,7 @@
     </div>
   <% end %>
   
-  <% form_for([:admin, @food]) do |f| %>
+  <%= form_for([:admin, @food]) do |f| %>
     <%= f.error_messages %>
     
     <% if @food.custom? %>

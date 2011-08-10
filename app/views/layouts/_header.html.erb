@@ -24,7 +24,7 @@
         </div>
       <% end %>
       
-      <% form_tag searches_path, :id => 'global-search' do %>
+      <%= form_tag searches_path, :id => 'global-search' do %>
         <%= text_field_tag 'search[keywords]', (params[:search] ? params[:search][:keywords] : ''), 
                             :title => "Search our wellness library" %>
         <%#= image_submit_tag 'orange_magnify_glass.png', :id => 'global-search-button' %>

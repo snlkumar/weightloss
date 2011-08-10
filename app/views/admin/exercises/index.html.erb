@@ -9,7 +9,7 @@
   
   <br/>
   
-  <% form_tag(search_admin_exercises_path) do %>
+  <%= form_tag(search_admin_exercises_path) do %>
     <%= text_field_tag 'terms', '', :id => 'exercise-search' %>
   
     <%= submit_tag 'Search' %>

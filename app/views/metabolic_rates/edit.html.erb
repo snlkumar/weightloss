@@ -1,6 +1,6 @@
 <hr style="margin-top: 53px;"></hr>
 
-<% form_for current_user, :url => metabolic_rates_path, :html => {:id => 'goal'} do |f| %>
+<%= form_for current_user, :url => metabolic_rates_path, :html => {:id => 'goal'} do |f| %>
   <%= f.error_messages %>
   
   <div class="grid_1 goal-step-num">1.</div>

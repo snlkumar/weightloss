@@ -9,7 +9,7 @@
 
   <div id="signup-content" class="grid_10 push_1 alpha">
     
-    <% form_for current_user, :url => "/finalize", :html => { :multipart => true, :class => "forms" } do |f| %>
+    <%= form_for current_user, :url => "/finalize", :html => { :multipart => true, :class => "forms" } do |f| %>
       <%= f.error_messages %>
       
       <ol class="forms">
