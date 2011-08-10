@@ -13,7 +13,7 @@ module Myweightworld
     # -- all .rb files in that directory are automatically loaded.
     
     # Add additional load paths for your own custom dirs
-    # config.autoload_paths += %W( #{RAILS_ROOT}/extras )
+    config.autoload_paths += %W( #{::Rails.root.to_s}/lib )
     
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
