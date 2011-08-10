@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles      => { :thumb   => "16x16#",   :small => "40x40#", :medium => "50x50#", :tracking => "78x78#",
                                                :profile => '137x137#', :large => "214x214#" }, 
                              :url         => "/system/:class/:attachment/:id/:style/:filename"
-
-  has_permalink [:id, :first_name, :last_name], :update => true
+  
+  has_friendly_id :full_name, :use_slug => true
   
   # Auth Logic
   acts_as_authentic do |config|
