@@ -1,16 +1,16 @@
 <ul class="grid_11 graph-button-bar">
-  <li id="start" class="<%= graph_selected?(weight_over_time_path) %>"><%= link_to 'Weight/Time', weight_over_time_path %></li>
-  <li id="end"   class="<%= graph_selected?(net_calories_path) %>"><%= link_to 'Net Calories', net_calories_path %></li>
+  <li id="start" class="<%= graph_selected?(weight_over_time_tracking_path) %>"><%= link_to 'Weight/Time', weight_over_time_tracking_path %></li>
+  <li id="end"   class="<%= graph_selected?(net_calories_tracking_path) %>"><%= link_to 'Net Calories', net_calories_tracking_path %></li>
 </ul>
 <div class="clear"></div>
 
 <ul class="grid_11 graph-button-bar">
-  <li id="start" class="<%= date_range_selected?('1wk', @range) %>"><%= link_to '1 Week', net_calories_path(:range => '1wk') %></li>
-  <li class="<%= date_range_selected?('2wk', @range) %>"><%= link_to '2 Weeks', net_calories_path(:range => '2wk') %></li>
-  <li class="<%= date_range_selected?('3wk', @range) %>"><%= link_to '3 Weeks', net_calories_path(:range => '3wk') %></li>
-  <li class="<%= date_range_selected?('1mth', @range) %>"><%= link_to '1 Month', net_calories_path(:range => '1mth') %></li>
-  <li class="<%= date_range_selected?('2mth', @range) %>"><%= link_to '2 Months', net_calories_path(:range => '2mth') %></li>
-  <li id="end" class="<%= date_range_selected?('3mth', @range) %>"><%= link_to '3 Months', net_calories_path(:range => '3mth') %></li>
+  <li id="start" class="<%= date_range_selected?('1wk', @range) %>"><%= link_to '1 Week', net_calories_tracking_path(:range => '1wk') %></li>
+  <li class="<%= date_range_selected?('2wk', @range) %>"><%= link_to '2 Weeks', net_calories_tracking_path(:range => '2wk') %></li>
+  <li class="<%= date_range_selected?('3wk', @range) %>"><%= link_to '3 Weeks', net_calories_tracking_path(:range => '3wk') %></li>
+  <li class="<%= date_range_selected?('1mth', @range) %>"><%= link_to '1 Month', net_calories_tracking_path(:range => '1mth') %></li>
+  <li class="<%= date_range_selected?('2mth', @range) %>"><%= link_to '2 Months', net_calories_tracking_path(:range => '2mth') %></li>
+  <li id="end" class="<%= date_range_selected?('3mth', @range) %>"><%= link_to '3 Months', net_calories_tracking_path(:range => '3mth') %></li>
 </ul>
 <div class="clear"></div>
 
