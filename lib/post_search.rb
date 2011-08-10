@@ -46,7 +46,7 @@ class PostSearch
   def go
     return [] if @query_string.nil?
     build_query
-    OldTextFile.paginate(:all, :include => :category, :conditions => query, :per_page => @per_page, :page => @page)
+    OldTextFile.paginate(:include => :category, :conditions => query, :per_page => @per_page, :page => @page)
   end
   
 end
