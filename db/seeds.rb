@@ -9,5 +9,5 @@ User.destroy_all
 u = User.create(:first_name => 'Normal', :last_name => 'User', :email => 'user@example.com', 
             :username => 'normalguy', :gender => 'Male', :height => 72, :weight => 200,
             :password => 'password', :password_confirmation => 'password', 
-            :avatar   => File.open(File.join(RAILS_ROOT, 'public/images', 'RidingInColorado.jpg')))
+            :avatar   => File.open(File.join(::Rails.root.to_s, 'public/images', 'RidingInColorado.jpg')))
 

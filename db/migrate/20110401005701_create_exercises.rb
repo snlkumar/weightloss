@@ -7,7 +7,7 @@ class CreateExercises < ActiveRecord::Migration
       t.timestamps
     end
     
-    csv = FasterCSV.read(File.join(RAILS_ROOT, 'utils', "exercise_mets.csv"))
+    csv = FasterCSV.read(File.join(::Rails.root.to_s, 'utils', "exercise_mets.csv"))
     headers = csv[0].collect{|col| puts col; col.downcase }
     
     csv.shift
