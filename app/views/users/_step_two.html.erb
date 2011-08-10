@@ -14,8 +14,8 @@
   <div class="avatar-placeholder">
     
   </div>
-  <%= label_tag '', %Q{<span class="help-text">File types: .png, .jpg, .gif</span> } %><br/>
-  <%= label_tag '', %Q{<span class="help-text">(4MB max).</span> } %>
+  <%= label_tag '', %Q{<span class="help-text">File types: .png, .jpg, .gif</span> }.html_safe %><br/>
+  <%= label_tag '', %Q{<span class="help-text">(4MB max).</span> }.html_safe %>
   <%= f.file_field :avatar, :size => '6' %>
 </div>
 

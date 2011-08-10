@@ -1,30 +1,30 @@
 <li>
-  <%= f.label :first_name, %Q{First Name <span class="help-text">(Enter your First Name)</span> } %>
+  <%= f.label :first_name, %Q{First Name <span class="help-text">(Enter your First Name)</span> }.html_safe %>
   <%= f.text_field :first_name, :title => "First Name" %>
 </li>
 
 <li>
-  <%= f.label :last_name, %Q{Last Name  <span class="help-text">(Enter your Last Name)</span> } %>
+  <%= f.label :last_name, %Q{Last Name  <span class="help-text">(Enter your Last Name)</span> }.html_safe %>
   <%= f.text_field :last_name, :title => "Last name" %>
 </li>
 
 <li>
-  <%= f.label :username, %Q{Username  <span class="help-text">(Minimum of 4 Characters)</span> } %>
+  <%= f.label :username, %Q{Username  <span class="help-text">(Minimum of 4 Characters)</span> }.html_safe %>
   <%= f.text_field :username, :title => "Ex: Nickname" %>
 </li>
 
 <li>
-  <%= f.label :password, %Q{Password  <span class="help-text">(Minimum of 6 Characters)</span> } %>
+  <%= f.label :password, %Q{Password  <span class="help-text">(Minimum of 6 Characters)</span> }.html_safe %>
   <%= f.text_field :password, :title => "Your password" %>
 </li>
 
 <li>
-  <%= f.label :password_confirmation, %Q{ Confirm Password <span class="help-text">(Minimum of 6 Characters)</span> } %>
+  <%= f.label :password_confirmation, %Q{ Confirm Password <span class="help-text">(Minimum of 6 Characters)</span> }.html_safe %>
   <%= f.text_field :password_confirmation, :title => "Confirm Your Password" %>
 </li>
 
 <li>
-  <%= f.label :email, %Q{ Email <span class="help-text">(Note: Email will not be publicly displayed.)</span> } %>
+  <%= f.label :email, %Q{ Email <span class="help-text">(Note: Email will not be publicly displayed.)</span> }.html_safe %>
   <%= f.text_field :email, :title => "Ex: email@address.com" %>
 </li>
 
