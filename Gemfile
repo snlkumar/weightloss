@@ -14,8 +14,13 @@ gem 'chronic'
 gem "jquery-rails"
 gem "friendly_id"
 gem 'dynamic_form'
+gem 'acts_as_commentable'
 
-group :cucumber do
+group :development, :test do
+  gem 'ruby-debug'
+  gem 'thin'
+  gem 'capistrano'
+  gem 'capistrano_colors'
   gem 'database_cleaner'
   gem 'capybara'
   gem 'rspec'
@@ -23,23 +28,12 @@ group :cucumber do
   gem 'email_spec'
   #   gem 'fakeweb'
   gem 'launchy'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
+  gem 'remarkable_activerecord', '>=4.0.0.alpha2'
+  gem 'remarkable_activemodel', '>=4.0.0.alpha2'
+  gem 'timecop'
+  gem 'spork'
+  gem 'guard'
+  gem 'guard-spork'
+  gem 'rb-fsevent'
 end
-
-group :development do
-  gem 'ruby-debug'
-  gem 'thin'
-  gem 'capistrano'
-  gem 'capistrano_colors'
-end
-
-# group :test do # Rails 3
-#   gem 'email_spec'
-#   gem 'rspec'
-#   gem 'rspec-rails'
-#   gem 'remarkable_activerecord', '>=4.0.0.alpha2'
-#   gem 'remarkable_activemodel', '>=4.0.0.alpha2'
-#   
-#   gem 'timecop'
-#   gem 'factory_girl_rails'
-# end
