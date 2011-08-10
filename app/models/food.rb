@@ -1,5 +1,5 @@
 class Food < ActiveRecord::Base
-  named_scope :with_a_serving_size, :conditions => "gmwt_desc1 is NOT NULL OR gmwt_desc2 is NOT NULL"
+  scope :with_a_serving_size, :conditions => "gmwt_desc1 is NOT NULL OR gmwt_desc2 is NOT NULL"
   
   validates_presence_of :name
   validates_uniqueness_of :name

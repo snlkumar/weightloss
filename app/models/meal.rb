@@ -14,11 +14,11 @@ class Meal < ActiveRecord::Base
   has_many :foods,      :through => :meal_items
   
 # Scopes
-  named_scope :starting_from, lambda { |date| {:conditions => ["ate_on <= ?", date] }}
-  named_scope :on,            lambda { |date| {:conditions => ["ate_on >= ? AND ate_on <= ?", date.beginning_of_day, date.end_of_day], 
+  scope :starting_from, lambda { |date| {:conditions => ["ate_on <= ?", date] }}
+  scope :on,            lambda { |date| {:conditions => ["ate_on >= ? AND ate_on <= ?", date.beginning_of_day, date.end_of_day], 
                                                :order => "ate_on ASC"} }
-  named_scope :today,     :conditions => ["ate_on >= ? AND ate_on <= ?", Time.zone.now.beginning_of_day, Time.zone.now.end_of_day]
-  named_scope :past_week, :conditions => ["ate_on >= ?", 6.days.ago]
+  scope :today,     :conditions => ["ate_on >= ? AND ate_on <= ?", Time.zone.now.beginning_of_day, Time.zone.now.end_of_day]
+  scope :past_week, :conditions => ["ate_on >= ?", 6.days.ago]
   
 # Nested Attributes
   accepts_nested_attributes_for :meal_items, :allow_destroy => true
