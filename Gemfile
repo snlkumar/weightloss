@@ -13,18 +13,17 @@ gem 'mysql'
 gem 'chronic'
 gem "jquery-rails"
 gem "friendly_id"
+gem 'dynamic_form'
 
 group :cucumber do
-  # gem 'cucumber'
-  #   gem 'cucumber-rails',   '>=0.3.2'
-  #   gem 'database_cleaner', '>=0.5.0'
-  #   gem 'capybara',         '0.4.1.1'
-  #   gem 'rspec',            '1.3.6'
-  #   gem 'rspec-rails',      '~>1.3.4'
-  #   gem 'email_spec'
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'email_spec'
   #   gem 'fakeweb'
-  #   gem 'launchy'
-  #   gem 'factory_girl'
+  gem 'launchy'
+  gem 'factory_girl'
 end
 
 group :development do
