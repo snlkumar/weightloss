@@ -462,6 +462,10 @@ form#goal input[type=radio] { margin-bottom: 26px; }
 .goal-explanation-header  { font-size: 24px; font-weight: normal; }
 .goal-explanation-text    { font-size: 14px; font-weight: normal; margin-bottom: 15px; }
 
+/*Posts*/
+.comment { clear: left; margin-bottom: 25px; }
+.comment .body { float: left; }
+
 /* Flash Messags */
 .flash .error {
   background-color: #FFDDDD;

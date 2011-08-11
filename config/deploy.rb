@@ -37,7 +37,7 @@ deploy.task :symlink_config, :roles => :app, :except => {:no_release => true, :n
 end
 
 deploy.task :generate_tinymce_cache, :roles => :app do
-  run "cd #{current_release} && RAILS_ENV=production rake tinymce:cache_js"
+  run "cd #{current_release} && RAILS_ENV=production bundle exec rake tinymce:cache_js"
 end
 
 deploy.task :restart, :roles => :app, :except => { :no_release => true } do

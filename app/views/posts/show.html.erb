@@ -7,6 +7,7 @@
   
   <%= @post.body.html_safe %>
   
+  <b>Share this article</b>
   <p>
     <span  class='st_twitter' displayText='Tweet'></span>
     <span  class='st_facebook' displayText='Facebook'></span>
@@ -14,27 +15,53 @@
     <span  class="st_plusone_button" displayText="Google +1"></span>
   </p>
   
-  <script type="text/javascript" charset="utf-8">
-    <% content_for :js do %>
-      $("object").each(function(index, el){
-        if( $(this).find("param[name*=youtube]") ){
-          return;
-        }
-        var width  = $(this).attr("width")  || 527;
-        var height = $(this).attr("height") || 350;
-        var path   = $(this).find("param[name]=src").attr('value').replace(/^(\.\.\/)+(?!\/system)/, "");
-        path     = '/'+path;
-        data     = {'path': path, 'height': height, 'width': width};
-        template = "<a href='{{path}}' id='player' style='margin: 0 auto; height:{{height}}px; width:{{width}}px; display: block;'></a>";
+  <br/>
+  
+  <% unless @post.comments.empty? %>
+    <h3>Comments</h3>
+    <div id="comments">
+      <%= render :partial => 'comment', :collection => @post.comments, :as => :comment %>
+    </div>
+  <% end %>
+  
+  <div style="clear: left; margin-top: 20px;">
+    <% if logged_in? %>
+      <h3>Leave a Comment</h3>
+      <%= form_for @comment || :comment, :url => create_comment_path(:class_name => @post.class.to_s, :id => @post.id) do |f| %>
+        <%= f.error_messages %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
         
-        $(el).replaceWith(Mustache.to_html(template, data));
-        flowplayer("player", "/flowplayer-3.2.7.swf", {clip: {scaling: 'orig', autoPlay: false}});
-      });
-    
+        <p>
+          <%= f.text_area :comment, :class => "grid_8" %>
+          <span class="clear"></span>
+        </p>
+        
+        <%= f.submit 'Submit', :class => 'grid_2' %>
+      <% end %>
     <% end %>
-  </script>
-
-  <style type="text/css" media="screen">
-    object { display: block; margin: 0 auto; }
-  </style>
+  </div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    $("object").each(function(index, el){
+      if( $(this).find("param[name*=youtube]") ){
+        return;
+      }
+      var width  = $(this).attr("width")  || 527;
+      var height = $(this).attr("height") || 350;
+      var path   = $(this).find("param[name]=src").attr('value').replace(/^(\.\.\/)+(?!\/system)/, "");
+      path     = '/'+path;
+      data     = {'path': path, 'height': height, 'width': width};
+      template = "<a href='{{path}}' id='player' style='margin: 0 auto; height:{{height}}px; width:{{width}}px; display: block;'></a>";
+      
+      $(el).replaceWith(Mustache.to_html(template, data));
+      flowplayer("player", "/flowplayer-3.2.7.swf", {clip: {scaling: 'orig', autoPlay: false}});
+    });
+  
+  <% end %>
+</script>
+
+<style type="text/css" media="screen">
+  object { display: block; margin: 0 auto; }
+</style>

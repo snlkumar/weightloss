@@ -1,0 +1,10 @@
+<div id="<%= dom_id(comment) %>" class="comment">
+  <%= image_tag comment.user.avatar.url(:small), :style => 'float: left;' %>
+  <div class="body grid_9">
+    <span class="bold"><%= comment.user.username %></span>&nbsp;&nbsp;<%= comment_post_date(comment) %><br/>
+
+    <%= comment.comment %>
+  </div>
+  <div class="clear"></div>
+</div>
+
