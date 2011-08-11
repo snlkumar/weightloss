@@ -75,7 +75,8 @@
         </p>
         
         <p>
-          <%= workout_form.submit @workout.new_record? ? "Save This Workout" : "Update This Workout" %>
+          <%= workout_form.submit @workout.new_record? ? "Save This Workout" : "Update This Workout" %> | 
+          <%= link_to "Cancel", :back %>
         </p>
       </div>
     <% end %>

@@ -3,6 +3,7 @@ namespace :dummy do
   task :weight_data => :environment do
     temp = Time.zone.today.beginning_of_day
     user = User.find_by_email('user@example.com')
+    user.weights.destroy_all
     
     while temp > 6.months.ago
       temp -= 1.day

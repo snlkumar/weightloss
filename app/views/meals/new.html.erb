@@ -81,7 +81,8 @@
     </p>
     
     <p>
-      <%= meal_form.submit @meal.new_record? ? "Save This Meal" : "Update This Meal" %>
+      <%= meal_form.submit @meal.new_record? ? "Save This Meal" : "Update This Meal" %> | 
+      <%= link_to "Cancel", :back %>
     </p>
   </div>
 <% end %>

@@ -42,7 +42,7 @@ class Admin::FoodsController < Admin::BaseController
   def search
     terms  = params[:terms].split(/,|\s/).reject(&:blank?)
     conds  = terms.collect{|t| "name LIKE ?"}.join(' AND ')
-    @foods = Food.paginate(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}], :per_page => 50, :page => params[:page] || 1)
+    @foods = Food.paginate(:conditions => [conds, *terms.collect{|t| "%#{t}%"}], :per_page => 50, :page => params[:page] || 1)
     
     render :action => :index
   end
