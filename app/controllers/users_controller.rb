@@ -12,8 +12,6 @@ class UsersController < ApplicationController
     end
     
     flash.clear
-    Rails.logger.warn("#{current_user.email} #{@user.email}")
-    Rails.logger.warn(current_user == @user)
     
     if current_user == @user
       render :layout => "profile"
