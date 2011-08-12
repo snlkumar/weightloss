@@ -38,7 +38,6 @@ class User < ActiveRecord::Base
   
   # Callbacks
   before_save :strip_lbs
-  before_save :ensure_id_in_permalink
   
   # Defaults
   default_values :status => "step_one",
@@ -62,18 +61,8 @@ class User < ActiveRecord::Base
     end
   end
   
-  def to_param
-    self.permalink.blank? ? self.id.to_s : self.permalink
-  end
-  
   def full_name
     "#{self.first_name} #{self.last_name}"
-  end
-  
-  def ensure_id_in_permalink
-    if self.id.nil?
-      self.permalink = nil
-    end
   end
   
   def strip_lbs
