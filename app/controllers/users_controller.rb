@@ -12,6 +12,8 @@ class UsersController < ApplicationController
     end
     
     flash.clear
+    Rails.logger.warn("#{current_user.email} #{@user.email}")
+    Rails.logger.warn(current_user == @user)
     
     if current_user == @user
       render :layout => "profile"
@@ -22,6 +24,9 @@ class UsersController < ApplicationController
     else
       render :action => :private, :layout => "private_profile"
     end
+    
+    rescue ActiveRecord::RecordNotFound
+      redirect_to(root_path)
   end
   
   def new
