@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable, :encryptable,
+         :recoverable, :rememberable, :trackable, :validatable
+
   attr_accessor :remove_avatar
   
   BMR_MULTIPLIERS = [1.2, 1.375, 1.55, 1.725, 1.9]
@@ -8,13 +13,6 @@ class User < ActiveRecord::Base
                              :url         => "/system/:class/:attachment/:id/:style/:filename"
   
   has_friendly_id :full_name, :use_slug => true
-  
-  # Auth Logic
-  acts_as_authentic do |config|
-    config.login_field = 'email'
-    config.merge_validates_length_of_password_confirmation_field_options :minimum => 6
-    config.merge_validates_length_of_password_field_options              :minimum => 6
-  end
   
   # Associations
   has_many :meals,    :dependent => :destroy

@@ -25,7 +25,7 @@
   <% end %>
   
   <div style="clear: left; margin-top: 20px;">
-    <% if logged_in? %>
+    <% if user_signed_in? %>
       <h3>Leave a Comment</h3>
       <%= form_for @comment || :comment, :url => create_comment_path(:class_name => @post.class.to_s, :id => @post.id) do |f| %>
         <%= f.error_messages %>

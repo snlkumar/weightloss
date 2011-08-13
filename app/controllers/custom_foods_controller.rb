@@ -1,7 +1,7 @@
 class CustomFoodsController < ApplicationController
   layout 'tracking'
   
-  before_filter :require_user
+  before_filter :authenticate_user!
   
   def new
     @food = Food.new(:custom => true)

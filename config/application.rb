@@ -34,6 +34,10 @@ module Myweightworld
     
     # config.action_view.sanitized_allowed_attributes = "target"
     config.action_view.sanitized_allowed_tags       = 'b', 'ol', 'ul', 'li', 'em', 'i', 'strong', 'p', 'br', 'a', 'blockquote', 'caption', 'cite', 'code', 'dl', 'dt', 'dd', 'img', 'pre', 'q', 'small', 'strike', 'param', 'embed', 'object', 'sub', 'sup', 'u'
+    
+    config.to_prepare { 
+      Devise::RegistrationsController.layout "signup" 
+    }
   end
   
   ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|

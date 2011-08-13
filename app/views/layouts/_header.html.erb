@@ -14,7 +14,7 @@
   <div id="main-nav" class="full">
     <div class="main-nav container_16" style="position:relative;">
       
-      <% if logged_in? %>
+      <% if user_signed_in? %>
         <div id="add-meal" class="button">
           <%= link_to "+ Add Meal", new_meal_path, :title => 'Add a Meal' %>
         </div>

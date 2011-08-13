@@ -1,7 +1,7 @@
 class WorkoutsController < ApplicationController
   layout 'tracking'
   
-  before_filter :require_user
+  before_filter :authenticate_user!
   
   def index
     if params[:date]

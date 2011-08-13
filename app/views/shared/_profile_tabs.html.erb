@@ -1,9 +1,9 @@
 <ul id="profile-tabs">
-  <li class="<%= 'active' if request.request_uri.match(user_path(current_user)) %>">
+  <li class="<%= 'active' if request.fullpath.match(user_path(current_user)) %>">
     <div><%= link_to 'Profile', user_path(current_user || @user) %></div>
   </li>
   <li><div><%= link_to 'News Feed', {} %></div></li>
-  <li class="<%= 'active' if request.request_uri.match(tracking_path) %>">
+  <li class="<%= 'active' if request.fullpath.match(tracking_path) %>">
     <div><%= link_to 'Tracking', tracking_path %></div>
   </li>
 </ul>

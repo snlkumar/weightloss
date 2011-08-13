@@ -1,4 +1,6 @@
 Myweightworld::Application.routes.draw do
+  devise_for :users, :controllers => { :registrations => "registrations" }
+
   namespace :admin do
     resources :exercises do
       collection do
@@ -27,7 +29,7 @@ Myweightworld::Application.routes.draw do
     match '/charts/net_calories' => 'trackings#net_calories', :as => :net_calories
   end
   
-  resource  :user_session, :metabolic_rates
+  resource  :metabolic_rates
   resources :old_flash_files, :old_success_stories, :old_tip_of_days, :old_text_files, :old_items, :old_departments
   resources :categories, :subcategories, :searches, :posts, :videos, :custom_foods
   
@@ -83,6 +85,6 @@ Myweightworld::Application.routes.draw do
   match '/step_two'     => 'users#step_two'
   match '/finalize'     => 'users#finalize'
   match '/next'         => 'users#next'
-  match '/'             => 'home#index', :as => :root
   match '/home'         => 'users#show', :as => :home
+  root :to => "home#index"
 end

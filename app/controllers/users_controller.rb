@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-  before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user,    :except => [:show, :new, :create, :next, :bmi_update, :weight_update]
-  before_filter :set_defaults,    :only => [:step_two, :edit, :personal_info]
+  before_filter :authenticate_user!, :except => [:show, :create, :next, :bmi_update, :weight_update]
+  before_filter :set_defaults,       :only => [:step_two, :edit, :personal_info]
   
-  layout 'signup', :only => [:new, :create, :step_two, :finalize]
+  layout 'signup', :only => [:create, :step_two, :finalize]
   
   def show
     @user = User.find(params[:id]) || current_user
@@ -25,10 +24,6 @@ class UsersController < ApplicationController
     
     rescue ActiveRecord::RecordNotFound
       redirect_to(root_path)
-  end
-  
-  def new
-    @user = User.new
   end
   
   def create
@@ -63,7 +58,7 @@ class UsersController < ApplicationController
   end
   
   def update
-    @user = @current_user # makes our views "cleaner" and more consistent
+    @user = current_user # makes our views "cleaner" and more consistent
     if @user.update_attributes(params[:user])
       flash[:notice] = 'Update successful'
       

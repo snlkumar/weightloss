@@ -1,5 +1,5 @@
 class ExercisesController < ApplicationController
-  before_filter :require_user
+  before_filter :authenticate_user!
   
   def search
     terms     = params[:term].split(/,|\s/).reject(&:blank?)

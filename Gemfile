@@ -8,7 +8,7 @@ gem 'hoptoad_notifier'
 gem 'fastercsv'
 gem 'linguistics'
 gem 'will_paginate'
-gem 'authlogic'
+gem 'devise'
 gem 'mysql'
 gem 'chronic'
 gem "jquery-rails"

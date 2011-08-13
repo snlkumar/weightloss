@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110810225341) do
+ActiveRecord::Schema.define(:version => 20110812231707) do
 
   create_table "categories", :force => true do |t|
     t.integer "parent_id"
@@ -291,11 +291,8 @@ ActiveRecord::Schema.define(:version => 20110810225341) do
     t.string   "password"
     t.string   "password_confirmation"
     t.string   "status"
-    t.string   "crypted_password",                     :null => false
+    t.string   "encrypted_password",                   :null => false
     t.string   "password_salt",                        :null => false
-    t.string   "persistence_token",                    :null => false
-    t.string   "single_access_token",                  :null => false
-    t.string   "perishable_token",                     :null => false
     t.integer  "login_count",           :default => 0, :null => false
     t.integer  "failed_login_count",    :default => 0, :null => false
     t.integer  "weight"
@@ -339,6 +336,15 @@ ActiveRecord::Schema.define(:version => 20110810225341) do
     t.boolean  "private"
     t.string   "permalink"
     t.string   "cached_slug"
+    t.string   "last_sign_in_ip"
+    t.integer  "sign_in_count",         :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "reset_password_token"
+    t.string   "remember_token"
+    t.datetime "remember_created_at"
+    t.string   "authentication_token"
   end
 
   create_table "weights", :force => true do |t|

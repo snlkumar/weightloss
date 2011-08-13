@@ -1,7 +1,7 @@
 class MetabolicRatesController < ApplicationController
   layout 'tracking'
   
-  before_filter :require_user
+  before_filter :authenticate_user!
   
   def edit
     @user = current_user
