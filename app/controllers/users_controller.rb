@@ -3,14 +3,13 @@ class UsersController < ApplicationController
   before_filter :set_defaults,       :only => [:step_two, :edit, :personal_info]
   
   layout 'signup', :only => [:create, :step_two, :finalize]
+  layout 'user_settings', :only => [:update, :account_info, :personal_info, :nutrition_info, :exercise_info]
   
   def show
     @user = User.find(params[:id]) || current_user
     if @user.nil?
       redirect_to(root_path) and return
     end
-    
-    flash.clear
     
     if current_user == @user
       render :layout => "profile"
@@ -71,6 +70,8 @@ class UsersController < ApplicationController
         redirect_to user_edit_exercise_info_path(current_user)
       when /account/
         redirect_to user_edit_account_info_path(current_user)
+      else
+        redirect_to user_edit_account_info_path(current_user)
       end
     else
       case request.referrer
@@ -81,6 +82,8 @@ class UsersController < ApplicationController
       when /exercise/
         render :action => :exercise_info
       when /account/
+        render :action => :account_info
+      else
         render :action => :account_info
       end
     end

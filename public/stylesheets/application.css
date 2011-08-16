@@ -268,12 +268,15 @@ form .fieldError,
 form .fieldWithErrors { border: 1px solid #ff0000 !important; color: #e76a6a; }
 
 /* Sign In */
-#sign-in-form               { margin-top: 25px; background-color: #FFF; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-                              -moz-border-radius: 9px; -webkit-border-radius: 9px 9px; }
-#sign-in-form h2            { background: url("/images/nav-bar.png") repeat scroll 0 0 transparent; 
-                              -moz-border-radius: 9px 9px 0px 0px;
-                              -webkit-border-radius: 9px 9px 0px 0px; color: #FFF; margin: 0; padding: 10px 15px; }
-#sign-in-form div.content   { padding: 10px 20px; }
+#sign-in-form, 
+#forgot-password-form    { margin-top: 25px; background-color: #FFF; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+                           -moz-border-radius: 9px; -webkit-border-radius: 9px 9px; }
+#sign-in-form h2,
+#forgot-password-form h2 { background: url("/images/nav-bar.png") repeat scroll 0 0 transparent; 
+                           -moz-border-radius: 9px 9px 0px 0px;
+                           -webkit-border-radius: 9px 9px 0px 0px; color: #FFF; margin: 0; padding: 10px 15px; }
+#sign-in-form div.content,
+#forgot-password-form div.content   { padding: 10px 20px; }
 button:hover  { box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); }
 
 .avatar-placeholder   { -moz-border-radius: 5px; -webkit-border-radius: 5px 5px; 
@@ -467,7 +470,7 @@ form#goal input[type=radio] { margin-bottom: 26px; }
 .comment .body { float: left; }
 
 /* Flash Messags */
-.flash .error {
+.flash .error, .flash .alert {
   background-color: #FFDDDD;
   border: 1px solid #FFBBBB;
 }

@@ -17,6 +17,8 @@ module UsersHelper
       request.fullpath.eql? user_edit_nutrition_info_path(current_user)
     when 'exercise'
       request.fullpath.eql? user_edit_exercise_info_path(current_user)
+    when 'password'
+      request.fullpath.eql? edit_password_path
     else
       false
     end

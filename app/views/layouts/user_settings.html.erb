@@ -44,6 +44,9 @@
             <li class="<%= active_settings_tab?('exercise') %>">
               <%= link_to 'Exercise Info', user_edit_exercise_info_path(current_user) %>
             </li>
+            <li class="<%= active_settings_tab?('password') %>">
+              <%= link_to 'Password', edit_password_path %>
+            </li>
             <li>
               <%= link_to 'Back to Profile', user_path(current_user) %>
             </li>

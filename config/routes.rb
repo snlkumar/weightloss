@@ -1,6 +1,10 @@
 Myweightworld::Application.routes.draw do
+  
+  
   devise_for :users, :controllers => { :registrations => "registrations" }
-
+  match '/password/edit' => 'user_passwords#edit', :as => :edit_password, :via => :get
+  match '/password' => 'user_passwords#update', :as => :password, :via => :put
+  
   namespace :admin do
     resources :exercises do
       collection do

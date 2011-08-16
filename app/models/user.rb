@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :encryptable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessor :remove_avatar
+  attr_accessor :remove_avatar, :current_password
   
   BMR_MULTIPLIERS = [1.2, 1.375, 1.55, 1.725, 1.9]
   

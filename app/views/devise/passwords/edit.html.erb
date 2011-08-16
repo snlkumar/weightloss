@@ -1,16 +1,28 @@
-<h2>Change your password</h2>
-
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
-
-  <p><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password %></p>
-
-  <p><%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.submit "Change my password" %></p>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+<div id="forgot-password-form" class="push_4 grid_7">
+  
+  <h2>Change your password</h2>
+  
+  <div class="content">
+    <% flash.now[:error] = flash.now[:error].to_a.concat resource.errors.full_messages %>
+    <% unless resource.errors.empty? %>
+      <%= render :partial => '/shared/flash', :locals => {:flash => flash } %>
+    <% end %>
+    
+    <%= form_for(resource, :as => resource_name, :url => user_password_path, :html => { :method => :put }) do |f| %>
+      <%= f.hidden_field :reset_password_token %>
+      
+      <p><%= f.label :password, "New password" %><br />
+      <%= f.password_field :password, :class => 'grid_6' %></p>
+      
+      <p><%= f.label :password_confirmation, "Confirm new password" %><br />
+      <%= f.password_field :password_confirmation, :class => 'grid_6' %></p>
+      
+      <button class="button grid_6" type="submit" style="margin-left: 0px;">
+        Change my password
+      </button>
+    <% end %>
+    
+    <div class="clear">&nbsp;</div>
+  </div>
+  
+</div>

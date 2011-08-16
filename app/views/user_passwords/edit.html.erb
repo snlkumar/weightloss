@@ -1,0 +1,26 @@
+<div class="grid_11">
+  <h3>Change Password</h3>
+
+  <%= form_for @user, :as => :user, :url => password_path, :html => {:class => 'edit'} do |f| %>
+    <p>
+      <%= f.label :current_password %><br/>
+      <%= f.password_field :current_password, :class => 'grid_6 alpha' %>
+      <span class="clear"></span>
+    </p>
+    
+    <p>
+      <%= f.label :password, %Q{Password  <span class="help-text">(Minimum of 6 Characters)</span> }.html_safe %><br/>
+      <%= f.password_field :password, :title => "New Password", :class => 'grid_6 alpha' %>
+      <span class="clear"></span>
+    </p>
+    
+    <p>
+      <%= f.label :password_confirmation, %Q{ Confirm Password <span class="help-text">(Minimum of 6 Characters)</span> }.html_safe %><br/>
+      <%= f.password_field :password_confirmation, :title => "Confirm Your New Password", :class => 'grid_6 alpha' %>
+      <span class="clear"></span>
+    </p>
+    
+    <%= f.submit 'Change my password' %>
+  <% end %>
+</div>
+
