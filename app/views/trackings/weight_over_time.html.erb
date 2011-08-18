@@ -42,7 +42,7 @@
                name: '<%= current_user.full_name %>',
                data: <%= @grapher.js_data %>
              }
-             <% if current_user.desired_weight.present? %>
+             <% if current_user.desired_weight.present? && !@grapher.ruby_data.empty? %>
                ,{
                  name:  'Desired Weight',
                  color: '#999',
