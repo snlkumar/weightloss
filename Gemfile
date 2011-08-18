@@ -1,6 +1,6 @@
 source :rubygems
 
-gem "rails", "3.0.9"
+gem "rails", "3.0.10"
 gem "rake"
 gem "rdoc"
 gem 'paperclip'
@@ -15,6 +15,7 @@ gem "jquery-rails"
 gem "friendly_id"
 gem 'dynamic_form'
 gem 'acts_as_commentable'
+gem 'omniauth', '>=0.2.6'
 
 group :development, :test do
   gem 'ruby-debug'
