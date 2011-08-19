@@ -7,7 +7,8 @@
       <li class="grid_3 push_2"><strong>2.</strong> Personal</li>
     </ul>
   </div>
-  
+  <%= session["devise.facebook_data"] %>
+  <%= env["omniauth.auth"] %>
   <div id="signup-content" class="grid_10 alpha push_1">
     <br/>
     <h2>Join the community!</h2>
