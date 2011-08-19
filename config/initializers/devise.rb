@@ -61,8 +61,7 @@ Devise.setup do |config|
   # ==> Configuration for :database_authenticatable
   # For bcrypt, this is the cost for hashing the password and defaults to 10. If
   # using other encryptors, it sets how many times you want the password re-encrypted.
-  config.stretches = 20
-  config.encryptor = :authlogic_sha512
+  config.stretches = 10
 
   # Setup a pepper to generate the encrypted password.
   # config.pepper = "d376fb998af563ea4449ef6d1a36452556d7bf3ebb09199aaf8e0c7bc6add36ad79bf5f7e55bf9a1c4c1e387443d12069c60df7a77c516cec84de296c9427b1a"
@@ -81,7 +80,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  # config.remember_for = 2.weeks
+  config.remember_for = 1.weeks
 
   # If true, a valid remember token can be re-used between multiple browsers.
   # config.remember_across_browsers = true

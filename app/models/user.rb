@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable, :timeoutable
-  devise :database_authenticatable, :registerable, :encryptable,
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   attr_accessor :remove_avatar, :current_password
@@ -26,8 +26,6 @@ class User < ActiveRecord::Base
   validates_presence_of         :first_name, :last_name, :email, :username
   validates_presence_of         :gender, :height, :weight,            :if => Proc.new { |u| u.status != 'step_one' }
   validates_inclusion_of        :gender, :in => ['male', 'female'],   :if => Proc.new { |u| u.status != 'step_one' }, :message => 'please select'
-  validates_presence_of         :password,                            :if => Proc.new { |u| u.password_confirmation.present? }
-  validates_confirmation_of     :password,                            :if => Proc.new { |u| u.password_confirmation.present? }
   validates_attachment_presence :avatar,                              :if => Proc.new { |u| !['step_one'].include?(u.status) }
   validates_uniqueness_of       :email, :username
   validates_confirmation_of     :email
@@ -155,6 +153,32 @@ class User < ActiveRecord::Base
     !self.private?
   end
   
+  def update_with_password(params={})
+    current_password = params.delete(:current_password) if !params[:current_password].blank?
+
+    if params[:password].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation) if params[:password_confirmation].blank?
+    end
+
+    result = if has_no_password?  || valid_password?(current_password)
+      update_attributes(params) 
+    else
+      self.errors.add(:current_password, current_password.blank? ? :blank : :invalid)
+      self.attributes = params
+      false
+    end
+
+    clean_up_passwords
+    result
+  end
+
+  def has_no_password?
+    self.encrypted_password.blank?
+  end
+  
+  
+  # CLass Methods  
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token['extra']['user_hash']
     if user = User.find_by_email(data["email"])
@@ -164,5 +188,26 @@ class User < ActiveRecord::Base
     end
   end
   
-  # CLass Methods  
+  # Called in Devise Registrations Controller before building a resource
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["user_info"]
+        user.email      = data["email"]
+        user.first_name = data["first_name"]
+        user.last_name  = data["last_name"]
+        user.username   = data["nickname"]
+        user.facebook_uid = session["devise.facebook_data"]["uid"]
+        user.facebook_token = session["devise.facebook_data"]["credentials"]["token"]
+      end
+    end
+  end
+  
+  
+  
+  protected
+    
+    
+    def password_required?
+      facebook_uid.blank? && super
+    end
 end
