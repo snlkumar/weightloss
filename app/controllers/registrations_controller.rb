@@ -2,7 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
   
   def create
     build_resource
-
+    
     if resource.save
       @user.update_attribute(:status, 'step_two')
       

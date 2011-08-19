@@ -500,7 +500,7 @@ form#goal input[type=radio] { margin-bottom: 26px; }
   display: inline;
 }
 
-#error_explanation {
+#error_explanation, #errorExplanation {
  width: 400px;
  border: 2px solid #CF0000;
  padding: 0px;
@@ -509,7 +509,7 @@ form#goal input[type=radio] { margin-bottom: 26px; }
  background-color: #f0f0f0;
 }
 
-#error_explanation h2 {
+#error_explanation h2, #errorExplanation h2 {
  text-align: left;
  font-weight: bold;
  padding: 5px 5px 5px 15px;
@@ -519,9 +519,12 @@ form#goal input[type=radio] { margin-bottom: 26px; }
  color: #fff;
 }
 
-#error_explanation p     { color: #333; margin-bottom: 0; padding: 8px; }
-#error_explanation ul    { margin: 2px 24px; }
-#error_explanation ul li { font-size: 12px; list-style: disc; }
+#error_explanation p,
+#errorExplanation p     { color: #333; margin-bottom: 0; padding: 8px; }
+#error_explanation ul,
+#errorExplanation ul    { margin: 2px 24px; }
+#error_explanation ul li,
+#errorExplanation ul li { font-size: 12px; list-style: disc; }
 
 td.actions  { white-space: nowrap; width: 80px; }
 tr.odd td   { background-color: #F0F0F6; }

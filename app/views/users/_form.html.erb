@@ -1,16 +1,16 @@
 <li>
   <%= f.label :first_name, %Q{First Name <span class="help-text">(Enter your First Name)</span> }.html_safe %>
-  <%= f.text_field :first_name, :title => "First Name" %>
+  <%= f.text_field :first_name, :title => "First Name", :value => session["devise.facebook_data"] ? session["devise.facebook_data"]['user_info']['first_name'] : '' %>
 </li>
 
 <li>
   <%= f.label :last_name, %Q{Last Name  <span class="help-text">(Enter your Last Name)</span> }.html_safe %>
-  <%= f.text_field :last_name, :title => "Last name" %>
+  <%= f.text_field :last_name, :title => "Last name", :value => session["devise.facebook_data"] ? session["devise.facebook_data"]['user_info']['last_name'] : '' %>
 </li>
 
 <li>
   <%= f.label :username, %Q{Username  <span class="help-text">(Minimum of 4 Characters)</span> }.html_safe %>
-  <%= f.text_field :username, :title => "Ex: Nickname" %>
+  <%= f.text_field :username, :title => "Ex: Nickname", :value => session["devise.facebook_data"] ? session["devise.facebook_data"]['user_info']['nickname'] : '' %>
 </li>
 
 <li>
@@ -25,7 +25,7 @@
 
 <li>
   <%= f.label :email, %Q{ Email <span class="help-text">(Note: Email will not be publicly displayed.)</span> }.html_safe %>
-  <%= f.text_field :email, :title => "Ex: email@address.com" %>
+  <%= f.text_field :email, :title => "Ex: email@address.com", :value => session["devise.facebook_data"] ? session["devise.facebook_data"]['user_info']['email'] : '' %>
 </li>
 
 <li>

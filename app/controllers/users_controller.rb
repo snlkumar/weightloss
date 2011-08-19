@@ -25,19 +25,21 @@ class UsersController < ApplicationController
       redirect_to(root_path)
   end
   
-  def create
-    @user = User.new(params[:user])
-    if @user.save
-      @user.update_attribute(:status, 'step_two')
-      redirect_to :action => :step_two
-    else
-      render :action => :new
-    end
-  end
+  # def create
+  #     @user = User.new(params[:user])
+  #     debugger
+  #     if @user.save
+  #       @user.update_attribute(:status, 'step_two')
+  #       redirect_to :action => :step_two
+  #     else
+  #       render :action => :new
+  #     end
+  #   end
   
   def step_two
     @slider_height = 60
     @slider_weight = 150
+    render :layout => 'signup'
   end
   
   def finalize
@@ -48,7 +50,7 @@ class UsersController < ApplicationController
     else
       @slider_height = current_user.height || 60
       @slider_weight = current_user.weight || 150
-      render :action => :step_two
+      render :action => :step_two, :layout => 'signup'
     end
   end
   
