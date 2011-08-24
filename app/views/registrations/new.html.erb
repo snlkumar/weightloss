@@ -32,3 +32,14 @@
   <div style="clear:both">&nbsp;</div>
 </div>
 
+<% content_for :sidebar do %>
+  <div class="signup-sidebar-header">Connect using Facebook.</div>
+  
+  <p>
+    <%- if devise_mapping.omniauthable? %>
+      <%- resource_class.omniauth_providers.each do |provider| %>
+        <%= link_to "Sign up using #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
+      <% end -%>
+    <% end -%>
+  </p>
+<% end %>

@@ -246,7 +246,8 @@ ul.signup-progressbar   { font-size: 1.5em; padding: 35px 60px; }
 #signup-content         { padding-top: 20px; }
   
 #signup-sidebar         { padding: 65px 0px 0px 20px; }
-.signup-sidebar-header  { color: #366F96; font-size: 23px; margin-bottom: 19px }
+#signup-sidebar p       { margin-bottom: 20px; }
+.signup-sidebar-header  { color: #366F96; font-size: 23px; margin-bottom: 20px }
 .signup-form-header     { background-color: #91D1E8; }
 .personal-info-desc     { font-size: 14px; margin-top: 21px; }
 
