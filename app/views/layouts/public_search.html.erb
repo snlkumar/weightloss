@@ -1,0 +1,81 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js" lang="en"> <!--<![endif]-->
+  <head>
+    <%= render :partial => '/layouts/head' %>
+  </head>
+  <body>
+    <div id="wrap" class="full">
+      <div id="main" class="full">
+        <%= render :partial => '/layouts/header' %>
+    
+        <div class="container_16">
+          <div class="grid_5 ">
+            <div class="sidebar-container">
+              <% if user_signed_in? %>
+                <p id="user-name" class="grid_5"><%= current_user.full_name %></p>
+          
+                <div class="clear">&nbsp;</div>
+          
+                <div class="small-avatar avatar"><%= user_avatar_image(current_user, :tracking) %></div>
+          
+                <%= link_to 'Edit Profile', user_edit_personal_info_path(current_user), :id => 'edit-profile', :class => 'outlined-fade wide' %>
+          
+                <% if current_user.city.present? || current_user.state.present? %>
+                  <p id="location" class="right-side"><%= [current_user.city, current_user.state].compact.join(', ') %></p>
+                <% end %>
+                <div class="clear">&nbsp;</div>
+          
+                <br/>
+              <% end %>
+            </div>
+        
+            <div class="clear">&nbsp;</div>
+            <br/>
+            
+            <%= render :partial => 'shared/categories', :locals => {:@categories => @categories} %>
+          </div>
+      
+          <%= yield :sidebar %>
+          
+          <% if user_signed_in? %>
+            <div id="nav-bar">
+              <%= render :partial => 'shared/nav_bar' %>
+            </div>
+          <% end %>
+      
+          <div id="content" class="grid_11 profile">
+            <%= render :partial => '/shared/flash', :locals => {:flash => flash} %>
+        
+            <%= yield %>
+          </div>
+      
+          <br/>
+      
+        </div>
+      </div>
+    </div>
+    
+    <%= render :partial => 'layouts/footer' %>
+    
+    <%= render :partial => "layouts/js_libs" %>
+    
+    <%= javascript_include_tag 'search' %>
+    
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">
+      stLight.options({publisher:'6b97e80a-7bcf-4bfa-a0d8-2992f8b043a5'});
+    </script>
+    
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function() {
+        <%= yield :js %>
+      });
+    </script>
+  </body>
+</html>

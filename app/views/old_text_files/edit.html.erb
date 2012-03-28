@@ -60,7 +60,7 @@
           </p>
           <p>
             <%= label_tag 'Category' %><br />
-            <%= aac_select(Category.roots, {:selected => @text_file.category_id, :name => 'old_text_file[category_id]', 
+            <%= raw aac_select(Category.roots, {:selected => @text_file.category_id, :name => 'old_text_file[category_id]', 
                                             :parents_nil => true, :option_nil => '--'}) %>
           </p>
           <p>
@@ -72,8 +72,8 @@
       <tr>
         <td>
           <p>
-            <%= f.label :teaser %><br />
-            <%= f.text_area :teaser %>
+            <!-- <%= f.label :teaser %><br />
+                        <%= f.text_area :teaser %> -->
           </p>
         </td>
         <td>

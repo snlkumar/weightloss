@@ -1,4 +1,3 @@
-
 <h3>Hey <%= current_user.first_name %>, what did you eat?</h3>
 
 <%= form_tag "/meals/meal_item", :id => 'meal-new-item' do %>
@@ -21,7 +20,7 @@
             <div id="add-meal-item" class="button" style="width: 162px;">Add This To The Meal</div>
             
           </td>
-          <td><%#= select_tag :unit, options_for_select(Meal::UNITS), :id => 'unit-entry' %></td>
+          <td> </td>
         </tr>
       </tbody>
     </table>
@@ -32,11 +31,12 @@
       <tbody id="meal-items" style="<%= @meal.new_record? ? 'display:none;' : '' %>">
         <tr>
           <td class="bold">Food</td>
-          <td class="bold">KCals</td>
+          <td class="bold" style="padding-right: 10px;">KCals</td>
           <td class="bold"># of Servings</td>
           <td class="bold">Serving Size</td>
         </tr>
         <% meal_form.fields_for :meal_items do |meal_item_form| %>
+        test
           <%= render :partial => 'meal_items/meal_item_fields', :locals => { :meal_item_form => meal_item_form } %>
         <% end %>
       </tbody>
@@ -48,12 +48,12 @@
   <div class="grid_11">
     <br/>
     
-    <div id="calendar-box-wrapper" class="grid_3 alpha">
+    <div id="calendar-box-wrapper" class="alpha">
       <%= text_field_tag "meal[ate_on_date][date]", ate_on_start_date(meal_form.object), :id => "calendar-box" %>
     </div>
     
     <div id="selected-date-help">
-      <span class="bold">Was the date of the meal today?</span> Feel free to edit the date of this meal.
+      <span class="bold">Was the date of the meal?</span> Feel free to edit the date of this meal.
     </div>
     
     <div class="clear"></div>

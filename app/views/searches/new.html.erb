@@ -4,7 +4,7 @@
   <p>
     <%= label_tag 'Search' %><br/>
     <%= text_field_tag 'search[keywords]', (params[:search] ? params[:search][:keywords] : ''), :id => 'search-keywords', :class => 'grid_8 alpha', :title => "Search our wellness library" %>
-    <button id="search" class="button grid_3" type="submit" style="margin: 11px 0px 0px 8px; height:37px; font-size: 13pt;">
+    <button id="search" class="button grid_3" type="submit" style="margin: 11px 0px 0px 0px; height:37px; font-size: 13pt; width: 104px">
       <%= image_tag 'search.png' %>
       Search
     </button>
@@ -16,7 +16,7 @@
     
     <div id="results-summary">
       <span id="count"><%= @total %> results</span>
-      <% if params[:search][:keywords].present? %>
+      <% if params[:search] && params[:search][:keywords].present? %>
         for "<%= params[:search][:keywords] %>"
       <% end %>
       
@@ -37,9 +37,13 @@
   <% if @results.empty? %>
     <p>No results were found for your keywords.</p>
   <% else %>
+    <%= paginate @results %>
+    
     <ul id='search-results'>
       <%= render :partial => 'result', :collection => @results %>
     </ul>
+    
+    <%= paginate @results %>
   <% end %>
 <% end %>
 

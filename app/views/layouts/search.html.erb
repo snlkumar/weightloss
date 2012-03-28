@@ -9,74 +9,70 @@
     <%= render :partial => '/layouts/head' %>
   </head>
   <body>
-    <%= render :partial => '/layouts/header' %>
+    <div id="wrap" class="full">
+      <div id="main" class="full">
+        <%= render :partial => '/layouts/header' %>
     
-    <div class="container_16">
-      <div class="grid_5 ">
-        <div class="sidebar-container">
-          <p id="user-name" class="grid_5"><%= current_user.full_name %></p>
+        <div class="container_16">
+          <div class="grid_5 ">
+            <div class="sidebar-container">
+              <p id="user-name" class="grid_5"><%= current_user.full_name %></p>
           
-          <div class="clear">&nbsp;</div>
+              <div class="clear">&nbsp;</div>
           
-          <% if current_user.avatar.file? %>
-            <div class="small-avatar avatar"><%= image_tag(current_user.avatar.url(:tracking)) %></div>
-          <% else %>
-            <div class="small-avatar"></div>
+              <div class="small-avatar avatar"><%= user_avatar_image(current_user, :tracking) %></div>
+          
+              <%= link_to 'Edit Profile', user_edit_personal_info_path(current_user), :id => 'edit-profile', :class => 'outlined-fade wide' %>
+          
+              <% if current_user.city.present? || current_user.state.present? %>
+                <p id="location" class="right-side"><%= [current_user.city, current_user.state].compact.join(', ') %></p>
+              <% end %>
+              <div class="clear">&nbsp;</div>
+          
+              <br/>
+            </div>
+        
+            <div class="clear">&nbsp;</div>
+            <br/>
+        
+            <%= render :partial => 'shared/categories', :locals => {:@categories => @categories} %>
+          </div>
+      
+          <%= yield :sidebar %>
+          
+          <% if user_signed_in? %>
+            <div id="add-meal" class="button">
+              <%= link_to "+ Add Meal", new_meal_path, :title => 'Add a Meal' %>
+            </div>
+            
+            <div id="add-activity" class="button">
+              <%= link_to "+ Add Activity", new_workout_path, :title => 'Add a Workout' %>
+            </div>
           <% end %>
           
-          <%= link_to 'Edit Profile', user_edit_personal_info_path(current_user), :id => 'edit-profile', :class => 'outlined-fade wide' %>
+          </br>
           
-          <% if current_user.city.present? || current_user.state.present? %>
-            <p id="location" class="right-side"><%= [current_user.city, current_user.state].compact.join(', ') %></p>
-          <% end %>
-          <div class="clear">&nbsp;</div>
-          
+          <div id="nav-bar">
+            <%= render :partial => 'shared/nav_bar' %>
+          </div>
+      
+          <div id="content" class="grid_11 profile">
+            <%= render :partial => '/shared/flash', :locals => {:flash => flash} %>
+        
+            <%= yield %>
+          </div>
+      
           <br/>
-        </div>
-        
-        <div class="clear">&nbsp;</div>
-        <br/>
-        
-        <!-- Categories  -->
-        <div id="search-categories-sidebar" class="sidebar-container subsection" >
-          <h4 class="sidebar-subheader">Categories</h4>
-          
-          <p>We have an extensive library to help you with many facets of fitness and wellness - peruse by category</p>
-          
-          <ul id="search-categories">
-            <%= render :partial => '/searches/category', :collection => @categories %>
-          </ul>
-          
-          <div class="clear">&nbsp;</div>
+      
         </div>
       </div>
-      
-      <%= yield :sidebar %>
-      
-      <div id="nav-bar">
-        <%= render :partial => 'shared/nav_bar' %>
-      </div>
-      
-      <div id="content" class="grid_11 profile">
-        <%= render :partial => '/shared/flash', :locals => {:flash => flash} %>
-        
-        <%= yield %>
-      </div>
-      
-      <br/>
-      
     </div>
     
-    <div class="full">
-      <div id="footer" class="container_16">
-        
-        <div style="clear:both">&nbsp;</div>
-      </div>
-    </div>
+    <%= render :partial => 'layouts/footer' %>
     
     <%= render :partial => "layouts/js_libs" %>
     
-    <%= javascript_include_tag 'flowplayer-3.2.6.min.js', "highcharts", 'jquery.selectBox', 'mustache.js' %>
+    <%= javascript_include_tag 'search' %>
     
     <script type="text/javascript">var switchTo5x=true;</script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>

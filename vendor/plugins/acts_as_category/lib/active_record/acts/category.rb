@@ -58,7 +58,7 @@ module ActiveRecord
 
           # Substantial validations
           before_validation           :validate_foreign_key
-          before_validation_on_create :assign_position
+          before_validation(:on => :create){ :assign_position }
           validates_numericality_of   options[:foreign_key], :only_integer => true, :greater_than => 0, :allow_nil => true, :message => I18n.t('acts_as_category.error.no_descendants')
 
           # Callbacks for automatic refresh of ancestors_count & descendants_count cache columns
@@ -208,12 +208,12 @@ module ActiveRecord
           END
           
           # Scope out via given scope conditions for the instance
-          named_scope :manual_scope, lambda { |sender| { :conditions => sender.scope_condition, :order => order_by } }
+          scope :manual_scope, lambda { |sender| { :conditions => sender.scope_condition, :order => order_by } }
           
           # Scope for permitted categories
           # Does *NOT* respect inherited permissions! 
           # This is intended to be used with roots only
-          named_scope :permitted, lambda {
+          scope :permitted, lambda {
             if permissions.empty?
               { :conditions => ["#{hidden_column} IS NULL OR #{hidden_column} = ? ",false], :order => order_by }
             else
@@ -222,7 +222,7 @@ module ActiveRecord
           }
 
           # Returns all root +categories+, disregarding permissions
-          named_scope :roots!, lambda { { :conditions => { parent_id_column => nil }, :order => order_by } }
+          scope :roots!, lambda { { :conditions => { parent_id_column => nil }, :order => order_by } }
 
           # Returns all root +categories+, respecting permitted/hidden ones
           def self.roots

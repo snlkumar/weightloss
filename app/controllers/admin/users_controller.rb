@@ -4,7 +4,7 @@ class Admin::UsersController < Admin::BaseController
   layout 'application'
   
   def index
-    @users = User.paginate :per_page => 50, :page => params[:page] || 1
+    @users = User.page(params[:page] || 1).per(50)
   end
   
   def new

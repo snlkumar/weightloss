@@ -85,7 +85,7 @@ window.tinyMCE_GZ = { loaded : true };"
 
   def self.add_content path, required, mark_done = false
     url_path = File.join(Tinymce::Hammer.install_path, path)
-    disk_path = File.join(Rails.root, 'public', Tinymce::Hammer.install_path, path)
+    disk_path = File.join(Rails.root, 'app/assets', Tinymce::Hammer.install_path, path)
     if required or File.exists?(disk_path)
       @content += File.read(disk_path)
       if mark_done

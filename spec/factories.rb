@@ -16,6 +16,6 @@ FactoryGirl.define do
     status      'step_one'
     password    'password'
     password_confirmation 'password'
-    avatar      File.open(File.join(::Rails.root.to_s, 'public/images', 'RidingInColorado.jpg'))
+    avatar      File.open(File.join(::Rails.root.to_s, 'app/assets/images', 'RidingInColorado.jpg'))
   end
 end

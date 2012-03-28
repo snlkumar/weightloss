@@ -1,0 +1,819 @@
+Migrating to CreateOldDepartments (20101108064057)
+Migrating to CreateOldItems (20101108064828)
+Migrating to CreateOldTextFiles (20101108071038)
+Migrating to CreateOldTipOfDays (20101108071211)
+Migrating to CreateOldSuccessStories (20101108071312)
+Migrating to CreateOldFlashFiles (20101108071819)
+Migrating to AddFileFields (20101113232421)
+Migrating to AddFileFieldsToOldTextFiles (20101113235008)
+Migrating to ActsAsTaggableMigration (20101114024551)
+Migrating to CreateCategories (20101114025346)
+Migrating to AddCategoryIdToOldContent (20101114034000)
+Migrating to RemoveHeadlineFromOldTextFiles (20101118053730)
+Migrating to CreateSubcategories (20101118060224)
+Migrating to AddBookTitleToOldTextFiles (20101124081229)
+Migrating to AddUrlToTextFiles (20101213065612)
+Migrating to CreateUsers (20101215063053)
+Migrating to AddDefaultUsers (20110112074344)
+Migrating to CreateOldDepartments (20101108064057)
+Migrating to CreateOldItems (20101108064828)
+Migrating to CreateOldTextFiles (20101108071038)
+Migrating to CreateOldTipOfDays (20101108071211)
+Migrating to CreateOldSuccessStories (20101108071312)
+Migrating to CreateOldFlashFiles (20101108071819)
+Migrating to AddFileFields (20101113232421)
+Migrating to AddFileFieldsToOldTextFiles (20101113235008)
+Migrating to ActsAsTaggableMigration (20101114024551)
+Migrating to CreateCategories (20101114025346)
+Migrating to AddCategoryIdToOldContent (20101114034000)
+Migrating to RemoveHeadlineFromOldTextFiles (20101118053730)
+Migrating to CreateSubcategories (20101118060224)
+Migrating to AddBookTitleToOldTextFiles (20101124081229)
+Migrating to AddUrlToTextFiles (20101213065612)
+Migrating to CreateUsers (20101215063053)
+Migrating to AddDefaultUsers (20110112074344)
+Migrating to AddPersonalInfoFieldsToUser (20110112080616)
+Migrating to CreateFoods (20110120225834)
+Migrating to CreateOldDepartments (20101108064057)
+Migrating to CreateOldItems (20101108064828)
+Migrating to CreateOldTextFiles (20101108071038)
+Migrating to CreateOldTipOfDays (20101108071211)
+Migrating to CreateOldSuccessStories (20101108071312)
+Migrating to CreateOldFlashFiles (20101108071819)
+Migrating to AddFileFields (20101113232421)
+Migrating to AddFileFieldsToOldTextFiles (20101113235008)
+Migrating to ActsAsTaggableMigration (20101114024551)
+Migrating to CreateCategories (20101114025346)
+Migrating to AddCategoryIdToOldContent (20101114034000)
+Migrating to RemoveHeadlineFromOldTextFiles (20101118053730)
+Migrating to CreateSubcategories (20101118060224)
+Migrating to AddBookTitleToOldTextFiles (20101124081229)
+Migrating to AddUrlToTextFiles (20101213065612)
+Migrating to CreateUsers (20101215063053)
+Migrating to AddDefaultUsers (20110112074344)
+Migrating to AddPersonalInfoFieldsToUser (20110112080616)
+Migrating to CreateFoods (20110120225834)
+Migrating to CreateOldDepartments (20101108064057)
+Migrating to CreateOldItems (20101108064828)
+Migrating to CreateOldTextFiles (20101108071038)
+Migrating to CreateOldTipOfDays (20101108071211)
+Migrating to CreateOldSuccessStories (20101108071312)
+Migrating to CreateOldFlashFiles (20101108071819)
+Migrating to AddFileFields (20101113232421)
+Migrating to AddFileFieldsToOldTextFiles (20101113235008)
+Migrating to ActsAsTaggableMigration (20101114024551)
+Migrating to CreateCategories (20101114025346)
+Migrating to AddCategoryIdToOldContent (20101114034000)
+Migrating to RemoveHeadlineFromOldTextFiles (20101118053730)
+Migrating to CreateSubcategories (20101118060224)
+Migrating to AddBookTitleToOldTextFiles (20101124081229)
+Migrating to AddUrlToTextFiles (20101213065612)
+Migrating to CreateUsers (20101215063053)
+Migrating to AddDefaultUsers (20110112074344)
+Migrating to AddPersonalInfoFieldsToUser (20110112080616)
+Migrating to CreateFoods (20110120225834)
+Migrating to CreateOldDepartments (20101108064057)
+Migrating to CreateOldItems (20101108064828)
+Migrating to CreateOldTextFiles (20101108071038)
+Migrating to CreateOldTipOfDays (20101108071211)
+Migrating to CreateOldSuccessStories (20101108071312)
+Migrating to CreateOldFlashFiles (20101108071819)
+Migrating to AddFileFields (20101113232421)
+Migrating to AddFileFieldsToOldTextFiles (20101113235008)
+Migrating to ActsAsTaggableMigration (20101114024551)
+Migrating to CreateCategories (20101114025346)
+Migrating to AddCategoryIdToOldContent (20101114034000)
+Migrating to RemoveHeadlineFromOldTextFiles (20101118053730)
+Migrating to CreateSubcategories (20101118060224)
+Migrating to AddBookTitleToOldTextFiles (20101124081229)
+Migrating to AddUrlToTextFiles (20101213065612)
+Migrating to CreateUsers (20101215063053)
+Migrating to AddDefaultUsers (20110112074344)
+Migrating to AddPersonalInfoFieldsToUser (20110112080616)
+Migrating to CreateFoods (20110120225834)
+Migrating to CreateOldDepartments (20101108064057)
+Migrating to CreateOldItems (20101108064828)
+Migrating to CreateOldTextFiles (20101108071038)
+Migrating to CreateOldTipOfDays (20101108071211)
+Migrating to CreateOldSuccessStories (20101108071312)
+Migrating to CreateOldFlashFiles (20101108071819)
+Migrating to AddFileFields (20101113232421)
+Migrating to AddFileFieldsToOldTextFiles (20101113235008)
+Migrating to ActsAsTaggableMigration (20101114024551)
+Migrating to CreateCategories (20101114025346)
+Migrating to AddCategoryIdToOldContent (20101114034000)
+Migrating to RemoveHeadlineFromOldTextFiles (20101118053730)
+Migrating to CreateSubcategories (20101118060224)
+Migrating to AddBookTitleToOldTextFiles (20101124081229)
+Migrating to AddUrlToTextFiles (20101213065612)
+Migrating to CreateUsers (20101215063053)
+Migrating to AddDefaultUsers (20110112074344)
+Migrating to AddPersonalInfoFieldsToUser (20110112080616)
+Migrating to CreateFoods (20110120225834)
+Migrating to CreateMeals (20110203195008)
+Migrating to CreateMealItems (20110203195151)
+Migrating to AddMealTypeAndTimeToMeals (20110310193705)
+Migrating to AddCaloriesToMealItems (20110318190534)
+Migrating to ChangeQuantityToServingsOnMealItems (20110318193647)
+Migrating to CreateWorkouts (20110401005320)
+Migrating to CreateWorkoutItems (20110401005538)
+Migrating to CreateExercises (20110401005701)
+Migrating to AddUserIdToWorkoutItems (20110407220011)
+Migrating to AddAdminToUsers (20110415010110)
+Migrating to AddNameToFoods (20110415214457)
+Migrating to AddActivityLevelToUsers (20110421232717)
+Migrating to AddBmrRmrToUsers (20110421233824)
+Migrating to AddDesiredWeightToUsers (20110422003039)
+Migrating to CreatePosts (20110505173016)
+Migrating to AddHomepageFlagToPosts (20110505205727)
+Migrating to AddCityStateToUser (20110511162307)
+Migrating to AddTwitterNameToUser (20110511183112)
+Migrating to AddPrivateToUsers (20110601194754)
+Migrating to AddPermalinkToUser (20110601210007)
+Migrating to CreateWeights (20110602181518)
+Migrating to AddCustomFoodFlagToFoods (20110604002025)
+Migrating to AddTotalFatToFoods (20110614175233)
+Migrating to AddMoreFieldsToCustomFoods (20110616192942)
+Migrating to CreateComments (20110809224258)
+Migrating to CreateSlugs (20110809234435)
+Migrating to AddCachedSlugToUsers (20110809234516)
+Migrating to AddKindToPosts (20110810225341)
+Migrating to MigrateUsersToDevise (20110812223034)
+Migrating to MoreDeviseFieldsToUser (20110812231707)
+Migrating to AddLastSignInIpToUsers (20110815200313)
+Migrating to AddFacebookFieldsToUsers (20110819092323)
+Migrating to RemovePasswordSaltFromUsers (20110819212140)
+Migrating to CreateForemForums (20110901200945)
+Migrating to CreateForemTopics (20110901200946)
+Migrating to CreateForemPosts (20110901200947)
+Migrating to AddReplyToToForemPosts (20110901200948)
+Migrating to AddLockedToForemTopics (20110901200949)
+Migrating to AddPinnedToForemTopics (20110901200950)
+Migrating to AddForemViews (20110901200951)
+Migrating to AddUpdatedAtAndCountToForemViews (20110901200952)
+Migrating to AddHiddenToForemTopics (20110901200953)
+Migrating to AddForemAdminToUsers (20110901201237)
+
+
+Started GET "/" for 127.0.0.1 at Thu Sep 08 19:25:55 -0700 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/homepage (3.9ms)
+Rendered layouts/_head.html.erb (1.2ms)
+Rendered shared/_session_menu_bar.html.erb (36.4ms)
+Rendered home/_large_orange_button.html.erb (0.8ms)
+Rendered home/_large_orange_button.html.erb (0.7ms)
+Rendered users/_recent_member.html.erb (0.0ms)
+Rendered home/_large_orange_button.html.erb (0.9ms)
+Rendered shared/_gridder.html.erb (0.5ms)
+Completed 200 OK in 257ms (Views: 211.5ms | ActiveRecord: 44.3ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at Thu Sep 08 19:25:55 -0700 2011
+Compiled application.css  (32ms)  (pid 53418)
+Compiled 960.css  (1ms)  (pid 53418)
+Compiled ui-lightness/jquery-ui-1.8.9.custom.css  (1ms)  (pid 53418)
+Compiled jquery.selectBox.css  (0ms)  (pid 53418)
+Served asset /application.css - 200 OK (305ms)
+
+
+Started GET "/assets/modernizr-1.7.min.js" for 127.0.0.1 at Thu Sep 08 19:25:56 -0700 2011
+Compiled modernizr-1.7.min.js  (1ms)  (pid 53418)
+Served asset /modernizr-1.7.min.js - 200 OK (57ms)
+
+
+Started GET "/assets/respond.min.js" for 127.0.0.1 at Thu Sep 08 19:25:56 -0700 2011
+Compiled respond.min.js  (0ms)  (pid 53418)
+Served asset /respond.min.js - 200 OK (5ms)
+
+
+Started GET "/assets/screenshot.png" for 127.0.0.1 at Thu Sep 08 19:25:56 -0700 2011
+Served asset /screenshot.png - 200 OK (161ms)
+
+
+Started GET "/assets/arrow.png" for 127.0.0.1 at Thu Sep 08 19:25:56 -0700 2011
+Served asset /arrow.png - 200 OK (2ms)
+
+
+Started GET "/assets/log-in-bar.png" for 127.0.0.1 at Thu Sep 08 19:25:57 -0700 2011
+Served asset /log-in-bar.png - 200 OK (28ms)
+
+
+Started GET "/assets/nav-bar.png" for 127.0.0.1 at Thu Sep 08 19:25:57 -0700 2011
+Served asset /nav-bar.png - 200 OK (2ms)
+
+
+Started GET "/assets/gradient-header.png" for 127.0.0.1 at Thu Sep 08 19:25:57 -0700 2011
+Served asset /gradient-header.png - 200 OK (62ms)
+
+
+Started GET "/assets/button-big-orange.png" for 127.0.0.1 at Thu Sep 08 19:25:57 -0700 2011
+Served asset /button-big-orange.png - 200 OK (2ms)
+
+
+Started GET "/assets/gradient-footer.png" for 127.0.0.1 at Thu Sep 08 19:25:57 -0700 2011
+Served asset /gradient-footer.png - 200 OK (2ms)
+
+
+Started GET "/assets/gradient-copyright.png" for 127.0.0.1 at Thu Sep 08 19:25:57 -0700 2011
+Served asset /gradient-copyright.png - 200 OK (2ms)
+Compiled 960.gridder.js  (0ms)  (pid 53444)
+Compiled flowplayer-3.2.6.min.js  (1ms)  (pid 53444)
+Compiled jquery-ui.min.js  (4ms)  (pid 53444)
+Compiled jquery.format.js  (1ms)  (pid 53444)
+Compiled jquery.jeditable.js  (1ms)  (pid 53444)
+Compiled jquery.labelify.js  (0ms)  (pid 53444)
+Compiled jquery.min.js  (1ms)  (pid 53444)
+Compiled jquery.mustache.js  (0ms)  (pid 53444)
+Compiled jquery.selectBox.js  (1ms)  (pid 53444)
+Compiled jquery.tablesorter.js  (2ms)  (pid 53444)
+Compiled application.js  (315ms)  (pid 53444)
+Compiled jquery.js  (6ms)  (pid 53444)
+Compiled jquery_ujs.js  (1ms)  (pid 53444)
+Compiled highchart-themes/dark-blue.js  (0ms)  (pid 53444)
+Compiled highchart-themes/dark-green.js  (0ms)  (pid 53444)
+Compiled highchart-themes/gray.js  (0ms)  (pid 53444)
+Compiled highchart-themes/grid.js  (0ms)  (pid 53444)
+Compiled highcharts.js  (1ms)  (pid 53444)
+Compiled jquery-ui.js  (9ms)  (pid 53444)
+Compiled mustache.js  (0ms)  (pid 53444)
+Compiled respond.js  (0ms)  (pid 53444)
+Compiled tiny_mce/langs/en.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/advhr/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/advhr/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/advhr/js/rule.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/advhr/langs/en_dlg.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/advimage/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/advimage/editor_plugin_src.js  (128ms)  (pid 53444)
+Compiled tiny_mce/plugins/advimage/js/image.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/advimage/langs/en_dlg.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/advlink/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/advlink/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/advlink/js/advlink.js  (1ms)  (pid 53444)
+Compiled tiny_mce/plugins/advlink/langs/en_dlg.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/advlist/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/advlist/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/autoresize/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/autoresize/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/autosave/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/autosave/editor_plugin_src.js  (1ms)  (pid 53444)
+Compiled tiny_mce/plugins/autosave/langs/en.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/bbcode/editor_plugin.js  (2ms)  (pid 53444)
+Compiled tiny_mce/plugins/bbcode/editor_plugin_src.js  (1ms)  (pid 53444)
+Compiled tiny_mce/plugins/contextmenu/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/contextmenu/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/directionality/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/directionality/editor_plugin_src.js  (7ms)  (pid 53444)
+Compiled tiny_mce/plugins/emotions/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/emotions/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/emotions/js/emotions.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/emotions/langs/en_dlg.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/example/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/example/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/example/js/dialog.js  (1ms)  (pid 53444)
+Compiled tiny_mce/plugins/example/langs/en.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/example/langs/en_dlg.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/fullpage/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/fullpage/editor_plugin_src.js  (1ms)  (pid 53444)
+Compiled tiny_mce/plugins/fullpage/js/fullpage.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/fullpage/langs/en_dlg.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/fullscreen/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/fullscreen/editor_plugin_src.js  (127ms)  (pid 53444)
+Compiled tiny_mce/plugins/iespell/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/iespell/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/inlinepopups/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/inlinepopups/editor_plugin_src.js  (1ms)  (pid 53444)
+Compiled tiny_mce/plugins/insertdatetime/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/insertdatetime/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/layer/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/layer/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/legacyoutput/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/legacyoutput/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/media/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/media/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/media/js/embed.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/media/js/media.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/media/langs/en_dlg.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/nonbreaking/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/nonbreaking/editor_plugin_src.js  (1ms)  (pid 53444)
+Compiled tiny_mce/plugins/noneditable/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/noneditable/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/pagebreak/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/pagebreak/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/paste/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/paste/editor_plugin_src.js  (1ms)  (pid 53444)
+Compiled tiny_mce/plugins/paste/js/pastetext.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/paste/js/pasteword.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/paste/langs/en_dlg.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/preview/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/preview/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/preview/jscripts/embed.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/print/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/print/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/save/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/save/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/searchreplace/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/searchreplace/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/searchreplace/js/searchreplace.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/searchreplace/langs/en_dlg.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/spellchecker/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/spellchecker/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/style/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/style/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/style/js/props.js  (1ms)  (pid 53444)
+Compiled tiny_mce/plugins/style/langs/en_dlg.js  (2ms)  (pid 53444)
+Compiled tiny_mce/plugins/tabfocus/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/tabfocus/editor_plugin_src.js  (1ms)  (pid 53444)
+Compiled tiny_mce/plugins/table/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/table/editor_plugin_src.js  (1ms)  (pid 53444)
+Compiled tiny_mce/plugins/table/js/cell.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/table/js/merge_cells.js  (1ms)  (pid 53444)
+Compiled tiny_mce/plugins/table/js/row.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/table/js/table.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/table/langs/en_dlg.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/template/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/template/editor_plugin_src.js  (1ms)  (pid 53444)
+Compiled tiny_mce/plugins/template/js/template.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/template/langs/en_dlg.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/visualchars/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/visualchars/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/wordcount/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/wordcount/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/xhtmlxtras/editor_plugin.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/xhtmlxtras/editor_plugin_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/xhtmlxtras/js/abbr.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/xhtmlxtras/js/acronym.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/xhtmlxtras/js/attributes.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/xhtmlxtras/js/cite.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/xhtmlxtras/js/del.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/xhtmlxtras/js/element_common.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/xhtmlxtras/js/ins.js  (0ms)  (pid 53444)
+Compiled tiny_mce/plugins/xhtmlxtras/langs/en_dlg.js  (0ms)  (pid 53444)
+Compiled tiny_mce/themes/advanced/editor_template.js  (0ms)  (pid 53444)
+Compiled tiny_mce/themes/advanced/editor_template_src.js  (1ms)  (pid 53444)
+Compiled tiny_mce/themes/advanced/js/about.js  (0ms)  (pid 53444)
+Compiled tiny_mce/themes/advanced/js/anchor.js  (0ms)  (pid 53444)
+Compiled tiny_mce/themes/advanced/js/charmap.js  (0ms)  (pid 53444)
+Compiled tiny_mce/themes/advanced/js/color_picker.js  (0ms)  (pid 53444)
+Compiled tiny_mce/themes/advanced/js/image.js  (0ms)  (pid 53444)
+Compiled tiny_mce/themes/advanced/js/link.js  (0ms)  (pid 53444)
+Compiled tiny_mce/themes/advanced/js/source_editor.js  (0ms)  (pid 53444)
+Compiled tiny_mce/themes/advanced/langs/en.js  (0ms)  (pid 53444)
+Compiled tiny_mce/themes/advanced/langs/en_dlg.js  (0ms)  (pid 53444)
+Compiled tiny_mce/themes/simple/editor_template.js  (0ms)  (pid 53444)
+Compiled tiny_mce/themes/simple/editor_template_src.js  (0ms)  (pid 53444)
+Compiled tiny_mce/themes/simple/langs/en.js  (0ms)  (pid 53444)
+Compiled tiny_mce/tiny_mce.js  (3ms)  (pid 53444)
+Compiled tiny_mce/tiny_mce_popup.js  (0ms)  (pid 53444)
+Compiled tiny_mce/tiny_mce_src.js  (16ms)  (pid 53444)
+Compiled tiny_mce/utils/editable_selects.js  (0ms)  (pid 53444)
+Compiled tiny_mce/utils/form_utils.js  (0ms)  (pid 53444)
+Compiled tiny_mce/utils/mctabs.js  (0ms)  (pid 53444)
+Compiled tiny_mce/utils/validate.js  (0ms)  (pid 53444)
+Compiled tinymce_hammer.js  (4ms)  (pid 53444)
+Compiled underscore.js  (0ms)  (pid 53444)
+
+
+Started GET "/" for 127.0.0.1 at Thu Sep 08 19:27:44 -0700 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/homepage (4.0ms)
+Rendered layouts/_head.html.erb (1.3ms)
+Rendered shared/_session_menu_bar.html.erb (1.7ms)
+Rendered home/_large_orange_button.html.erb (0.7ms)
+Rendered home/_large_orange_button.html.erb (0.7ms)
+Rendered users/_recent_member.html.erb (0.0ms)
+Rendered home/_large_orange_button.html.erb (0.8ms)
+Rendered shared/_gridder.html.erb (0.8ms)
+Completed 200 OK in 103ms (Views: 101.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at Thu Sep 08 19:27:45 -0700 2011
+Served asset /application.css - 304 Not Modified (84ms)
+
+
+Started GET "/assets/modernizr-1.7.min.js" for 127.0.0.1 at Thu Sep 08 19:27:45 -0700 2011
+Served asset /modernizr-1.7.min.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/respond.min.js" for 127.0.0.1 at Thu Sep 08 19:27:45 -0700 2011
+Served asset /respond.min.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/screenshot.png" for 127.0.0.1 at Thu Sep 08 19:27:45 -0700 2011
+Served asset /screenshot.png - 304 Not Modified (2ms)
+
+
+Started GET "/assets/arrow.png" for 127.0.0.1 at Thu Sep 08 19:27:45 -0700 2011
+Served asset /arrow.png - 304 Not Modified (2ms)
+
+
+Started GET "/assets/screenshot.png" for 127.0.0.1 at Thu Sep 08 19:27:45 -0700 2011
+Served asset /screenshot.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/arrow.png" for 127.0.0.1 at Thu Sep 08 19:27:45 -0700 2011
+Served asset /arrow.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/log-in-bar.png" for 127.0.0.1 at Thu Sep 08 19:27:46 -0700 2011
+Served asset /log-in-bar.png - 304 Not Modified (2ms)
+
+
+Started GET "/assets/nav-bar.png" for 127.0.0.1 at Thu Sep 08 19:27:46 -0700 2011
+Served asset /nav-bar.png - 304 Not Modified (2ms)
+
+
+Started GET "/assets/gradient-header.png" for 127.0.0.1 at Thu Sep 08 19:27:46 -0700 2011
+Served asset /gradient-header.png - 304 Not Modified (2ms)
+
+
+Started GET "/assets/button-big-orange.png" for 127.0.0.1 at Thu Sep 08 19:27:46 -0700 2011
+Served asset /button-big-orange.png - 304 Not Modified (2ms)
+
+
+Started GET "/assets/gradient-footer.png" for 127.0.0.1 at Thu Sep 08 19:27:46 -0700 2011
+Served asset /gradient-footer.png - 304 Not Modified (2ms)
+
+
+Started GET "/assets/gradient-copyright.png" for 127.0.0.1 at Thu Sep 08 19:27:46 -0700 2011
+Served asset /gradient-copyright.png - 304 Not Modified (3ms)
+
+
+Started GET "/assets/screenshot.png" for 127.0.0.1 at Thu Sep 08 19:27:46 -0700 2011
+Served asset /screenshot.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/arrow.png" for 127.0.0.1 at Thu Sep 08 19:27:46 -0700 2011
+Served asset /arrow.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/screenshot.png" for 127.0.0.1 at Thu Sep 08 19:27:46 -0700 2011
+Served asset /screenshot.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/arrow.png" for 127.0.0.1 at Thu Sep 08 19:27:46 -0700 2011
+Served asset /arrow.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/nav-bar.png" for 127.0.0.1 at Thu Sep 08 19:27:46 -0700 2011
+Served asset /nav-bar.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/gradient-header.png" for 127.0.0.1 at Thu Sep 08 19:27:46 -0700 2011
+Served asset /gradient-header.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/gradient-footer.png" for 127.0.0.1 at Thu Sep 08 19:27:46 -0700 2011
+Served asset /gradient-footer.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/button-big-orange.png" for 127.0.0.1 at Thu Sep 08 19:27:46 -0700 2011
+Served asset /button-big-orange.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/button-big-orange.png" for 127.0.0.1 at Thu Sep 08 19:28:32 -0700 2011
+Served asset /button-big-orange.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/button-big-orange.png" for 127.0.0.1 at Thu Sep 08 19:28:34 -0700 2011
+Served asset /button-big-orange.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/assets/button-big-orange.png" for 127.0.0.1 at Thu Sep 08 19:28:37 -0700 2011
+Served asset /assets/button-big-orange.png - 404 Not Found (91ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/assets/button-big-orange.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.2) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.2) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/railtie/configurable.rb:30:in `send'
+  railties (3.1.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  thin (1.2.11) lib/thin/connection.rb:84:in `pre_process'
+  thin (1.2.11) lib/thin/connection.rb:82:in `catch'
+  thin (1.2.11) lib/thin/connection.rb:82:in `pre_process'
+  thin (1.2.11) lib/thin/connection.rb:57:in `process'
+  thin (1.2.11) lib/thin/connection.rb:42:in `receive_data'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run_machine'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run'
+  thin (1.2.11) lib/thin/backends/base.rb:61:in `start'
+  thin (1.2.11) lib/thin/server.rb:159:in `start'
+  thin (1.2.11) lib/thin/controllers/controller.rb:86:in `start'
+  thin (1.2.11) lib/thin/runner.rb:185:in `send'
+  thin (1.2.11) lib/thin/runner.rb:185:in `run_command'
+  thin (1.2.11) lib/thin/runner.rb:151:in `run!'
+  thin (1.2.11) bin/thin:6
+  /Users/cirish/.rvm/gems/ruby-1.8.7-p352@mww/bin/thin:19:in `load'
+  /Users/cirish/.rvm/gems/ruby-1.8.7-p352@mww/bin/thin:19
+
+Rendered /Users/cirish/.rvm/gems/ruby-1.8.7-p352@mww/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/assets/assets/button-big-orange.png" for 127.0.0.1 at Thu Sep 08 19:28:41 -0700 2011
+Served asset /assets/button-big-orange.png - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/assets/button-big-orange.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.2) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.2) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/railtie/configurable.rb:30:in `send'
+  railties (3.1.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  thin (1.2.11) lib/thin/connection.rb:84:in `pre_process'
+  thin (1.2.11) lib/thin/connection.rb:82:in `catch'
+  thin (1.2.11) lib/thin/connection.rb:82:in `pre_process'
+  thin (1.2.11) lib/thin/connection.rb:57:in `process'
+  thin (1.2.11) lib/thin/connection.rb:42:in `receive_data'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run_machine'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run'
+  thin (1.2.11) lib/thin/backends/base.rb:61:in `start'
+  thin (1.2.11) lib/thin/server.rb:159:in `start'
+  thin (1.2.11) lib/thin/controllers/controller.rb:86:in `start'
+  thin (1.2.11) lib/thin/runner.rb:185:in `send'
+  thin (1.2.11) lib/thin/runner.rb:185:in `run_command'
+  thin (1.2.11) lib/thin/runner.rb:151:in `run!'
+  thin (1.2.11) bin/thin:6
+  /Users/cirish/.rvm/gems/ruby-1.8.7-p352@mww/bin/thin:19:in `load'
+  /Users/cirish/.rvm/gems/ruby-1.8.7-p352@mww/bin/thin:19
+
+Rendered /Users/cirish/.rvm/gems/ruby-1.8.7-p352@mww/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/assets/button-big-orange.png" for 127.0.0.1 at Thu Sep 08 19:28:41 -0700 2011
+Served asset /assets/button-big-orange.png - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/assets/button-big-orange.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.2) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.2) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/railtie/configurable.rb:30:in `send'
+  railties (3.1.0) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  thin (1.2.11) lib/thin/connection.rb:84:in `pre_process'
+  thin (1.2.11) lib/thin/connection.rb:82:in `catch'
+  thin (1.2.11) lib/thin/connection.rb:82:in `pre_process'
+  thin (1.2.11) lib/thin/connection.rb:57:in `process'
+  thin (1.2.11) lib/thin/connection.rb:42:in `receive_data'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run_machine'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run'
+  thin (1.2.11) lib/thin/backends/base.rb:61:in `start'
+  thin (1.2.11) lib/thin/server.rb:159:in `start'
+  thin (1.2.11) lib/thin/controllers/controller.rb:86:in `start'
+  thin (1.2.11) lib/thin/runner.rb:185:in `send'
+  thin (1.2.11) lib/thin/runner.rb:185:in `run_command'
+  thin (1.2.11) lib/thin/runner.rb:151:in `run!'
+  thin (1.2.11) bin/thin:6
+  /Users/cirish/.rvm/gems/ruby-1.8.7-p352@mww/bin/thin:19:in `load'
+  /Users/cirish/.rvm/gems/ruby-1.8.7-p352@mww/bin/thin:19
+
+Rendered /Users/cirish/.rvm/gems/ruby-1.8.7-p352@mww/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/assets/button-big-orange.png" for 127.0.0.1 at Thu Sep 08 19:28:46 -0700 2011
+Served asset /button-big-orange.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/button-big-orange.png" for 127.0.0.1 at Thu Sep 08 19:28:47 -0700 2011
+Served asset /button-big-orange.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu Sep 08 19:29:50 -0700 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/homepage (4.9ms)
+Rendered layouts/_head.html.erb (1.4ms)
+Rendered shared/_session_menu_bar.html.erb (1.7ms)
+Rendered home/_large_orange_button.html.erb (0.8ms)
+Rendered home/_large_orange_button.html.erb (0.7ms)
+Rendered users/_recent_member.html.erb (0.0ms)
+Rendered home/_large_orange_button.html.erb (0.8ms)
+Rendered shared/_gridder.html.erb (0.6ms)
+Completed 200 OK in 159ms (Views: 157.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at Thu Sep 08 19:29:51 -0700 2011
+Served asset /application.css - 304 Not Modified (32ms)
+
+
+Started GET "/assets/modernizr-1.7.min.js" for 127.0.0.1 at Thu Sep 08 19:29:51 -0700 2011
+Served asset /modernizr-1.7.min.js - 304 Not Modified (32ms)
+
+
+Started GET "/assets/respond.min.js" for 127.0.0.1 at Thu Sep 08 19:29:51 -0700 2011
+Served asset /respond.min.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/screenshot.png" for 127.0.0.1 at Thu Sep 08 19:29:51 -0700 2011
+Served asset /screenshot.png - 304 Not Modified (2ms)
+
+
+Started GET "/assets/arrow.png" for 127.0.0.1 at Thu Sep 08 19:29:51 -0700 2011
+Served asset /arrow.png - 304 Not Modified (2ms)
+
+
+Started GET "/assets/screenshot.png" for 127.0.0.1 at Thu Sep 08 19:29:51 -0700 2011
+Served asset /screenshot.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/arrow.png" for 127.0.0.1 at Thu Sep 08 19:29:51 -0700 2011
+Served asset /arrow.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/log-in-bar.png" for 127.0.0.1 at Thu Sep 08 19:29:52 -0700 2011
+Served asset /log-in-bar.png - 304 Not Modified (2ms)
+
+
+Started GET "/assets/nav-bar.png" for 127.0.0.1 at Thu Sep 08 19:29:52 -0700 2011
+Served asset /nav-bar.png - 304 Not Modified (3ms)
+
+
+Started GET "/assets/gradient-header.png" for 127.0.0.1 at Thu Sep 08 19:29:52 -0700 2011
+Served asset /gradient-header.png - 304 Not Modified (2ms)
+
+
+Started GET "/assets/button-big-orange.png" for 127.0.0.1 at Thu Sep 08 19:29:52 -0700 2011
+Served asset /button-big-orange.png - 304 Not Modified (128ms)
+
+
+Started GET "/assets/gradient-footer.png" for 127.0.0.1 at Thu Sep 08 19:29:52 -0700 2011
+Served asset /gradient-footer.png - 304 Not Modified (2ms)
+
+
+Started GET "/assets/gradient-copyright.png" for 127.0.0.1 at Thu Sep 08 19:29:52 -0700 2011
+Served asset /gradient-copyright.png - 304 Not Modified (2ms)
+
+
+Started GET "/assets/screenshot.png" for 127.0.0.1 at Thu Sep 08 19:29:52 -0700 2011
+Served asset /screenshot.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/arrow.png" for 127.0.0.1 at Thu Sep 08 19:29:52 -0700 2011
+Served asset /arrow.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/screenshot.png" for 127.0.0.1 at Thu Sep 08 19:29:52 -0700 2011
+Served asset /screenshot.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/arrow.png" for 127.0.0.1 at Thu Sep 08 19:29:52 -0700 2011
+Served asset /arrow.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/nav-bar.png" for 127.0.0.1 at Thu Sep 08 19:29:52 -0700 2011
+Served asset /nav-bar.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/gradient-header.png" for 127.0.0.1 at Thu Sep 08 19:29:52 -0700 2011
+Served asset /gradient-header.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/button-big-orange.png" for 127.0.0.1 at Thu Sep 08 19:29:52 -0700 2011
+Served asset /button-big-orange.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/gradient-footer.png" for 127.0.0.1 at Thu Sep 08 19:29:52 -0700 2011
+Served asset /gradient-footer.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu Sep 08 19:31:34 -0700 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/homepage (4.3ms)
+Rendered layouts/_head.html.erb (1.3ms)
+Rendered shared/_session_menu_bar.html.erb (1.7ms)
+Rendered home/_large_orange_button.html.erb (0.7ms)
+Rendered home/_large_orange_button.html.erb (0.7ms)
+Rendered users/_recent_member.html.erb (0.0ms)
+Rendered home/_large_orange_button.html.erb (0.9ms)
+Rendered shared/_gridder.html.erb (0.5ms)
+Completed 200 OK in 100ms (Views: 98.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at Thu Sep 08 19:31:35 -0700 2011
+Compiled application.css  (30ms)  (pid 53530)
+Compiled 960.css  (0ms)  (pid 53530)
+Compiled ui-lightness/jquery-ui-1.8.9.custom.css  (0ms)  (pid 53530)
+Compiled jquery.selectBox.css  (0ms)  (pid 53530)
+Served asset /application.css - 304 Not Modified (238ms)
+
+
+Started GET "/assets/modernizr-1.7.min.js" for 127.0.0.1 at Thu Sep 08 19:31:35 -0700 2011
+Compiled modernizr-1.7.min.js  (0ms)  (pid 53530)
+Served asset /modernizr-1.7.min.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/respond.min.js" for 127.0.0.1 at Thu Sep 08 19:31:35 -0700 2011
+Compiled respond.min.js  (0ms)  (pid 53530)
+Served asset /respond.min.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/screenshot.png" for 127.0.0.1 at Thu Sep 08 19:31:35 -0700 2011
+Served asset /screenshot.png - 304 Not Modified (5ms)
+
+
+Started GET "/assets/arrow.png" for 127.0.0.1 at Thu Sep 08 19:31:35 -0700 2011
+Served asset /arrow.png - 304 Not Modified (3ms)
+
+
+Started GET "/assets/screenshot.png" for 127.0.0.1 at Thu Sep 08 19:31:35 -0700 2011
+Served asset /screenshot.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/arrow.png" for 127.0.0.1 at Thu Sep 08 19:31:35 -0700 2011
+Served asset /arrow.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/log-in-bar.png" for 127.0.0.1 at Thu Sep 08 19:31:36 -0700 2011
+Served asset /log-in-bar.png - 304 Not Modified (6ms)
+
+
+Started GET "/assets/nav-bar.png" for 127.0.0.1 at Thu Sep 08 19:31:36 -0700 2011
+Served asset /nav-bar.png - 304 Not Modified (3ms)
+
+
+Started GET "/assets/gradient-header.png" for 127.0.0.1 at Thu Sep 08 19:31:36 -0700 2011
+Served asset /gradient-header.png - 304 Not Modified (34ms)
+
+
+Started GET "/assets/button-big-orange.png" for 127.0.0.1 at Thu Sep 08 19:31:36 -0700 2011
+Served asset /button-big-orange.png - 304 Not Modified (3ms)
+
+
+Started GET "/assets/gradient-footer.png" for 127.0.0.1 at Thu Sep 08 19:31:36 -0700 2011
+Served asset /gradient-footer.png - 304 Not Modified (6ms)
+
+
+Started GET "/assets/gradient-copyright.png" for 127.0.0.1 at Thu Sep 08 19:31:36 -0700 2011
+Served asset /gradient-copyright.png - 304 Not Modified (5ms)
+
+
+Started GET "/assets/screenshot.png" for 127.0.0.1 at Thu Sep 08 19:31:36 -0700 2011
+Served asset /screenshot.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/arrow.png" for 127.0.0.1 at Thu Sep 08 19:31:36 -0700 2011
+Served asset /arrow.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/screenshot.png" for 127.0.0.1 at Thu Sep 08 19:31:36 -0700 2011
+Served asset /screenshot.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/arrow.png" for 127.0.0.1 at Thu Sep 08 19:31:36 -0700 2011
+Served asset /arrow.png - 304 Not Modified (0ms)
+[paperclip] Saving attachments.
+[paperclip] saving /Users/cirish/Projects/myweightworld/public/system/users/avatars/1/thumb/RidingInColorado.jpg
+[paperclip] saving /Users/cirish/Projects/myweightworld/public/system/users/avatars/1/small/RidingInColorado.jpg
+[paperclip] saving /Users/cirish/Projects/myweightworld/public/system/users/avatars/1/medium/RidingInColorado.jpg
+[paperclip] saving /Users/cirish/Projects/myweightworld/public/system/users/avatars/1/tracking/RidingInColorado.jpg
+[paperclip] saving /Users/cirish/Projects/myweightworld/public/system/users/avatars/1/profile/RidingInColorado.jpg
+[paperclip] saving /Users/cirish/Projects/myweightworld/public/system/users/avatars/1/original/RidingInColorado.jpg
+[paperclip] saving /Users/cirish/Projects/myweightworld/public/system/users/avatars/1/large/RidingInColorado.jpg
+Compiled 960.gridder.js  (1ms)  (pid 19205)
+Compiled flowplayer-3.2.6.min.js  (0ms)  (pid 19205)
+Compiled jquery.format.js  (1ms)  (pid 19205)
+Compiled jquery.jeditable.js  (1ms)  (pid 19205)
+Compiled jquery.labelify.js  (0ms)  (pid 19205)
+Compiled jquery.mustache.js  (0ms)  (pid 19205)
+Compiled jquery.selectBox.js  (1ms)  (pid 19205)
+Compiled jquery.tablesorter.js  (2ms)  (pid 19205)
+Compiled modernizr-1.7.min.js  (0ms)  (pid 19205)
+Compiled jquery-ui-1.8.9.custom.css  (169ms)  (pid 19205)
+Compiled jquery.selectBox.css  (4ms)  (pid 19205)
+Compiled jquery-ui.min.js  (30ms)  (pid 19205)
+Compiled jquery.min.js  (7ms)  (pid 19205)
+Compiled application.js  (9ms)  (pid 19205)
+Compiled jquery.js  (5ms)  (pid 19205)
+Compiled jquery_ujs.js  (1ms)  (pid 19205)
+Compiled jquery-ui.js  (9ms)  (pid 19205)
+Compiled underscore.js  (0ms)  (pid 19205)
+Compiled highcharts.js  (1ms)  (pid 19205)
+Compiled application.css  (33ms)  (pid 19205)
+Compiled 960.css  (14ms)  (pid 19205)
+Compiled forem/base/style.css  (143ms)  (pid 19205)
+Compiled application.css  (148ms)  (pid 19271)
+Compiled forem/base/style.css  (28ms)  (pid 19271)

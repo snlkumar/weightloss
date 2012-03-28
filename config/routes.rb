@@ -1,11 +1,14 @@
 Myweightworld::Application.routes.draw do
   
-  
   devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "users/omniauth_callbacks" } do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
+    get '/sign_in', :to => 'devise/sessions#new'
   end
   match '/password/edit' => 'user_passwords#edit', :as => :edit_password, :via => :get
   match '/password' => 'user_passwords#update', :as => :password, :via => :put
+  
+  get '/sign_in', :controller => "devise/sessions", :action => "new", :as => "sign_in"
+  mount Forem::Engine, :at => "/forum", :as => 'forum_engine'
   
   namespace :admin do
     resources :exercises do
@@ -22,7 +25,13 @@ Myweightworld::Application.routes.draw do
       end
     end
     
-    resources :users, :posts, :old_text_files
+    resources :users, :old_text_files
+    resources :posts do
+      collection do
+        post :search
+        get :search
+      end
+    end
     resource  :dashboard
   end
   
@@ -37,7 +46,7 @@ Myweightworld::Application.routes.draw do
   
   resource  :metabolic_rates
   resources :old_flash_files, :old_success_stories, :old_tip_of_days, :old_text_files, :old_items, :old_departments
-  resources :categories, :subcategories, :searches, :posts, :videos, :custom_foods
+  resources :categories, :subcategories, :posts, :videos, :custom_foods
   
   resources :meals do
     collection do
@@ -85,9 +94,11 @@ Myweightworld::Application.routes.draw do
   
   post "comments/:class_name/:id",  :to => "comments#create",   :as => 'create_comment'
   match '/searches/new' => 'searches#new', :as => :new_search
-  match '/searches'     => 'searches#create', :via => :get
+  match '/searches'     => 'searches#create', :via => :get, :as => :searches
+  post  '/searches'     => 'searches#create'
   match '/privacy'      => 'home#privacy', :as => :privacy
   match '/terms'        => 'home#terms', :as => :terms
+  match '/about-us'     => 'home#about', :as => :about
   match '/step_two'     => 'users#step_two'
   match '/finalize'     => 'users#finalize'
   match '/next'         => 'users#next'

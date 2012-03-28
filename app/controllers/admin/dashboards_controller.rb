@@ -1,4 +1,4 @@
-class Admin::DashboardsController < ApplicationController
+class Admin::DashboardsController < Admin::BaseController
   layout 'application'
     
   def show

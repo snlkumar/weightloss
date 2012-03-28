@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110819212140) do
+ActiveRecord::Schema.define(:version => 20111222174939) do
 
   create_table "categories", :force => true do |t|
     t.integer "parent_id"
@@ -110,6 +110,39 @@ ActiveRecord::Schema.define(:version => 20110819212140) do
     t.decimal  "sugar_alchol",  :precision => 6, :scale => 1
   end
 
+  create_table "forem_forums", :force => true do |t|
+    t.string "title"
+    t.text   "description"
+  end
+
+  create_table "forem_posts", :force => true do |t|
+    t.integer  "topic_id"
+    t.text     "text"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "reply_to_id"
+  end
+
+  create_table "forem_topics", :force => true do |t|
+    t.integer  "forum_id"
+    t.integer  "user_id"
+    t.string   "subject"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "locked",     :default => false, :null => false
+    t.boolean  "pinned",     :default => false
+    t.boolean  "hidden",     :default => false
+  end
+
+  create_table "forem_views", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "count",      :default => 0
+  end
+
   create_table "meal_items", :force => true do |t|
     t.integer  "meal_id"
     t.integer  "food_id"
@@ -153,6 +186,16 @@ ActiveRecord::Schema.define(:version => 20110819212140) do
     t.integer  "category_id"
     t.integer  "subcategory_id"
     t.string   "vendor_name"
+    t.integer  "comments_count",             :default => 0
+    t.integer  "video_file_size"
+    t.datetime "video_updated_at"
+    t.string   "video_file_name"
+    t.string   "video_content_type"
+    t.integer  "preview_image_file_size"
+    t.datetime "preview_image_updated_at"
+    t.string   "preview_image_file_name"
+    t.string   "preview_image_content_type"
+    t.integer  "view_count",                 :default => 0
   end
 
   create_table "old_items", :force => true do |t|
@@ -231,6 +274,8 @@ ActiveRecord::Schema.define(:version => 20110819212140) do
     t.string   "book_title"
     t.string   "url"
     t.string   "author"
+    t.integer  "comments_count",      :default => 0
+    t.integer  "view_count",          :default => 0
   end
 
   create_table "old_tip_of_days", :force => true do |t|
@@ -284,16 +329,16 @@ ActiveRecord::Schema.define(:version => 20110819212140) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                :null => false
+    t.string   "email",                                 :null => false
     t.string   "username"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "password"
     t.string   "password_confirmation"
     t.string   "status"
-    t.string   "encrypted_password",                   :null => false
-    t.integer  "login_count",           :default => 0, :null => false
-    t.integer  "failed_login_count",    :default => 0, :null => false
+    t.string   "encrypted_password",    :default => ""
+    t.integer  "login_count",           :default => 0,  :null => false
+    t.integer  "failed_login_count",    :default => 0,  :null => false
     t.integer  "weight"
     t.integer  "avatar_file_size"
     t.datetime "last_request_at"
@@ -335,17 +380,18 @@ ActiveRecord::Schema.define(:version => 20110819212140) do
     t.boolean  "private"
     t.string   "permalink"
     t.string   "cached_slug"
-    t.string   "last_sign_in_ip"
-    t.integer  "sign_in_count",         :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
     t.string   "authentication_token"
+    t.integer  "sign_in_count",         :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.string   "facebook_uid"
     t.string   "facebook_token"
+    t.boolean  "forem_admin"
   end
 
   create_table "weights", :force => true do |t|

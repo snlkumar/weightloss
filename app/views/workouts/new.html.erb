@@ -34,7 +34,7 @@
           <tbody id="workout-items">
             <tr>
               <td class="bold exercise-name">Exercise</td>
-              <td class="bold">KCals</td>
+              <td class="bold" style="padding-right: 10px;">KCals</td>
               <td class="bold">Duration</td>
             </tr>
             <% workout_form.fields_for :workout_items do |workout_item_form| %>
@@ -49,7 +49,7 @@
       <div style="padding: 15px;">
         <br/>
         
-        <div id="calendar-box-wrapper" class="grid_3 alpha">
+        <div id="calendar-box-wrapper" class="alpha">
           <%= text_field_tag "workout[trained_on_date][date]", trained_on_start_date(workout_form.object), :id => "calendar-box" %>
         </div>
         

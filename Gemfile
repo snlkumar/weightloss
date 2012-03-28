@@ -1,21 +1,32 @@
 source :rubygems
 
-gem "rails", "3.0.10"
+gem "rails", "3.1.0"
 gem "rake"
 gem "rdoc"
 gem 'paperclip'
-gem 'hoptoad_notifier'
+# gem 'airbrake'
 gem 'fastercsv'
 gem 'linguistics'
-gem 'will_paginate'
+gem 'kaminari'
 gem 'devise'
-gem 'mysql'
+gem 'mysql2', '>= 0.3'
 gem 'chronic'
 gem "jquery-rails"
 gem "friendly_id"
-gem 'dynamic_form'
+gem 'dynamic_form' # for Rails 2 form error helpers
 gem 'acts_as_commentable'
 gem 'omniauth', '>=0.2.6'
+gem 'json'
+gem 'sass-rails', "  ~> 3.1"
+gem 'coffee-rails', "~> 3.1"
+gem 'uglifier'
+gem 'forem', :path => "#{File.expand_path(__FILE__)}/../vendor/gems/forem-0.1"
+gem 'forem-theme-base', :path => "#{File.expand_path(__FILE__)}/../vendor/gems/radar-forem-theme-base"
+gem 'execjs'
+gem 'multi_json'
+gem 'therubyracer'
+gem "default_value_for"
+gem 'profanity_filter'
 
 group :development, :test do
   gem 'ruby-debug'

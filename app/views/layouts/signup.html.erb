@@ -9,60 +9,36 @@
     <%= render :partial => '/layouts/head' %>
   </head>
   <body>
-    <div class="header" class="full">
-      <div class="small-nav full">
+    <div id="wrap" class="full">
+      <div id="main" class="full">
+        <%= render :partial => 'layouts/header' %>
+    
         <div class="container_16">
-          <div id="sidebar-top" class="grid_5 sidebar-container">
-            &nbsp;
+          <div class="grid_5">
+            <div id="signup-sidebar" >
+              <div class="signup-sidebar-header">Quick &amp; easy sign up.</div>
+              
+              <p>Getting Started is easy. Fill out the forms set your goals and your ready to start using the site and get the use of all the amazing tracking tools and get support from others as well as experts wanting to help you every setup of the way.</p>
+              
+              <div class="signup-sidebar-header">Join the Community!</div>
+              
+              <p>
+              My Weight World is a community focused on your success. We provide you with tools, content, articles, videos, and expert advice to help you achieve and keep you on track to reach your goals.</p>
+          
+              <%= yield :sidebar %>
+            </div>
           </div>
-          <div class="grid_11">
-            <%= render :partial => 'shared/session_menu_bar' %>
+      
+          <div id="content" class="grid_11 profile">
+            <%= yield %>
           </div>
-          <div class="clear">&nbsp;</div>
+      
+          <br/>
         </div>
       </div>
-      
-      <div id="main-nav" class="full">
-        <div class="main-nav container_16" style="position:relative;">
-          
-          <h2 id="logo" class="grid_5 sidebar-container"><%= link_to 'myweightworld', home_path %></h2>
-          
-          <div class="clear">&nbsp;</div>
-          
-          <div class="grid_5 sidebar-container main-nav-spacer">&nbsp;</div>
-          <div class="grid_11 main-nav-spacer">&nbsp;</div>
-          <div class="clear">&nbsp;</div>
-        </div>
-      </div>
-      
-      <div class="full" style="height: 1px; background-color: #FFF;"></div>
-    </div>
-    <!-- DONE HEADER -->
-    
-    <div class="container_16">
-      <div class="grid_5">
-        <div id="signup-sidebar" >
-          <div class="signup-sidebar-header">Quick &amp; easy sign up.</div>
-          
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-          
-          <%= yield :sidebar %>
-        </div>
-      </div>
-      
-      <div id="content" class="grid_11 profile">
-        <%= yield %>
-      </div>
-      
-      <br/>
     </div>
     
-    <div class="full">
-      <div id="footer" class="container_16">
-        
-        <div style="clear:both">&nbsp;</div>
-      </div>
-    </div>
+    <%= render :partial => 'layouts/footer' %>
     
     <%= render :partial => "layouts/js_libs" %>
     

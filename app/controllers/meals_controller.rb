@@ -44,5 +44,13 @@ class MealsController < ApplicationController
   def meal_item
     @food      = Food.find(params[:food_id])
     @meal_item = Meal.new.meal_items.new(:food => @food)
+    
+    @meal_item_fields = view_context.fields_for :meal_items, @meal_item, :child_index => "new_meal_items" do |f|
+                       render_to_string(:partial => 'meal_items/meal_item_fields_ajax', :locals => {:meal_item_form => f}).html_safe
+                     end
+                     
+    respond_to do |wants|
+      wants.js { render }
+    end
   end
 end

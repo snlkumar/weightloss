@@ -7,6 +7,7 @@ class OldTextFilesController < ApplicationController
   
   def show
     @text_file = OldTextFile.find(params[:id])
+    @text_file.update_attribute(:view_count, @text_file.view_count + 1)
   end
   
   def new

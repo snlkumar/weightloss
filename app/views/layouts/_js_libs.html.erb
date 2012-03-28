@@ -3,7 +3,7 @@
 <!-- // <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js"></script>
     //     <script>window.jQuery || document.write("<script src='/javascripts/jquery-1.6.min.js'>\x3C/script>")</script> -->
 
-<%= javascript_include_tag :defaults, "underscore", "jquery.labelify.js", "jquery.jeditable", "jquery.format", "application" %>
+<%= javascript_include_tag "application" %>
 <%= init_tinymce_hammer_if_required %>
 
-<%= render :partial => "shared/gridder" %>
+<%= render :partial => "shared/gridder_config" %>

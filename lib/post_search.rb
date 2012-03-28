@@ -28,7 +28,7 @@ class PostSearch
       "page_title LIKE ?"
     end
     
-    @query_string << "(#{ temp.join(' OR ') })"
+    @query_string << "(#{ temp.join(' AND ') })"
   end
   
   def add_category
@@ -46,7 +46,11 @@ class PostSearch
   def go
     return [] if @query_string.nil?
     build_query
-    OldTextFile.paginate(:include => :category, :conditions => query, :per_page => @per_page, :page => @page)
+    if @query_string.empty?
+      OldTextFile.all
+    else
+      OldTextFile.includes(:category).where(query).page(@page).per(@per_page)
+    end
   end
   
 end

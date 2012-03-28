@@ -1,0 +1,12 @@
+.bundle/
+pkg/
+*.sqlite3
+*.log
+.rvmrc
+*.gem
+*.gems
+tmp
+*.sw*
+spec/dummy/log
+spec/dummy/db/*.sqlite3
+*.rbc

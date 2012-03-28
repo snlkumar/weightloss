@@ -7,6 +7,7 @@ class OldFlashFilesController < ApplicationController
   
   def show
     @flash_file = OldFlashFile.find(params[:id])
+    @flash_file.update_attribute(:view_count, @flash_file.view_count + 1)
   end
   
   def new

@@ -1,5 +1,5 @@
-<div id="post-content">
-  <%= link_to 'Back to Search', :back %>
+<div id="post-content" class="Post">
+  <%= link_to 'Back', :back %>
   
   <hr/>
   
@@ -9,10 +9,10 @@
   
   <b>Share this article</b>
   <p>
-    <span  class='st_twitter' displayText='Tweet'></span>
-    <span  class='st_facebook' displayText='Facebook'></span>
-    <span  class='st_email' displayText='Email'></span>
-    <span  class="st_plusone_button" displayText="Google +1"></span>
+    <span class='st_twitter' displayText='Tweet'></span>
+    <span class='st_facebook' displayText='Facebook'></span>
+    <span class='st_email' displayText='Email'></span>
+    <span class="st_plusone_button" displayText="Google +1"></span>
   </p>
   
   <br/>
@@ -38,9 +38,26 @@
         
         <%= f.submit 'Submit', :class => 'grid_2' %>
       <% end %>
+    <% else %>
+      <%= link_to 'Login', sign_in_path %> to leave a comment.
     <% end %>
   </div>
 </div>
+
+<% content_for :sidebar do %>
+  <!-- Categories  -->
+  <div id="search-categories-sidebar" class="sidebar-container subsection" >
+    <h4 class="sidebar-subheader">Categories</h4>
+
+    <p>We have an extensive library to help you with many facets of fitness and wellness - peruse by category</p>
+
+    <ul id="search-categories">
+      <%= render :partial => '/searches/post_category', :collection => @categories, :as => :category %>
+    </ul>
+
+    <div class="clear">&nbsp;</div>
+  </div>
+<% end %>
 
 <script type="text/javascript" charset="utf-8">
   <% content_for :js do %>

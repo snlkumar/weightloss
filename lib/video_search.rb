@@ -27,7 +27,7 @@ class VideoSearch
       "title LIKE ?"
     end
     
-    @query_string << "(#{ temp.join(' OR ') })"
+    @query_string << "(#{ temp.join(' AND ') })"
   end
   
   def add_category
@@ -45,7 +45,11 @@ class VideoSearch
   def go
     return [] if @query_string.nil?
     build_query
-    OldFlashFile.paginate(:include => :category, :conditions => query, :per_page => @per_page, :page => @page)
+    if @query_string.empty?
+      OldFlashFile.all
+    else
+      OldFlashFile.includes(:category).where(query).page(@page).per(@per_page)
+    end
   end
   
 end

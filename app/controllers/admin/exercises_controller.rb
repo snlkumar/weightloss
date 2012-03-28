@@ -2,7 +2,7 @@ class Admin::ExercisesController < Admin::BaseController
   layout 'application'
     
   def index
-    @exercises = Exercise.paginate :per_page => 50, :page => params[:page] || 1
+    @exercises = Exercise.order('id').page(params[:page] || 1).per(50)
   end
   
   def new
@@ -42,9 +42,9 @@ class Admin::ExercisesController < Admin::BaseController
   end
   
   def search
-    terms  = params[:terms].split(/,|\s/).reject(&:blank?)
-    conds  = terms.collect{|t| "description LIKE ?"}.join(' AND ')
-    @exercises = Exercise.paginate(:conditions => [conds, *terms.collect{|t| "%#{t}%"}], :per_page => 50, :page => params[:page] || 1)
+    terms      = params[:terms].split(/,|\s/).reject(&:blank?)
+    conds      = terms.collect{|t| "description LIKE ?"}.join(' AND ')
+    @exercises = Exercise.where([conds, *terms.collect{|t| "%#{t}%"}]).page(params[:page] || 1).per(50)
     
     render :action => :index
   end

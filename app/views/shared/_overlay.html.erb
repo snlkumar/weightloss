@@ -1,0 +1,5 @@
+<% if Rails.env.development? && @show_overlay %>
+  <div style="position:absolute; top: 2px; left: 22px; width: auto; height: auto; opacity: 0.5; z-index:1000; display:block;">
+    <img src="/video-library-V1.jpg"/>
+  </div>
+<% end %>

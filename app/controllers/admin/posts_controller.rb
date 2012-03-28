@@ -1,8 +1,8 @@
-class Admin::PostsController < ApplicationController
+class Admin::PostsController < Admin::BaseController
   layout 'admin'
   
   def index
-    @posts = OldTextFile.paginate :per_page => 50, :page => params[:page] || 1
+    @posts = OldTextFile.order('page_title ASC').page(params[:page] || 1).per(50)
   end
   
   def new
@@ -38,5 +38,12 @@ class Admin::PostsController < ApplicationController
     @post.destroy
     redirect_to(admin_posts_path)
   end
-
+  
+  def search
+    terms      = params[:terms].split(/,|\s/).reject(&:blank?)
+    conds      = terms.collect{|t| "page_title LIKE ?"}.join(' AND ')
+    @posts = OldTextFile.where([conds, *terms.collect{|t| "%#{t}%"}]).page(params[:page] || 1).per(50)
+    
+    render :action => :index
+  end
 end

@@ -11,7 +11,8 @@ class CreateFoods < ActiveRecord::Migration
           eval "t.decimal :#{col}, :precision => 8, :scale => 3"
         end
       end
-      
+      t.boolean :custom
+      t.string :name
       t.timestamps
     end
     
@@ -22,6 +23,8 @@ class CreateFoods < ActiveRecord::Migration
         attr = "#{headers[index]}="
         food.send(attr, val.try(:titleize))
       end
+      food.name = food.shrt_desc
+      food.custom = false
       food.save
     end
   end

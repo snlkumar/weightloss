@@ -6,8 +6,6 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
 User.destroy_all
-u = User.create(:first_name => 'Normal', :last_name => 'User', :email => 'user@example.com', 
-            :username => 'normalguy', :gender => 'Male', :height => 72, :weight => 200,
-            :password => 'password', :password_confirmation => 'password', 
-            :avatar   => File.open(File.join(::Rails.root.to_s, 'public/images', 'RidingInColorado.jpg')))
+u = User.create(:first_name => 'Normal', :last_name => 'User', :email => 'user@example.com', :username => 'normalguy', :forem_admin => true, :gender => 'Male', :height => 72, :weight => 200, :password => 'password', :password_confirmation => 'password', :avatar   => File.open(File.join(::Rails.root.to_s, 'app/assets/images', 'RidingInColorado.jpg')) )
 
+# TODO: this seed file is borked it should mirror the 2 step sign up process

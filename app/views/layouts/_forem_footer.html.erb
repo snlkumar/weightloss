@@ -1,0 +1,43 @@
+<div style="clear:both;"></div>
+
+<!-- Footer -->
+<div id="footer-wrapper" class="full">
+  <div id="footer" class="container_16">
+    <div class="grid_8">
+      <h3 class="footer-header">Get In Touch With MyWeightWorld</h3>
+      <%= mail_to 'support@myweightworld.com', nil, :class => 'footer-link grid_4 alpha' %>
+      <%= mail_to 'sales@myweightworld.com', nil, :class => 'footer-link grid_4 omega' %>
+      <div style="clear:both"></div>
+      <%= mail_to 'press@myweightworld.com', nil, :class => 'footer-link grid_4 alpha' %>
+    </div>
+    
+    <div class="grid_8">
+      <h3 class="footer-header">Site Navigation</h3>
+      <%= link_to 'Sign In', main_app.new_user_session_path, :class => 'footer-link' %>&nbsp;
+      <%= link_to 'Sign Up', main_app.new_user_registration_path, :class => 'footer-link' %>&nbsp;
+      <%= link_to 'Video Library', main_app.videos_path, :class => 'footer-link' %>&nbsp;
+      <%= link_to 'Articles', main_app.posts_path, :class => 'footer-link' %>&nbsp;
+      <%= link_to 'About Us', main_app.about_path, :class => 'footer-link' %>&nbsp;
+    </div>
+    
+    <div style="clear:both">&nbsp;</div>
+
+  </div>
+  <!-- Copyright -->
+  <div class="full" id="footer-bg" >
+    <div id="copyright-container">
+      <span id="copyright-text">
+        Copyright 2011 MyWeightWorld
+      </span>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var uvOptions = {};
+  (function() {
+    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/cP2awyjMcsFxA41XIWYg.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+  })();
+</script>

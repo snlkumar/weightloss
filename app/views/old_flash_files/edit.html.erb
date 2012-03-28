@@ -17,7 +17,7 @@
           </p>
           <p>
             <%= label_tag 'Category' %><br />
-            <%= aac_select(Category.roots, {:selected => @flash_file.category_id, :name => 'old_flash_file[category_id]', 
+            <%= raw aac_select(Category.roots, {:selected => @flash_file.category_id, :name => 'old_flash_file[category_id]', 
                                             :parents_nil => true, :option_nil => '--'}) %>
           </p>
           <p>
@@ -27,17 +27,22 @@
         </td>
         <td>
           <p>
-            <%= f.label :file1, 'Video File' %><br />
-            <%= f.file_field :file1 %><br />
-            <% if @flash_file.file1.file? %>
-              <%= image_tag "file.png"  %> <%= @flash_file.file1.original_filename %> <%= f.check_box :remove_file_1 %> Delete?
+            <%= f.label :video, 'Video File' %><br />
+            <%= f.file_field :video %><br />
+            <% if @flash_file.video.file? %>
+              <%= image_tag "file.png"  %> <%= @flash_file.video.original_filename %> <%= f.check_box :remove_video %> Delete?
+              
+              <%= link_to '', @flash_file.video.url , :id => 'player', :style => 'display: block; width: 527px; height: 350px; margin: 15px; ' %>
             <% end %>
           </p>
           <p>
-            <%= f.label :file2, 'JPEG' %><br />
-            <%= f.file_field :file2 %><br />
-            <% if @flash_file.file2.file? %>
-              <%= image_tag "file.png"  %> <%= @flash_file.file2.original_filename %> <%= f.check_box :remove_file_2 %> Delete?
+            <%= f.label :preview_image, 'JPEG' %><br />
+            <%= f.file_field :preview_image %><br /><br/>
+            <% if @flash_file.preview_image.file? %>
+              <%= image_tag "file.png"  %> <%= @flash_file.preview_image.original_filename %> <%= f.check_box :remove_preview_image %> Delete?
+              <br/><br/>
+              <%= image_tag @flash_file.preview_image.url(:original) %>
+              
             <% end %>
           </p>
           <p>
@@ -55,8 +60,8 @@
         </td>
         <td>
           <p>
-            <%= f.label :teaser %><br />
-            <%= f.text_area :teaser %>
+            <!-- <%= f.label :teaser %><br />
+                        <%= f.text_area :teaser %> -->
           </p>
         </td>
       </tr>
@@ -68,3 +73,9 @@
 <% end %>
 
 <%= link_to 'Back', old_flash_files_path %>
+
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    flowplayer("player", "/flowplayer-3.2.7.swf", {clip: {scaling: 'orig', autoPlay: false}});
+  <% end %>
+</script>

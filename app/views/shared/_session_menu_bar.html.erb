@@ -6,6 +6,6 @@
     <% end %>
     | <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete, :title => 'Sign Out' %> 
   <% else %>
-    <%= link_to 'Already a User? Sign in', new_user_session_path() %> | <%= link_to 'Sign up', new_user_registration_path() %>
+    Already a User? <%= link_to 'Sign in', new_user_session_path() %> | <%= link_to 'Sign up', new_user_registration_path() %>
   <% end %>
 </div>

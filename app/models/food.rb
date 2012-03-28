@@ -8,8 +8,9 @@ class Food < ActiveRecord::Base
   
   def calories_and_serving
     if self.custom?
-      self.errors.add_to_base("Serving size cannot be blank.") if self.gmwt_desc1.blank?
-      self.errors.add_to_base("Calories cannot be blank.") if self.energ_kcal.blank?
+      self.errors.add(:base, "Serving size cannot be blank.") if self.gmwt_desc1.blank?
+      self.errors.add(:base, "Calories cannot be blank.") if self.energ_kcal.blank?
     end
   end
+  
 end

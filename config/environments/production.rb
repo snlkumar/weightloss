@@ -47,5 +47,23 @@ Myweightworld::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
   
-  config.action_mailer.default_url_options = { :host => 'myweightworlddemo.com' }
+  config.action_mailer.default_url_options = { :host => 'myweightworld.com' }
+  
+  # Compress both stylesheets and JavaScripts
+  config.assets.js_compressor  = :uglifier
+  config.assets.css_compressor = :scss
+  
+  config.assets.digest = true
+  
+  # SendGrid Configuration
+  
+  ActionMailer::Base.smtp_settings = {
+    :user_name => "myweightworld",
+    :password => "losethatweight",
+    :domain => "myweightworld.com",
+    :address => "smtp.sendgrid.net",
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 end

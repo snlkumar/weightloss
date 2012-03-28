@@ -8,9 +8,14 @@ class User < ActiveRecord::Base
   
   BMR_MULTIPLIERS = [1.2, 1.375, 1.55, 1.725, 1.9]
   
+  Paperclip.interpolates :normalized_avatar_name do |attachment, style|
+    attachment.instance.normalized_avatar_file_name
+  end
+  
   has_attached_file :avatar, :styles      => { :thumb   => "16x16#",   :small => "40x40#", :medium => "50x50#", :tracking => "78x78#",
                                                :profile => '137x137#', :large => "214x214#" }, 
-                             :url         => "/system/:class/:attachment/:id/:style/:filename"
+                             :url  => '/system/:class/:attachment/:id/:style/:normalized_avatar_name',
+                             :path => ":rails_root/public/system/:class/:attachment/:id/:style/:normalized_avatar_name"
   
   has_friendly_id :full_name, :use_slug => true
   
@@ -23,23 +28,26 @@ class User < ActiveRecord::Base
   scope :recent, :conditions => {:status => 'finalize'}, :order => 'created_at DESC', :limit => 7
   
   # Validations
-  validates_presence_of         :first_name, :last_name, :email, :username
-  validates_presence_of         :gender, :height, :weight,            :if => Proc.new { |u| u.status != 'step_one' }
-  validates_inclusion_of        :gender, :in => ['male', 'female'],   :if => Proc.new { |u| u.status != 'step_one' }, :message => 'please select'
-  validates_attachment_presence :avatar,                              :if => Proc.new { |u| !['step_one'].include?(u.status) }
-  validates_uniqueness_of       :email, :username
-  validates_confirmation_of     :email
-  validates_length_of           :email,    :in => 6..100
-  validates_length_of           :username, :in => 4..25
+  # validates_presence_of         :first_name, :last_name, :email, :username
+  #   validates_presence_of         :gender, :height, :weight,            :if => Proc.new { |u| u.status != 'step_one' }
+  #   validates_inclusion_of        :gender, :in => ['male', 'female'],   :if => Proc.new { |u| u.status != 'step_one' }, :message => 'please select'
+  #   validates_attachment_presence :avatar,                              :if => Proc.new { |u| !['step_one'].include?(u.status) }
+  #   validates_uniqueness_of       :email, :username
+  #   validates_confirmation_of     :email
+  #   validates_length_of           :email,    :in => 6..100
+  #   validates_length_of           :username, :in => 4..25
   
   # Callbacks
   before_save :strip_lbs
   
   # Defaults
-  default_values :status => "step_one",
-                 :private => false
+  default_values :status => "step_one", :private => false
   
   # Instance Methods
+  def normalized_avatar_file_name
+    return transliterate(self.avatar_file_name)
+  end
+  
   def has_goal?
     !self.desired_weight.blank?
   end
@@ -53,7 +61,7 @@ class User < ActiveRecord::Base
       temp = self.weights.find(:first, :conditions => {:created_at => (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)})
       temp.update_attribute(:weight, val)
     else
-      self.weights.create(:weight => val)
+      self.weights.create(:weight => val) unless self.new_record?
     end
   end
   
@@ -70,6 +78,7 @@ class User < ActiveRecord::Base
   def age
     temp = Time.zone.now.year - birthdate.year
     temp -= 1 if Time.zone.now < birthdate + temp.years
+    temp
   end
   
   def weight_in_kilograms
@@ -177,14 +186,22 @@ class User < ActiveRecord::Base
     self.encrypted_password.blank?
   end
   
+  def to_s
+    self.full_name
+  end
   
   # CLass Methods  
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token['extra']['user_hash']
+    Rails.logger.error("FACEBOOK DATA: #{data.inspect}")
+    Rails.logger.error("EXTRA: #{access_token['extra'].inspect}")
+    
     if user = User.find_by_email(data["email"])
       user
-    else # Create a user with a stub password. 
-      User.create(:email => data["email"], :password => Devise.friendly_token[0,20]) 
+    # else # Create a user with a stub password. 
+    #       User.create(:email => data["email"], :password => Devise.friendly_token[0,20], 
+    #                   :first_name => data["first_name"], :last_name => data["last_name"],
+    #                   :username => data["nickname"]) 
     end
   end
   
@@ -202,7 +219,21 @@ class User < ActiveRecord::Base
     end
   end
   
-  
+  def transliterate(str)
+    # Based on permalink_fu by Rick Olsen
+    # Escape str by transliterating to UTF-8 with Iconv
+    s = Iconv.iconv('ascii//ignore//translit', 'utf-8', str).to_s
+    # Downcase string
+    s.downcase!
+    # Remove apostrophes so isn't changes to isnt
+    s.gsub!(/'/, '')
+    # Replace any non-letter or non-number character with a space
+    s.gsub!(/[^A-Za-z0-9_\.]+/, ' ')
+    s.strip!
+    # Replace groups of spaces with single hyphen
+    s.gsub!(/\ +/, '-')
+    return s
+  end
   
   protected
     

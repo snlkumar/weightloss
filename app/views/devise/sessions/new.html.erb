@@ -1,6 +1,7 @@
+<div id="sign-in-tab" class="push_4 grid_3"><h2>Sign In</h2></div>
+<div class="clear">&nbsp;</div>
 <div id="sign-in-form" class="push_4 grid_7">
   
-  <h2>Sign In</h2>
   
   <div class="content">
     <%= render :partial => '/shared/flash', :locals => {:flash => flash} %>
@@ -18,7 +19,7 @@
         <div class="clear">&nbsp;</div>
       </p>
       
-      <div style="float: right;">
+      <div id="shared-links" style="float: right;">
         <%= render :partial => "devise/shared/links" %>
       </div>
       

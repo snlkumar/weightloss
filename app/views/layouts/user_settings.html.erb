@@ -9,76 +9,83 @@
     <%= render :partial => '/layouts/head' %>
   </head>
   <body>
-    <%= render :partial => '/layouts/header' %>
+    <div id="wrap" class="full">
+      <div id="main" class="full">
+        <%= render :partial => '/layouts/header' %>
     
-    <div class="container_16">
-      <div class="grid_5 ">
-        <div class="sidebar-container" style="">
-          <p id="user-name" class="grid_5"><%= current_user.full_name %></p>
+        <div class="container_16">
+          <div class="grid_5 ">
+            <div class="sidebar-container" style="">
+              <p id="user-name" class="grid_5"><%= current_user.full_name %></p>
           
-          <div class="clear">&nbsp;</div>
+              <div class="clear">&nbsp;</div>
           
-          <% if current_user.avatar.file? %>
-            <div class="profile-avatar avatar"><%= image_tag(current_user.avatar.url(:profile)) %></div>
-          <% else %>
-            <div class="profile-avatar"></div>
+              <div class="profile-avatar avatar"><%= user_avatar_image(current_user, :profile) %></div>
+          
+              <%= link_to 'Edit', user_edit_personal_info_path(current_user), :id => 'edit-profile', :class => 'outlined-fade', :title => 'Edit your profile' %>
+          
+              <div class="clear">&nbsp;</div>
+          
+              <%= render :partial => 'users/details', :locals => {:user => current_user} %>
+              <br/>
+          
+              <ul id="user-settings-tabs">
+                <li class="<%= active_settings_tab?('account') %>">
+                  <%= link_to 'Account Info', user_edit_account_info_path(current_user) %>
+                </li>
+                <li class="<%= active_settings_tab?('personal') %>">
+                  <%= link_to 'Personal Info', user_edit_personal_info_path(current_user) %>
+                </li>
+                <li class="<%= active_settings_tab?('nutrition') %>">
+                  <%= link_to 'Nutritional Info', user_edit_nutrition_info_path(current_user) %>
+                </li>
+                <li class="<%= active_settings_tab?('exercise') %>">
+                  <%= link_to 'Exercise Info', user_edit_exercise_info_path(current_user) %>
+                </li>
+                <li class="<%= active_settings_tab?('password') %>">
+                  <%= link_to 'Password', edit_password_path %>
+                </li>
+                <li>
+                  <%= link_to 'Back to Profile', user_path(current_user) %>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="clear">&nbsp;</div>
+            <br/>
+            
+          </div>
+          
+          <%= yield :sidebar %>
+          
+          <% if user_signed_in? %>
+            <div id="add-meal" class="button">
+              <%= link_to "+ Add Meal", new_meal_path, :title => 'Add a Meal' %>
+            </div>
+            
+            <div id="add-activity" class="button">
+              <%= link_to "+ Add Activity", new_workout_path, :title => 'Add a Workout' %>
+            </div>
           <% end %>
           
-          <%= link_to 'Edit', user_edit_personal_info_path(current_user), :id => 'edit-profile', :class => 'outlined-fade', :title => 'Edit your profile' %>
+          </br>
           
-          <div class="clear">&nbsp;</div>
+          <div id="nav-bar">
+            <%= render :partial => 'shared/nav_bar' %>
+          </div>
           
-          <%= render :partial => 'users/details', :locals => {:user => current_user} %>
+          <div id="content" class="grid_11 profile">
+            <%= render :partial => '/shared/flash', :locals => {:flash => flash} %>
+            
+            <%= yield %>
+          </div>
+          
           <br/>
-          
-          <ul id="user-settings-tabs">
-            <li class="<%= active_settings_tab?('account') %>">
-              <%= link_to 'Account Info', user_edit_account_info_path(current_user) %>
-            </li>
-            <li class="<%= active_settings_tab?('personal') %>">
-              <%= link_to 'Personal Info', user_edit_personal_info_path(current_user) %>
-            </li>
-            <li class="<%= active_settings_tab?('nutrition') %>">
-              <%= link_to 'Nutritional Info', user_edit_nutrition_info_path(current_user) %>
-            </li>
-            <li class="<%= active_settings_tab?('exercise') %>">
-              <%= link_to 'Exercise Info', user_edit_exercise_info_path(current_user) %>
-            </li>
-            <li class="<%= active_settings_tab?('password') %>">
-              <%= link_to 'Password', edit_password_path %>
-            </li>
-            <li>
-              <%= link_to 'Back to Profile', user_path(current_user) %>
-            </li>
-          </ul>
         </div>
-        
-        <div class="clear">&nbsp;</div>
-        <br/>
-        
       </div>
-      
-      <%= yield :sidebar %>
-      
-      <div id="nav-bar">
-        <%= render :partial => 'shared/nav_bar' %>
-      </div>
-      
-      <div id="content" class="grid_11 profile">
-        <%= render :partial => '/shared/flash', :locals => {:flash => flash} %>
-        
-        <%= yield %>
-      </div>
-      
-      <br/>
     </div>
     
-    <div class="full">
-      <div id="footer" class="container_16">
-        
-        <div style="clear:both">&nbsp;</div>
-      </div>
-    </div>
+    <%= render :partial => 'layouts/footer' %>
     
     <%= render :partial => "layouts/js_libs" %>
     

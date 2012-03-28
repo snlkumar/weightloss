@@ -22,10 +22,10 @@
         <td><%= truncate(h(flash_file.title),       :length => 50) %></td>
         <td><%= truncate(h(flash_file.description), :length => 50) %></td>
         <td><%= truncate(h(flash_file.vendor_name), :length => 50) %></td>
-        <td><%= truncate(h(flash_file.teaser),      :length => 50) %></td>
+        <td><%= truncate(h(flash_file.description),      :length => 50) %></td>
         <td>
-          <%= image_tag('file.png') + " #{flash_file.file1.original_filename}" if flash_file.file1.file? %><br />
-          <%= image_tag('file.png') + " #{flash_file.file2.original_filename}" if flash_file.file2.file? %>
+          <%= image_tag('file.png') + " #{flash_file.video.original_filename}" if flash_file.video.file? %><br />
+          <%= image_tag('file.png') + " #{flash_file.preview_image.original_filename}" if flash_file.preview_image.file? %>
         </td>
         <td>
           <%= link_to 'Edit', edit_old_flash_file_path(flash_file) %> | 

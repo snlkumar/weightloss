@@ -9,77 +9,45 @@
     <%= render :partial => '/layouts/head' %>
   </head>
   <body>
-    <div id="header" class="full">
-      <div class="small-nav container_16">
-        <div class="grid_5 sidebar-container" style="background-color: #fff; height: 26px;">
-          &nbsp;
-        </div>
-        <div class="grid_11">
-          <%= render :partial => 'shared/session_menu_bar' %>
-        </div>
+    <div id="wrap" class="full">
+      <div id="main" class="full">
+        <%= render :partial => 'layouts/header' %>
+    
         <div class="clear">&nbsp;</div>
-      </div>
+    
+        <div class="container_16">
+          <div class="grid_5 ">
+            <div class="sidebar-container" style="">
+              <p id="user-name" class="grid_5"><%= @user.username %></p>
+          
+              <div class="clear">&nbsp;</div>
+          
+              <div class="profile-avatar avatar"><%= user_avatar_image(@user, :profile) %></div>
+          
+              <div class="clear">&nbsp;</div>
+          
+              <%= render :partial => 'details', :locals => {:user => @user} %>
+              <br/>
+            </div>
+        
+            <div class="clear">&nbsp;</div>
+            <br/>
+        
+        
+          </div>
       
-      <div id="main-nav" class="full">
-        <div class="main-nav container_16">
-          
-          <h2 id="logo" class="grid_5 sidebar-container"><%= link_to 'myweightworld', home_path %></h2>
-          
-          <div class="clear">&nbsp;</div>
-          
-          <div class="grid_5 sidebar-container" style="height:25px; background-color: #fff;">&nbsp;</div>
-          <div class="grid_11" style="height:25px;">&nbsp;</div>
-          
-          <div class="clear">&nbsp;</div>
-          
-          
-        </div>
-      </div>
-    </div>
-    <!-- DONE HEADER -->
-    
-    <div class="clear">&nbsp;</div>
-    
-    <div class="container_16">
-      <div class="grid_5 ">
-        <div class="sidebar-container" style="">
-          <p id="user-name" class="grid_5"><%= @user.full_name %></p>
-          
-          <div class="clear">&nbsp;</div>
-          
-          <% if @user.avatar.file? %>
-            <div class="profile-avatar avatar"><%= image_tag(@user.avatar.url(:profile)) %></div>
-          <% else %>
-            <div class="profile-avatar avatar"></div>
-          <% end %>
-          
-          <div class="clear">&nbsp;</div>
-          
-          <%= render :partial => 'details', :locals => {:user => @user} %>
+          <%= yield :sidebar %>
+      
+          <div id="content" class="grid_11 profile">
+            <%= yield %>
+          </div>
+      
           <br/>
         </div>
-        
-        <div class="clear">&nbsp;</div>
-        <br/>
-        
-        
       </div>
-      
-      <%= yield :sidebar %>
-      
-      <div id="content" class="grid_11 profile">
-        <%= yield %>
-      </div>
-      
-      <br/>
     </div>
     
-    <div class="full">
-      <div id="footer" class="container_16">
-        
-        <div style="clear:both">&nbsp;</div>
-      </div>
-    </div>
+    <%= render :partial => 'layouts/footer' %>
     
     <%= render :partial => "layouts/js_libs" %>
     

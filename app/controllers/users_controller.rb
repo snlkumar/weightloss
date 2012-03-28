@@ -25,17 +25,6 @@ class UsersController < ApplicationController
       redirect_to(root_path)
   end
   
-  # def create
-  #     @user = User.new(params[:user])
-  #     debugger
-  #     if @user.save
-  #       @user.update_attribute(:status, 'step_two')
-  #       redirect_to :action => :step_two
-  #     else
-  #       render :action => :new
-  #     end
-  #   end
-  
   def step_two
     @slider_height = 60
     @slider_weight = 150
@@ -46,7 +35,7 @@ class UsersController < ApplicationController
     if current_user.update_attributes(params[:user])
       current_user.update_attribute(:status, 'finalize')
       current_user.save # TODO: needed?
-      redirect_to user_path(current_user)
+      redirect_to edit_metabolic_rates_path
     else
       @slider_height = current_user.height || 60
       @slider_weight = current_user.weight || 150

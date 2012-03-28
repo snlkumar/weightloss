@@ -1,9 +1,6 @@
-<% meal_item_fields = view_context.fields_for :meal_items, Meal.new.meal_items.new, :child_index => "new_meal_items" do |f|
-                   render :partial => 'meal_items/meal_item_fields_ajax', :locals => {:meal_item_form => f}
-                 end
-%>
 
-$("#meal-items").append("<%= escape_javascript(meal_item_fields) %>");
+
+$("#meal-items").append('<%= escape_javascript(@meal_item_fields).html_safe %>');
 $('#meal-items').show();
 $('#food-item-entry').val('');
 $('#food_id').val('');

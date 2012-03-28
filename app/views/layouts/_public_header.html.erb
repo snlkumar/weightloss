@@ -1,0 +1,39 @@
+<div id="header" class="full">
+  <div class="small-nav full">
+    <div class="container_16">
+      <div id="sidebar-top" class="grid_5 sidebar-container">
+        &nbsp;
+      </div>
+      <div class="grid_11">
+        <%= render :partial => 'shared/session_menu_bar' %>
+      </div>
+      <div class="clear">&nbsp;</div>
+    </div>
+  </div>
+  
+  <div id="main-nav" class="full">
+    <div class="main-nav container_16" style="position:relative;">
+      
+      <%= form_tag searches_path, :id => 'global-search' do %>
+        <%= text_field_tag 'search[keywords]', (params[:search] ? params[:search][:keywords] : ''), 
+                            :title => "Search our wellness library" %>
+      <% end %>
+      
+      <%= render :partial => 'shared/nav_tabs' %>
+      
+      <h2 id="logo" class="grid_5 sidebar-container"><%= link_to 'myweightworld', home_path %></h2>
+      
+      <div class="clear">&nbsp;</div>
+      
+      <div class="grid_5 sidebar-container main-nav-spacer">&nbsp;</div>
+      <div class="grid_11 main-nav-spacer">&nbsp;</div>
+      <div class="clear">&nbsp;</div>
+      
+    </div>
+  </div>
+  
+  <div class="full" style="height: 1px; background-color: #FFF;"></div>
+</div>
+<div class="clear">&nbsp;</div>
+
+<%= render :partial => 'shared/overlay' %>

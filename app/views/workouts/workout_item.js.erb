@@ -1,7 +1,4 @@
-<% workout_item_fields = view_context.fields_for :workout_items, @workout_item, :child_index => "new_workout_items" do |f|
-                   render :partial => 'workout_items/workout_item_fields_ajax', :locals => {:workout_item_form => f}
-                 end
-%>
 
-$("#workout-items").append("<%= escape_javascript(workout_item_fields) %>")
+
+$("#workout-items").append("<%= escape_javascript(@workout_item_fields) %>")
 $('#workout-items').show();

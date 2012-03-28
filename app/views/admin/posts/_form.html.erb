@@ -11,15 +11,27 @@
 </p>
 
 <p>
+  <%= label_tag 'Category' %><br />
+  <%= raw aac_select(Category.roots, {:selected => f.object.category_id, :name => 'post[category_id]', 
+                                  :parents_nil => true, :option_nil => '--'}) %>
+</p>
+
+<p>
   <%= f.label :image1, 'Content Image' %><br />
   <%= f.file_field :image1 %><br />
   <% if f.object.image1.file? %>
     <br/>
     <%= image_tag f.object.image1.url(:preview)  %>&nbsp;
     <%= f.check_box :remove_image1 %> Delete?<br/>
-    <b>URL: </b><%= f.object.image1.url %>
+    Click icon to copy image URL to clipboard, and use to embed into content body above.<br/>
+    <b>Available Sizes: </b><br/>
+    <b>Original</b>: <%= clippy(f.object.image1.url, '#F0F0F0') %><br/>
+    <b>50x50</b>: <%= clippy(f.object.image1.url(:preview), '#F0F0F0') %><br/>
+    <b>100x108</b>: <%= clippy(f.object.image1.url(:small), '#F0F0F0') %><br/>
+    <b>120x120</b>: <%= clippy(f.object.image1.url(:medium), '#F0F0F0') %><br/>
+    <b>145x105</b>: <%= clippy(f.object.image1.url(:med_large), '#F0F0F0') %><br/>
+    <b>308x200</b>: <%= clippy(f.object.image1.url(:large), '#F0F0F0') %><br/>
     
-    <%= clippy(f.object.image1.url, '#F0F0F0') %>
   <% end %>
 </p>
 

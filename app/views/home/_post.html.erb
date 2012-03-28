@@ -1,0 +1,14 @@
+<div class="grid_8">
+  <div class="grid_2 alpha" style="height: 108px; background-color: #CCC;">
+    <%= image_tag post.image1.url(:small) %>
+  </div>
+  <div class="grid_6 omega">
+    <span>
+      <%= link_to post.page_title, post_path(post) %>
+    </span>
+    <br/>
+    <span><%= truncate(strip_tags(post.body), :length => 225) %></span>
+  </div>
+  
+  <div style="clear:both">&nbsp;</div>
+</div>

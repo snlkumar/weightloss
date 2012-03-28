@@ -1,10 +1,11 @@
 <div class="grid_16">
-  <%= link_to 'Back', admin_dashboard_path %>
+  
   
   <br/>
   
   <h2>Listing Foods</h2>
   
+  <%= link_to 'Back', admin_dashboard_path %><br/>
   <%= link_to 'New food', new_admin_food_path %>
   
   <br/>
@@ -22,29 +23,28 @@
   
   <%= page_entries_info(@foods) %>
   
-  <% paginated_section(@foods, :params => pagination_params(request)) do %>
+  <%= paginate(@foods, :params => pagination_params(request)) %>
   
-    <table class="admin">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th> </th>
+  <br/>
+  <table class="admin">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @foods.each do |food| %>
+        <tr  class="<%= cycle('odd', '') %>">
+          <td><%= food.name %></td>
+          <td class="actions">
+            <%= link_to 'Edit', edit_admin_food_path(food) %> | 
+            <%= link_to 'Delete', [:admin, food], :confirm => 'Are you sure?', :method => :delete %>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-        <% @foods.each do |food| %>
-          <tr  class="<%= cycle('odd', '') %>">
-            <td><%= food.name %></td>
-            <td class="actions">
-              <%= link_to 'Edit', edit_admin_food_path(food) %> | 
-              <%= link_to 'Delete', [:admin, food], :confirm => 'Are you sure?', :method => :delete %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    
-  <% end %>
+      <% end %>
+    </tbody>
+  </table>
   
   <script type="text/javascript" charset="utf-8">
     <% content_for :js do %>

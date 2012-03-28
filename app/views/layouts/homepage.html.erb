@@ -9,216 +9,122 @@
     <%= render :partial => '/layouts/head' %>
   </head>
   <body>
-    <div class="header" class="full">
-      <div class="small-nav full">
-        <div class="container_16">
-          <div id="sidebar-top" class="grid_5 sidebar-container">
-            &nbsp;
-          </div>
-          <div class="grid_11">
-            <%= render :partial => 'shared/session_menu_bar' %>
-          </div>
-          <div class="clear">&nbsp;</div>
-        </div>
-      </div>
-      
-      <div id="main-nav" class="full">
-        <div class="main-nav container_16" style="position:relative;">
-          
-          <h2 id="logo" class="grid_5 sidebar-container"><%= link_to 'myweightworld', home_path %></h2>
-          
-          <div class="clear">&nbsp;</div>
-          
-          <div class="grid_5 sidebar-container main-nav-spacer">&nbsp;</div>
-          <div class="grid_11 main-nav-spacer">&nbsp;</div>
-          <div class="clear">&nbsp;</div>
-        </div>
-      </div>
-      
-      <div class="full" style="height: 1px; background-color: #FFF;"></div>
-    </div>
-    <!-- DONE HEADER -->
-    
-    <div class="full" style="height: 364px; background: url('/images/gradient-header.png') repeat-x;">
-      <div class="container_16" style="margin-top: -2px; position: relative;">
+    <div id="wrap" class="full">
+      <div id="main" class="full">
+        <%= render :partial => 'layouts/header' %>
         
-        <div class="grid_5">
-          <span style="display: inline-block; margin-top: 33px; line-height: 29px; color: #FFF; font-size: 25px; font-weight: bold; font: helvetica;">
-            sendgrid. We're building a community for guidance in fitness & wellness.</span>
+        <div class="full" id="homepage-blue-bg">
+          <div class="container_16" style="margin-top: -2px; position: relative;">
+          
+            <div class="grid_5">
+              <span style="display: inline-block; margin-top: 33px; line-height: 29px; color: #FFF; font-size: 25px; font-weight: bold; font: helvetica;">
+                We're building a community for guidance in fitness & wellness.</span>
+              
+              <span style="display: inline-block; margin-top: 7px; color: #FFF; font-size: 18px; font: helvetica;">
+                Set goals, track calories, get feedback, find helpful content - partake in bettering the community and the community will help build a better you.</span>
+            </div>
+            <div class="grid_11">
+              <%= image_tag 'screenshot.png', :style => 'display: block; margin-top: -5px;', :class => 'grid_10 alpha omega push_1' %>
+            </div>
             
-          <span style="display: inline-block; margin-top: 7px; color: #FFF; font-size: 18px; font: helvetica;">
-            Set goals, track calories, get feedback, find helpful content - partake in bettering the community and the community will help build a better you.</span>
-        </div>
-        <div class="grid_11">
-          <%= image_tag 'screenshot.png', :style => 'display: block; margin-top: 10px;', :class => 'grid_10 alpha omega push_1' %>
+            <%= render :partial => 'large_orange_button', :locals => {:style => 'position: absolute; left:0px; top: 321px;'} %>
+            <div style="clear:both">&nbsp;</div>
+          </div>
         </div>
         
-        <%= render :partial => 'large_orange_button', :locals => {:style => 'position: absolute; left:0px; top: 321px;'} %>
-        <div style="clear:both">&nbsp;</div>
+        <div class="full" style="background-color: #EBEBEB;">
+          <div class="container_16">
+            <div class="grid_16" style="font-style: helvetica; font-weight: bold; font-size: 1.5em; color: #09273b; margin-top: 65px; margin-bottom: 6px;">
+              A community for guidance in fitness & wellness
+            </div>
+            <p class="grid_16" style="font-size: 14px;margin-bottom: 13px;">MyWeightWorld.com was developed by weight loss physicians, medical professionals, as well as non-medical people, who are passionate about helping people achieve their weight loss objectives.  We provide our members with resources unmatched in quality and value, yet retain a strong spirit of community.</p>
+        
+            <div class="clear"></div>
+        
+            <div class="  " style="display: inline; position: relative; float: left; width: 219px; margin-left: 9px; margin-right: 20px;">
+              <%= link_to workouts_path do %>
+                <div style="height: 17px; text-align: center; background-color: #0B2B42; padding: 12px 0px; color: #2E8EC1; font-style: helvetica; font-weight: bold; font-size: 1.1em;">
+                  Track Food and Daily Activity
+                </div>
+                <div style="height: 158px; overflow:hidden;"><%= image_tag 'home-food-activity.jpg' %></div>
+                <div style="height: 30px; background-color: #28739A; color: white; text-align: left; padding: 5px 11px; font-size: 12px;">Easily keep a log of daily calorie intake and track workouts.</div>
+              <% end %>
+            </div>
+        
+            <div class="  " style="display: inline; position: relative; float: left; width: 219px; margin-right: 20px;">
+              <%= link_to posts_path do %>
+                <div style="height: 35px; text-align: center; background-color: #0B2B42; padding: 3px 0px; color: #2E8EC1; font-style: helvetica; font-weight: bold; font-size: 1.1em;">Fitness, Medical &amp;<br/> Nutritional Support</div>
+                <div style="height: 158px; overflow:hidden;"><%= image_tag 'home-fit-med.jpg' %></div>
+                <div style="height: 30px; background-color: #28739A; color: white; text-align: left; padding: 5px 11px; font-size: 12px;">Read latest news and get healthy and nutritious recipes.</div>
+              <% end %>
+            </div>
+        
+            <div class="  " style="display: inline; position: relative; float: left; width: 219px; margin-right: 20px;">
+              <%= link_to videos_path do %>
+                <div style="height: 17px; text-align: center; background-color: #0B2B42; padding: 12px 0px; color: #2E8EC1; font-style: helvetica; font-weight: bold; font-size: 1.1em;">Video Library</div>
+                <div style="height: 158px; overflow:hidden;"><%= image_tag 'home-vid.jpg' %></div>
+                <div style="height: 30px; background-color: #28739A; color: white; text-align: left; padding: 5px 9px; font-size: 12px;">Watch interviews, follow recipes and interact with live TV segments.</div>
+                <% end %>
+            </div>
+            
+            <div class="  " style="display: inline; position: relative; float: left; width: 219px;">
+              <%= link_to edit_metabolic_rates_path do %>
+                <div style="height: 17px; text-align: center; background-color: #0B2B42; padding: 12px 0px; color: #2E8EC1; font-style: helvetica; font-weight: bold; font-size: 1.1em;">Create Your Goals</div>
+                <div style="height: 158px; overflow:hidden;"><%= image_tag 'home-goals.jpg' %></div>
+                <div style="height: 30px; background-color: #28739A; color: white; text-align: left; padding: 5px 9px; font-size: 12px;">
+                  Lose weight, eat better, exercise more! Create and achieve your goals.
+                </div>
+              <% end %>
+            </div>
+          
+          </div>
+          
+          <div style="clear:both">&nbsp;</div>
+          
+          <div id="homefeed" class="container_16">
+            <h2 class="grid_8">Most Recent</h2>
+            <h2 class="grid_8">Most Popular</h2>
+            
+            <%= render :partial => 'post', :locals => {:post => @recent_posts.first } %>
+            <%= render :partial => 'post', :locals => {:post => @popular_posts.first } %>
+            
+            <div style="clear:both">&nbsp;</div>
+            
+            <%= render :partial => 'post', :locals => {:post => @recent_posts.last } %>
+            <%= render :partial => 'post', :locals => {:post => @popular_posts.last } %>
+            
+            <div style="clear:both">&nbsp;</div>
+            
+            <div style="clear:both; margin-bottom: 13px;">&nbsp;</div>
+            
+            <hr style="clear: both; margin: 21px auto 23px; width: 940px;" />
+            <!-- Recent Members -->
+            <div id="recent-members-wrapper" class="grid_8">
+              <h2 class="member-and-content-header" style="margin-bottom: 23px; color: # 09273B; font-size: 1.5em; font-weight: bold;">Most Recent Members</h2>
+              <div class="grid_4 alpha"><%= render :partial => '/users/recent_member', :collection => @recent_members.slice(0, 4), :as => :user %></div>
+              <div class="grid_4 omega"><%= render :partial => '/users/recent_member', :collection => @recent_members.slice(4, 4), :as => :user %></div>
+              <!--div style="clear:both"></div-->
+            </div>
+            
+            <!-- div style="clear:both"></div-->
+          </div>
+          
+          <div id="success" class="grid_9">
+          
+          <h2><span>SUCCESS STORIES</span></h2>
+          <div id= "success_content">
+            <%= image_tag 'home-success.jpg' %>
+            <p><h3>FIRST TRIATHALON</h3>
+              The night before my triathlon was a night of nervousness and readiness. I had my checklist in front of me and all of my equipment laid out on the floor.  I kept checking my list over and over again. I kept running through my transitions over and morning...</p>
+          </div>
+          
+          <div style="clear:both">&nbsp;</div>
+        </div>
       </div>
     </div>
     
-    <div class="full" style="background-color: #EBEBEB;">
-      <div class="container_16">
-        <div class="grid_16" style="text-align: center; font-size: 24px; font-weight: bold; color: #222; margin-top: 75px; margin-bottom: 36px;">
-          Here's the gist of My Weight World...
-        </div>
-        
-        <div class="clear"></div>
-        
-        <div class=" push_1 alpha" style="display: inline; position: relative; float: left; width: 240px; margin-right: 60px;">
-          <div style="height: 225px; background-color: #CCC;"></div>
-          <span style="font-size: 18px; font: helvetica; display: inline-block; line-height: 22px; padding: 17px 10px;">Set goals, track calories, get feedback, find helpful content - partake in bettering the community and the community will help build a better you.</span>
-        </div>
-        
-        <div class=" push_1" style="display: inline; position: relative; float: left; width: 240px; margin-right: 60px;">
-          <div style="height: 225px; background-color: #CCC;"></div>
-          <span style="font-size: 18px; font: helvetica; display: inline-block; line-height: 22px; padding: 17px 10px;">Set goals, track calories, get feedback, find helpful content - partake in bettering the community and the community will help build a better you.</span>
-        </div>
-        
-        <div class=" push_1" style="display: inline; position: relative; float: left; width: 240px;">
-          <div style="height: 225px; background-color: #CCC;"></div>
-          <span style="font-size: 18px; font: helvetica; display: inline-block; line-height: 22px; padding: 17px 10px;">Set goals, track calories, get feedback, find helpful content - partake in bettering the community and the community will help build a better you.</span>
-        </div>
-        
-        
-      </div>
-      
-      <div style="clear:both">&nbsp;</div>
-      
-      <hr style="width: 640px; margin: 0 auto; margin-top: 6px; clear: both"/>
-      
-      <div class="container_16">
-        <p style="text-align: center; margin: 0 auto; margin-top: 43px; width: 900px;">
-          <span style="display: inline-block; font-size: 24px; font-weight: bold; color: #222;">
-            We're building a community for guidance in fitness & wellness.
-          </span>
-          <span style="display: inline-block; font-size: 18px; font: helvetica; margin-top: 7px;">
-            My Weight World is a ever evolving community to help you in the pursuit of fitness, health, and nutrition. We are not just here to help you lose weight but to support you every step of the way. We not only focus on weight loss we can help you build muscle, get leaner, more toned, and any other goal related to your health, fitness and nutrition. We are constantly updating our site to give you more up to date videos, information on fitness, nutrition, and health.  Our community is setup to continually motivate and support your goals. We take great pride in  your success. 
-          </span>
-        </p>
-        <div style="clear:both">&nbsp;</div>
-        
-        <div class="grid_8" style="margin-top: 34px;">
-          <div class="grid_3 alpha" style="height: 148px; background-color: #CCC;"></div>
-          <div class="grid_5 omega">
-            <span style="display: inline-block; font-size: 14px; font-weight: bold; font-face: helvetica; color: #000;">This describes the feature from a quippy sentence level.</span>
-            <span style="font-size: 14px; font-face: helvetica; color: #222">This is the general and more specific descripiton of the feature and gives greater insight to why and how a user would use the thing we're talking about so that the person knows more accurately why they care.</span>
-          </div>
-          
-          <div style="clear:both">&nbsp;</div>
-        </div>
-        
-        <div class="grid_8" style="margin-top: 34px;">
-          <div class="grid_3 alpha" style="height: 148px; background-color: #CCC;"></div>
-          <div class="grid_5 omega">
-            <span style="display: inline-block; font-size: 14px; font-weight: bold; font-face: helvetica; color: #000;">This describes the feature from a quippy sentence level.</span>
-            <span style="font-size: 14px; font-face: helvetica; color: #222">This is the general and more specific descripiton of the feature and gives greater insight to why and how a user would use the thing we're talking about so that the person knows more accurately why they care.</span>
-          </div>
-          
-          <div style="clear:both">&nbsp;</div>
-        </div>
-        
-        <div style="clear:both">&nbsp;</div>
-        
-        <div class="grid_8" style="margin-top: 10px;">
-          <div class="grid_3 alpha" style="height: 148px; background-color: #CCC;"></div>
-          <div class="grid_5 omega">
-            <span style="display: inline-block; font-size: 14px; font-weight: bold; font-face: helvetica; color: #000;">This describes the feature from a quippy sentence level.</span>
-            <span style="font-size: 14px; font-face: helvetica; color: #222">This is the general and more specific descripiton of the feature and gives greater insight to why and how a user would use the thing we're talking about so that the person knows more accurately why they care.</span>
-          </div>
-          
-          <div style="clear:both">&nbsp;</div>
-        </div>
-        
-        <div class="grid_8" style="margin-top: 10px;">
-          <div class="grid_3 alpha" style="height: 148px; background-color: #CCC;"></div>
-          <div class="grid_5 omega">
-            <span style="display: inline-block; font-size: 14px; font-weight: bold; font-face: helvetica; color: #000;">This describes the feature from a quippy sentence level.</span>
-            <span style="font-size: 14px; font-face: helvetica; color: #222">This is the general and more specific descripiton of the feature and gives greater insight to why and how a user would use the thing we're talking about so that the person knows more accurately why they care.</span>
-          </div>
-          
-          <div style="clear:both">&nbsp;</div>
-        </div>
-        
-        <div style="clear:both; margin-bottom: 13px;">&nbsp;</div>
-        
-        <div class="grid_5 push_3">
-          <span style="display: inline-block; font-size: 24px; font-weight: bold; color: #222; margin-top: 4px;">
-            Accomplish goals, track fitness, better yourself
-          </span>
-        </div>
-        
-        <%= render :partial => 'large_orange_button', :locals => {:klass => "push_3"} %>
-        
-        <div style="clear:both">&nbsp;</div>
-        
-        <hr class="home-centered-ruler" />
-        <!-- Recent Members -->
-        <div id="recent-members-wrapper" class="grid_5 push_1">
-          <p class="member-and-content-header" style="margin-bottom: 17px;">Most Recent Members</p>
-          <%= render :partial => '/users/recent_member', :collection => @recent_members, :as => :user %>
-        </div>
-        <!-- Helpful Content -->
-        <div id="helpful-content-wrapper" class="grid_10 push_1">
-          <p class="member-and-content-header" style="margin-bottom: 13px;">Helpful &amp; Poignant Content</p>
-          
-          <!-- Content Description -->
-          <p class="quippy-feature-description grid_9 alpha omega" >This describes the feature from a quippy sentence level.</p>
-          <div style="clear:both"></div>
-          <p class="grid_9 alpha omega poignant-feature-description" >This is the general and more specific description of the feature and more specific description of the feature and gives greater insight to care.</p>
-          
-          <!-- Content Description w/Image -->
-          <div class="grid_3 alpha feature-image" ></div>
-          <p class="grid_6 quippy-feature-description">This describes the feature from a quippy sentence level.</h4>
-          <p class="grid_6 poignant-feature-description" style="clear:right" >This is the general and more specific description of the feature and more specific description of the feature and gives greater insight to care.</p>
-          
-          <!-- Content Description -->
-          <p class="quippy-feature-description grid_9 alpha omega" >This describes the feature from a quippy sentence level.</p>
-          <div style="clear:both"></div>
-          <p class="grid_9 alpha omega poignant-feature-description" >This is the general and more specific description of the feature and more specific description of the feature and gives greater insight to care.</p>
-          
-          <!-- Content Description w/Image -->
-          <div class="grid_3 alpha feature-image" ></div>
-          <p class="grid_6 quippy-feature-description">This describes the feature from a quippy sentence level.</h4>
-          <p class="grid_6 poignant-feature-description" style="clear:right" >This is the general and more specific description of the feature and more specific description of the feature and gives greater insight to care.</p>
-        </div>
-        
-        
-        <div style="clear:both"></div>
-      </div>
-      
-      
-      <div style="clear:both">&nbsp;</div>
-    </div>
+    <%= render :partial => 'layouts/footer' %>
     
-    <!-- Footer -->
-    <div id="footer-wrapper" class="full">
-      <div id="footer" class="container_16">
-        <div class="grid_6">
-          <p class="footer-header">Get In Touch With MyWeightWorld</p>
-          <%= mail_to 'support@myweightworlddemo.com', nil, :class => 'footer-link' %><br/>
-          <%= mail_to 'sales@myweightworlddemo.com', nil, :class => 'footer-link' %><br/>
-          <%= mail_to 'press@myweightworlddemo.com', nil, :class => 'footer-link' %>
-        </div>
-        
-        <div class="grid_5">
-          <p class="footer-header">Site Navigation</p>
-          <%= link_to 'Sign In', new_user_session_path, :class => 'footer-link' %><br/>
-          <%= link_to 'Sign Up', new_user_registration_path, :class => 'footer-link' %><br/>
-          <%= link_to 'Content', new_search_path, :class => 'footer-link' %>
-        </div>
-        
-        <%= render :partial => 'large_orange_button', :locals => {:klass => "omega", :style => "margin-top: 5px"} %>
-        
-        <div style="clear:both">&nbsp;</div>
-      </div>
-    </div>
-    <!-- Copyright -->
-    <div class="full" style="height: 41px; background: url('/images/gradient-copyright.png')">
-      &nbsp;
-    </div>
-    
-    <%= render :partial => "shared/gridder" %>
+    <%= render :partial => "layouts/js_libs" %>
   </body>
 </html>

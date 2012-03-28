@@ -103,7 +103,7 @@
           </p>
           <p>
             <%= label_tag 'Category' %><br />
-            <%= aac_select(Category.roots, {:selected => @item.category_id, :name => 'old_item[category_id]', 
+            <%= raw aac_select(Category.roots, {:selected => @item.category_id, :name => 'old_item[category_id]', 
                                             :parents_nil => true, :option_nil => '--'}) %>
           </p>
           <p>

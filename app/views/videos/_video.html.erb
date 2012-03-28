@@ -1,0 +1,12 @@
+<div class="post">
+  <div class="post-image" style="width: 145px; height: 105px;">
+    <%= image_tag video.preview_image.url(:small)%>
+  </div>
+  <div class="post-content">
+    <h3 class="post-title"><%= link_to video.title, video_path(video) %></h3>
+    <div class="post-creation-date"><%= video.created_at.to_s(:short) %></div>
+    <p class="post-teaser"><%= truncate(strip_tags(video.description), :length => 150) %></p>
+  </div>
+  <div class="clear">&nbsp;</div>
+  <hr class="hor-rule">
+</div>

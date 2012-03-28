@@ -11,6 +11,11 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_grid
   
+  def forem_user
+    current_user
+  end
+  helper_method :forem_user
+  
   def get_categories
     @categories = Category.all
   end
@@ -31,6 +36,7 @@ class ApplicationController < ActionController::Base
   
   def set_grid
     @grid = false
+    @show_overlay = false
   end
   
   def require_no_user

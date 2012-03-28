@@ -43,6 +43,14 @@ class WorkoutsController < ApplicationController
   # Ajax add to workout
   def workout_item
     @exercise     = Exercise.find(params[:exercise_id])
-    @workout_item = current_user.workouts.build.workout_items.build(:exercise => @exercise, :duration => params[:duration], :user => current_user)
+    @workout_item = current_user.workouts.build.workout_items.new(:exercise => @exercise, :duration => params[:duration], :user => current_user)
+    
+    @workout_item_fields = view_context.fields_for :workout_items, @workout_item, :child_index => "new_workout_items" do |f|
+                             render_to_string(:partial => 'workout_items/workout_item_fields_ajax', :locals => {:workout_item_form => f}).html_safe
+                           end
+    
+    respond_to do |wants|
+      wants.js { render }
+    end
   end
 end

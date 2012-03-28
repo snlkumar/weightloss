@@ -5,27 +5,32 @@ class ContentSearch
   
   def initialize(params = {})
     @posts  = @videos = []
-    @filter = params[:search][:filter]
+    @filter = params[:search].try(:[], :filter)
     
     case @filter
     when 'articles'
       @post_search  = PostSearch.new(params[:search])
       @posts        = @post_search.go
-      @total        = @posts.total_entries
+      @total        = @posts.size
       
     when 'videos'
       @video_search = VideoSearch.new(params[:search])
       @videos       = @video_search.go
-      @total        = @videos.total_entries
+      @total        = @videos.size
       
     else
-      @post_search  = PostSearch.new(params[:search])
-      @posts        = @post_search.go
+      if params[:search]
+        @post_search  = PostSearch.new(params[:search])
+        @posts        = @post_search.go
       
-      @video_search = VideoSearch.new(params[:search])
-      @videos       = @video_search.go
+        @video_search = VideoSearch.new(params[:search])
+        @videos       = @video_search.go
+      else
+        @posts        = OldTextFile.all
+        @videos       = OldFlashFile.all
+      end
       
-      @total        = @posts.total_entries + @videos.total_entries
+      @total        = @posts.size + @videos.size
     end
     
   end
