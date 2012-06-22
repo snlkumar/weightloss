@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable, :timeoutable
+#validates :password, :presence => true, :length => { :minimum => 6 }
+
+    has_friendly_id :full_name, :use_slug => true
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
@@ -17,7 +21,7 @@ class User < ActiveRecord::Base
                              :url  => '/system/:class/:attachment/:id/:style/:normalized_avatar_name',
                              :path => ":rails_root/public/system/:class/:attachment/:id/:style/:normalized_avatar_name"
   
-  has_friendly_id :full_name, :use_slug => true
+
   
   # Associations
   has_many :meals,    :dependent => :destroy
@@ -108,7 +112,9 @@ class User < ActiveRecord::Base
   end
   
   def calories_consumed_today
-    self.meals.today.inject(0){|tot, meal| tot += meal.meal_items.inject(0){|meal_tot, meal_item| meal_tot += meal_item.calories } }
+    cc=self.meals.today.inject(0){|tot, meal| tot += meal.meal_items.inject(0){|meal_tot, meal_item| meal_tot += meal_item.calories } }
+    
+   
   end
   
   def calories_burned_today
@@ -117,6 +123,7 @@ class User < ActiveRecord::Base
         workout_tot += workout_item.calories
       end
     end
+	
   end
   
   def calories_consumed_this_week

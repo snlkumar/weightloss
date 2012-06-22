@@ -1,0 +1,60 @@
+<hr style="margin-top: 53px;"></hr>
+
+<%= form_for current_user, :url => metabolic_rates_path, :html => {:id => 'goal'} do |f| %>
+  <%= f.error_messages %>
+  
+  <div class="grid_1 goal-step-num">1.</div>
+  <div class="grid_5">
+    <p class="goal-step-text">Select your usual level of activity</p>
+    
+    <p>
+      <%= f.radio_button :activity_level, 1 %>
+      <%= f.label :activity_level, 'Sendentary' %><br/>
+      
+      <%= f.radio_button :activity_level, 2 %>
+      <%= f.label :activity_level, 'Lightly Active' %><br/>
+      
+      <%= f.radio_button :activity_level, 3 %>
+      <%= f.label :activity_level, 'Moderately Active' %><br/>
+      
+      <%= f.radio_button :activity_level, 4 %>
+      <%= f.label :activity_level, 'Very Active' %><br/>
+      
+      <%= f.radio_button :activity_level, 5 %>
+      <%= f.label :activity_level, 'Extra Active' %><br/>
+    </p>
+  </div>
+  <div class="clear" style="margin-bottom: 21px;"></div>
+  <hr></hr>
+  
+  <div class="grid_1 goal-step-num">2.</div>
+  <div class="grid_5">
+    <p class="goal-step-text">Give us your specs</p>
+    <p>
+      <%= f.label :height, "Height (inches)" %><br/>
+      <%= f.text_field :height, :class => 'grid_1 alpha' %>
+      <span class="clear"></span>
+    </p>
+    
+    <p>
+      <%= f.label :weight %><br/>
+      <%= f.text_field :weight, :value => f.object.weight, :class => 'grid_1 alpha' %>
+      <span class="clear"></span>
+    </p>
+  </div>
+  <div class="clear" style="margin-bottom: 21px;"></div>
+  <hr></hr>
+  
+  <div class="grid_1 goal-step-num">3.</div>
+  <div class="grid_5">
+    <p class="goal-step-text">What's your goal?</p>
+    <p>
+      <%= f.label :desired_weight, 'Desired Weight' %><br/>
+      <%= f.text_field :desired_weight, :class => 'grid_1 alpha' %>
+      <span class="clear"></span>
+    </p>
+    
+    <%= submit_tag 'Save', :style => "margin-top: 25px;" %>
+  </div>
+<% end %>
+

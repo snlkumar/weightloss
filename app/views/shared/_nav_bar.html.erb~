@@ -1,0 +1,29 @@
+<ul>
+  <% if current_user %>
+    <li>
+      <%= link_to "", user_path(current_user), :id => 'profile-tab', :title => 'Profile' %>
+    </li>
+  <!--  <li>
+      <%#= link_to "", meals_path, :id => 'food-tab', :title => 'Meals' %>
+    </li>
+    <li>
+      <%#= link_to "", workouts_path, :id => 'exercise-tab', :title => 'Workouts' %>
+    </li> -->
+    <li>
+      <%= link_to "",dairy_workout_path , :id => 'dairy-tab', :title => 'dairy' %>
+    </li>
+    <li>
+      <%= link_to '', weight_over_time_tracking_path, :id => 'charts-tab', :title => 'Charts' %>
+    </li>
+    <li>
+      <%= link_to '', edit_metabolic_rates_path, :id => 'goal-tab', :title => 'Goal' %>
+    </li>
+    <li>
+      <%= link_to '', forum_engine_path, :id => 'forum-tab', :title => 'Forums' %>
+    </li>
+  <% end %>
+  
+  <li id="end-tab">
+    <%= link_to '', {} %>
+  </li>
+</ul>

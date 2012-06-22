@@ -1,0 +1,179 @@
+<h3>Hey <%= current_user.first_name %>, what did you eat?</h3>
+
+<%= form_tag "/meals/meal_item", :id => 'meal-new-item' do %>
+  <%= hidden_field_tag :food_id, "" %>
+  
+  <div id="meal-entry" style="position: relative">
+		<span class="titl">Calorie Chart, Nutrition Facts for Food</span><br>	
+		<table border="0" id="left_table">
+			<tr>
+				<td><hr color="#81DAF5" size="3"></td>
+			</tr>			
+			<tr>
+				<td><span class="srch"><%= label_tag 'Search our food database by name' %></span></td>
+			</tr>
+			<tr>
+				<td>
+					<%= text_field_tag :food, "", :id => 'food-item-entry', :title => "Try one or more keywords",:style=>'width:220px;margin-top:1%;height:15px;float:left;' %>
+					<%= image_tag "ajax-loader.gif", :id => 'ajax-spinner' %>
+					<div id="add-meal-item" class="button" style="font-size:12px;margin-top:1%;width: 50px;float:left;">Search</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<!--<span>Matching Foods:</span>
+					<span class="mdm_size"><b>Sort by: </b>Relevance<input type="radio" name="srt_by" value="off" />
+					Name<input type="radio" name="srt_by" value="on" checked /></span> -->
+				</td>
+			</tr>
+			<!--<tr>
+				<td>
+					<select name="food_list" multiple="multiple" style="width:53%;height:150px;background-color:white;">
+						<option>aaaa</option>
+						<option>aaaa</option>
+						<option>aaaa</option>
+						<option>aaaa</option>
+						<option>aaaa</option>
+						<option>aaaa</option>
+						<option>aaaa</option>
+						
+					</select>
+				</td>
+			</tr>-->
+			<tr>
+				<td class="sml">*= Nutritional information provided by another MyFitnessPal member</td>
+			</tr>
+		</table>
+
+  <% end %>
+  
+  <%= form_for @meal, :html => {:id => 'meal'} do |meal_form| %>
+    <table>
+      <tbody id="meal-items" style="<%= @meal.new_record? ? 'display:none;' : '' %>">
+        <!--<tr>
+          <td class="bold">Food</td>
+          <td class="bold" style="padding-right: 10px;">KCals</td>
+          <td class="bold"># of Servings</td>
+          <td class="bold">Serving Size</td>
+<td class="bold">Nutritional Facts</td>
+        </tr>-->
+        <% meal_form.fields_for :meal_items do |meal_item_form| %>
+        test
+          <%= render :partial => 'meal_items/meal_item_fields', :locals => { :meal_item_form => meal_item_form } %>
+        <% end %>
+      </tbody>
+    </table>
+    
+    <div class="clear"></div>
+  </div>
+  
+  <div class="grid_11">
+    <br/>
+    
+    <div id="calendar-box-wrapper" class="alpha">
+      <%= text_field_tag "meal[ate_on_date][date]", ate_on_start_date(meal_form.object), :id => "calendar-box" %>
+    </div>
+    
+    <div id="selected-date-help">
+      <span class="bold">Was the date of the meal?</span> Feel free to edit the date of this meal.
+    </div>
+    
+    <div class="clear"></div>
+    <br/>
+    
+    <p>
+      <%= label_tag 'Meal Time' %><br/>
+      <%= select_tag "meal[ate_on_date][time][hour]",
+                     options_for_select((1..12).map{|n| ["%02d" % n, n]}, meal_form.object.ate_on.try(:strftime, "%I").to_i) %>:
+      <%= select_tag "meal[ate_on_date][time][minute]", 
+                     options_for_select((0..59).map{|n| ["%02d" % n, n]}, meal_form.object.ate_on.try(:strftime, "%M").to_i) %>&nbsp;
+      <%= select_tag "meal[ate_on_date][time][meridian]", 
+                     options_for_select(['AM', 'PM'], meal_form.object.ate_on.try(:strftime, "%p")) %>
+    </p>
+    
+    <p>
+      <%= meal_form.label :meal_type %><br/>
+      <%= meal_form.select :meal_type, options_for_select(Meal::TYPES, meal_form.object.meal_type) %>
+    </p>
+    
+    <p>
+      <%= meal_form.label :note, 'Meal Note' %><br/>
+      <%= meal_form.text_area :note, :class => 'grid_6 alpha' %>
+      <div class="clear"></div>
+    </p>
+    
+    <p>
+      <%= meal_form.submit @meal.new_record? ? "Save This Meal" : "Update This Meal" %> | 
+      <%= link_to "Cancel", :back %>
+    </p>
+  </div>
+<% end %>
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    $('#food-item-entry').labelify({ labelledClass: "label-highlight" });
+    $('#calendar-box').datepicker();
+    
+    $("#meal-new-item").keydown(function(event){
+      if(event.keyCode == 13) {
+        event.preventDefault();
+        return false;
+      }
+    });
+    
+    $('#food-item-entry').autocomplete({
+      source: "/foods/search",
+      minLength: 2,
+      select: function(evt, ui){
+        $("#food_id").val(ui.item.id);
+      },
+      open: function(event, ui){
+        var url = "<a href=\"<%= new_custom_food_path %>\">Can\'t find an item? Add a new item to our database</a>!"; 
+        var last_item = $("<li></li>").append(url)
+        $("ul.ui-autocomplete.ui-menu").append(last_item);
+      }
+    });
+    
+    $("#add-meal-item").click(function(evt){
+      var form = $("form#meal-new-item");
+      
+      if( $("#food_id").val() == "" ){
+        alert("Please choose a food item");
+      }else{
+        $.post("<%= meal_item_meals_path() %>", form.serialize() )
+      }
+      
+      return false;
+    });
+    
+    $("#meal").submit(function(evt){
+      var form = $("form#meal-new-item");
+      var min_possible_quantity = (0.25 * $(".meal-item-quantity").length) / 2;
+      
+      // ensure a quantity and measure has been provided for every item added to the meal, before we allow submitting
+      if( _.inject($(".meal-item-quantity"), function(memo, num){ return memo + parseFloat($(num).val()); }, 0) < min_possible_quantity || 
+          _.any($(".meal-item-units"),    function(el){ return $(el).val() == ""}) ){
+        alert("Please make sure all food items have a serving amount and measure before submitting the meal");
+        return false;
+      }
+    });
+    
+    $(".remove_ajax_meal_item").live('click', function(evt){
+      evt.preventDefault();
+      $(this).closest('tr').fadeOut('slow', function(){
+        $(this).detach();
+      });
+    });
+    
+    $("#meal-items select").live('change', function(evt){
+      var row = $(this).closest('tr');
+      var inputs = row.find("input, select");
+      $.post("<%= meal_item_calories_foods_path %>", inputs.serialize(), function(data){
+        row.find("td.calories").html(data["calories"]);
+      });
+    });
+  <% end %>
+</script>

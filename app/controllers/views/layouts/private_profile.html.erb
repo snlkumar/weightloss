@@ -1,0 +1,62 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js" lang="en"> <!--<![endif]-->
+  <head>
+    <%= render :partial => '/layouts/head' %>
+  </head>
+  <body>
+    <div id="wrap" class="full">
+      <div id="main" class="full">
+        <%= render :partial => '/layouts/header' %>
+    
+        <div class="container_16">
+          <div class="grid_5 ">
+            <div class="sidebar-container" style="">
+              <p id="user-name" class="grid_5"><%= @user.username %></p>
+          
+              <div class="clear">&nbsp;</div>
+          
+              <div class="profile-avatar avatar"><%= user_avatar_image(@user, :profile) %></div>
+          
+              <div class="clear">&nbsp;</div>
+          
+              <%= render :partial => 'details', :locals => {:user => @user} %>
+          
+              <br/>
+            </div>
+        
+            <div class="clear">&nbsp;</div>
+            <br/>
+        
+          </div>
+      
+          <%= yield :sidebar %>
+      
+          <div id="nav-bar">
+            <%= render :partial => 'shared/nav_bar' %>
+          </div>
+      
+          <div id="content" class="grid_11 profile">
+            <%= yield %>
+          </div>
+      
+          <br/>
+        </div>
+      </div>
+    </div>
+    
+    <%= render :partial => 'layouts/footer' %>
+    
+    <%= render :partial => "layouts/js_libs" %>
+    
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function() {
+        <%= yield :js %>
+      });
+    </script>
+  </body>
+</html>

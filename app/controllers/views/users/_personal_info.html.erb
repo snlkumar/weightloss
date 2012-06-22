@@ -1,0 +1,76 @@
+<p>
+  <%= f.label :avatar %><br/>
+  <% if f.object.avatar.file? %>
+    <%= image_tag f.object.avatar.url(:medium) %>
+    <%= f.check_box :remove_avatar %> Remove?
+  <% end %>
+  
+  <%= f.file_field :avatar, :size => '6' %>
+</p>
+
+<br/>
+
+<p>
+  <%= f.check_box :private %>
+  <%= f.label :private, "Mark your account as private to non members?" %>
+  
+  <br/>
+  <br/>
+  <span class="clear"></span>
+</p>
+
+<p>
+  <%= f.label :first_name, %Q{First Name} %><br/>
+  <%= f.text_field :first_name, :title => "First Name", :class => 'grid_6 alpha' %>
+  <span class="clear"></span>
+</p>
+
+<p>
+  <%= f.label :last_name, %Q{Last Name} %><br/>
+  <%= f.text_field :last_name, :title => "Last name", :class => 'grid_6 alpha' %>
+  <span class="clear"></span>
+</p>
+
+<p>
+  <%= f.label :birthdate %><br/>
+  <%= f.date_select :birthdate, :start_year => Time.zone.now.year, :end_year => 100.years.ago.year %>
+  <span class="clear"></span>
+</p>
+
+<p>
+  <%= f.label :gender %><br/>
+  <%= f.select :gender, [['Choose', 0], ['Male', 'male'], ['Female', 'female']] %>
+  <span class="clear"></span>
+</p>
+
+<%= render :partial => '/users/personal_measurements', :locals => {:f => f} %>
+
+<p>
+  <%= f.label :city %><br/>
+  <%= f.text_field :city, :class => 'grid_6 alpha' %>
+  <span class="clear"></span>
+</p>
+
+<p>
+  <%= f.label :state %><br/>
+  <%= f.text_field :state, :class => 'grid_6 alpha' %>
+  <span class="clear"></span>
+</p>
+
+<p>
+  <%= f.label :bio %><br/>
+  <%= f.text_area :bio, :class => 'grid_6 alpha' %>
+  <span class="clear"></span>
+</p>
+
+<p>
+  <%= f.label :twitter %><br/>
+  <%= f.text_field :twitter_name, :class => 'grid_6 alpha' %>
+  <span class="clear"></span>
+</p>
+
+<p>
+  <%= f.label :employment_position, 'Work Title' %><br/>
+  <%= f.text_field :employment_position, :class => 'grid_6 alpha' %>
+  <span class="clear"></span>
+</p>

@@ -1,0 +1,55 @@
+<div class="grid_16">
+  
+  
+  <br/>
+  
+  <h2>Posts</h2>
+  
+  <%= link_to 'Back', admin_dashboard_path %><br/>
+  <%= link_to 'New post', new_admin_post_path %>
+  
+  <br/>
+  
+  <%= form_tag(search_admin_posts_path) do %>
+    <%= text_field_tag 'terms', '', :id => 'exercise-search' %>
+  
+    <%= submit_tag 'Search' %>
+  <% end %>
+  
+  <br/>
+  <% if params['terms'] && !params['terms'].blank? %>
+    Displaying results for "<%= params['terms'] %>"<br/>
+  <% end %>
+  
+  <%= page_entries_info(@posts, :entry_name => 'post') %>
+  
+  <%= paginate(@posts, :params => pagination_params(request)) %>
+  
+  <br />
+  <table class="admin">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Body</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr  class="<%= cycle('odd', '') %>">
+          <td><%= post.page_title %></td>
+          <td><%= post.category.try(:name) %></td>
+          <td><%= truncate(strip_tags(post.body), :length => 50) %></td>
+          <td class="actions">
+            <%= link_to 'Show', post_path(post), :target => '_blank' %> | 
+            <%= link_to 'Edit', edit_admin_post_path(post) %> | 
+            <%= link_to 'Delete', [:admin, post], :confirm => 'Are you sure?', :method => :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br/>
+  <%= paginate(@posts, :params => pagination_params(request)) %>
+</div>

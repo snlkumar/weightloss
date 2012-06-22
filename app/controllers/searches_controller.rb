@@ -1,5 +1,6 @@
 class SearchesController < ApplicationController
-  before_filter :get_categories
+  #before_filter :get_categories
+  before_filter :get_subcategories
   
   def index
     redirect_to new_search_path()
@@ -15,11 +16,11 @@ class SearchesController < ApplicationController
   
   def create
     # (redirect_to(new_search_path) && return) if params[:search].nil?
-    
     @search  = ContentSearch.new(params)
     
     @results = Kaminari.paginate_array( @search.results ).page(params[:page] || 1).per(25)
     @total   = @search.total
+  
     
     if user_signed_in?
       render :action => :new, :layout => 'search'

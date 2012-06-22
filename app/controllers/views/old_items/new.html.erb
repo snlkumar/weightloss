@@ -1,0 +1,147 @@
+<h1>New Item</h1>
+
+<%= form_for(@item, :html => {:multipart => true}) do |f| %>
+  <%= f.error_messages %>
+
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <p>
+            <%= f.label :sku %><br />
+            <%= f.text_field :sku %>
+          </p>
+          <p>
+            <%= f.label :name %><br />
+            <%= f.text_field :name %>
+          </p>
+          <p>
+            <%= f.label :title %><br />
+            <%= f.text_field :title %>
+          </p>
+          <p>
+            <%= f.label :meta_description %><br />
+            <%= f.text_field :meta_description %>
+          </p>
+          <p>
+            <%= f.label :meta_keywords %><br />
+            <%= f.text_field :meta_keywords %>
+          </p>
+          <p>
+            <%= f.label :inventory %><br />
+            <%= f.text_field :inventory %>
+          </p>
+          <p>
+            <%= f.label :warning_qty %><br />
+            <%= f.text_field :warning_qty %>
+          </p>
+          <p>
+            <%= f.label :unit %><br />
+            <%= f.text_field :unit %>
+          </p>
+          <p>
+            <%= f.label :price %><br />
+            <%= f.text_field :price %>
+          </p>
+          <p>
+            <%= f.label :on_sale %><br />
+            <%= f.check_box :on_sale %>
+          </p>
+          <p>
+            <%= f.label :on_msrp %><br />
+            <%= f.check_box :on_msrp %>
+          </p>
+          <p>
+            <%= f.label :tax_exempt %><br />
+            <%= f.check_box :tax_exempt %>
+          </p>
+          <p>
+            <%= f.label :free_shipping %><br />
+            <%= f.check_box :free_shipping %>
+          </p>
+          <p>
+            <%= f.label :image1, 'Image 1' %><br />
+            <%= f.file_field :image1 %><br />
+          </p>
+          <p>
+            <%= f.label :image2, 'Image 2' %><br />
+            <%= f.file_field :image2 %><br />
+          </p>
+        </td>
+        <td>
+          <p>
+            <%= f.label :weight %><br />
+            <%= f.text_field :weight %>
+          </p>
+          <p>
+            <%= f.label :length %><br />
+            <%= f.text_field :length %>
+          </p>
+          <p>
+            <%= f.label :width %><br />
+            <%= f.text_field :width %>
+          </p>
+          <p>
+            <%= f.label :height %><br />
+            <%= f.text_field :height %>
+          </p>
+          <p>
+            <%= f.label :shipping_1st_item %><br />
+            <%= f.text_field :shipping_1st_item %>
+          </p>
+          <p>
+            <%= f.label :shipping_2nd_item %><br />
+            <%= f.text_field :shipping_2nd_item %>
+          </p>
+          <p>
+            <%= label_tag 'Category' %><br />
+            <%= raw aac_select(Category.roots, {:selected => @item.category_id, :name => 'old_item[category_id]', 
+                                            :parents_nil => true, :option_nil => '--'}) %>
+          </p>
+          <p>
+            <%= label_tag 'Sub Category' %><br />
+            <%= f.select :subcategory_id, [['--', '--']]+Subcategory.all.map{|cat| [cat.name,cat.id]} %>
+          </p>
+          <p>
+            <%= f.label :active %><br />
+            <%= f.check_box :active %>
+          </p>
+          <p>
+            <%= f.label :featured %><br />
+            <%= f.check_box :featured %>
+          </p>
+          <p>
+            <%= f.label :best_seller %><br />
+            <%= f.check_box :best_seller %>
+          </p>
+          <p>
+            <%= f.label :latest_and_greatest %><br />
+            <%= f.check_box :latest_and_greatest %>
+          </p>
+          <p>
+            <%= f.label :recommended %><br />
+            <%= f.check_box :recommended %>
+          </p>
+          <p>
+            <%= f.label :additional_features %><br />
+            <%= f.check_box :additional_features %>
+          </p>
+          <p>
+            <%= f.label :keywords %><br />
+            <%= f.text_field :keywords %>
+          </p>
+          <p>
+            <%= f.label :long_description %><br />
+            <%= f.text_area :long_description %>
+          </p>
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', old_items_path %>

@@ -1,0 +1,91 @@
+
+<h2 id="video">Video Library</h2>
+
+<h3>Latest Videos</h3>
+
+<% @latest.each do |latest| %>
+  <div class="video-library-featured">
+    <%= link_to video_path(latest) do %>
+      <div class="image"><%= image_tag latest.preview_image.url(:large) %></div>
+      <div class="title"><%= latest.title %></div>
+      <div class="text"><%= truncate(latest.description, :length => 100) %></div>
+    <% end %>
+    <div style="clear:both"></div>
+  </div>
+<% end %>
+
+<div style="clear:both"></div>
+
+<div class="video-library-wrapper">
+  <h4 class="post-title">Medical</h4>
+  <% @medicals.each do |medical| %>
+    <div class="video-library">
+      <%= link_to video_path(medical) do %>
+        <div class="image"><%= image_tag medical.preview_image.url(:small) %></div>
+        <div class="title"><%= medical.title %></div>
+        <div class="text"><%= truncate(medical.description, :length => 50) %></div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="video-library-wrapper">
+  <h4 class="post-title">Exercise</h4>
+  <% @exercises.each do |exercise| %>
+    <div class="video-library">
+      <%= link_to video_path(exercise) do %>
+        <div class="image"><%= image_tag exercise.preview_image.url(:small) %></div>
+        <div class="title"><%= exercise.title %></div>
+        <div class="text"><%= truncate(exercise.description, :length => 50) %></div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div style="clear:both"></div>
+
+<div class="video-library-wrapper">
+  <h4 class="post-title">Recipes</h4>
+  <% @recipes.each do |recipe| %>
+    <div class="video-library">
+      <%= link_to video_path(recipe) do %>
+        <div class="image"><%= image_tag recipe.preview_image.url(:small) %></div>
+        <div class="title"><%= recipe.title %></div>
+        <div class="text"><%= truncate(recipe.description, :length => 50) %></div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="video-library-wrapper">
+  <h4 class="post-title">Nutrition</h4>
+  <% @nutritions.each do |nutrition| %>
+    <div class="video-library">
+      <%= link_to video_path(nutrition) do %>
+        <div class="image"><%= image_tag nutrition.preview_image.url(:small) %></div>
+        <div class="title"><%= nutrition.title %></div>
+        <div class="text"><%= truncate(nutrition.description, :length => 100) %></div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+</div>
+
+<% content_for :sidebar do %>
+  <!-- Categories  -->
+  <div id="search-categories-sidebar" class="sidebar-container subsection" >
+    <h4 class="sidebar-subheader">Categories</h4>
+
+    <p>We have an extensive library to help you with many facets of fitness and wellness - peruse by category</p>
+
+    <ul id="search-categories">
+      <li>
+        <%= link_to 'All', searches_path %>
+      </li>
+      <%= render :partial => '/searches/video_category', :collection => @categories, :as => :category %>
+    </ul>
+
+    <div class="clear">&nbsp;</div>
+  </div>
+<% end %>

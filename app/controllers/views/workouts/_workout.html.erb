@@ -1,0 +1,24 @@
+<div class="grid_1">
+  <%= user_avatar_image current_user, :small %>
+</div>
+
+<div class="grid_7">
+  <p><%= workout.note %></p>
+  
+  <ul class="grid_7 alpha omega meal-items">
+    <% workout.workout_items.each do |workout_item| %>
+      <li><%= truncate(workout_item.exercise.description, :length => 55) %> <span class="meal-item-calories"><%= workout_item.calories %></span></li>
+    <% end %>
+    <li>&nbsp;</li>
+    <li class="bold">Total Calories Burned<span class="meal-total-calories"><%= workout.total_calories %></span></li>
+  </ul>
+  
+  <p>
+    <%= workout.trained_on.strftime("%I:%M %p") %> &middot; 
+    <%= link_to 'Edit', edit_workout_path(workout) %> &middot; 
+    <%= link_to 'Delete', workout_path(workout), :method => :delete, :confirm => "Are you sure you want to delete this workout?" %></p>
+</div>
+
+<% unless @workouts.last == workout %><hr class="grid_8 omega day_seperator"/><% end %>
+
+<div class="clear"></div>

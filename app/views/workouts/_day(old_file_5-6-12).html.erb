@@ -1,0 +1,515 @@
+			<script type="text/javascript" src="/assets/jquery.js"></script>
+			<script type="text/javascript">
+			$(function() {
+					$("#trained_on").datepicker();
+					$("#trained_on").datepicker( {minDate: -93, maxDate: "+0D" });
+					$("#trained_on").datepicker("option", "dateFormat",'yy-mm-dd' );
+			});
+
+			//when window load, empty these field
+			jQuery(window).bind("load", function() {
+				jQuery("#dur").val("");
+				jQuery("#cardiao_excer_id").val("");
+				jQuery("#excer").val("");
+			});
+
+	
+			function checkDate(compNo)
+			{
+				if(document.getElementById('trained_on').value=='')
+				{
+					alert('please enter a date(yyyy-mm-dd) format'); 
+					document.getElementById('trained_on').focus(); 
+					return false;
+				}
+				jQuery.ajax({
+             type : "POST",	
+             url : '/workouts',
+							data: "time_from=" + $("#time_from"+compNo).val() + "&trained_on=" + $("#trained_on").val()+ "&exercise_id =" + $("#cardiao_excer_id"+compNo).val()+ "&calories=" + $("#cal"+compNo).val()+ "&duration=" + $("#dur"+compNo).val(),
+             dataType : "html",
+             success: function(data) 
+							{
+                if(data>0)
+										alert("successfully update");                  
+              },
+              error : function() 
+							{
+                   jQuery("#error").html("Sorry, The requested property could not be found.");
+              }
+         });
+			}
+		
+			/*jQuery(document).ready(function(){
+					jQuery("#workoutsDate").click(function(){
+							jQuery.ajax({
+                     type : "GET",
+                     url : '/workouts/getWorkout/?id=<%=current_user.id%>&dt='+jQuery("#wkDt").val(),
+                     dataType : "html",
+											success: function(data) {
+
+														d=replaceAll('"',data);
+														//alert(d);		//category
+														jQuery("#cal").text(d.split(":")[3].split(",")[0]);
+														jQuery("#tot").text(d.split(":")[3].split(",")[0]);
+														jQuery("#dur").val(d.split(":")[1].split(",")[0]); 
+														jQuery("#excer").val(d.split(":")[2].split(",")[0]);
+		                        //jQuery("#success").html(data);                     
+                             },
+											error : function() {
+                                        alert("Sorry, The requested property could not be found.");
+                                }
+                        });
+										
+						});
+						function replaceAll(s,d)
+						{
+							while(d.indexOf(s)!=-1)
+							{
+									d=d.replace(s,"");
+							}
+							return d.replace("[{","").replace("}]","");
+						}
+           jQuery("#SaveRoutines").click(function(){
+               jQuery.ajax({
+                     type : "GET",
+                     url : '/workouts/saveRoutines/?id=<%=current_user.id%>&excer='+jQuery("#excer").val()+'&dur='+jQuery("#dur").val()+"&dt="+jQuery("#wkDt").val(),
+                     dataType : "html",
+                     success: function(data) {
+		                        if(data>0)
+																alert("successfully update");                  
+                                },
+                                error : function() {
+                                        jQuery("#error").html("Sorry, The requested property could not be found.");
+                                }
+                        });
+                });
+        });*/
+			</script>
+
+			<script type="text/javascript">
+			   rno=2,j=0,cardio_rno=3,weight_rno=3;
+			   
+				function addCardioField()
+				{
+					cardio_rno++;
+					table = document.getElementById('cardio');
+					rowCount = table.rows.length-1;
+					//add new row for title(time,exercise etc)
+					row = table.insertRow(rowCount);
+					//row.setAttribute("id","cardio"+cardio_rno);
+					row.innerHTML="<td colspan='2'>Time<span style='font-size:9px;'>(From)</span></td><td style='padding-left:4%;'>Excersice</td><td>Time<span style='font-size:9px;'>(Duration)</span></td><td>Calories</td>";
+					//add new row for fields
+					row = table.insertRow(rowCount+1);
+					//row.setAttribute("id","cardio"+cardio_rno);
+					row.innerHTML="<td><input style='height:10px;margin-right:10px;' type='text' id='time_from"+cardio_rno+"' name='workout[time_from"+cardio_rno+"]' size='5' ></td><td><select name='' style='height:22px;'><option value='am'>Am</option><option value='pm'>Pm</option></select></td><td><input style='height:10px;margin-right:10px;width:80%;' id='excer"+cardio_rno+"' type='text' name='workout[description"+cardio_rno+"]' size='20' ></td><td><input style='height:10px;margin-right:10px;' id='dur"+cardio_rno+"' type='text' name='workout[duration"+cardio_rno+"]' size='12' ></td><td colspan='2'><label for='cal"+cardio_rno+"'><font size='5' id='cal"+cardio_rno+"'>0</font></label></td><td colspan='2'><input type='button' value='Save Routines' onclick='checkDate("+cardio_rno+")' class='button' id='SaveRoutines' ><input type='hidden' name='workout[exercise_id]' id='cardiao_excer_id"+cardio_rno+"' size='10'></td>";
+
+				}
+				/*function addExerciseField(comp)
+				{
+				  reg=new RegExp("[0-9]{1}");
+				  j=s1=document.getElementById(comp.id).value;
+				  if(s1!="" && reg.test(s1) && s1<5)
+				  {
+					table = document.getElementById('weight');
+					for(i=1;i<s1;i++)
+					{
+					rno++;
+					rowCount = table.rows.length-3;
+					//add field row
+					row = table.insertRow(rowCount);
+					cell = row.insertCell(0);//for empty cell
+					cell = row.insertCell(1);
+					element1 = document.createElement("input");
+					element1.type = "text";
+					element1.size="15";
+					element1.setAttribute("readonly",true);
+					element1.value=document.getElementById("weightExcer1").value;
+					element1.name = "";
+					cell.appendChild(element1);
+					cell = row.insertCell(2);//for empty cell
+					
+					cell = row.insertCell(3);
+					element1 = document.createElement("input");
+					element1.type = "text";
+					element1.size="1";
+					element1.name = "";
+					cell.appendChild(element1);
+					
+					cell = row.insertCell(4);
+					element1 = document.createElement("input");
+					element1.type = "text";
+					element1.size="3";
+					element1.name = "";
+					cell.appendChild(element1);
+					
+					cell = row.insertCell(5);
+					element1 = document.createElement("input");
+					element1.type = "text";
+					element1.size="3";
+					element1.name = "";
+					cell.appendChild(element1);
+					
+					cell = row.insertCell(6);
+					element1 = document.createElement("input");
+					element1.type = "text";
+					element1.size="3";
+					element1.name = "";
+					cell.appendChild(element1);
+					
+					cell = row.insertCell(7);
+					element1 = document.createElement("input");
+					element1.type = "text";
+					element1.size="5";
+					element1.name = "";
+					cell.appendChild(element1);
+					
+					cell = row.insertCell(8);
+					}
+				  }
+				  else
+				  {
+				    c=0;
+				    for(i=rno;i>2+j;i--)
+				    {
+							c++;//alert(rno);
+							document.getElementById('weight').deleteRow(i);
+							//alert("row "+i+" del");
+				    }
+				    rno-=c;
+				    //alert(rno);
+				  }
+				}
+				function addWeightField()
+				{
+					table = document.getElementById('weight');
+					rowCount = table.rows.length-3;
+					//add field row
+					row = table.insertRow(rowCount);
+					row.setAttribute("align","center");
+					cell = row.insertCell(0);
+					cell.innerHTML="Time";
+					cell = row.insertCell(1);
+					cell.innerHTML="Excersice";
+					cell = row.insertCell(2);
+					cell.innerHTML="Sets";
+					cell = row.insertCell(3);
+					cell.innerHTML="Reps";
+					cell = row.insertCell(4);
+					cell.innerHTML="Weight";
+					cell = row.insertCell(5);
+					cell.innerHTML="TUT";
+					cell = row.insertCell(6);
+					cell.innerHTML="Rest";
+					cell = row.insertCell(7);
+					cell.innerHTML="Time";
+					cell = row.insertCell(8);
+					cell.innerHTML="Calories";
+					rno++;//new row create 
+					
+					rowCount = table.rows.length-3;
+					//add field row
+					row = table.insertRow(rowCount);
+					cell = row.insertCell(0);
+					element1 = document.createElement("input");		
+					element1.type = "text";
+					element1.size="5";
+					element1.name = "";
+					cell.appendChild(element1);
+					selectElement = document.createElement("select");
+					selectElement.name="";
+					optionElement = document.createElement("option");
+					optionElement.text="Am";
+					optionElement.value="am";
+					selectElement.appendChild(optionElement);
+
+					optionElement = document.createElement("option");
+					optionElement.text="Pm";
+					optionElement.value="pm";
+					selectElement.appendChild(optionElement);
+					cell.appendChild(selectElement);
+					
+					cell = row.insertCell(1);
+					element1 = document.createElement("input");
+					element1.type = "text";
+					element1.size="15";
+					element1.setAttribute("readonly",true);
+					element1.value=document.getElementById("weightExcer1").value;
+					element1.name = "";
+					cell.appendChild(element1);
+					
+					cell = row.insertCell(2);
+					element1 = document.createElement("input");
+					element1.type = "text";
+					element1.size="1";
+					element1.name = "";
+					element1.id="setsId"+rno;
+					element1.setAttribute("onkeyup","addExerciseField(this)");
+					cell.appendChild(element1);
+					
+					cell = row.insertCell(3);
+					element1 = document.createElement("input");
+					element1.type = "text";
+					element1.size="1";
+					element1.name = "";
+					cell.appendChild(element1);
+					
+					cell = row.insertCell(4);
+					element1 = document.createElement("input");
+					element1.type = "text";
+					element1.size="3";
+					element1.name = "";
+					cell.appendChild(element1);
+					
+					cell = row.insertCell(5);
+					element1 = document.createElement("input");
+					element1.type = "text";
+					element1.size="3";
+					element1.name = "";
+					cell.appendChild(element1);
+					
+					cell = row.insertCell(6);
+					element1 = document.createElement("input");
+					element1.type = "text";
+					element1.size="3";
+					element1.name = "";
+					cell.appendChild(element1);
+					
+					cell = row.insertCell(7);
+					element1 = document.createElement("input");
+					element1.type = "text";
+					element1.size="5";
+					element1.name = "";
+					cell.appendChild(element1);
+					
+					cell = row.insertCell(8);
+					cell.innerHTML="220";
+					rno++;
+				}*/
+			</script>
+	
+	<!--<input type="hidden" name="weight_excer_id" id="weight_excer_id" size="10" />-->
+
+	<table border="0" width="100%">
+      <tr>
+        <td align="center" colspan="6"><h2>Activity</h2></td>
+      </tr>	
+      <tr>
+        <td colspan="6" align="center">
+        Select Date:<input id="trained_on" style="height:10px;width:20%;" name="workout[trained_on]" type="text">
+        	<input type="hidden" name="workout[exercise_id]" id="cardiao_excer_id1" size="10" />
+        </td>
+      </tr>
+	</table>
+	
+	<table id="cardio" width="108%">		
+      <tr>
+        <td colspan="6" align="center"><h3><span style="color:red;padding-left:12%;">Cardio</span></h3></td>
+      </tr>
+      <tr>
+        <td colspan="2">Time<span style="font-size:9px;">(From)</span></td>
+        <td style="padding-left:4%;">Excersice</td>
+        <td>Time<span style="font-size:9px;">(Duration)</span></td>
+        <td>Calories</td>
+    
+      </tr>
+      <tr>
+        <td>
+        	<input style="height:10px;margin-right:10px;" id="time_from1" type="text" name="workout[time_from]" size="5" />
+        </td>
+        <td>
+		      <select name="" style="height:22px;">
+		      <option value="am">Am</option>
+		      <option value="pm">Pm</option>
+		      </select>
+        </td>
+        <td><input style="height:10px;margin-right:10px;" id="excer1" type="text" name="workout[description]" size="20" /></td>
+        <td><input style="height:10px;margin-right:10px;" id="dur1" type="text" name="workout[duration]" size="12" /></td>
+        <td colspan="2"><label for="cal1"><font size="5" id="cal1">0</font></label></td>
+        <td colspan="2"><input type="submit" value="Save Routines" onclick="checkDate(1)" class="button" id="SaveRoutines" /></td>
+      </tr>
+      
+			<tr>
+        <td colspan="3"><input type="button" id="addMoreItems" onclick="addCardioField()" class="button" value="Add More Items" /></td>
+        <td colspan="3" align="right" style="padding-right:6%;"><font size="5"><b>Total:<span id="tot">0</span></b></font>       </td>
+      </tr>
+      <!--<tr>
+        <td colspan="4" align="right"><input type="button" class="button" value="Submit" id="submitTot" style="width:23%;height:35px;" /></td>
+      </tr>-->
+    </table>
+
+<br><br>    
+    <table id="weight" border="0" width="100%">
+      <tr>
+        <td colspan="11" align="center"><h3><span style="color:red;padding-left:12%;">Weights</span></h3></td>
+      </tr>
+      <tr align="center">
+        <td colspan="2" align="left">Time<span style="font-size:9px;">(From)</span></td>
+        <td align="left">Excersice</td>
+        <td align="left">Sets</td>
+        <td align="left">Reps</td>
+        <td align="left">Weight</td>
+        <td align="left">TUT</td>
+        <td align="left">Rest</td>
+        <td align="left">Time<span style="font-size:9px;">(Duration)</sapn></td>
+        <td align="left">Calories</td>
+       	
+      </tr>
+      <tr>
+        <td>
+        <input type="text" style="height:10px;margin-right:10px;" name="" size="3" value="7:15" />
+        </td>
+        <td>
+        <select name="">
+        <option value="am">Am</option>
+        <option value="pm">Pm</option>
+        </select>
+        </td>
+        <td><input type="text" style="height:10px;margin-right:10px;" name="" id="weightExcer1" size="15" value="Bicep Curls" /></td>
+        <td><input type="text" style="height:10px;margin-right:10px;" name="" size="1" id="setsId1" value="" onkeyup="addExerciseField(this)" /></td>
+        <td><input type="text" style="height:10px;margin-right:10px;" name="" size="1" value="12" /></td>
+        <td><input type="text" style="height:10px;margin-right:10px;" style="height:12px;margin-right:10px;" name="" size="3" value="35lbs" /></td>
+        <td><input type="text" style="height:10px;margin-right:10px;" name="" size="3" value="3-1-3" /></td>
+        <td><input type="text" style="height:10px;margin-right:10px;" name="" size="3" value="1 min" /></td>
+        <td><input type="text" style="height:10px;margin-right:10px;" name="" size="5" value="2:24 min" /></td>
+        <td colspan="2"><label for="cal1"><font size="5">0</font></label></td>
+        <td colspan="2"><input type="button"  class="button" value="Save Routines" id="SaveRoutines" /></td>
+      </tr>
+      <tr>
+        <td colspan="8" align="left"><a href="/workouts/new" style="align-center;background-color: #0B2B42;color:white;font-weight:normal;" class="button">Add More Items</a></td>
+        <td colspan="9"><font size="3"><b>Total Time: <span id="tot">22:34</span></b></font></td>
+      </tr>
+      <tr>
+        <td colspan="11" align="right" style="padding-right:4%;"><font size="5"><b>Total: <span id="tot">0</span></b></font>   </td>
+      </tr>
+      <tr>
+        <td colspan="9" align="right"><!--<input type="button" value="Submit" id="submitTot" style="width:23%;height:35px;" />--></td>
+      </tr>
+  </table>
+
+
+
+<!-- previous table -->
+<!--			<table id="cardio" cellpadding="1" border="0" width="90%">
+				<tr>
+					<td align="center" colspan="5"><h2>Activity</h2></td>
+				</tr>	
+				<tr>
+					<td colspan="5" align="center">
+						Select Date:<input id="wkDt" style="height:10px;width:13%;" name="workout" type="text">
+						<input type="button" id="workoutsDate" style="height:25px;" class="button" value="submit" />
+					</td>
+				</tr>			
+				<tr>
+					<td colspan="5" align="center"><h3><span style="color:red;padding-right:8%;">Cardio</span>Weights</font></h3></td>
+				</tr>
+				<tr>
+					<td colspan="2" style="padding-left:2%;">Time</td>
+					<td style="padding-left:10%;">Excersice</td>
+					<td style="padding-left:7%;">Time</td>
+					<td style="padding-left:2%;">Calories</td>
+				</tr>
+				<tr>
+					<td>
+						<input style="height:10px;margin-right:10px;" type="text" name="" size="5" />
+					</td>
+					<td>
+						<select name="" style="height:22px;">
+						  <option value="am">Am</option>
+						  <option value="pm">Pm</option>
+						</select>
+					</td>
+					<td><input style="height:10px;margin-right:10px;" id="excer" type="text" name="" size="20" /></td>
+					<td><input style="height:10px;margin-right:10px;" id="dur" type="text" name="" size="12" /></td>
+					<td><label for="cal1"><font size="5"  style="padding-left:47%;" id="cal">0</font></label></td>
+				</tr>
+			<!--	<tr align="center">
+					<td>Time</td>
+					<td>Excersice</td>
+					<td>Time</td>
+					<td>Calories</td>
+				</tr>
+				<tr>
+					<td>
+							<input type="text" name="" size="5" /><select name="ap1">
+								<option value="am">Am</option>
+								<option value="pm">Pm</option>
+							</select>
+					</td>
+					<td><input type="text" name="" size="20" /></td>
+					<td><input type="text" name="" size="12" /></td>
+					<td><label for="cal1"><font size="5">210</font></label></td>
+				</tr>
+				<tr align="center">
+					<td>Time</td>
+					<td>Excersice</td>
+					<td>Time</td>
+					<td>Calories</td>
+				</tr>
+				<tr>
+					<td>
+							<input type="text" name="" size="5" /><select name="ap1">
+								<option value="am">Am</option>
+								<option value="pm">Pm</option>
+							</select>
+					</td>
+					<td><input type="text" name="" size="20" /></td>
+					<td><input type="text" name="" size="12" /></td>
+					<td><label for="cal1"><font size="5">565</font></td>
+				</tr>-->
+				<!--<tr>
+					<td colspan="2"><input type="button" value="Save Routines" class="button" id="SaveRoutines" /></td>
+					<td colspan="1"><a href="/workouts/new" style="margin-left:30%;background-color: #0B2B42;color:white;font-weight:normal;" class="button">Add More Items</a></td>
+					<td colspan="2" align="right"><font size="5" style="padding-left:75%;"><b>Total:<span id="tot">0</span></b></font></td>
+				</tr>
+				<tr>
+					<!--<td colspan="4" align="right"><input type="button" class="button" value="Submit" id="submitTot" style="width:23%;height:35px;" /></td> -->
+			<!--	</tr>
+			</table>
+			<br><br>
+			<table id="weight" border="0" width="90%">
+				<tr>
+					<td colspan="10"><h3 style="margin-left:31%;">Cardio<span style="color:red;padding-left:8%;">Weights</span></h3></td>
+				</tr>
+				<tr align="center">
+					<td colspan="2" align="left" style="padding-left:1%;">Time</td>
+					<td align="left" style="padding-left:5%;">Excersice</td>
+					<td align="left">Sets</td>
+					<td align="left">Reps</td>
+					<td align="left">Weight</td>
+					<td align="left" style="padding-left:1.5%;">TUT</td>
+					<td align="left" style="padding-left:1%;">Rest</td>
+					<td align="left" style="padding-left:2%;">Time</td>
+					<td align="left">Calories</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" style="height:10px;margin-right:10px;" name="" size="3" value="7:15" />
+					</td>
+					<td>
+						<select name="">
+						  <option value="am">Am</option>
+						  <option value="pm">Pm</option>
+						</select>
+					</td>
+					<td><input type="text" style="height:10px;margin-right:10px;" name="" id="weightExcer1" size="15" value="Bicep Curls" /></td>
+					<td><input type="text" style="height:10px;margin-right:10px;" name="" size="1" id="setsId1" value="" onkeyup="addExerciseField(this)" /></td>
+					<td><input type="text" style="height:10px;margin-right:10px;" name="" size="1" value="12" /></td>
+					<td><input type="text" style="height:10px;margin-right:10px;" style="height:12px;margin-right:10px;" name="" size="3" value="35lbs" /></td>
+					<td><input type="text" style="height:10px;margin-right:10px;" name="" size="3" value="3-1-3" /></td>
+					<td><input type="text" style="height:10px;margin-right:10px;" name="" size="3" value="1 min" /></td>
+					<td><input type="text" style="height:10px;margin-right:10px;" name="" size="5" value="2:24 min" /></td>
+					<td><label for="cal1"><font size="5" style="padding-left:5%;">245</font></label></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="button"  class="button" value="Save Routines" id="SaveRoutines" /></td>
+					<td colspan="4" align="left"><a href="/workouts/new" style="margin-left:33%;background-color: #0B2B42;color:white;font-weight:normal;" class="button">Add More Items</a></td>
+				  <td colspan="4" style="padding-left:7%;"><font size="3"><b>Total Time: <span id="tot">22:34</span></b></font></td>
+				</tr>
+				<tr>
+					
+					<td colspan="10" style="padding-right:4%;" align="right"><font size="5"><b>Total: <span id="tot">245</span></b></font></td>
+				</tr>
+				<tr>
+					<td colspan="9" align="right"><!--<input type="button" value="Submit" id="submitTot" style="width:23%;height:35px;" />--><!--</td>
+				</tr>
+			</table>-->

@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   # helper_method :current_user_session, :current_user, :user_signed_in?
   
   before_filter :set_grid
-  
+
   def forem_user
     current_user
   end
@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
   
   def get_categories
     @categories = Category.all
+  end
+  
+  def get_subcategories
+    @subcategories = Subcategory.all
   end
   
   def set_defaults

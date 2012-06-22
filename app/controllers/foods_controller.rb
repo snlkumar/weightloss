@@ -9,7 +9,11 @@ class FoodsController < ApplicationController
     if @foods.empty?
       render :json => [{:value => 'No Results', :id => nil}].to_json
     else
-      render :json => @foods.map{|f| {:value => (f.custom? ? "#{f.name} **" : f.name), :id => f.id} }.to_json
+			#@newjson=@foods.map{|f| {:value => (f.custom? ? "#{f.name} **" : "#{f.name}-#{f.gmwt_desc1}-#{f.energ_kcal}-#{f.total_fat}-#{f.carbohydrt}-#{f.protein}-#{f.fiber_td}"), :id => f.id} }.to_json
+
+#puts @newjson
+      #render :json => @foods.map{|f| {:value => (f.custom? ? "#{f.name} **" : f.name), :id => f.id} }.to_json
+			render :json => @foods.map{|f| {:value => (f.custom? ? "#{f.name} **" : "#{f.name} - #{f.gmwt_desc1} - #{f.energ_kcal} - #{f.total_fat} - #{f.carbohydrt} - #{f.protein} - #{f.fiber_td}"), :id => f.id} }.to_json
     end
     
   end
@@ -21,3 +25,4 @@ class FoodsController < ApplicationController
     render :json => {:calories => meal_item.calories}
   end
 end
+#protein

@@ -1,0 +1,27 @@
+
+<div id="forgot-password-form" class="push_4 grid_7">
+  
+  <h2>Forgot your password?</h2>
+  
+  <div class="content">
+    <% flash.now[:error] = flash.now[:error].to_a.concat resource.errors.full_messages %>
+    <% unless resource.errors.empty? %>
+      <%= render :partial => '/shared/flash', :locals => {:flash => flash } %>
+    <% end %>
+    
+    <%= form_for(resource, :as => resource_name, :url => user_password_path, :html => { :method => :post }) do |f| %>
+      
+      <p>
+        <%= f.label :email %><br />
+        <%= f.text_field :email, :class => 'grid_6' %>
+      </p>
+      
+      <button class="button grid_6" type="submit" style="margin-left: 0px;">
+        Send me reset password instructions
+      </button>
+    <% end %>
+    
+    <div class="clear">&nbsp;</div>
+  </div>
+  
+</div>

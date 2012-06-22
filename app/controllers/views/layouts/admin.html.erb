@@ -1,0 +1,62 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js" lang="en"> <!--<![endif]-->
+  <head>
+    <%= render :partial => '/layouts/head' %>
+  </head>
+  <body class="admin">
+    <div id="wrap" class="full">
+      <div id="main" class="full">
+        <div class="header" class="full">
+          <div class="small-nav full">
+            <div class="container_16">
+              <div id="sidebar-top" class="grid_5 sidebar-container">
+                &nbsp;
+              </div>
+              <div class="grid_11">
+                <%= render :partial => 'shared/session_menu_bar' %>
+              </div>
+              <div class="clear">&nbsp;</div>
+            </div>
+          </div>
+      
+          <div id="main-nav" class="full">
+            <div class="main-nav container_16" style="position:relative;">
+
+              <h2 id="logo" class="grid_5 sidebar-container"><%= link_to 'myweightworld', home_path %></h2>
+
+              <div class="clear">&nbsp;</div>
+
+              <div class="grid_5 sidebar-container main-nav-spacer">&nbsp;</div>
+              <div class="grid_11 main-nav-spacer">&nbsp;</div>
+              <div class="clear">&nbsp;</div>
+            </div>
+          </div>
+
+          <div class="full" style="height: 1px; background-color: #FFF;"></div>
+        </div>
+        <!-- DONE HEADER -->
+    
+        <div id="content" class="container_16">
+          <%= render :partial => '/shared/flash', :locals => {:flash => flash} %>
+      
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    
+    <%= render :partial => 'layouts/footer' %>
+    
+    <%= render :partial => "layouts/js_libs" %>
+    
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function() {
+        <%= yield :js %>
+      });
+    </script>
+  </body>
+</html>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :create, :next, :bmi_update, :weight_update]
+  before_filter :authenticate_user!, :except => [:show, :create, :next, :bmi_update, :weight_update, :step_two]
   before_filter :set_defaults,       :only => [:step_two, :edit, :personal_info]
   
   layout 'signup', :only => [:create, :step_two, :finalize]

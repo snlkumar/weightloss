@@ -1,0 +1,54 @@
+<div style="float:left; width: 125px;" >
+  <%= image_tag 'you.png' %>
+</div>
+
+<div style="float:left; width: 450px;">
+  <h3 style="padding-left: 0px;">Tell Us About Yourself</h3>
+  <p style="padding-left: 0px;">
+  We want to know key information about you so that we can better help you achieve your goals. For example, by entering your information we can determine how many calories you need to eat as well as how many you burn while preforming exercise.</p>
+</div>
+
+<div style="clear:both">&nbsp;</div>
+
+<div style="float:left; width: 225px;" >
+  <%= label_tag 'Profile Photo' %>
+  <div class="avatar-placeholder">
+    
+  </div>
+  <%= label_tag '', %Q{<span class="help-text">File types: .png, .jpg, .gif</span> }.html_safe %><br/>
+  <%= label_tag '', %Q{<span class="help-text">(4MB max).</span> }.html_safe %>
+  <%= f.file_field :avatar, :size => '6', :class => "#{'fieldError' if f.object.errors[:avatar_file_name]}" %>
+</div>
+
+<div style="float:left; width: 260px;" >
+
+  <p>
+    <%= f.label :gender %><br/>
+    <%= f.select :gender, [['Choose', 0], ['Male', 'male'], ['Female', 'female']] %>
+  </p>
+  
+  <p>
+    <%= f.label :birthdate %><br/>
+    <%= f.date_select :birthdate, :start_year => Time.zone.now.year, :end_year => 100.years.ago.year %>
+  </p>
+
+</div>
+
+<div style="clear:both; margin-bottom: 25px;">&nbsp;</div>
+
+<%= image_tag 'signup_personal_seperator.png', :class => 'grid_9' %>
+
+<div id="signup-goal" >
+  
+</div>
+
+<div style="float:left; width: 450px;">
+  <h3 style="padding-left: 0px;">Let's Figure Out Your Metabolism</h3>
+  <p style="padding-left: 0px;">
+    By entering your height and weight My Weight World can figure out your Metabolic Rate. This will help show you how to lose or gain weight as well as your target calories to consume and burn.
+  </p>
+</div>
+
+<div style="clear:both">&nbsp;</div>
+
+<%= render :partial => 'personal_measurements', :locals => {:f => f} %>

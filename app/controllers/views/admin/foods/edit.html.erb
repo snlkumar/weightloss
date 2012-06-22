@@ -1,0 +1,28 @@
+<div class="grid_12">
+  
+  <h3>Editing <%= @food.name %></h3>
+  
+  <% if not @food.custom? %>
+    
+    <div class="flash">
+      <div class="warning message">
+        <p>This is a food item from the <b>USDA food database</b>.  All values are based off <b>100 grams</b>.</p>
+      </div>
+    </div>
+  <% end %>
+  
+  <%= form_for([:admin, @food]) do |f| %>
+    <%= f.error_messages %>
+    
+    <% if @food.custom? %>
+      <%= render :partial => '/custom_foods/form', :locals => {:f => f} %>
+    <% else %>
+      <%= render :partial => 'form', :locals => {:f => f} %>
+    <% end %>
+    
+    <p>
+      <%= f.submit 'Update' %> | <%= link_to 'Cancel', admin_foods_path %>
+    </p>
+  <% end %>
+  
+</div>

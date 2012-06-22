@@ -14,6 +14,7 @@ class VideosController < ApplicationController
   
   def show
     @video = OldFlashFile.find(params[:id])
+#    @video = OldFlashFile.find(:all)
   end
   
 end
