@@ -1,9 +1,21 @@
 Myweightworld::Application.routes.draw do
-  
-  devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "users/omniauth_callbacks" } do
-    get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
+
+devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "users/omniauth_callbacks" } do
     get '/sign_in', :to => 'devise/sessions#new'
+    get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
+   
   end
+	#new added routes
+	match '/custom_foods/new/:name' => 'custom_foods#new'
+  match '/custom_foods/(:id)/update/(:food_name)' => "custom_foods#update_meal"
+	match "/workouts/calorie" =>"workouts#calculate_calories"
+	#match '/workouts/getWorkout/'=> "workouts#getWorkout"
+	#match '/workouts/saveRoutines/'=> "workouts#saveRoutines"
+	match '/meals/data/'=>'meals#data'
+	match '/workouts/data/'=>'workouts#data'
+	match '/workouts/dairy/'=>'workouts#dairy',		:as => 'dairy_workout'
+	#match '/foods/search/' =>'foods#search'
+	##
   match '/password/edit' => 'user_passwords#edit', :as => :edit_password, :via => :get
   match '/password' => 'user_passwords#update', :as => :password, :via => :put
   
@@ -103,5 +115,6 @@ Myweightworld::Application.routes.draw do
   match '/finalize'     => 'users#finalize'
   match '/next'         => 'users#next'
   match '/home'         => 'users#show', :as => :home
+	#match '/meals/custom_foods/new/' => 'custom_foods#new
   root :to => "home#index"
 end
