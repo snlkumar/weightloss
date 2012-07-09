@@ -4,6 +4,7 @@ gem "rails", "3.1.0"
 gem "rake"
 gem "rdoc"
 gem 'paperclip'
+gem 'hoptoad_notifier'
 # gem 'airbrake'
 gem 'fastercsv'
 gem 'linguistics'

@@ -4,15 +4,15 @@ require "bundler/capistrano"
 server = "myweightworld.com" 
 
 set :application, "myweightworld"
-#set :repository,  "git@myweightworld.unfuddle.com:myweightworld/myww.git"
-set :repository, "git@github.com:supairish/MyWeightWorld.git"
+set :repository,  "git@myweightworld.unfuddle.com:myweightworld/myww.git"
+#set :repository, "git@github.com:supairish/MyWeightWorld.git"
 set :port, 6969
 
 set :use_sudo,  false
 
 set :scm, "git"
 set :user,      'deploy'
-# set :password,  'rails4myweightworld'
+set :password,  'rails4myweightworld'
 
 set :keep_releases, 4
 set :branch, "master"
