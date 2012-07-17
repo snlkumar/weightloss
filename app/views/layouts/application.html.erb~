@@ -4,6 +4,16 @@
 <!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> 
+<%= render :partial => 'layouts/js_libs' %>
+    
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function() {
+        <%= yield :js %>
+      });
+       
+    </script>
+
+
 <html class="no-js" lang="en"> <!--<![endif]-->
   <head>
     <%= render :partial => '/layouts/head' %>
@@ -11,7 +21,7 @@
   <body>
     <div id="wrap" class="full">
       <div id="main" class="full">
-        <%#= render :partial => '/layouts/header' %>
+        <%= render :partial => '/layouts/header' %>
     
         <div id="content" class="container_16">
           <%= render :partial => '/shared/flash', :locals => {:flash => flash} %>
@@ -23,12 +33,6 @@
       
     <%= render :partial => 'layouts/footer' %>
     
-    <%= render :partial => 'layouts/js_libs' %>
     
-    <script type="text/javascript" charset="utf-8">
-      $(document).ready(function() {
-        <%= yield :js %>
-      });
-    </script>
   </body>
 </html>
