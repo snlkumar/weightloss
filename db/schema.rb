@@ -10,13 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120712120552) do
-
-  create_table "TABLE 29", :id => false, :force => true do |t|
-    t.string "COL 1", :limit => 8
-    t.string "COL 2", :limit => 22
-    t.string "COL 3", :limit => 184
-  end
+ActiveRecord::Schema.define(:version => 20120716132658) do
 
   create_table "categories", :force => true do |t|
     t.integer "parent_id"
@@ -115,7 +109,6 @@ ActiveRecord::Schema.define(:version => 20120712120552) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-
     t.decimal  "total_fat",           :precision => 6, :scale => 1
     t.decimal  "saturated_fat",       :precision => 6, :scale => 1
     t.decimal  "trans_fat",           :precision => 6, :scale => 1
@@ -124,11 +117,6 @@ ActiveRecord::Schema.define(:version => 20120712120552) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.decimal  "total_fat",     :precision => 6, :scale => 1
-    t.decimal  "saturated_fat", :precision => 6, :scale => 1
-    t.decimal  "trans_fat",     :precision => 6, :scale => 1
-    t.decimal  "sugar_alchol",  :precision => 6, :scale => 1
-
   end
 
   create_table "forem_forums", :force => true do |t|
@@ -176,7 +164,7 @@ ActiveRecord::Schema.define(:version => 20120712120552) do
 
   create_table "meals", :force => true do |t|
     t.integer  "user_id"
-    t.date     "ate_on"
+    t.datetime "ate_on"
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -372,7 +360,6 @@ ActiveRecord::Schema.define(:version => 20120712120552) do
   end
 
   create_table "users", :force => true do |t|
-<<<<<<< HEAD
     t.string   "email",                                   :null => false
     t.string   "username"
     t.string   "first_name"
@@ -380,14 +367,9 @@ ActiveRecord::Schema.define(:version => 20120712120552) do
     t.string   "password"
     t.string   "password_confirmation"
     t.string   "status"
-<<<<<<< HEAD
     t.string   "encrypted_password",                      :null => false
     t.integer  "login_count",              :default => 0, :null => false
     t.integer  "failed_login_count",       :default => 0, :null => false
-=======
-    t.string   "encrypted_password",                   :null => false
-    t.integer  "login_count",           :default => 0, :null => false
-    t.integer  "failed_login_count",    :default => 0, :null => false
     t.integer  "weight"
     t.integer  "avatar_file_size"
     t.datetime "last_request_at"
@@ -450,6 +432,11 @@ ActiveRecord::Schema.define(:version => 20120712120552) do
     t.integer  "photoafter_file_size"
     t.datetime "photoafter_updated_at"
     t.float    "bodyfat"
+  end
+
+  create_table "vendors", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "weights", :force => true do |t|
