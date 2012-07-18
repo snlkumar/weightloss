@@ -38,17 +38,13 @@
           min: 0,
           max: 650,
           slide: function( event, ui ) {
-    
+            $( "#weight-view" ).html( ui.value + ' lbs' );
              $( "#weight-view-kg" ).html( ((ui.value)*0.4535924).toFixed(2) + ' kg' );
-
-        
-
             $( "#weight-val" ).val( ui.value );
           }
         });
     $( "#weight-view" ).html( $( "#weight-slider" ).slider( "value" ) + ' lbs' );
-
-   
+    $( "#weight-view-kg" ).html(($( "#weight-slider" ).slider( "value" )*0.4535924).toFixed(2) + ' kg' );
 
   <% end %>
 </script>

@@ -31,7 +31,6 @@ def update_meal
     render :text=>"food updated"
 end
 
-
 def edit
   @food=Food.find(params[:id])
   render 'show_food'
