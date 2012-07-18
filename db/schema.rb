@@ -110,16 +110,12 @@ ActiveRecord::Schema.define(:version => 20120712120552) do
     t.string   "gmwt_desc1"
     t.decimal  "gmwt_2",              :precision => 8, :scale => 3
     t.string   "gmwt_desc2"
-<<<<<<< HEAD
     t.decimal  "refuse_pct",          :precision => 8, :scale => 3
-=======
-    t.decimal  "refuse_pct",    :precision => 8, :scale => 3
->>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
     t.boolean  "custom"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-<<<<<<< HEAD
+
     t.decimal  "total_fat",           :precision => 6, :scale => 1
     t.decimal  "saturated_fat",       :precision => 6, :scale => 1
     t.decimal  "trans_fat",           :precision => 6, :scale => 1
@@ -128,12 +124,11 @@ ActiveRecord::Schema.define(:version => 20120712120552) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-=======
     t.decimal  "total_fat",     :precision => 6, :scale => 1
     t.decimal  "saturated_fat", :precision => 6, :scale => 1
     t.decimal  "trans_fat",     :precision => 6, :scale => 1
     t.decimal  "sugar_alchol",  :precision => 6, :scale => 1
->>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
+
   end
 
   create_table "forem_forums", :force => true do |t|
@@ -379,9 +374,6 @@ ActiveRecord::Schema.define(:version => 20120712120552) do
   create_table "users", :force => true do |t|
 <<<<<<< HEAD
     t.string   "email",                                   :null => false
-=======
-    t.string   "email",                                :null => false
->>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
     t.string   "username"
     t.string   "first_name"
     t.string   "last_name"
@@ -396,7 +388,6 @@ ActiveRecord::Schema.define(:version => 20120712120552) do
     t.string   "encrypted_password",                   :null => false
     t.integer  "login_count",           :default => 0, :null => false
     t.integer  "failed_login_count",    :default => 0, :null => false
->>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
     t.integer  "weight"
     t.integer  "avatar_file_size"
     t.datetime "last_request_at"
