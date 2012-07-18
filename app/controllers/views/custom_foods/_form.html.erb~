@@ -1,0 +1,186 @@
+<script type="text/javascript">
+	function convertValIntoPer(fldId,id)
+	{
+		if(document.getElementById(fldId).value!="")
+		{
+			if(parseFloat(document.getElementById(fldId).value).toString().toLowerCase()=="nan")
+			{
+				document.getElementById(id).innerHTML="Invalid";
+				return;
+			}
+			p=parseFloat(document.getElementById(fldId).value)*100/2000;
+			document.getElementById(id).innerHTML=p+"0%";
+		}
+		else
+		{
+			document.getElementById(id).innerHTML="0%";
+		}
+	}
+</script>
+<style>
+	h1{
+		border-bottom:6px solid #000;
+		width:100%;
+	}
+	.pd_sml{
+		padding-left:5%;	
+	}
+	.pd_lrg{
+		float:right;
+		margin-right:50%;
+	}
+	.mr_lrg{
+		margin-left:28%;	
+	}
+	.sz_input{
+		width:100px;
+		height:15px;
+		padding:0;
+		margin:0;
+	}
+	.pd{
+		padding:5px;	
+	}
+</style>
+
+<% unless in_admin? %>
+  <p>
+    Help us expand our food database.
+  </p>
+<% end %>
+
+<%= f.hidden_field :custom %>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+	<tr>
+			<td><%= f.label :name %></td>
+			<td>
+				<%= f.text_field :name, :class => 'grid_6 alpha', :style=>"height:20px;width:50%;margin:0 0 10px 0;padding:0;" %> 
+			</td>
+  		<!--<span class="clear"></span>-->
+	</tr>
+	<tr>
+			<td><%= f.label :gmwt_desc1, 'Serving' %></td>
+			<td><%= f.text_field :gmwt_desc1,:class => 'grid_6 alpha', :style=>"height:20px;width:50%;margin:0 0 10px 0;padding:0;" %></td>	
+  		<!--<span class="clear"></span>-->
+	</tr>
+</table><br><br><br>
+
+<table border="0" cellspacing="0" cellpadding="0" width="77%">
+		<tr align="left"><th colspan="2"><h1>Nutrition Facts</h1><span>Amount per serving</span><br><br><br></th></tr>
+		<tr>
+			<td width="30%"><%= f.label :energ_kcal, 'Calories' %></td>
+			<td><%= f.text_field :energ_kcal, :class => 'sz_input alpha', :style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %></td>
+		</tr>
+		
+		<tr>
+			<td width="30%"><%= f.label :total_fat, 'Fat' %></td>
+			<td><%= f.text_field :total_fat, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5",:onkeyup=>"convertValIntoPer('food_total_fat','fat')" %><span class="pd">g</span><span id="fat" class="pd_lrg pd">0%</span></td>
+		</tr>
+		
+		<tr>
+			<td width="30%"><%= f.label :saturated_fat, 'Saturated Fat', :class=>'pd_sml', :style=>"font-weight:normal;" %></td>
+			<td><%= f.text_field :saturated_fat, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5",:onkeyup=>"convertValIntoPer('food_saturated_fat','saturated_fat')" %><span class="pd">g</span><span id="saturated_fat" class="pd_lrg pd">0%</span></td>
+		</tr>
+		<tr>
+			<td width="30%"><%= f.label :fa_poly, 'Polyunsaturated Fat', :class=>'pd_sml', :style=>"font-weight:normal;" %></td>
+			<td><%= f.text_field :fa_poly, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">g</span></td>
+		</tr>
+		<tr>
+			<td width="30%"><%= f.label :fa_mono, 'Monounsaturated Fat', :class=>'pd_sml', :style=>"font-weight:normal;" %></td>
+			<td><%= f.text_field :fa_mono, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">g</span></td>
+		</tr>
+		<tr>
+			<td width="30%"><%= f.label :trans_fat, 'Trans Fat', :style=>"font-weight:normal;padding-left:13%;" %></td>
+			<td><%= f.text_field :trans_fat, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5",:onkeyup=>"convertValIntoPer('food_trans_fat','trans_fat')" %><span class="pd">g</span><span id="trans_fat" class="pd_lrg pd">0%</span></td>
+		</tr>
+		<tr>
+			<td width="30%"><%= f.label :cholestrl, 'Cholesterol' %></td>
+			<td><%= f.text_field :cholestrl, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5",:onkeyup=>"convertValIntoPer('food_cholestrl','cholestrl')" %><span class="pd">mg</span><span id="cholestrl" class="pd_lrg pd">0%</span></td>
+		</tr>
+		<tr>
+			<td width="30%"><%= f.label :sodium, 'Sodium' %></td>
+			<td><%= f.text_field :sodium, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5",:onkeyup=>"convertValIntoPer('food_sodium','sodium')" %><span class="pd">mg</span><span id="sodium" class="pd_lrg pd">0%</span></td>
+		</tr>
+			<tr>
+			<td width="30%"><%= f.label :potassium, 'Potassium' %></td>
+			<td><%= f.text_field :potassium, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5",:onkeyup=>"convertValIntoPer('food_potassium','potassium')" %><span class="pd">mg</span><span id="potassium" class="pd_lrg pd">0%</span></td>
+		</tr>
+		<tr>
+			<td width="30%"><%= f.label :carbohydrt, 'Carbohydrate' %></td>
+			<td><%= f.text_field :carbohydrt, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5",:onkeyup=>"convertValIntoPer('food_carbohydrt','carbohydrt')" %><span class="pd">g</span><span id="carbohydrt" class="pd_lrg pd">0%</span></td>
+		</tr>
+		<tr>
+			<td width="30%"><%= f.label :sugar, 'Sugar', :class=>'pd_sml', :style=>"font-weight:normal;" %></td>
+			<td><%= f.text_field :sugar_tot, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5",:onkeyup=>"convertValIntoPer('food_sugar_tot','sugar')" %><span class="pd">g</span><span id="sugar" class="pd_lrg pd">0%</span></td>
+		</tr>
+		<tr>
+			<td width="30%"><%= f.label :fiber_td, 'Dietry Fiber', :class=>'pd_sml', :style=>"font-weight:normal;" %></td>
+			<td><%= f.text_field :fiber_td, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5",:onkeyup=>"convertValIntoPer('food_fiber_td','fiber_td')" %><span class="pd">g</span><span id="fiber_td" class="pd_lrg pd">0%</span></td>
+		</tr>
+		<tr>
+			<td width="30%"><%= f.label :sugar_alchol, 'Alcohol' %></td>
+			<td><%= f.text_field :sugar_alchol, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">g</span></td>
+		</tr>
+		<tr>
+			<td width="30%"><%= f.label :protein, 'Protein' %></td>
+			<td><%= f.text_field :protein, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5",:onkeyup=>"convertValIntoPer('food_protein','protein')" %><span class="pd">g</span><span id="protein" class="pd_lrg pd">0%</span></td>
+		</tr>
+		<tr>
+			<td colspan="2"><h1></h1></td>
+		</tr>
+	</table>
+<table width="83%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td><%= f.label :vit_a_iu, 'Vitamin A' %></td>
+			<td><%= f.text_field :vit_a_iu, :class => 'sz_input alpha',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">%</span></td>
+			<td><%= f.label :vit_c, 'Vitamin C' %></td>
+			<td><%= f.text_field :vit_c, :class => 'sz_input alpha',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">%</span></td>
+		</tr>
+		<tr>
+			<td><%= f.label :calcium, 'Calcium' %></td>
+			<td><%= f.text_field :calcium, :class => 'sz_input alpha',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">%</span></td>
+			<td><%= f.label :iron, 'Iron' %></td>
+			<td><%= f.text_field :iron, :class => 'sz_input alpha',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">%</span></td>
+		</tr>
+		<tr>
+			<td><%= f.label :vivit_d_iu, 'Vitamin D' %></td>
+			<td><%= f.text_field :vivit_d_iu, :class => 'sz_input alpha',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">%</span></td>
+			<td><%= f.label :vit_e, 'Vitamin E' %></td>
+			<td><%= f.text_field :vit_e, :class => 'sz_input alpha',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">%</span></td>
+		</tr>
+		<tr>
+			<td><%= f.label :thiamin, 'Thiamin' %></td>
+			<td><%= f.text_field :thiamin, :class => 'sz_input alpha',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">%</span></td>
+			<td><%= f.label :riboflavin, 'Riboflavin' %></td>
+			<td><%= f.text_field :riboflavin, :class => 'sz_input alpha',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">%</span></td>
+		</tr>
+		<tr>
+			<td><%= f.label :niacin, 'Niacin' %></td>
+			<td><%= f.text_field :niacin, :class => 'sz_input alpha',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">%</span></td>
+			<td><%= f.label :vit_b12, 'Vitamin B12' %></td>
+			<td><%= f.text_field :vit_b12, :class => 'sz_input alpha',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">%</span></td>
+		</tr>
+		<tr>
+			<td><%= f.label :vit_b6, 'Vitamin B6' %></td>
+			<td><%= f.text_field :vit_b6, :class => 'sz_input alpha',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">%</span></td>
+			<td><%= f.label :manganese, 'Manganece' %></td>
+			<td><%= f.text_field :manganese, :class => 'sz_input alpha',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">%</span></td>
+		</tr>
+		<tr>
+			<td><%= f.label :phosphorus, 'Phosphorus' %></td>
+			<td><%= f.text_field :phosphorus, :class => 'sz_input alpha',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">%</span></td>
+			<td><%= f.label :copper, 'Copper' %></td>
+			<td><%= f.text_field :copper, :class => 'sz_input alpha',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">%</span></td>
+		</tr>
+		<tr>
+			<td><%= f.label :selenium, 'Selenium' %></td>
+			<td><%= f.text_field :selenium, :class => 'sz_input alpha',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">%</span></td>
+			<td><%= f.label :magnesium, 'Magnesium' %></td>
+			<td><%= f.text_field :magnesium, :class => 'sz_input alpha',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">%</span></td>
+		</tr>
+		<tr>
+			<td colspan="2"></td>
+			<td><%= f.label :zinc, 'Zinc' %></td>
+			<td><%= f.text_field :zinc, :class => 'sz_input alpha',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">%</span></td>
+		</tr>
+	</table>

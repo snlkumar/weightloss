@@ -40,7 +40,7 @@ module Myweightworld
     # config.assets.compress = true
     config.assets.paths << File.join(Rails.root, 'app', 'assets', 'images', 'ui-lightness', 'images')
     config.assets.paths << File.join(Rails.root, 'app', 'assets', 'stylesheets', 'forem', 'base')
-    
+    config.session_store(:active_record_store)
     config.to_prepare { 
       Devise::RegistrationsController.layout "signup" 
     }

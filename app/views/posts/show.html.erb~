@@ -1,0 +1,90 @@
+<div id="post-content" class="Post">
+  <%= link_to 'Back', :back %>
+  
+  <hr/>
+  
+  <h1 style='color:black'><%= @post.page_title %></h1>
+  
+  <!-- new added code -->
+  <%= image_tag OldTextFile.find(params[:id]).image1.url(:large), :alt=>"alt" %>
+  <div style="text-align:justify;">
+  	<%= @post.body.html_safe %>
+  </div>
+  <br style="clear:both;"><br>
+  <!--new added code end -->
+  <b>Share this article</b>
+	
+  <p>
+    <span class='st_twitter' displayText='Tweet'></span>
+    <span class='st_facebook' displayText='Facebook'></span>
+    <span class='st_email' displayText='Email'></span>
+    <span class="st_plusone_button" displayText="Google +1"></span>
+  </p>
+  
+  <br/>
+  
+  <% unless @post.comments.empty? %>
+    <h3>Comments</h3>
+    <div id="comments">
+      <%= render :partial => 'comment', :collection => @post.comments, :as => :comment %>
+    </div>
+  <% end %>
+  
+  <div style="clear: left; margin-top: 20px;">
+    <% if user_signed_in? %>
+      <h3>Leave a Comment</h3>
+      <%= form_for @comment || :comment, :url => create_comment_path(:class_name => @post.class.to_s, :id => @post.id) do |f| %>
+        <%= f.error_messages %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        
+        <p>
+          <%= f.text_area :comment, :class => "grid_8" %>
+          <span class="clear"></span>
+        </p>
+        
+        <%= f.submit 'Submit', :class => 'grid_2' %>
+      <% end %>
+    <% else %>
+      <%= link_to 'Login', sign_in_path %> to leave a comment.
+    <% end %>
+  </div>
+</div>
+
+<% content_for :sidebar do %>
+  <!-- Categories  -->
+  <div id="search-categories-sidebar" class="sidebar-container subsection" >
+    <h4 class="sidebar-subheader">Categories</h4>
+
+    <p>We have an extensive library to help you with many facets of fitness and wellness - peruse by category</p>
+
+    <ul id="search-categories">
+      <%= render :partial => '/searches/post_category', :collection => @categories, :as => :category %>
+    </ul>
+
+    <div class="clear">&nbsp;</div>
+  </div>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    $("object").each(function(index, el){
+      if( $(this).find("param[name*=youtube]") ){
+        return;
+      }
+      var width  = $(this).attr("width")  || 527;
+      var height = $(this).attr("height") || 350;
+      var path   = $(this).find("param[name]=src").attr('value').replace(/^(\.\.\/)+(?!\/system)/, "");
+      path     = '/'+path;
+      data     = {'path': path, 'height': height, 'width': width};
+      template = "<a href='{{path}}' id='player' style='margin: 0 auto; height:{{height}}px; width:{{width}}px; display: block;'></a>";
+      
+      $(el).replaceWith(Mustache.to_html(template, data));
+      flowplayer("player", "/flowplayer-3.2.7.swf", {clip: {scaling: 'orig', autoPlay: false}});
+    });
+  
+  <% end %>
+</script>
+
+<style type="text/css" media="screen">
+  object { display: block; margin: 0 auto; }
+</style>

@@ -1,0 +1,39 @@
+
+<div class="grid_16" style="margin:-5.5% 0 0 -55%;">
+  
+  
+  <br/>
+  
+  <h2>Listing Users</h2>
+  
+  <%= link_to 'Back', admin_dashboard_path, :style=>"color:orange;" %>&nbsp;&nbsp;
+  <%= link_to 'New user', new_admin_user_path, :style=>"color:orange;" %>
+  
+  <br/>
+  
+  <%#= page_entries_info(@users) %>
+  
+  <%#= paginate(@users, :params => pagination_params(request)) %>
+  
+  <br/>
+  <table class="admin" style="width:85%;">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr  class="<%= cycle('odd', '') %>">
+          <td><%= user.full_name %></td>
+          <td class="actions">
+            <%= link_to 'Edit', edit_admin_user_path(user), :style=>"color:orange;" %> | 
+            <%= link_to 'Delete', admin_user_path(user), :confirm => 'Are you sure?', :method => :delete, :style=>"color:orange;" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+</div>

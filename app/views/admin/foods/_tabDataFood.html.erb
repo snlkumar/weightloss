@@ -1,0 +1,61 @@
+<div class="grid_16" style="margin:-5.5% 0 0 -53%;">
+  <br/>
+  
+  <h2>Listing Foods</h2>
+  
+  <%= link_to 'Back', admin_dashboard_path, :style=>"color:orange;" %>
+  <%= link_to 'New food', new_admin_food_path, :style=>"color:orange;" %>
+  
+  <br/>
+  
+  <%= form_tag(search_admin_foods_path) do %>
+    <%= text_field_tag 'terms', '', :id => 'food-search' %>
+  
+    <%= submit_tag 'Search' %>
+  <% end %>
+  
+  <br/>
+  <% if params['terms'] && !params['terms'].blank? %>
+    Displaying results for "<%= params['terms'] %>"<br/>
+  <% end %>
+  
+  <%= page_entries_info(@foods) %>
+    <div style="color:blue;">
+  <%= paginate(@foods, :params => pagination_params(request)) %>
+  </div>
+  <br/>
+  <table class="admin" style="width:95%;">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @foods.each do |food| %>
+        <tr  class="<%= cycle('odd', '') %>">
+          <td><%= food.name %></td>
+          <td class="actions">
+            <%= link_to 'Edit', edit_admin_food_path(food), :style=>"color:orange;" %> | 
+            <%= link_to 'Delete', [:admin, food], :confirm => 'Are you sure?', :method => :delete, :style=>"color:orange;" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <script type="text/javascript" charset="utf-8">
+    <% content_for :js do %>
+      
+      $('#food-search').autocomplete({
+        source: "<%= search_foods_url %>",
+        select: function( event, ui ) {
+          $( "#food-search" ).val( ui.item.label.replace(" **", '') );
+          return false;
+        }
+      });
+      
+    <% end %>
+  </script>
+
+</div>

@@ -1,0 +1,57 @@
+<div class="grid_16" style="margin:-5.5% 0 0 -53%;">
+  
+  
+  <br/>
+  
+  <h2>Exercises</h2>
+  
+  <%= link_to 'Back', admin_dashboard_path, :style=>"color:orange;" %>
+  <%= link_to 'New exercise', new_exercise_path, :style=>"color:orange;" %>
+  
+  <br/>
+  
+  <%= form_tag(search_admin_exercises_path) do %>
+    <%= text_field_tag 'terms', '', :id => 'exercise-search' %>
+  
+    <%= submit_tag 'Search' %>
+  <% end %>
+  
+  <br/>
+  <% if params['terms'] && !params['terms'].blank? %>
+    Displaying results for "<%= params['terms'] %>"<br/>
+  <% end %>
+  
+  <%= page_entries_info(@exercises) %>
+  <div style="color:blue;">
+    <%= paginate(@exercises, :params => pagination_params(request)) %>
+  </div>
+  <br/>
+  <table class="admin" style="width:93%;">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @exercises.each do |exercise| %>
+        <tr class="<%= cycle('odd', '') %>">
+          <td><%= exercise.description %></td>
+          <td class="actions">
+            <%= link_to 'Edit', edit_admin_exercise_path(exercise), :style=>"color:orange;" %> | 
+            <%= link_to 'Delete', [:admin, exercise], :confirm => 'Are you sure?', :method => :delete, :style=>"color:orange;" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <script type="text/javascript" charset="utf-8">
+    <% content_for :js do %>
+      $('#exercise-search').autocomplete({
+        source: "<%= search_exercises_url %>"
+      });
+    
+    <% end %>
+  </script>
+</div>

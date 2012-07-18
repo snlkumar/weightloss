@@ -1,0 +1,320 @@
+<!--<style type="text/css">
+.notice{
+  background-color:lightgreen;
+	text-align:center;
+	border:2px solid green;
+  border-radius:4px;
+  -moz-border-radius:4px;
+  width:90%;
+  height:20px;
+	display:none;
+}
+</style>
+<script type="text/javascript" charset="utf-8">
+  setTimeout("$('div.flash').slideUp(1000)", 3500);			
+</script>
+<div class="flash">
+	<div class="notice" id="ser_up">
+			successfully updated.
+	</div>
+</div>-->
+<script type="text/javascript">
+	//when serving field empty then set again their value initial
+	patt=new RegExp("[0-9]");
+	a=new Array(17);
+	ids=new Array("energ_kcal","sodium","total_fat","potassium","saturated_fat","carbohydrt","fa_poly","fiber_td","fa_mono","sugar_tot","trans_fat","protein","cholestrl","calcium","iron","vit_a_rae","vit_c");
+	for(i=0;i<ids.length;i++)
+	{
+		if(!patt.test(document.getElementById(ids[i]).innerHTML))	//if no any numeric value exist then add 0
+		{
+			a[i]="0"+document.getElementById(ids[i]).innerHTML;
+		}
+		else
+		{
+			a[i]=document.getElementById(ids[i]).innerHTML;
+		}
+	}
+	
+	function calculate()
+	{
+		serving=document.getElementById("gmwt_desc1").value;
+		
+		if(serving!="")
+		{
+			for(i=0;i<a.length;i++)
+			{
+				val=(parseFloat(a[i])*parseInt(serving)).toFixed(1);
+				
+				document.getElementById(ids[i]).innerHTML=val.toString();
+				if(a[i].indexOf("mg")!=-1)
+				{
+					unit="mg";
+				}
+				else if(a[i].indexOf("%")!=-1)
+				{
+					unit="%";
+				}
+				else 
+				{
+					unit="g";
+				}
+				document.getElementById(ids[i]).innerHTML+=unit;
+			}
+		}
+		else
+		{
+			for(i=0;i<a.length;i++)
+			{
+				//put initial val
+				document.getElementById(ids[i]).innerHTML=a[i];
+			}
+	}
+}
+//when page upload then set the form field value according serving
+calculate();
+</script>
+
+<script type="text/javascript">
+
+ 
+function updateMeal(sid){
+ var xmlhttp;
+	gmwt_desc1=document.getElementById(sid).value;
+ if (window.XMLHttpRequest)
+ {// code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+ }
+ else
+ {// code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+ }
+
+ xmlhttp.onreadystatechange=function()
+ {
+     if (xmlhttp.readyState==4 && xmlhttp.status==500)
+     {
+         
+     }
+ }
+ xmlhttp.open("POST","/custom_foods/"+<%=@food.id%>+"/update/"+gmwt_desc1,true);
+ xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+ xmlhttp.send();
+ //to show updated msg
+	//document.getElementById("ser_up").style.display="block";
+	alert("successfully updated");
+}
+</script>
+
+
+<% unique_id = Time.now.to_i %>
+<table id="right_table" style="width:105%;" border="0">
+			<tr>
+				<td colspan="4"><hr color="#81DAF5" size="3" width="100%"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="nutri">Nutrition Facts</span></td>
+				<td colspan="2" align="right"><a href="#" class="button" style="background-color:#0B0B3B;color:white;float:right;" onclick="updateMeal('gmwt_desc1')" >add meal</a></td>
+			</tr>	
+
+			<tr>
+  			<td colspan="4" class="food-name">
+    			<%= truncate(food_name(@food), :length => 55) %>
+  			</td>
+  <!--<td class="calories">
+   
+  </td>-->
+	</tr>
+
+<!--
+	<tr class="servings">
+		<td>Serving Whole:</td>
+		<td><%#= select_tag "meal[meal_items_attributes][#{unique_id}][serving_whole]", options_for_select(Meal::QUANTITY_WHOLE), :id => 'quantity-whole-entry', :class => 'meal-item-quantity' %></td>
+			<td>Serving Part: </td>
+			<td><%#= select_tag "meal[meal_items_attributes][#{unique_id}][serving_part]",  options_for_select(Meal::QUANTITY_PARTS), :id => 'quantity-part-entry',  :class => 'meal-item-quantity' %>
+		</td>
+	</tr>
+	<tr class="serving-size">
+		<td colspan="2">Serving Options:</td>
+		<td><%#= select_tag "meal[meal_items_attributes][#{unique_id}][units]", 
+                   options_for_select(serving_options(@food)),
+                   {:class => 'meal-item-units'} %>
+    
+			<%#= hidden_field_tag "meal[meal_items_attributes][#{unique_id}][food_id]", @food.id %>
+		</td>
+		<td>
+			<%#= link_to image_tag('delete.png'), {}, :class => 'remove_ajax_meal_item delete' %>
+		</td>
+	</tr>
+
+			<tr>
+				<td colspan="4" class="cadstl">Cadbury -230g Dairy Milk Caramel (5 Chunks - 150 Cal)
+				<hr color="#000" size="3" style="width:100%;"></td>
+			</tr>-->	
+			<!-- new fields made -->
+			<tr>
+				<td colspan="4">				
+	<b>Servings: </b><%= text_field_tag :gmwt_desc1,@food.gmwt_desc1, :size=>"6", :style=>"height:10px;width:50px;margin-right:6%",:onkeyup=>"calculate()" %>
+					<%=select_tag "chunks_list", "<option>1 chunks</option><option>2 chunks</option><option>3 chunks</option><option>4 chunks</option><option>4 chunks</option>".html_safe %>
+					<hr color="#000" size="3" width="100%">
+				</td>
+			</tr>
+			<tr>
+				<td><b>Calories</b></td>
+				<td id="energ_kcal"><%=@food.energ_kcal %> g</td>
+				<td><b>Sodium</b></td>
+				<td id="sodium"><%=@food.sodium %> mg</td>
+			</tr>
+			<tr>
+				<td><b>Fat </b></td>
+				<td id="total_fat"><%=@food.total_fat %> g</td>
+				<td>Potassium</td>
+				<td id="potassium"><%=@food.potassium %> mg</td>
+			</tr>
+			<tr>
+				<td>Saturated</td>
+				<td id="saturated_fat"><%=@food.saturated_fat %> g</td>
+				<td><b>Total Carbs </b></td>
+				<td id="carbohydrt"><%=@food.carbohydrt %> g</td>
+			</tr>
+			<tr>
+				<td>Polyunsaturated</td>
+				<td id="fa_poly"><%=@food.fa_poly %> g</td>
+				<td>Dietary Fibers</td>
+				<td id="fiber_td"><%=@food.fiber_td %> g </td>
+			</tr>
+			<tr>
+				<td>Monounsaturated</td>
+				<td id="fa_mono"><%=@food.fa_mono %> g</td>
+				<td>Sugers</td>
+				<td id="sugar_tot"><%=@food.sugar_tot %> g</td>
+			</tr>
+			<tr>
+				<td>Trans</td>
+				<td id="trans_fat"><%=@food.trans_fat %> g</td>
+				<td><b>Protein</b></td>
+				<td id="protein"><%=@food.protein %> g</td>
+			</tr>
+			<tr>
+					<td><b>Cholestrol</b></td>
+					<td id="cholestrl"><%=@food.cholestrl %> g</td>
+			</tr>
+			<tr>
+				<td colspan="4"><hr color="#000" size="3" width="100%"></td>
+			</tr>
+			<tr>
+				<td><b>Vitamin A</b></td>
+				<td id="vit_a_rae"><%=@food.vit_a_rae/2000 *100 if @food.vit_a_rae!=nil || @food.vit_a_rae!="" %> %</td>
+				<td><b>Calcium</b></td>
+				<td id="calcium"><%=@food.calcium %> g</td>
+			</tr>
+			<tr>
+				<td><b>Vitamin C</b></td>
+				<td id="vit_c"><%=@food.vit_c/2000 *100 if @food.vit_c!=nil || @food.vit_a_rae!="" %> %</td>
+				<td><b>Iron</b></td>
+				<td id="iron"><%=@food.iron %> g</td>
+			</tr>
+			<tr>
+				<td colspan="4"><hr color="#000" size="3" width="100%"></td>
+			</tr>
+			<tr>
+				<td colspan="4" class="sml">*Percent Daily Values are based on 2,000 calorie diet. Your daily values may be higher or lower depending on yoour calorie needs.</td>
+			</tr>
+		</table>
+
+<!--
+<table  style="border: solid 0px;" cellspacing="0" cellpadding="1">
+     
+        <tr style="border: solid 0px;">
+					<td style="border: solid 0px;font-size: 8pt;"><b>Calories</b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.energ_kcal %> g
+					</td>
+
+<td style="border: solid 0px;font-size: 8pt;"><b>Sodium</b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.sodium %> mg
+					</td>
+				</tr>
+<tr>
+					<td style="border: solid 0px;font-size: 8pt;"><b>Total Fat </b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.total_fat %> g
+					</td>
+
+<td style="border: solid 0px;font-size: 8pt;"><b>Potassium</b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.potassium %> mg
+					</td>
+				</tr>
+
+<tr>
+					<td style="border: solid 0px;font-size: 8pt;">Saturated
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.saturated_fat %> g
+					</td>
+
+<td style="border: solid 0px;font-size: 8pt;"><b>Total Carbs </b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.carbohydrt %> g
+					</td>
+				</tr>
+<tr>
+					<td style="border: solid 0px;font-size: 8pt;">Polyunsaturated
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.fa_poly %> g
+					</td>
+
+<td style="border: solid 0px;font-size: 8pt;"><b>Dietary Fibers </b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.fiber_td %> g 
+					</td>
+				</tr>
+<tr>
+					<td style="border: solid 0px;font-size: 8pt;">Monounsaturated
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.fa_mono %> g
+					</td>
+
+
+<td style="border: solid 0px;font-size: 8pt;"><b>Sugers</b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.sugar_tot %> g
+					</td>
+				</tr>
+<tr>
+					<td style="border: solid 0px;font-size: 8pt;">Trans
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.trans_fat %> g
+					</td>
+
+
+<td style="border: solid 0px;font-size: 8pt;"><b>Protein </b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.protein %> g
+					</td>
+				</tr>
+<tr>
+					<td style="border: solid 0px;font-size: 8pt;"><b>Cholestrol </b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.cholestrl %> g
+					</td>
+				</tr>
+<tr>
+<td colspan=4 style="border: solid 0px;font-size: 8pt;">
+<hr style="clear: both;">
+</td></tr>
+
+<tr>
+					<td style="border: solid 0px;font-size: 8pt;"><b>Vitamin A</b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.vit_a_rae/2000 *100 %> %
+					</td>
+
+
+<td style="border: solid 0px;font-size: 8pt;"><b>Calcium</b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.calcium %> %
+					</td>
+				</tr>
+<tr>
+					<td style="border: solid 0px;font-size: 8pt;"><b>Vitamin C </b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.vit_c/2000 *100 %> %
+					</td>
+<td style="border: solid 0px;font-size: 8pt;"><b>Iron</b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.iron %> %
+					</td>
+				</tr> 
+<tr>
+<td colspan=4 style="border: solid 0px;font-size: 8pt;">
+*Percent daily values are based on a 2,000 calorie diet. Your daily values  may be higher or lower depending on your calrie needs.
+</td>
+</tr>
+   </table>
+</tr>
+
+-->

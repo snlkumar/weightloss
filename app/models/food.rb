@@ -5,7 +5,12 @@ class Food < ActiveRecord::Base
   validates_uniqueness_of :name
   
   validate :calories_and_serving
-  
+  #new added code
+  has_attached_file :avatar, :styles      => { :medium => '70x80#', :large => "290x250#" }, 
+                             :url  => '/system/:class/:attachment/:id/:style/:filename',
+                             :path => ":rails_root/public/system/:class/:attachment/:id/:style/:filename"
+  #end code
+              
   def calories_and_serving
     if self.custom?
       self.errors.add(:base, "Serving size cannot be blank.") if self.gmwt_desc1.blank?

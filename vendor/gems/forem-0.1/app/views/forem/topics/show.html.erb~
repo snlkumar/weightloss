@@ -1,0 +1,87 @@
+<style type="text/css">
+.replyBox{
+  width:auto;
+  height:auto;
+	display:none;
+}
+p{
+	font-size:12px;
+	font-weight:normal;
+}
+a{
+	font-size:12px;
+	font-weight:normal;
+}
+.scroll-pane { overflow-y: scroll;overflow-x: hidden; width: 99%;height:30em; float:left; }
+html {
+scrollbar-base-color: #9999cc;
+scrollbar-arrow-color: white;
+scrollbar-track-color: #ccccff;
+
+scrollbar-shadow-color: black;
+scrollbar-lightshadow-color: black;
+scrollbar-darkshadow-color: gray;
+
+scrollbar-highlight-color: white;
+scrollbar-3dlight-color: black;
+}
+</style>
+
+<div id='topic' class='<%= @topic.locked? ? 'locked' : 'unlocked' %>'>
+  <%= render :partial => 'forem/topics/head', :locals => { :topic => @topic } %>
+
+  <menu>
+    <% if @topic.can_be_replied_to? %>
+      <%= link_to t(".reply"), new_topic_post_path(@topic) %>
+    <% end %>
+    <% if @topic.user == forem_user || forem_admin? %>
+      | <%= link_to t(".delete"), forum_topic_path(@forum, @topic), :method => :delete, :confirm => 'Are you sure?' %>
+    <% end %>
+  </menu>
+
+  <% if forem_admin? %>
+    <%= link_to t(".hide.#{@topic.hidden}"), toggle_hide_admin_topic_path(@topic), :method => :put %> | 
+    <%= link_to t(".lock.#{@topic.locked}"), toggle_lock_admin_topic_path(@topic), :method => :put %> |
+    <%= link_to t(".pin.#{@topic.pinned}"), toggle_pin_admin_topic_path(@topic), :method => :put %>
+  <% end %>
+  <%= paginate @posts %>
+
+	<div class="scroll-pane">
+		<div id='posts'	>
+		  <%= render :partial => "forem/posts/post", :collection => @posts %>
+		</div>
+	</div>
+	
+	<!-- new code -->
+  <!-- for show reply box(show textarea for comment) -->
+  <div id="replyBox"></div>
+  
+</div>
+
+<!-- new code -->
+<!-- to show reply messages through ajax -->
+
+<script type="text/javascript">
+	function show(loc,rplyId)	// this loc and rplyId send by forem/posts/post page's this link <li><%#= link_to "Reply", '#', :onclick=>"show('#{new_topic_post_path(@topic)}','?reply_to_id=#{post.id}')" %></li>
+	{
+  	$.ajax({
+  		type : "GET",
+  		url : loc+""+rplyId,
+  		dataType : "html",
+      success: function(data) {
+      data=takeReplyForm(data);
+      $("#replyBox").html(data);
+			$("#replyBox").css("display","block");
+			},
+      error : function() {
+				alert("Sorry, page not found.");
+      }
+    });
+	}
+	
+	function takeReplyForm(data)
+	{
+		return(data.substring(data.indexOf("<h2>Post reply</h2>")+("<h2>Post reply</h2>").length+1,data.lastIndexOf("</form>")+("</form>").length));
+	}
+</script>
+

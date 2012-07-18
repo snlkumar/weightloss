@@ -1,0 +1,226 @@
+var url = '<a href="custom_foods\\new\\jony\">Can\'t find an item? Add a new item to our database</a>!'; 
+
+
+alert(parseFloat(document.getElementById(fldId).value)*100);
+
+
+
+
+
+
+
+
+
+
+
+
+<% unique_id = Time.now.to_i %>
+
+<table id="right_table" style="width:100%;" border="0">
+			<tr>
+				<td colspan="2"><hr color="#81DAF5" size="3" width="100%"></td>
+			</tr>
+			<tr>
+				<td><span class="nutri">Nutrition Facts</span></td>
+				<td align="right"><div id="add-meal-item" class="button" style="font-size:12px;width:30%;">Edit</div></td>
+			</tr>	
+
+			<tr>
+  			<td colspan="2" class="food-name">
+    			<%= truncate(food_name(@food), :length => 55) %>
+  			</td>
+  <!--<td class="calories">
+   
+  </td>-->
+	</tr>
+	<tr class="servings">
+		<td>
+			Serving Whole: <%= select_tag "meal[meal_items_attributes][#{unique_id}][serving_whole]", options_for_select(Meal::QUANTITY_WHOLE), :id => 'quantity-whole-entry', :class => 'meal-item-quantity' %>
+		</td>
+		<td>
+			Serving Part: <%= select_tag "meal[meal_items_attributes][#{unique_id}][serving_part]",  options_for_select(Meal::QUANTITY_PARTS), :id => 'quantity-part-entry',  :class => 'meal-item-quantity' %>
+		</td>
+	</tr>
+	<tr class="serving-size">
+		<td>
+			Serving Options: <%= select_tag "meal[meal_items_attributes][#{unique_id}][units]", 
+                   options_for_select(serving_options(@food)),
+                   {:class => 'meal-item-units'} %>
+    
+			<%= hidden_field_tag "meal[meal_items_attributes][#{unique_id}][food_id]", @food.id %>
+		</td>
+		<td>
+			<%= link_to image_tag('delete.png'), {}, :class => 'remove_ajax_meal_item delete' %>
+		</td>
+	</tr>
+	
+			<tr>
+				<td colspan="2" class="cadstl">Cadbury -230g Dairy Milk Caramel (5 Chunks - 150 Cal)<hr color="#000" size="3" style="width:100%;"></td>
+			</tr>
+			<!-- new fields made -->
+			<tr>
+				<td colspan="2">
+					<b>Servings: </b><%= text_field_tag 'serving',"", :size=>"6", :style=>"height:10px;width:50px;margin-right:6%" %>
+					<%=select_tag "chunks_list", "<option>1 chunks</option><option>2 chunks</option><option>3 chunks</option><option>4 chunks</option><option>4 chunks</option>".html_safe %>
+					<hr color="#000" size="3" width="100%">
+				</td>
+			</tr>
+			<tr>
+				<td><b>Calories</b></td>
+				<td><%=@food.energ_kcal %> g</td>
+			</tr>
+			<tr>
+				<td><b>Sodium</b></td>
+				<td><%=@food.sodium %> mg</td>
+			</tr>
+			<tr>
+				<td><b>Fat </b></td>
+				<td><%=@food.total_fat %> g</td>
+			</tr>
+			<tr>
+				<td>Potassium</td>
+				<td><%=@food.potassium %> mg</td>
+			</tr>
+			<tr>
+				<td>Saturated</td>
+				<td><%=@food.saturated_fat %> g</td>
+			</tr>
+			<tr>
+				<td>Polyunsaturated</td>
+				<td><%=@food.fa_poly %> g</td>
+			</tr>
+			<tr>
+				<td>Monounsaturated</td>
+				<td><%=@food.fa_mono %> g</td>
+			</tr>
+			<tr>
+				<td>Trans</td>
+				<td><%=@food.trans_fat %> g</td>
+			</tr>
+			<tr>
+				<td><b>Total Carbs </b></td>
+				<td><%=@food.carbohydrt %> g</td>
+			</tr>
+			<tr>
+				<td>Dietary Fibers</td>
+				<td><%=@food.fiber_td %> g </td>
+			</tr>
+			<tr>
+				<td>Sugers</td>
+				<td><%=@food.sugar_tot %> g</td>
+			</tr>
+			<tr>
+				<td><b>Protein</b></td>
+				<td><%=@food.protein %> g</td>
+			</tr>
+			<tr>
+				<td><b>Cholestrol</b></td>
+				<td><%=@food.cholestrl %> g</td>
+			</tr>
+			<tr>
+				<td><b>Vitamin A</b></td>
+				<td><%=@food.vit_a_rae/2000 *100 if @food.vit_a_rae!=nil || @food.vit_a_rae!="" %> %</td>
+			</tr>
+
+			<tr>
+				<td colspan="2" class="sml">*Percent Daily Values are based on 2,000 calorie diet. Your daily values may be higher or lower depending on yoour calorie needs.</td>
+			</tr>
+		</table>
+
+<!--
+<table  style="border: solid 0px;" cellspacing="0" cellpadding="1">
+     
+        <tr style="border: solid 0px;">
+					<td style="border: solid 0px;font-size: 8pt;"><b>Calories</b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.energ_kcal %> g
+					</td>
+
+<td style="border: solid 0px;font-size: 8pt;"><b>Sodium</b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.sodium %> mg
+					</td>
+				</tr>
+<tr>
+					<td style="border: solid 0px;font-size: 8pt;"><b>Total Fat </b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.total_fat %> g
+					</td>
+
+<td style="border: solid 0px;font-size: 8pt;"><b>Potassium</b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.potassium %> mg
+					</td>
+				</tr>
+
+<tr>
+					<td style="border: solid 0px;font-size: 8pt;">Saturated
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.saturated_fat %> g
+					</td>
+
+<td style="border: solid 0px;font-size: 8pt;"><b>Total Carbs </b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.carbohydrt %> g
+					</td>
+				</tr>
+<tr>
+					<td style="border: solid 0px;font-size: 8pt;">Polyunsaturated
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.fa_poly %> g
+					</td>
+
+<td style="border: solid 0px;font-size: 8pt;"><b>Dietary Fibers </b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.fiber_td %> g 
+					</td>
+				</tr>
+<tr>
+					<td style="border: solid 0px;font-size: 8pt;">Monounsaturated
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.fa_mono %> g
+					</td>
+
+
+<td style="border: solid 0px;font-size: 8pt;"><b>Sugers</b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.sugar_tot %> g
+					</td>
+				</tr>
+<tr>
+					<td style="border: solid 0px;font-size: 8pt;">Trans
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.trans_fat %> g
+					</td>
+
+
+<td style="border: solid 0px;font-size: 8pt;"><b>Protein </b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.protein %> g
+					</td>
+				</tr>
+<tr>
+					<td style="border: solid 0px;font-size: 8pt;"><b>Cholestrol </b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.cholestrl %> g
+					</td>
+				</tr>
+<tr>
+<td colspan=4 style="border: solid 0px;font-size: 8pt;">
+<hr style="clear: both;">
+</td></tr>
+
+<tr>
+					<td style="border: solid 0px;font-size: 8pt;"><b>Vitamin A</b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.vit_a_rae/2000 *100 %> %
+					</td>
+
+
+<td style="border: solid 0px;font-size: 8pt;"><b>Calcium</b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.calcium %> %
+					</td>
+				</tr>
+<tr>
+					<td style="border: solid 0px;font-size: 8pt;"><b>Vitamin C </b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.vit_c/2000 *100 %> %
+					</td>
+<td style="border: solid 0px;font-size: 8pt;"><b>Iron</b>
+					</td><td style="border: solid 0px;font-size: 8pt;"><%=@food.iron %> %
+					</td>
+				</tr> 
+<tr>
+<td colspan=4 style="border: solid 0px;font-size: 8pt;">
+*Percent daily values are based on a 2,000 calorie diet. Your daily values  may be higher or lower depending on your calrie needs.
+</td>
+</tr>
+   </table>
+</tr>
+
+-->

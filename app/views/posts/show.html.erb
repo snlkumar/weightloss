@@ -3,11 +3,18 @@
   
   <hr/>
   
-  <h1><%= @post.page_title %></h1>
+  <h1 style='color:black'><%= @post.page_title %></h1>
   
-  <%= @post.body.html_safe %>
+  <!-- new added code -->
+  <%= image_tag OldTextFile.find(params[:id]).image1.url(:large), :alt=>"alt" %>
+  <div style="text-align:justify;">
+  	<%= @post.body.html_safe %>
+  </div>
+  <br style="clear:both;"><br>
+  <!--new added code end -->
   
   <b>Share this article</b>
+	
   <p>
     <span class='st_twitter' displayText='Tweet'></span>
     <span class='st_facebook' displayText='Facebook'></span>

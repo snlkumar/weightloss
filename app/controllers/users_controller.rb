@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :create, :next, :bmi_update, :weight_update]
+  before_filter :authenticate_user!, :except => [:show, :create, :next, :bmi_update, :weight_update, :step_two]
   before_filter :set_defaults,       :only => [:step_two, :edit, :personal_info]
   
   layout 'signup', :only => [:create, :step_two, :finalize]
@@ -49,6 +49,7 @@ class UsersController < ApplicationController
   
   def update
     @user = current_user # makes our views "cleaner" and more consistent
+    
     if @user.update_attributes(params[:user])
       flash[:notice] = 'Update successful'
       

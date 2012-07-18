@@ -1,0 +1,28 @@
+	h1{
+		border-bottom:6px solid #000;
+		width:90%;
+	}
+	.pd_sml{
+		padding-left:5%;	
+	}
+.pd_lrg{
+		float:right;
+		margin-right:35%;
+	}A
+	.mr_lrg{
+		margin-left:28%;	
+	}
+	.border_stl{
+		border:2px solid #000;	
+		width:55%;
+		padding:1%;
+	}
+	.sz_input{
+		width:150px;
+		height:15px;
+		padding:0;
+		margin:0;
+	}
+	.pd{
+		padding:5px;	
+	}

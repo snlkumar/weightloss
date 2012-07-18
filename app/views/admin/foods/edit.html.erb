@@ -1,5 +1,5 @@
 <div class="grid_12">
-  
+  <br>
   <h3>Editing <%= @food.name %></h3>
   
   <% if not @food.custom? %>
@@ -14,14 +14,16 @@
   <%= form_for([:admin, @food]) do |f| %>
     <%= f.error_messages %>
     
-    <% if @food.custom? %>
-      <%= render :partial => '/custom_foods/form', :locals => {:f => f} %>
-    <% else %>
-      <%= render :partial => 'form', :locals => {:f => f} %>
-    <% end %>
+    <%# if @food.custom? %>
+      <%#= render :partial => '/custom_foods/form', :locals => {:f => f} %>
+    <%# else %>
+      <%#= render :partial => 'form', :locals => {:f => f} %>
+    <%# end %>
     
+    <!-- new code -->
+    	<%= render :partial => '/custom_foods/form', :locals => {:f => f} %>
     <p>
-      <%= f.submit 'Update' %> | <%= link_to 'Cancel', admin_foods_path %>
+      <%= f.submit 'Update' %> | <%#= link_to 'Cancel', admin_foods_path %> <%= link_to 'Cancel', admin_dashboard_path %>
     </p>
   <% end %>
   

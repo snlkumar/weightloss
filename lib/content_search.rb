@@ -2,6 +2,7 @@ class ContentSearch
   attr_accessor :post_search, :posts, :video_search, :videos, :total, :filter
   
   FILTERS = [['All Results', 'all'], ['Articles', 'articles'], ['Videos', 'videos']]
+ #FILTERS = Category.all
   
   def initialize(params = {})
     @posts  = @videos = []

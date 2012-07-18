@@ -1,5 +1,5 @@
+
 <div class="grid_16">
-  
   
   <br/>
   
@@ -9,13 +9,13 @@
   <%= link_to 'New post', new_admin_post_path %>
   
   <br/>
-  
+
   <%= form_tag(search_admin_posts_path) do %>
     <%= text_field_tag 'terms', '', :id => 'exercise-search' %>
   
     <%= submit_tag 'Search' %>
   <% end %>
-  
+
   <br/>
   <% if params['terms'] && !params['terms'].blank? %>
     Displaying results for "<%= params['terms'] %>"<br/>

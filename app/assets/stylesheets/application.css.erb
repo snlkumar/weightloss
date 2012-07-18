@@ -49,6 +49,8 @@ footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
+table#cardio.input.sz{height:15px}
+
 blockquote, q { quotes: none; }
 
 blockquote:before, blockquote:after,
@@ -125,7 +127,14 @@ pre {
    3) Set font-size to match <body>'s, and font-family to sans-serif 
    4) Align to baseline */
 button, input, select, textarea { width: auto; overflow: visible; margin: 0; font-size: 100%; font-family: sans-serif; vertical-align: baseline; }
-
+//	this style for custom food page's select box 
+	select#food_gmwt_desc1{width:50%;margin:0 0 10px 0;}
+	table#left_table,#right_table{float:left;margin-right:10px;width:26%;}
+	span.titl{font-size:14px;color:#0B3861;font-weight:bold;text-align:left;	}
+	span.srch{font-size:12px;font-weight:bold;}
+	td.sml{font-size:11px;	}
+	span.nutri{font-size:16px;font-weight:bold;}
+	td.cadstl{color:#0B0B3B;font-weight:bold;font-size:12px;}
 /* 1) Remove default scrollbar in IE: www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/
    2) Align to text-top */
 textarea { overflow: auto; vertical-align:text-top; }
@@ -376,8 +385,11 @@ h4 a, h4 a:visited { text-decoration: none; color: black; }
 #nav-bar a#profile-tab  { background-image: url(<%= asset_path 'profile.png' %>); background-repeat: no-repeat; background-position: 20px 15px; }
 #nav-bar a#food-tab     { background-image: url(<%= asset_path 'fork-knife.png' %>); background-repeat: no-repeat; background-position: 20px 15px; }
 #nav-bar a#exercise-tab { background-image: url(<%= asset_path 'running-guy.png' %>); background-repeat: no-repeat; background-position: 20px 15px; }
+#nav-bar a#diary-tab { background-image: url(<%= asset_path 'diary.png' %>); background-repeat: no-repeat; background-position: 20px 15px; }
 #nav-bar a#charts-tab   { background-image: url(<%= asset_path 'charts.png' %>); background-repeat: no-repeat; background-position: 20px 15px; }
 #nav-bar a#goal-tab   { background-image: url(<%= asset_path 'goal.png' %>); background-repeat: no-repeat; background-position: 20px 15px; }
+#nav-bar a#dir-tab   { background-image: url(<%= asset_path 'dir.png' %>); background-repeat: no-repeat; background-position: 20px 15px; }
+
 #nav-bar a#forum-tab   { background-image: url(<%= asset_path '.png' %>); background-repeat: no-repeat; background-position: 20px 15px; }
 #nav-bar li:last-child  { width: 269px; }
 #user-name              { font-size: 18pt; margin: 29px 0px 0px 19px; }
@@ -441,13 +453,13 @@ td { border: none; }
   #weight-slider   { height: 10px; margin-bottom: 10px; width: 180px !important; width: 400px !important; }
 
 /* New Meal Entry */
-#meal-entry, #workout-entry                   { background-color: #F6F6F6; border: 2px solid #006597; padding: 15px; width: 100%; }
-#meal-entry table, #workout-entry table       { width: 100%; }
+#meal-entry, #workout-entry                   { background-color: #F6F6F6; border: 2px solid #006597; padding: 15px; width: 110%; }
+#meal-entry table, #workout-entry table       { width: 48%; }
 #meal-entry table td, #workout-entry table td { vertical-align: middle; }
 
 #meal-items td, 
   #workout-items td        { border-bottom: 1px solid #CCC; }
-#meal-items .servings { width: 115px; }
+#meal-items .servings {font-size:11px; }
 #meal-items .serving-size { max-width: 210px; }
 
 #calendar-box-wrapper { background-color: #fff; border: 1px solid #A6A6A6; height: 44px; padding: 0 5px; width: 178px; }
@@ -468,11 +480,54 @@ form#meal-new-item textarea,
 
 /*#workout-items { display: none; }*/
 #workout-items .exercise-name { width: 465px; }
+.ui-datepicker-calendar{background-color:#E6E6E6;}
 
 .ui-datepicker { z-index: 10000; }
 ul.ui-autocomplete { height: 200px; overflow-y: scroll; }
 ul.ui-autocomplete a { text-decoration: underline; }
-
+input.today {
+   background: #696969;
+   background: -webkit-gradient(linear, left top, left bottom, from(#b8b6b8), to(#696969));
+   background: -webkit-linear-gradient(top, #b8b6b8, #696969);
+   background: -moz-linear-gradient(top, #b8b6b8, #696969);
+   background: -ms-linear-gradient(top, #b8b6b8, #696969);
+   background: -o-linear-gradient(top, #b8b6b8, #696969);
+   padding:.8%;
+	 margin:.5% 2% 0 2%;
+   -webkit-border-radius: 6px;
+   -moz-border-radius: 6px;
+   border-radius: 6px;
+	 text-align:center;
+   color: white;
+   font-size: 15px;
+	 font-family: Arial,Helvetica,serif;
+	 width:65%;
+	 height:27px;
+	 font-weight:bold;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+span.button {
+   border-top: 1px solid #e3dae3;
+   background: #c7c5c7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#dedbde), to(#c7c5c7));
+   background: -webkit-linear-gradient(top, #dedbde, #c7c5c7);
+   background: -moz-linear-gradient(top, #dedbde, #c7c5c7);
+   background: -ms-linear-gradient(top, #dedbde, #c7c5c7);
+   background: -o-linear-gradient(top, #dedbde, #c7c5c7);
+   padding: 5.5px 11px;
+   -webkit-border-radius: 6px;
+   -moz-border-radius: 6px;
+   border-radius: 6px;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+	 margin:0 0 2% 0;
+   color: white;
+   font-size: 1.3em;
+	 font-weight:bold;
+   font-family: Arial,Helvetica,serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
 /* Food Journal */
 .date_of_day  { font-size: 3em; line-height: 0.8em; }
 .day_seperator  { margin:  12px 13px 10px 0px; height: 16px; -moz-border-radius: 3px; }
@@ -819,7 +874,7 @@ button.button:active, a.button:active {
 #content .profile-label { font-size: 1.15em; color: #0B2B42;}
 #user-name              { font-weight: bold; font-size: 2em; color: #0a263b;}
 #content h2             { height: 17px; background-color: rgb(11, 43, 66); text-align: center; padding: 8px 8px 16px 8px; 
-                          width: 110px; color: rgb(46, 142, 193); font-weight: bold; font-size: 1.5em;}
+                          color: rgb(46, 142, 193); font-weight: bold; font-size: 1.25em;}
 #content .post-title    { font-weight: bold; color: #2e8dc0; margin-bottom: 5px; }
 #content .post-creation-date { font-size: 10px; font-weight: bold; color: #0a2b42; margin-bottom: 10px; }
 .pagination             { margin: 25px 0 0 0; }

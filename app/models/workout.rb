@@ -11,7 +11,10 @@ class Workout < ActiveRecord::Base
   scope :starting_from, lambda { |date| {:conditions => ["trained_on <= ?", date] }}
   scope :on,            lambda { |date| {:conditions => ["trained_on >= ? AND trained_on <= ?", date.beginning_of_day, date.end_of_day], 
                                                :order => "trained_on ASC"} }
-  scope :today, :conditions => ["trained_on >= ? AND trained_on <= ?", Time.zone.now.beginning_of_day, Time.zone.now.end_of_day]
+  
+  #scope :today, :conditions => ["trained_on >= ? AND trained_on <= ?", Time.zone.now.beginning_of_day, Time.zone.now.end_of_day]
+  
+  scope :today, :conditions => ["trained_on = ?", Date.today]		#this is my code. old code is above
   scope :past_week, :conditions => ["trained_on >= ?", 6.days.ago]
 
 # Nested Attributes

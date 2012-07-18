@@ -1,0 +1,34 @@
+<div id="exercise_form">
+  <%= form_for @exercise do |f| %>
+    <%= f.error_messages %>
+    <table border="0" width="75%">
+      <tr>
+        <td colspan="2"><font size="5" color="green">Exercises <%=@exercise.description%></font><br><br></td>
+      </tr>
+      <tr>
+			    <td><%= f.label :description %></td>
+			    <td>
+				    <%= f.text_field :description, :class => 'grid_6 alpha', :style=>"height:20px;width:70%;margin:0 0 10px 0;padding:0;" %> 
+			    </td>
+	    </tr>
+	    <tr>
+			    <td><%= f.label :category %></td>
+			    <td>
+				    <%= f.text_field :category, :class => 'grid_6 alpha', :style=>"height:20px;width:70%;margin:0 0 10px 0;padding:0;" %> 
+			    </td>
+	    </tr>
+	    <tr>
+			    <td><%= f.label :mets %></td>
+			    <td>
+				    <%= f.text_field :mets, :class => 'grid_6 alpha', :style=>"height:20px;width:70%;margin:0 0 10px 0;padding:0;" %> 
+			    </td>
+	    </tr>
+	    <tr>
+			    <td><%= f.label :calories %></td>
+			    <td>
+				    <%= f.text_field :calories, :class => 'grid_6 alpha', :style=>"height:20px;width:70%;margin:0 0 10px 0;padding:0;" %> 
+			    </td>
+	    </tr>
+  </table>
+  <% end %>
+</div>

@@ -1,6 +1,14 @@
+<link rel="stylesheet" href="/assets/website.css" type="text/css" media="screen"/>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/assets/jquery.tinyscrollbar.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#scrollbar1').tinyscrollbar();	
+		});
+	</script>	
 <div id='topic' class='<%= @topic.locked? ? 'locked' : 'unlocked' %>'>
   <%= render :partial => 'forem/topics/head', :locals => { :topic => @topic } %>
-
   <menu>
     <% if @topic.can_be_replied_to? %>
       <%= link_to t(".reply"), new_topic_post_path(@topic) %>
@@ -16,7 +24,84 @@
     <%= link_to t(".pin.#{@topic.pinned}"), toggle_pin_admin_topic_path(@topic), :method => :put %>
   <% end %>
   <%= paginate @posts %>
-  <div id='posts'>
-    <%= render :partial => "forem/posts/post", :collection => @posts %>
-  </div>
+
+	<div id="scrollbar1">
+		<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+		<div class="viewport">
+			 <div class="overview">
+		<div id='posts'>
+		  <%= render :partial => "forem/posts/post", :collection => @posts %>
+		</div>
+	  </div>
+	 </div>
+	 </div>
+	<!-- new code -->
+  <!-- for show reply box(show textarea for comment) -->
+  <div id="replyBox"></div>
 </div>
+
+<div id="waiting" style="display:none;position:absolute;top:60%;left:50%;">
+  <%=image_tag "/assets/ajax-loader.gif", :style=>"margin:-45% 0 0 50%" %>
+</div>
+<!-- new code -->
+<!-- to show reply messages through ajax -->
+<script type="text/javascript">
+	function show(loc,rplyId)	// this loc and rplyId send by forem/posts/post page's this link <li><%#= link_to "Reply", '#', :onclick=>"show('#{new_topic_post_path(@topic)}','?reply_to_id=#{post.id}')" %></li>
+	{
+  	$.ajax({
+  		type : "GET",
+  		url : loc+""+rplyId,
+  		dataType : "html",
+      success: function(data) {
+      data=takeReplyForm(data);
+      $("#replyBox").html(data);
+			$("#replyBox").css("display","block");
+			},
+      error : function() {
+				alert("Sorry, page not found.");
+      }
+    });
+	}
+	
+	function takeReplyForm(data)
+	{
+		return(data.substring(data.indexOf("<h2>Post reply</h2>")+("<h2>Post reply</h2>").length+1,data.lastIndexOf("</form>")+("</form>").length));
+	}
+	
+	function uploadComment()
+	{
+	  //if textarea empty
+	  if($("#post_text").val()=="")
+	  {
+	    return;
+	  }
+	  
+	  $("#waiting").css("display","block"); //show waiting icon when comment submit
+	  $("#replyComment").attr("disabled", "disabled");  //disable button when comment submit
+	  
+	  jQuery.ajax({
+       type : "POST",	
+       url : $("#new_forem_post").attr("action"),
+			 data: $("#new_forem_post").serialize(),
+       dataType : "html",
+       success: function(data) 
+			 {
+					$("#waiting").css("display","none");
+  				$("#post_text").val("");    //empty textarea field
+  				$("#replyComment").removeAttr("disabled");
+  				
+  				//reload comments
+  				reloadPage("<%=request.url%>");
+        },
+        error : function() 
+				{
+             alert("Sorry, The requested property could not be found.");
+        }
+   });
+	  return false;
+	}
+	function reloadPage(href)
+	{
+	  $("body").load(href);
+  }	
+</script>

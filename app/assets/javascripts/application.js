@@ -12,6 +12,7 @@
 //= require jquery.labelify
 //= require jquery.jeditable
 //= require jquery.format 
+//= require jquery.tinyscrollbar.min.js
 //= require flowplayer-3.2.6.min
 
 

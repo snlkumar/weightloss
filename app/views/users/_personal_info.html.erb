@@ -43,6 +43,37 @@
   <span class="clear"></span>
 </p>
 
+<!-- new added code --->
+<p>
+  <br/><%= f.label 'Photos:-' %><br/>
+</p>
+
+<p>
+  <%= f.label 'Before Measurements' %><br/>
+  <% if f.object.photobefore.file? %>
+    <%= image_tag f.object.photobefore.url(:medium) %>
+  <% end %>
+  
+  <%= f.file_field :photobefore, :size => '6' %>
+</p>
+
+<p>
+  <br/><%= f.label 'After Measurements' %><br/>
+  <% if f.object.photoafter.file? %>
+    <%= image_tag f.object.photoafter.url(:medium) %>
+  <%end %>
+  
+  <%= f.file_field :photoafter, :size => '6' %>
+</p>
+
+<p>
+  <br/><%= f.label 'Body Fat' %><br/>
+  <%= f.text_field :bodyfat, :title => 'Body Fat', :class => 'grid_6 alpha' %><div style="padding-top:2%;">&nbsp;%</div>
+  <span class="clear"></span>
+</p>
+
+<!-- end new added code -->
+
 <%= render :partial => '/users/personal_measurements', :locals => {:f => f} %>
 
 <p>

@@ -36,7 +36,8 @@ class Admin::FoodsController < Admin::BaseController
   def destroy
     @food = Food.find(params[:id])
     @food.destroy
-    redirect_to(admin_foods_url)
+    #redirect_to(admin_foods_url)
+    redirect_to(admin_dashboard_url)
   end
   
   def search

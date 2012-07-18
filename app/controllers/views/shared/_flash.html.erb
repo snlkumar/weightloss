@@ -1,0 +1,12 @@
+
+<%- flash.each do |name, msg| -%>
+  <div class="flash">
+    <div class="<%= name %> message">
+      <p><%= msg %></p>
+    </div>
+  </div>
+<%- end -%>
+
+<script type="text/javascript" charset="utf-8">
+  setTimeout("$('div.flash').slideUp(1000)", 3500);
+</script>

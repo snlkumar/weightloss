@@ -3,16 +3,18 @@ source :rubygems
 gem "rails", "3.1.0"
 gem "rake"
 gem "rdoc"
-gem 'paperclip'
+gem 'paperclip','2.7.0'
+gem 'default_value_for'
 # gem 'airbrake'
-gem 'fastercsv'
+#gem 'fastercsv','~>1.5.4'
+#gem 'iconv'
 gem 'linguistics'
 gem 'kaminari'
 gem 'devise'
 gem 'mysql2', '>= 0.3'
 gem 'chronic'
 gem "jquery-rails"
-gem "friendly_id"
+gem "friendly_id", "~> 3.1"
 gem 'dynamic_form' # for Rails 2 form error helpers
 gem 'acts_as_commentable'
 gem 'omniauth', '>=0.2.6'
@@ -27,9 +29,12 @@ gem 'multi_json'
 gem 'therubyracer'
 gem "default_value_for"
 gem 'profanity_filter'
+gem 'omniauth-facebook'
+gem 'exception_notification' ,:require=>'exception_notifier'
+#gem 'ruby-debug19'
 
 group :development, :test do
-  gem 'ruby-debug'
+
   gem 'thin'
   gem 'capistrano'
   gem 'capistrano_colors'
@@ -40,7 +45,7 @@ group :development, :test do
   gem 'email_spec'
   #   gem 'fakeweb'
   gem 'launchy'
-  gem 'factory_girl_rails'
+  #gem 'factory_girl_rails'
   gem 'remarkable_activerecord', '>=4.0.0.alpha2'
   gem 'remarkable_activemodel', '>=4.0.0.alpha2'
   gem 'timecop'

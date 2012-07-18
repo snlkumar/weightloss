@@ -11,11 +11,31 @@ class ExercisesController < ApplicationController
     
     @exercises = Exercise.find(:all, :conditions => [conds, term_hash])
     
-    render :json => @exercises.map{|f| {:value => f.description, :id => f.id} }.to_json
+    #render :json => @exercises.map{|f| {:value => "#{f.description} - #{f.calories} Cal/Hr", :id => f.id} }.to_json
+    
+    ##
+    @weight = (self.current_user ? self.current_user.weight : User.find(self.current_user.id).weight ) * 0.45
+    ##
+    render :json => @exercises.map{|f| {:value => "#{f.description} @$% #{f.mets ? (60*f.mets*3.5*@weight/200) : (0)} Cal/Hr", :id => f.id} }.to_json
+    # to split data this (@$%) sign base in dairy.html.erb page
   end
   
   def workout_item_calories
     workout_item = WorkoutItem.new(params[:meal][:workout_items_attributes].first.last)
     render :json => {:calories => workout_item.calories}
   end
+  
+  #new added code
+  def edit
+    @exercise=Exercise.find(params[:id])
+    if @exercise.mets!=nil
+				mets = @exercise.mets 
+	  else
+				mets=0
+		end
+	  weight_in_kilograms = (current_user ? current_user.weight : User.find(current_user.id).weight ) * 0.45
+	  calories       = 60 * ((mets * 3.5 * weight_in_kilograms)/200)  # 60 denote duration(in minutes )
+	  @exercise.calories=calories.round(2)
+  end
+  #end
 end

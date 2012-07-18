@@ -19,3 +19,24 @@
   <%= f.text_field :mets, :class => 'grid_6 alpha' %>
   <span class="clear"></span>
 </p>
+
+<!-- new code for calories and exercise photo-->
+<p>
+  <%= f.label 'Calories/Hr' %><br/>
+  <%= f.text_field :calories, :class => 'grid_6 alpha' %>
+  <span class="clear"></span>
+</p>
+
+<p>
+  <%= f.label 'Upload Exercise Photo' %>
+  <div style="position:absolute;top:23%;left:55%;">
+    <% if f.object.avatar.file? %>
+      <p><%= f.object.avatar_file_name %></p><br/>
+      <%= image_tag f.object.avatar.url(:large), :alt => "Exercise image" %>
+    <% end %> 
+  </div>
+  
+  <%= f.file_field :avatar, :size => '6' %>
+</p>
+
+<!-- end new code -->

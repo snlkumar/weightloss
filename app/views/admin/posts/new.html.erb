@@ -7,7 +7,7 @@
     <%= render :partial => 'form', :locals => {:f => f} %>
     
     <p>
-      <%= f.submit 'Create' %> | <%= link_to 'Cancel', admin_posts_path %>
+      <%= f.submit 'Create' %> | <%#= link_to 'Cancel', admin_posts_path %>  <%= link_to 'Cancel', admin_dashboard_path %>
     </p>
   <% end %>
   

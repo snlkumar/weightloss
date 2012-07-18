@@ -1,9 +1,72 @@
-<div class="clear">&nbsp;</div>
+<!-- new code added -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.21/themes/base/jquery-ui.css" type="text/css" media="all" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js" type="text/javascript"></script>
+<style type="text/css">
+	
+/* Vertical Tabs
+----------------------------------*/
+#tabs {
+    height:30em;
+    width:115%;
+    padding-left:0;
+    overflow:auto;
+}
 
+.ui-tabs-vertical { width: 50em; }
+.ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
+.ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+.ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-selected { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
+.ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
+	</style>
+	
+<script>
+	$(function() {
+		$("#tabs").tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
+		$("#tabs li").removeClass('ui-corner-top').addClass('ui-corner-left');
+		//$( "#tabs" ).tabs( "option", "selected", 2);
+	});
+	
+	</script>
+	
+<div style="margin:3% 0 0 1%;">
+  <div id="tabs">
+	  <ul>
+		  <li><a href="#tabs-1" id="t1">Old My Weight <br>World Uploads</a></li>
+		  <li><a href="#tabs-2" id="t2">Users</a></li>
+		  <li><a href="#tabs-3" id="t3">Foods</a></li>
+		  <li><a href="#tabs-4" id="t4">Exercises</a></li>
+		  <li><a href="#tabs-5" id="t5">Posts</a></li>
+		
+	  </ul>
+	  <div id="tabs-1">
+		  <p><%= render :partial=>'old_items/index'%></p>
+	  </div>
+	  <div id="tabs-2">
+		  <p><%= render :partial=>'admin/users/tabDataUser'%></p>
+    </div>
+    <div id="tabs-3">
+		  <p><%= render :partial=>'admin/foods/tabDataFood'%></p>
+    </div>
+     <div id="tabs-4">
+		  <p><%= render :partial=>'admin/exercises/tabDataExercise'%></p>
+     </div>
+     <div id="tabs-5">
+		  <p><%= render :partial=>'admin/posts/tabDataPost'%></p>
+     </div>
+</div>
 <p><%= link_to 'Return to Profile', user_path(current_user) %></p>
+
+<div class="clear">&nbsp;</div>
+<!-- new code end -->
+
+<!--
+<p><%#= link_to 'Return to Profile', user_path(current_user) %></p>
 <br />
-<p><%= link_to 'Old My Weight World Uploads', old_items_path %></p>
-<p><%= link_to 'Users', admin_users_path %></p>
-<p><%= link_to 'Foods', admin_foods_path %></p>
-<p><%= link_to 'Exercises', admin_exercises_path %></p>
-<p><%= link_to 'Posts', admin_posts_path %></p>
+<p><%#= link_to 'Old My Weight World Uploads', old_items_path %></p>
+<p><%#= link_to 'Users', admin_users_path %></p>
+<p><%#= link_to 'Foods', admin_foods_path %></p>
+<p><%#= link_to 'Exercises', admin_exercises_path %></p>
+<p><%#= link_to 'Posts', admin_posts_path %></p>
+-->

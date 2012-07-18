@@ -3,7 +3,7 @@ class WorkoutItem < ActiveRecord::Base
   belongs_to :workout
   belongs_to :exercise
   belongs_to :user
-  
+  #has_many :sets,  :dependent => :destroy
 # Callbacks
   before_save :calculate_calories
   
@@ -13,8 +13,15 @@ class WorkoutItem < ActiveRecord::Base
   end
   
   def calculate_calories
-    mets                = exercise.mets
-    weight_in_kilograms = (self.user ? self.user.weight : User.find(self.user_id).weight ) * 0.45
-    self.calories       = self.duration * ((mets * 3.5 * weight_in_kilograms)/200)
+		if calories.blank?
+			if exercise.mets!=nil
+				mets                = exercise.mets 
+			else
+					mets=0
+			end
+		  #mets                = exercise.mets
+		  weight_in_kilograms = (self.user ? self.user.weight : User.find(self.user_id).weight ) * 0.45
+		  self.calories       = self.duration * ((mets * 3.5 * weight_in_kilograms)/200)
+		end
   end
 end
