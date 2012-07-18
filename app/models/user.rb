@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
                                                :profile => '137x137#', :large => "214x214#" }, 
                              :url  => '/system/:class/:attachment/:id/:style/:normalized_avatar_name',
                              :path => ":rails_root/public/system/:class/:attachment/:id/:style/:normalized_avatar_name"
-<<<<<<< HEAD
+
                              
 #new code add photo after and before of measurement
 has_attached_file :photobefore, :styles      => { :thumb   => "16x16#",  :medium => "50x50#", :large => "214x214#" }, 
@@ -32,9 +32,8 @@ has_attached_file :photoafter, :styles      => { :thumb   => "16x16#", :medium =
                              :path => ":rails_root/public/system/:class/:attachment/:id/:style/:filename"
 
 #### end new code for photo
-=======
-  
->>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
+
+
 
   
   # Associations
