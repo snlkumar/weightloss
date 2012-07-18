@@ -1,5 +1,0 @@
-<% if result.is_a?(OldFlashFile) %>
-  <%= render :partial => 'videos/video', :locals => {:video => result} %>
-<% else %>
-  <%= render :partial => 'posts/post', :locals => {:post => result} %>
-<% end %>

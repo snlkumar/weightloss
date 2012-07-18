@@ -1,8 +1,0 @@
-
-<%= link_to(user_avatar_image(user, :medium), user_path(user), :style => 'margin-bottom: 13px; display: inline; float: left;') %>
-<p class="grid_3 omega">
-  <span class="grid_3"><%= link_to user.username.titleize, user_path(user) %></span><br/>
-  <%= distance_of_time_in_words_to_now(user.created_at) %>
-</p>
-
-<div style="clear:both"></div>

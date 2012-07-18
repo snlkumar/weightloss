@@ -1,7 +1,0 @@
-<% if user.city.present? || user.state.present? %>
-  <p id="location"><%= [user.city, user.state].compact.join(', ') %></p>
-<% end %>
-<!-- <p id="permalink"><%= user_url(user) %></p> -->
-<% if user.twitter_name? %>
-  <p id="twitter-handle"><%= twitter_handle(user) %></p>
-<% end %>
