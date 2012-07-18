@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
   
   def create
-<<<<<<< HEAD
+
   	begin
 		  build_resource
 		  
@@ -28,7 +28,7 @@ class RegistrationsController < Devise::RegistrationsController
 				logger.error("Message for the log file #{exc.message}")
 				redirect_to '/users/sign_up', :notice => "User already exists"
    end
-=======
+
     build_resource
     
     if resource.save
@@ -50,7 +50,7 @@ class RegistrationsController < Devise::RegistrationsController
       respond_with_navigational(resource){ render_with_scope :new }
 #      respond_with_navigational(resource) { render_with_scope :new }
     end
->>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
+
   end
   
   def update

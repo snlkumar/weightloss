@@ -31,12 +31,10 @@ def update_meal
     render :text=>"food updated"
 end
 
-<<<<<<< HEAD
+
 def edit
   @food=Food.find(params[:id])
   render 'show_food'
 end
-=======
->>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
 
 end
