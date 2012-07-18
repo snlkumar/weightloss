@@ -1,7 +1,10 @@
 Myweightworld::Application.routes.draw do
 
+<<<<<<< HEAD
   get "vendors/search"
 
+=======
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
 devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "users/omniauth_callbacks" } do
     get '/sign_in', :to => 'devise/sessions#new'
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
@@ -17,8 +20,11 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 	match '/workouts/data/'=>'workouts#data'
 	match '/workouts/dairy/'=>'workouts#dairy',		:as => 'dairy_workout'
 	#match '/foods/search/' =>'foods#search'
+<<<<<<< HEAD
 	##create dynamic routes
 	match '/vendor(/:id/:type/:contctno/:profileid)' => 'vendors#search',   :as => 'vendor'  
+=======
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
 	##
   match '/password/edit' => 'user_passwords#edit', :as => :edit_password, :via => :get
   match '/password' => 'user_passwords#update', :as => :password, :via => :put

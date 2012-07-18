@@ -2,9 +2,15 @@
   <div class="post-image">
     <%= link_to (image_tag post.image1.url(:medium)), post_path(post)%>
   </div>
+<<<<<<< HEAD
   <div class="post-content">
     <h3 class="post-title"><%= link_to post.page_title, post_path(post) %></h3>
     <div class="post-creation-date"><%= post.created_at.nil? ? "" :post.created_at.to_s(:short) %></div>
+=======
+  <div class="post-content">ddddd
+    <h3 class="post-title"><%= link_to post.page_title, post_path(post),html_options = {:style=>'color:black'} %></h3>
+    <div class="post-creation-date"><%= post.created_at.to_s(:short) %></div>
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
     <p class="post-teaser"><%= truncate(strip_tags(post.body), :length => 150) %></p>
   </div>
 <div class="clear">&nbsp;</div>

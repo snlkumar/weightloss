@@ -5,6 +5,7 @@
   
   <h1 style='color:black'><%= @post.page_title %></h1>
   
+<<<<<<< HEAD
   <!-- new added code -->
   <%= image_tag OldTextFile.find(params[:id]).image1.url(:large), :alt=>"alt" %>
   <div style="text-align:justify;">
@@ -14,6 +15,11 @@
   <!--new added code end -->
   <b>Share this article</b>
 	
+=======
+  <%= @post.body.html_safe %>
+  
+  <b>Share this article</b>
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
   <p>
     <span class='st_twitter' displayText='Tweet'></span>
     <span class='st_facebook' displayText='Facebook'></span>

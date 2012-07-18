@@ -66,6 +66,7 @@
             </div>
             
           </div>
+<<<<<<< HEAD
           
           <% if user_signed_in? %>
           	<div id="add-meal" class="button">
@@ -76,6 +77,10 @@
               <%= link_to "+ Add Activity", new_workout_path, :title => 'Add a Workout' %>
             </div>
             
+=======
+        
+          <% if user_signed_in? %>
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
             <div id="nav-bar">
               <%= render :partial => 'shared/nav_bar' %>
             </div>

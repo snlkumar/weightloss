@@ -54,4 +54,11 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
       stored_location_for(resource) || user_path(current_user)
   end
+<<<<<<< HEAD
+=======
+  
+  def calories_burned_today_week
+  	@weekly=Workout.find_by_sql("SELECT sum(wi.calories) as weekly_burned_cal, sum(wi.duration) as weekly_duration FROM workout_items wi,workouts w where w.user_id="+current_user.id.to_s+" and w.id=wi.workout_id and w.trained_on>=DATE_SUB('"+@start_date+"', INTERVAL 7 DAY) and w.trained_on <='"+@start_date+"'")
+  end
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
 end

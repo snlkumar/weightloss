@@ -4,6 +4,19 @@
 <!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> 
+<<<<<<< HEAD
+=======
+<%= render :partial => 'layouts/js_libs' %>
+    
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function() {
+        <%= yield :js %>
+      });
+       
+    </script>
+
+
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
 <html class="no-js" lang="en"> <!--<![endif]-->
   <head>
     <%= render :partial => '/layouts/head' %>
@@ -23,6 +36,7 @@
       
     <%= render :partial => 'layouts/footer' %>
     
+<<<<<<< HEAD
     <%= render :partial => 'layouts/js_libs' %>
     
     <script type="text/javascript" charset="utf-8">
@@ -30,5 +44,8 @@
         <%= yield :js %>
       });
     </script>
+=======
+    
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
   </body>
 </html>

@@ -12,6 +12,10 @@
       <div class="clear">&nbsp;</div>
     </div>
   </div>
+<<<<<<< HEAD
+=======
+  kkkkk
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
   <div id="main-nav" class="full">
     <div class="main-nav container_16" style="position:relative;">
       
@@ -22,9 +26,15 @@
                             :title => "Search our wellness library" %>
         <%= submit_tag 'GO' %>
       <% end %>
+<<<<<<< HEAD
             
       <%= render :partial => 'shared/nav_tabs' %>
       >>>>>>>>>>>>>>
+=======
+      
+      <%= render :partial => 'shared/nav_tabs' %>
+      
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
       <div class="clear">&nbsp;</div>
       
       <div class="grid_5 sidebar-container main-nav-spacer">&nbsp;</div>

@@ -3,8 +3,13 @@ source :rubygems
 gem "rails", "3.1.0"
 gem "rake"
 gem "rdoc"
+<<<<<<< HEAD
 gem 'paperclip','2.7.0'
 gem 'default_value_for'
+=======
+gem 'paperclip'
+gem 'hoptoad_notifier'
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
 # gem 'airbrake'
 #gem 'fastercsv','~>1.5.4'
 #gem 'iconv'

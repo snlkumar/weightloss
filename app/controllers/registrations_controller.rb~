@@ -9,8 +9,12 @@ class RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_in(resource_name, resource)
+<<<<<<< HEAD
         redirect_to '/step_two'
 			  #respond_with resource, :location => redirect_location(resource_name, resource)
+=======
+        respond_with resource, :location => redirect_location(resource_name, resource)
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
       else
         set_flash_message :notice, :inactive_signed_up, :reason => inactive_reason(resource) if is_navigational_format?
         expire_session_data_after_sign_in!

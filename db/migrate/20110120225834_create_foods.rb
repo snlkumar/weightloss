@@ -1,7 +1,6 @@
 class CreateFoods < ActiveRecord::Migration
-require 'csv'
   def self.up
-    csv = CSV.read(File.join(::Rails.root.to_s, 'utils', "ABBREV.csv"))
+    csv = FasterCSV.read(File.join(::Rails.root.to_s, 'utils', "ABBREV.csv"))
     headers = csv[0].collect{|col| col.downcase.gsub(/\+/, '_and_') }
     
     create_table :foods, :force => true do |t|

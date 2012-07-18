@@ -18,7 +18,11 @@
                             :title => "Search our wellness library" %>
       <% end %>
       
+<<<<<<< HEAD
       <%#= render :partial => 'shared/nav_tabs' %>
+=======
+      <%= render :partial => 'shared/nav_tabs' %>
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
       
       <h2 id="logo" class="grid_5 sidebar-container"><%= link_to 'myweightworld', home_path %></h2>
       

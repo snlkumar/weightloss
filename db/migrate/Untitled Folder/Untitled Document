@@ -1,6 +1,0 @@
-1- 20111222173446_create_new_slugs
-2- 20111027000718_add_new_paperclip_fields_to_old_flash_files
-3- Remove faster csv from gemfile
-    Add reqiure 'csv' to migration file, which csv error occured.
-    change Fastercsv to csv.
-

@@ -18,11 +18,16 @@
           
             <div class="grid_5">
               <span style="display: inline-block; margin-top: 33px; line-height: 29px; color: #FFF; font-size: 25px; font-weight: bold; font: helvetica;">
+<<<<<<< HEAD
                 We're building a community for guidance in fitness & wellness.</span>
+=======
+                jonyyyyyWe're building a community for guidance in fitness & wellness.</span>
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
               
               <span style="display: inline-block; margin-top: 7px; color: #FFF; font-size: 18px; font: helvetica;">
                 Set goals, track calories, get feedback, find helpful content - partake in bettering the community and the community will help build a better you.</span>
             </div>
+<<<<<<< HEAD
     
       <div class="grid_11">
               <%= image_tag 'screenshot.png', :style => 'display: block; margin-top: -5px;', :class => 'grid_10 alpha omega push_1' %>
@@ -31,6 +36,17 @@
  <!-- <div id="grid_11" class="grid_10 alpha omega push_1">          
   <a style="display: block; width: 527px; height: 300px; margin: 15px; " id="player" href="/flash/clippy.flv"><object width="100%" height="100%" type="application/x-shockwave-flash" data="/flowplayer-3.2.7.swf" id="player_api"><param value="true" name="allowfullscreen"><param value="always" name="allowscriptaccess"><param value="high" name="quality"><param value="false" name="cachebusting"><param value="#000000" name="bgcolor"><param value="config={&quot;clip&quot;:{&quot;scaling&quot;:&quot;orig&quot;,&quot;autoPlay&quot;:false,&quot;url&quot;:&quot;/system/old_flash_files/videos/8/basic-principles-for-beginners-.flv?1319738021&quot;},&quot;playerId&quot;:&quot;player&quot;,&quot;playlist&quot;:[{&quot;scaling&quot;:&quot;orig&quot;,&quot;autoPlay&quot;:false,&quot;url&quot;:&quot;/system/old_flash_files/videos/8/basic-principles-for-beginners-.flv?1319738021&quot;}]}" name="flashvars"></object></a>
         </div> -->
+=======
+    <!--
+      <div class="grid_11">
+              <%= image_tag 'screenshot.png', :style => 'display: block; margin-top: -5px;', :class => 'grid_10 alpha omega push_1' %>
+            </div>
+-->
+
+  <div id="grid_11" class="grid_10 alpha omega push_1">          
+  <a style="display: block; width: 527px; height: 300px; margin: 15px; " id="player" href="/flash/clippy.flv"><object width="100%" height="100%" type="application/x-shockwave-flash" data="/flowplayer-3.2.7.swf" id="player_api"><param value="true" name="allowfullscreen"><param value="always" name="allowscriptaccess"><param value="high" name="quality"><param value="false" name="cachebusting"><param value="#000000" name="bgcolor"><param value="config={&quot;clip&quot;:{&quot;scaling&quot;:&quot;orig&quot;,&quot;autoPlay&quot;:false,&quot;url&quot;:&quot;/system/old_flash_files/videos/8/basic-principles-for-beginners-.flv?1319738021&quot;},&quot;playerId&quot;:&quot;player&quot;,&quot;playlist&quot;:[{&quot;scaling&quot;:&quot;orig&quot;,&quot;autoPlay&quot;:false,&quot;url&quot;:&quot;/system/old_flash_files/videos/8/basic-principles-for-beginners-.flv?1319738021&quot;}]}" name="flashvars"></object></a>
+        </div>
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
             
             <%= render :partial => 'large_orange_button', :locals => {:style => 'position: absolute; left:0px; top: 321px;'} %>
             <div style="clear:both">&nbsp;</div>

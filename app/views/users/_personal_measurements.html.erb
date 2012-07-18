@@ -39,12 +39,20 @@
           max: 650,
           slide: function( event, ui ) {
             $( "#weight-view" ).html( ui.value + ' lbs' );
+<<<<<<< HEAD
              $( "#weight-view-kg" ).html( ((ui.value)*0.4535924).toFixed(2) + ' kg' );
+=======
+             $( "#weight-view-kg" ).html( (ui.value)*0.4535924 + ' kg' );
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
             $( "#weight-val" ).val( ui.value );
           }
         });
     $( "#weight-view" ).html( $( "#weight-slider" ).slider( "value" ) + ' lbs' );
+<<<<<<< HEAD
     $( "#weight-view-kg" ).html(($( "#weight-slider" ).slider( "value" )*0.4535924).toFixed(2) + ' kg' );
+=======
+    $( "#weight-view-kg" ).html($( "#weight-slider" ).slider( "value" )*0.4535924 + ' kg' );
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
 
   <% end %>
 </script>

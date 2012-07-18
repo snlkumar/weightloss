@@ -7,8 +7,12 @@ class MealsController < ApplicationController
     #if params[:date]
       #@start_date = Time.zone.parse(params[:date]).strftime("%Y-%m-%d")
    # else
+<<<<<<< HEAD
       #@start_date = Time.zone.now.strftime("%Y-%m-%d")
       @start_date = Time.now.strftime("%Y-%m-%d")
+=======
+      @start_date = Time.zone.now.strftime("%Y-%m-%d")
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
    # end
 
 		@meals = Meal.find_by_sql("SELECT f.shrt_desc,f.name,ifnull(f.total_fat,0) as total_fat,ifnull(f.carbohydrt,0) as carbohydrt,ifnull(f.energ_kcal,0) as energ_kcal,ifnull(f.protein,0) as protein,m.meal_type,mi.meal_id,ifnull(mi.calories,0) as calories,m.ate_on from meals m,meal_items mi,foods f where f.id=mi.food_id and m.id = mi.meal_id and m.user_id=" + current_user.id.to_s + " and m.ate_on='"+ @start_date.to_s+"'")
@@ -17,11 +21,17 @@ class MealsController < ApplicationController
 
 	def data
 		if params[:ate_on]
+<<<<<<< HEAD
       #@start_date = Time.zone.parse(params[:ate_on]).strftime("%Y-%m-%d")
       @start_date = Time.parse(params[:ate_on]).strftime("%Y-%m-%d")
     else
       #@start_date = Time.zone.now.strftime("%Y-%m-%d")
       @start_date = Time.now.strftime("%Y-%m-%d")
+=======
+      @start_date = Time.zone.parse(params[:ate_on]).strftime("%Y-%m-%d")
+    else
+      @start_date = Time.zone.now.strftime("%Y-%m-%d")
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
     end
 
 		@meals = Meal.find_by_sql("SELECT f.shrt_desc,f.name,ifnull(f.total_fat,0) as total_fat,ifnull(f.carbohydrt,0) as carbohydrt,ifnull(f.energ_kcal,0) as energ_kcal,ifnull(f.protein,0) as protein,m.meal_type,mi.meal_id,ifnull(mi.calories,0) as calories,m.ate_on from meals m,meal_items mi,foods f where f.id=mi.food_id and m.id = mi.meal_id and m.user_id=" + current_user.id.to_s + " and m.ate_on='"+ @start_date.to_s+"'")
@@ -50,11 +60,17 @@ class MealsController < ApplicationController
 		end
 
 		if params[:ate_on] && params[:ate_on]!="Today"
+<<<<<<< HEAD
       #@start_date = Time.zone.parse(params[:ate_on]).strftime("%Y-%m-%d")
       @start_date = Time.parse(params[:ate_on]).strftime("%Y-%m-%d")
     else
       #@start_date = Time.zone.now.strftime("%Y-%m-%d")
       @start_date = Time.now.strftime("%Y-%m-%d")
+=======
+      @start_date = Time.zone.parse(params[:ate_on]).strftime("%Y-%m-%d")
+    else
+      @start_date = Time.zone.now.strftime("%Y-%m-%d")
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
     end
 
 

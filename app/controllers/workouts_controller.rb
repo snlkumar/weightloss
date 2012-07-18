@@ -48,10 +48,17 @@ class WorkoutsController < ApplicationController
       @start_date = Time.zone.now.strftime("%Y-%m-%d")
     end
 
+<<<<<<< HEAD
 		@workouts=Workout.find_by_sql("SELECT e.id,e.description,wi.calories,w.time_from,w.note,w.trained_on FROM exercises e ,workout_items wi, workouts w  WHERE w.user_id="+current_user.id.to_s+" and trained_on='"+@start_date+"' and wi.exercise_id=e.id and w.id=wi.workout_id")
 
 		@meals = Meal.find_by_sql("SELECT f.id,f.name,m.meal_type,m.note,ifnull(mi.calories,0) as calories,ifnull(f.total_fat,0) as fat,ifnull(f.carbohydrt,0) as carbohydrt,ifnull(f.protein,0) as protein,m.ate_on from meals m,meal_items mi,foods f where f.id=mi.food_id and m.id = mi.meal_id and m.user_id=" + current_user.id.to_s + " and m.ate_on='"+ @start_date.to_s+"'")
 
+=======
+		@workouts=Workout.find_by_sql("SELECT e.description,wi.calories,w.time_from,w.note,w.trained_on FROM exercises e ,workout_items wi, workouts w  WHERE w.user_id="+current_user.id.to_s+" and trained_on='"+@start_date+"' and wi.exercise_id=e.id and w.id=wi.workout_id")
+
+		@meals = Meal.find_by_sql("SELECT f.name,m.meal_type,m.note,ifnull(mi.calories,0) as calories,ifnull(f.total_fat,0) as fat,ifnull(f.carbohydrt,0) as carbohydrt,ifnull(f.protein,0) as protein,m.ate_on from meals m,meal_items mi,foods f where f.id=mi.food_id and m.id = mi.meal_id and m.user_id=" + current_user.id.to_s + " and m.ate_on='"+ @start_date.to_s+"'")
+		
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
   end
   
   #

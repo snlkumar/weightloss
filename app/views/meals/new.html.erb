@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script type="text/javascript" src="/assets/jquery.js"></script>
 <script type="text/javascript">
 			var currentDt="";
@@ -8,6 +9,18 @@
 					$("#ui-datepicker-div").wrap('<div style="position:absolute;left:0;top:-3em;"></div>');
 			});
 
+=======
+
+<script type="text/javascript">
+			var currentDt="";
+			$(function() {
+			$( "#wkDt" ).datepicker( {minDate: -93, maxDate: "+0D" });
+					$( "#wkDt" ).datepicker({showOtherMonths: true,selectOtherMonths: false});
+					$( "#wkDt" ).datepicker("option", "dateFormat",'yy-mm-dd' );
+					$("#ui-datepicker-div").wrap('<div style="position:absolute;left:0;top:-3em;"></div>');
+			});
+
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
 			function prevDate()
 			{
 				var today="";
@@ -86,6 +99,14 @@
 				document.getElementById("wkDt").value=tomorrow.getFullYear()+"-"+month+"-"+day;
 				currentDt=tomorrow.getFullYear()+"-"+month+"-"+day;
 			}
+<<<<<<< HEAD
+=======
+			window.onload = function ()
+			{
+				currentDate(); //set current date in add meal date field(wdDt2) 
+			}
+			
+>>>>>>> 1e6cee8e3d301b846067bd23e235972a80d18dda
 			function setVal(val)
 			{
 				//to set value in hidden field for meal and calories to check which form time(when) goes
