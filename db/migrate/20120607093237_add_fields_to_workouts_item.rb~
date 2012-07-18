@@ -1,9 +1,0 @@
-class AddFieldsToWorkoutsItem < ActiveRecord::Migration
-  def change
-    add_column :workout_items, :sets, :int
-    add_column :workout_items, :reps, :int
-    add_column :workout_items, :weight, :string
-    add_column :workout_items, :rest, :string
-    add_column :workout_items, :tut, :string
-  end
-end
