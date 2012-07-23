@@ -1,5 +1,7 @@
 class Admin::PostsController < Admin::BaseController
-  layout 'admin'
+  #layout 'admin'
+    #new code 
+  layout 'new_admin'
   
   def index
     @posts = OldTextFile.order('page_title ASC').page(params[:page] || 1).per(50)
@@ -27,8 +29,7 @@ class Admin::PostsController < Admin::BaseController
     @post = OldTextFile.find(params[:id])
     
     if @post.update_attributes(params[:post])
-      #redirect_to(admin_posts_path, :notice => "Successfully updated Post: #{@post.page_title}")
-      redirect_to(admin_dashboard_path, :notice => "Successfully updated Post: #{@post.page_title}")
+      redirect_to(admin_posts_path, :notice => "Successfully updated Post: #{@post.page_title}")
     else
       render :action => "edit"
     end
@@ -37,8 +38,8 @@ class Admin::PostsController < Admin::BaseController
   def destroy
     @post = OldTextFile.find(params[:id])
     @post.destroy
-    #redirect_to(admin_posts_path)
-    redirect_to(admin_dashboard_url)
+    redirect_to(admin_posts_path)
+    
   end
   
   def search

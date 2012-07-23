@@ -48,10 +48,9 @@ class WorkoutsController < ApplicationController
       @start_date = Time.zone.now.strftime("%Y-%m-%d")
     end
 
-		@workouts=Workout.find_by_sql("SELECT e.id,e.description,wi.calories,w.time_from,w.note,w.trained_on FROM exercises e ,workout_items wi, workouts w  WHERE w.user_id="+current_user.id.to_s+" and trained_on='"+@start_date+"' and wi.exercise_id=e.id and w.id=wi.workout_id")
+		@workouts=Workout.find_by_sql("SELECT wi.exercise_id,w.id,e.description,wi.calories,w.time_from,w.note,w.trained_on FROM exercises e ,workout_items wi, workouts w  WHERE w.user_id="+current_user.id.to_s+" and trained_on='"+@start_date+"' and wi.exercise_id=e.id and w.id=wi.workout_id")
 
-		@meals = Meal.find_by_sql("SELECT f.id,f.name,m.meal_type,m.note,ifnull(mi.calories,0) as calories,ifnull(f.total_fat,0) as fat,ifnull(f.carbohydrt,0) as carbohydrt,ifnull(f.protein,0) as protein,m.ate_on from meals m,meal_items mi,foods f where f.id=mi.food_id and m.id = mi.meal_id and m.user_id=" + current_user.id.to_s + " and m.ate_on='"+ @start_date.to_s+"'")
-
+		@meals = Meal.find_by_sql("SELECT mi.food_id,m.id,f.name,m.meal_type,m.note,ifnull(mi.calories,0) as calories,ifnull(f.total_fat,0) as fat,ifnull(f.carbohydrt,0) as carbohydrt,ifnull(f.protein,0) as protein,m.ate_on from meals m,meal_items mi,foods f where f.id=mi.food_id and m.id = mi.meal_id and m.user_id=" + current_user.id.to_s + " and m.ate_on='"+ @start_date.to_s+"'")
   end
   
   #
@@ -83,7 +82,7 @@ class WorkoutsController < ApplicationController
 			@w=WorkoutItem.create(:workout_id=>@workout.id,:exercise_id=>params[:workout][:exercise_id],:duration=>params[:workout][:duration].delete(" "),:user_id=>@workout.user_id)
 
 		else
-				params[:workout][:exercise_id]=813	#this is custom calories execersise id
+				params[:workout][:exercise_id]=809	#this is custom calories execersise id
 			#for activity entry by calories
 			@workout = Workout.create(:user_id=>current_user.id,:trained_on=>@start_date,:time_from=>params[:workout][:time_from],:note=>params[:workout][:note])
 			@w=WorkoutItem.create(:workout_id=>@workout.id,:exercise_id=>params[:workout][:exercise_id],:duration=>params[:workout][:duration].delete(" "),:calories=>params[:workout][:calories],:user_id=>@workout.user_id)
@@ -103,7 +102,7 @@ class WorkoutsController < ApplicationController
   def destroy
     @workout = current_user.workouts.find(params[:id])
     @workout.destroy
-    redirect_to workouts_path
+    redirect_to dairy_workout_path  #workouts_path
   end
 
   # Ajax add to workout

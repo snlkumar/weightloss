@@ -6,6 +6,16 @@
         <td colspan="2"><font size="5" color="green">Exercises <%=@exercise.description%></font><br><br></td>
       </tr>
       <tr>
+        <td colspan="2">
+          <div>
+            <% if f.object.avatar.file? %>
+              <p><%= f.object.avatar_file_name %></p>
+              <%= image_tag f.object.avatar.url, :size=>"130x90", :alt => "Exercise image" %>
+            <% end %> 
+          </div>
+        </td>
+      </tr>
+      <tr>
 			    <td><%= f.label :description %></td>
 			    <td>
 				    <%= f.text_field :description, :class => 'grid_6 alpha', :style=>"height:20px;width:70%;margin:0 0 10px 0;padding:0;" %> 

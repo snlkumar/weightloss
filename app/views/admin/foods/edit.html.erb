@@ -1,4 +1,6 @@
 <div class="grid_12">
+  <%= link_to 'Back', admin_foods_path %>
+
   <br>
   <h3>Editing <%= @food.name %></h3>
   
@@ -23,8 +25,8 @@
     <!-- new code -->
     	<%= render :partial => '/custom_foods/form', :locals => {:f => f} %>
     <p>
-      <%= f.submit 'Update' %> | <%#= link_to 'Cancel', admin_foods_path %> <%= link_to 'Cancel', admin_dashboard_path %>
+      <%= f.submit 'Update' %> | <%= link_to 'Cancel', admin_foods_path %>
     </p>
   <% end %>
-  
+  <%= link_to 'Back', admin_foods_path %>
 </div>

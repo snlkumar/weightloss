@@ -17,7 +17,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 	#match '/workouts/saveRoutines/'=> "workouts#saveRoutines"
 	match '/meals/data/'=>'meals#data'
 	match '/workouts/data/'=>'workouts#data'
-	match '/workouts/dairy/'=>'workouts#dairy',		:as => 'dairy_workout'
+	match '/workouts/dairy/(:id)'=>'workouts#dairy',		:as => 'dairy_workout'
 	#match '/foods/search/' =>'foods#search'
 
 	##create dynamic routes

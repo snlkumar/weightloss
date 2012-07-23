@@ -5,8 +5,8 @@
   
   <h2>Exercises</h2>
   
-  <%= link_to 'Back', admin_dashboard_path %><br/>
-  <%= link_to 'New exercise', new_exercise_path %>
+  <%= link_to 'Back', admin_exercises_path %><br/>
+  <%= link_to 'New exercise', new_admin_exercise_path %>
   
   <br/>
   
@@ -22,9 +22,9 @@
   <% end %>
   
   <%= page_entries_info(@exercises) %>
-  
-  <%= paginate(@exercises, :params => pagination_params(request)) %>
-  
+  <div style="color:blue;">
+    <%= paginate(@exercises, :params => pagination_params(request)) %>
+  </div>
   <br/>
   <table class="admin">
     <thead>
@@ -54,4 +54,6 @@
     
     <% end %>
   </script>
+  
+  <%= link_to 'Back', admin_exercises_path %>
 </div>

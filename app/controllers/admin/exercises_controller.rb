@@ -1,6 +1,8 @@
 class Admin::ExercisesController < Admin::BaseController
-  layout 'application'
-    
+  #layout 'application'
+  #new code 
+  layout 'new_admin' 
+  
   def index
     @exercises = Exercise.order('id').page(params[:page] || 1).per(50)
   end
@@ -54,15 +56,14 @@ class Admin::ExercisesController < Admin::BaseController
     @exercise = Exercise.find(params[:id])
     @exercise.destroy
     
-    #redirect_to(admin_exercises_url)
-    redirect_to(admin_dashboard_url)
+    redirect_to(admin_exercises_url)
   end
   
   def search
     terms      = params[:terms].split(/,|\s/).reject(&:blank?)
     conds      = terms.collect{|t| "description LIKE ?"}.join(' AND ')
     @exercises = Exercise.where([conds, *terms.collect{|t| "%#{t}%"}]).page(params[:page] || 1).per(50)
-    
+
     render :action => :index
   end
 end

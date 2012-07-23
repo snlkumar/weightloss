@@ -59,7 +59,7 @@ class MealsController < ApplicationController
 			else
 				#for food custom entry by calory
 				@meal = current_user.meals.create(:ate_on=>@start_date,:note => params[:meal][:note],:meal_type=>params[:meal][:meal_type],:time_of_day=>Time.zone.now.strftime("%H-%M-%S"))
-			@meal.meal_items.create(:food_id=>7539,:calories=>params[:meal][:calories])
+			@meal.meal_items.create(:food_id=>8443,:calories=>params[:meal][:calories])
 		end
    #
     redirect_to dairy_workout_path #meals_path
@@ -76,7 +76,7 @@ class MealsController < ApplicationController
     @meal.destroy	#for meal record deleted
 		@meal.meal_items.destroy	#for meal_items record deleted
 		
-    redirect_to meals_path
+    redirect_to dairy_workout_path #meals_path
   end
   
   # Ajax add to meal

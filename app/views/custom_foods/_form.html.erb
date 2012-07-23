@@ -69,14 +69,13 @@
 <div id="upload_food_pic">
   <div style="width:30%;"><%= f.label 'Upload Food Photo' %></div>
   <div style="width:45%;"><%= f.file_field :avatar, :size => '6' %></div>
-
-  <div style="float:right;margin-top:-8%;">
+</div>
+  <div style="float:right;margin-top:-8%;" id="food-img">
     <% if f.object.avatar.file? %>
       <p style="margin-left:-30%;"><%= f.object.avatar_file_name %></p>
       <%= image_tag f.object.avatar.url, :size=>"130x90", :alt => "Food image", :style=>"margin-left:-30%;" %>
     <% end %> 
  </div>
-</div>
 <!-- end new code --> 
 
 <div class="clear"></div>

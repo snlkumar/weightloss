@@ -5,7 +5,7 @@
   
   <h2>Posts</h2>
   
-  <%= link_to 'Back', admin_dashboard_path %><br/>
+  <%= link_to 'Back', admin_posts_path %><br/>
   <%= link_to 'New post', new_admin_post_path %>
   
   <br/>
@@ -52,4 +52,5 @@
   </table>
   <br/>
   <%= paginate(@posts, :params => pagination_params(request)) %>
+    <%= link_to 'Back', admin_posts_path %>
 </div>

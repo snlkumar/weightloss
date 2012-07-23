@@ -1,6 +1,8 @@
 class Admin::FoodsController < Admin::BaseController
-  layout 'application'
-    
+  #layout 'application'
+   #new code 
+  layout 'new_admin'
+  
   def index
     @foods = Food.page(params[:page] || 1).per(50)
   end
@@ -36,8 +38,7 @@ class Admin::FoodsController < Admin::BaseController
   def destroy
     @food = Food.find(params[:id])
     @food.destroy
-    #redirect_to(admin_foods_url)
-    redirect_to(admin_dashboard_url)
+    redirect_to(admin_foods_url)
   end
   
   def search

@@ -5,7 +5,7 @@
   
   <h2>Listing Foods</h2>
   
-  <%= link_to 'Back', admin_dashboard_path %><br/>
+  <%= link_to 'Back', admin_foods_path %><br/>
   <%= link_to 'New food', new_admin_food_path %>
   
   <br/>
@@ -22,9 +22,7 @@
   <% end %>
   
   <%= page_entries_info(@foods) %>
-  
-  <%= paginate(@foods, :params => pagination_params(request)) %>
-  
+     <%= paginate(@foods, :params => pagination_params(request)) %>
   <br/>
   <table class="admin">
     <thead>
@@ -38,7 +36,7 @@
         <tr  class="<%= cycle('odd', '') %>">
           <td><%= food.name %></td>
           <td class="actions">
-            <%= link_to 'Edit', edit_admin_food_path(food) %> | 
+            <%= link_to 'Edit', edit_admin_food_path(food)%> | 
             <%= link_to 'Delete', [:admin, food], :confirm => 'Are you sure?', :method => :delete %>
           </td>
         </tr>
@@ -59,5 +57,5 @@
       
     <% end %>
   </script>
-
+<%= link_to 'Back', admin_foods_path %><br/>
 </div>

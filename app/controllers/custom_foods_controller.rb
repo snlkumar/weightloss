@@ -33,7 +33,6 @@ end
 
 def edit
   @food=Food.find(params[:id])
-  render 'show_food'
 end
 
 end

@@ -1,26 +1,64 @@
+<style type="text/css">
+	td{
+		font-size:14px;
+		padding:1%;
+	}
+	.datapanel{
+	  background-color:white;
+	  padding:3% 0 0 3%;
+	  width:90%;
+	  height:88%;
+    overflow:auto;
+	  border:1px solid black;
+	  
+	}
+</style>
+
+<script src="/assets/jquery.js"></script>
+<script tyle="text/javascript">
+
+  function fetchData()
+  {
+    if($("#query").val()=="")
+    {
+      alert("Enter your query ");
+      $("#query").focus();
+      return false;
+    }
+    return true;
+   }
+</script>
+
 <div id="nav-bar" style="margin-left:22.7em;margin-top:-4.4%;">
     <%= render :partial => 'shared/nav_bar' %>
 </div>
 <div class="clear"></div>
 
 <div style="margin:1% 0 0 40%;width:62%;height:1%;padding:1%;">
-  <form id="vendor-search" action="<%=vendor_path%>">
+  <form id="vendor-search" onsubmit="return fetchData()" action="<%=vendor_path%>">
     <div style="float:left;width:10%;">
       <label>Search</label>
     </div>
     
     <div style="float:left;">
-      <input type="text" name='query' style="height:1.8em;padding:0;margin:0;" placeholder ='Enter your search query...' />
+      <input type="text" name='query' id="query" style="height:1.8em;padding:0;margin:0;" placeholder ='Enter your search query...' />
     </div>
     
     <div style="float:left;margin-left:2%;">
       <select name="searchtype" style="height:2em;margin:0 1%;padding:0;">
         <option value="all" selected="selected">All</value>
-        <option value="gyms">Gyms</value>
+        <option value="gym">Gyms</value>
         <option value="restaurants">Restaurants</value>
         <option value="nutritionist">Nutritionist</value>
-        <option value="drs">Dr’s</value>
-        <option value="personal_trainers">Personal Trainers</value>
+        <option value="weight_loss_surgeons">Weight loss surgeons</value>
+        <option value="physiologists">Physiologists</value>
+        <option value="hospitals">Hospitals</value>
+        <option value="law">Law</value>
+        <option value="medical_equipment">Medical equipment</value>
+        <option value="Plastic_surgeon">Plastic surgeon</value>
+        <option value="spa">spa</value>
+        <option value="weight_loss_clinics">Weight loss clinics</value>
+        <option value="weight_loss_doctors">Weight loss doctors</value>
       </select>
     </div>
     
@@ -30,5 +68,21 @@
       </button>
     </div>
     
-  </form>
+  </form><br><br>
+  <% if @data %>
+  <div class="datapanel">
+    <table style="background-color:lightblue;width:100%;">
+      <tr>
+         <th>Id</th>
+         <th>Title</th>
+      </tr>
+      <% @data.each do |d| %>
+        <tr>
+         <td><%=d.id%></td>
+         <td><%=d.title%></td>
+      </tr>
+      <%end%>
+    </table>
+  </div>
+  <%end%>
 </div>
