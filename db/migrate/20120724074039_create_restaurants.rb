@@ -6,7 +6,7 @@ class CreateRestaurants < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.string :zip
-      t.string :food
+      t.string :restaurent_type
       
       t.timestamps
     end

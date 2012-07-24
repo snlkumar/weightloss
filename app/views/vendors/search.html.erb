@@ -12,15 +12,16 @@
 <script src="/assets/jquery.js"></script>
 <script tyle="text/javascript">
 
-  function fetchData()
+  function submitForm()
   {
-    if($("#query").val()=="")
+    if($("#query").val()!="")
     {
-      alert("Enter your query ");
-      $("#query").focus();
-      return false;
+      location.href="<%=vendor_path%>/"+$("#searchtype").val()+"/"+$("#query").val();
     }
-    return true;
+    else
+    {
+      location.href="<%=vendor_path%>/"+$("#searchtype").val();
+    }
    }
 </script>
 
@@ -30,8 +31,7 @@
 <div class="clear"></div>
 
 <div style="margin:1% 0 0 40%;width:62%;height:1%;padding:1%;">
-<!--onsubmit="return fetchData()"-->
-  <form id="vendor-search" action="<%=vendor_path%>">
+  <form id="vendor-search" method='get' onsubmit="return false" action="">
     <div style="float:left;width:10%;">
       <label>Search</label>
     </div>
@@ -41,7 +41,7 @@
     </div>
     
     <div style="float:left;margin-left:2%;">
-      <select name="searchtype" style="height:2em;margin:0 1%;padding:0;">
+      <select name="searchtype" id="searchtype" style="height:2em;margin:0 1%;padding:0;">
         <option value="all" selected="selected">All</value>
         <option value="gym">Gyms</value>
         <option value="restaurants">Restaurants</value>
@@ -59,7 +59,7 @@
     </div>
     
     <div style="float:left;margin-left:2%;">
-      <button id="search" class="button grid_3" style=" height:26px;font-size:12pt;width:6em;padding:0;margin:0;" type="submit">
+      <button id="search" class="button grid_3" style=" height:26px;font-size:12pt;width:6em;padding:0;margin:0;" onclick="submitForm()">
           <img src="/assets/search.png" alt="Search" />Search
       </button>
     </div>
@@ -70,21 +70,86 @@
 <% if @data %>
   <%= page_entries_info(@data) %>
   <%= paginate(@data, :params => pagination_params(request)) %>
-<div style="overflow:auto;width:85em;">
-  <table style="border-collapse:separate;border-spacing:2px;width:<%=(@cols)[1]!='title' ? 87 : 180 %>em;">
+<div style="overflow:auto;width:90em;">
+  <table style="border-collapse:separate;border-spacing:2px;width:87em;">
     <tr class="head-table">
-      <%if @cols%>
-       <%@cols.each do |c|%>
-          <%if c!="created_at" && c!="updated_at" && c!="id"%>
-          <th><%=c%> </th>
-       <%end end end%>
+      <%if @cols=="all"%>
+        <th>Vendor Type</th>
+        <th>Title</th>
+        <th>Company Title</th>
+        <th>Vendor Name</th>
+        <th>Address 1</th>
+        <th>Address 2</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zipcode</th>
+        <th>Country</th>
+        <th>Contact1</th>
+        <th>Contact 2</th>
+        <th>Email</th>
+        <th>Website Address</th>
+      <%elsif @cols=="restaurants"%>
+        <th>Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip</th>
+        <th>Restaurant Type</th>
+      <%else%>
+        <th>Title</th>
+        <th>Company Title</th>
+        <th>Vendor Name</th>
+        <th>Address1</th>
+        <th>Address2</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zipcode</th>
+        <th>Country</th>
+        <th>Contact1</th>
+        <th>Contact2</th>
+        <th>Email</th>
+        <th>Website Address</th>
+     <%end%>
     </tr>
     <% @data.each do |row| %>
       <tr class="<%= cycle('even','odd') %>">
-        <%@cols.each do |c|%>
-          <%if c!="created_at" && c!="updated_at" && c!="id"%>
-         <td style="padding: .3%;"><%=row[c]%></td>
-        <%end end%>      
+         <%if @cols=="all"%>
+          <td style="padding: .3%;"><%=row.vendor_type%></td>
+          <td style="padding: .3%;"><%=row.title%></td>
+          <td style="padding: .3%;"><%=row.company_title%></td>
+          <td style="padding: .3%;"><%=row.vendor_name%></td>
+          <td style="padding: .3%;"><%=row.address1%></td>
+          <td style="padding: .3%;"><%=row.address2%></td>
+          <td style="padding: .3%;"><%=row.city%></td>
+          <td style="padding: .3%;"><%=row.state%></td>
+          <td style="padding: .3%;"><%=row.zipcode%></td>
+          <td style="padding: .3%;"><%=row.country%></td>
+          <td style="padding: .3%;"><%=row.contact1%></td>
+          <td style="padding: .3%;"><%=row.contact2%></td>
+          <td style="padding: .3%;"><%=row.email%></td>
+          <td style="padding: .3%;"><%=row.website_address%></td>
+        <%elsif @cols=="restaurants"%>
+          <td style="padding: .3%;"><%=row.name%></td>
+          <td style="padding: .3%;"><%=row.address%></td>
+          <td style="padding: .3%;"><%=row.city%></td>
+          <td style="padding: .3%;"><%=row.state%></td>
+          <td style="padding: .3%;"><%=row.zip%></td>
+          <td style="padding: .3%;"><%=row.restaurent_type%></td>
+        <%else%>
+          <td style="padding: .3%;"><%=row.title%></td>
+          <td style="padding: .3%;"><%=row.company_title%></td>
+          <td style="padding: .3%;"><%=row.vendor_name%></td>
+          <td style="padding: .3%;"><%=row.address1%></td>
+          <td style="padding: .3%;"><%=row.address2%></td>
+          <td style="padding: .3%;"><%=row.city%></td>
+          <td style="padding: .3%;"><%=row.state%></td>
+          <td style="padding: .3%;"><%=row.zipcode%></td>
+          <td style="padding: .3%;"><%=row.country%></td>
+          <td style="padding: .3%;"><%=row.contact1%></td>
+          <td style="padding: .3%;"><%=row.contact2%></td>
+          <td style="padding: .3%;"><%=row.email%></td>
+          <td style="padding: .3%;"><%=row.website_address%></td>
+        <%end%>      
       </tr>
     <%end%>
   </table>
