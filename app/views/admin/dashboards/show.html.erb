@@ -95,23 +95,24 @@ img {
 	//end
 	*/
 	</script>
-	
-<div style="float:left;margin:4% 0 0 -15%;">
-   <div id="menu2">
-    <ul>
-      <li><a href="<%=old_items_path%>" target="dashboard_pages" title="Old My Weight World Uploads">Old My Weight World Uploads</a></li>
-      <li><a href="<%=admin_users_path%>" target="dashboard_pages" title="Users">Users</a></li>
-      <li><a href="<%=admin_foods_path%>" target="dashboard_pages" title="Foods">Foods</a></li>
-      <li><a href="<%=admin_exercises_path%>" target="dashboard_pages" title="Exercises">Exercises</a></li>
-      <li><a href="<%=admin_posts_path%>" target="dashboard_pages" title="Posts">Posts</a></li>
-    </ul>
+<div id="content" style="width:90em;">
+  <div style="float:left;margin:4% 0 0 -15%;">
+     <div id="menu2">
+      <ul>
+        <li><a href="<%=old_items_path%>" target="dashboard_pages" title="Old My Weight World Uploads">Old My Weight World Uploads</a></li>
+        <li><a href="<%=admin_users_path%>" target="dashboard_pages" title="Users">Users</a></li>
+        <li><a href="<%=admin_foods_path%>" target="dashboard_pages" title="Foods">Foods</a></li>
+        <li><a href="<%=admin_exercises_path%>" target="dashboard_pages" title="Exercises">Exercises</a></li>
+        <li><a href="<%=admin_posts_path%>" target="dashboard_pages" title="Posts">Posts</a></li>
+      </ul>
+    </div>
+   </div>
+    <div style="float:left;margin-top:5%;">
+        <iframe src="<%=old_items_path%>" scrolling="yes" id="frame" style="width:85em;height:35em;" name="dashboard_pages"></iframe>
+    </div>
   </div>
- </div>
-  <div style="float:left;margin-top:5%;">
-      <iframe src="<%=old_items_path%>" id="frame"  style="width:350%;height:35em;" name="dashboard_pages"></iframe>
-  </div>
-</div>
 <div class="clear"></div>
+</div>
    <!--<div id="tabs-1" style="float:left;margin-top:-1%;">
 		  <p><%#= render :partial=>'old_items/index'%></p>
 	  </div>

@@ -1,17 +1,12 @@
 <style type="text/css">
-	td{
+	th{
 		font-size:14px;
-		padding:1%;
+		text-align:center;
+		padding: .3%;
 	}
-	.datapanel{
-	  background-color:white;
-	  padding:3% 0 0 3%;
-	  width:90%;
-	  height:88%;
-    overflow:auto;
-	  border:1px solid black;
-	  
-	}
+.even { background: #99ccff; }
+.odd { background: #cccccc; }
+.head-table{background: #ccc; }
 </style>
 
 <script src="/assets/jquery.js"></script>
@@ -35,7 +30,8 @@
 <div class="clear"></div>
 
 <div style="margin:1% 0 0 40%;width:62%;height:1%;padding:1%;">
-  <form id="vendor-search" onsubmit="return fetchData()" action="<%=vendor_path%>">
+<!--onsubmit="return fetchData()"-->
+  <form id="vendor-search" action="<%=vendor_path%>">
     <div style="float:left;width:10%;">
       <label>Search</label>
     </div>
@@ -67,22 +63,30 @@
           <img src="/assets/search.png" alt="Search" />Search
       </button>
     </div>
-    
-  </form><br><br>
-  <% if @data %>
-  <div class="datapanel">
-    <table style="background-color:lightblue;width:100%;">
-      <tr>
-         <th>Id</th>
-         <th>Title</th>
+  </form>
+</div>
+<div class="clear"></div>
+<br>
+<% if @data %>
+  <%= page_entries_info(@data) %>
+  <%= paginate(@data, :params => pagination_params(request)) %>
+<div style="overflow:auto;width:85em;">
+  <table style="border-collapse:separate;border-spacing:2px;width:<%=(@cols)[1]!='title' ? 87 : 180 %>em;">
+    <tr class="head-table">
+      <%if @cols%>
+       <%@cols.each do |c|%>
+          <%if c!="created_at" && c!="updated_at" && c!="id"%>
+          <th><%=c%> </th>
+       <%end end end%>
+    </tr>
+    <% @data.each do |row| %>
+      <tr class="<%= cycle('even','odd') %>">
+        <%@cols.each do |c|%>
+          <%if c!="created_at" && c!="updated_at" && c!="id"%>
+         <td style="padding: .3%;"><%=row[c]%></td>
+        <%end end%>      
       </tr>
-      <% @data.each do |d| %>
-        <tr>
-         <td><%=d.id%></td>
-         <td><%=d.title%></td>
-      </tr>
-      <%end%>
-    </table>
-  </div>
-  <%end%>
+    <%end%>
+  </table>
+<%end%>
 </div>

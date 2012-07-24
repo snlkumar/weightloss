@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120716132658) do
+ActiveRecord::Schema.define(:version => 20120724103007) do
 
   create_table "categories", :force => true do |t|
     t.integer "parent_id"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20120716132658) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.text     "detailed"
   end
 
   create_table "foods", :force => true do |t|
@@ -105,10 +106,10 @@ ActiveRecord::Schema.define(:version => 20120716132658) do
     t.decimal  "gmwt_2",              :precision => 8, :scale => 3
     t.string   "gmwt_desc2"
     t.decimal  "refuse_pct",          :precision => 8, :scale => 3
-    t.boolean  "custom"
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.boolean  "custom"
     t.decimal  "total_fat",           :precision => 6, :scale => 1
     t.decimal  "saturated_fat",       :precision => 6, :scale => 1
     t.decimal  "trans_fat",           :precision => 6, :scale => 1
@@ -117,6 +118,7 @@ ActiveRecord::Schema.define(:version => 20120716132658) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.text     "detailed"
   end
 
   create_table "forem_forums", :force => true do |t|
@@ -164,7 +166,7 @@ ActiveRecord::Schema.define(:version => 20120716132658) do
 
   create_table "meals", :force => true do |t|
     t.integer  "user_id"
-    t.datetime "ate_on"
+    t.date     "ate_on"
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -305,6 +307,17 @@ ActiveRecord::Schema.define(:version => 20120716132658) do
     t.string   "kind"
   end
 
+  create_table "restaurants", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "food"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
     t.text     "data"
@@ -360,16 +373,16 @@ ActiveRecord::Schema.define(:version => 20120716132658) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                   :null => false
+    t.string   "email",                                    :null => false
     t.string   "username"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "password"
     t.string   "password_confirmation"
     t.string   "status"
-    t.string   "encrypted_password",                      :null => false
-    t.integer  "login_count",              :default => 0, :null => false
-    t.integer  "failed_login_count",       :default => 0, :null => false
+    t.string   "encrypted_password",       :default => ""
+    t.integer  "login_count",              :default => 0,  :null => false
+    t.integer  "failed_login_count",       :default => 0,  :null => false
     t.integer  "weight"
     t.integer  "avatar_file_size"
     t.datetime "last_request_at"
@@ -435,6 +448,24 @@ ActiveRecord::Schema.define(:version => 20120716132658) do
   end
 
   create_table "vendors", :force => true do |t|
+    t.string   "vendor_type"
+    t.string   "title"
+    t.string   "company_title"
+    t.string   "vendor_name"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "country"
+    t.string   "contact1"
+    t.string   "contact2"
+    t.string   "email"
+    t.string   "website_address"
+    t.string   "custom_field1"
+    t.string   "custom_field2"
+    t.string   "custom_field3"
+    t.string   "custom_field4"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

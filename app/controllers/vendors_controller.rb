@@ -1,17 +1,16 @@
 class VendorsController < ApplicationController
-  def search
-=begin    
+  def search   
     if !params[:searchtype].nil?
       if params[:searchtype]=="all"
-        @data=Vendor.all
+        @data=Vendor.page(params[:page] || 1).per(30)
+        @cols=Vendor.column_names
       elsif params[:searchtype]=="restaurants"
-        @data=Vendor.find_by_sql("select * from restaurants where name like '%"+params[:query]+"%'")
+        @data=Restaurant.where("name like '%"+params[:query]+"%'").page(params[:page] || 1).per(30)
+        @cols=Restaurant.column_names
       else
-        @data=Vendor.where("vendor_type='"+params[:searchtype]+"' and (title like '%"+params[:query]+"%' or vendor_name like '%"+params[:query]+"%')")
+        @data=Vendor.where("vendor_type='"+params[:searchtype]+"' and (title like '%"+params[:query]+"%' or vendor_name like '%"+params[:query]+"%')").page(params[:page] || 1).per(30)
+        @cols=Vendor.column_names
       end
-      render :text => @data.to_json
     end
-    return
-=end
   end
 end
