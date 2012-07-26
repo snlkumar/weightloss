@@ -27,7 +27,7 @@
           <%= image_tag('file.png') + " #{flash_file.video.original_filename}" if flash_file.video.file? %><br />
           <%= image_tag('file.png') + " #{flash_file.preview_image.original_filename}" if flash_file.preview_image.file? %>
         </td>
-        <td>
+        <td style="width:7em;">
           <%= link_to 'Edit', edit_old_flash_file_path(flash_file) %> | 
           <%= link_to 'Delete', flash_file, :confirm => 'Are you sure?', :method => :delete %>
         </td>

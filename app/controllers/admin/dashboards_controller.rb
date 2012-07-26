@@ -4,7 +4,6 @@ class Admin::DashboardsController < Admin::BaseController
   def show
     #new added code
     @users = User.page(params[:page] || 1).per(50)
-    
     if @users.empty?
       @users = User.page(1).per(50)
     end

@@ -1,14 +1,10 @@
-
-<div class="grid_16">
-  
+ 
   <br/>
   
-  <h2>Posts</h2>
+  <h2 style="width:63em;">Posts</h2>
   
-  <%= link_to 'Back', admin_posts_path %><br/>
+  <%= link_to 'Back', admin_posts_path %> &nbsp;
   <%= link_to 'New post', new_admin_post_path %>
-  
-  <br/>
 
   <%= form_tag(search_admin_posts_path) do %>
     <%= text_field_tag 'terms', '', :id => 'exercise-search' %>
@@ -16,20 +12,19 @@
     <%= submit_tag 'Search' %>
   <% end %>
 
-  <br/>
   <% if params['terms'] && !params['terms'].blank? %>
     Displaying results for "<%= params['terms'] %>"<br/>
   <% end %>
   
   <%= page_entries_info(@posts, :entry_name => 'post') %>
-  
   <%= paginate(@posts, :params => pagination_params(request)) %>
   
   <br />
-  <table class="admin">
+  <table class="admin" style="width:80em;">
     <thead>
       <tr>
-        <th>Title</th>
+        <th style="width:2em;">#</th>
+        <th style="width:30em;padding:.3em 1em;">Title</th>
         <th>Category</th>
         <th>Body</th>
         <th> </th>
@@ -37,10 +32,11 @@
     </thead>
     <tbody>
       <% @posts.each do |post| %>
-        <tr  class="<%= cycle('odd', '') %>">
-          <td><%= post.page_title %></td>
-          <td><%= post.category.try(:name) %></td>
-          <td><%= truncate(strip_tags(post.body), :length => 50) %></td>
+        <tr class="<%= cycle('odd', '') %>">
+          <td style="width:2em;"> <%=@num=@num+1%></td>
+          <td style="width:28em;padding:.3em 1em;"><%= post.page_title %></td>
+          <td style="width:5em;"><%= post.category.try(:name) %></td>
+          <td style="width:21em;"><%= truncate(strip_tags(post.body), :length => 50) %></td>
           <td class="actions">
             <%= link_to 'Show', post_path(post), :target => '_blank' %> | 
             <%= link_to 'Edit', edit_admin_post_path(post) %> | 
@@ -52,5 +48,4 @@
   </table>
   <br/>
   <%= paginate(@posts, :params => pagination_params(request)) %>
-    <%= link_to 'Back', admin_posts_path %>
-</div>
+  <%= link_to 'Back', admin_posts_path %>

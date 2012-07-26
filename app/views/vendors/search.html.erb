@@ -30,7 +30,7 @@
 </div>
 <div class="clear"></div>
 
-<div style="margin:1% 0 0 40%;width:62%;height:1%;padding:1%;">
+<div style="margin:1% 0 0 30%;width:82%;height:1%;padding:1%;">
   <form id="vendor-search" method='get' onsubmit="return false" action="">
     <div style="float:left;width:10%;">
       <label>Search</label>
@@ -58,9 +58,14 @@
       </select>
     </div>
     
-    <div style="float:left;margin-left:2%;">
+    <div style="float:left;margin-left:1%;">
       <button id="search" class="button grid_3" style=" height:26px;font-size:12pt;width:6em;padding:0;margin:0;" onclick="submitForm()">
           <img src="/assets/search.png" alt="Search" />Search
+      </button>
+    </div>
+    <div style="float:left;margin-left:1%;">
+      <button id="search" class="button grid_3" style=" height:26px;font-size:12pt;width:12em;padding:0;margin-left:1%;margin-top:0;">
+          Add Your Business
       </button>
     </div>
   </form>
@@ -75,9 +80,9 @@
     <tr class="head-table">
       <%if @cols=="all"%>
         <th>Vendor Type</th>
-        <th>Title</th>
-        <th>Company Title</th>
-        <th>Vendor Name</th>
+        <!--<th>Title</th>
+        <th>Company Title</th>-->
+        <th>Vendor Name & Title</th>
         <th>Address 1</th>
         <th>Address 2</th>
         <th>City</th>
@@ -96,9 +101,9 @@
         <th>Zip</th>
         <th>Restaurant Type</th>
       <%else%>
-        <th>Title</th>
-        <th>Company Title</th>
-        <th>Vendor Name</th>
+        <!--<th>Title</th>
+        <th>Company Title</th>-->
+        <th>Vendor Name & Title</th>
         <th>Address1</th>
         <th>Address2</th>
         <th>City</th>
@@ -114,10 +119,10 @@
     <% @data.each do |row| %>
       <tr class="<%= cycle('even','odd') %>">
          <%if @cols=="all"%>
-          <td style="padding: .3%;"><%=row.vendor_type%></td>
-          <td style="padding: .3%;"><%=row.title%></td>
-          <td style="padding: .3%;"><%=row.company_title%></td>
-          <td style="padding: .3%;"><%=row.vendor_name%></td>
+          <td style="padding: .3%;"><%=row.vendor_type%>&nbsp;&nbsp;</td>
+          <!--<td style="padding: .3%;"><%#=row.title%></td>
+          <td style="padding: .3%;"><%#=row.company_title%></td> -->
+          <td style="padding: .3%;"><%=row.vendor_name%>&nbsp;&nbsp;<%=row.title%></td>
           <td style="padding: .3%;"><%=row.address1%></td>
           <td style="padding: .3%;"><%=row.address2%></td>
           <td style="padding: .3%;"><%=row.city%></td>
@@ -136,9 +141,9 @@
           <td style="padding: .3%;"><%=row.zip%></td>
           <td style="padding: .3%;"><%=row.restaurent_type%></td>
         <%else%>
-          <td style="padding: .3%;"><%=row.title%></td>
-          <td style="padding: .3%;"><%=row.company_title%></td>
-          <td style="padding: .3%;"><%=row.vendor_name%></td>
+          <!--<td style="padding: .3%;"><%=row.title%></td>
+          <td style="padding: .3%;"><%=row.company_title%></td>-->
+          <td style="padding: .3%;"><%=row.vendor_name%>&nbsp;&nbsp;<%=row.title%></td>
           <td style="padding: .3%;"><%=row.address1%></td>
           <td style="padding: .3%;"><%=row.address2%></td>
           <td style="padding: .3%;"><%=row.city%></td>

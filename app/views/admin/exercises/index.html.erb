@@ -5,7 +5,7 @@
   
   <h2>Exercises</h2>
   
-  <%= link_to 'Back', admin_exercises_path %><br/>
+  <%= link_to 'Back', admin_exercises_path %>&nbsp;
   <%= link_to 'New exercise', new_admin_exercise_path %>
   
   <br/>
@@ -16,7 +16,6 @@
     <%= submit_tag 'Search' %>
   <% end %>
   
-  <br/>
   <% if params['terms'] && !params['terms'].blank? %>
     Displaying results for "<%= params['terms'] %>"<br/>
   <% end %>

@@ -1,8 +1,8 @@
 class AddColumnDetailedToFood < ActiveRecord::Migration
   def change
-    add_column :foods, :detailed, :text
+    add_column :foods, :detailes, :text
   end
   def down
-    remove_column :foods, :detailed
+    remove_column :foods, :detailes
   end
 end

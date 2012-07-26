@@ -1,23 +1,22 @@
 <h1>Listing Items</h1>
 
 <%= link_to 'New item', new_old_item_path %>
-<br /><br />
-
+<br />
 <table class="sort-table">
   <thead>
     <tr>
       <th>#</th>
       <th>Name</th>
-      <th>Long description</th>
+      <!--<th>Long description</th>
       <th>Meta description</th>
-      <th>Meta keywords</th>
+      <th>Meta keywords</th>-->
       <th>Unit</th>
       <th>Price</th>
       <th>Weight</th>
-      <th>Length</th>
+      <!--<th>Length</th>
       <th>Width</th>
       <th>Height</th>
-      <th>Keywords</th>
+      <th>Keywords</th>-->
       <th>Attachments</th>
       <th>Sku</th>
       <th> </th>
@@ -27,19 +26,19 @@
   <% @items.each_with_index do |item, index| %>
     <tr class="<%= cycle('', 'odd') %>">
       <td><%= index + 1 %></td>
-      <td><%= truncate(h(item.name),             :length => 50) %></td>
-      <td><%= truncate(h(item.long_description), :length => 50) %></td>
-      <td><%= truncate(h(item.meta_description), :length => 50) %></td>
-      <td><%= truncate(h(item.meta_keywords),    :length => 50) %></td>
+      <td><%= link_to truncate(h(item.name), :length => 50), edit_old_item_path(item), :onmouseover=>"style.backgroundColor='#F0F0F6'", :onmouseout=>"style.backgroundColor=''" %></td>
+      <!--<td><%#= truncate(h(item.long_description), :length => 50) %></td>
+      <td><%#= truncate(h(item.meta_description), :length => 50) %></td>
+      <td><%#= truncate(h(item.meta_keywords),    :length => 50) %></td>-->
       <td><%=h item.unit %></td>
       <td><%=h item.price %></td>
       <td><%=h item.weight %></td>
-      <td><%=h item.length %></td>
-      <td><%=h item.width %></td>
-      <td><%=h item.height %></td>
-      <td><%=h item.keywords %></td>
+      <!--<td><%#=h item.length %></td>
+      <td><%#=h item.width %></td>
+      <td><%#=h item.height %></td>
+      <td><%#=h item.keywords %></td>-->
       <td>
-        <%= image_tag(item.image1.url(:preview)) if item.image1.file? %>
+        <%#= image_tag(item.image1.url(:preview)) if item.image1.file? %>
       </td>
       <td><%=h item.sku %></td>
       <td>

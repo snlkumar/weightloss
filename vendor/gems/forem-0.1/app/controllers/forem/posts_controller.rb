@@ -21,10 +21,11 @@ module Forem
       @post.user = forem_user
       
       if @post.save
-        PostReplyMailer.reply_notification(@topic).deliver
+        PostReplyMailer.reply_notification(@topic,forem_user).deliver   #adding new parameter(forem_user) for send mail to current user
         
         flash[:notice] = t("forem.post.created")
         redirect_to [@topic.forum, @topic]
+        
       else
         params[:reply_to_id] = params[:post][:reply_to_id]
         flash.now[:error] = t("forem.post.not_created")

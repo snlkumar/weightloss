@@ -5,7 +5,7 @@
   
   <h2>Listing Foods</h2>
   
-  <%= link_to 'Back', admin_foods_path %><br/>
+  <%= link_to 'Back', admin_foods_path %>&nbsp;
   <%= link_to 'New food', new_admin_food_path %>
   
   <br/>
@@ -16,7 +16,6 @@
     <%= submit_tag 'Search' %>
   <% end %>
   
-  <br/>
   <% if params['terms'] && !params['terms'].blank? %>
     Displaying results for "<%= params['terms'] %>"<br/>
   <% end %>

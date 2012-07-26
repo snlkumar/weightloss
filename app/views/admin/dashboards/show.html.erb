@@ -25,9 +25,10 @@ img {
     height: 24px;
     text-decoration: none;
 }
+/*#3688BA;*/
 #menu2 li a:link, #menu2 li a:visited {
     background: url("/assets/menu2.gif") repeat scroll 0 0 transparent;
-    color: #3688BA;
+    color: #A4A4A4;
     display: block;
     padding: 8px 0 0 30px;
 }
@@ -108,7 +109,7 @@ img {
     </div>
    </div>
     <div style="float:left;margin-top:5%;">
-        <iframe src="<%=old_items_path%>" scrolling="yes" id="frame" style="width:85em;height:35em;" name="dashboard_pages"></iframe>
+        <iframe src="<%=old_items_path%>" scrolling="yes" id="frame" style="width:83em;height:35em;overflow-x: hidden;" name="dashboard_pages"></iframe>
     </div>
   </div>
 <div class="clear"></div>
@@ -129,7 +130,7 @@ img {
 		  <p><%#= render :partial=>'admin/posts/tabDataPost'%></p>
      </div>-->
 
-<p style="margin-left:20%;margin-top:1%;"><%= link_to 'Return to Profile', user_path(current_user) %></p>
+<p style="margin-left:18%;margin-top:1%;"><%= link_to 'Return to Profile', user_path(current_user) %></p>
 
 <!-- 
 <%# if notice %>

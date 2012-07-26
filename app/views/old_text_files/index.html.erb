@@ -23,12 +23,12 @@
         <td><%= truncate(h(text_file.summary), :length => 50) %></td>
         <td><%= text_file.category.try(:name) %></td>
         <td><%= text_file.subcategory.try(:name) %></td>
-        <td>
+        <td style="width:7em;">
           <%= image_tag(text_file.image1.url(:preview)) if text_file.image1.file? %>&nbsp;
           <%= image_tag(text_file.image2.url(:preview)) if text_file.image2.file? %><br />
           <%= image_tag('file.png') + " #{text_file.file1.original_filename}" if text_file.file1.file? %>
         </td>
-        <td>
+        <td style="width:7em;">
           <%= link_to 'Edit', edit_old_text_file_path(text_file) %> | 
           <%= link_to 'Delete', text_file, :confirm => 'Are you sure?', :method => :delete %>
         </td>
