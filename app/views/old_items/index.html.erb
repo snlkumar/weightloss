@@ -38,7 +38,7 @@
       <td><%#=h item.height %></td>
       <td><%#=h item.keywords %></td>-->
       <td>
-        <%#= image_tag(item.image1.url(:preview)) if item.image1.file? %>
+        <%= image_tag(item.image1.url(:preview)) if item.image1.file? %>
       </td>
       <td><%=h item.sku %></td>
       <td>
