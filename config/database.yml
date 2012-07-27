@@ -23,7 +23,7 @@ production:
   encoding: utf8
   database: myweightworld_production
   username: root
-  password:  
+  password: ubuntu
   host: localhost
   pool: 5
   timeout: 5000

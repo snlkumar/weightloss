@@ -26,7 +26,7 @@ img {
     text-decoration: none;
 }
 /*#3688BA;*/
-#menu2 li a:link, #menu2 li a:visited {
+#menu2 li a:link, #menu2 li a:visited { 
     background: url("/assets/menu2.gif") repeat scroll 0 0 transparent;
     color: #A4A4A4;
     display: block;
@@ -37,9 +37,21 @@ img {
     color: #3688BA;
     padding: 8px 0 0 32px;
 }
+
 </style>
 	
 <script>
+  function setActive(id)
+  {
+    $("#1").css("color","#A4A4A4");
+    $("#2").css("color","#A4A4A4");
+    $("#3").css("color","#A4A4A4");
+    $("#4").css("color","#A4A4A4");
+    $("#5").css("color","#A4A4A4");
+    
+    $("#"+id).css("color","#3688BA");
+
+  }
 	//new added code for take data different pages
 	/*function take_new_old_item(loc,tab,whichfile,type)
 	{
@@ -100,11 +112,11 @@ img {
   <div style="float:left;margin:4% 0 0 -15%;">
      <div id="menu2">
       <ul>
-        <li><a href="<%=old_items_path%>" target="dashboard_pages" title="Old My Weight World Uploads">Old My Weight World Uploads</a></li>
-        <li><a href="<%=admin_users_path%>" target="dashboard_pages" title="Users">Users</a></li>
-        <li><a href="<%=admin_foods_path%>" target="dashboard_pages" title="Foods">Foods</a></li>
-        <li><a href="<%=admin_exercises_path%>" target="dashboard_pages" title="Exercises">Exercises</a></li>
-        <li><a href="<%=admin_posts_path%>" target="dashboard_pages" title="Posts">Posts</a></li>
+        <li><a href="<%=old_items_path%>" id="1" onclick="setActive('1')" target="dashboard_pages" title="Old My Weight World Uploads">Old My Weight World Uploads</a></li>
+        <li><a href="<%=admin_users_path%>" id="2" onclick="setActive('2')" target="dashboard_pages" title="Users">Users</a></li>
+        <li><a href="<%=admin_foods_path%>" id="3" onclick="setActive('3')" target="dashboard_pages" title="Foods">Foods</a></li>
+        <li><a href="<%=admin_exercises_path%>" id="4" onclick="setActive('4')" target="dashboard_pages" title="Exercises">Exercises</a></li>
+        <li><a href="<%=admin_posts_path%>" id="5" onclick="setActive('5')" target="dashboard_pages" title="Posts">Posts</a></li>
       </ul>
     </div>
    </div>

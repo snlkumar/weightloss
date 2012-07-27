@@ -7,9 +7,9 @@
   <%= link_to 'New post', new_admin_post_path %>
 
   <%= form_tag(search_admin_posts_path) do %>
-    <%= text_field_tag 'terms', '', :id => 'exercise-search' %>
+    <%= text_field_tag 'terms', '', :id => 'exercise-search', :style => "height:1.3em;" %>
   
-    <%= submit_tag 'Search' %>
+    <%= submit_tag 'Search', :style => "height:2.2em;" %>
   <% end %>
 
   <% if params['terms'] && !params['terms'].blank? %>
@@ -22,7 +22,7 @@
   <br />
   <table class="admin" style="width:80em;">
     <thead>
-      <tr>
+      <tr style="background-color:#ccc;color:#2E8EC1;">
         <th style="width:2em;">#</th>
         <th style="width:30em;padding:.3em 1em;">Title</th>
         <th>Category</th>
@@ -33,7 +33,7 @@
     <tbody>
       <% @posts.each do |post| %>
         <tr class="<%= cycle('odd', '') %>">
-          <td style="width:2em;"> <%=@num=@num+1%></td>
+          <td style="width:2em;"> <%= @num=@num+1 %></td>
           <td style="width:28em;padding:.3em 1em;"><%= post.page_title %></td>
           <td style="width:5em;"><%= post.category.try(:name) %></td>
           <td style="width:21em;"><%= truncate(strip_tags(post.body), :length => 50) %></td>

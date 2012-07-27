@@ -11,9 +11,9 @@
   <br/>
   
   <%= form_tag(search_admin_foods_path) do %>
-    <%= text_field_tag 'terms', '', :id => 'food-search' %>
+    <%= text_field_tag 'terms', '', :id => 'food-search', :style => "height:1.3em;" %>
   
-    <%= submit_tag 'Search' %>
+    <%= submit_tag 'Search', :style => "height:2.2em;" %>
   <% end %>
   
   <% if params['terms'] && !params['terms'].blank? %>

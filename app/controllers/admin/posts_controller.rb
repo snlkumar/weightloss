@@ -53,6 +53,11 @@ class Admin::PostsController < Admin::BaseController
     conds      = terms.collect{|t| "page_title LIKE ?"}.join(' AND ')
     @posts = OldTextFile.where([conds, *terms.collect{|t| "%#{t}%"}]).page(params[:page] || 1).per(50)
     
+    if !params[:page].nil?
+      @num=(params[:page].to_i-1)*50
+    else
+      @num=0
+    end
     render :action => :index
     
   end
