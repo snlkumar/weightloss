@@ -77,8 +77,8 @@
 </div>
   <div style="float:right;margin-top:-8%;" id="food-img">
     <% if f.object.avatar.file? %>
-      <p style="margin-left:-30%;"><%= f.object.avatar_file_name %></p>
-      <%= image_tag f.object.avatar.url, :size=>"130x90", :alt => "Food image", :style=>"margin-left:-30%;" %>
+      <p style="margin-left:-30%;"><%=f.label f.object.avatar_file_name, :id=>"food_label" %></p>
+      <%= image_tag f.object.avatar.url, :id=>"foods_img", :size=>"130x90", :alt => "Food image", :style=>"margin-left:-30%;" %>
     <% end %> 
  </div>
 <!-- end new code --> 

@@ -1,0 +1,27 @@
+<script type="text/javascript">
+	function makeReadOnly()
+	{
+	  var e=document.forms[1].elements;
+	  
+		for(i=4;i<e.length;i++)
+		{
+		  document.getElementById(e[i].id).disabled=true;
+		}
+		document.getElementById('upload_food_pic').style.display="none";  //for hide upload photo field
+		document.getElementById('food-img').style.marginTop="1em";
+		document.getElementById('foods_img').style.marginLeft="-40em";
+		document.getElementById('food_label').style.marginLeft="-40em";
+	}
+	
+</script>
+<div>
+  <%= form_for(@food) do |f| %>
+    <%= f.error_messages %>
+    <%= render :partial => 'form', :locals => {:f => f } %>
+  <% end %>
+</div>
+
+<script>
+//call after page loaded
+window.onload=makeReadOnly(); 
+</script>

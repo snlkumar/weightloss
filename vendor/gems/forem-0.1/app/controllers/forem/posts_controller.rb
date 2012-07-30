@@ -33,6 +33,13 @@ module Forem
       end
     end
 
+    #new method
+    def send_mail
+      render :json =>"email sending...."
+      return
+    end
+    #end 
+    
     def destroy
       @post = @topic.posts.find(params[:id])
       if forem_user.try(:id) == @post.user.try(:id)

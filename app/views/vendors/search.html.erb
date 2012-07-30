@@ -11,16 +11,30 @@
 
 <script src="/assets/jquery.js"></script>
 <script tyle="text/javascript">
-
-  function submitForm()
+  
+  function submitForm(status)
   {
-    if($("#query").val()!="")
+    if(status=="false")
     {
-      location.href="<%=vendor_path%>/"+$("#searchtype").val()+"/"+$("#query").val();
+      if($("#query").val()!="")
+      {
+        location.href="<%=vendor_path%>/"+$("#searchtype").val()+"/"+$("#query").val();
+      }
+      else
+      {
+        location.href="<%=vendor_path%>/"+$("#searchtype").val();
+      }
     }
     else
     {
-      location.href="<%=vendor_path%>/"+$("#searchtype").val();
+      if($("#filterQuery").val()=="")
+      {
+        alert("Field cannot be empty");
+        $("#filterQuery").focus();
+        return;
+      }
+      
+      location.href="<%=filterVendor_path%>/"+$("#filterBy").val()+"/"+$("#filterQuery").val()+"/true";
     }
    }
 </script>
@@ -37,29 +51,29 @@
     </div>
     
     <div style="float:left;">
-      <input type="text" name='query' id="query" style="height:1.8em;padding:0;margin:0;" placeholder ='Enter your search query...' />
+      <input type="text" name='query' value="<%=cookies[:query]%>" id="query" style="height:1.8em;padding:0;margin:0;" placeholder ='Enter your search query...' />
     </div>
     
     <div style="float:left;margin-left:2%;">
       <select name="searchtype" id="searchtype" style="height:2em;margin:0 1%;padding:0;">
         <option value="all" selected="selected">All</value>
-        <option value="gym">Gyms</value>
-        <option value="restaurants">Restaurants</value>
-        <option value="nutritionist">Nutritionist</value>
-        <option value="weight_loss_surgeons">Weight loss surgeons</value>
-        <option value="physiologists">Physiologists</value>
-        <option value="hospitals">Hospitals</value>
-        <option value="law">Law</value>
-        <option value="medical_equipment">Medical equipment</value>
-        <option value="Plastic_surgeon">Plastic surgeon</value>
-        <option value="spa">spa</value>
-        <option value="weight_loss_clinics">Weight loss clinics</value>
-        <option value="weight_loss_doctors">Weight loss doctors</value>
+        <option value="gym" <%=cookies[:searchtype]=="gym" ? "selected" : "" %> >Gyms</value>
+        <option value="restaurants" <%=cookies[:searchtype]=="restaurants" ? "selected" : "" %> >Restaurants</value>
+        <option value="nutritionist" <%=cookies[:searchtype]=="nutritionist" ? "selected" : "" %> >Nutritionist</value>
+        <option value="weight_loss_surgeons" <%=cookies[:searchtype]=="weight_loss_surgeons" ? "selected" : "" %> >Weight loss surgeons</value>
+        <option value="physiologists" <%=cookies[:searchtype]=="physiologists" ? "selected" : "" %> >Physiologists</value>
+        <option value="hospitals" <%=cookies[:searchtype]=="hospitals" ? "selected" : "" %> >Hospitals</value>
+        <option value="law" <%=cookies[:searchtype]=="law" ? "selected" : "" %> >Law</value>
+        <option value="medical_equipment" <%=cookies[:searchtype]=="medical_equipment" ? "selected" : "" %> >Medical equipment</value>
+        <option value="Plastic_surgeon" <%=cookies[:searchtype]=="Plastic_surgeon" ? "selected" : "" %> >Plastic surgeon</value>
+        <option value="spa" <%=cookies[:searchtype]=="spa" ? "selected" : "" %> >spa</value>
+        <option value="weight_loss_clinics" <%=cookies[:searchtype]=="weight_loss_clinics" ? "selected" : "" %> >Weight loss clinics</value>
+        <option value="weight_loss_doctors" <%=cookies[:searchtype]=="weight_loss_doctors" ? "selected" : "" %> >Weight loss doctors</value>
       </select>
     </div>
     
     <div style="float:left;margin-left:1%;">
-      <button id="search" class="button grid_3" style=" height:26px;font-size:12pt;width:6em;padding:0;margin:0;" onclick="submitForm()">
+      <button id="search" class="button grid_3" style=" height:26px;font-size:12pt;width:6em;padding:0;margin:0;" onclick="submitForm('false')">
           <img src="/assets/search.png" alt="Search" />Search
       </button>
     </div>
@@ -72,8 +86,38 @@
 </div>
 <div class="clear"></div>
 <br>
+
+<% if @data || (params[:status] && params[:status]=="true") %>
+  <form id="vendor-search-filter" method='get' onsubmit="return false" action="">
+    <div style="margin-left:21em;float:left;">
+      <label>Filter Data:</label>
+      <input type="text" id="filterQuery" name="filterQuery" value="<%=params[:filterQuery]%>" style="height:1.2em;width:12em;" placeholder="For more filter data, give city,zip..." />
+    </div>
+    <div style="float:left;margin-left:1.8%;">
+      <select style="height:2em;" id="filterBy" name="filterBy">
+        <!--<%# if params[:searchtype]=="restaurants" %>
+        <option value="name">Name</option>
+        <%#else%>
+        <option value="vendor_name">Vendor Name</option>
+        <%#end%>-->
+        <option value="city" <%=params[:filterBy]=="city" ? "selected" : "" %> >City</option>
+        <option value="state" <%=params[:filterBy]=="state" ? "selected" : "" %> >State</option>
+        <option value="zipcode" <%=params[:filterBy]=="zipcode" ? "selected" : "" %> >Zip</option>
+      </select>
+    </div>
+    <div style="float:left;margin-left:1%;margin-top:.8%;">
+      <button id="search" class="button grid_3" style=" height:25px;width:2em;padding:0;margin:0;" onclick="onclick=submitForm('true')">
+          <img src="/assets/search.png" alt="Search" />
+      </button>
+    </div>
+    <div class="clear"></div>
+</form>
+   <br>
+<%end%>
+
+
 <% if @data %>
-  <%= page_entries_info(@data) %>
+   <%= page_entries_info(@data) %>
   <%= paginate(@data, :params => pagination_params(request)) %>
 <div style="overflow:auto;width:90em;">
   <table style="border-collapse:separate;border-spacing:2px;width:87em;">
@@ -104,16 +148,16 @@
         <!--<th>Title</th>
         <th>Company Title</th>-->
         <th>Vendor Name & Title</th>
-        <th>Address1</th>
-        <th>Address2</th>
-        <th>City</th>
-        <th>State</th>
-        <th>Zipcode</th>
-        <th>Country</th>
-        <th>Contact1</th>
-        <th>Contact2</th>
-        <th>Email</th>
-        <th>Website Address</th>
+        <th>Address1&nbsp;&nbsp;</th>
+        <th>Address2&nbsp;&nbsp;</th>
+        <th>City&nbsp;&nbsp;</th>
+        <th>State&nbsp;&nbsp;</th>
+        <th>Zipcode&nbsp;&nbsp;</th>
+        <th>Country&nbsp;&nbsp;</th>
+        <th>Contact1&nbsp;&nbsp;</th>
+        <th>Contact2&nbsp;&nbsp;</th>
+        <th>Email&nbsp;&nbsp;</th>
+        <th>Website Address&nbsp;&nbsp;</th>
      <%end%>
     </tr>
     <% @data.each do |row| %>
@@ -144,16 +188,16 @@
           <!--<td style="padding: .3%;"><%=row.title%></td>
           <td style="padding: .3%;"><%=row.company_title%></td>-->
           <td style="padding: .3%;"><%=row.vendor_name%>&nbsp;&nbsp;<%=row.title%></td>
-          <td style="padding: .3%;"><%=row.address1%></td>
-          <td style="padding: .3%;"><%=row.address2%></td>
-          <td style="padding: .3%;"><%=row.city%></td>
-          <td style="padding: .3%;"><%=row.state%></td>
-          <td style="padding: .3%;"><%=row.zipcode%></td>
-          <td style="padding: .3%;"><%=row.country%></td>
-          <td style="padding: .3%;"><%=row.contact1%></td>
-          <td style="padding: .3%;"><%=row.contact2%></td>
-          <td style="padding: .3%;"><%=row.email%></td>
-          <td style="padding: .3%;"><%=row.website_address%></td>
+          <td style="padding: .3%;"><%=row.address1%>&nbsp;</td>
+          <td style="padding: .3%;"><%=row.address2%>&nbsp;</td>
+          <td style="padding: .3%;"><%=row.city%>&nbsp;</td>
+          <td style="padding: .3%;"><%=row.state%>&nbsp;</td>
+          <td style="padding: .3%;"><%=row.zipcode%>&nbsp;</td>
+          <td style="padding: .3%;"><%=row.country%>&nbsp;</td>
+          <td style="padding: .3%;"><%=row.contact1%>&nbsp;</td>
+          <td style="padding: .3%;"><%=row.contact2%>&nbsp;</td>
+          <td style="padding: .3%;"><%=row.email%>&nbsp;</td>
+          <td style="padding: .3%;"><%=row.website_address%>&nbsp;</td>
         <%end%>      
       </tr>
     <%end%>

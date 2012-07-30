@@ -35,4 +35,7 @@ def edit
   @food=Food.find(params[:id])
 end
 
+def show
+  @food=Food.find_by_name(params[:id].gsub(/[$]+/, '.'))
+end
 end

@@ -13,6 +13,10 @@ gem 'hoptoad_notifier'
 # gem 'airbrake'
 #gem 'fastercsv','~>1.5.4'
 #gem 'iconv'
+
+#new added gem
+  gem 'sanitize'
+#end
 gem 'linguistics'
 gem 'kaminari'
 gem 'devise'

@@ -3,7 +3,7 @@
 		font-size:14px;
 		padding:.3%;
 	}
-	.lightBox{
+/*	.lightBox{
 	  position:absolute;
 	  display:none;
 	  top:0%;
@@ -47,7 +47,7 @@
 	  top:5%;
 	  left:80%;
 	  z-index:102;
-	}
+	}*/
 </style>
 <div class="grid_12">
 	<% total_workout_calories=total_meal_calories=0 %>
@@ -62,7 +62,7 @@
 		});
 	  
     //to show food in light box
-    function showfood(foodid)
+   /* function showfood(foodid)
     {
       $.ajax({
     		type : "GET",
@@ -118,7 +118,7 @@
 			$(".lock_datapanel").css("display","none");
 			$("#closeLightBox").css("display","none");
 			$("html").css("overflow","auto");
-    }
+    }*/
 		function prevDate()
 		{
 			var today="";
@@ -208,7 +208,7 @@
 			}
 			document.getElementById("wkDt2").value=tomorrow.getFullYear()+"-"+month+"-"+day;
 		}
-    function showFoodOrExerciseDetail()
+   /* function showFoodOrExerciseDetail()
     {
       param="<%=request.path%>".split('/');
       if(((param[param.length-1]).split('='))[0]=="foodid")
@@ -219,10 +219,10 @@
       {
         showexercise((param[param.length-1]).split('=')[1]);
       }
-    }
+    }*/
 		window.onload = function () {
 			currentDate(); //set current date in add meal date field(wdDt2) 
-			showFoodOrExerciseDetail();
+			//showFoodOrExerciseDetail();
 	}
 </script>
 
@@ -256,8 +256,8 @@
 
 	<% if @meals
 			@meals.each do |m| %>	
-  <tr style="background-color:#CEECF5;text-align:center;">
-    <td style="text-align:left" width="45%"><a href="<%=dairy_workout_path%>/foodid=<%=m.food_id%>" onclick="return showfood('<%=m.food_id%>')" id="showfood"><%=(m.name=="custom calories") ? m.note.capitalize! : m.name %></a></td>
+  <tr style="background-color:#CEECF5;text-align:center;">    <!-- onclick="return showfood('<%=m.food_id%>')" -->
+    <td style="text-align:left" width="45%"><a href="/custom_foods/<%= u((m.name).gsub(/[.]+/, '$')) %>" id="showfood"><%=(m.name=="custom calories") ? m.note.capitalize! : m.name %></a></td>
     <td><%=m.meal_type%></td>
     <td><%=m.calories%></td>
     <% 
@@ -286,8 +286,8 @@
   </tr>
 	<% if @workouts
 			@workouts.each do |w| %>	
-  <tr style="background-color:#CEECF5;text-align:center;">
-    <td style="text-align:left" width="45%"><a href="<%=dairy_workout_path%>/exerciseid=<%=w.exercise_id%>" onclick="return showexercise('<%=w.exercise_id%>')" id="showfood"><%=(w.description=="custom calories") ? w.note.capitalize! : w.description %></a></td>
+  <tr style="background-color:#CEECF5;text-align:center;">    <!-- onclick="return showexercise('<%=w.exercise_id%>')" -->
+    <td style="text-align:left" width="45%"><a href="/exercises/<%=u((w.description).gsub(/[.]+/, '$')) %>" id="showfood"><%=(w.description=="custom calories") ? w.note.capitalize! : w.description %></a></td>
     <td><%=(w.time_from.strftime("%H").to_i)>12 ?(w.time_from-12.hours).strftime("%l")+"pm" : w.time_from.strftime("%l")+"am" %></td>
     <td><%=w.calories%></td>
     <td><%= link_to image_tag("/assets/delete.png"), "/workouts/#{w.id}",:confirm=>'Are You Sure?', :method=>:Delete %></td>
@@ -330,7 +330,9 @@
 </div>
 
 <!-- show food and exercise in lightbox -->
+<!--
 <div class="lightBox"></div>
 <div class="datapanel" style="border:3px solid;"></div>
 <div class="lock_datapanel"></div>
 <span id="closeLightBox" onclick="closeLightBox()"><img src="/assets/close.png" /></span>
+-->

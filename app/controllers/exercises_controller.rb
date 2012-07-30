@@ -1,4 +1,6 @@
 class ExercisesController < ApplicationController
+  layout 'tracking'   #new added layout
+  
   before_filter :authenticate_user!
   
   def search
@@ -26,8 +28,8 @@ class ExercisesController < ApplicationController
   end
   
   #new added code
-  def edit
-    @exercise=Exercise.find(params[:id])
+  def show
+    @exercise=Exercise.find_by_description(params[:id].gsub(/[$]+/, '.'))
     if @exercise.mets!=nil
 				mets = @exercise.mets 
 	  else
