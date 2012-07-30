@@ -15,10 +15,14 @@
 	
 </script>
 <div>
-  <%= form_for(@food) do |f| %>
-    <%= f.error_messages %>
-    <%= render :partial => 'form', :locals => {:f => f } %>
-  <% end %>
+  <% if notice %>
+    <font color="red" size="3">Error: <%=notice%></font>
+  <%else%>
+    <%= form_for(@food) do |f| %>
+      <%= f.error_messages %>
+      <%= render :partial => 'form', :locals => {:f => f } %>
+    <% end %>
+  <%end%>
 </div>
 
 <script>

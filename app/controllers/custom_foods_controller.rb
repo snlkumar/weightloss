@@ -20,9 +20,6 @@ class CustomFoodsController < ApplicationController
       render :action => 'new'
     end
   end
-
-def show
-end
 #new added method for update meal(servings)
 def update_meal
     @food = Food.find(params[:id])
@@ -37,5 +34,9 @@ end
 
 def show
   @food=Food.find_by_name(params[:id].gsub(/[$]+/, '.'))
+  
+  if @food.nil?
+    flash[:notice]=params[:id].gsub(/[$]+/, '.')+" food not exist."
+  end
 end
 end

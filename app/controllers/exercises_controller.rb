@@ -30,14 +30,20 @@ class ExercisesController < ApplicationController
   #new added code
   def show
     @exercise=Exercise.find_by_description(params[:id].gsub(/[$]+/, '.'))
-    if @exercise.mets!=nil
+    
+    if @exercise.nil?
+      flash[:notice]=params[:id].gsub(/[$]+/, '.')+" exercise not exist."
+    elsif @exercise.mets!=nil
 				mets = @exercise.mets 
 	  else
 				mets=0
 		end
-	  weight_in_kilograms = (current_user ? current_user.weight : User.find(current_user.id).weight ) * 0.45
-	  calories       = 60 * ((mets * 3.5 * weight_in_kilograms)/200)  # 60 denote duration(in minutes )
-	  @exercise.calories=calories.round(2)
+		
+		if !@exercise.nil?
+	    weight_in_kilograms = (current_user ? current_user.weight : User.find(current_user.id).weight ) * 0.45
+	    calories       = 60 * ((mets * 3.5 * weight_in_kilograms)/200)  # 60 denote duration(in minutes )
+	    @exercise.calories=calories.round(2)
+	  end
   end
   #end
 end
