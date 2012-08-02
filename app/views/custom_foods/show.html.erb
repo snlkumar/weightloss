@@ -8,9 +8,15 @@
 		  document.getElementById(e[i].id).disabled=true;
 		}
 		document.getElementById('upload_food_pic').style.display="none";  //for hide upload photo field
-		document.getElementById('food-img').style.marginTop="1em";
-		document.getElementById('foods_img').style.marginLeft="-40em";
-		document.getElementById('food_label').style.marginLeft="-40em";
+		if(document.getElementById('foods-img')!=null)
+		{
+		  document.getElementById('food-img').style.marginTop="1em";
+		  document.getElementById('foods_img').style.marginLeft="-40em";
+		  document.getElementById('food_label').style.marginLeft="-40em";
+		}
+		e=document.getElementById('food-name');
+		e.parentNode.removeChild(e);
+		document.getElementById('food-head').style.display="block";
 	}
 	
 </script>

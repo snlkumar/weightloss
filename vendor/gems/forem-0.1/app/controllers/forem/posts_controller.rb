@@ -32,13 +32,6 @@ module Forem
         render :action => "new"
       end
     end
-
-    #new method
-    def send_mail
-      render :json =>"email sending...."
-      return
-    end
-    #end 
     
     def destroy
       @post = @topic.posts.find(params[:id])

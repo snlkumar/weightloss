@@ -29,10 +29,12 @@ class ExercisesController < ApplicationController
   
   #new added code
   def show
-    @exercise=Exercise.find_by_description(params[:id].gsub(/[$]+/, '.'))
+    params[:id]=((params[:id].gsub(/[$]+/, '.')).gsub(' or ',"/")).gsub(/["%"]+/,'%')
+  
+    @exercise=Exercise.find_by_description(params[:id])
     
     if @exercise.nil?
-      flash[:notice]=params[:id].gsub(/[$]+/, '.')+" exercise not exist."
+      flash[:notice]=params[:id]+" exercise not exist."
     elsif @exercise.mets!=nil
 				mets = @exercise.mets 
 	  else

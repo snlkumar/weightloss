@@ -44,4 +44,15 @@ class VendorsController < ApplicationController
   render 'search'
  end
  #method end filter_search
-end
+ 
+ def show
+   if params[:id] && params[:restaurants]!=nil
+    @status="true"  #for restaurants
+    @vendor=Restaurant.find(params[:id])
+   else
+    @status="false"
+    @vendor=Vendor.find(params[:id])
+   end
+ end
+
+end 

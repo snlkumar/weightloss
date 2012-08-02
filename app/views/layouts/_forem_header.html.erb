@@ -37,6 +37,9 @@
       <% end %>
       
       <ol id="nav-tabs" style="">
+        <!-- new added code -->
+        <li><%= link_to "VENDORS".html_safe, main_app.vendor_path %></li>
+        <!-- end -->
         <li><%= link_to "ARTICLES".html_safe, main_app.posts_path %></li>
         <li><%= link_to "VIDEO LIBRARY", main_app.videos_path %></li>
         <li><%= link_to "FORUMS", main_app.forum_engine_path %></li>

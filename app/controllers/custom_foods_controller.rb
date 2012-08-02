@@ -33,10 +33,12 @@ def edit
 end
 
 def show
-  @food=Food.find_by_name(params[:id].gsub(/[$]+/, '.'))
+  params[:id]=((params[:id].gsub(/[$]+/, '.')).gsub(' or ',"/")).gsub(/["%"]+/,'%')
+  
+  @food=Food.find_by_name(params[:id])
   
   if @food.nil?
-    flash[:notice]=params[:id].gsub(/[$]+/, '.')+" food not exist."
+    flash[:notice]=params[:id]+" food not exist."
   end
 end
 end

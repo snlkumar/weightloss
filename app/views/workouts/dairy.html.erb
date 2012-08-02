@@ -255,9 +255,11 @@
   </tr>
 
 	<% if @meals
-			@meals.each do |m| %>	
+			@meals.each do |m|
+			food_path=((m.name).gsub(/[.]+/,'$')).gsub("/",' or ').gsub(/[%]+/,'"%"')
+  %>
   <tr style="background-color:#CEECF5;text-align:center;">    <!-- onclick="return showfood('<%=m.food_id%>')" -->
-    <td style="text-align:left" width="45%"><a href="/custom_foods/<%= u((m.name).gsub(/[.]+/, '$')) %>" id="showfood"><%=(m.name=="custom calories") ? m.note.capitalize! : m.name %></a></td>
+    <td style="text-align:left" width="45%"><a href="/custom_foods/<%=u(food_path)%>" id="showfood"><%=(m.name=="custom calories") ? m.note.capitalize! : m.name %></a></td>
     <td><%=m.meal_type%></td>
     <td><%=m.calories%></td>
     <% 
@@ -266,7 +268,7 @@
     <td><%=m.fat%></td>
     <td><%=m.carbohydrt%></td>
     <td><%=m.protein%></td>
-   <td><%= link_to image_tag("/assets/delete.png"), "/meals/#{m.id}",:confirm=>'Are You Sure?', :method=>:Delete %></td>
+    <td><%= link_to image_tag("/assets/delete.png"), "/meals/#{m.id}",:confirm=>'Are You Sure?', :method=>:Delete %></td>
 		</tr>
 	<%end end%>
 	<tr style="text-align:center;">
@@ -285,9 +287,12 @@
     
   </tr>
 	<% if @workouts
-			@workouts.each do |w| %>	
+			@workouts.each do |w| 
+			
+			exercise_path=(((w.description).gsub(/[.]+/,'$')).gsub("/",' or ')).gsub(/[%]+/,'"%"')
+	%>
   <tr style="background-color:#CEECF5;text-align:center;">    <!-- onclick="return showexercise('<%=w.exercise_id%>')" -->
-    <td style="text-align:left" width="45%"><a href="/exercises/<%=u((w.description).gsub(/[.]+/, '$')) %>" id="showfood"><%=(w.description=="custom calories") ? w.note.capitalize! : w.description %></a></td>
+    <td style="text-align:left" width="45%"><a href="/exercises/<%=u(exercise_path)%>" id="showfood"><%=(w.description=="custom calories") ? w.note.capitalize! : w.description %></a></td>
     <td><%=(w.time_from.strftime("%H").to_i)>12 ?(w.time_from-12.hours).strftime("%l")+"pm" : w.time_from.strftime("%l")+"am" %></td>
     <td><%=w.calories%></td>
     <td><%= link_to image_tag("/assets/delete.png"), "/workouts/#{w.id}",:confirm=>'Are You Sure?', :method=>:Delete %></td>

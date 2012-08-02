@@ -18,8 +18,10 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 	#match '/foods/search/' =>'foods#search'
 
 	##create dynamic routes
+	match '/vendor/vendorInfo/:id/(:restaurants)' =>'Vendors#show',  :as=>'vendorInfo'
 	match '/vendor/(:searchtype)/(:query)' => 'Vendors#search',   :as => 'vendor'
 	match '/vendor/(:filterBy/:filterQuery/:status)' =>'Vendors#search_filter',    :as=>'filterVendor'
+	
 	##
   match '/password/edit' => 'user_passwords#edit', :as => :edit_password, :via => :get
   match '/password' => 'user_passwords#update', :as => :password, :via => :put
