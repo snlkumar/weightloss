@@ -9,34 +9,37 @@
 .head-table{background: #ccc; }
 </style>
 
-<script src="/assets/jquery.js"></script>
 <script tyle="text/javascript">
+
+  //for miles slider 
+  /*
+  <% content_for :js do %>
+    $('#distance-slider').slider({
+          range: "min",
+          step: 2,
+          value: 0,
+          min: 1,
+          max: 20,
+          slide: function( event, ui ) {
+            miles=ui.value;
+            $( "#distance-view" ).html(miles);
+            $( "#distance-val" ).val( ui.value );
+          }
+        });
+    
+    miles= $( "#distance-slider" ).slider( "value" );
+    
+    $( "#distance-view" ).html( miles);
+  <% end %>
   
-  function submitForm(status)
+  */
+  
+  
+  function submitForm()
   {
-    if(status=="false")
-    {
-      if($("#query").val()!="")
-      {
-        location.href="<%=vendor_path%>/"+$("#searchtype").val()+"/"+$("#query").val();
-      }
-      else
-      {
-        location.href="<%=vendor_path%>/"+$("#searchtype").val();
-      }
-    }
-    else
-    {
-      if($("#filterQuery").val()=="")
-      {
-        alert("Field cannot be empty");
-        $("#filterQuery").focus();
-        return;
-      }
-      
-      location.href="<%=filterVendor_path%>/"+$("#filterBy").val()+"/"+$("#filterQuery").val()+"/true";
-    }
-   }
+    location.href="<%=vendor_path%>/"+$("#searchtype").val()+"/"+$("#filterBy").val()+"/"+$("#filterQuery").val();
+  }
+    
 </script>
 
 <div id="nav-bar" style="margin-left:22.7em;margin-top:-4.4%;">
@@ -44,62 +47,72 @@
 </div>
 <div class="clear"></div>
 
-<div style="margin:1% 0 0 30%;width:82%;height:1%;padding:1%;">
+<div style="margin:1% 0 0 20%;width:82%;height:1%;padding:1%;">
   <form id="vendor-search" method='get' onsubmit="return false" action="">
-    <div style="float:left;width:10%;">
-      <label>Search</label>
-    </div>
+    <div style="float:left;width:27%;">
+      <label style="font-size:14px;">Select business category</label><br>
     
-    <div style="float:left;">
-      <input type="text" name='query' value="<%=cookies[:query]%>" id="query" style="height:1.8em;padding:0;margin:0;" placeholder ='Enter your search query...' />
-    </div>
-    
-    <div style="float:left;margin-left:2%;">
-      <select name="searchtype" id="searchtype" style="height:2em;margin:0 1%;padding:0;">
+     <div style="float:left;margin-left:.5%;margin-top:.5em;">
+      <select name="searchtype" id="searchtype" style="height:2em;margin:0 1%;width:14em;padding:0;">
         <option value="all" selected="selected">All</value>
-        <option value="gym" <%=cookies[:searchtype]=="gym" ? "selected" : "" %> >Gyms</value>
-        <option value="restaurants" <%=cookies[:searchtype]=="restaurants" ? "selected" : "" %> >Restaurants</value>
-        <option value="nutritionist" <%=cookies[:searchtype]=="nutritionist" ? "selected" : "" %> >Nutritionist</value>
-        <option value="weight_loss_surgeons" <%=cookies[:searchtype]=="weight_loss_surgeons" ? "selected" : "" %> >Weight loss surgeons</value>
-        <option value="physiologists" <%=cookies[:searchtype]=="physiologists" ? "selected" : "" %> >Physiologists</value>
-        <option value="hospitals" <%=cookies[:searchtype]=="hospitals" ? "selected" : "" %> >Hospitals</value>
-        <option value="law" <%=cookies[:searchtype]=="law" ? "selected" : "" %> >Law</value>
-        <option value="medical_equipment" <%=cookies[:searchtype]=="medical_equipment" ? "selected" : "" %> >Medical equipment</value>
-        <option value="Plastic_surgeon" <%=cookies[:searchtype]=="Plastic_surgeon" ? "selected" : "" %> >Plastic surgeon</value>
-        <option value="spa" <%=cookies[:searchtype]=="spa" ? "selected" : "" %> >spa</value>
-        <option value="weight_loss_clinics" <%=cookies[:searchtype]=="weight_loss_clinics" ? "selected" : "" %> >Weight loss clinics</value>
-        <option value="weight_loss_doctors" <%=cookies[:searchtype]=="weight_loss_doctors" ? "selected" : "" %> >Weight loss doctors</value>
+        <option value="gym" <%=params[:searchtype]=="gym" ? "selected" : "" %> >Gyms</value>
+        <option value="restaurants" <%=params[:searchtype]=="restaurants" ? "selected" : "" %> >Restaurants</value>
+        <option value="nutritionist" <%=params[:searchtype]=="nutritionist" ? "selected" : "" %> >Nutritionist</value>
+        <option value="weight_loss_surgeons" <%=params[:searchtype]=="weight_loss_surgeons" ? "selected" : "" %> >Weight loss surgeons</value>
+        <option value="physiologists" <%=params[:searchtype]=="physiologists" ? "selected" : "" %> >Physiologists</value>
+        <option value="hospitals" <%=params[:searchtype]=="hospitals" ? "selected" : "" %> >Hospitals</value>
+        <option value="law" <%=params[:searchtype]=="law" ? "selected" : "" %> >Law</value>
+        <option value="medical_equipment" <%=params[:searchtype]=="medical_equipment" ? "selected" : "" %> >Medical equipment</value>
+        <option value="Plastic_surgeon" <%=params[:searchtype]=="Plastic_surgeon" ? "selected" : "" %> >Plastic surgeon</value>
+        <option value="spa" <%=params[:searchtype]=="spa" ? "selected" : "" %> >spa</value>
+        <option value="weight_loss_clinics" <%=params[:searchtype]=="weight_loss_clinics" ? "selected" : "" %> >Weight loss clinics</value>
+        <option value="weight_loss_doctors" <%=params[:searchtype]=="weight_loss_doctors" ? "selected" : "" %> >Weight loss doctors</value>
       </select>
     </div>
+  </div>
+  
+  <div style="margin-left:.5em;float:left;">
+    <label style="font-size:14px;">Type</label><br>
+    <div style="float:left;margin-top:.1em;margin-right:1em;">
+      <select style="height:2em;" id="filterBy" name="filterBy">
+        <option value="city" <%=params[:filterBy]=="city" ? "selected" : "" %> >City</option>
+        <option value="state" <%=params[:filterBy]=="state" ? "selected" : "" %> >State</option>
+        <option value="zipcode" <%=params[:filterBy]=="zipcode" ? "selected" : "" %> >Zip</option>
+      </select>
+    </div>
+    <input type="text" id="filterQuery" name="filterQuery" value="<%=params[:filterQuery]%>" style="height:1.2em;width:12em;" placeholder="Enter city,zip or state..." />
+  </div>
+  <!--  <div style="float:left;margin-left:2%;margin-top:-10px;">
+      <%= label 'Distance', 'Distance:', :style=>"margin:0;padding:0;" %>
+      <span id="distance-view"></span>
+      <div id="distance-slider"></div>
+      <input type="hidden" name="distance" value='1' id = "distance-val" />
+    </div>
+ -->
+    <div style="float:left;margin-left:1%;padding-top:.5em;">
+    <br>
+      <input type="button" class="button grid_3" style="height:26px;font-size:10pt;width:4em;padding:0;margin:0;" onclick="submitForm()" value=" Search " />
+    </div>
+    <div style="float:left;margin-left:1%;padding-top:.5em;">
+    <br>
+      <input type="button" class="button grid_3" style=" height:26px;font-size:10pt;width:10em;padding:0;margin:0%;" value=" Add Your Business " />
+    </div>
     
-    <div style="float:left;margin-left:1%;">
-      <button id="search" class="button grid_3" style=" height:26px;font-size:12pt;width:6em;padding:0;margin:0;" onclick="submitForm('false')">
-          <img src="/assets/search.png" alt="Search" />Search
-      </button>
-    </div>
-    <div style="float:left;margin-left:1%;">
-      <button id="search" class="button grid_3" style=" height:26px;font-size:12pt;width:12em;padding:0;margin-left:1%;margin-top:0;">
-          Add Your Business
-      </button>
-    </div>
-  </form>
+   </form>
 </div>
 <div class="clear"></div>
 <br>
 
-<% if @data || (params[:status] && params[:status]=="true") %>
-  <form id="vendor-search-filter" method='get' onsubmit="return false" action="">
+ <!--
+<%# if @data || (params[:status] && params[:status]=="true") %>
+ <form id="vendor-search-filter" method='get' onsubmit="return false" action="">
     <div style="margin-left:21em;float:left;">
       <label>Filter Data:</label>
       <input type="text" id="filterQuery" name="filterQuery" value="<%=params[:filterQuery]%>" style="height:1.2em;width:12em;" placeholder="For more filter data, give city,zip..." />
     </div>
     <div style="float:left;margin-left:1.8%;">
       <select style="height:2em;" id="filterBy" name="filterBy">
-        <!--<%# if params[:searchtype]=="restaurants" %>
-        <option value="name">Name</option>
-        <%#else%>
-        <option value="vendor_name">Vendor Name</option>
-        <%#end%>-->
+        
         <option value="city" <%=params[:filterBy]=="city" ? "selected" : "" %> >City</option>
         <option value="state" <%=params[:filterBy]=="state" ? "selected" : "" %> >State</option>
         <option value="zipcode" <%=params[:filterBy]=="zipcode" ? "selected" : "" %> >Zip</option>
@@ -113,7 +126,7 @@
     <div class="clear"></div>
 </form>
    <br>
-<%end%>
+<%#end%> -->
 
 
 <% if @data %>
@@ -126,7 +139,7 @@
         <th>Vendor Type</th>
         <!--<th>Title</th>
         <th>Company Title</th>-->
-        <th>Vendor Name & Title</th>
+        <th>Title & Vendor Name</th>
         <th>Address 1</th>
         <th>Address 2</th>
         <th>City</th>
@@ -137,6 +150,7 @@
         <th>Contact 2</th>
         <th>Email</th>
         <th>Website Address</th>
+        <th></th>
       <%elsif @cols=="restaurants"%>
         <th>Name</th>
         <th>Address</th>
@@ -144,10 +158,11 @@
         <th>State</th>
         <th>Zip</th>
         <th>Restaurant Type</th>
+        <th></th>
       <%else%>
         <!--<th>Title</th>
         <th>Company Title</th>-->
-        <th>Vendor Name & Title</th>
+        <th>Title & Vendor Name</th>
         <th>Address1&nbsp;&nbsp;</th>
         <th>Address2&nbsp;&nbsp;</th>
         <th>City&nbsp;&nbsp;</th>
@@ -158,6 +173,7 @@
         <th>Contact2&nbsp;&nbsp;</th>
         <th>Email&nbsp;&nbsp;</th>
         <th>Website Address&nbsp;&nbsp;</th>
+        <th></th>
      <%end%>
     </tr>
     <% @data.each do |row| %>
@@ -166,7 +182,7 @@
           <td style="padding: .3%;"><%=row.vendor_type%>&nbsp;&nbsp;</td>
           <!--<td style="padding: .3%;"><%#=row.title%></td>
           <td style="padding: .3%;"><%#=row.company_title%></td> -->
-          <td style="padding: .3%;width:20em;"><%=link_to row.vendor_name ,vendorInfo_path(row.id) %>&nbsp;&nbsp;<%=row.title%>&nbsp;&nbsp;<%=link_to 'Claim to Business', "#", :style=>"font-size:10px;color:blue;" %></td>
+          <td style="padding: .3%;width:15em;"><%=row.title.empty? ? "" : row.title+"," %> <%=link_to row.vendor_name ,vendorInfo_path(row.id) %></td>
           <td style="padding: .3%;"><%=row.address1%></td>
           <td style="padding: .3%;"><%=row.address2%></td>
           <td style="padding: .3%;"><%=row.city%></td>
@@ -177,17 +193,19 @@
           <td style="padding: .3%;"><%=row.contact2%></td>
           <td style="padding: .3%;"><%=row.email%></td>
           <td style="padding: .3%;"><%=row.website_address%></td>
+          <td><button id="search" class="button grid_3" style="height:26px;font-size:10px;width:9em;padding:0;margin:0%;">Claim business</button></td>
         <%elsif @cols=="restaurants"%>
-          <td style="padding: .3%;"><%=link_to row.name, vendorInfo_path(row.id)+"/restaurants"%>&nbsp;&nbsp;<%=link_to 'Claim to Business', "#", :style=>"font-size:10px;color:blue;" %></td>
+          <td style="padding: .3%;"><%=link_to row.name, vendorInfo_path(row.id)+"/restaurants"%></td>
           <td style="padding: .3%;"><%=row.address%></td>
           <td style="padding: .3%;"><%=row.city%></td>
           <td style="padding: .3%;"><%=row.state%></td>
           <td style="padding: .3%;"><%=row.zip%></td>
           <td style="padding: .3%;"><%=row.restaurent_type%></td>
+          <td><button id="search" class="button grid_3" style="height:26px;font-size:10px;width:9em;padding:0;margin:0 0 0 2em;">Claim business</button></td>
         <%else%>
           <!--<td style="padding: .3%;"><%=row.title%></td>
           <td style="padding: .3%;"><%=row.company_title%></td>-->
-          <td style="padding: .3%;width:20em;"><%=link_to row.vendor_name, vendorInfo_path(row.id)%>&nbsp;&nbsp;<%=row.title%>&nbsp;&nbsp;<%=link_to 'Claim to Business', "#", :style=>"font-size:10px;color:blue;" %></td>
+          <td style="padding: .3%;width:15em;"><%=row.title.empty? ? "" : row.title+"," %> <%=link_to row.vendor_name, vendorInfo_path(row.id)%></td>
           <td style="padding: .3%;"><%=row.address1%>&nbsp;</td>
           <td style="padding: .3%;"><%=row.address2%>&nbsp;</td>
           <td style="padding: .3%;"><%=row.city%>&nbsp;</td>
@@ -198,6 +216,7 @@
           <td style="padding: .3%;"><%=row.contact2%>&nbsp;</td>
           <td style="padding: .3%;"><%=row.email%>&nbsp;</td>
           <td style="padding: .3%;"><%=row.website_address%>&nbsp;</td>
+          <td><button id="search" class="button grid_3" style="height:26px;font-size:10px;width:9em;padding:0;margin:0%;">Claim business</button></td>
         <%end%>      
       </tr>
     <%end%>

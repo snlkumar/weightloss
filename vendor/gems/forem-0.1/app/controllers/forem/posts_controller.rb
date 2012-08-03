@@ -21,7 +21,20 @@ module Forem
       @post.user = forem_user
       
       if @post.save
-        PostReplyMailer.reply_notification(@topic,forem_user).deliver   #adding new parameter(forem_user) for send mail to current user
+        
+        #new added code for sending mail to multiple people
+        @users =Forem::Topic.first.posts.map{|p| p.user }.uniq
+        
+        @users.each do |user|
+        @user=user
+          if @user.nil?
+            @user=forem_user
+          end
+          PostReplyMailer.reply_notification(@topic,@user).deliver   #adding new parameter(forem_user) for send mail to current user
+        end
+        ##end code
+        
+        #PostReplyMailer.reply_notification(@topic).deliver   #old code to send mail
         
         flash[:notice] = t("forem.post.created")
         redirect_to [@topic.forum, @topic]

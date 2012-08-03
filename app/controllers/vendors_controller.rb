@@ -1,49 +1,26 @@
 class VendorsController < ApplicationController
-  def search   
-    if !params[:searchtype].nil? && params[:status].nil?
-    	
-      if params[:query].nil? 
-        params[:query]=""
+  def search
+    if !params[:searchtype].nil?
+      if params[:filterQuery].nil? 
+        params[:filterQuery]=""
       end
       
-      cookies[:searchtype]=params[:searchtype]
-      cookies[:query]=params[:query]
-      
       if params[:searchtype]=="all"
-        @data=Vendor.page(params[:page] || 1).per(30)
+        @data=Vendor.where(params[:filterBy]+" like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
         @cols="all"
       elsif params[:searchtype]=="restaurants"
-        @data=Restaurant.where("name like '%"+params[:query]+"%'").page(params[:page] || 1).per(30)
+        if params[:filterBy]=="zipcode"
+          params[:filterBy]="zip"
+        end
+        @data=Restaurant.where(params[:filterBy]+" like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
         @cols="restaurants"
       else
-        @data=Vendor.where("vendor_type='"+params[:searchtype]+"' or (title like '%"+params[:query]+"%' or vendor_name like '%"+params[:query]+"%')").page(params[:page] || 1).per(30)
+        @data=Vendor.where(params[:filterBy]+" like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
         @cols="other" 
       end
     end
- end
- 
- #search method end
- 
- def search_filter
-  if !cookies[:searchtype].nil? && !params[:status].nil? && params[:status]=="true"
-    if cookies[:searchtype]=="all"
-      @data=(Vendor.page(params[:page] || 1).per(30)).where(params[:filterBy]+" like '%"+params[:filterQuery]+"%'")
-      @cols="all"
-    elsif cookies[:searchtype]=="restaurants"
-      if params[:filterBy]=="zipcode"
-        params[:filterBy]="zip"
-      end
-      @data=(Restaurant.where("name like '%"+cookies[:query]+"%'").page(params[:page] || 1).per(30)).where(params[:filterBy]+" like '%"+params[:filterQuery]+"%'")
-      @cols="restaurants"
-    else
-      @data=(Vendor.where("vendor_type='"+cookies[:searchtype]+"' and (title like '%"+cookies[:query]+"%' or vendor_name like '%"+cookies[:query]+"%')").page(params[:page] || 1).per(30)).where(params[:filterBy]+" like '%"+params[:filterQuery]+"%'")
-      @cols="other" 
-    end
-
   end
-  render 'search'
- end
- #method end filter_search
+ #search method end
  
  def show
    if params[:id] && params[:restaurants]!=nil
@@ -54,5 +31,20 @@ class VendorsController < ApplicationController
     @vendor=Vendor.find(params[:id])
    end
  end
-
+  #end show
+  
+  def new
+  end
+  #end new
+  
+  def create
+  end
+  #end create
+  
+  def update
+  end
+  #end
+  
+  def edit
+  end
 end 

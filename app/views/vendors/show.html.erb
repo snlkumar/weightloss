@@ -1,110 +1,126 @@
-
+<script type="text/javascript">
+  <% content_for :js do %>
+    $(function() {
+      $("tr").mouseover(function(){
+        $(this).css("background-color","#ccc");
+      }).mouseout(function(){
+        $(this).css("background-color","#FFFFCC");
+      });
+   });
+  <%end%>
+</script>
+<br><br><%= link_to 'Back', :back, :style=>"margin-left:20%;" %><br><br>
+  
   <% if @status!="true"%>
-    <%= form_for @vendor do |f| %>
-      <div style="margin-top:2em;">
-		    <h2><%= @vendor.vendor_name %></h2>
-	    </div>
-      <table border="0" width="100%" style="float:left;margin-left:15em;" align="center">
-	    <tr>
-			    <td><%= f.label :vendor_type, 'Vendor type' %></td>
-			    <td><%= f.text_field :vendor_type, :class => 'grid_6 alpha',:disabled=>:true, :style=>"width:40%;margin:0 0 10px 0;padding:0;" %></td>	
-	    </tr>
-	    <tr>
-			    <td><%= f.label :title, 'Title' %></td>
-			    <td><%= f.text_field :title, :class => 'grid_6 alpha',:disabled=>:true, :style=>"width:40%;margin:0 0 10px 0;padding:0;" %></td>	
-      </tr>
-      <tr>
-		    <td width="30%"><%= f.label :company_title, 'Company title' %></td>
-		    <td><%= f.text_field :company_title, :class => 'sz_input alpha',:disabled=>:true, :style=>"width:40%;margin:0 0 10px 0;padding:0;", :size=>"5" %></td>
-	    </tr>
+    <table border="0" width="57%" style="float:left;margin-left:15em;height:40em;background-color:#FFFFCC;border:1px solid;" align="center">
+    <tr>
+      <td colspan="2"><h2 style="background-color:#cccccc;width:33em;"><%= @vendor.vendor_name %></h2></td>
+    </tr>
+    <tr>
+		    <td style="padding-left:10%;"><label>Vendor type</label></td>
+		    <td>
+		      <% 
+		        @vendor.vendor_type.split('_').each do |d|
+		      %>
+		          <%=d.capitalize%>
+		      <%  end  %>
+		    </td>	
+    </tr>
+    <tr>
+	    <td style="padding-left:10%;"><label>Title</label></td>
+	    <td><%= @vendor.title %></td>	
+    </tr>
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Company title</label></td>
+	    <td><%= @vendor.company_title %></td>	
+    </tr>
+
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Address 1</label></td>
+	    <td><%= @vendor.address1 %></td>
+    </tr>
+
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Address 2</label></td>
+	    <td><%= @vendor.address2 %></td>
+    </tr>
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>City</label></td>
+	    <td><%= @vendor.city %></td>
+    </tr>
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>State</label></td>
+	    <td><%= @vendor.state %></td>
+    </tr>
+    <tr>
+	    <td style="padding-left:10%;"><label>Zipcode</label></td>
+	    <td><%= @vendor.zipcode %></td>
+    </tr>
+    <tr>
+	    <td style="padding-left:10%;"><label>Country</label></td>
+	    <td><%= @vendor.country %></td>
+    </tr>
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Contact 1</label></td>
+	    <td><%= @vendor.contact1 %></td>
+    </tr>
+
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Contact 2</label></td>
+	    <td><%= @vendor.contact2 %></td>
+    </tr>
 	
-	    <tr>
-		    <td width="30%"><%= f.label :address1, 'Address 1' %></td>
-		    <td><%= f.text_field :address1, :class => 'sz_input alpha mr_lrg',:disabled=>:true,:style=>"width:40%;margin:0 0 10px 0;padding:0;", :size=>"5" %></td>
-	    </tr>
-	
-	    <tr>
-		    <td width="30%"><%= f.label :address2, 'Address 2' %></td>
-		    <td><%= f.text_field :address2, :class => 'sz_input alpha mr_lrg',:disabled=>:true,:style=>"width:40%;margin:0 0 10px 0;padding:0;", :size=>"5" %></td>
-	    </tr>
-	    <tr>
-		    <td width="30%"><%= f.label :city, 'City' %></td>
-		    <td><%= f.text_field :city, :class => 'sz_input alpha mr_lrg',:disabled=>:true,:style=>"width:40%;margin:0 0 10px 0;padding:0;", :size=>"5" %></td>
-	    </tr>
-	    <tr>
-		    <td width="30%"><%= f.label :state, 'State' %></td>
-		    <td><%= f.text_field :state, :class => 'sz_input alpha mr_lrg',:disabled=>:true,:style=>"width:40%;margin:0 0 10px 0;padding:0;", :size=>"5" %></td>
-	    </tr>
-	    <tr>
-			    <td><%= f.label :zipcode, 'Zipcode' %></td>
-			    <td><%= f.text_field :zipcode, :class => 'grid_6 alpha',:disabled=>:true, :style=>"width:40%;margin:0 0 10px 0;padding:0;" %></td>	
-	    </tr>
-	    <tr>
-			    <td><%= f.label :country, 'Country' %></td>
-			    <td><%= f.text_field :country, :class => 'grid_6 alpha',:disabled=>:true, :style=>"width:40%;margin:0 0 10px 0;padding:0;" %></td>	
-      </tr>
-      <tr>
-		    <td width="30%"><%= f.label :contact1, 'Contact 1' %></td>
-		    <td><%= f.text_field :contact1, :class => 'sz_input alpha',:disabled=>:true, :style=>"width:40%;margin:0 0 10px 0;padding:0;", :size=>"5" %></td>
-	    </tr>
-	
-	    <tr>
-		    <td width="30%"><%= f.label :contact2, 'Contact 2' %></td>
-		    <td><%= f.text_field :contact2, :class => 'sz_input alpha mr_lrg',:disabled=>:true,:style=>"width:40%;margin:0 0 10px 0;padding:0;", :size=>"5" %></td>
-	    </tr>
-	
-	    <tr>
-		    <td width="30%"><%= f.label :email, 'E-mail' %></td>
-		    <td><%= f.text_field :address2, :class => 'sz_input alpha mr_lrg',:disabled=>:true,:style=>"width:40%;margin:0 0 10px 0;padding:0;", :size=>"5" %></td>
-	    </tr>
-	    <tr>
-		    <td width="30%"><%= f.label :website_address, 'Website address' %></td>
-		    <td><%= f.text_field :website_address, :class => 'sz_input alpha mr_lrg',:disabled=>:true,:style=>"width:40%;margin:0 0 10px 0;padding:0;", :size=>"5" %></td>
-	    </tr>
-	    <tr>
-		    <td width="30%"><%= f.label :custom_field1, 'Custom field 1' %></td>
-		    <td><%= f.text_field :custom_field1, :class => 'sz_input alpha mr_lrg',:disabled=>:true,:style=>"width:40%;margin:0 0 10px 0;padding:0;", :size=>"5" %></td>
-	    </tr>
-	    <tr>
-		    <td width="30%"><%= f.label :custom_field2, 'Custom field 2' %></td>
-		    <td><%= f.text_field :custom_field2, :class => 'sz_input alpha mr_lrg',:disabled=>:true,:style=>"width:40%;margin:0 0 10px 0;padding:0;", :size=>"5" %></td>
-	    </tr>
-	    <tr>
-		    <td width="30%"><%= f.label :custom_field3, 'Custom field 3' %></td>
-		    <td><%= f.text_field :custom_field3, :class => 'sz_input alpha mr_lrg',:disabled=>:true,:style=>"width:40%;margin:0 0 10px 0;padding:0;", :size=>"5" %></td>
-	    </tr>
-	    <tr>
-		    <td width="30%"><%= f.label :custom_field4, 'Custom field 4' %></td>
-		    <td><%= f.text_field :custom_field4, :class => 'sz_input alpha mr_lrg',:disabled=>:true,:style=>"width:40%;margin:0 0 10px 0;padding:0;", :size=>"5" %></td>
-	    </tr>
-	    </table>
-	 <%end%>
-	<%else%>
-	  <form>
-	   <div style="margin-top:2em;">
-		  <h2><%= @vendor.name %></h2>
-	  </div>
-    <table border="0" width="100%" style="float:left;margin-left:15em;" align="center">
-	  <tr>
-			  <td><label>Address</label></td>
-			  <td><input type="text" value="<%=@vendor.address%>" disabled="disabled" class = 'grid_6 alpha', style="width:40%;margin:0 0 10px 0;padding:0;" /></td>	
-	  </tr>
-	  <tr>
-		  <td width="30%"><label>City</label></td>
-		  <td><input type="text" value="<%=@vendor.city%>" disabled="disabled" class = 'sz_input alpha mr_lrg' style="width:40%;margin:0 0 10px 0;padding:0;" size="5" /></td>
-	  </tr>
-	   <tr>
-		  <td width="30%"><label>State</label></td>
-		  <td><input type="text" value="<%=@vendor.state%>" disabled="disabled" class = 'sz_input alpha mr_lrg' style="width:40%;margin:0 0 10px 0;padding:0;" size="5" /></td>
-	  </tr>
-	  <tr>
-			  <td><label>Zipcode</label></td>
-			  <td><input type="text" value="<%=@vendor.zip%>" disabled="disabled" class = 'grid_6 alpha' style="width:40%;margin:0 0 10px 0;padding:0;" /></td>
-	  </tr>
-	  <tr>
-			  <td><label>Restaurent type</label></td>
-			  <td><input type="text" value="<%=@vendor.restaurent_type%>" disabled="disabled" class = 'grid_6 alpha' style="width:40%;margin:0 0 10px 0;padding:0;" /></td>	
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>E-mail</label></td>
+	    <td><%= @vendor.email %></td>
+    </tr>
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Website address</label></td>
+	    <td><%= @vendor.website_address %></td>
+    </tr>
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Custom field 1</label></td>
+	    <td><%= @vendor.custom_field1 %></td>
+    </tr>
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Custom field 2</label></td>
+	    <td><%= @vendor.custom_field2 %></td>
+    </tr>
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Custom field 3</label></td>
+	    <td><%= @vendor.custom_field3 %></td>
+    </tr>
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Custom field 4</label></td>
+	    <td><%= @vendor.custom_field4 %></td>
     </tr>
 	</table>
-	</form>
+	<%else%>
+    <table border="0" width="57%" style="float:left;margin-left:15em;height:20em;background-color:#FFFFCC;border:1px solid;" align="center">
+      <tr>
+        <td colspan="2"><h2 style="background-color:#cccccc;width:33em;"><%= @vendor.name %></h2></td>
+      </tr>
+	    <tr>
+		    <td style="padding-left:10%;"><label>Address</label></td>
+		    <td><%=@vendor.address%></td>	
+	    </tr>
+	    <tr>
+		    <td width="30%" style="padding-left:10%;"><label>City</label></td>
+		    <td><%=@vendor.city%></td>
+	    </tr>
+	     <tr>
+		    <td width="30%" style="padding-left:10%;"><label>State</label></td>
+		    <td><%=@vendor.state%></td>
+	    </tr>
+	    <tr>
+			  <td style="padding-left:10%;"><label>Zipcode</label></td>
+			  <td><%=@vendor.zip%></td>
+	    </tr>
+	    <tr>
+		    <td style="padding-left:10%;"><label>Restaurent type</label></td>
+		    <td><%=@vendor.restaurent_type%></td>	
+      </tr>
+	</table>
 <%end%>
+
+<br><%= link_to 'Back', :back, :style=>"margin-left:20%;" %>
