@@ -1,0 +1,111 @@
+ <style type="text/css">
+  #vendor_status{
+    width:42%;
+    height:2em;
+  }
+  textarea{
+    width:40%;
+  }
+ </style>
+ <% if @vendor.errors.any? %>
+    <div id="error_explanation" style="margin-left:30%;">
+      <h2><%= pluralize(@vendor.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @vendor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div style="margin-left: 30%">
+
+<br>
+  <div class="field">
+    <%= f.label :vendor_type %><br />
+    <%= f.text_field :vendor_type, :style => "height: 1.2em;width:40%;" %>
+  </div>
+	
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, :style => "height: 1.2em;width:40%;" %>
+  </div>
+  <div class="field">
+    <%= f.label :vendor_name %><br />
+    <%= f.text_field :vendor_name, :style => "height: 1.2em;width:40%;" %>
+  </div>
+  <div class="field">
+    <%= f.label :address1 %><br />
+    <%= f.text_area :address1, :cols=>"33" %>
+  </div>
+  <div class="field">
+    <%= f.label :address2 %><br />
+    <%= f.text_area :address2, :cols=>"33" %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city, :style => "height: 1.2em;width:40%;" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :state %><br />
+    <%= f.text_field :state, :style => "height: 1.2em;width:40%;" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :zipcode %><br />
+    <%= f.text_field :zipcode, :style => "height: 1.2em;width:40%;" %>
+  </div>
+  <div class="field">
+    <%= f.label :country %><br />
+    <%= f.text_field :country, :style => "height: 1.2em;width:40%;" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :contact1 %><br />
+    <%= f.text_field :contact1, :style => "height: 1.2em;width:40%;" %>
+  </div>
+  <div class="field">
+    <%= f.label :contact2 %><br />
+    <%= f.text_field :contact2, :style => "height: 1.2em;width:40%;" %>
+  </div>
+  
+ <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email, :style => "height: 1.2em;width:40%;" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :website_address %><br />
+    <%= f.text_field :website_address, :style => "height: 1.2em;width:40%;" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :custom_field1 %><br />
+    <%= f.text_field :custom_field1, :style => "height: 1.2em;width:40%;" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :custom_field2 %><br />
+    <%= f.text_field :custom_field2, :style => "height: 1.2em;width:40%;" %>
+  </div>
+  <div class="field">
+    <%= f.label :custom_field3 %><br />
+    <%= f.text_field :custom_field3, :style => "height: 1.2em;width:40%;" %>
+  </div>
+  <div class="field">
+    <%= f.label :custom_field4 %><br />
+    <%= f.text_field :custom_field4, :style => "height: 1.2em;width:40%;" %>
+     
+ <div class="field">
+    <%= f.label :status %><br />
+    <%=f.select :status, [["Approved","approved"],["Not approved","not_approved"],["Not applied","not_applied"]], :selected=>"Not applied" %>
+  </div>
+  <div class="field">
+    <%= f.label :reason %><br />
+    <%= f.text_field :reason, :style => "height: 1.2em;width:40%;" %>    
+  </div> 
+</div>
+

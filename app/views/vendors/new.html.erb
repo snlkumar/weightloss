@@ -1,0 +1,12 @@
+<br/><br/><%=link_to "Back", :back, :style=>"margin-left: 30%;" %><br/>
+<h1 style="margin-left:30%;background-color:#BDBDBD;padding:5px;width:42%;text-align:center;color:#FBF2EF;">Add Your Business</h1>
+<%= form_for @vendor, :url => vendors_path do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  
+  <%= render '/shared/recaptcha' %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+ 
+ <br/><br/><%=link_to "Back", :back %><br/>
