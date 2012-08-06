@@ -28,6 +28,10 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
   get '/sign_in', :controller => "devise/sessions", :action => "new", :as => "sign_in"
   mount Forem::Engine, :at => "/forum", :as => 'forum_engine'
   
+  #new added routes
+  resources :vendors
+  #end
+  
   namespace :admin do
     resources :exercises do
       collection do
