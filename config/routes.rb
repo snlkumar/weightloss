@@ -19,7 +19,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 
 	##create dynamic routes
 	match '/vendor/vendorInfo/:id/(:restaurants)' =>'Vendors#show',  :as=>'vendorInfo'
-	match '/vendor/(:searchtype/:filterBy)/(:filterQuery)' => 'Vendors#search',   :as => 'vendor'
+	match '/vendor/(:searchtype)/(:filterQuery)' => 'Vendors#search',   :as => 'vendor'
 	
 	##
   match '/password/edit' => 'user_passwords#edit', :as => :edit_password, :via => :get
@@ -29,7 +29,12 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
   mount Forem::Engine, :at => "/forum", :as => 'forum_engine'
   
   #new added routes
-  resources :vendors
+  resources :vendors do
+    collection do
+      post :search_decipher
+      get :search_decipher
+    end
+  end
   #end
   
   namespace :admin do

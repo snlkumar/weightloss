@@ -19349,3 +19349,198 @@ ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
   script/rails:6
 
 Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Tue Aug 07 12:17:37 +0530 2012
+  Processing by RegistrationsController#new as HTML
+Rendered users/_form.html.erb (2.6ms)
+Rendered registrations/new.html.erb within layouts/signup (8.6ms)
+Compiled application.css  (181ms)  (pid 7110)
+Compiled 960.css  (13ms)  (pid 7110)
+Compiled jquery-ui-1.8.9.custom.css  (47ms)  (pid 7110)
+Compiled jquery.selectBox.css  (80ms)  (pid 7110)
+Compiled forem/base/style.css  (0ms)  (pid 7110)
+Compiled HTML5.js  (2ms)  (pid 7110)
+Compiled modernizr-1.7.min.js  (0ms)  (pid 7110)
+Compiled respond.js  (0ms)  (pid 7110)
+Rendered layouts/_head.html.erb (347.4ms)
+Rendered shared/_session_menu_bar.html.erb (1.0ms)
+Rendered shared/_nav_tabs.html.erb (1.1ms)
+Rendered shared/_overlay.html.erb (0.2ms)
+Rendered layouts/_header.html.erb (6.8ms)
+Rendered layouts/_footer.html.erb (1.6ms)
+Compiled application.js  (10ms)  (pid 7110)
+Compiled jquery.js  (5ms)  (pid 7110)
+Compiled jquery_ujs.js  (0ms)  (pid 7110)
+Compiled jquery-ui.js  (7ms)  (pid 7110)
+Compiled underscore.js  (0ms)  (pid 7110)
+Compiled highcharts.js  (1ms)  (pid 7110)
+Compiled jquery.labelify.js  (0ms)  (pid 7110)
+Compiled jquery.jeditable.js  (1ms)  (pid 7110)
+Compiled jquery.format.js  (1ms)  (pid 7110)
+Compiled jquery.tinyscrollbar.min.js  (0ms)  (pid 7110)
+Compiled flowplayer-3.2.6.min.js  (0ms)  (pid 7110)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.5ms)
+Rendered layouts/_js_libs.html.erb (131.3ms)
+Completed 200 OK in 544ms (Views: 509.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for 127.0.0.1 at Tue Aug 07 12:17:41 +0530 2012
+
+
+Started GET "/meals" for 127.0.0.1 at Tue Aug 07 12:23:30 +0530 2012
+  Processing by MealsController#index as HTML
+Completed 401 Unauthorized in 1ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Tue Aug 07 12:23:30 +0530 2012
+  Processing by Devise::SessionsController#new as HTML
+Rendered shared/_flash.html.erb (0.3ms)
+Rendered devise/shared/_links.erb (1.5ms)
+Rendered devise/sessions/new.html.erb within layouts/application (6.2ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.3ms)
+Rendered layouts/_js_libs.html.erb (0.7ms)
+Rendered layouts/_head.html.erb (0.5ms)
+Rendered shared/_session_menu_bar.html.erb (0.6ms)
+Rendered shared/_nav_tabs.html.erb (0.8ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.2ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (1.3ms)
+Completed 200 OK in 93ms (Views: 92.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/password/new" for 127.0.0.1 at Tue Aug 07 12:23:39 +0530 2012
+  Processing by Devise::PasswordsController#new as HTML
+Rendered devise/passwords/new.html.erb within layouts/application (3.1ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.7ms)
+Rendered layouts/_head.html.erb (0.5ms)
+Rendered shared/_session_menu_bar.html.erb (0.6ms)
+Rendered shared/_nav_tabs.html.erb (0.8ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (2.7ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 15ms (Views: 14.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Tue Aug 07 12:23:54 +0530 2012
+  Processing by RegistrationsController#new as HTML
+Rendered users/_form.html.erb (2.6ms)
+Rendered registrations/new.html.erb within layouts/signup (4.0ms)
+Rendered layouts/_head.html.erb (0.9ms)
+Rendered shared/_session_menu_bar.html.erb (0.7ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (2.9ms)
+Rendered layouts/_footer.html.erb (1.0ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Tue Aug 07 12:30:17 +0530 2012
+  Processing by RegistrationsController#new as HTML
+Rendered users/_form.html.erb (1.7ms)
+Rendered registrations/new.html.erb within layouts/signup (2.9ms)
+Rendered layouts/_head.html.erb (0.6ms)
+Rendered shared/_session_menu_bar.html.erb (0.5ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (2.4ms)
+Rendered layouts/_footer.html.erb (1.0ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Tue Aug 07 12:30:19 +0530 2012
+  Processing by RegistrationsController#new as HTML
+Rendered users/_form.html.erb (1.6ms)
+Rendered registrations/new.html.erb within layouts/signup (2.8ms)
+Rendered layouts/_head.html.erb (0.5ms)
+Rendered shared/_session_menu_bar.html.erb (0.4ms)
+Rendered shared/_nav_tabs.html.erb (0.9ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (2.6ms)
+Rendered layouts/_footer.html.erb (1.0ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Tue Aug 07 12:30:19 +0530 2012
+  Processing by RegistrationsController#new as HTML
+Rendered users/_form.html.erb (2.9ms)
+Rendered registrations/new.html.erb within layouts/signup (4.8ms)
+Rendered layouts/_head.html.erb (1.5ms)
+Rendered shared/_session_menu_bar.html.erb (1.5ms)
+Rendered shared/_nav_tabs.html.erb (76.6ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (81.9ms)
+Rendered layouts/_footer.html.erb (1.2ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.7ms)
+Completed 200 OK in 92ms (Views: 91.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Tue Aug 07 12:30:20 +0530 2012
+  Processing by RegistrationsController#new as HTML
+Rendered users/_form.html.erb (4.2ms)
+Rendered registrations/new.html.erb within layouts/signup (6.1ms)
+Rendered layouts/_head.html.erb (0.6ms)
+Rendered shared/_session_menu_bar.html.erb (0.9ms)
+Rendered shared/_nav_tabs.html.erb (0.8ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.4ms)
+Rendered layouts/_footer.html.erb (1.1ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.6ms)
+Completed 200 OK in 14ms (Views: 13.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for 127.0.0.1 at Tue Aug 07 12:30:22 +0530 2012
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Tue Aug 07 12:31:30 +0530 2012
+  Processing by RegistrationsController#new as HTML
+Rendered users/_form.html.erb (2.9ms)
+Rendered registrations/new.html.erb within layouts/signup (5.4ms)
+Rendered layouts/_head.html.erb (0.6ms)
+Rendered shared/_session_menu_bar.html.erb (0.5ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (2.5ms)
+Rendered layouts/_footer.html.erb (1.1ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.3ms)
+Rendered layouts/_js_libs.html.erb (0.9ms)
+Completed 200 OK in 14ms (Views: 12.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Tue Aug 07 12:31:31 +0530 2012
+  Processing by RegistrationsController#new as HTML
+Rendered users/_form.html.erb (2.2ms)
+Rendered registrations/new.html.erb within layouts/signup (4.0ms)
+Rendered layouts/_head.html.erb (0.5ms)
+Rendered shared/_session_menu_bar.html.erb (0.5ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (2.3ms)
+Rendered layouts/_footer.html.erb (1.0ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Completed 200 OK in 13ms (Views: 10.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for 127.0.0.1 at Tue Aug 07 12:31:33 +0530 2012

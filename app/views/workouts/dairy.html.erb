@@ -55,11 +55,20 @@
 	<script type="text/javascript" src="/assets/jquery.js"></script>
 	<script type="text/javascript">
 		$(function() {
+		
+		  $('#wkDt2').datepicker({
+          onSelect:function(){
+            document.getElementById("dairy-form").submit();
+          }
+      });
+     
 			$( "#wkDt2" ).datepicker();
 			$( "#wkDt2" ).datepicker( {minDate: -93, maxDate: "+0D" });
 			$( "#wkDt2" ).datepicker("option", "dateFormat",'yy-mm-dd' );
 			$("#ui-datepicker-div").wrap('<div style="position:absolute;left:0;top:-3em;"></div>');
+			
 		});
+	  
 	  
     //to show food in light box
    /* function showfood(foodid)
@@ -226,7 +235,7 @@
 	}
 </script>
 
-<%=form_tag '/workouts/dairy' do %>
+<%=form_tag '/workouts/dairy', :id=>"dairy-form" do %>
 <div style="margin:1% 0 0 -3%;background:#fff;height:auto;width:98%;padding-right:1%;margin-bottom:2%;">
    <table width="95%" style="border-spacing:1px;border-collapse:separate;">
 			<tr>
@@ -236,8 +245,8 @@
 					<input class="today" type="text" style="margin-top:0;height:27px;margin-left:0;margin-right:0;" value="" id="wkDt2" name="date_on" />
 					<span class="button" onclick="nextDate()">&gt;</span>
 				</td>
-				<td>
-					<input type="submit" class="button" onclick="javascript:if(document.getElementById('wkDt2').value==''){alert('please enter a date (yyyy-mm-dd) format'); document.getElementById('wkDt2').focus(); return false;}" id="workoutsDate" style="height:30px;background-color:#0B2B42;color:#fff;" value=Submit /></td>
+			<!--	<td>
+					<input type="submit" class="button" onclick="javascript:if(document.getElementById('wkDt2').value==''){alert('please enter a date (yyyy-mm-dd) format'); document.getElementById('wkDt2').focus(); return false;}" id="workoutsDate" style="height:30px;background-color:#0B2B42;color:#fff;" value=Submit /></td>-->
 			</tr>
 		</table>
 		<hr/><br>
