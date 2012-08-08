@@ -10,7 +10,7 @@
 .ajaxAutoComplete{
 	background-color:#fff;
 	border:1px solid black;
-  width:60%;
+  width:63%;
   height:250px;
 	display:none;
 	position:absolute;
@@ -22,7 +22,7 @@
 .gridHeader{
 	background-color:#fff;
 	border:1px solid black;
-  width:60%;
+  width:63%;
   height:25px;
 	display:none;
 	position:absolute;
@@ -73,7 +73,7 @@ function getTdVal(mid)
 	vendorGridTable=document.getElementById('VendorGridTable');
 	document.getElementById("vendor-search-query").value=(vendorGridTable.rows[document.getElementById(mid).rowIndex].cells[0].innerHTML).split('-')[0];
 }
-    
+
 </script>
 
 <div id="nav-bar" style="margin-left:22.7em;margin-top:-4.4%;">
@@ -85,7 +85,7 @@ function getTdVal(mid)
   <form id="vendor-search" method='get' onsubmit="return false" action="">
   <div style="margin-right:1em;float:left;">
     <label style="font-size:14px;">Type</label><br>
-    <input type="text" id="vendor-search-query" name="filterQuery" value="<%=params[:filterQuery]%>" style="height:1.1em;width:12em;" placeholder="Enter vendor name..." />
+    <input type="text" id="vendor-search-query" name="filterQuery" value="<%=params[:filterQuery]%>" style="height:1.2em;width:12em;" placeholder="Enter vendor name..."/>
   </div>
   
     <div style="float:left;width:27%;">
@@ -130,7 +130,7 @@ function getTdVal(mid)
 </div>
 <div class="clear"></div>
 <div id="gridHeader" class="gridHeader">
-		  <span style="padding-left:3%;padding-right:22%;float:left;font-weight:bold;">Name</span><span  style="padding-right:22%;float:left;font-weight:bold;">Address</span><span style="padding-right:11%;float:left;font-weight:bold;">City</span><span style="padding-right:4%;float:left;font-weight:bold;">State</span><span  style="padding-right:3%;float:left;font-weight:bold;">Zipcode</span>
+		  <span style="padding-left:3%;padding-right:36%;float:left;font-weight:bold;">Name</span><span  style="padding-right:14%;float:left;font-weight:bold;">Address</span><span style="padding-right:10%;float:left;font-weight:bold;">City</span><span style="padding-right:2%;float:left;font-weight:bold;">State</span><span  style="float:left;font-weight:bold;">Zipcode</span>
 		</div>
 		<div id="ajaxAutoComplete" class="ajaxAutoComplete"></div>
 <br>
@@ -271,6 +271,14 @@ function getTdVal(mid)
 						//parse json data
 						obj=jQuery.parseJSON(data);
             $("#ajaxAutoComplete").html(dataGrid(obj));
+						
+						pos=$("#vendor-search-query").position(); //take postion of type textbox for set the postion of autogrid
+						$("#gridHeader").css("top",pos.top+32);
+						$("#gridHeader").css("left",pos.left);
+						
+						$("#ajaxAutoComplete").css("top",pos.top+59);
+						$("#ajaxAutoComplete").css("left",pos.left);
+						
 						$("#ajaxAutoComplete").css("display","block");
 						$("#gridHeader").css("display","block");
 					
@@ -294,7 +302,7 @@ $(".full").click(function(){
 
 function dataGrid(ojb)
 {
-	data="<table id='VendorGridTable' bgcolor='#E6E6E6' style='width:100%;'>";
+	data="<table id='VendorGridTable' bgcolor='#E6E6E6'>";
 	row="";
 	for(i=0;i<obj.length;i++)
 	{									
@@ -317,16 +325,11 @@ function tCols(colData)
 		}
 		if(j==0)
 		{
-				col+="<td style='width:42%;text-align:left;'> "+cols[j]+" </td>";
-		}
-		else if(j==1)
-		{
-			col+="<td style='width:48%;text-align:left;'> "+cols[j]+" </td>";
+				col+="<td style='width:22em;text-align:left;padding-right:3px;'> "+cols[j]+" </td>";
 		}
 		else
 		{
-			
-			col+="<td style='width:7%;text-align:left;'> "+cols[j]+" </td>";
+			col+="<td style='text-align:left;'>"+cols[j].toLowerCase().substring(0,25)+"</td>";
 		}
 	}
 	return col+"</tr>";

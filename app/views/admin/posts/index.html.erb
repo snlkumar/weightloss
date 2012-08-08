@@ -1,4 +1,12 @@
- 
+<script type="text/javascript">
+  <%content_for :js do%>
+    $("table tbody tr").mouseover(function(){
+      $(this).css("background-color","#ccc");
+    }).mouseout(function(){
+      $(this).css("background-color","");
+    });
+  <%end%>
+</script> 
   <br/>
   
   <h2 style="width:63em;">Posts</h2>
@@ -32,9 +40,9 @@
     </thead>
     <tbody>
       <% @posts.each do |post| %>
-        <tr class="<%= cycle('odd', '') %>">
+        <tr class="<%#= cycle('odd', '') %>">
           <td style="width:2em;"> <%= @num=@num+1 %></td>
-          <td style="width:28em;padding:.3em 1em;"><%= post.page_title %></td>
+          <td style="width:28em;padding:.3em 1em;"><%= link_to post.page_title, edit_admin_post_path(post) %></td>
           <td style="width:5em;"><%= post.category.try(:name) %></td>
           <td style="width:21em;"><%= truncate(strip_tags(post.body), :length => 50) %></td>
           <td class="actions">

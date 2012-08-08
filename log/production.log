@@ -19544,3 +19544,371 @@ Completed 200 OK in 13ms (Views: 10.3ms | ActiveRecord: 0.0ms)
 
 
 Started GET "/users/auth/facebook" for 127.0.0.1 at Tue Aug 07 12:31:33 +0530 2012
+
+
+Started GET "/forum/forums/1/topics/29" for 127.0.0.1 at Tue Aug 07 22:37:08 +0530 2012
+  Processing by Forem::TopicsController#show as HTML
+  Parameters: {"id"=>"29", "forum_id"=>"1"}
+Redirected to http://localhost:3000/forum/forums/1
+Completed 302 Found in 32ms
+
+
+Started GET "/forum/forums/1" for 127.0.0.1 at Tue Aug 07 22:37:08 +0530 2012
+  Processing by Forem::ForumsController#show as HTML
+  Parameters: {"id"=>"1"}
+Rendered vendor/gems/forem-0.1/app/views/forem/forums/_head.html.erb (3.2ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/topics/_topic_listing.html.erb (176.4ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/forums/show.html.erb within layouts/forem (251.8ms)
+Compiled application.css  (644ms)  (pid 2850)
+Compiled 960.css  (31ms)  (pid 2850)
+Compiled jquery-ui-1.8.9.custom.css  (119ms)  (pid 2850)
+Compiled jquery.selectBox.css  (5ms)  (pid 2850)
+Compiled forem/base/style.css  (7ms)  (pid 2850)
+Compiled HTML5.js  (4ms)  (pid 2850)
+Compiled modernizr-1.7.min.js  (89ms)  (pid 2850)
+Compiled respond.js  (1ms)  (pid 2850)
+Rendered layouts/_head.html.erb (957.5ms)
+Rendered shared/_overlay.html.erb (0.3ms)
+Rendered layouts/_forem_header.html.erb (29.2ms)
+Rendered shared/_flash.html.erb (0.3ms)
+Rendered layouts/_forem_footer.html.erb (2.3ms)
+Compiled application.js  (11ms)  (pid 2850)
+Compiled jquery.js  (29ms)  (pid 2850)
+Compiled jquery_ujs.js  (3ms)  (pid 2850)
+Compiled jquery-ui.js  (43ms)  (pid 2850)
+Compiled underscore.js  (1ms)  (pid 2850)
+Compiled highcharts.js  (2ms)  (pid 2850)
+Compiled jquery.labelify.js  (2ms)  (pid 2850)
+Compiled jquery.jeditable.js  (1ms)  (pid 2850)
+Compiled jquery.format.js  (1ms)  (pid 2850)
+Compiled jquery.tinyscrollbar.min.js  (0ms)  (pid 2850)
+Compiled flowplayer-3.2.6.min.js  (1ms)  (pid 2850)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.5ms)
+Rendered layouts/_js_libs.html.erb (200.0ms)
+Completed 200 OK in 1492ms (Views: 1432.0ms | ActiveRecord: 56.1ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Tue Aug 07 22:37:13 +0530 2012
+  Processing by Devise::SessionsController#new as HTML
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered devise/shared/_links.erb (1.3ms)
+Rendered devise/sessions/new.html.erb within layouts/application (5.4ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.7ms)
+Rendered layouts/_head.html.erb (0.5ms)
+Rendered shared/_session_menu_bar.html.erb (0.9ms)
+Rendered shared/_nav_tabs.html.erb (1.0ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (4.4ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (2.2ms)
+Completed 200 OK in 24ms (Views: 22.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at Tue Aug 07 22:37:19 +0530 2012
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"harish@idifysolutions.com", "remember_me"=>"0", "password"=>"[FILTERED]"}, "authenticity_token"=>"V1BBPGCIUO2UMMM6DahGvsIo5cgxz/z9jGGJgHdn8iM=", "utf8"=>"✓"}
+[paperclip] Saving attachments.
+Redirected to http://localhost:3000/users/harish-bhatt
+Completed 302 Found in 344ms
+
+
+Started GET "/users/harish-bhatt" for 127.0.0.1 at Tue Aug 07 22:37:20 +0530 2012
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"harish-bhatt"}
+Rendered users/show.html.erb within layouts/profile (1.4ms)
+Rendered layouts/_head.html.erb (1.1ms)
+Rendered shared/_session_menu_bar.html.erb (1.5ms)
+Rendered shared/_nav_tabs.html.erb (1.3ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (5.3ms)
+Rendered users/_details.html.erb (0.7ms)
+Rendered shared/_achievement_date.html.erb (5.1ms)
+Rendered shared/_achievement_sidebar_section.html.erb (20.0ms)
+Rendered shared/_nav_bar.html.erb (1.8ms)
+Rendered shared/_flash.html.erb (0.2ms)
+Rendered layouts/_footer.html.erb (0.8ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.7ms)
+Rendered shared/_weight_update_js.html.erb (3.9ms)
+Completed 200 OK in 162ms (Views: 155.5ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/.png" for 127.0.0.1 at Tue Aug 07 22:37:20 +0530 2012
+Served asset /.png - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/forum" for 127.0.0.1 at Tue Aug 07 22:37:28 +0530 2012
+  Processing by Forem::ForumsController#index as HTML
+Rendered vendor/gems/forem-0.1/app/views/forem/forums/index.html.erb within layouts/forem (82.5ms)
+Rendered layouts/_head.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_forem_header.html.erb (2.7ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_forem_footer.html.erb (1.1ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.6ms)
+Completed 200 OK in 91ms (Views: 69.8ms | ActiveRecord: 20.6ms)
+
+
+Started GET "/forum/forums/1" for 127.0.0.1 at Tue Aug 07 22:37:31 +0530 2012
+  Processing by Forem::ForumsController#show as HTML
+  Parameters: {"id"=>"1"}
+Rendered vendor/gems/forem-0.1/app/views/forem/forums/_head.html.erb (3.7ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/topics/_topic_listing.html.erb (143.5ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/forums/show.html.erb within layouts/forem (159.0ms)
+Rendered layouts/_head.html.erb (0.6ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_forem_header.html.erb (2.4ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_forem_footer.html.erb (0.9ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Completed 200 OK in 169ms (Views: 152.7ms | ActiveRecord: 12.6ms)
+
+
+Started GET "/forum/forums/1/topics/22" for 127.0.0.1 at Tue Aug 07 22:37:34 +0530 2012
+  Processing by Forem::TopicsController#show as HTML
+  Parameters: {"id"=>"22", "forum_id"=>"1"}
+Rendered vendor/gems/forem-0.1/app/views/forem/topics/_head.html.erb (2.4ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (1.0ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (2.1ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (0.4ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (0.4ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (0.4ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_post.html.erb (21.9ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/topics/show.html.erb within layouts/forem (34.2ms)
+Rendered layouts/_head.html.erb (0.5ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_forem_header.html.erb (2.1ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_forem_footer.html.erb (0.8ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.4ms)
+Completed 200 OK in 145ms (Views: 47.9ms | ActiveRecord: 91.9ms)
+
+
+Started GET "/system/users/avatars/50/medium/img_2359.jpg?1323625800" for 127.0.0.1 at Tue Aug 07 22:37:34 +0530 2012
+
+ActionController::RoutingError (No route matches [GET] "/system/users/avatars/50/medium/img_2359.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/forum/topics/22/posts/new?reply_to_id=89" for 127.0.0.1 at Tue Aug 07 22:37:37 +0530 2012
+  Processing by Forem::PostsController#new as HTML
+  Parameters: {"topic_id"=>"22", "reply_to_id"=>"89"}
+Rendered vendor/gems/forem-0.1/app/views/forem/forums/_head.html.erb (1.3ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_form.html.erb (3.1ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/new.html.erb within layouts/forem (113.4ms)
+Rendered layouts/_head.html.erb (0.6ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_forem_header.html.erb (2.4ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_forem_footer.html.erb (1.0ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.6ms)
+Completed 200 OK in 136ms (Views: 133.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/forum/topics/22/posts" for 127.0.0.1 at Tue Aug 07 22:37:43 +0530 2012
+  Processing by Forem::PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"V1BBPGCIUO2UMMM6DahGvsIo5cgxz/z9jGGJgHdn8iM=", "utf8"=>"✓", "post"=>{"text"=>"ggg", "reply_to_id"=>"89"}, "topic_id"=>"22"}
+Rendered post_reply_mailer/reply_notification.html.erb (2.2ms)
+
+Sent mail to harish33hari@gmail.com (8375ms)
+Rendered post_reply_mailer/reply_notification.html.erb (0.8ms)
+
+Sent mail to harish33hari@gmail.com (21492ms)
+Rendered post_reply_mailer/reply_notification.html.erb (2.1ms)
+
+Sent mail to harish33hari@gmail.com (7241ms)
+Rendered post_reply_mailer/reply_notification.html.erb (0.7ms)
+
+Sent mail to harish33hari@gmail.com (12761ms)
+Rendered post_reply_mailer/reply_notification.html.erb (0.8ms)
+
+Sent mail to harish33hari@gmail.com (6883ms)
+Rendered post_reply_mailer/reply_notification.html.erb (0.8ms)
+
+Sent mail to harish33hari@gmail.com (11364ms)
+Redirected to http://localhost:3000/forum/forums/1/topics/22
+Completed 302 Found in 68391ms
+
+
+Started GET "/forum/forums/1/topics/22" for 127.0.0.1 at Tue Aug 07 22:38:51 +0530 2012
+  Processing by Forem::TopicsController#show as HTML
+  Parameters: {"id"=>"22", "forum_id"=>"1"}
+Rendered vendor/gems/forem-0.1/app/views/forem/topics/_head.html.erb (1.9ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (0.7ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (0.4ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (0.4ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (0.4ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (0.4ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (0.4ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_post.html.erb (20.9ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/topics/show.html.erb within layouts/forem (28.4ms)
+Rendered layouts/_head.html.erb (0.5ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_forem_header.html.erb (2.1ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_forem_footer.html.erb (0.9ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.4ms)
+Completed 200 OK in 157ms (Views: 40.1ms | ActiveRecord: 110.0ms)
+
+
+Started GET "/forum/forums/1/topics/22" for 127.0.0.1 at Tue Aug 07 22:38:51 +0530 2012
+  Processing by Forem::TopicsController#show as HTML
+  Parameters: {"id"=>"22", "forum_id"=>"1"}
+Rendered vendor/gems/forem-0.1/app/views/forem/topics/_head.html.erb (1.8ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (0.7ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (0.4ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (0.4ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (0.4ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (0.4ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (0.4ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_post.html.erb (19.5ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/topics/show.html.erb within layouts/forem (24.9ms)
+Rendered layouts/_head.html.erb (0.5ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_forem_header.html.erb (2.0ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_forem_footer.html.erb (0.9ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.4ms)
+Completed 200 OK in 153ms (Views: 29.6ms | ActiveRecord: 107.4ms)
+
+
+Started GET "/assets/HTML5-59681dff3a572cf0b060fc7445d69b7b.js?_=1344359332257" for 127.0.0.1 at Tue Aug 07 22:38:52 +0530 2012
+Served asset /HTML5-59681dff3a572cf0b060fc7445d69b7b.js - 200 OK (0ms)
+
+
+Started GET "/assets/jquery.tinyscrollbar.min.js?_=1344359332325" for 127.0.0.1 at Tue Aug 07 22:38:52 +0530 2012
+Served asset /jquery.tinyscrollbar.min.js - 200 OK (4ms)
+
+
+Started GET "/assets/application-26486b853cd647e4f30ed9add831389e.js?_=1344359332358" for 127.0.0.1 at Tue Aug 07 22:38:52 +0530 2012
+Served asset /application-26486b853cd647e4f30ed9add831389e.js - 200 OK (1ms)
+
+
+Started GET "/system/users/avatars/50/medium/img_2359.jpg?1323625800" for 127.0.0.1 at Tue Aug 07 22:38:52 +0530 2012
+
+ActionController::RoutingError (No route matches [GET] "/system/users/avatars/50/medium/img_2359.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
