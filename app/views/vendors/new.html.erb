@@ -1,5 +1,5 @@
 <br/><br/><%=link_to "Back", :back, :style=>"margin-left: 30%;" %><br/>
-<<<<<<< HEAD
+
 <h1 style="margin-left:30%;background-color:#BDBDBD;padding:5px;width:68%;text-align:center;color:#FBF2EF;">Add Your Business</h1>
 <%= form_for @vendor, :url => vendors_path do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %><br>
@@ -7,20 +7,19 @@
   	<%= render '/shared/recaptcha' %><br/>
   </div>
   <div class="actions", style="margin-left: 30%;">
-=======
+
 <h1 style="margin-left:30%;background-color:#BDBDBD;padding:5px;width:42%;text-align:center;color:#FBF2EF;">Add Your Business</h1>
 <%= form_for @vendor, :url => vendors_path do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
   
   <%= render '/shared/recaptcha' %>
   <div class="actions">
->>>>>>> 6ac9d00daf65e1814c8fb58d864fe0796b929fcb
+
     <%= f.submit %>
   </div>
 <% end %>
  
-<<<<<<< HEAD
+
  <br/><br/><%=link_to "Back", :back, :style => "margin-left: 30%;"  %><br/>
-=======
  <br/><br/><%=link_to "Back", :back %><br/>
->>>>>>> 6ac9d00daf65e1814c8fb58d864fe0796b929fcb
+

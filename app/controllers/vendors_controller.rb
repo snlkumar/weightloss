@@ -54,11 +54,8 @@ class VendorsController < ApplicationController
   
   def new
     @vendor=Vendor.new
-<<<<<<< HEAD
  end
-=======
-  end
->>>>>>> 6ac9d00daf65e1814c8fb58d864fe0796b929fcb
+
   #end new
   
   def create

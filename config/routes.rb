@@ -29,16 +29,13 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
   mount Forem::Engine, :at => "/forum", :as => 'forum_engine'
   
   #new added routes
-<<<<<<< HEAD
-  resources :vendors
-=======
   resources :vendors do
     collection do
       post :search_decipher
       get :search_decipher
     end
   end
->>>>>>> 6ac9d00daf65e1814c8fb58d864fe0796b929fcb
+
   #end
   
   namespace :admin do

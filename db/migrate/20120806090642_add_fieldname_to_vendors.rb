@@ -2,7 +2,6 @@ class AddFieldnameToVendors < ActiveRecord::Migration
   def change
     add_column :vendors, :status, :string
     add_column :vendors, :reason, :string
-<<<<<<< HEAD
     add_column :vendors, :business_name, :string 
     add_column :vendors, :biography, :string 
     add_column :vendors, :cost, :float 
@@ -21,8 +20,6 @@ class AddFieldnameToVendors < ActiveRecord::Migration
     add_column :vendors, :license_states, :string
 
   end
-end 
-=======
-  end
+
 end
->>>>>>> 6ac9d00daf65e1814c8fb58d864fe0796b929fcb
+
