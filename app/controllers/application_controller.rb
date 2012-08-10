@@ -32,7 +32,6 @@ class ApplicationController < ActionController::Base
     
   
   # helper_method :current_user_session, :current_user, :user_signed_in?
->>>>>>> 6ac9d00daf65e1814c8fb58d864fe0796b929fcb
   
   before_filter :set_grid
 
