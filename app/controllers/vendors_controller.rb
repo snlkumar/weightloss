@@ -6,21 +6,40 @@ class VendorsController < ApplicationController
       end
       
       if params[:searchtype]=="all"
-        @data=Vendor.where(params[:filterBy]+" like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
+        @data=Vendor.where("vendor_name like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
         @cols="all"
       elsif params[:searchtype]=="restaurants"
         if params[:filterBy]=="zipcode"
           params[:filterBy]="zip"
         end
-        @data=Restaurant.where(params[:filterBy]+" like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
+        @data=Restaurant.where("name like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
         @cols="restaurants"
       else
-        @data=Vendor.where(params[:filterBy]+" like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
+        @data=Vendor.where("vendor_name like '%"+params[:filterQuery]+"%' and vendor_type='"+params[:searchtype]+"'").page(params[:page] || 1).per(30)
         @cols="other" 
       end
     end
   end
  #search method end
+ 
+ ##search for text field decipher
+  def search_decipher
+   
+   if params[:searchtype]=="restaurants"
+    @vendor = Restaurant.where("name like '%"+params[:filterQuery]+"%'")
+   elsif params[:searchtype]!="all"
+    @vendor = Vendor.where("vendor_name like '%"+params[:filterQuery]+"%' and vendor_type='"+params[:searchtype]+"'")
+   else
+    @vendor = Vendor.where("vendor_name like '%"+params[:filterQuery]+"%'")
+   end
+   
+    if @vendor.empty?
+      render :json => [{:value => 'No Results', :id => nil}].to_json
+    else
+			render :json => @vendor.map{|f| {:value => (params[:searchtype]=="restaurants" ? "#{f.name.capitalize} - Restaurant @$ #{f.address} @$ #{f.city} @$ #{f.state} @$ #{f.zip}" : "#{f.vendor_name.capitalize} - #{(f.vendor_type).split('_').join(' ')} @$ #{f.address1} @$ #{f.city} @$ #{f.state} @$ #{f.zipcode}"), :id => f.id} }.to_json
+    end
+  end
+ ##end
  
  def show
    if params[:id] && params[:restaurants]!=nil
@@ -35,7 +54,11 @@ class VendorsController < ApplicationController
   
   def new
     @vendor=Vendor.new
+<<<<<<< HEAD
  end
+=======
+  end
+>>>>>>> 6ac9d00daf65e1814c8fb58d864fe0796b929fcb
   #end new
   
   def create
@@ -74,4 +97,4 @@ class VendorsController < ApplicationController
   def edit
     @vendor=Vendor.find(params[:id])
   end
-end 
+end  

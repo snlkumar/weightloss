@@ -1,3 +1,12 @@
+<script type="text/javascript">
+  <%content_for :js do%>
+    $("table tbody tr").mouseover(function(){
+      $(this).css("background-color","#ccc");
+    }).mouseout(function(){
+      $(this).css("background-color","");
+    });
+  <%end%>
+</script>
 <div class="grid_16">
   <br/>
   
@@ -22,8 +31,8 @@
     </thead>
     <tbody>
       <% @users.each do |user| %>
-        <tr  class="<%= cycle('odd', '') %>">
-          <td><%= user.full_name %></td>
+        <tr  class="<%#= cycle('odd', '') %>" >   <!-- changes comment cycle -->
+          <td><%= link_to user.full_name, edit_admin_user_path(user) %></td>
           <td class="actions">
             <%= link_to 'Edit', edit_admin_user_path(user) %> | 
             <%= link_to 'Delete', admin_user_path(user), :confirm => 'Are you sure?', :method => :delete %>

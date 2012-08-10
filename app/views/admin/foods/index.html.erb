@@ -1,3 +1,12 @@
+<script type="text/javascript">
+  <%content_for :js do%>
+    $("table tbody tr").mouseover(function(){
+      $(this).css("background-color","#ccc");
+    }).mouseout(function(){
+      $(this).css("background-color","");
+    });
+  <%end%>
+</script>
 <div class="grid_16">
   
   
@@ -32,8 +41,8 @@
     </thead>
     <tbody>
       <% @foods.each do |food| %>
-        <tr  class="<%= cycle('odd', '') %>">
-          <td><%= food.name %></td>
+        <tr  class="<%#= cycle('odd', '') %>">
+          <td><%=link_to food.name, edit_admin_food_path(food) %></td>
           <td class="actions">
             <%= link_to 'Edit', edit_admin_food_path(food)%> | 
             <%= link_to 'Delete', [:admin, food], :confirm => 'Are you sure?', :method => :delete %>
@@ -56,5 +65,6 @@
       
     <% end %>
   </script>
-<%= link_to 'Back', admin_foods_path %><br/>
+  
+<br><%= link_to 'Back', admin_foods_path %><br/>
 </div>
