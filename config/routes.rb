@@ -7,7 +7,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
   end
 	#new added routes
 	match '/custom_foods/new/:name' => 'custom_foods#new'
-  match '/custom_foods/(:id)/update/(:food_name)' => "custom_foods#update_meal"
+	match '/custom_foods/(:id)/update/(:food_name)' => "custom_foods#update_meal"
 	match "/workouts/calorie" =>"workouts#calculate_calories"
 	#match '/workouts/getWorkout/'=> "workouts#getWorkout"
 	#match '/workouts/saveRoutines/'=> "workouts#saveRoutines"
@@ -28,8 +28,12 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
   get '/sign_in', :controller => "devise/sessions", :action => "new", :as => "sign_in"
   mount Forem::Engine, :at => "/forum", :as => 'forum_engine'
   
+  #new added routes
+  resources :vendors
+  #end
+  
   namespace :admin do
-    resources :exercises do
+	resources :exercises do
       collection do
         post :search
         get :search

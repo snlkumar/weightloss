@@ -1,0 +1,242 @@
+<html>
+<head>
+<style type="text/css">
+body {
+    margin: 0;
+    margin-bottom: 3em;
+    padding: 0;
+    font-family: "Gill sans", sans-serif;
+    background-color: #fff;
+    color: #000;
+}
+div#hd {
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+div#hd h1 {
+    margin-bottom: 0;
+    font-size: 1.5em;
+}
+div#ft {
+ /*   border-top: 2px solid black;*/
+}
+div#ft p {
+    width: 500px;
+    margin: 1em auto;
+}
+p#builtby {
+    font-size: 0.8em;
+    text-align: right;
+    color: #666;
+}
+div#bd {
+    position: relative;
+}
+div#gmap {
+    width: 390px;
+    height: 400px; /* If you change this don't forget to change the crosshair position to match */
+}
+div#crosshair {
+    position: absolute;
+    top: 145px;
+    height: 69px;
+    width: 29px;
+    display: block;
+    background: url(/assets/idify.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+</style>
+
+<script src="http://www.google.com/jsapi?key=AIzaSyCEbrCSygVYJYOywgMt4VDcTrkCLhV6v1I&sensor=true" type="text/javascript"></script>
+<!--
+<script src="http://www.google.com/jsapi?key=AIzaSyCEbrCSygVYJYOywgMt4VDcTrkCLhV6v1I&sensor=true" type="text/javascript">
+-->
+<!-- working but we r using this key in _form.html.erb
+<script src="http://www.google.com/jsapi?key=ABQIAAAAyYu8a7AdbfUctK3zwwu_2hQcSOGmiixENvtTH313vIgQ4X1LYBSDZW5glZCCklLKePmjvJ8YN_LpPA" type="text/javascript">
+-->
+
+</script>
+<script type="text/javascript">
+google.load('maps', '2'); // Load version 2 of the Maps API
+
+
+function updateLatLonFields(lat, lon) {
+    document.getElementById("lat").value = lat ;
+    document.getElementById("lon").value = lon;
+   // document.getElementById("wkt").innerHTML = 'POINT('+lon+' '+lat +')';
+}
+
+function getOSMMapType() {
+    // Usage: map.addMapType(getOSMMapType());
+    var copyright = new GCopyrightCollection(
+        '<a href="http://www.openstreetmap.org/">OpenStreetMap</a>'
+    );
+
+    var tileLayer = new GTileLayer(copyright, 1, 18, {
+        tileUrlTemplate: 'http://tile.openstreetmap.org/{Z}/{X}/{Y}.png', 
+        isPng: false
+    });
+
+    var mapType = new GMapType(
+        [tileLayer], G_NORMAL_MAP.getProjection(), 'OSM'
+    );
+    return mapType;
+}
+
+function showMap() {
+    window.gmap = new google.maps.Map2(document.getElementById('gmap'));
+    gmap.addControl(new google.maps.LargeMapControl());
+    gmap.addControl(new google.maps.MapTypeControl());
+    gmap.addMapType(getOSMMapType());    
+    gmap.enableContinuousZoom();
+   // gmap.enableScrollWheelZoom();
+    
+    var timer = null;
+    
+    google.maps.Event.addListener(gmap, "move", function() {
+        var center = gmap.getCenter();
+        updateLatLonFields(center.lat(), center.lng());
+        
+        // Wait a second, then figure out the timezone
+        if (timer) {
+            clearTimeout(timer);
+            timer = null;
+        }
+        timer = setTimeout(function() {
+            // Look up the timezone using geonames
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.src = "http://ws.geonames.org/timezoneJSON?lat=" + center.lat() +
+                "&lng=" + center.lng() ;
+           
+        }, 1500);
+        
+    });
+    google.maps.Event.addListener(gmap, "zoomend", function(oldZoom, newZoom) {
+       // document.getElementById("zoom").innerHTML = newZoom;
+    });
+    google.maps.Event.addDomListener(document.getElementById('crosshair'),
+        'dblclick', function() {
+            gmap.zoomIn();
+        }
+    );
+    
+    // Default view of the world
+  
+  
+         gmap.setCenter(
+                new google.maps.LatLng(20.593684,78.96288), 15
+            );
+
+    
+    /* If we have a best-guess for the user's location based on their IP, 
+       show a "zoom to my location" link */
+    if (google.loader.ClientLocation) {
+        var link = document.createElement('a');
+        link.onclick = function() {
+            gmap.setCenter(
+                new google.maps.LatLng(
+                    google.loader.ClientLocation.latitude,
+                    google.loader.ClientLocation.longitude
+                ), 8
+            );
+            return false;
+        }
+        link.href = '#'
+        link.appendChild(
+            document.createTextNode('Zoom to my location (by IP)')
+        );
+        var form = document.getElementById('geocodeForm');
+        var p = form.getElementsByTagName('p')[0];
+        p.appendChild(link);
+    }
+    
+    // Set up Geocoder
+    window.geocoder = new google.maps.ClientGeocoder();
+    
+    // If query string was provided, geocode it
+    var bits = window.location.href.split('?');
+    if (bits[1]) {
+        var location = decodeURI(bits[1]);
+        document.getElementById('geocodeInput').value = location;
+        geocode(location);
+    }
+    
+    // Set up the form
+    var geocodeForm = document.getElementById('geocodeForm');
+    
+}
+ function changeMe() {
+    //alert("sss");
+       //  document.getElementById('bd').style.visibility="visible";
+        // document.getElementById('ft').style.visibility="visible";
+        geocode(document.getElementById('country').value);
+        return false;
+    }
+function addMe()
+	{
+		
+		geocode(document.getElementById('country').value+","+ document.getElementById('vendor_state').value);	
+	}
+
+function addMe1()
+	{
+		
+		geocode(document.getElementById('country').value+","+ document.getElementById('vendor_state').value+","+ document.getElementById('vendor_city').value);	
+	}
+
+function addMe2()
+	{
+			
+		geocode(document.getElementById('country').value+","+ document.getElementById('vendor_state').value+","+ document.getElementById('vendor_city').value+","+ document.getElementById('vendor_zipcode').value);	
+	}
+
+
+var accuracyToZoomLevel = [
+    1,  // 0 - Unknown location
+    5,  // 1 - Country
+    6,  // 2 - Region (state, province, prefecture, etc.)
+    8,  // 3 - Sub-region (county, municipality, etc.)
+    11, // 4 - Town (city, village)
+    13, // 5 - Post code (zip code)
+    15, // 6 - Street
+    16, // 7 - Intersection
+    17, // 8 - Address
+    17  // 9 - Premise
+];
+
+function geocodeComplete(result) {
+    if (result.Status.code != 200) {
+        alert('Sorry"' + result.name + '" not Found');
+        return;
+    }
+    var placemark = result.Placemark[0]; // Only use first result
+    var accuracy = placemark.AddressDetails.Accuracy;
+    var zoomLevel = accuracyToZoomLevel[accuracy] || 1;
+    var lon = placemark.Point.coordinates[0];
+    var lat = placemark.Point.coordinates[1];
+    gmap.setCenter(new google.maps.LatLng(lat, lon), zoomLevel);
+}
+
+function geocode(location) {
+    geocoder.getLocations(location, geocodeComplete);
+}
+
+google.setOnLoadCallback(showMap);
+</script>
+</head>
+
+
+
+    
+    <div id="bd" >
+        <div id="gmap"></div>
+        <div id="crosshair"></div>
+    </div>
+   
+   
+
+
+</html>
+				

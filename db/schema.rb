@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120724103007) do
+ActiveRecord::Schema.define(:version => 20120806090642) do
 
   create_table "categories", :force => true do |t|
     t.integer "parent_id"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20120724103007) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.text     "detailed"
+    t.text     "detailes"
   end
 
   create_table "foods", :force => true do |t|
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(:version => 20120724103007) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.text     "detailed"
+    t.text     "detailes"
   end
 
   create_table "forem_forums", :force => true do |t|
@@ -313,7 +313,7 @@ ActiveRecord::Schema.define(:version => 20120724103007) do
     t.string   "city"
     t.string   "state"
     t.string   "zip"
-    t.string   "food"
+    t.string   "restaurent_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -468,6 +468,24 @@ ActiveRecord::Schema.define(:version => 20120724103007) do
     t.string   "custom_field4"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status"
+    t.string   "reason"
+    t.string   "business_name"
+    t.string   "biography"
+    t.float    "cost"
+    t.float    "average_cost"
+    t.string   "accept_credit_card"
+    t.string   "accept_insurance"
+    t.float    "qualifications"
+    t.string   "certifications"
+    t.string   "school"
+    t.integer  "year_graduated"
+    t.string   "licence_no"
+    t.string   "specialities"
+    t.string   "age"
+    t.string   "gender"
+    t.string   "year"
+    t.string   "license_states"
   end
 
   create_table "weights", :force => true do |t|

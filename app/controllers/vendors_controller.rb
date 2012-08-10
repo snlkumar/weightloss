@@ -34,17 +34,44 @@ class VendorsController < ApplicationController
   #end show
   
   def new
-  end
+    @vendor=Vendor.new
+ end
   #end new
   
   def create
+   @vendor=Vendor.new(params[:vendor])
+   
+   check=verify_recaptcha(request.remote_ip, params)
+
+   if check[:status] == 'false'
+	  @notice = "captcha incorrect"
+    render :action => "new"
+    return
+	 else
+     if @vendor.save
+        redirect_to( vendor_path, :notice => 'vendor was successfully created.')
+     else
+       render :action => "new"
+     end
+   end
   end
   #end create
   
   def update
+  @vendor= Vendor.find(params[:id])
+
+    respond_to do |format|
+      if @vedor.update_attributes(params[:vendor])
+        format.html { redirect_to(vendors_path, :notice => 'Vendor was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @vendor.errors, :status => :unprocessable_entity }
+      end
+    end
   end
-  #end
   
   def edit
+    @vendor=Vendor.find(params[:id])
   end
 end 
