@@ -470,22 +470,6 @@ ActiveRecord::Schema.define(:version => 20120806090642) do
     t.datetime "updated_at"
     t.string   "status"
     t.string   "reason"
-    t.string   "business_name"
-    t.string   "biography"
-    t.float    "cost"
-    t.float    "average_cost"
-    t.string   "accept_credit_card"
-    t.string   "accept_insurance"
-    t.float    "qualifications"
-    t.string   "certifications"
-    t.string   "school"
-    t.integer  "year_graduated"
-    t.string   "licence_no"
-    t.string   "specialities"
-    t.string   "age"
-    t.string   "gender"
-    t.string   "year"
-    t.string   "license_states"
   end
 
   create_table "weights", :force => true do |t|

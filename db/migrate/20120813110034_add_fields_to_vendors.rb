@@ -1,7 +1,5 @@
-class AddFieldnameToVendors < ActiveRecord::Migration
+class AddFieldsToVendors < ActiveRecord::Migration
   def change
-    add_column :vendors, :status, :string
-    add_column :vendors, :reason, :string
     add_column :vendors, :business_name, :string 
     add_column :vendors, :biography, :string 
     add_column :vendors, :cost, :float 
@@ -18,8 +16,24 @@ class AddFieldnameToVendors < ActiveRecord::Migration
     add_column :vendors, :gender, :string
     add_column :vendors, :year, :string 
     add_column :vendors, :license_states, :string
-
   end
-
+  
+  def down
+    remove_column :vendors, :business_name
+    remove_column :vendors, :biography
+    remove_column :vendors, :cost
+    remove_column :vendors, :average_cost
+    remove_column :vendors, :accept_credit_card
+    remove_column :vendors, :accept_insurance
+    remove_column :vendors, :qualifications
+    remove_column :vendors, :certifications
+    remove_column :vendors, :school
+    remove_column :vendors, :year_graduated
+    remove_column :vendors, :licence_no
+    remove_column :vendors, :specialities
+    remove_column :vendors, :age
+    remove_column :vendors, :gender
+    remove_column :vendors, :year
+    remove_column :vendors, :license_states
+  end
 end
-
