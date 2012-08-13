@@ -22,9 +22,17 @@
             
               <div class="profile-avatar avatar"><%= user_avatar_image(@user, :profile) %></div>
               <%= link_to 'Edit', user_edit_personal_info_path(current_user), :id => 'edit-profile', :class => 'outlined-fade', :title => 'Edit your profile' %>
-            
+                        
               <div class="clear">&nbsp;</div>
-            
+              <div style="margin-left:8%;">
+                <p><b>Before measurements</b></p>
+                <%= image_tag current_user.photobefore.url(:medium) %>
+              </div> 
+              <div style="margin-left:8%;">
+                <p><b>After measurements</b></p>
+                <%= image_tag current_user.photoafter.url(:medium) %>
+              </div> 
+              
               <%= render :partial => 'details', :locals => {:user => @user} %>
               <br/>
             </div>

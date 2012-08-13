@@ -8,7 +8,7 @@ class PostReplyMailer < ActionMailer::Base
     @users = Forem::Topic.first.posts.map{|p| p.user }.uniq
     @users.each do |user|
     @user = user
-    mail(:to =>@user.email, :subject => 'Forum reply on MyWeightWorld')
+    #mail(:to =>@user.email, :subject => 'Forum reply on MyWeightWorld')
     end
   end
 =end
