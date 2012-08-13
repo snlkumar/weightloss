@@ -9,18 +9,20 @@
   <span class="clear"></span>
 </p>
 
+<!-- new change to remove password field for admin
 <p>
-  <%= f.label :password, %Q{Password  <span class="help-text">(Minimum of 6 Characters)</span> }.html_safe %><br/>
-  <%= f.password_field :password, :placeholder => "Your password", :class => 'grid_6 alpha' %>
+  <%#= f.label :password, %Q{Password  <span class="help-text">(Minimum of 6 Characters)</span> }.html_safe %><br/>
+  <%#= f.password_field :password, :placeholder => "Your password", :class => 'grid_6 alpha' %>
   <span class="clear"></span>
 </p>
 
 <p>
-  <%= f.label :password_confirmation, %Q{ Confirm Password <span class="help-text">(Minimum of 6 Characters)</span> }.html_safe %><br/>
-  <%= f.password_field :password_confirmation, :placeholder => "Confirm Your Password", :class => 'grid_6 alpha' %>
+  <%#= f.label :password_confirmation, %Q{ Confirm Password <span class="help-text">(Minimum of 6 Characters)</span> }.html_safe %><br/>
+  <%#= f.password_field :password_confirmation, :placeholder => "Confirm Your Password", :class => 'grid_6 alpha' %>
   <span class="clear"></span>
 </p>
 
+-->
 <p>
   <%= f.label :email, %Q{ Email <span class="help-text">(Note: Email will not be publicly displayed.)</span> }.html_safe %><br/>
   <%= f.text_field :email, :placeholder => "Ex: email@address.com", :class => 'grid_6 alpha' %>

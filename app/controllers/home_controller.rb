@@ -20,4 +20,9 @@ class HomeController < ApplicationController
   def about
     
   end
+
+  #new added method for refreshing window for remove iframe
+  def refresh_window
+  end
+  #end
 end

@@ -39,9 +39,20 @@ class Admin::UsersController < Admin::BaseController
   
   def update
     @user = User.find(params[:id])
-    
     if @user.update_attributes(params[:user])
-      redirect_to(admin_users_path, :notice => 'User was successfully updated.')
+      #new code for admin access
+      #if same user update admin access so
+      if current_user.id==@user.id
+          #check updated user admin or not
+         if @user.admin==false
+           sign_out(@user)
+           redirect_to("/refresh_window")
+         else
+          redirect_to(admin_users_path, :notice => 'User was successfully updated.')
+         end
+      else
+        redirect_to(admin_users_path, :notice => 'User was successfully updated.')
+      end
     else
       render :action => "edit"
     end

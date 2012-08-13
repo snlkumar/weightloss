@@ -14,6 +14,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 	match '/meals/data/'=>'meals#data'
 	match '/workouts/data/'=>'workouts#data'
 	match '/workouts/dairy/(:id)'=>'workouts#dairy',		:as => 'dairy_workout'
+	match '/refresh_window'=> 'home#refresh_window'
 	#match '/workouts/dairy/:exercise_food/:id'=>'workouts#dairy',		:as => 'dairy_workout'
 	#match '/foods/search/' =>'foods#search'
 

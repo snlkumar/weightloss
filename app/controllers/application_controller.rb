@@ -61,7 +61,7 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
-  
+    
   def set_grid
     @grid = false
     @show_overlay = false
