@@ -154,6 +154,8 @@
 				month="0"+month;
 			}
 			document.getElementById("wkDt2").value=yesterday.getFullYear()+"-"+month+"-"+day;
+      document.getElementById("prevDate").onclick=null;
+			document.getElementById("dairy-form").submit();
 		}
 		function currentDate()
 		{
@@ -170,17 +172,21 @@
 				month="0"+month;
 			}
 			<% 
-					if !@workouts[0].nil? || !@meals[0].nil?
-						trained=(@workouts[0])?(@workouts[0].trained_on).strftime("%Y-%m-%d") : (@meals[0].ate_on).strftime("%Y-%m-%d")
-					else
-						trained="Today"
-					end
+				#	if !@workouts[0].nil? || !@meals[0].nil?
+				#		trained=(@workouts[0])?(@workouts[0].trained_on).strftime("%Y-%m-%d") : (@meals[0].ate_on).strftime("%Y-%m-%d")
+				#	else
+				#		trained="Today"
+				#	end
 					
-					if trained==DateTime.now.strftime("%Y-%m-%d")
-						trained="Today"
+				#	if trained==DateTime.now.strftime("%Y-%m-%d")
+				#		trained="Today"
+				#	end
+					
+					if params[:date_on]==nil || params[:date_on]==""
+					  params[:date_on]="Today"
 					end
 			%>
-			var dt="<%=trained%>";
+			var dt="<%=params[:date_on]%>";
 			document.getElementById("wkDt2").value=dt;
 			currentDt=today.getFullYear()+"-"+month+"-"+day;
 		}
@@ -216,6 +222,8 @@
 				month="0"+month;
 			}
 			document.getElementById("wkDt2").value=tomorrow.getFullYear()+"-"+month+"-"+day;
+      document.getElementById("nextDate").onclick=null; //remove click event for user not click next button before pageload after page load this event automatically come again
+			document.getElementById("dairy-form").submit();
 		}
    /* function showFoodOrExerciseDetail()
     {
@@ -241,9 +249,9 @@
 			<tr>
 				<td><h1 style="margin:1% 0;padding:0;">Your Diary for: </h1></td>
 				<td width="40%">
-					<span class="button" onclick="prevDate()">&lt;</span>
+					<span class="button" id="prevDate" onclick="prevDate()">&lt;</span>
 					<input class="today" type="text" style="margin-top:0;height:27px;margin-left:0;margin-right:0;" value="" id="wkDt2" name="date_on" />
-					<span class="button" onclick="nextDate()">&gt;</span>
+					<span class="button" id="nextDate" onclick="nextDate()">&gt;</span>
 				</td>
 			<!--	<td>
 					<input type="submit" class="button" onclick="javascript:if(document.getElementById('wkDt2').value==''){alert('please enter a date (yyyy-mm-dd) format'); document.getElementById('wkDt2').focus(); return false;}" id="workoutsDate" style="height:30px;background-color:#0B2B42;color:#fff;" value=Submit /></td>-->

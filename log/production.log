@@ -22355,3 +22355,1090 @@ Migrating to CreateRestaurants (20120724074039)
 Migrating to AddColumnDetailedToExercise (20120724102955)
 Migrating to AddColumnDetailedToFood (20120724103007)
 Migrating to AddFieldsToVendors (20120813110034)
+
+
+Started POST "/workouts/dairy" for 127.0.0.1 at Tue Aug 14 11:52:36 +0530 2012
+  Processing by WorkoutsController#dairy as HTML
+  Parameters: {"utf8"=>"✓", "date_on"=>"2012-07-29", "authenticity_token"=>"eyKOlXL9xKoj9Ky9xyn4pD4euqWjMi0hzAiN2XglW6U="}
+Completed 401 Unauthorized in 4ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Tue Aug 14 11:52:36 +0530 2012
+  Processing by Devise::SessionsController#new as HTML
+Rendered shared/_flash.html.erb (0.3ms)
+Rendered devise/shared/_links.erb (1.5ms)
+Rendered devise/sessions/new.html.erb within layouts/application (8.9ms)
+Compiled application.js  (101ms)  (pid 3555)
+Compiled jquery.js  (27ms)  (pid 3555)
+Compiled jquery_ujs.js  (3ms)  (pid 3555)
+Compiled jquery-ui.js  (17ms)  (pid 3555)
+Compiled underscore.js  (1ms)  (pid 3555)
+Compiled highcharts.js  (2ms)  (pid 3555)
+Compiled jquery.labelify.js  (0ms)  (pid 3555)
+Compiled jquery.jeditable.js  (1ms)  (pid 3555)
+Compiled jquery.format.js  (1ms)  (pid 3555)
+Compiled jquery.tinyscrollbar.min.js  (0ms)  (pid 3555)
+Compiled flowplayer-3.2.6.min.js  (1ms)  (pid 3555)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.6ms)
+Rendered layouts/_js_libs.html.erb (256.9ms)
+Compiled application.css  (295ms)  (pid 3555)
+Compiled 960.css  (50ms)  (pid 3555)
+Compiled jquery-ui-1.8.9.custom.css  (132ms)  (pid 3555)
+Compiled jquery.selectBox.css  (5ms)  (pid 3555)
+Compiled forem/base/style.css  (19ms)  (pid 3555)
+Compiled HTML5.js  (15ms)  (pid 3555)
+Compiled modernizr-1.7.min.js  (7ms)  (pid 3555)
+Compiled respond.js  (1ms)  (pid 3555)
+Rendered layouts/_head.html.erb (552.7ms)
+Rendered shared/_session_menu_bar.html.erb (1.0ms)
+Rendered shared/_nav_tabs.html.erb (1.0ms)
+Rendered shared/_overlay.html.erb (0.2ms)
+Rendered layouts/_header.html.erb (6.5ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (1.5ms)
+Completed 200 OK in 881ms (Views: 841.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at Tue Aug 14 11:52:43 +0530 2012
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"password"=>"[FILTERED]", "remember_me"=>"0", "email"=>"harish@idifysolutions.com"}, "authenticity_token"=>"Tj/ppKuW1jCZKDeK2J0GnpxtLrKWujQNIgS+vUYsNAA="}
+[paperclip] Saving attachments.
+Redirected to http://localhost:3000/users/harish-bhatt
+Completed 302 Found in 272ms
+
+
+Started GET "/users/harish-bhatt" for 127.0.0.1 at Tue Aug 14 11:52:44 +0530 2012
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"harish-bhatt"}
+Rendered users/show.html.erb within layouts/profile (0.6ms)
+Rendered layouts/_head.html.erb (0.7ms)
+Rendered shared/_session_menu_bar.html.erb (0.9ms)
+Rendered shared/_nav_tabs.html.erb (0.8ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.1ms)
+Rendered users/_details.html.erb (2.1ms)
+Rendered shared/_achievement_date.html.erb (10.0ms)
+Rendered shared/_achievement_sidebar_section.html.erb (52.1ms)
+Rendered shared/_nav_bar.html.erb (1.9ms)
+Rendered shared/_flash.html.erb (0.2ms)
+Rendered layouts/_footer.html.erb (1.0ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.7ms)
+Rendered layouts/_js_libs.html.erb (1.6ms)
+Rendered shared/_weight_update_js.html.erb (25.3ms)
+Completed 200 OK in 160ms (Views: 154.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/system/users/photoafters/129/medium/Screen_Shot_2012-04-30_at_9.38.14_AM.png?1342621427" for 127.0.0.1 at Tue Aug 14 11:52:44 +0530 2012
+
+ActionController::RoutingError (No route matches [GET] "/system/users/photoafters/129/medium/Screen_Shot_2012-04-30_at_9.38.14_AM.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/system/users/photobefores/129/medium/Screen_Shot_2012-04-30_at_9.39.18_AM.png?1342621426" for 127.0.0.1 at Tue Aug 14 11:52:45 +0530 2012
+
+ActionController::RoutingError (No route matches [GET] "/system/users/photobefores/129/medium/Screen_Shot_2012-04-30_at_9.39.18_AM.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
+
+
+Started GET "/assets/.png" for 127.0.0.1 at Tue Aug 14 11:52:45 +0530 2012
+Served asset /.png - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/users/harish-bhatt" for 127.0.0.1 at Tue Aug 14 11:52:54 +0530 2012
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"harish-bhatt"}
+Rendered users/show.html.erb within layouts/profile (0.3ms)
+Rendered layouts/_head.html.erb (0.9ms)
+Rendered shared/_session_menu_bar.html.erb (1.2ms)
+Rendered shared/_nav_tabs.html.erb (0.9ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (4.1ms)
+Rendered users/_details.html.erb (0.3ms)
+Rendered shared/_achievement_date.html.erb (2.8ms)
+Rendered shared/_achievement_sidebar_section.html.erb (6.7ms)
+Rendered shared/_nav_bar.html.erb (1.1ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (0.7ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Rendered shared/_weight_update_js.html.erb (0.6ms)
+Completed 200 OK in 22ms (Views: 19.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/system/users/photobefores/129/medium/Screen_Shot_2012-04-30_at_9.39.18_AM.png?1342621426" for 127.0.0.1 at Tue Aug 14 11:52:54 +0530 2012
+
+ActionController::RoutingError (No route matches [GET] "/system/users/photobefores/129/medium/Screen_Shot_2012-04-30_at_9.39.18_AM.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
+
+
+Started GET "/system/users/photoafters/129/medium/Screen_Shot_2012-04-30_at_9.38.14_AM.png?1342621427" for 127.0.0.1 at Tue Aug 14 11:52:54 +0530 2012
+
+ActionController::RoutingError (No route matches [GET] "/system/users/photoafters/129/medium/Screen_Shot_2012-04-30_at_9.38.14_AM.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
+
+
+Started GET "/system/users/photobefores/129/medium/Screen_Shot_2012-04-30_at_9.39.18_AM.png?1342621426" for 127.0.0.1 at Tue Aug 14 11:52:54 +0530 2012
+
+ActionController::RoutingError (No route matches [GET] "/system/users/photobefores/129/medium/Screen_Shot_2012-04-30_at_9.39.18_AM.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/system/users/photoafters/129/medium/Screen_Shot_2012-04-30_at_9.38.14_AM.png?1342621427" for 127.0.0.1 at Tue Aug 14 11:52:54 +0530 2012
+
+ActionController::RoutingError (No route matches [GET] "/system/users/photoafters/129/medium/Screen_Shot_2012-04-30_at_9.38.14_AM.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/assets/.png" for 127.0.0.1 at Tue Aug 14 11:52:54 +0530 2012
+Served asset /.png - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/users/harish-bhatt" for 127.0.0.1 at Tue Aug 14 11:53:00 +0530 2012
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"harish-bhatt"}
+Rendered users/show.html.erb within layouts/profile (0.1ms)
+Rendered layouts/_head.html.erb (0.6ms)
+Rendered shared/_session_menu_bar.html.erb (0.7ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (2.6ms)
+Rendered users/_details.html.erb (0.4ms)
+Rendered shared/_achievement_date.html.erb (2.7ms)
+Rendered shared/_achievement_sidebar_section.html.erb (6.5ms)
+Rendered shared/_nav_bar.html.erb (1.2ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (0.7ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (88.0ms)
+Rendered layouts/_js_libs.html.erb (88.5ms)
+Rendered shared/_weight_update_js.html.erb (0.9ms)
+Completed 200 OK in 107ms (Views: 105.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/system/users/photobefores/129/medium/Screen_Shot_2012-04-30_at_9.39.18_AM.png?1342621426" for 127.0.0.1 at Tue Aug 14 11:53:00 +0530 2012
+
+ActionController::RoutingError (No route matches [GET] "/system/users/photobefores/129/medium/Screen_Shot_2012-04-30_at_9.39.18_AM.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/system/users/photoafters/129/medium/Screen_Shot_2012-04-30_at_9.38.14_AM.png?1342621427" for 127.0.0.1 at Tue Aug 14 11:53:00 +0530 2012
+
+ActionController::RoutingError (No route matches [GET] "/system/users/photoafters/129/medium/Screen_Shot_2012-04-30_at_9.38.14_AM.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/system/users/photoafters/129/medium/Screen_Shot_2012-04-30_at_9.38.14_AM.png?1342621427" for 127.0.0.1 at Tue Aug 14 11:53:00 +0530 2012
+
+ActionController::RoutingError (No route matches [GET] "/system/users/photoafters/129/medium/Screen_Shot_2012-04-30_at_9.38.14_AM.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/system/users/photobefores/129/medium/Screen_Shot_2012-04-30_at_9.39.18_AM.png?1342621426" for 127.0.0.1 at Tue Aug 14 11:53:00 +0530 2012
+
+ActionController::RoutingError (No route matches [GET] "/system/users/photobefores/129/medium/Screen_Shot_2012-04-30_at_9.39.18_AM.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/.png" for 127.0.0.1 at Tue Aug 14 11:53:00 +0530 2012
+Served asset /.png - 404 Not Found (4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/workouts/dairy" for 127.0.0.1 at Tue Aug 14 11:53:05 +0530 2012
+  Processing by WorkoutsController#dairy as HTML
+Rendered workouts/dairy.html.erb within layouts/tracking (2.7ms)
+Rendered layouts/_head.html.erb (0.6ms)
+Rendered shared/_session_menu_bar.html.erb (0.9ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.0ms)
+Rendered shared/_nav_bar.html.erb (1.1ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (0.7ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.9ms)
+Rendered shared/_weight_update_js.html.erb (1.3ms)
+Completed 200 OK in 53ms (Views: 29.2ms | ActiveRecord: 21.0ms)
+
+
+Started GET "/assets/.png" for 127.0.0.1 at Tue Aug 14 11:53:05 +0530 2012
+Served asset /.png - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started POST "/workouts/dairy" for 127.0.0.1 at Tue Aug 14 11:53:11 +0530 2012
+  Processing by WorkoutsController#dairy as HTML
+  Parameters: {"utf8"=>"✓", "date_on"=>"2012-08-13", "authenticity_token"=>"Tj/ppKuW1jCZKDeK2J0GnpxtLrKWujQNIgS+vUYsNAA="}
+Rendered workouts/dairy.html.erb within layouts/tracking (0.6ms)
+Rendered layouts/_head.html.erb (0.6ms)
+Rendered shared/_session_menu_bar.html.erb (0.8ms)
+Rendered shared/_nav_tabs.html.erb (0.8ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.0ms)
+Rendered shared/_nav_bar.html.erb (1.2ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (0.7ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Rendered shared/_weight_update_js.html.erb (0.9ms)
+Completed 200 OK in 17ms (Views: 14.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/.png" for 127.0.0.1 at Tue Aug 14 11:53:12 +0530 2012
+Served asset /.png - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
+
+
+Started POST "/workouts/dairy" for 127.0.0.1 at Tue Aug 14 11:53:14 +0530 2012
+  Processing by WorkoutsController#dairy as HTML
+  Parameters: {"utf8"=>"✓", "date_on"=>"2012-08-12", "authenticity_token"=>"Tj/ppKuW1jCZKDeK2J0GnpxtLrKWujQNIgS+vUYsNAA="}
+Rendered workouts/dairy.html.erb within layouts/tracking (0.5ms)
+Rendered layouts/_head.html.erb (0.5ms)
+Rendered shared/_session_menu_bar.html.erb (1.8ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.8ms)
+Rendered shared/_nav_bar.html.erb (1.4ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (0.6ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Rendered shared/_weight_update_js.html.erb (0.6ms)
+Completed 200 OK in 23ms (Views: 14.3ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/assets/.png" for 127.0.0.1 at Tue Aug 14 11:53:14 +0530 2012
+Served asset /.png - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
+
+
+Started POST "/workouts/dairy" for 127.0.0.1 at Tue Aug 14 11:53:15 +0530 2012
+  Processing by WorkoutsController#dairy as HTML
+  Parameters: {"utf8"=>"✓", "date_on"=>"2012-08-11", "authenticity_token"=>"Tj/ppKuW1jCZKDeK2J0GnpxtLrKWujQNIgS+vUYsNAA="}
+Rendered workouts/dairy.html.erb within layouts/tracking (0.5ms)
+Rendered layouts/_head.html.erb (0.6ms)
+Rendered shared/_session_menu_bar.html.erb (0.9ms)
+Rendered shared/_nav_tabs.html.erb (0.9ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.2ms)
+Rendered shared/_nav_bar.html.erb (1.3ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (0.8ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.7ms)
+Rendered shared/_weight_update_js.html.erb (0.8ms)
+Completed 200 OK in 116ms (Views: 110.9ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/assets/.png" for 127.0.0.1 at Tue Aug 14 11:53:16 +0530 2012
+Served asset /.png - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/assets/ui-bg_glass_65_ffffff_1x400-bc675428772c4f3accc5b2db414bacbc.png" for 127.0.0.1 at Tue Aug 14 11:53:17 +0530 2012
+Served asset /ui-bg_glass_65_ffffff_1x400-bc675428772c4f3accc5b2db414bacbc.png - 200 OK (3ms)
+
+
+Started POST "/workouts/dairy" for 127.0.0.1 at Tue Aug 14 11:53:22 +0530 2012
+  Processing by WorkoutsController#dairy as HTML
+  Parameters: {"utf8"=>"✓", "date_on"=>"2012-08-02", "authenticity_token"=>"Tj/ppKuW1jCZKDeK2J0GnpxtLrKWujQNIgS+vUYsNAA="}
+Rendered workouts/dairy.html.erb within layouts/tracking (0.6ms)
+Rendered layouts/_head.html.erb (0.6ms)
+Rendered shared/_session_menu_bar.html.erb (1.1ms)
+Rendered shared/_nav_tabs.html.erb (1.0ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (4.6ms)
+Rendered shared/_nav_bar.html.erb (1.6ms)
+Rendered shared/_flash.html.erb (0.2ms)
+Rendered layouts/_footer.html.erb (0.8ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.6ms)
+Rendered shared/_weight_update_js.html.erb (0.7ms)
+Completed 200 OK in 29ms (Views: 17.4ms | ActiveRecord: 9.2ms)
+
+
+Started GET "/assets/ui-icons_ef8c08_256x240-e6de0668f0402f8684e87abddd753114.png" for 127.0.0.1 at Tue Aug 14 11:53:22 +0530 2012
+Served asset /ui-icons_ef8c08_256x240-e6de0668f0402f8684e87abddd753114.png - 200 OK (1ms)
+
+
+Started GET "/assets/.png" for 127.0.0.1 at Tue Aug 14 11:53:23 +0530 2012
+Served asset /.png - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started POST "/workouts/dairy" for 127.0.0.1 at Tue Aug 14 11:53:27 +0530 2012
+  Processing by WorkoutsController#dairy as HTML
+  Parameters: {"utf8"=>"✓", "date_on"=>"2012-07-23", "authenticity_token"=>"Tj/ppKuW1jCZKDeK2J0GnpxtLrKWujQNIgS+vUYsNAA="}
+Rendered workouts/dairy.html.erb within layouts/tracking (0.7ms)
+Rendered layouts/_head.html.erb (0.9ms)
+Rendered shared/_session_menu_bar.html.erb (1.1ms)
+Rendered shared/_nav_tabs.html.erb (1.5ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (5.1ms)
+Rendered shared/_nav_bar.html.erb (1.8ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (1.3ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (1.3ms)
+Rendered shared/_weight_update_js.html.erb (1.1ms)
+Completed 200 OK in 29ms (Views: 21.7ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/assets/.png" for 127.0.0.1 at Tue Aug 14 11:53:28 +0530 2012
+Served asset /.png - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
+
+
+Started POST "/workouts/dairy" for 127.0.0.1 at Tue Aug 14 11:53:30 +0530 2012
+  Processing by WorkoutsController#dairy as HTML
+  Parameters: {"utf8"=>"✓", "date_on"=>"2012-07-24", "authenticity_token"=>"Tj/ppKuW1jCZKDeK2J0GnpxtLrKWujQNIgS+vUYsNAA="}
+Rendered workouts/dairy.html.erb within layouts/tracking (19.5ms)
+Rendered layouts/_head.html.erb (1.7ms)
+Rendered shared/_session_menu_bar.html.erb (1.4ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.8ms)
+Rendered shared/_nav_bar.html.erb (1.1ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (0.7ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Rendered shared/_weight_update_js.html.erb (0.6ms)
+Completed 200 OK in 81ms (Views: 34.4ms | ActiveRecord: 40.8ms)
+
+
+Started GET "/assets/.png" for 127.0.0.1 at Tue Aug 14 11:53:31 +0530 2012
+Served asset /.png - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/.png"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/share/ruby-rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /usr/share/ruby-rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
