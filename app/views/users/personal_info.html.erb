@@ -1,3 +1,4 @@
+
 <div id="settings-content" class="grid_11">
   <h3>Personal Information</h3>
   
@@ -8,4 +9,13 @@
       <%= f.submit 'Save' %>
     </p>
   <% end %>
+
+ <div id="photoform" style="position:absolute;top:11%;">
+ <%= form_for  @photo, :url => photos_path, :multipart => true do |f| %>
+<%= f.label 'Upload Photo:' %><br/>
+  	<%= f.file_field :photo %>
+  	<%= f.submit 'Upload'%>
+  <% end %>
+ </div>
+
 </div>

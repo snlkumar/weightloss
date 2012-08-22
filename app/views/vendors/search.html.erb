@@ -80,16 +80,12 @@ function getTdVal(mid)
     <%= render :partial => 'shared/nav_bar' %>
 </div>
 <div class="clear"></div>
-
+	
 <div style="margin:1% 0 0 20%;width:82%;height:1%;padding:1%;">
   <form id="vendor-search" method='get' onsubmit="return false" action="">
-  <div style="margin-right:1em;float:left;">
-    <label style="font-size:14px;">Type</label><br>
-    <input type="text" id="vendor-search-query" name="filterQuery" value="<%=params[:filterQuery]%>" style="height:1.2em;width:12em;" placeholder="Enter vendor name..."/>
-  </div>
-  
-    <div style="float:left;width:27%;">
-      <label style="font-size:14px;">Select business category</label><br>
+
+ <div style="float:left;width:27%;">
+      <label style="font-size:14px;">Select Business</label><br>
     
      <div style="float:left;margin-left:.5%;margin-top:.5em;">
       <select name="searchtype" id="searchtype" style="height:2em;margin:0 1%;width:14em;padding:0;">
@@ -108,8 +104,13 @@ function getTdVal(mid)
         <option value="weight_loss_doctors" <%=params[:searchtype]=="weight_loss_doctors" ? "selected" : "" %> >Weight loss doctors</value>
       </select>
     </div>
+  </div>	
+
+  <div style="margin-right:1em;float:left;">
+    <label style="font-size:14px;">Filter</label><br>
+    <input type="text" id="vendor-search-query" name="filterQuery" value="<%=params[:filterQuery]%>" style="height:1.2em;width:12em;" placeholder="Enter State, city, zip..."/>
   </div>
-  
+   
   
   <!--  <div style="float:left;margin-left:2%;margin-top:-10px;">
       <%= label 'Distance', 'Distance:', :style=>"margin:0;padding:0;" %>
@@ -129,11 +130,16 @@ function getTdVal(mid)
    </form>
 </div>
 <div class="clear"></div>
+
+<!--
+
 <div id="gridHeader" class="gridHeader">
 		  <span style="padding-left:3%;padding-right:36%;float:left;font-weight:bold;">Name</span><span  style="padding-right:14%;float:left;font-weight:bold;">Address</span><span style="padding-right:10%;float:left;font-weight:bold;">City</span><span style="padding-right:2%;float:left;font-weight:bold;">State</span><span  style="float:left;font-weight:bold;">Zipcode</span>
 		</div>
 		<div id="ajaxAutoComplete" class="ajaxAutoComplete"></div>
 <br>
+
+-->
 
  <!--
 <%# if @data || (params[:status] && params[:status]=="true") %>
@@ -168,22 +174,24 @@ function getTdVal(mid)
   <table style="border-collapse:separate;border-spacing:2px;width:87em;">
     <tr class="head-table">
       <%if @cols=="all"%>
-        <th>Vendor Type</th>
-        <!--<th>Title</th>
-        <th>Company Title</th>-->
-        <th>Title & Vendor Name</th>
-        <th>Address 1</th>
-        <th>Address 2</th>
+		<th>Company Logo</th>
+      <!--  <th>Vendor Type</th> -->
+       <!--<th>Title</th>-->
+       <th>Company Name</th>
+        <th>Vendor Name</th>
+    <!--<th>Address 1</th>
+        <th>Address 2</th> -->
         <th>City</th>
         <th>State</th>
         <th>Zipcode</th>
         <th>Country</th>
-        <th>Contact1</th>
+    <!--<th>Contact1</th>
         <th>Contact 2</th>
         <th>Email</th>
-        <th>Website Address</th>
+        <th>Website Address</th>-->
         <th></th>
       <%elsif @cols=="restaurants"%>
+      <!--  <th>Company Name</th>-->
         <th>Name</th>
         <th>Address</th>
         <th>City</th>
@@ -192,39 +200,45 @@ function getTdVal(mid)
         <th>Restaurant Type</th>
         <th></th>
       <%else%>
-        <!--<th>Title</th>
-        <th>Company Title</th>-->
-        <th>Title & Vendor Name</th>
-        <th>Address1&nbsp;&nbsp;</th>
-        <th>Address2&nbsp;&nbsp;</th>
+       <!--<th>Title</th>-->
+       <th>Company Logo</th>
+       <th>Company Name</th>
+        <th>Vendor Name</th>
+    <!--<th>Address1&nbsp;&nbsp;</th>
+        <th>Address2&nbsp;&nbsp;</th> -->
         <th>City&nbsp;&nbsp;</th>
         <th>State&nbsp;&nbsp;</th>
         <th>Zipcode&nbsp;&nbsp;</th>
         <th>Country&nbsp;&nbsp;</th>
-        <th>Contact1&nbsp;&nbsp;</th>
+    <!--<th>Contact1&nbsp;&nbsp;</th>
         <th>Contact2&nbsp;&nbsp;</th>
         <th>Email&nbsp;&nbsp;</th>
-        <th>Website Address&nbsp;&nbsp;</th>
+        <th>Website Address&nbsp;&nbsp;</th>-->
         <th></th>
      <%end%>
     </tr>
     <% @data.each do |row| %>
       <tr class="<%= cycle('even','odd') %>">
          <%if @cols=="all"%>
-          <td style="padding: .3%;"><%=row.vendor_type%>&nbsp;&nbsp;</td>
-          <!--<td style="padding: .3%;"><%#=row.title%></td>
-          <td style="padding: .3%;"><%#=row.company_title%></td> -->
-          <td style="padding: .3%;width:15em;"><%=row.title %> <%=link_to row.vendor_name ,vendorInfo_path(row.id) %></td>
-          <td style="padding: .3%;"><%=row.address1%></td>
-          <td style="padding: .3%;"><%=row.address2%></td>
+<td style="padding: .3%;">
+<% if row.photo.exists? then %>
+	<%= link_to image_tag (row.photo.url(:small)),vendorInfo_path(row.id) %>
+<% end %></td>
+
+          <!--<td style="padding: .3%;"><%#=row.vendor_type%>&nbsp;&nbsp;</td>-->
+          <!--<td style="padding: .3%;"><%#=row.title%></td>-->
+              <td style="padding: .3%;"><%=row.company_title%></td>
+          <td style="padding: .3%;width:15em;"><%=link_to row.vendor_name ,vendorInfo_path(row.id) %></td>
+          <!--<td style="padding: .3%;"><%#=row.address1%></td>
+          <td style="padding: .3%;"><%#=row.address2%></td>-->
           <td style="padding: .3%;"><%=row.city%></td>
           <td style="padding: .3%;"><%=row.state%></td>
           <td style="padding: .3%;"><%=row.zipcode%></td>
           <td style="padding: .3%;"><%=row.country%></td>
-          <td style="padding: .3%;"><%=row.contact1%></td>
-          <td style="padding: .3%;"><%=row.contact2%></td>
-          <td style="padding: .3%;"><%=row.email%></td>
-          <td style="padding: .3%;"><%=row.website_address%></td>
+          <!--<td style="padding: .3%;"><%#=row.contact1%></td>
+          <td style="padding: .3%;"><%#=row.contact2%></td>
+          <td style="padding: .3%;"><%#=row.email%></td>
+          <td style="padding: .3%;"><%#=row.website_address%></td>-->
           <td><button id="search" class="button grid_3" style="height:26px;font-size:10px;width:9em;padding:0;margin:0%;">Claim business</button></td>
         <%elsif @cols=="restaurants"%>
           <td style="padding: .3%;"><%=link_to row.name, vendorInfo_path(row.id)+"/restaurants"%></td>
@@ -235,19 +249,23 @@ function getTdVal(mid)
           <td style="padding: .3%;"><%=row.restaurent_type%></td>
           <td><button id="search" class="button grid_3" style="height:26px;font-size:10px;width:9em;padding:0;margin:0 0 0 2em;">Claim business</button></td>
         <%else%>
-          <!--<td style="padding: .3%;"><%=row.title%></td>
-          <td style="padding: .3%;"><%=row.company_title%></td>-->
-          <td style="padding: .3%;width:15em;"><%=row.title %> <%=link_to row.vendor_name, vendorInfo_path(row.id)%></td>
-          <td style="padding: .3%;"><%=row.address1%>&nbsp;</td>
-          <td style="padding: .3%;"><%=row.address2%>&nbsp;</td>
+			<td style="padding: .3%;">
+			<% if row.photo.exists? then %>
+			<%= link_to image_tag (row.photo.url(:small)),vendorInfo_path(row.id) %>
+			<% end %></td>
+         <!-- <td style="padding: .3%;"><%#=row.title%></td> -->
+          <td style="padding: .3%;"><%=row.company_title%></td>
+          <td style="padding: .3%;width:15em;"><%=link_to row.vendor_name, vendorInfo_path(row.id)%></td>
+          <!--<td style="padding: .3%;"><%#=row.address1%>&nbsp;</td>
+          <td style="padding: .3%;"><%#=row.address2%>&nbsp;</td>-->
           <td style="padding: .3%;"><%=row.city%>&nbsp;</td>
           <td style="padding: .3%;"><%=row.state%>&nbsp;</td>
           <td style="padding: .3%;"><%=row.zipcode%>&nbsp;</td>
           <td style="padding: .3%;"><%=row.country%>&nbsp;</td>
-          <td style="padding: .3%;"><%=row.contact1%>&nbsp;</td>
-          <td style="padding: .3%;"><%=row.contact2%>&nbsp;</td>
-          <td style="padding: .3%;"><%=row.email%>&nbsp;</td>
-          <td style="padding: .3%;"><%=row.website_address%>&nbsp;</td>
+          <!--<td style="padding: .3%;"><%#=row.contact1%>&nbsp;</td>
+          <td style="padding: .3%;"><#%=row.contact2%>&nbsp;</td>
+          <td style="padding: .3%;"><#%=row.email%>&nbsp;</td>
+          <td style="padding: .3%;"><%#=row.website_address%>&nbsp;</td> -->
           <td><button id="search" class="button grid_3" style="height:26px;font-size:10px;width:9em;padding:0;margin:0%;">Claim business</button></td>
         <%end%>      
       </tr>

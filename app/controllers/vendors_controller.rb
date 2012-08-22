@@ -1,23 +1,27 @@
 class VendorsController < ApplicationController
+		
   def search
     if !params[:searchtype].nil?
       if params[:filterQuery].nil? 
-        params[:filterQuery]=""
+        params[:filterQuery]=""	
       end
-      
+
       if params[:searchtype]=="all"
-        @data=Vendor.where("vendor_name like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
+
+        @data=Vendor.where("city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
         @cols="all"
+
       elsif params[:searchtype]=="restaurants"
         if params[:filterBy]=="zipcode"
           params[:filterBy]="zip"
         end
-        @data=Restaurant.where("name like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
+        @data=Restaurant.where("city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zip like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
+
         @cols="restaurants"
       else
-        @data=Vendor.where("vendor_name like '%"+params[:filterQuery]+"%' and vendor_type='"+params[:searchtype]+"'").page(params[:page] || 1).per(30)
+		 @data=Vendor.where("vendor_type ='"+params[:searchtype]+"' and (city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%')").page(params[:page] || 1).per(30)
         @cols="other" 
-      end
+      end	
     end
   end
  #search method end

@@ -1,0 +1,30 @@
+</style>
+ <% if @photo.errors.any? %>
+    <div id="error_explanation" style="margin-left:35%;">
+      <h2>Photo field can not be empty</h2>
+
+      <ul>
+      <% @photo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+<br/>	<br/><%=link_to "Back", :back, :style=>"margin-left: 30%;" %><br/>
+
+	<h1 style="margin-left:30%;background-color:#BDBDBD;padding:5px;width:40%;text-align:center;color:#FBF2EF;">Add Your Photos</h1>
+	<div style="margin-left:30%; "><br/>
+	<%= form_for  @photo, :url => photos_path, :multipart => true do |f| %>
+  	<%= f.label 'PHOTO:' %><br/>
+  	<%= f.file_field :photo %><br/><br/>
+  	<%= f.submit 'Upload'%>
+ 	<% end %>
+	</div>	
+
+<br/><br/><%=link_to "Back", :back, :style => "margin-left: 30%;"  %><br/>
+	
+
+

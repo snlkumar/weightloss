@@ -6,7 +6,9 @@ class UsersController < ApplicationController
   layout 'user_settings', :only => [:update, :account_info, :personal_info, :nutrition_info, :exercise_info]
   
   def show
+
     @user = User.find(params[:id]) || current_user
+	
     if @user.nil?
       redirect_to(root_path) and return
     end
@@ -87,8 +89,9 @@ class UsersController < ApplicationController
     render :layout => 'user_settings'
   end
   
-  def personal_info
+  def personal_info  
     @user = current_user
+ 	 @photo= Photo.new
     render :layout => 'user_settings'
   end
   

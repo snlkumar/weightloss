@@ -1,0 +1,42 @@
+
+<script type="text/javascript">
+	function showImage(path)
+	{
+		document.getElementById('light').style.display='block';
+		document.getElementById('fade').style.display='block';
+		
+		document.getElementById('showImg').style.width="100%";
+		document.getElementById('showImg').style.height="100%";
+		document.getElementById('showImg').style.paddingTop="1.0em";
+		document.getElementById('showImg').style.marginTop="-1.0em";
+		document.getElementById('showImg').src=path;
+	}
+</script>
+<link rel="stylesheet" href='/assets/hoverbox.css' type="text/css" media="screen, projection" />
+<!--[if lte IE 7]>
+<link rel="stylesheet" href='/assets/ie_fixes.css' type="text/css" media="screen, projection" />
+<![endif]-->
+
+<h1 style="margin-left:35%;">Image Gallery</h1>
+<ul class="hoverbox" style="overflow:auto;height:30em;width:50em;margin-left:15%;">
+	<% @photo.each do |f| %>
+		<li>
+			<a href = "javascript:void(0)" onclick = "showImage('<%=f.photo.url %>')">
+				<img src="<%=f.photo.url(:large) %>" alt="description" />
+				<img src="<%=f.photo.url(:large) %>" alt="description" class="preview" />
+			</a>
+		</li>
+	<% end %>
+</ul>
+	
+<!-- show image on lightbox -->
+<div id="light" class="white_content">
+	<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
+	<div style="background-image:url('/assets/close.png');float:right;width:20px;height:20px;margin-right:-3.5em;margin-top:-3.5em;"></div></a>
+	<%=image_tag "",:id=>"showImg" %>
+</div>
+
+<div id="fade" class="black_overlay"></div>
+
+
+

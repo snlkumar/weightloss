@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120813110034) do
+ActiveRecord::Schema.define(:version => 20120821130436) do
 
   create_table "categories", :force => true do |t|
     t.integer "parent_id"
@@ -174,6 +174,25 @@ ActiveRecord::Schema.define(:version => 20120813110034) do
     t.datetime "time_of_day"
   end
 
+  create_table "measurements", :force => true do |t|
+    t.float    "height"
+    t.float    "chest"
+    t.float    "uparmright"
+    t.float    "forearmright"
+    t.float    "hips"
+    t.float    "thighright"
+    t.float    "calfright"
+    t.float    "calfleft"
+    t.float    "thighleft"
+    t.float    "waist"
+    t.float    "forearmleft"
+    t.float    "uparmleft"
+    t.float    "neck"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "old_departments", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -292,6 +311,15 @@ ActiveRecord::Schema.define(:version => 20120813110034) do
   create_table "old_tip_of_days", :force => true do |t|
     t.string   "title"
     t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "photos", :force => true do |t|
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -486,6 +514,9 @@ ActiveRecord::Schema.define(:version => 20120813110034) do
     t.string   "gender"
     t.string   "year"
     t.string   "license_states"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
   end
 
   create_table "weights", :force => true do |t|

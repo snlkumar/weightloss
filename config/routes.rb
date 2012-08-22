@@ -30,6 +30,8 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
   mount Forem::Engine, :at => "/forum", :as => 'forum_engine'
   
   #new added routes
+	resources :photos
+
   resources :vendors do
     collection do
       post :search_decipher

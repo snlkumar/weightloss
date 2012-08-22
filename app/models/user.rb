@@ -34,6 +34,7 @@ has_attached_file :photoafter, :styles      => { :thumb   => "16x16#", :medium =
 
   
   # Associations
+  has_many :photos,    :dependent => :destroy
   has_many :meals,    :dependent => :destroy
   has_many :workouts, :dependent => :destroy
   has_many :weights,  :dependent => :destroy, :order => 'created_at DESC'
