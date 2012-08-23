@@ -61,14 +61,33 @@ select#vendor_vendor_type, #country{
 
 <br>
 
+  <div class="field">
+    <%= f.label :business_name %><br />
+    <%= f.text_field :business_name, :style => "height: 1.2em;width:40%;" %>
+  </div>
+
 
   <div class="field">
     <%= f.label :vendor_type %><br />
     <%= f.select :vendor_type, [["Gym","gym"],["Restaurants","restaurants"],["Nutritionist","nutritionist"],["Weight loss surgeons","weight_loss_surgeons"],["Physiologists","physiologists"],["Hospitals","hospitals"],["Law","law"],["Medical","medical"],["Plastic surgeon","plastic_surgeon"],["Spa","spa"],["Weight loss clinics","weight_loss_clinics"],["Weight loss doctors","weight_loss_doctors"]], :selected=>"Gym", :style=>"height: 1.5em;width:100%;" %>
   </div> <br />
 
+ <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email, :style => "height: 1.2em;width:40%;" %>
+  </div>
+ 
+
   <div class="field">
-    <%= f.label :vendor_name %><br />
+    <%= f.label :Postal_code %><br />
+    <%= f.text_field :zipcode, :style => "height: 1.2em;width:40%;" %>
+  </div> 
+
+	
+<!--
+
+  <div class="field">
+    <%= f.label :name %><br />
     <%= f.text_field :vendor_name, :style => "height: 1.2em;width:40%;" %>
   </div>
     
@@ -77,46 +96,22 @@ select#vendor_vendor_type, #country{
     <%= f.text_field :title, :style => "height: 1.2em;width:40%;" %>
   </div>
 
+
   <div class="field">
-    <%= f.label :business_name %><br />
-    <%= f.text_field :business_name, :style => "height: 1.2em;width:40%;" %>
+    <%= f.label :city %><br />
+    <%= f.text_field :city, :style => "height: 1.2em;width:40%;" %>
   </div>
 
-  
-<!-- new code-->
-  <div>
-  <br/><%= f.label 'Company Logo' %><br/>
-  <%= f.file_field :photo %>
-</div><br/><br/>
-
-<!-- new code end -->
 
   <div class="field">
-    <%= f.label :biography %><br />
-    <%= f.text_area :biography, :cols=>"33" %>
-  </div></br>
+    <%= f.label :state %><br />
+    <%= f.text_field :state, :style => "height: 1.2em;width:40%;" %>
+  </div>
 
 
-  <div class="field">
-    <%= f.label :accept_credit_card %><br />
-    <%=f.select :accept_credit_card, [["Yes","yes"],["No","no"]], :selected=>"Yes" %>
-  </div></br>
-
-  <div class="field">
-    <%= f.label :accept_insurance %><br />
-    <%=f.select :accept_insurance, [["Yes","yes"],["No","no"]], :selected=>"Yes" %>
-  </div> </br>
-
-<!--
-    <%#=render :partial=>'map'%>
-    <input type=hidden name=lat id='lat'>
-    <input type=hidden name=lon id='lon'>     -->
- 
- 
   <div class="field">
   <%= f.label :country %><br /> 
-    
-       <select name="vendor[country]" aria-required="true" id="country">
+    <select name="vendor[country]" aria-required="true" id="country">
                     <option value=""   >Select One</option>
                     <option value="Afghanistan"  >Afghanistan</option>
                     <option value="Aland Islands"   >Aland Islands</option>
@@ -364,23 +359,42 @@ select#vendor_vendor_type, #country{
                     <option value="Montenegro"   >Montenegro</option>
                </select> </div></br>
 
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state, :style => "height: 1.2em;width:40%;" %>
-  </div>
+
+
+
+
+  
+  <div>
+  <br/><%= f.label 'Company Logo' %><br/>
+  <%= f.file_field :photo %>
+</div><br/><br/>
+
+
 
   <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city, :style => "height: 1.2em;width:40%;" %>
-  </div>
-
-
+    <%= f.label :biography %><br />
+    <%= f.text_area :biography, :cols=>"33" %>
+  </div></br>
 
 
   <div class="field">
-    <%= f.label :zipcode %><br />
-    <%= f.text_field :zipcode, :style => "height: 1.2em;width:40%;" %>
-  </div> 
+    <%= f.label :accept_credit_card %><br />
+    <%=f.select :accept_credit_card, [["Yes","yes"],["No","no"]], :selected=>"Yes" %>
+  </div></br>
+
+  <div class="field">
+    <%= f.label :accept_insurance %><br />
+    <%=f.select :accept_insurance, [["Yes","yes"],["No","no"]], :selected=>"Yes" %>
+  </div> </br>
+
+
+    <%#=render :partial=>'map'%>
+    <input type=hidden name=lat id='lat'>
+    <input type=hidden name=lon id='lon'>   
+ 
+ 
+
+
 
   <div class="field">
     <%= f.label :business_contact %><br />
@@ -391,17 +405,12 @@ select#vendor_vendor_type, #country{
     <%= f.text_field :contact2, :style => "height: 1.2em;width:40%;" %>
   </div>
   
- <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email, :style => "height: 1.2em;width:40%;" %>
-  </div>
-  
+ 
   <div class="field">
     <%= f.label :website_address %><br />
     <%= f.text_field :website_address, :style => "height: 1.2em;width:40%;" %>
   </div>
-
- <!--  
+ 
   <div class="field">
     <%= f.label :custom_field1 %><br />
     <%= f.text_field :custom_field1, :style => "height: 1.2em;width:40%;" %>
@@ -417,7 +426,7 @@ select#vendor_vendor_type, #country{
   </div>
   <div class="field">
     <%= f.label :custom_field4 %><br />
-    <%= f.text_field :custom_field4, :style => "height: 1.2em;width:40%;" %> -->
+    <%= f.text_field :custom_field4, :style => "height: 1.2em;width:40%;" %>
     
  <div class="field">
     <%= f.label :status %><br />
@@ -485,11 +494,14 @@ select#vendor_vendor_type, #country{
     <%= f.text_field :cost, :style => "height: 1.2em;width:40%;" %>
   </div>
 
+
  <div style="float:left;margin-left:1%; width: 40%;" >
       <%= f.label :average_cost, :style=>"margin:0;padding:0;" %>
       <span id="distance-view"></span>
       <div id="distance-slider" style="width: 100%;"></div>
       <input type="hidden" name="vendor[average_cost]" value='1' id = "distance-val" />
  </div> <br/> <br/>
+
+-->
 
 </div>

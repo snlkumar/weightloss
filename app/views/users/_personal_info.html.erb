@@ -8,18 +8,8 @@
   <%= f.file_field :avatar, :size => '6' %>
 </p>
 
-<br/>
 
 <p>
-  <%= f.check_box :private %>
-  <%= f.label :private, "Mark your account as private to non members?" %>
-  
-  <br/>
-  <br/>
-  <span class="clear"></span>
-</p>
-
-<p><br/><br/><br/>
   <%= f.label :first_name, %Q{First Name} %><br/>
   <%= f.text_field :first_name, :title => "First Name", :class => 'grid_6 alpha' %>
   <span class="clear"></span>
@@ -44,6 +34,8 @@
 </p>
 
 <!-- new added code --->
+
+<!--
 <p>
   <br/><%= f.label 'Photos:-' %><br/>
 </p>
@@ -66,6 +58,7 @@
   <%= f.file_field :photoafter, :size => '6' %>
 </p>
 
+-->
 <p>
   <br/><%= f.label 'Body Fat' %><br/>
   <%= f.text_field :bodyfat, :title => 'Body Fat', :class => 'grid_6 alpha' %><div style="padding-top:2%;">&nbsp;%</div>
@@ -103,5 +96,13 @@
 <p>
   <%= f.label :employment_position, 'Work Title' %><br/>
   <%= f.text_field :employment_position, :class => 'grid_6 alpha' %>
+  <span class="clear"></span>
+</p>
+<p>
+  <%= f.check_box :private %>
+  <%= f.label :private, "Mark your account as private to non members?" %>
+  
+  <br/>
+  <br/>
   <span class="clear"></span>
 </p>

@@ -30,6 +30,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
   mount Forem::Engine, :at => "/forum", :as => 'forum_engine'
   
   #new added routes
+	match "/photos/:id/:filterPhotosByBeforeAfter"=> "Photos#filterPhotosByBeforeAfter", :as =>"before_after"
 	resources :photos
 
   resources :vendors do

@@ -4,7 +4,6 @@ class PhotosController < ApplicationController
   end    
 
   def new
-    @user=current_user
     @photo=Photo.new
   end  
 
@@ -12,7 +11,7 @@ class PhotosController < ApplicationController
 		@user=current_user
 		@photo=@user.photos.create(params[:photo])
 		if @photo.save
-     		redirect_to( user_edit_personal_info_path(current_user), :notice => 'photo created.')
+     		redirect_to(photo_path(@user.id), :notice => 'photo created.')
      	else
 			@notice = 'photo not upload.'
     	end
@@ -39,10 +38,32 @@ class PhotosController < ApplicationController
   end
 	
 	def show
-		@photo= Photo.where(:user_id=>params[:id]) 
+		if current_user
+			@user_id=current_user.id
+		else
+			@user_id=params[:id]
+		end
+
+		@photo= Photo.where(:user_id=>params[:id])
+      @photo1=Photo.new
 		if @photo==nil
     		flash[:notice] = "User has no photos in gallery"
 		end
+	end
+	
+	def filterPhotosByBeforeAfter
+		if current_user
+			@user_id=current_user.id
+		else
+			@user_id=params[:id]
+		end
+
+		@photo= Photo.where("user_id=? and before_after=?",params[:id],params[:filterPhotosByBeforeAfter])
+      @photo1=Photo.new
+		if @photo==nil
+    		flash[:notice] = "User has no photos"
+		end
+		render :template => 'photos/show'
 	end
 
   def destroy

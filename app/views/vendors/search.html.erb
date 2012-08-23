@@ -32,6 +32,24 @@
 }
 </style>
 
+
+<!-- new code when enter submit form------------->
+
+
+<script tyle="text/javascript">
+
+function submitFormByEnter(event) {
+    if (event.keyCode && event.keyCode == '13') {
+        submitForm();
+    }
+}
+
+</script>
+
+<!-- new code end------------->
+
+
+
 <script tyle="text/javascript">
 
   //for miles slider 
@@ -108,7 +126,7 @@ function getTdVal(mid)
 
   <div style="margin-right:1em;float:left;">
     <label style="font-size:14px;">Filter</label><br>
-    <input type="text" id="vendor-search-query" name="filterQuery" value="<%=params[:filterQuery]%>" style="height:1.2em;width:12em;" placeholder="Enter State, city, zip..."/>
+    <input type="text" id="vendor-search-query" onkeyup="submitFormByEnter(event)" name="filterQuery" value="<%=params[:filterQuery]%>" style="height:1.2em;width:12em;" placeholder="Enter State, city, zip..."/>
   </div>
    
   
@@ -178,7 +196,7 @@ function getTdVal(mid)
       <!--  <th>Vendor Type</th> -->
        <!--<th>Title</th>-->
        <th>Company Name</th>
-        <th>Vendor Name</th>
+        <th>Name</th>
     <!--<th>Address 1</th>
         <th>Address 2</th> -->
         <th>City</th>
@@ -203,7 +221,7 @@ function getTdVal(mid)
        <!--<th>Title</th>-->
        <th>Company Logo</th>
        <th>Company Name</th>
-        <th>Vendor Name</th>
+        <th>Name</th>
     <!--<th>Address1&nbsp;&nbsp;</th>
         <th>Address2&nbsp;&nbsp;</th> -->
         <th>City&nbsp;&nbsp;</th>
@@ -228,7 +246,7 @@ function getTdVal(mid)
           <!--<td style="padding: .3%;"><%#=row.vendor_type%>&nbsp;&nbsp;</td>-->
           <!--<td style="padding: .3%;"><%#=row.title%></td>-->
               <td style="padding: .3%;"><%=row.company_title%></td>
-          <td style="padding: .3%;width:15em;"><%=link_to row.vendor_name ,vendorInfo_path(row.id) %></td>
+          <td style="padding: .3%;width:15em;"><%=link_to row.vendor_name ,vendorInfo_path(row.id)+"/all" %></td>
           <!--<td style="padding: .3%;"><%#=row.address1%></td>
           <td style="padding: .3%;"><%#=row.address2%></td>-->
           <td style="padding: .3%;"><%=row.city%></td>
