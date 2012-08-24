@@ -1,16 +1,7 @@
-<br/><br/><%=link_to "Back", :back, :style=>"margin-left: 30%;" %><br/>
+<br/><br/><%#=link_to "Back", :back, :style=>"margin-left: 30%;" %><br/>
 
-<h1 style="margin-left:30%;background-color:#BDBDBD;padding:5px;width:68%;text-align:center;color:#FBF2EF;">Add Your Business</h1>
 <%= form_for @vendor, :url => vendors_path do |f| %>
- <%= render :partial => 'form', :locals => { :f => f } %><br>
- <div style="margin-left: 30%;">
-         <%=render '/shared/recaptcha' %><br/>
- </div>
- <div class="actions", style="margin-left: 30%;">
+ <%= render :partial => 'form', :locals => { :f => f } %>
 
-   <%= f.submit %>
- </div>
 <% end %>
-
-
-<br/><br/><%=link_to "Back", :back, :style => "margin-left: 30%;"  %><br/>
+<br/><br/><%#=link_to "Back", :back, :style => "margin-left: 0%;"  %><br/>

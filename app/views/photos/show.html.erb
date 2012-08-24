@@ -1,73 +1,97 @@
+<style type="text/css">
+.submit_button {
+    display: inline-block;
+    background: #e4e4e4;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f6f6f6), color-stop(100%,#d7d7d7));
+    background: -moz-linear-gradient(center top, #f6f6f6 0%, #d7d7d7 100%);
+    -webkit-box-shadow: -1px 1px 0px 0px #dfdcdc inset, 1px -1px 0px 0px #bfbfbf inset;
+    -moz-box-shadow: -1px 1px 0px 0px #dfdcdc inset, 1px -1px 0px 0px #bfbfbf inset;
+    box-shadow: -1px 1px 0px 0px #dfdcdc inset, 1px -1px 0px 0px #bfbfbf inset;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    
+    padding: 5px 10px;
+    display: inline-block;
+    font-family: arial;
+    font-size: 11px;
+    line-height: 30px;
+    color: #595959;
+    font-weight: bold;
+}
 
-
+</style>
 <script type="text/javascript">
-	function showImage(path)
-	{
-		document.getElementById('light').style.display='block';
-		document.getElementById('fade').style.display='block';
-		
-		document.getElementById('showImg').style.width="100%";
-		document.getElementById('showImg').style.height="100%";
-		document.getElementById('showImg').style.paddingTop="1.0em";
-		document.getElementById('showImg').style.marginTop="-1.0em";
-		document.getElementById('showImg').src=path;
-	}
+function showImage(path)
+{
+document.getElementById('light').style.display='block';
+document.getElementById('fade').style.display='block';
+document.getElementById('showImg').style.width="100%";
+document.getElementById('showImg').style.height="100%";
+document.getElementById('showImg').style.paddingTop="1.0em";
+document.getElementById('showImg').style.marginTop="-1.0em";
+document.getElementById('showImg').src=path;
+}
 </script>
 <link rel="stylesheet" href='/assets/hoverbox.css' type="text/css" media="screen, projection" />
 <!--[if lte IE 7]>
 <link rel="stylesheet" href='/assets/ie_fixes.css' type="text/css" media="screen, projection" />
 <![endif]-->
 
-<h1 style="margin-left:40%;">Photos</h1>
+<h1 align="center">Photos</h1>
+<%if current_user %>
+<table style="margin-top:5%;width:100%;margin-bottom:2%;">
+  <tr>
+    <td>
+   <%= form_for @photo1, :url => photos_path, :multipart => true do |f| %>
+     <%= f.label 'Upload Photo' %><br/>
+    <%= f.file_field :photo %>
+   <%= f.hidden_field :before_after, :value=>"false" %>
+   <%= f.submit 'Upload', :class=>"submit_button"%>
+   <% end %>
+    </td>
+    <td>
+   <%= form_for @photo1, :url => photos_path, :multipart => true do |f| %>
+     <%= f.label 'Before Measurements' %><br/>
+   <%= f.hidden_field :before_after, :value=>"before" %>
+     <%= f.file_field :photo, :size => '6' %>
+   <%= f.submit 'Upload', :class=>"submit_button"%>
+   <% end %>
+    </td>
+    <td>
+   <%= form_for @photo1, :url => photos_path, :multipart => true do |f| %>
+     <%= f.label 'After Measurements' %><br/>
+   <%= f.hidden_field :before_after, :value=>"after" %>
+     <%= f.file_field :photo, :size => '6' %>
+   <%= f.submit 'Upload', :class=>"submit_button" %>
+   <% end %>
+ </td>
+</tr>
+ </table>
+<%end%>
+
 <ul class="hoverbox" style="overflow:auto;height:30em;width:50em;margin-left:15%;">
-	<% @photo.each do |f| %>
-		<li>
-			<a href = "javascript:void(0)" onclick = "showImage('<%=f.photo.url %>')">
-				<img src="<%=f.photo.url(:large) %>" alt="description" /><br/>
-				<%=f.created_at.strftime("%m-%d-%Y")%>
-				<img src="<%=f.photo.url(:large) %>" alt="description" class="preview" />
-			</a>
-		</li>
-	<% end %>
+<% @photo.each do |f| %>
+<li>
+<a href = "javascript:void(0)" onclick = "showImage('<%=f.photo.url %>')">
+<img src="<%=f.photo.url(:large) %>" alt="description" /><br/>
+<%=f.created_at.strftime("%m-%d-%Y")%>
+<img src="<%=f.photo.url(:large) %>" alt="description" class="preview" />
+</a>
+</li>
+<% end %>
 </ul>
-	
 <!-- show image on lightbox -->
 <div id="light" class="white_content">
-	<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
-	<div style="background-image:url('/assets/close.png');float:right;width:20px;height:20px;margin-right:-3.5em;margin-top:-3.5em;"></div></a>
-	<%=image_tag "",:id=>"showImg" %>
+<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
+<div style="background-image:url('/assets/close.png');float:right;width:20px;height:20px;margin-right:-3.5em;margin-top:-3.5em;"></div></a>
+<%=image_tag "",:id=>"showImg" %>
 </div>
 
 <div id="fade" class="black_overlay"></div>
 
 
 <div id="showPhotosBeforeAfterMultiple" style="margin-left:20%;padding:1%;">
-	<%= link_to "Show Before measurement photo", "/photos/#{@user_id}/before" %>
-	<%= link_to "Show After measurement photo", "/photos/#{@user_id}/after"%>
-	<%= link_to "All photos", photo_path(@user_id)%>
+<%= link_to "Show Before measurement photo", "/photos/#{@user_id}/before" %>
+<%= link_to "Show After measurement photo", "/photos/#{@user_id}/after"%>
+<%= link_to "All photos", photo_path(@user_id)%>
 </div>
-
-<%if current_user %>
-	<div id="photoform" style="margin-left:25%;margin-top:5%;width:40%;">
-	<%= form_for @photo1, :url => photos_path, :multipart => true do |f| %>
-	<%= f.label 'Upload Photo' %><br/>
-	  	<%= f.file_field :photo %>
-		<%= f.hidden_field :before_after, :value=>"false" %>
-		<%= f.submit 'Upload'%>
-	  <% end %>
-
-	<%= form_for @photo1, :url => photos_path, :multipart => true do |f| %>
-	  <%= f.label 'Before Measurements' %><br/>
-		<%= f.hidden_field :before_after, :value=>"before" %>
-	  <%= f.file_field :photo, :size => '6' %>
-		<%= f.submit 'Upload'%>
-	  <% end %>
-
-	<%= form_for @photo1, :url => photos_path, :multipart => true do |f| %>
-	<%= f.label 'After Measurements' %><br/>
-		<%= f.hidden_field :before_after, :value=>"after" %>
-	  <%= f.file_field :photo, :size => '6' %>
-		 	<%= f.submit 'Upload'%>
-	  <% end %>
-	</div>
-<%end%>

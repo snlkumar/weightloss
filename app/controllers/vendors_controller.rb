@@ -44,7 +44,8 @@ class VendorsController < ApplicationController
     end
   end
  ##end
- 
+
+
  def show
    if params[:id] && params[:restaurants]!=nil
     @status="true"  #for restaurants
@@ -73,7 +74,7 @@ class VendorsController < ApplicationController
     return
 	 else
      if @vendor.save
-        redirect_to( vendor_path, :notice => 'vendor was successfully created.')
+        redirect_to(vendor_path, :notice => 'Vendor was successfully updated.')
      else
        render :action => "new"
      end

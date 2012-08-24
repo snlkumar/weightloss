@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120823103326) do
+ActiveRecord::Schema.define(:version => 20120824145908) do
 
   create_table "categories", :force => true do |t|
     t.integer "parent_id"
@@ -518,6 +518,22 @@ ActiveRecord::Schema.define(:version => 20120823103326) do
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
+    t.string   "fname"
+    t.string   "lname"
+    t.string   "password"
+    t.string   "degrees"
+    t.string   "year_school"
+    t.string   "accept_cash"
+    t.string   "accept_check"
+    t.string   "payment_plans"
+    t.string   "work_hour"
+    t.string   "p_address"
+    t.string   "p_city"
+    t.string   "p_state"
+    t.string   "p_cell"
+    t.string   "p_contact"
+    t.string   "b_email"
+    t.string   "p_country"
   end
 
   create_table "weights", :force => true do |t|
