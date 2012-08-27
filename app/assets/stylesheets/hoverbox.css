@@ -114,8 +114,8 @@ p a:hover
 			position: fixed;
 			top: -20%;
 			left: -17%;
-			width: 120em;
-			height: 100em;
+			width: 12em;
+			height: 10em;
 			background-color: black;
 			z-index:1001;
 			-moz-opacity: 0.8;
@@ -127,8 +127,8 @@ p a:hover
 			position: absolute;
 			top: 5%;
 			left: 3%;
-			width: 90%;
-			height: 90%;
+			width: 20%;
+			height: 20%;
 			padding: 16px;
 			border: 16px solid #E6E6E6;
 			background-color: white;

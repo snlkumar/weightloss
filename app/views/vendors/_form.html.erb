@@ -434,11 +434,11 @@ $("#div2").toggle();
 
   <div class="field">
     <%= f.label :website_address %><br />
-    <%= f.text_field :website_address, :style => "height: 1.2em;width:40%;" %>nter days per week on each day: monday-sunda
+    <%= f.text_field :website_address, :style => "height: 1.2em;width:40%;" %>
   </div>
 
   <div>
-  <br/><%= f.label 'Business Logo' %><br/>
+ <%= f.label 'Business Logo' %><br/>
   <%= f.file_field :photo %>
 </div><br/><br/>
 
@@ -448,8 +448,6 @@ $("#div2").toggle();
     <%= f.label :title %><br />
     <%= f.text_field :title, :style => "height: 1.2em;width:40%;" %>
   </div>
-
-
 
 
   <div class="field">
@@ -467,8 +465,6 @@ $("#div2").toggle();
     <%= f.label :degrees %><br />
     <%= f.text_field :degrees, :style => "height: 1.2em;width:40%;" %>
   </div>
-
-
 
 
   <div class="field">
@@ -529,7 +525,7 @@ $("#div2").toggle();
   <div class="field">
     <%= f.label :accept_insurance %><br />
     <%=f.select :accept_insurance, [["Yes","yes"],["No","no"]], :selected=>"Yes" %>
-  </div> </br>
+  </div> </br><br />
 
 
 <h3> Hours </h3>
@@ -823,11 +819,10 @@ $("#div2").toggle();
     <%= f.text_field :p_cell, :style => "height: 1.2em;width:40%;" %>
   </div>
 
- <div class="field">
+  <div class="field">
     <%= f.label :gender %><br />
-    <%= f.text_field :gender, :style => "height: 1.2em;width:40%;" %>
-  </div>
-
+    <%=f.select :gender, [["Male","male"],["Female","female"]], :selected=>"Male" %>
+  </div></br>
 	<div style="margin-left: 0%;">
          <%=render '/shared/recaptcha' %>
    </div></br>

@@ -47,7 +47,7 @@ class VendorsController < ApplicationController
 
 
  def show
-   if params[:id] && params[:restaurants]!=nil
+   if params[:id] && params[:restaurants]!=nil && params[:restaurants]=="restaurants"
     @status="true"  #for restaurants
     @vendor=Restaurant.find(params[:id])
    else
@@ -59,16 +59,19 @@ class VendorsController < ApplicationController
   
   def new
     @vendor=Vendor.new
- end
+  end
 
   #end new
   
   def create
+  if params[:vendor][:vendor_type]!= "restaurants"
    @vendor=Vendor.new(params[:vendor])
+   else
+   @vendor=Restaurant.new(params[:restaurant])
+    end
    
    check=verify_recaptcha(request.remote_ip, params)
-
-   if check[:status] == 'false'
+	if check[:status] == 'false'
 	  @notice = "captcha incorrect"
     render :action => "new"
     return

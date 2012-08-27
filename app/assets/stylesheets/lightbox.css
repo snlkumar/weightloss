@@ -1,0 +1,66 @@
+
+body {
+	background-color:#9CF;
+	background-image:url(.../assets/heart-bg.gif);
+	background-position:center 70px;
+	background-repeat:no-repeat;
+	background-attachment:scroll;
+}
+
+
+#wrapper {
+	height:2000px;
+	width:auto;
+}
+
+#wrapper #gallery {
+	width:900px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:0px;
+
+}
+
+#gallery .holder {
+	width:225px;
+	height:250px;
+	background-image:url(../assets/polaroid.png);
+	float:left;
+}
+
+.holder .thumb {
+	width:140px;
+	height:120px;
+	margin-top:29px;
+	margin-left:43px;
+	margin-right:42px;
+}
+
+.holder .title {
+	width:140px;
+	height:40px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:15px;
+	overflow:hidden;
+}
+
+.title h3 {
+	margin:0;
+	font-family:"Comic Sans MS", cursive;
+	font-size:14px;
+	overflow:hidden;
+	color:#333;
+}
+
+
+.holder img {
+	border:none;	
+}
+
+
+.clearFloat {
+	clear:both;	
+}
+
+

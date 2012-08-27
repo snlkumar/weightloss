@@ -191,9 +191,11 @@ function getTdVal(mid)
 <div style="overflow:auto;width:90em;">
   <table style="border-collapse:separate;border-spacing:2px;width:87em;">
     <tr class="head-table">
-      <%if @cols=="all"%>
+     <%if @cols!="restaurants"%>
 		<th>Company Logo</th>
-      <!--  <th>Vendor Type</th> -->
+		<% if @cols=="all"%>
+      <th>Vendor Type</th>
+		<%end%>
        <!--<th>Title</th>-->
        <th>Company Name</th>
         <th>Name</th>
@@ -217,36 +219,21 @@ function getTdVal(mid)
         <th>Zip</th>
         <th>Restaurant Type</th>
         <th></th>
-      <%else%>
-       <!--<th>Title</th>-->
-       <th>Company Logo</th>
-       <th>Company Name</th>
-        <th>Name</th>
-    <!--<th>Address1&nbsp;&nbsp;</th>
-        <th>Address2&nbsp;&nbsp;</th> -->
-        <th>City&nbsp;&nbsp;</th>
-        <th>State&nbsp;&nbsp;</th>
-        <th>Zipcode&nbsp;&nbsp;</th>
-        <th>Country&nbsp;&nbsp;</th>
-    <!--<th>Contact1&nbsp;&nbsp;</th>
-        <th>Contact2&nbsp;&nbsp;</th>
-        <th>Email&nbsp;&nbsp;</th>
-        <th>Website Address&nbsp;&nbsp;</th>-->
-        <th></th>
      <%end%>
     </tr>
     <% @data.each do |row| %>
       <tr class="<%= cycle('even','odd') %>">
-         <%if @cols=="all"%>
+         <%if @cols!="restaurants"%>
 <td style="padding: .3%;">
 <% if row.photo.exists? then %>
 	<%= link_to image_tag (row.photo.url(:small)),vendorInfo_path(row.id) %>
 <% end %></td>
-
-          <!--<td style="padding: .3%;"><%#=row.vendor_type%>&nbsp;&nbsp;</td>-->
+				<% if @cols=="all"%>
+          <td style="padding: .3%;"><%=row.vendor_type.split('_').join(' ')%>&nbsp;&nbsp;</td>
+				<%end%>
           <!--<td style="padding: .3%;"><%#=row.title%></td>-->
-              <td style="padding: .3%;"><%=row.company_title%></td>
-          <td style="padding: .3%;width:15em;"><%=link_to row.vendor_name ,vendorInfo_path(row.id) %></td>
+          <td style="padding: .3%;"><%=row.company_title%></td>
+          <td style="padding: .3%;width:15em;"><%=link_to row.vendor_name ,vendorInfo_path(row.id)+"/"+row.vendor_type %></td>
           <!--<td style="padding: .3%;"><%#=row.address1%></td>
           <td style="padding: .3%;"><%#=row.address2%></td>-->
           <td style="padding: .3%;"><%=row.city%></td>
@@ -266,25 +253,6 @@ function getTdVal(mid)
           <td style="padding: .3%;"><%=row.zip%></td>
           <td style="padding: .3%;"><%=row.restaurent_type%></td>
           <td><button id="search" class="button grid_3" style="height:26px;font-size:10px;width:9em;padding:0;margin:0 0 0 2em;">Claim business</button></td>
-        <%else%>
-			<td style="padding: .3%;">
-			<% if row.photo.exists? then %>
-			<%= link_to image_tag (row.photo.url(:small)),vendorInfo_path(row.id) %>
-			<% end %></td>
-         <!-- <td style="padding: .3%;"><%#=row.title%></td> -->
-          <td style="padding: .3%;"><%=row.company_title%></td>
-          <td style="padding: .3%;width:15em;"><%=link_to row.vendor_name, vendorInfo_path(row.id)%></td>
-          <!--<td style="padding: .3%;"><%#=row.address1%>&nbsp;</td>
-          <td style="padding: .3%;"><%#=row.address2%>&nbsp;</td>-->
-          <td style="padding: .3%;"><%=row.city%>&nbsp;</td>
-          <td style="padding: .3%;"><%=row.state%>&nbsp;</td>
-          <td style="padding: .3%;"><%=row.zipcode%>&nbsp;</td>
-          <td style="padding: .3%;"><%=row.country%>&nbsp;</td>
-          <!--<td style="padding: .3%;"><%#=row.contact1%>&nbsp;</td>
-          <td style="padding: .3%;"><#%=row.contact2%>&nbsp;</td>
-          <td style="padding: .3%;"><#%=row.email%>&nbsp;</td>
-          <td style="padding: .3%;"><%#=row.website_address%>&nbsp;</td> -->
-          <td><button id="search" class="button grid_3" style="height:26px;font-size:10px;width:9em;padding:0;margin:0%;">Claim business</button></td>
         <%end%>      
       </tr>
     <%end%>
