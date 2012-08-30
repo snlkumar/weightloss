@@ -6,7 +6,7 @@ gem "rdoc"
 
 gem 'paperclip','2.7.0'
 gem 'default_value_for'
-
+gem "fastercsv"
 
 gem 'hoptoad_notifier'
 

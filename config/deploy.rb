@@ -29,7 +29,7 @@ role :app, server
 role :db,  server, :primary => true
 
 after "deploy:update_code", "deploy:symlink_config"
-#after "deploy:update_code", "deploy:generate_tinymce_cache"
+after "deploy:update_code", "deploy:generate_tinymce_cache"
 after 'deploy:update_code', "deploy:precompile_assets"
 after "deploy",             "deploy:cleanup"
 # after "deploy",             "deploy:build_missing_paperclip_styles"
