@@ -1,20 +1,20 @@
 require "bundler/capistrano"
 # require 'airbrake/capistrano'
 
-server = "myweightworld.com" 
+server = "173.201.44.207" 
 
 set :application, "myweightworld"
 set :repository,  "git@myweightworld.unfuddle.com:myweightworld/myww.git"
 #set :repository, "git@github.com:supairish/MyWeightWorld.git"
-set :port, 6969
+#set :port, 6969
 
 set :use_sudo,  false
 
 set :scm, "git"
-set :user,      'deploy'
-set :password,  'rails4myweightworld'
+set :user,      'myweightworld'
+set :password,  'MYweight404'
 
-set :keep_releases, 4
+set :keep_releases, 5
 set :branch, "master"
 
 set :rails_env, 'production'
@@ -29,7 +29,7 @@ role :app, server
 role :db,  server, :primary => true
 
 after "deploy:update_code", "deploy:symlink_config"
-after "deploy:update_code", "deploy:generate_tinymce_cache"
+#after "deploy:update_code", "deploy:generate_tinymce_cache"
 after 'deploy:update_code', "deploy:precompile_assets"
 after "deploy",             "deploy:cleanup"
 # after "deploy",             "deploy:build_missing_paperclip_styles"
