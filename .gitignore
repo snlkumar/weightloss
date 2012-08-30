@@ -10,7 +10,6 @@ coverage
 features_rcov/
 rerun.txt
 public/system
-config/database.yml
 .idea
 lib/tasks/rcov.rake.old
 lib/tasks/rcov.rake
