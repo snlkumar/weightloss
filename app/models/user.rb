@@ -34,11 +34,12 @@ has_attached_file :photoafter, :styles      => { :thumb   => "16x16#", :medium =
 
   
   # Associations
+  has_many :measurements,    :dependent => :destroy
   has_many :photos,    :dependent => :destroy
   has_many :meals,    :dependent => :destroy
   has_many :workouts, :dependent => :destroy
   has_many :weights,  :dependent => :destroy, :order => 'created_at DESC'
-  
+  has_many :bodyfats	,  :dependent => :destroy, :order => 'created_at DESC'  
   # Scopes
   scope :recent, :conditions => {:status => 'finalize'}, :order => 'created_at DESC', :limit => 7
   

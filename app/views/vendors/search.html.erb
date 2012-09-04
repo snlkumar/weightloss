@@ -1,4 +1,29 @@
 <style type="text/css">
+.black_overlay{
+			display: none;
+			position: fixed;
+			top: -20%;
+			left: -17%;
+			width: 150em;
+			height: 100em;
+			background-color: black;
+			z-index:1001;
+			-moz-opacity: 0.8;
+			opacity:.80;
+			filter: alpha(opacity=80);
+		}
+		.white_content {
+			display: none;
+			position: fixed;
+			top: 15%;
+			left: 25%;
+			width: 45%;
+			height: 62%;
+			padding: 16px;
+			border: 10px solid #781351;
+			background-color: white;
+			z-index:1002;
+		}
 	th{
 		font-size:14px;
 		text-align:center;
@@ -30,6 +55,25 @@
 	left:21%;
 	z-index:300;
 }
+.submit_button {
+    display: inline-block;
+    background: #e4e4e4;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f6f6f6), color-stop(100%,#d7d7d7));
+    background: -moz-linear-gradient(center top, #f6f6f6 0%, #d7d7d7 100%);
+    -webkit-box-shadow: -1px 1px 0px 0px #dfdcdc inset, 1px -1px 0px 0px #bfbfbf inset;
+    -moz-box-shadow: -1px 1px 0px 0px #dfdcdc inset, 1px -1px 0px 0px #bfbfbf inset;
+    box-shadow: -1px 1px 0px 0px #dfdcdc inset, 1px -1px 0px 0px #bfbfbf inset;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    
+    padding: 5px 10px;
+    display: inline-block;
+    font-family: arial;
+    font-size: 11px;
+    line-height: 30px;
+    color: #595959;
+    font-weight: bold;
+}
 </style>
 
 
@@ -43,7 +87,13 @@ function submitFormByEnter(event) {
         submitForm();
     }
 }
-
+function showClaimForm(a,b){
+document.getElementById('business_type').value=a;
+document.getElementById('vr_id').value=b;
+document.getElementById('light').style.display='block';
+document.getElementById('fade').style.display='block';
+}
+		
 </script>
 
 <!-- new code end------------->
@@ -52,28 +102,6 @@ function submitFormByEnter(event) {
 
 <script tyle="text/javascript">
 
-  //for miles slider 
-  /*
-  <% content_for :js do %>
-    $('#distance-slider').slider({
-          range: "min",
-          step: 2,
-          value: 0,
-          min: 1,
-          max: 20,
-          slide: function( event, ui ) {
-            miles=ui.value;
-            $( "#distance-view" ).html(miles);
-            $( "#distance-val" ).val( ui.value );
-          }
-        });
-    
-    miles= $( "#distance-slider" ).slider( "value" );
-    
-    $( "#distance-view" ).html( miles);
-  <% end %>
-  
-  */
 function selectedRow(rw)
 {
 	rw.style.background="#A9BCF5";
@@ -86,6 +114,18 @@ function submitForm()
 {
   location.href="<%=vendor_path%>/"+$("#searchtype").val()+"/"+$("#vendor-search-query").val().trim();
 }
+function submitClaimForm()
+{
+ if($("#terms").attr('checked')!="checked")
+	 {
+			alert("To sumbit please accept Terms & conditions");
+			return false;		
+		}
+		else
+	{	
+$("#vendor-claim").submit();}
+}
+
 function getTdVal(mid)
 {
 	vendorGridTable=document.getElementById('VendorGridTable');
@@ -128,15 +168,7 @@ function getTdVal(mid)
     <label style="font-size:14px;">Filter</label><br>
     <input type="text" id="vendor-search-query" onkeyup="submitFormByEnter(event)" name="filterQuery" value="<%=params[:filterQuery]%>" style="height:1.2em;width:12em;" placeholder="Enter State, city, zip..."/>
   </div>
-   
   
-  <!--  <div style="float:left;margin-left:2%;margin-top:-10px;">
-      <%= label 'Distance', 'Distance:', :style=>"margin:0;padding:0;" %>
-      <span id="distance-view"></span>
-      <div id="distance-slider"></div>
-      <input type="hidden" name="distance" value='1' id = "distance-val" />
-    </div>
- -->
     <div style="float:left;margin-left:1%;padding-top:.5em;">
     <br>
       <input type="button" class="button grid_3" style="height:26px;font-size:10pt;width:4em;padding:0;margin:0;" onclick="submitForm()" value=" Search " />
@@ -209,7 +241,7 @@ function getTdVal(mid)
         <th>Contact 2</th>
         <th>Email</th>
         <th>Website Address</th>-->
-        <th></th>
+        <th>Claim</th>
       <%elsif @cols=="restaurants"%>
       <!--  <th>Company Name</th>-->
         <th>Name</th>
@@ -218,7 +250,7 @@ function getTdVal(mid)
         <th>State</th>
         <th>Zip</th>
         <th>Restaurant Type</th>
-        <th></th>
+        <th>Claim</th>
      <%end%>
     </tr>
     <% @data.each do |row| %>
@@ -232,7 +264,7 @@ function getTdVal(mid)
           <td style="padding: .3%;"><%=row.vendor_type.split('_').join(' ')%>&nbsp;&nbsp;</td>
 				<%end%>
           <!--<td style="padding: .3%;"><%#=row.title%></td>-->
-          <td style="padding: .3%;"><%=row.company_title%></td>
+          <td style="padding: .3%;"><%=row.business_name%></td>
           <td style="padding: .3%;width:15em;"><%=link_to row.vendor_name ,vendorInfo_path(row.id)+"/"+row.vendor_type %></td>
           <!--<td style="padding: .3%;"><%#=row.address1%></td>
           <td style="padding: .3%;"><%#=row.address2%></td>-->
@@ -244,21 +276,70 @@ function getTdVal(mid)
           <td style="padding: .3%;"><%#=row.contact2%></td>
           <td style="padding: .3%;"><%#=row.email%></td>
           <td style="padding: .3%;"><%#=row.website_address%></td>-->
-          <td><button id="search" class="button grid_3" style="height:26px;font-size:10px;width:9em;padding:0;margin:0%;">Claim business</button></td>
+          <%	if row.status=="Pending approval"%>
+          <td style="padding: .3%;"><%=row.status.upcase%></td>
+				<%else%>
+          <td><button id="claimbutton" class="button grid_3" style="height:26px;font-size:10px;width:9em;padding:0;margin:0%;" onclick='showClaimForm("<%=row.vendor_type%>","<%=row.id%>")' >Claim business</button></td>
+				<%end%>
         <%elsif @cols=="restaurants"%>
-          <td style="padding: .3%;"><%=link_to row.name, vendorInfo_path(row.id)+"/restaurants"%></td>
-          <td style="padding: .3%;"><%=row.address%></td>
+          <td style="padding: .3%;"><%=link_to row.business_name, vendorInfo_path(row.id)+"/restaurants"%></td>
+          <td style="padding: .3%;"><%=row.address1%></td>
           <td style="padding: .3%;"><%=row.city%></td>
           <td style="padding: .3%;"><%=row.state%></td>
-          <td style="padding: .3%;"><%=row.zip%></td>
+          <td style="padding: .3%;"><%=row.zipcode%></td>
           <td style="padding: .3%;"><%=row.restaurent_type%></td>
-          <td><button id="search" class="button grid_3" style="height:26px;font-size:10px;width:9em;padding:0;margin:0 0 0 2em;">Claim business</button></td>
+				<% if row.status=="Pending approval"%>  
+				<td style="padding: .3%;"><%=row.status%></td> 
+				<%else%>				       
+          <td><button id="claimbutton" class="button grid_3" style="height:26px;font-size:10px;width:9em;padding:0;margin:0 0 0 2em;" onclick='showClaimForm("restaurants", "<%=row.id%>")'>Claim business</button></td>
+				<%end%>          
         <%end%>      
       </tr>
     <%end%>
   </table>
 <%end%>
 </div>
+
+<!-- 	claim business form -->
+
+<div id="light" class="white_content">
+	<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
+<div style="background-image:url('/assets/close.png');float:right;width:30px;height:30px;margin-right:-3.5em;margin-top:-3.3em;"></div>
+</a>
+
+	<form id="vendor-claim" method='post' action="<%=businessclaim_vendors_path%>">
+			<div style="margin-left:25%;">
+			<h1>Claim your business</h1>
+				</div><br/>
+			<div style="margin-left:15%">
+			<label>First Name:</label>
+      	<input type="text" id="claimfname" name="businessclaim[claimfname]" value="" style="height:1.2em;width:12em;"/></br>
+      	
+				<label>Last Name:</label>
+      		<input type="text" id="claimlname" name="businessclaim[claimlname]" value="" style="height:1.2em;width:12em;"/></br>
+
+
+		     <label>Email: </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      	<input type="text" id="claimemail" name="businessclaim[claimemail]" value="" style="height:1.2em;width:12em;"/></br>
+
+
+      	<label>Contact:</label>&nbsp;&nbsp;&nbsp;
+        <input type="text" id="claimcontact" name="businessclaim[claimcontact]" value="" style="height:1.2em;width:12em;"/></br>
+      	
+			
+        <input type="hidden" id="business_type" name="businessclaim[business_type]" value="">
+        <input type="hidden" id="vr_id" name="businessclaim[vr_id]" value="">
+        <input type="hidden" id="status" name="businessclaim[status]" value="Pending approval">
+						</div>
+			
+      <input type="checkbox" id="terms" style="margin-left:15%;" value=""/>&nbsp; I certify this is my business & Accept Terms of Service.</br></br>				
+      <button id="submitclaim" style="margin-left:32%;" class="button grid_3" onclick="return submitClaimForm()">Submit</button>
+
+	</form>
+
+</div>
+<div id="fade" class="black_overlay"></div>
+<!-- end -->
 
 <script type="text/javascript" charset="utf-8">
   <% content_for :js do %>

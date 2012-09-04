@@ -1,0 +1,40 @@
+<h1 style="margin-left:8%;">Approve/Reject Business Claim</h1><br />
+<div style="margin-left:10%;">
+<%= form_for @claim, :url => admin_businessclaim_path(@claim),:method => :put do |f| %>
+
+<div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :claimfname, :disabled => true,:style => "height: 1.2em;width:40%;" %>
+  </div>
+  <%= f.hidden_field :vr_id %>
+  <%= f.hidden_field :business_type %>
+  
+  <div class="field">
+    <%= f.label :Last_name %><br />
+    <%= f.text_field :claimlname, :disabled => true,:style => "height: 1.2em;width:40%;" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :claimemail, :disabled => true,:style => "height: 1.2em;width:40%;" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :contact %><br />
+    <%= f.text_field :claimcontact, :disabled => true,:style => "height: 1.2em;width:40%;" %>
+  </div>
+  <div class="field">
+    <%= f.label :business_type %><br />
+    <%= f.text_field :business_type, :disabled => true, :style => "height: 1.2em;width:40%;" %>
+  </div>
+
+	<div class="field">
+    <%= f.label :status%>
+    <%=f.select :status, [["Rejected","rejected"],["Approved","approved"]], :selected=>"Rejected" %>
+  </div></br>
+  <%=f.submit "Submit"%>
+   <%end%>
+
+<br/><%= link_to 'Back', :back %>
+</div>
+

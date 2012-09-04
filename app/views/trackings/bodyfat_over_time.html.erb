@@ -1,0 +1,49 @@
+<ul class="grid_11 graph-button-bar">
+  <li id="start" class="<%= graph_selected?(weight_over_time_tracking_path) %>"><%= link_to 'Weight/Time', weight_over_time_tracking_path %></li><li class="<%= graph_selected?(measurement_over_time_tracking_path) %>"><%= link_to 'Measurement', measurement_over_time_tracking_path %></li>
+  <li class="<%= graph_selected?(net_calories_tracking_path) %>"><%= link_to 'Net Calories', net_calories_tracking_path %></li>
+ <li id="end"   class="<%= graph_selected?(bodyfat_over_time_tracking_path) %>"><%= link_to 'Body Fat/Time', bodyfat_over_time_tracking_path %></li>
+</ul>
+<div class="clear"></div>
+
+<ul class="grid_11 graph-button-bar">
+  <li id="start" class="<%= date_range_selected?('1wk', @range) %>"><%= link_to '1 Week', bodyfat_over_time_tracking_path(:range => '1wk') %></li>
+  <li class="<%= date_range_selected?('2wk', @range) %>"><%= link_to '2 Weeks', bodyfat_over_time_tracking_path(:range => '2wk') %></li>
+  <li class="<%= date_range_selected?('1mth', @range) %>"><%= link_to '1 Month', bodyfat_over_time_tracking_path(:range => '1mth') %></li>
+  <li class="<%= date_range_selected?('2mth', @range) %>"><%= link_to '2 Months', bodyfat_over_time_tracking_path(:range => '2mth') %></li>
+  <li class="<%= date_range_selected?('3mth', @range) %>"><%= link_to '3 Months', bodyfat_over_time_tracking_path(:range => '3mth') %></li>
+  <li id="end" class="<%= date_range_selected?('6mth', @range) %>"><%= link_to '6 Months', bodyfat_over_time_tracking_path(:range => '6mth') %></li>
+</ul>
+<div class="clear"></div>
+
+<div id="chart-container" style="width: 100%; height: 400px"></div>
+
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    <%= render :partial => 'highchart_theme.js' %>
+    
+    chart1 = new Highcharts.Chart({
+             chart: {
+                renderTo: 'chart-container',
+                defaultSeriesType: 'line'
+             },
+             title: { text: 'Body Fat Over Time'},
+             xAxis: { type: 'datetime'},
+             yAxis: {
+               title: { text: 'Body Fat' },
+               plotLines: [{
+                 value: 0,
+                 width: 1,
+                 color: '#808080'
+               }]
+             },
+             tooltip: {
+               formatter: function(){ return '' + new Date(this.x).toDateString() +'<br/>'+ this.series.name + ': ' + Math.abs(this.y) + '%'; }
+             },
+             series: [{
+               name: '<%= current_user.full_name %>',
+               data: <%= @grapher.js_data %>
+             }
+                        ]
+          });
+  <% end %>
+</script>

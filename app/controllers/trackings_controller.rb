@@ -24,4 +24,18 @@ class TrackingsController < ApplicationController
     @range = params[:range]
     @grapher = NetCaloriesGrapher.new( @range, current_user )
   end
+
+  def bodyfat_over_time
+    @user  = current_user
+    @range = params[:range]
+    @grapher = BodyfatGrapher.new( @range, current_user )
+  end
+
+  def measurement_over_time
+ @user  = current_user
+ @range = params[:range]
+ @grapher = MeasurementGrapher.new( @range, current_user )
+            
+  end
+	
 end

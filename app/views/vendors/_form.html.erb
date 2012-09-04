@@ -7,9 +7,8 @@ select#vendor_vendor_type, #country{
     width:42%;
     height:2em;
   }
+</style>
 
- 
- </style>
  <% if @vendor.errors.any? %>
     <div id="error_explanation" style="margin-left:30%;">
       <h2><%= pluralize(@vendor.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -85,7 +84,7 @@ $("#div2").toggle();
   });
 });*/
 </script>
-<div style="margin-left: 30%">
+<div style="margin-left:30%">
 
 
 <br>
@@ -523,7 +522,7 @@ $("#div2").toggle();
   </div> </br>
 
   <div class="field">
-    <%= f.label :accept_insurance %><br />
+    <%= f.label :insurance %><br />
     <%=f.select :accept_insurance, [["Yes","yes"],["No","no"]], :selected=>"Yes" %>
   </div> </br><br />
 
@@ -829,7 +828,7 @@ $("#div2").toggle();
 
 
 <input type="button" value="back" onclick="toggle2()" />&nbsp;&nbsp; <%= f.submit %>
-</div>
+</div></div>
 
 
 

@@ -1,5 +1,4 @@
 Myweightworld::Application.routes.draw do
-
 devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "users/omniauth_callbacks" } do
     get '/sign_in', :to => 'devise/sessions#new'
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
@@ -32,17 +31,18 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
   #new added routes
 	match "/photos/:id/:filterPhotosByBeforeAfter"=> "Photos#filterPhotosByBeforeAfter", :as =>"before_after"
 	resources :photos
-
   resources :vendors do
     collection do
       post :search_decipher
       get :search_decipher
+      post :businessclaim
     end
   end
 
   #end
   
   namespace :admin do
+   resources :businessclaims
 	resources :exercises do
       collection do
         post :search
@@ -74,6 +74,8 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
     
     match '/charts/weight' => 'trackings#weight_over_time', :as => :weight_over_time
     match '/charts/net_calories' => 'trackings#net_calories', :as => :net_calories
+    match '/charts/bodyfat' => 'trackings#bodyfat_over_time', :as => :bodyfat_over_time
+    match '/charts/measurement' => 'trackings#measurement_over_time', :as => :measurement_over_time
   end
   
   resource  :metabolic_rates
@@ -115,6 +117,11 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
       put :weight_update
       get :achievement_date
       put :bmi_update
+		#new added routes
+		post :bodyfat_store
+		get :measurement
+		post :newmeasurement
+		#end
     end
     
     match '/info/edit'      => 'users#personal_info', :as => :edit_personal_info
@@ -123,7 +130,6 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
     match '/account/edit'   => 'users#account_info', :as => :edit_account_info
     resources :meals
   end
-  
   post "comments/:class_name/:id",  :to => "comments#create",   :as => 'create_comment'
   match '/searches/new' => 'searches#new', :as => :new_search
   match '/searches'     => 'searches#create', :via => :get, :as => :searches

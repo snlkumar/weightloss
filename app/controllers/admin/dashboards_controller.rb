@@ -23,6 +23,12 @@ class Admin::DashboardsController < Admin::BaseController
     if @posts.empty?
       @posts = OldTextFile.page(1).per(50)
     end
+    
+    @claims = Businessclaim.page(params[:page] || 1).per(50)
+    
+    if @claims.empty?
+      @claims = Businessclaim.page(1).per(50)
+    end
     #end
   end
 end

@@ -1,3 +1,126 @@
+<script type="text/javascript" src="/assets/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".flip").click(function(){
+   	$(".panel").slideToggle("slow");
+ 	});
+ 	
+ 	$("#store_calc").click(function(e){
+		e.preventDefault();
+		d=1;
+		bfat=0;
+		s="<%=current_user.gender.downcase%>"
+	 if($("#cm").attr('checked')!="checked")
+	 {
+	 	d=2.5
+	 }
+	 h=$("#height").val();
+	 n=$("#neck").val();
+	 w=$("#waist").val();
+	 r=$("#hips").val();
+ 
+	 if ( h== '')
+	 {
+			alert("You must enter your height");
+			return false;
+		}
+		if (h != Number(h) || (h = Number(h*d)) < 100 || h > 250) 
+		{
+			alert("Invalid height entered");
+			return false;
+		}
+	
+		if (n == '') 
+		{
+			alert("You must enter your neck size");
+			return false;
+		}
+		if (n != Number(n) || (n = Number(n*d)) < 20 || n > 60)
+		{
+		 	alert("Invalid neck size entered");
+		 	return false;
+		}
+		if (w == '') 
+		{
+			alert("You must enter your waist size");
+			return false;
+		}
+		if (w != Number(w) || (w = Number(w*d)) < 30 || w > h) 
+		{
+			alert("Invalid waist size entered");
+			return false;
+		}
+		if (s == 'female')
+		{
+			if (r == '')
+		 	{
+		 		alert("You must enter your hip size");
+		 		return false;
+		 	}
+		 	if (r != Number(r) || (r = Number(r*d)) < 40 || h > 200) 
+		 	{
+		 		alert("Invalid hip size entered");
+		 		return false;
+		 	}
+		}
+		
+		switch(s)
+		{
+			case 'male':
+				bfat=maleFat(h,n,w);
+			break; 
+			case 'female': 
+				bfat=femaleFat(h,n,w,r);
+		}
+		
+		$("#bodyfat_result").html("Body Fat="+bfat ); 
+	
+	$.post("<%=bodyfat_store_user_path(current_user)%>", { height: h
+, neck: n, waist: w, hips: r, bodyfat: bfat},
+ function(data) {
+ 	if(data=="saved")
+   	alert("Bodyfat successfully submitted");
+  	else
+  		alert("Bodyfat not submited");
+    });
+ });
+});
+
+function maleFat(h,n,w) 
+{
+	return result(495/(1.0324-0.19077*(Math.log(w-n)/Math.LN10)+0.15456*(Math.log(h)/Math.LN10))-450);
+}
+function femaleFat(h,n,w,r) 
+{
+	return result(495/(1.29579-0.35004*(Math.log(w+r-n)/Math.LN10)+0.22100*(Math.log(h)/Math.LN10))-450);
+}
+function result(n) 
+{
+	return Math.round(n*10)/10+'%';
+}
+</script>
+
+<style type="text/css">
+div.panel,p.flip
+{
+margin:1px;
+padding:1px;
+width:300px;
+text-align:left;
+}
+div.panel
+{
+height:350px;
+display:none;
+}
+p.flip
+{
+border:solid 1px;
+width:30%
+}
+
+</style>
+
 
 <div id="settings-content" class="grid_11">
   <h3>Personal Information</h3>

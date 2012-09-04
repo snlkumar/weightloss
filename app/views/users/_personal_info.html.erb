@@ -31,7 +31,7 @@
   <%= f.label :gender %><br/>
   <%= f.select :gender, [['Choose', 0], ['Male', 'male'], ['Female', 'female']] %>
   <span class="clear"></span>
-</p>
+</p><br/>
 
 <!-- new added code --->
 
@@ -59,15 +59,54 @@
 </p>
 
 -->
+
+
+<!--
+
 <p>
   <br/><%= f.label 'Body Fat' %><br/>
   <%= f.text_field :bodyfat, :title => 'Body Fat', :class => 'grid_6 alpha' %><div style="padding-top:2%;">&nbsp;%</div>
   <span class="clear"></span>
-</p>
+</p>-->
 
 <!-- end new added code -->
 
-<%= render :partial => '/users/personal_measurements', :locals => {:f => f} %>
+<%= render :partial => '/users/personal_measurements', :locals => {:f => f} %><br />
+
+<div class="panel">
+
+<p>
+	<input type="radio" id="cm" name="cmi" />Centimeter
+	<input type="radio" id="in" name="cmi" checked="checked" />Inches
+</p>
+
+ <p>
+   Height:<br />
+   <%= text_field_tag "height" %>
+ </p>
+ <p>
+   Neck:<br />
+   <%= text_field_tag "neck" %>
+ </p> 
+ <p>
+   Waist:<br />
+   <%= text_field_tag "waist" %>
+ </p> <p>
+ 
+<%if current_user.gender.downcase=="female"%>
+<p>
+  Hips:<br />
+   <%= text_field_tag "hips" %>
+</p>
+<%end%>
+<p>
+  <button id="store_calc">Calculate</button>		
+</p>
+<div id="bodyfat_result" style="font-weight:bold;color:navy;font-size:15px;"></div><br/>
+</div>
+
+<p class="flip" style="font-weight:bold;font-size:15px;">Click to calculate body fat</p><br/>
+
 
 <p>
   <%= f.label :city %><br/>

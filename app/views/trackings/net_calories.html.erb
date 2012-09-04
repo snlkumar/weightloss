@@ -1,6 +1,8 @@
 <ul class="grid_11 graph-button-bar">
-  <li id="start" class="<%= graph_selected?(weight_over_time_tracking_path) %>"><%= link_to 'Weight/Time', weight_over_time_tracking_path %></li>
-  <li id="end"   class="<%= graph_selected?(net_calories_tracking_path) %>"><%= link_to 'Net Calories', net_calories_tracking_path %></li>
+  <li id="start" class="<%= graph_selected?(weight_over_time_tracking_path) %>"><%= link_to 'Weight/Time', weight_over_time_tracking_path %></li><li class="<%= graph_selected?(measurement_over_time_tracking_path) %>"><%= link_to 'Measurement', measurement_over_time_tracking_path %></li>
+  <li class="<%= graph_selected?(net_calories_tracking_path) %>"><%= link_to 'Net Calories', net_calories_tracking_path %></li>
+  
+ <li id="end"   class="<%= graph_selected?(bodyfat_over_time_tracking_path) %>"><%= link_to 'Body Fat/Time', bodyfat_over_time_tracking_path %>
 </ul>
 <div class="clear"></div>
 
@@ -56,7 +58,7 @@
                             "[#{ @grapher.ruby_data.last.first }, #{ five_hundred_calorie_deficit(current_user) }]"].join(', ') %>]
               }
              <% end %>
-             ]
+             ]	
     });
     
     

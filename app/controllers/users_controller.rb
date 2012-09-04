@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :set_defaults,       :only => [:step_two, :edit, :personal_info]
   
   layout 'signup', :only => [:create, :step_two, :finalize]
-  layout 'user_settings', :only => [:update, :account_info, :personal_info, :nutrition_info, :exercise_info]
+  layout 'user_settings', :only => [:update, :account_info, :personal_info, :nutrition_info, :exercise_info, :measurement]
   
   def show
 
@@ -105,15 +105,15 @@ class UsersController < ApplicationController
     render :layout => 'user_settings'
   end
   
-  def bmi
+  def bmibodyfat
     @user = current_user
     render :layout => "profile"
   end
   
   def weight_update
     current_user.update_attributes(params[:user])
-    
-    render :text => current_user.weight
+    bodyfat
+    render :text => current_user.weight	
   end
   
   def bmi_update
@@ -124,5 +124,43 @@ class UsersController < ApplicationController
   
   def achievement_date
     render :partial => 'shared/achievement_date', :locals => {:user => current_user}
+  end
+	
+	#new added actions
+  def bodyfat_store
+  	@bodyfat=Bodyfat.create(:bodyfat=>params[:bodyfat],:height=>params[:height].to_f,:waist=>params[:waist].to_f,:neck=>params[:neck].to_f,:hips=>params[:hips].to_f,:user_id=>current_user.id)
+  	if @bodyfat.save
+  		@status="saved"
+  	else
+  		@status="not"
+  	end
+  	render :text=>@status
+=begin
+	if params[:hips]=="" || params[:hips]==nil
+  		params[:hips]=0
+  	end	
+	if current_user.gender.downcase=="male"
+		#body fat calculator formula for man
+		bodyfat=495/(1.0324-0.19077*(Math.log(params[:waist].to_f-params[:neck].to_f))+0.15456*(Math.log(params[:height].to_f)))-450
+	else
+		#body fat calculator formula for woman:
+		bodyfat=495/(1.29579-0.35004*(Math.log(params[:waist].to_f+params[:hips].to_f-params[:neck].to_f))+0.22100*(Math.log(params[:height].to_f)))-450 
+	end
+ 
+ 	#@bodyfat=Bodyfat.create(:bodyfat=>bodyfat,:height=>params[:height].to_f,:waist=>params[:waist].to_f,:neck=>params[:neck].to_f,:hips=>params[:hips].to_f,:user_id=>current_user.id)
+ 
+=end
+end
+
+	def measurement 
+    @meas=Measurement.new
+   end
+  
+  def newmeasurement
+  @user=current_user
+  @meas=@user.measurements.create(params[:measurement])
+    if @meas.save
+        redirect_to(measurement_over_time_tracking_path, :notice => 'measurement was successfully saved.')
+    end
   end
 end

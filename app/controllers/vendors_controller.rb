@@ -13,9 +13,9 @@ class VendorsController < ApplicationController
 
       elsif params[:searchtype]=="restaurants"
         if params[:filterBy]=="zipcode"
-          params[:filterBy]="zip"
+          params[:filterBy]="zipcode"
         end
-        @data=Restaurant.where("city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zip like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
+        @data=Restaurant.where("city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
 
         @cols="restaurants"
       else
@@ -47,7 +47,8 @@ class VendorsController < ApplicationController
 
 
  def show
-   if params[:id] && params[:restaurants]!=nil && params[:restaurants]=="restaurants"
+   @claim=Businessclaim.all
+      if params[:id] && params[:restaurants]!=nil && params[:restaurants]=="restaurants"
     @status="true"  #for restaurants
     @vendor=Restaurant.find(params[:id])
    else
@@ -67,7 +68,9 @@ class VendorsController < ApplicationController
   if params[:vendor][:vendor_type]!= "restaurants"
    @vendor=Vendor.new(params[:vendor])
    else
-   @vendor=Restaurant.new(params[:restaurant])
+#new code added
+  params[:vendor]
+   @vendor=Restaurant.create(:business_name=>params[:vendor][:business_name], :city=>params[:vendor][:city],:state=>params[:vendor][:state],:zipcode=>params[:vendor][:zipcode])	
     end
    
    check=verify_recaptcha(request.remote_ip, params)
@@ -84,22 +87,24 @@ class VendorsController < ApplicationController
    end
   end
   #end create
-  
-  def update
-  @vendor= Vendor.find(params[:id])
 
-    respond_to do |format|
-      if @vedor.update_attributes(params[:vendor])
-        format.html { redirect_to(vendors_path, :notice => 'Vendor was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @vendor.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
   
   def edit
     @vendor=Vendor.find(params[:id])
   end
-end  
+  
+  def businessclaim
+	  @claim=Businessclaim.create(params[:businessclaim])
+	  if @claim.save
+		  if params[:businessclaim][:business_type].downcase=="restaurants"
+		  	Restaurant.find(params[:businessclaim][:vr_id]).update_attributes(:status=>"Pending approval")
+		  else
+		  	Vendor.find(params[:businessclaim][:vr_id]).update_attributes(:status=>"Pending approval")
+		  	
+		  end
+	  		redirect_to(vendor_path, :notice => 'Successfully claimed.')
+		else
+		  render :action => "new"
+		end
+	end  
+end

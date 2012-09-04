@@ -10,7 +10,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120824145908) do
+ActiveRecord::Schema.define(:version => 20120903183947) do
+
+  create_table "bodyfats", :force => true do |t|
+    t.integer  "user_id"
+    t.float    "bodyfat"
+    t.float    "height"
+    t.float    "waist"
+    t.float    "neck"
+    t.float    "hips"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "businessclaims", :force => true do |t|
+    t.string   "claimfname"
+    t.string   "claimlname"
+    t.string   "claimemail"
+    t.string   "claimcontact"
+    t.string   "business_type"
+    t.string   "status"
+    t.integer  "vr_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", :force => true do |t|
     t.integer "parent_id"
@@ -337,14 +360,15 @@ ActiveRecord::Schema.define(:version => 20120824145908) do
   end
 
   create_table "restaurants", :force => true do |t|
-    t.string   "name"
-    t.string   "address"
+    t.string   "business_name"
+    t.string   "address1"
     t.string   "city"
     t.string   "state"
-    t.string   "zip"
+    t.string   "zipcode"
     t.string   "restaurent_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status"
   end
 
   create_table "sessions", :force => true do |t|
@@ -534,6 +558,15 @@ ActiveRecord::Schema.define(:version => 20120824145908) do
     t.string   "p_contact"
     t.string   "b_email"
     t.string   "p_country"
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
   create_table "weights", :force => true do |t|
