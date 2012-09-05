@@ -1,115 +1,111 @@
 	
 <br/>	
 
-
- <div style="float:left;margin-left:1%; width: 40%;" >
+<div style="float:left;margin-left:1%; width: 40%;" >
     <%= f.label :height, %Q{Height <span class="help-text">(in)</span> }.html_safe %><br />
-      <span id="distance-view"></span>
-      <div id="distance-slider" style="width: 100%;"></div>
-      <input type="hidden" name="measurement[height]" value='1' id = "distance-val" />
+      <span id="height-view"></span><br />
+      <div class="slider" id="height" style="width: 100%;"></div>
+      <input type="hidden" name="measurement[height]" value='1' id = "height-val" />
  </div> <br/> <br/><br/><br/>
-
 
 
  <div style="float:left;margin-left:1%; width: 40%;" >
       <%= f.label :chest, %Q{Chest <span class="help-text">(in)</span> }.html_safe %><br />
-      <span id="distance-view1"></span>
-      <div id="distance-slider1" style="width: 100%;"></div>
-      <input type="hidden" name="measurement[chest]" value='1' id = "distance-val1" />
+      <span id="chest-view"></span><br />
+      <div class="slider" id="chest" style="width: 100%;"></div>
+      <input type="hidden" name="measurement[chest]" value='1' id = "chest-val" />
  </div> <br/> <br/><br/><br/>
-
-
  
   <div style="float:left;margin-left:1%; width: 40%;" >
     <%= f.label :uparmright, %Q{Uparmright <span class="help-text">(in)</span> }.html_safe %><br />
-      <span id="distance-view2"></span>
-      <div id="distance-slider2" style="width: 100%;"></div>
-      <input type="hidden" name="measurement[uparmright]" value='1' id = "distance-val2" />
+      <span id="uparmright-view"></span><br/>
+      <div class="slider" id="uparmright" style="width: 100%;"></div>
+      <input type="hidden" name="measurement[uparmright]" value='1' id = "uparmright-val" />
  </div> <br/> <br/><br/><br/>
 
 
 
  <div style="float:left;margin-left:1%; width: 40%;" >
       <%= f.label :forearmright, %Q{Forearmright <span class="help-text">(in)</span> }.html_safe %><br />
-      <span id="distance-view3"></span>
-      <div id="distance-slider3" style="width: 100%;"></div>
-      <input type="hidden" name="measurement[forearmright]" value='1' id = "distance-val3" />
+      <span id="forearmright-view"></span><br/>
+      <div  class="slider" id="forearmright" style="width: 100%;"></div>
+      <input type="hidden" name="measurement[forearmright]" value='1' id = "forearmright-val" />
  </div> <br/> <br/><br/><br/>
  
  
   <div style="float:left;margin-left:1%; width: 40%;" >
     <%= f.label :hips, %Q{Hips <span class="help-text">(in)</span> }.html_safe %><br />
-      <span id="distance-view4"></span>
-      <div id="distance-slider4" style="width: 100%;"></div>
-      <input type="hidden" name="measurement[hips]" value='1' id = "distance-val4" />
+      <span id="hips-view"></span><br/>
+      <div class="slider" id="hips" style="width: 100%;"></div>
+      <input type="hidden" name="measurement[hips]" value='1' id = "hips-val" />
  </div> <br/> <br/><br/><br/>
 
 
  <div style="float:left;margin-left:1%; width: 40%;" >
       <%= f.label :thighright, %Q{Thighright <span class="help-text">(in)</span> }.html_safe%><br />
-      <span id="distance-view5"></span>
-      <div id="distance-slider5" style="width: 100%;"></div>
-      <input type="hidden" name="measurement[thighright]" value='1' id = "distance-val5" />
+      <span id="thighright-view"></span><br/>
+      <div class="slider" id="thighright" style="width: 100%;"></div>
+      <input type="hidden" name="measurement[thighright]" value='1' id = "thighright-val" />
  </div> <br/> <br/><br/><br/>
 
 
   <div style="float:left;margin-left:1%; width: 40%;" >
     <%= f.label :calfright, %Q{Calfright <span class="help-text">(in)</span> }.html_safe %><br />
-      <span id="distance-view6"></span>
-      <div id="distance-slider6" style="width: 100%;"></div>
-      <input type="hidden" name="measurement[calfright]" value='1' id = "distance-val6" />
+      <span id="calfright-view"></span><br/>
+      <div class="slider" id="calfright" style="width: 100%;"></div>
+      <input type="hidden" name="measurement[calfright]" value='1' id = "calfright-val" />
  </div> <br/> <br/><br/><br/>
 
 
 
  <div style="float:left;margin-left:1%; width: 40%;" >
     <%= f.label :calfleft, %Q{Calfleft <span class="help-text">(in)</span> }.html_safe %><br />
-      <span id="distance-view7"></span>
-      <div id="distance-slider7" style="width: 100%;"></div>
-      <input type="hidden" name="measurement[calfleft]" value='1' id = "distance-val7" />
+      <span id="calfleft-view"></span><br/>
+      <div class="slider" id="calfleft" style="width: 100%;"></div>
+      <input type="hidden" name="measurement[calfleft]" value='1' id = "calfleft-val" />
  </div> <br/> <br/><br/><br/>
  
  
    <div style="float:left;margin-left:1%; width: 40%;" >
     <%= f.label :thighleft, %Q{Thighleft <span class="help-text">(in)</span> }.html_safe %><br />
-      <span id="distance-view8"></span>
-      <div id="distance-slider8" style="width: 100%;"></div>
-      <input type="hidden" name="measurement[thighleft]" value='1' id = "distance-val8" />
+      <span id="thighleft-view"></span><br/>
+      <div class="slider" id="thighleft" style="width: 100%;"></div>
+      <input type="hidden" name="measurement[thighleft]" value='1' id = "thighleft-val" />
  </div> <br/> <br/><br/><br/>
 
 
 
  <div style="float:left;margin-left:1%; width: 40%;" >
     <%= f.label :waist, %Q{Waist <span class="help-text">(in)</span> }.html_safe %><br />
-      <span id="distance-view9"></span>
-      <div id="distance-slider9" style="width: 100%;"></div>
-      <input type="hidden" name="measurement[waist]" value='1' id = "distance-val9" />
+      <span id="waist-view"></span><br/>
+      <div class="slider" id="waist" style="width: 100%;"></div>
+      <input type="hidden" name="measurement[waist]" value='1' id = "waist-val" />
  </div> <br/> <br/><br/><br/>
  
  
  
     <div style="float:left;margin-left:1%; width: 40%;" >
     <%= f.label :forearmleft, %Q{Forearmleft <span class="help-text">(in)</span> }.html_safe %><br />
-      <span id="distance-view10"></span>
-      <div id="distance-slider10" style="width: 100%;"></div>
-      <input type="hidden" name="measurement[forearmleft]" value='1' id = "distance-val10" />
+      <span id="forearmleft-view"></span><br/>
+      <div class="slider" id="forearmleft" style="width: 100%;"></div>
+      <input type="hidden" name="measurement[forearmleft]" value='1' id = "forearmleft-val" />
  </div> <br/> <br/><br/><br/>
 
 
 
  <div style="float:left;margin-left:1%; width: 40%;" >
     <%= f.label :uparmleft, %Q{Uparmleft <span class="help-text">(in)</span> }.html_safe %><br />
-      <span id="distance-view11"></span>
-      <div id="distance-slider11" style="width: 100%;"></div>
-      <input type="hidden" name="measurement[uparmleft]" value='1' id = "distance-val11" />
+      <span id="uparmleft-view"></span><br/>
+      <div class="slider" id="uparmleft" style="width: 100%;"></div>
+      <input type="hidden" name="measurement[uparmleft]" value='1' id = "uparmleft-val" />
  </div> <br/> <br/><br/><br/>
  
  
   <div style="float:left;margin-left:1%; width: 40%;" >
     <%= f.label :neck, %Q{Neck <span class="help-text">(in)</span> }.html_safe %><br />
-      <span id="distance-view12"></span>
-      <div id="distance-slider12" style="width: 100%;"></div>
-      <input type="hidden" name="measurement[neck]" value='1' id = "distance-val12" />
+      <span id="neck-view"></span><br/>
+      <div class="slider" id="neck" style="width: 100%;"></div>
+      <input type="hidden" name="measurement[neck]" value='1' id = "neck-val" />
  </div> <br/> <br/><br/><br/>
  
 

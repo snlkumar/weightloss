@@ -276,7 +276,10 @@ function getTdVal(mid)
           <td style="padding: .3%;"><%#=row.contact2%></td>
           <td style="padding: .3%;"><%#=row.email%></td>
           <td style="padding: .3%;"><%#=row.website_address%></td>-->
-          <%	if row.status=="Pending approval"%>
+          <%if row.status.nil?%>
+          <%row.status="notapproved"%>
+          <%end%>          
+          <%if row.status.downcase=="pending approval" || row.status.downcase=="approved"%>
           <td style="padding: .3%;"><%=row.status.upcase%></td>
 				<%else%>
           <td><button id="claimbutton" class="button grid_3" style="height:26px;font-size:10px;width:9em;padding:0;margin:0%;" onclick='showClaimForm("<%=row.vendor_type%>","<%=row.id%>")' >Claim business</button></td>
