@@ -96,10 +96,11 @@ class VendorsController < ApplicationController
 	  @claim=Businessclaim.create(params[:businessclaim])
 	  if @claim.save
 		  if params[:businessclaim][:business_type].downcase=="restaurants"
-		  	Restaurant.find(params[:businessclaim][:vr_id]).update_attributes(:status=>"Pending approval")  	 
+		  	Restaurant.find(params[:businessclaim][:vr_id]).update_attributes(:status=>"Pending approval")
+
 		  else
 		  	Vendor.find(params[:businessclaim][:vr_id]).update_attributes(:status=>"Pending approval")
-	  	 
+ 	 
 		  end
 	  		redirect_to(vendor_path, :notice => 'Successfully claimed.')
 		else
