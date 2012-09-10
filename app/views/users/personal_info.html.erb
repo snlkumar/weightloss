@@ -1,24 +1,26 @@
 <script type="text/javascript" src="/assets/jquery.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$(".flip").click(function(){
-   	$(".panel").slideToggle("slow");
- 	});
  	
  	$("#store_calc").click(function(e){
 		e.preventDefault();
 		d=1;
 		bfat=0;
 		s="<%=current_user.gender.downcase%>"
-	 if($("#cm").attr('checked')!="checked")
-	 {
-	 	d=2.5
-	 }
-	 h=$("#height").val();
+	 h=$('#height-val').val();
 	 n=$("#neck").val();
 	 w=$("#waist").val();
 	 r=$("#hips").val();
- 
+	 if($("#cm").attr('checked')!="checked")
+	 {
+	 	d=2.54
+	 }
+	 else
+	 {
+	 h=h*2.54
+	 
+	 }
+
 	 if ( h== '')
 	 {
 			alert("You must enter your height");
@@ -79,9 +81,9 @@ $(document).ready(function(){
 , neck: n, waist: w, hips: r, bodyfat: bfat},
  function(data) {
  	if(data=="saved")
-   	alert("Bodyfat successfully submitted");
+   	alert("Your bodyfat is = " +bfat+ ", Successfully saved.");
   	else
-  		alert("Bodyfat not submited");
+  		alert("Bodyfat not saved");
     });
  });
 });
@@ -99,27 +101,6 @@ function result(n)
 	return Math.round(n*10)/10+'%';
 }
 </script>
-
-<style type="text/css">
-div.panel,p.flip
-{
-margin:1px;
-padding:1px;
-width:300px;
-text-align:left;
-}
-div.panel
-{
-height:350px;
-display:none;
-}
-p.flip
-{
-border:solid 1px;
-width:30%
-}
-
-</style>
 
 
 <div id="settings-content" class="grid_11">

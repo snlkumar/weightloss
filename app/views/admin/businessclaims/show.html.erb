@@ -1,0 +1,113 @@
+<script type="text/javascript">
+  <% content_for :js do %>
+    $(function() {
+      $("tr").mouseover(function(){
+        $(this).css("background-color","#ccc");
+      }).mouseout(function(){
+        $(this).css("background-color","#E6EEEE");
+      });
+   });
+  <%end%>
+</script>
+<br><%= link_to 'Back', :back, :style=>"margin-left:20%;" %><br>
+
+<h1 style="margin-left:55%;">Business Detail</h1><br/><br/>
+  
+  <% if @status!="true"%>
+    <table border="0" width="57%" style="float:left;margin-left:15em;height:40em;background-color:#E6EEEE;border:1px solid;" align="center">
+    <tr>
+      <td colspan="2"><h2 style="background-color:#cccccc;width:33em;"><%= @data.vendor_name %></h2></td>
+    </tr>
+    <tr>
+		    <td style="padding-left:10%;"><label>Vendor type</label></td>
+		    <td>
+		      <% 
+		        @data.vendor_type.split('_').each do |d|
+		      %>
+		          <%=d.capitalize%>
+		      <%  end  %>
+		    </td>	
+    </tr>
+    <tr>
+	    <td style="padding-left:10%;"><label>Title</label></td>
+	    <td><%= @data.title %></td>	
+    </tr>
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Company title</label></td>
+	    <td><%= @data.company_title %></td>	
+    </tr>
+
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Address 1</label></td>
+	    <td><%= @data.address1 %></td>
+    </tr>
+
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Address 2</label></td>
+	    <td><%= @data.address2 %></td>
+    </tr>
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>City</label></td>
+	    <td><%= @data.city %></td>
+    </tr>
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>State</label></td>
+	    <td><%= @data.state %></td>
+    </tr>
+    <tr>
+	    <td style="padding-left:10%;"><label>Zipcode</label></td>
+	    <td><%= @data.zipcode %></td>
+    </tr>
+    <tr>
+	    <td style="padding-left:10%;"><label>Country</label></td>
+	    <td><%= @data.country %></td>
+    </tr>
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Contact 1</label></td>
+	    <td><%= @data.contact1 %></td>
+    </tr>
+
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Contact 2</label></td>
+	    <td><%= @data.contact2 %></td>
+    </tr>
+	
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>E-mail</label></td>
+	    <td><%= @data.email %></td>
+    </tr>
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Website address</label></td>
+	    <td><%= @data.website_address %></td>
+    </tr>
+    <tr>
+	</table>
+	<%else%>
+    <table border="0" width="57%" style="float:left;margin-left:15em;height:20em;background-color:#E6EEEE;border:1px solid;" align="center">
+      <tr>
+        <td colspan="2"><h2 style="background-color:#cccccc;width:33em;"><%= @data.business_name %></h2></td>
+      </tr>
+	    <tr>
+		    <td style="padding-left:10%;"><label>Address</label></td>
+		    <td><%=@data.address1%></td>	
+	    </tr>
+	    <tr>
+		    <td width="30%" style="padding-left:10%;"><label>City</label></td>
+		    <td><%=@data.city%></td>
+	    </tr>
+	     <tr>
+		    <td width="30%" style="padding-left:10%;"><label>State</label></td>
+		    <td><%=@data.state%></td>
+	    </tr>
+	    <tr>
+			  <td style="padding-left:10%;"><label>Zipcode</label></td>
+			  <td><%=@data.zipcode%></td>
+	    </tr>
+	    <tr>
+		    <td style="padding-left:10%;"><label>Restaurent type</label></td>
+		    <td><%=@data.restaurent_type%></td>	
+      </tr>
+	</table><br/><br/>
+<%end%>
+
+<%= link_to 'Back', :back, :style=>"margin-left:20%;" %>

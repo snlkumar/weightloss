@@ -1,5 +1,7 @@
-<h1 style="margin-left:8%;">Approve/Reject Business Claim</h1><br />
+
 <div style="margin-left:10%;">
+<%= link_to 'Back', :back %>
+<h1>Approve/Reject Business Claim</h1><br/>
 <%= form_for @claim, :url => admin_businessclaim_path(@claim),:method => :put do |f| %>
 
 <div class="field">

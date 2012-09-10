@@ -24,7 +24,6 @@ module Forem
         
         #new added code for sending mail to multiple people
         @users =Forem::Topic.first.posts.map{|p| p.user }.uniq
-        
         @users.each do |user|
         @user=user
           if @user.nil?

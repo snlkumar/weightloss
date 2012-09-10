@@ -82,6 +82,8 @@
 
 <script tyle="text/javascript">
 
+
+
 function submitFormByEnter(event) {
     if (event.keyCode && event.keyCode == '13') {
         submitForm();
@@ -93,6 +95,7 @@ document.getElementById('vr_id').value=b;
 document.getElementById('light').style.display='block';
 document.getElementById('fade').style.display='block';
 }
+	
 		
 </script>
 
@@ -116,6 +119,39 @@ function submitForm()
 }
 function submitClaimForm()
 {
+
+ email_address = $("#claimemail");
+   email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+   
+   
+   if(!email_regex.test(email_address.val())){ 
+   alert('Please enter valid email'); 
+   return false;  
+   }
+
+
+if($("#claimfname").val()=='')
+  {
+			alert("Please enter first name");
+			return false;		
+		}
+		
+if($("#claimlname").val()=='')
+  {
+			alert("Please enter last name");
+			return false;		
+		}	
+if($("#claimemail").val()=='')
+  {
+			alert("Please enter email");
+			return false;		
+		}					
+if($("#claimcontact").val()=='')
+  {
+			alert("Please enter contact number");
+			return false;		
+		}				
+		
  if($("#terms").attr('checked')!="checked")
 	 {
 			alert("To sumbit please accept Terms & conditions");
@@ -291,7 +327,10 @@ function getTdVal(mid)
           <td style="padding: .3%;"><%=row.state%></td>
           <td style="padding: .3%;"><%=row.zipcode%></td>
           <td style="padding: .3%;"><%=row.restaurent_type%></td>
-				<% if row.status=="Pending approval"%>  
+          <%if row.status.nil?%>
+          <%row.status="notapproved"%>
+          <%end%> 
+				<% if row.status.downcase=="pending approval" || row.status.downcase=="approved"%>  
 				<td style="padding: .3%;"><%=row.status%></td> 
 				<%else%>				       
           <td><button id="claimbutton" class="button grid_3" style="height:26px;font-size:10px;width:9em;padding:0;margin:0 0 0 2em;" onclick='showClaimForm("restaurants", "<%=row.id%>")'>Claim business</button></td>
@@ -307,7 +346,7 @@ function getTdVal(mid)
 
 <div id="light" class="white_content">
 	<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
-<div style="background-image:url('/assets/close.png');float:right;width:30px;height:30px;margin-right:-3.5em;margin-top:-3.3em;"></div>
+<div style="background-image:url('/assets/close.png');float:right;width:30px;height:30px;margin-right:-2.7em;margin-top:-2.5em;"></div>
 </a>
 
 	<form id="vendor-claim" method='post' action="<%=businessclaim_vendors_path%>">

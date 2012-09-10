@@ -75,24 +75,30 @@
 
 <div class="panel">
 
+<p class="flip" style="font-weight:bold;font-size:15px;color:#0A2B42;">Calculate body fat</p><br/>
+
 <p>
 	<input type="radio" id="cm" name="cmi" />Centimeter
 	<input type="radio" id="in" name="cmi" checked="checked" />Inches
-</p>
+</p><br/>
 
  <p>
-   Height:<br />
-   <%= text_field_tag "height" %>
- </p>
- <p>
-   Neck:<br />
+  <%= f.label :height, %Q{Height <span class="help-text">(Height will not be publicly displayed)</span> }.html_safe %><br/>
+  <span id="height-view"></span>
+  <div id="height-slider"></div>
+  <%= f.hidden_field :height, :id => 'height-val',  :value => @slider_height %>
+</p>
+
+ </p> 
+ <b style="color:#0A2B42;">Neck<b><br />
    <%= text_field_tag "neck" %>
  </p> 
+
  <p>
-   Waist:<br />
+   <b style="color:#0A2B42;">Waist<b><br />
    <%= text_field_tag "waist" %>
- </p> <p>
- 
+ </p> 
+
 <%if current_user.gender.downcase=="female"%>
 <p>
   Hips:<br />
@@ -101,12 +107,10 @@
 <%end%>
 <p>
   <button id="store_calc">Calculate</button>		
-</p>
-<div id="bodyfat_result" style="font-weight:bold;color:navy;font-size:15px;"></div><br/>
-</div>
-
-<p class="flip" style="font-weight:bold;font-size:15px;">Click to calculate body fat</p><br/>
-
+</p><br/>
+<!---
+<div id="bodyfat_result" style="font-weight:bold;color:black;font-size:15px;"></div><br/>
+</div> -->
 
 <p>
   <%= f.label :city %><br/>

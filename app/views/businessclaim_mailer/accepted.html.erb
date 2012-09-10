@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+	<html>
+	  <head>
+		 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+	  </head>
+	  <body>
+		 <p style="margin-left:250px;font-size:20pt;color:#0A263B;" ><b>Business claim</b></p><br/><br/>
+		 
+	<p>Dear <%=@claim.claimfname.capitalize%> <%=@claim.claimlname%>,</p><br/>
+
+	Your calim for 
+    <%if @claim.business_type!="restaurants"%>
+    <%=@claim.business_type.split('_').join(' ')%> (<%=@business.vendor_name%>)
+    <%else%>
+	<%=@business.business_name%> restaurant
+	<%end%>  
+	
+	has been accepted. We welcome you to  our myww family. Hope you have a good experience ahead.<br/><br/>
+
+	<b>MyWeightWorld.com<b>
+
+	  </body>
+	</html>

@@ -1,3 +1,8 @@
+<style type="text/css">
+.even { background: #E6EEEE; }
+.odd { background: #cccccc; }
+.head-table{background: #ccc; }
+</style>
 
 <script type="text/javascript">
   <%content_for :js do%>
@@ -6,6 +11,7 @@
     }).mouseout(function(){
       $(this).css("background-color","");
     });
+          
   <%end%>
 </script>
 <div class="grid_16">
@@ -13,22 +19,12 @@
   
   <br/>
   
-  <h1 align=center>Claim Business</h1>
+  <h1 align=center>Claimed Business</h1>
   
   <%= link_to 'Back', admin_businessclaims_path %>&nbsp;
-  <%#= link_to 'New exercise', new_admin_exercise_path %>
   
   <br/>
-  
-  <%#= form_tag(search_admin_exercises_path) do %>
-    <%#= text_field_tag 'terms', '', :id => 'exercise-search', :style => "height:1.3em;" %>
-  
-    <%#= submit_tag 'Search', :style => "height:2.2em;" %>
-  <%# end %>
-  
-  <%# if params['terms'] && !params['terms'].blank? %>
-    <!--Displaying results for "<%#= params['terms'] %>"<br/>-->
-  <%# end %>
+
   
   <%= page_entries_info(@claims) %>
   <div style="color:blue;">
@@ -37,41 +33,35 @@
   <br/>
   <table class="admin">
     <thead>
-      <tr>
+      <tr class="head-table">
         <th>Vendor Type</th>
-        <th>Name</th>
+        <th>Name (claimed by)</th>
         <th>Email</th>
         <th>Contact</th>
         <th>Status</th>
-        <th></th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
       <% @claims.each do |claim| %>
-        <tr class="<%#= cycle('odd', '') %>">
+        <tr class="<%= cycle('odd', 'even') %>">
           <!--<td><%#= link_to exercise.description, edit_admin_exercise_path(exercise) %></td>-->
-          <td><%=claim.business_type%> </td>
+          <td><%=claim.business_type.split('_').join(' ')%> </td>
           <td><%=claim.claimfname+" "+claim.claimlname%> </td>
           <td><%=claim.claimemail%> </td>
           <td><%=claim.claimcontact%> </td>
           <td><%=claim.status%> </td>
           <td class="actions">
-            <%= link_to 'Accept/Reject', edit_admin_businessclaim_path(claim) %> 
-            <%#= link_to 'Delete', [:admin, exercise], :confirm => 'Are you sure?', :method => :delete %>
+            <%= link_to 'Business detail', admin_businessclaim_path(claim) %> |
+            <%= link_to 'Accept/Reject', edit_admin_businessclaim_path(claim) %> |
+            <% if claim.status.downcase=="rejected"%>
+            <%= link_to 'Delete', [:admin, claim], :confirm => 'Are you sure?', :method => :delete %>
+            <%end%>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
   
-  <script type="text/javascript" charset="utf-8">
-    <% content_for :js do %>
-      $('#exercise-search').autocomplete({
-        source: "<%= search_exercises_url %>"
-      });
-    
-    <% end %>
-  </script>
-  
-  <%#= link_to 'Back', admin_exercises_path %>
+<br/>  <%= link_to 'Back', admin_businessclaims_path %>
 </div>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <p style="margin-left:250px;font-size:20pt;color:#0A263B;" ><b>Business claim</b></p><br/><br/>
+    
+<p>Dear Admin,</p><br/>
+
+<%=@claim.claimfname.capitalize%> <%=@claim.claimlname%> has requested to attach his profile with vendor <%=@business.business_name%>
+<%if @claim.business_type!="restaurants"%>
+    <%=@claim.business_type.split('_').join(' ')%> (<%=@business.vendor_name%>)
+    <%else%>
+	<%=@business.business_name%> restaurant
+	<%end%>. Please login to admin/approval section to approve it.<br/><br/>
+
+<b>MyWeightWorld.com<b>
+
+  </body>
+</html>

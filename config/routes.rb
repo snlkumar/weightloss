@@ -1,4 +1,6 @@
 Myweightworld::Application.routes.draw do
+  get "sendgrid/index"
+
 devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "users/omniauth_callbacks" } do
     get '/sign_in', :to => 'devise/sessions#new'
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'

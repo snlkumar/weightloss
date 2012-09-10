@@ -17,6 +17,7 @@ gem 'hoptoad_notifier'
 #new added gem
   gem 'sanitize'
 #end
+gem 'sendgrid'
 gem 'linguistics'
 gem 'kaminari'
 gem 'devise'

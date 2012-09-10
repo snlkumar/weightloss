@@ -47,7 +47,6 @@ class VendorsController < ApplicationController
 
 
  def show
-   @claim=Businessclaim.all
       if params[:id] && params[:restaurants]!=nil && params[:restaurants]=="restaurants"
     @status="true"  #for restaurants
     @vendor=Restaurant.find(params[:id])
@@ -98,9 +97,21 @@ class VendorsController < ApplicationController
 	  if @claim.save
 		  if params[:businessclaim][:business_type].downcase=="restaurants"
 		  	Restaurant.find(params[:businessclaim][:vr_id]).update_attributes(:status=>"Pending approval")
+		  	
+		  	@business=Restaurant.find(params[:businessclaim][:vr_id])
+		  	@admin =User.where("admin=1")
+         @admin.each do |admin|
+         @admin=admin
+		  	 BusinessclaimMailer.businessclaim(@admin, @claim, @business).deliver
+		  	 end
 		  else
 		  	Vendor.find(params[:businessclaim][:vr_id]).update_attributes(:status=>"Pending approval")
-		  	
+		  	@business=Vendor.find(params[:businessclaim][:vr_id])
+		  	@admin =User.where("admin=1")
+         @admin.each do |admin|
+         @admin=admin
+		  	 BusinessclaimMailer.businessclaim(@admin, @claim, @business).deliver
+		  	 end
 		  end
 	  		redirect_to(vendor_path, :notice => 'Successfully claimed.')
 		else

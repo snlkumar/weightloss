@@ -1,0 +1,18 @@
+	<!DOCTYPE html>
+	<html>
+	  <head>
+		 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+	  </head>
+	  <body>
+		 <p style="margin-left:250px;font-size:20pt;color:#0A263B;" ><b>Business claim</b></p><br/><br/>
+		 
+	<p>Dear <%=@claim.claimfname.capitalize%> <%=@claim.claimlname%>,</p><br/>
+
+	Your calim for <%=@business.business_name%> has been accepted. Your login email and password are given at the bottom of the email.<br/><br/>
+	Email: <%=@claim.claimemail%>
+	Password: <%#=@claim.password%>
+
+	<b>MyWeightWorld.com<b>
+
+	  </body>
+	</html>
