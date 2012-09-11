@@ -56,14 +56,5 @@ Myweightworld::Application.configure do
   config.assets.digest = true
   
   # SendGrid Configuration
-  
-  ActionMailer::Base.smtp_settings = {
-    :user_name => "myweightworld",
-    :password => "losethatweight",
-    :domain => "myweightworld.com",
-    :address => "smtp.sendgrid.net",
-    :port => 587,
-    :authentication => :plain,
-    :enable_starttls_auto => true
-  }
+ 
 end

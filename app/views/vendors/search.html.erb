@@ -130,6 +130,12 @@ function submitClaimForm()
    }
 
 
+if($("#password").val()=='')
+  {
+			alert("Please enter password");
+			return false;		
+		}
+		
 if($("#claimfname").val()=='')
   {
 			alert("Please enter first name");
@@ -354,18 +360,21 @@ function getTdVal(mid)
 			<h1>Claim your business</h1>
 				</div><br/>
 			<div style="margin-left:15%">
-			<label>First Name:</label>
+			<label>First Name:</label>&nbsp;&nbsp;
       	<input type="text" id="claimfname" name="businessclaim[claimfname]" value="" style="height:1.2em;width:12em;"/></br>
       	
-				<label>Last Name:</label>
+				<label>Last Name:</label>&nbsp;&nbsp;
       		<input type="text" id="claimlname" name="businessclaim[claimlname]" value="" style="height:1.2em;width:12em;"/></br>
 
 
-		     <label>Email: </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		     <label>Email: </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       	<input type="text" id="claimemail" name="businessclaim[claimemail]" value="" style="height:1.2em;width:12em;"/></br>
+			
+	<!--  		<label>Password:</label>&nbsp;&nbsp;&nbsp;
+        
+      <input type="password" id="password" name="businessclaim[password]" value="" style="height:1.2em;width:12em;"/></br> -->
 
-
-      	<label>Contact:</label>&nbsp;&nbsp;&nbsp;
+      	<label>Contact:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="text" id="claimcontact" name="businessclaim[claimcontact]" value="" style="height:1.2em;width:12em;"/></br>
       	
 			

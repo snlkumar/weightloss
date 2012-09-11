@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120903183947) do
+ActiveRecord::Schema.define(:version => 20120911063319) do
 
   create_table "bodyfats", :force => true do |t|
     t.integer  "user_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20120903183947) do
     t.integer  "vr_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password"
   end
 
   create_table "categories", :force => true do |t|
@@ -369,6 +370,39 @@ ActiveRecord::Schema.define(:version => 20120903183947) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status"
+    t.string   "vendor_name"
+    t.string   "vendor_type"
+    t.string   "country"
+    t.string   "contact1"
+    t.string   "contact2"
+    t.string   "biography"
+    t.string   "website_address"
+    t.string   "email"
+    t.string   "fname"
+    t.string   "lname"
+    t.string   "password"
+    t.string   "school"
+    t.string   "degrees"
+    t.string   "certifications"
+    t.string   "specialities"
+    t.string   "licence_no"
+    t.string   "licence_states"
+    t.float    "cost"
+    t.float    "average_cost"
+    t.string   "accept_credit_card"
+    t.string   "insurance"
+    t.string   "year_school"
+    t.string   "accept_cash"
+    t.string   "accept_check"
+    t.string   "payment_plans"
+    t.string   "work_hour"
+    t.string   "p_address"
+    t.string   "p_city"
+    t.string   "p_state"
+    t.string   "p_cell"
+    t.string   "p_contact"
+    t.string   "b_email"
+    t.string   "p_country"
   end
 
   create_table "sessions", :force => true do |t|

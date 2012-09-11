@@ -69,7 +69,7 @@ class VendorsController < ApplicationController
    else
 #new code added
   params[:vendor]
-   @vendor=Restaurant.create(:business_name=>params[:vendor][:business_name], :city=>params[:vendor][:city],:state=>params[:vendor][:state],:zipcode=>params[:vendor][:zipcode])	
+   @vendor=Restaurant.create(:business_name=>params[:vendor][:business_name], :city=>params[:vendor][:city],:state=>params[:vendor][:state],:zipcode=>params[:vendor][:zipcode],:vendor_name=>params[:vendor][:vendor_name],:vendor_type=>params[:vendor][:vendor_type],:country=>params[:vendor][:country],:contact1=>params[:vendor][:contact1],:contact2=>params[:vendor][:contact2],:biography=>params[:vendor][:biography],:website_address=>params[:vendor][:website_address],:email=>params[:vendor][:email],:fname=>params[:vendor][:fname],:lname=>params[:vendor][:lname],:password=>params[:vendor][:password],:school=>params[:vendor][:school],:degrees=>params[:vendor][:degrees],:certifications=>params[:vendor][:certifications],:specialities=>params[:vendor][:specialities],:licence_no=>params[:vendor][:licence_no],:licence_states=>params[:vendor][:license_states],:cost=>params[:vendor][:cost],:average_cost=>params[:vendor][:average_cost], :accept_credit_card=>params[:vendor][:accept_credit_card], :insurance=>params[:vendor][:accept_insurance],:year_school=>params[:vendor][:year_school],:accept_cash=>params[:vendor][:accept_cash], :accept_check=>params[:vendor][:accept_check],:payment_plans=>params[:vendor][:payment_plans], :year_school=>params[:vendor][:year_school],:accept_cash=>params[:vendor][:accept_cash], :accept_check=>params[:vendor][:accept_check],:payment_plans=>params[:vendor][:payment_plans],:work_hour=>params[:vendor][:work_hour],:p_address=>params[:vendor][:p_address], :p_city=>params[:vendor][:p_city],:p_state=>params[:vendor][:p_state], :p_cell=>params[:vendor][:p_cell],:p_contact=>params[:vendor][:p_contact],:b_email=>params[:vendor][:b_email], :p_country=>params[:vendor][:p_country],:address1=>params[:vendor][:address1] )	
     end
    
    check=verify_recaptcha(request.remote_ip, params)
@@ -97,10 +97,20 @@ class VendorsController < ApplicationController
 	  if @claim.save
 		  if params[:businessclaim][:business_type].downcase=="restaurants"
 		  	Restaurant.find(params[:businessclaim][:vr_id]).update_attributes(:status=>"Pending approval")
-
+		  	@business=Restaurant.find(params[:businessclaim][:vr_id])
+		  	@admin =User.where("admin=1")
+         @admin.each do |admin|
+         @admin=admin
+		  	 BusinessclaimMailer.businessclaim(@admin, @claim, @business).deliver
+		  	 end
 		  else
 		  	Vendor.find(params[:businessclaim][:vr_id]).update_attributes(:status=>"Pending approval")
- 	 
+		  	@business=Vendor.find(params[:businessclaim][:vr_id])
+		  	@admin =User.where("admin=1")
+         @admin.each do |admin|
+         @admin=admin
+		  	 BusinessclaimMailer.businessclaim(@admin, @claim, @business).deliver
+		  	 end
 		  end
 	  		redirect_to(vendor_path, :notice => 'Successfully claimed.')
 		else

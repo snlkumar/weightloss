@@ -26,8 +26,20 @@ class Admin::BusinessclaimsController < Admin::BaseController
       if @claim.update_attributes(params[:businessclaim])
 		  if params[:businessclaim][:business_type]=="restaurants"
 		  	Restaurant.find(params[:businessclaim][:vr_id]).update_attributes(:status=>params[:businessclaim][:status])
+		  	@business=Restaurant.find(params[:businessclaim][:vr_id])
+		  	if @claim.status=="rejected"
+		  	 BusinessclaimMailer.rejected(@claim, @business).deliver
+		  	 else
+		  	 BusinessclaimMailer.accepted(@claim, @business).deliver
+		  	 end		  	 		  	
 		  else
 		  	Vendor.find(params[:businessclaim][:vr_id]).update_attributes(:status=>params[:businessclaim][:status])
+		   @business=Vendor.find(params[:businessclaim][:vr_id])
+		  	if @claim.status=="rejected"
+		  	 BusinessclaimMailer.rejected(@claim, @business).deliver
+		  	 else
+		  	 BusinessclaimMailer.accepted(@claim, @business).deliver
+		  	 end
 		  end
 	  		redirect_to(admin_businessclaims_path, :notice => 'Successfully updated.')
 		else

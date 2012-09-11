@@ -25,7 +25,7 @@ config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 #  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   config.middleware.use ExceptionNotifier,	
-  :email_prefix => "notifier ",	
+  :email_prefix => "notifier",	
   :sender_address => %{"notifier" <harish@idifysolutions.com>},
   :exception_recipients => "jony@idifysolutions.com"
   
