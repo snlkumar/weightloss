@@ -271,7 +271,6 @@ function getTdVal(mid)
       <th>Vendor Type</th>
 		<%end%>
        <!--<th>Title</th>-->
-       <th>Company Name</th>
         <th>Name</th>
     <!--<th>Address 1</th>
         <th>Address 2</th> -->
@@ -285,7 +284,7 @@ function getTdVal(mid)
         <th>Website Address</th>-->
         <th>Claim</th>
       <%elsif @cols=="restaurants"%>
-      <!--  <th>Company Name</th>-->
+      <th>Company Logo</th>
         <th>Name</th>
         <th>Address</th>
         <th>City</th>
@@ -306,7 +305,7 @@ function getTdVal(mid)
           <td style="padding: .3%;"><%=row.vendor_type.split('_').join(' ')%>&nbsp;&nbsp;</td>
 				<%end%>
           <!--<td style="padding: .3%;"><%#=row.title%></td>-->
-          <td style="padding: .3%;"><%=row.business_name%></td>
+       <!--   <td style="padding: .3%;"><%#=row.business_name%></td> -->
           <td style="padding: .3%;width:15em;"><%=link_to row.vendor_name ,vendorInfo_path(row.id)+"/"+row.vendor_type %></td>
           <!--<td style="padding: .3%;"><%#=row.address1%></td>
           <td style="padding: .3%;"><%#=row.address2%></td>-->
@@ -327,6 +326,7 @@ function getTdVal(mid)
           <td><button id="claimbutton" class="button grid_3" style="height:26px;font-size:10px;width:9em;padding:0;margin:0%;" onclick='showClaimForm("<%=row.vendor_type%>","<%=row.id%>")' >Claim business</button></td>
 				<%end%>
         <%elsif @cols=="restaurants"%>
+        	 <td style="padding: .3%;"></td>
           <td style="padding: .3%;"><%=link_to row.business_name, vendorInfo_path(row.id)+"/restaurants"%></td>
           <td style="padding: .3%;"><%=row.address1%></td>
           <td style="padding: .3%;"><%=row.city%></td>

@@ -21,15 +21,13 @@ module Forem
       @post.user = forem_user
       
       if @post.save
-        
         #new added code for sending mail to multiple people
-        @users =Forem::Topic.first.posts.map{|p| p.user }.uniq
-        @users.each do |user|
-        @user=user
-          if @user.nil?
-            @user=forem_user
-          end
-          PostReplyMailer.reply_notification(@topic,@user).deliver   #adding new parameter(forem_user) for send mail to current user
+        @ids =@topic.posts.map{|p| p.user_id}.uniq
+        render :json => @ids
+        return
+  		  @ids.each do |id|
+        @user=User.find_by_id(id)
+        PostReplyMailer.reply_notification(@topic,@user).deliver   #adding new parameter(forem_user) for send mail to current user
         end
         ##end code
         

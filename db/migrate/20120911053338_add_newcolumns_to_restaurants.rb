@@ -32,7 +32,6 @@ class AddNewcolumnsToRestaurants < ActiveRecord::Migration
     add_column :restaurants, :p_cell, :string
     add_column :restaurants, :p_contact, :string
     add_column :restaurants, :b_email, :string
-    add_column :restaurants, :p_country, :string
-    
+    add_column :restaurants, :p_country, :string	   
   end
 end

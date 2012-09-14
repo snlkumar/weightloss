@@ -18,6 +18,7 @@ gem 'hoptoad_notifier'
   gem 'sanitize'
 #end
 gem 'sendgrid'
+gem 'rails_autolink'
 gem 'linguistics'
 gem 'kaminari'
 gem 'devise'

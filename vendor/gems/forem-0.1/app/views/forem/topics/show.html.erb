@@ -9,13 +9,13 @@
 <div id='topic' class='<%= @topic.locked? ? 'locked' : 'unlocked' %>'>
   <%= render :partial => 'forem/topics/head', :locals => { :topic => @topic } %>
   <menu>
-    <% if @topic.can_be_replied_to? %>
-      <%= link_to t(".reply"), '#', :onclick=>"show('#{new_topic_post_path(@topic)}','')" %>
-    <% end %>
+    <%# if @topic.can_be_replied_to? %>
+      <%#= link_to t(".reply"), '#', :onclick=>"show('#{new_topic_post_path(@topic)}','')" %>
+    <%# end %>
     <% if @topic.user == forem_user || forem_admin? %>
       | <%= link_to t(".delete"), forum_topic_path(@forum, @topic), :method => :delete, :confirm => 'Are you sure?' %>
     <% end %>
-  </menu>
+  </menu> 
 
   <% if forem_admin? %>
     <%= link_to t(".hide.#{@topic.hidden}"), toggle_hide_admin_topic_path(@topic), :method => :put %> | 

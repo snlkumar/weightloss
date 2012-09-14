@@ -189,6 +189,8 @@ GEM
       activesupport (= 3.1.0)
       bundler (~> 1.0)
       railties (= 3.1.0)
+    rails_autolink (1.0.9)
+      rails (~> 3.1)
     railties (3.1.0)
       actionpack (= 3.1.0)
       activesupport (= 3.1.0)
@@ -309,6 +311,7 @@ DEPENDENCIES
   paperclip (= 2.7.0)
   profanity_filter
   rails (= 3.1.0)
+  rails_autolink
   rake
   rb-fsevent
   rdoc

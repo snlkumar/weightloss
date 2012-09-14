@@ -1,3 +1,7 @@
-Hi, <%= @user.first_name %><br/>
+Hi, <%= @user.first_name %><br/><br/>
 There has been a response to your forum posts on MyWeightWorld.<br/><br/>
-<%= link_to "Click this", "www.myweightworld.com"+forum_engine.forum_topic_path(@topic.forum, @topic) %> link to follow along with the conversation on <%= link_to @topic.subject, "www.myweightworld.com"+forum_engine.forum_topic_path(@topic.forum, @topic) %>
+Click <%= auto_link("www.myweightworld.com"+forum_engine.forum_topic_path(@topic.forum, @topic), :html_options => { :target => '_blank' }) %> to follow along with the conversation on <%=@topic.subject%>.
+
+<!--
+
+<%#= link_to @topic.subject, "www.myweightworld.com"+forum_engine.forum_topic_path(@topic.forum, @topic) %> -->
