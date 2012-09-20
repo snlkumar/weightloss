@@ -171,28 +171,29 @@ class VendorsController < ApplicationController
 
 	
 	def vendorlogin1
-	@vendor=Vendor.find_by_email(params[:email])
-	if @vendor!=nil
-	if @vendor.password== params[:password]
-	   session[:vendor]=@vendor
-     	  redirect_to (vendorInfo_path(@vendor.id)) 	 
+	@vendor=Vendor.find_by_sql("select * from vendors where email='"+params[:email]+"'")
+	
+	if @vendor!=nil && !@vendor.empty?
+		if @vendor.password== params[:password]
+	   	session[:vendor]=@vendor
+     	   redirect_to (vendorInfo_path(@vendor.id)) 	 
       else
      	  redirect_to(vendorlogin_vendors_path, :notice => 'incorrect password.') 
-			  end
-      	else
-        @vendor=Restaurant.find_by_email(params[:email])
-      if @vendor!=nil
-	if @vendor.password== params[:password]
-	   session[:vendor]=@vendor
-     	  redirect_to (vendorInfo_path(@vendor.id)+"/restaurants")	 
-      else
-     	  redirect_to(vendorlogin_vendors_path, :notice => 'incorrect password.') 
-			  end
-      else
-        redirect_to(vendorlogin_vendors_path, :notice => 'User not found.')          
 		end
+   else
+     @vendor=Restaurant.find_by_sql("select * from restaurants where email='"+params[:email]+"'")
+     if @vendor!=nil && !@vendor.empty?
+		if @vendor.password== params[:password]
+	   	session[:vendor]=@vendor
+     	   redirect_to (vendorInfo_path(@vendor.id)+"/restaurants")	 
+      else
+     	  redirect_to(vendorlogin_vendors_path, :notice => 'incorrect password.') 
+		end
+     else
+       redirect_to(vendorlogin_vendors_path, :notice => 'User not found.')          
+	 end
 	end
-	end
+  end
 	
 	def logout_vendor
 		session[:vendor]=nil
