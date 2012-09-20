@@ -370,6 +370,9 @@ ActiveRecord::Schema.define(:version => 20120911063319) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status"
+    t.string   "gender"
+    t.integer  "year_graduated"
+    t.string   "title"
     t.string   "vendor_name"
     t.string   "vendor_type"
     t.string   "country"
@@ -386,11 +389,11 @@ ActiveRecord::Schema.define(:version => 20120911063319) do
     t.string   "certifications"
     t.string   "specialities"
     t.string   "licence_no"
-    t.string   "licence_states"
+    t.string   "license_states"
     t.float    "cost"
     t.float    "average_cost"
     t.string   "accept_credit_card"
-    t.string   "insurance"
+    t.string   "accept_insurance"
     t.string   "year_school"
     t.string   "accept_cash"
     t.string   "accept_check"
@@ -403,6 +406,9 @@ ActiveRecord::Schema.define(:version => 20120911063319) do
     t.string   "p_contact"
     t.string   "b_email"
     t.string   "p_country"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
   end
 
   create_table "sessions", :force => true do |t|

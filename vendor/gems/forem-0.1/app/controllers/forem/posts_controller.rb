@@ -24,9 +24,11 @@ module Forem
         #new added code for sending mail to multiple people
         @ids =@topic.posts.map{|p| p.user_id}.uniq
   		  @ids.each do |id|
+  		  if id != current_user.id
         @user=User.find_by_id(id)
         PostReplyMailer.reply_notification(@topic,@user).deliver   #adding new parameter(forem_user) for send mail to current user
         end
+      end
         ##end code
         
         #PostReplyMailer.reply_notification(@topic).deliver   #old code to send mail

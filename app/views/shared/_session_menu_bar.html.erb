@@ -5,7 +5,9 @@
       | <%= link_to 'Admin', admin_dashboard_path, :title => 'Admin Dashboard' %>
     <% end %>
     | <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete, :title => 'Sign Out' %> 
-  <% else %>
+   <% elsif session[:vendor]==nil %>
     Already a User? <%= link_to 'Sign in', new_user_session_path() %> | <%= link_to 'Sign up', new_user_registration_path() %>
+   <%else%>
+   <!--    Hi, <%#if session[:vendor].fname!=nil %><%#= link_to session[:vendor].fname, vendorInfo_path(session[:vendor].id) %><%#end%> |--> <%= link_to 'Sign Out', logout_vendor_vendors_path, :title => 'Sign Out' %> 
   <% end %>
 </div>

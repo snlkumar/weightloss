@@ -41,7 +41,7 @@ $('#gallery a').lightBox();
 <h3 align="center">Photos</h3>
 		
 		
-			<%if current_user %>
+			<% if current_user && current_user.id == params[:id].to_i %>
 				<div style="margin-top:0%;width:100%;margin-bottom:1%;margin-left:22%;padding:1%;">
 					 <%= form_for @photo1, :url => photos_path, :multipart => true do |f| %>
 						  	<%= f.label 'Upload Photo' %><br/>

@@ -1,4 +1,5 @@
 class VendorsController < ApplicationController
+
 		
   def search
     if !params[:searchtype].nil?
@@ -69,7 +70,7 @@ class VendorsController < ApplicationController
    else
 #new code added
   params[:vendor]
-   @vendor=Restaurant.create(:business_name=>params[:vendor][:business_name], :city=>params[:vendor][:city],:state=>params[:vendor][:state],:zipcode=>params[:vendor][:zipcode],:vendor_name=>params[:vendor][:vendor_name],:vendor_type=>params[:vendor][:vendor_type],:country=>params[:vendor][:country],:contact1=>params[:vendor][:contact1],:contact2=>params[:vendor][:contact2],:biography=>params[:vendor][:biography],:website_address=>params[:vendor][:website_address],:email=>params[:vendor][:email],:fname=>params[:vendor][:fname],:lname=>params[:vendor][:lname],:password=>params[:vendor][:password],:school=>params[:vendor][:school],:degrees=>params[:vendor][:degrees],:certifications=>params[:vendor][:certifications],:specialities=>params[:vendor][:specialities],:licence_no=>params[:vendor][:licence_no],:licence_states=>params[:vendor][:license_states],:cost=>params[:vendor][:cost],:average_cost=>params[:vendor][:average_cost], :accept_credit_card=>params[:vendor][:accept_credit_card], :insurance=>params[:vendor][:accept_insurance],:year_school=>params[:vendor][:year_school],:accept_cash=>params[:vendor][:accept_cash], :accept_check=>params[:vendor][:accept_check],:payment_plans=>params[:vendor][:payment_plans], :year_school=>params[:vendor][:year_school],:accept_cash=>params[:vendor][:accept_cash], :accept_check=>params[:vendor][:accept_check],:payment_plans=>params[:vendor][:payment_plans],:work_hour=>params[:vendor][:work_hour],:p_address=>params[:vendor][:p_address], :p_city=>params[:vendor][:p_city],:p_state=>params[:vendor][:p_state], :p_cell=>params[:vendor][:p_cell],:p_contact=>params[:vendor][:p_contact],:b_email=>params[:vendor][:b_email], :p_country=>params[:vendor][:p_country],:address1=>params[:vendor][:address1] )	
+   @vendor=Restaurant.new(params[:vendor] )	
     end
    
    check=verify_recaptcha(request.remote_ip, params)
@@ -89,12 +90,61 @@ class VendorsController < ApplicationController
 
   
   def edit
+  if session[:vendor].vendor_type!=nil && session[:vendor].vendor_type!="restaurants"
     @vendor=Vendor.find(params[:id])
+    else
+    @vendor=Restaurant.find(params[:id])
+    end
   end
   
+  def update
+  if session[:vendor].vendor_type!=nil && session[:vendor].vendor_type!="restaurants"
+		 @vendor=Vendor.find(params[:id])
+		  respond_to do |format|
+		   if @vendor.update_attributes(params[:vendor])
+		     format.html { redirect_to(vendorInfo_path(@vendor.id), :notice => 'Successfully updated.') }
+		     format.xml  { head :ok }
+		   else
+		     format.html { render :action => "edit" }
+		     format.xml  { render :xml => @vendor.errors, :status => :unprocessable_entity }
+		    end
+		   end
+      
+    else
+        @vendor=Restaurant.find(params[:id])
+		  respond_to do |format|        
+         if @vendor.update_attributes(params[:restaurant])
+        format.html { redirect_to(vendorInfo_path(@vendor.id)+"/restaurants") }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @vendor.errors, :status => :unprocessable_entity }
+      end
+      end
+    end
+  end
+
+  
   def businessclaim
-	  @claim=Businessclaim.create(params[:businessclaim])
+  params[:businessclaim]
+	@cfname= params[:businessclaim][:claimfname]
+	@clname= params[:businessclaim][:claimlname]
+	@cemail= params[:businessclaim][:claimemail]
+	@contact= params[:businessclaim][:claimcontact]
+	@vr_id= params[:businessclaim][:vr_id]
+	@btype= params[:businessclaim][:business_type]
+	@stat= params[:businessclaim][:status]
+	
+  check=verify_recaptcha(request.remote_ip, params)
+	if check[:status] == 'false'
+	@captchastatus="false"
+	render 'search'
+	#redirect_to(vendor_path, :captchastatus =>"false") 
+	  else	 	  
+	  @claim=Businessclaim.new(params[:businessclaim])
+	   
 	  if @claim.save
+	  	  
 		  if params[:businessclaim][:business_type].downcase=="restaurants"
 		  	Restaurant.find(params[:businessclaim][:vr_id]).update_attributes(:status=>"Pending approval")
 		  	@business=Restaurant.find(params[:businessclaim][:vr_id])
@@ -116,5 +166,39 @@ class VendorsController < ApplicationController
 		else
 		  render :action => "new"
 		end
-	end  
+	end 
+	end
+
+	
+	def vendorlogin1
+	@vendor=Vendor.find_by_email(params[:email])
+	if @vendor!=nil
+	if @vendor.password== params[:password]
+	   session[:vendor]=@vendor
+     	  redirect_to (vendorInfo_path(@vendor.id)) 	 
+      else
+     	  redirect_to(vendorlogin_vendors_path, :notice => 'incorrect password.') 
+			  end
+      	else
+        @vendor=Restaurant.find_by_email(params[:email])
+      if @vendor!=nil
+	if @vendor.password== params[:password]
+	   session[:vendor]=@vendor
+     	  redirect_to (vendorInfo_path(@vendor.id)+"/restaurants")	 
+      else
+     	  redirect_to(vendorlogin_vendors_path, :notice => 'incorrect password.') 
+			  end
+      else
+        redirect_to(vendorlogin_vendors_path, :notice => 'User not found.')          
+		end
+	end
+	end
+	
+	def logout_vendor
+		session[:vendor]=nil
+		redirect_to vendorlogin_vendors_path
+	end
+	
+	
+		 
 end

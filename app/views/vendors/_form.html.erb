@@ -826,6 +826,9 @@ $("#div2").toggle();
          <%=render '/shared/recaptcha' %>
    </div></br>
 
+   <div class="field">
+    <input type="hidden" id="status" name="vendor[status]" value="approved">
+  </div>
 
 <input type="button" value="back" onclick="toggle2()" />&nbsp;&nbsp; <%= f.submit %>
 </div></div>

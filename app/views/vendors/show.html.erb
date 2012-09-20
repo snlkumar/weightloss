@@ -9,10 +9,21 @@
    });
   <%end%>
 </script>
-<br><br><%= link_to 'Back', :back, :style=>"margin-left:20%;" %><br><br>
+
+
+          <div class="grid_5 ">
+          <p id="user-name" class="grid_5"><%= @vendor.business_name %></p>
+          <div class="profile-avatar avatar"><%= image_tag(@vendor.photo.url(:thumb)) %></div>
+			 <div class="sidebar-container" style=""><%if session[:vendor] && session[:vendor].email == @vendor.email%>
+			 <%= link_to 'Edit', edit_vendor_path(@vendor.id), :id => 'edit-profile', :class => 'outlined-fade', :title => 'Edit your profile' %><%end%>
+			 <div class="clear">&nbsp;</div>
+			 </div>
+			 </div>
+
+<br><br><%#= link_to 'Back', :back, :style=>"margin-left:5%;" %><br><br>
   
   <% if @status!="true"%>
-    <table border="0" width="57%" style="float:left;margin-left:15em;height:40em;background-color:#FFFFCC;border:1px solid;" align="center">
+    <table border="0" width="57%" style="margin-left:25em;height:40em;background-color:#FFFFCC;border:1px solid;" align="center">
     <tr>
       <td colspan="2"><h2 style="background-color:#cccccc;width:33em;"><%= @vendor.vendor_name %></h2></td>
     </tr>
@@ -79,24 +90,25 @@
 	    <td><%= @vendor.website_address %></td>
     </tr>
     <tr>
-	    <td width="30%" style="padding-left:10%;"><label>Custom field 1</label></td>
-	    <td><%= @vendor.custom_field1 %></td>
+	    <td width="30%" style="padding-left:10%;"><label>certifications</label></td>
+	    <td><%= @vendor.certifications %></td>
     </tr>
     <tr>
-	    <td width="30%" style="padding-left:10%;"><label>Custom field 2</label></td>
-	    <td><%= @vendor.custom_field2 %></td>
+	    <td width="30%" style="padding-left:10%;"><label>specialities</label></td>
+	    <td><%= @vendor.specialities %></td>
     </tr>
     <tr>
-	    <td width="30%" style="padding-left:10%;"><label>Custom field 3</label></td>
-	    <td><%= @vendor.custom_field3 %></td>
+	    <td width="30%" style="padding-left:10%;"><label>Cost</label></td>
+	    <td><%= @vendor.cost %></td>
     </tr>
     <tr>
-	    <td width="30%" style="padding-left:10%;"><label>Custom field 4</label></td>
-	    <td><%= @vendor.custom_field4 %></td>
+	    <td width="30%" style="padding-left:10%;"><label>Gender</label></td>
+	    <td><%= @vendor.gender %></td>
     </tr>
 	</table>
 	<%else%>
-    <table border="0" width="57%" style="float:left;margin-left:15em;height:20em;background-color:#FFFFCC;border:1px solid;" align="center">
+	
+    <table border="0" width="57%" style="margin-left:25em;height:30em;background-color:#FFFFCC;border:1px solid;" align="center">
       <tr>
         <td colspan="2"><h2 style="background-color:#cccccc;width:33em;"><%= @vendor.business_name %></h2></td>
       </tr>
@@ -117,10 +129,10 @@
 			  <td><%=@vendor.zipcode%></td>
 	    </tr>
 	    <tr>
-		    <td style="padding-left:10%;"><label>Restaurent type</label></td>
+		    <td style="padding-left:10%;"><label>Restaurant type</label></td>
 		    <td><%=@vendor.restaurent_type%></td>	
       </tr>
 	</table>
 <%end%>
 
-<br><%= link_to 'Back', :back, :style=>"margin-left:20%;" %>
+<br><%#= link_to 'Back', :back, :style=>"margin-left:35%;" %>

@@ -1,5 +1,8 @@
 class AddNewcolumnsToRestaurants < ActiveRecord::Migration
   def change
+    add_column :restaurants, :gender, :string  
+    add_column :restaurants, :year_graduated, :integer
+    add_column :restaurants, :title, :string  
     add_column :restaurants, :vendor_name, :string
   	 add_column :restaurants, :vendor_type, :string
   	 add_column :restaurants, :country, :string
@@ -16,11 +19,11 @@ class AddNewcolumnsToRestaurants < ActiveRecord::Migration
     add_column :restaurants, :certifications, :string
     add_column :restaurants, :specialities, :string    
     add_column :restaurants, :licence_no, :string    
-    add_column :restaurants, :licence_states, :string
+    add_column :restaurants, :license_states, :string
     add_column :restaurants, :cost, :float
     add_column :restaurants, :average_cost, :float
     add_column :restaurants, :accept_credit_card, :string
-	 add_column :restaurants, :insurance, :string                
+	 add_column :restaurants, :accept_insurance, :string                
     add_column :restaurants, :year_school, :string
     add_column :restaurants, :accept_cash, :string
     add_column :restaurants, :accept_check, :string
@@ -32,6 +35,9 @@ class AddNewcolumnsToRestaurants < ActiveRecord::Migration
     add_column :restaurants, :p_cell, :string
     add_column :restaurants, :p_contact, :string
     add_column :restaurants, :b_email, :string
-    add_column :restaurants, :p_country, :string	   
+    add_column :restaurants, :p_country, :string
+    add_column :restaurants, :photo_file_name, :string
+    add_column :restaurants, :photo_content_type, :string
+    add_column :restaurants, :photo_file_size, :integer	   
   end
 end

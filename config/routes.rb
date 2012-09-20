@@ -22,14 +22,13 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 	##create dynamic routes
 	match '/vendor/vendorInfo/:id/(:restaurants)' =>'Vendors#show',  :as=>'vendorInfo'
 	match '/vendor/(:searchtype)/(:filterQuery)' => 'Vendors#search',   :as => 'vendor'
-	
 	##
   match '/password/edit' => 'user_passwords#edit', :as => :edit_password, :via => :get
   match '/password' => 'user_passwords#update', :as => :password, :via => :put
   
   get '/sign_in', :controller => "devise/sessions", :action => "new", :as => "sign_in"
   mount Forem::Engine, :at => "/forum", :as => 'forum_engine'
-  
+ 
   #new added routes
 	match "/photos/:id/:filterPhotosByBeforeAfter"=> "Photos#filterPhotosByBeforeAfter", :as =>"before_after"
 	resources :photos
@@ -38,6 +37,9 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
       post :search_decipher
       get :search_decipher
       post :businessclaim
+      get :vendorlogin
+      post :vendorlogin1
+      get :logout_vendor
     end
   end
 

@@ -1,0 +1,26 @@
+
+<link href="/assets/demo.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/assets/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/script.js"></script>
+
+
+<div id="div-regForm">
+
+<div class="form-title">Vendor Sign in</div><br/><br/>
+
+<form id="regForm" action="<%=vendorlogin1_vendors_path%>" method="post">
+
+<label for="email">Email:</label>&nbsp;&nbsp;<input name="email" id="email" type="text" />
+
+<label for="pass">Password:</label>&nbsp;&nbsp; <input name="password" id="password" type="password" /><br/>
+
+<input type="submit" class="greenButton" value="Sign in" /><img id="loading" src="/assets/ajax-loader.gif" alt="working.." />
+
+</form>
+
+<div id="error">
+&nbsp;
+</div>
+
+</div>
+

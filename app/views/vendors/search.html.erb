@@ -15,10 +15,10 @@
 		.white_content {
 			display: none;
 			position: fixed;
-			top: 15%;
+			top: 6%;
 			left: 25%;
 			width: 45%;
-			height: 62%;
+			height: 80%;
 			padding: 16px;
 			border: 10px solid #781351;
 			background-color: white;
@@ -79,7 +79,6 @@
 
 <!-- new code when enter submit form------------->
 
-
 <script tyle="text/javascript">
 
 
@@ -95,7 +94,22 @@ document.getElementById('vr_id').value=b;
 document.getElementById('light').style.display='block';
 document.getElementById('fade').style.display='block';
 }
+
+$(window).load(function() {
+	<%if @captchastatus== "false"%>
+	document.getElementById('light').style.display='block';
+
+	document.getElementById('claimfname').value="<%=@cfname%>";
+	document.getElementById('claimlname').value="<%=@clname%>";
+	document.getElementById('claimemail').value="<%=@cemail%>";
+	document.getElementById('business_type').value="<%=@btype%>";
+   document.getElementById('vr_id').value="<%=@vr_id%>";
+   document.getElementById('status').value="<%=@stat%>";
+   document.getElementById('claimcontact').value="<%=@contact%>";
+   document.getElementById('fade').style.display='block';
 	
+	<%end%>
+});	
 		
 </script>
 
@@ -128,7 +142,6 @@ function submitClaimForm()
    alert('Please enter valid email'); 
    return false;  
    }
-
 
 if($("#password").val()=='')
   {
@@ -220,6 +233,11 @@ function getTdVal(mid)
       <input type="button" class="button grid_3" style=" height:26px;font-size:10pt;width:10em;padding:0;margin:0%;" onclick="location.href='<%=new_vendor_path()%>'" value=" Add Your Business " />
     </div>
    </form>
+   
+   <div style="float:left;margin-left:1%;padding-top:.5em;">
+    <br>
+      <input type="button" class="button grid_3" style=" height:26px;font-size:10pt;width:7.5em;padding:0;margin:0%;" onclick="location.href='<%=vendorlogin_vendors_path()%>'" value="Vendor Sign in " />
+    </div>
 </div>
 <div class="clear"></div>
 
@@ -266,7 +284,7 @@ function getTdVal(mid)
   <table style="border-collapse:separate;border-spacing:2px;width:87em;">
     <tr class="head-table">
      <%if @cols!="restaurants"%>
-		<th>Company Logo</th>
+		<th>Company</th>
 		<% if @cols=="all"%>
       <th>Vendor Type</th>
 		<%end%>
@@ -284,7 +302,7 @@ function getTdVal(mid)
         <th>Website Address</th>-->
         <th>Claim</th>
       <%elsif @cols=="restaurants"%>
-      <th>Company Logo</th>
+      <th>Company</th>
         <th>Name</th>
         <th>Address</th>
         <th>City</th>
@@ -357,8 +375,11 @@ function getTdVal(mid)
 
 	<form id="vendor-claim" method='post' action="<%=businessclaim_vendors_path%>">
 			<div style="margin-left:25%;">
-			<h1>Claim your business</h1>
+			<h1 style="color:#0A2B42; font-size:25px">Claim your business</h1>
 				</div><br/>
+				<%if @captchastatus=="false"%>
+			<h1 style="color:red; font-size:15px;margin-left:20%;">* Please enter correct captcha value *</h1>
+			<%end%>
 			<div style="margin-left:15%">
 			<label>First Name:</label>&nbsp;&nbsp;
       	<input type="text" id="claimfname" name="businessclaim[claimfname]" value="" style="height:1.2em;width:12em;"/></br>
@@ -374,17 +395,17 @@ function getTdVal(mid)
         
       <input type="password" id="password" name="businessclaim[password]" value="" style="height:1.2em;width:12em;"/></br> -->
 
-      	<label>Contact:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      	<label>Phone:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="text" id="claimcontact" name="businessclaim[claimcontact]" value="" style="height:1.2em;width:12em;"/></br>
       	
-			
         <input type="hidden" id="business_type" name="businessclaim[business_type]" value="">
         <input type="hidden" id="vr_id" name="businessclaim[vr_id]" value="">
         <input type="hidden" id="status" name="businessclaim[status]" value="Pending approval">
 						</div>
 			
-      <input type="checkbox" id="terms" style="margin-left:15%;" value=""/>&nbsp; I certify this is my business & Accept Terms of Service.</br></br>				
-      <button id="submitclaim" style="margin-left:32%;" class="button grid_3" onclick="return submitClaimForm()">Submit</button>
+      <input type="checkbox" id="terms" style="margin-left:15%;" value=""/>&nbsp; I certify this is my business & Accept Terms of Service.</br></br>
+             <div style="margin-left:15%;">  <%=render '/shared/recaptcha' %></div>				
+      <button id="submitclaim" style="margin-left:28%;width:160px" class="button grid_3" onclick="return submitClaimForm()">Submit</button>
 
 	</form>
 
