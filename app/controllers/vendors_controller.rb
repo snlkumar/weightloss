@@ -48,7 +48,7 @@ class VendorsController < ApplicationController
 
 
  def show
-      if params[:id] && params[:restaurants]!=nil && params[:restaurants]=="restaurants"
+   if params[:id] && params[:restaurants]!=nil && params[:restaurants]=="restaurants"
     @status="true"  #for restaurants
     @vendor=Restaurant.find(params[:id])
    else
@@ -57,6 +57,7 @@ class VendorsController < ApplicationController
    end
  end
   #end show
+  
   
   def new
     @vendor=Vendor.new
@@ -90,15 +91,22 @@ class VendorsController < ApplicationController
 
   
   def edit
-  if session[:vendor].vendor_type!=nil && session[:vendor].vendor_type!="restaurants"
-    @vendor=Vendor.find(params[:id])
-    else
-    @vendor=Restaurant.find(params[:id])
-    end
+  	if !session[:vendor].nil? 
+	  	if session[:vendor].id==params[:id].to_i
+			if !session[:vendor].vendor_type.empty? && session[:vendor].vendor_type!="restaurants"
+			 	@vendor=Vendor.find(params[:id])
+			 else
+			 	@vendor=Restaurant.find(params[:id])
+			 end
+		else
+			@vendor=session[:vendor] #for user couldn't access other profile only saw own
+		end
+	else
+     redirect_to(vendorlogin_vendors_path, :notice => 'Please login to process.')          
+	end
   end
-  
   def update
-  if session[:vendor].vendor_type!=nil && session[:vendor].vendor_type!="restaurants"
+  if !session[:vendor].vendor_type.empty? && session[:vendor].vendor_type!="restaurants"
 		 @vendor=Vendor.find(params[:id])
 		  respond_to do |format|
 		   if @vendor.update_attributes(params[:vendor])
@@ -108,8 +116,7 @@ class VendorsController < ApplicationController
 		     format.html { render :action => "edit" }
 		     format.xml  { render :xml => @vendor.errors, :status => :unprocessable_entity }
 		    end
-		   end
-      
+		   end      
     else
         @vendor=Restaurant.find(params[:id])
 		  respond_to do |format|        
@@ -172,34 +179,31 @@ class VendorsController < ApplicationController
 	
 	def vendorlogin1
 	@vendor=Vendor.find_by_sql("select * from vendors where email='"+params[:email]+"'")
-	
 	if @vendor!=nil && !@vendor.empty?
-		if @vendor.password== params[:password]
-	   	session[:vendor]=@vendor
-     	   redirect_to (vendorInfo_path(@vendor.id)) 	 
+		if @vendor.first.password == params[:password]
+	   	session[:vendor]=@vendor.first
+     	   redirect_to (vendorInfo_path(@vendor.first.id)) 	 
       else
      	  redirect_to(vendorlogin_vendors_path, :notice => 'incorrect password.') 
 		end
    else
      @vendor=Restaurant.find_by_sql("select * from restaurants where email='"+params[:email]+"'")
      if @vendor!=nil && !@vendor.empty?
-		if @vendor.password== params[:password]
-	   	session[:vendor]=@vendor
-     	   redirect_to (vendorInfo_path(@vendor.id)+"/restaurants")	 
+		if @vendor.first.password== params[:password]
+	   	session[:vendor]=@vendor.first
+     	   redirect_to (vendorInfo_path(@vendor.first.id)+"/restaurants")	 
       else
      	  redirect_to(vendorlogin_vendors_path, :notice => 'incorrect password.') 
 		end
      else
        redirect_to(vendorlogin_vendors_path, :notice => 'User not found.')          
-	 end
+	   end
+     end
 	end
-  end
 	
 	def logout_vendor
 		session[:vendor]=nil
 		redirect_to vendorlogin_vendors_path
 	end
-	
-	
 		 
 end

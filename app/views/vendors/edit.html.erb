@@ -41,7 +41,6 @@ select#vendor_vendor_type, #country{
   <% end %>
 
 </script>
-<%#= link_to 'Back', :back %>
 
 
 
@@ -53,7 +52,6 @@ select#vendor_vendor_type, #country{
 			 <div class="clear">&nbsp;</div>
  </div></div></div>
 
-<%= link_to 'Back', :back, :style=>"margin-left:5%;" %>
 <%= form_for @vendor, :url =>"/vendors/#{@vendor.id}" ,:method => :put do |f| %>
 <div style="margin-left:40%">
 <br>
@@ -66,12 +64,11 @@ select#vendor_vendor_type, #country{
     <%= f.text_field :business_name, :style => "height: 1.2em;width:40%;" %>
   </div>
 
-
-
+<!--
   <div class="field">
-    <%= f.label :vendor_type %><br />
-    <%= f.select :vendor_type, [["Gym","gym"],["Restaurants","restaurants"],["Nutritionist","nutritionist"],["Weight loss surgeons","weight_loss_surgeons"],["Physiologists","physiologists"],["Hospitals","hospitals"],["Law","law"],["Medical","medical"],["Plastic surgeon","plastic_surgeon"],["Spa","spa"],["Weight loss clinics","weight_loss_clinics"],["Weight loss doctors","weight_loss_doctors"]], :style=>"height: 1.5em;width:100%;" %>
-  </div> <br />
+    <%#= f.label :vendor_type %><br />
+    <%#= f.select :vendor_type, [["Gym","gym"],["Restaurants","restaurants"],["Nutritionist","nutritionist"],["Weight loss surgeons","weight_loss_surgeons"],["Physiologists","physiologists"],["Hospitals","hospitals"],["Law","law"],["Medical","medical"],["Plastic surgeon","plastic_surgeon"],["Spa","spa"],["Weight loss clinics","weight_loss_clinics"],["Weight loss doctors","weight_loss_doctors"]] {},:disabled => true :disabled => true ,:style=>"height: 1.5em;width:100%;" %>
+  </div> <br /> -->
 
 <div class="field">
     <%= f.label :first_name %><br />
@@ -801,4 +798,3 @@ select#vendor_vendor_type, #country{
 <% end %><br/>
 
 </div>
-<%= link_to 'Back', :back, :style=>"margin-left:35%;" %>

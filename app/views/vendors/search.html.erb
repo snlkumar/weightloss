@@ -355,7 +355,7 @@ function getTdVal(mid)
           <%row.status="notapproved"%>
           <%end%> 
 				<% if row.status.downcase=="pending approval" || row.status.downcase=="approved"%>  
-				<td style="padding: .3%;"><%=row.status%></td> 
+				<td style="padding: .3%;"><%=row.status.upcase%></td> 
 				<%else%>				       
           <td><button id="claimbutton" class="button grid_3" style="height:26px;font-size:10px;width:9em;padding:0;margin:0 0 0 2em;" onclick='showClaimForm("restaurants", "<%=row.id%>")'>Claim business</button></td>
 				<%end%>          

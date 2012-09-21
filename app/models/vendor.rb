@@ -1,5 +1,5 @@
 class Vendor < ActiveRecord::Base
- #validates_presence_of :vendor_type, :vendor_name, :city, :state, :zipcode, :country, :contact1, :email, :only => [:create, :new]
+ validates_presence_of :city, :state, :zipcode, :country, :contact1, :email, :password, :only => [:create, :new, :edit, :update]
    #paperclip
   has_attached_file :photo,
      :styles => {

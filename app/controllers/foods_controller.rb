@@ -1,4 +1,4 @@
-class FoodsController < ApplicationController
+	class FoodsController < ApplicationController
   before_filter :authenticate_user!
   
   def search
@@ -13,7 +13,10 @@ class FoodsController < ApplicationController
 
 #puts @newjson
       #render :json => @foods.map{|f| {:value => (f.custom? ? "#{f.name} **" : f.name), :id => f.id} }.to_json
-			render :json => @foods.map{|f| {:value => (f.custom? ? "#{f.name} **" : "#{f.name} - #{f.gmwt_desc1} - #{f.energ_kcal} - #{f.total_fat} - #{f.carbohydrt} - #{f.protein} - #{f.fiber_td}"), :id => f.id} }.to_json
+      #old code
+			#render :json => @foods.map{|f| {:value => (f.custom? ? "#{f.name} **" : "#{f.name} - #{f.gmwt_desc1} - #{f.energ_kcal} - #{f.total_fat} - #{f.carbohydrt} - #{f.protein} - #{f.fiber_td}"), :id => f.id} }.to_json
+			
+			render :json => @foods.map{|f| {:value => ("#{f.name} - #{f.gmwt_desc1} - #{f.energ_kcal} - #{f.total_fat} - #{f.carbohydrt} - #{f.protein} - #{f.fiber_td}"), :id => f.id} }.to_json
     end
     
   end

@@ -33,8 +33,8 @@ def edit
 end
 
 def show
-  params[:id]=((params[:id].gsub(/[$]+/, '.')).gsub(' or ',"/")).gsub(/["%"]+/,'%')
-  
+  params[:id]=((params[:id].gsub(/[$]+/, '.')).gsub(' or ',"/")).gsub(/["%"]+/,'%').gsub(/[-]+/,'"')
+
   @food=Food.find_by_name(params[:id])
   
   if @food.nil?
