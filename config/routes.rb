@@ -1,5 +1,4 @@
 Myweightworld::Application.routes.draw do
-  get "sendgrid/index"
 
 devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "users/omniauth_callbacks" } do
     get '/sign_in', :to => 'devise/sessions#new'
@@ -28,7 +27,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
   
   get '/sign_in', :controller => "devise/sessions", :action => "new", :as => "sign_in"
   mount Forem::Engine, :at => "/forum", :as => 'forum_engine'
- 
+
   #new added routes
 	match "/photos/:id/:filterPhotosByBeforeAfter"=> "Photos#filterPhotosByBeforeAfter", :as =>"before_after"
 	resources :photos
@@ -44,6 +43,23 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
   end
 
   #end
+ 
+#new routes for webservice
+
+  resources :MywwWebservices do
+    collection do
+     #get :register_user1
+      post :login
+      post :register_user
+      get :getSession
+      get :check
+      get :forget_pass
+      post :inserWeight
+      get :photo
+    end
+  end 
+  
+#end  
   
   namespace :admin do
    resources :businessclaims

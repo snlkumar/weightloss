@@ -9,6 +9,6 @@
     Already a User? <%= link_to 'Sign in', new_user_session_path() %> | <%= link_to 'Sign up', new_user_registration_path() %>
    <%else%>
 	
-		<%= link_to "Vendor Profile", (session[:vendor].vendor_type=="restaurants") ? vendorInfo_path(session[:vendor].id)+"/restaurants" : vendorInfo_path(session[:vendor].id) %> | <%= link_to 'Sign Out', logout_vendor_vendors_path, :title => 'Sign Out' %> 
+		<%= link_to "Vendor Profile", (session[:vendor].vendor_type=="restaurants") ? vendorInfo_path(session[:vendor].id)+"/restaurants" : vendorInfo_path(session[:vendor].id)+"/"+session[:vendor].vendor_type %> | <%= link_to 'Sign Out', logout_vendor_vendors_path, :title => 'Sign Out' %> 
   <% end %>
 </div>

@@ -1,5 +1,4 @@
 class VendorsController < ApplicationController
-
 		
   def search
     if !params[:searchtype].nil?
@@ -146,7 +145,7 @@ class VendorsController < ApplicationController
 	if check[:status] == 'false'
 	@captchastatus="false"
 	render 'search'
-	#redirect_to(vendor_path, :captchastatus =>"false") 
+	#redirect_to(vendor_path) 
 	  else	 	  
 	  @claim=Businessclaim.new(params[:businessclaim])
 	   
@@ -182,7 +181,7 @@ class VendorsController < ApplicationController
 	if @vendor!=nil && !@vendor.empty?
 		if @vendor.first.password == params[:password]
 	   	session[:vendor]=@vendor.first
-     	   redirect_to (vendorInfo_path(@vendor.first.id)) 	 
+     	   redirect_to (vendorInfo_path(@vendor.first.id) +"/"+session[:vendor].vendor_type) 	 
       else
      	  redirect_to(vendorlogin_vendors_path, :notice => 'incorrect password.') 
 		end

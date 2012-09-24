@@ -6,7 +6,10 @@
 select#vendor_vendor_type, #country{
     width:42%;
     height:2em;
+
+
   }
+
 </style>
 
  <% if @vendor.errors.any? %>
@@ -20,6 +23,9 @@ select#vendor_vendor_type, #country{
       </ul>
     </div>
   <% end %>
+  
+  
+<script tyle="text/javascript">
 
 <% content_for :js do %>
     $('#distance-slider').slider({
@@ -43,20 +49,27 @@ select#vendor_vendor_type, #country{
 </script>
 
 
-
- <div class="container_16">
           <div class="grid_5 ">
           <p id="user-name" class="grid_5"><%= @vendor.business_name %></p>
-          <div class="profile-avatar avatar"><%= image_tag(@vendor.photo.url(:thumb)) %></div>
+          <div class="profile-avatar avatar"><%= image_tag(@vendor.photo.url(:profile)) %></div>
 			 <div class="sidebar-container" style="">
 			 <div class="clear">&nbsp;</div>
- </div></div></div>
+<!--
+			<ul id="user-settings-tabs">
+			<li >
+				<%#= link_to 'Change Password', :back %>
+			</li>  
+			<li>
+				<%#= link_to 'Back to Profile', :back %>
+			</li>
+			</ul> -->
+        </div></div> 
 
+	
 <%= form_for @vendor, :url =>"/vendors/#{@vendor.id}" ,:method => :put do |f| %>
 <div style="margin-left:40%">
 <br>
 
-<div id="div1">
 <h1 style="margin-left:0%;background-color:#BDBDBD;padding:5px;width:68%;text-align:center;color:#FBF2EF;">Business information</h1><br />
 
   <div class="field">
@@ -100,12 +113,6 @@ select#vendor_vendor_type, #country{
     <%= f.text_field :zipcode, :style => "height: 1.2em;width:40%;" %>
   </div> 
 
-</div>
-
-
-
-
-<div id="div2">
 <h3>Business information</h3>	
 	
 	<div class="field">
@@ -793,7 +800,6 @@ select#vendor_vendor_type, #country{
   </div>
 
  <%= f.submit %>
-</div>
 
 <% end %><br/>
 
