@@ -41,9 +41,20 @@ class MywwWebservicesController < ApplicationController
   ###########################
   
   def forget_pass
-  
-  
+  @user=User.find_by_email(params[:email])
+    @status="" 
+    if @user!=nil
+    	@user.send_reset_password_instructions()
+      @status={"status-msg"=>"600"}       #113 =>email sent
+    else
+      @status={"status-msg"=>"601"}    #113 =>invalid email
+    end
+     respond_to do |format|
+     format.js { render :json =>@status.to_json}
+   end
   end
+ 
+#################################
   
   def logout
     if session[:user]
@@ -63,8 +74,7 @@ class MywwWebservicesController < ApplicationController
   def register_user
   
     if params
-      @user=User.find_by_email(params[:user][:email]) # check user exist
-      
+      @user=User.find_by_email(params[:user][:email]) # check user exist      
       if @user!=nil
         @status={"status-msg"=>"117"}   #user already exist
       else
@@ -142,19 +152,124 @@ class MywwWebservicesController < ApplicationController
   
   ###########################################################
   
- def photo
- params[:photo]
-    @photo=Photo.create(params[:photo])
-    if @photo.save
-      @status={"status-msg"=>"119"}   #100=> for user not saved"120"
-    else
-       @status={"status-msg"=>"120"}   
-    end
-         respond_to do |format|
-     format.js { render :json =>@status.to_json}
-   end
- end
+  def getDiaryWorkout
+    if session[:user]
+      if params[:date_on] && params[:date_on].downcase!="today"
+        @start_date = Time.zone.parse(params[:date_on]).strftime("%Y-%m-%d")
+      else
+        @start_date = Time.zone.now.strftime("%Y-%m-%d")
+      end
 
+ @workouts=Workout.find_by_sql("SELECT wi.exercise_id,w.id,e.description,wi.calories,w.time_from,w.note,w.trained_on FROM exercises e ,workout_items wi, workouts w  WHERE w.user_id="+session[:user].id.to_s+" and trained_on='"+@start_date+"' and wi.exercise_id=e.id and w.id=wi.workout_id")
+
+    if @workouts.empty?
+       @status={"status-msg"=>"130"}  #empty data
+     else
+      @status=@workouts
+     end
+     
+respond_to do |format|
+     format.js { render :json =>@status.to_json}
+    end
+    
+    else
+      @status={"status-msg"=>"114"}   #114=> not login
+    end
+  end
+  
+  ######################################################
+  
+  def getDiaryMeal
+    if session[:user]
+      if params[:date_on] && params[:date_on].downcase!="today"
+        @start_date = Time.zone.parse(params[:date_on]).strftime("%Y-%m-%d")
+      else
+        @start_date = Time.zone.now.strftime("%Y-%m-%d")
+      end
+      
+      @meals = Meal.find_by_sql("SELECT mi.food_id,m.id,f.name,m.meal_type,m.note,ifnull(mi.calories,0) as calories,ifnull(f.total_fat,0) as fat,ifnull(f.carbohydrt,0) as carbohydrt,ifnull(f.protein,0) as protein,m.ate_on from meals m,meal_items mi,foods f where f.id=mi.food_id and m.id = mi.meal_id and m.user_id="+session[:user].id.to_s+" and m.ate_on='"+ @start_date.to_s+"'")
+     
+     if @meals.empty?
+       @status={"status-msg"=>"130"}  #empty data
+     else
+      @status=@meals
+     end
+
+    respond_to do |format|
+     format.js { render :json =>@status.to_json}
+    end
+    
+    else
+      @status={"status-msg"=>"114"}   #114=> not login
+    end
+  end
+  
+  ################################################################
+  
+ 
+ 
+ def photo
+ 	@user=User.find(params[:id])
+ 	@userfile= params[:userfile]
+ 	@userfile.rewind
+ 	@filename = "#{Rails.root}/public/"+@user.id.to_s+@userfile.original_filename
+			
+	File.open(@filename, "wb") do |file|
+	  file.write(@userfile.read)
+	end      
+   
+   @user.avatar=File.open(@filename)
+     
+   if @user.save
+     	@status={"status-msg"=>"141"}
+     	File.delete(@filename)
+   else
+      @status={"status-msg"=>"142"}
+   end  
+ 		
+ 	respond_to do |format|
+     format.js { render :json =>@status.to_json}
+ 	end
+  # end  
+end
+ 
+ def avatar_path
+   if session[:user]
+	 if !User.find(session[:user].id).avatar_file_name.nil? && User.find(session[:user].id).avatar_file_name!="NULL"
+		@url=User.find(session[:user].id).avatar.url(:profile)
+		@path={"imagepath"=> request.protocol+request.host_with_port+@url}
+	 else
+	 	@path={"imagepath"=> "null"}
+	 end   
+   
+   respond_to do |format|
+     format.js { render :json =>@path.to_json}
+   end
+  end
+   
+  # @url=User.find(129).avatar.url(:profile)
+  # @path={"imagepath"=> request.protocol+request.host_with_port+@url}
+  # render :json=>@path
+  # return
+  end
+  
+  def goals
+    @user=User.find(params[:id])    
+    @user.update_attributes(:desired_weight=>params[:desired_weight],:height=>params[:height],:weight=>params[:weight], :activity_level=>params[:activity_level])
+    
+    @user.calculate_metabolic_rates
+    
+    if @user.save
+      @status={"status-msg"=>"160"}
+    else
+      @status={"status-msg"=>"161"}  
+    end 
+    
+    respond_to do |format|
+     format.js { render :json =>@status.to_json}
+    end
+  end
+ 
 
   #this method for testing, to check webservice
   def check

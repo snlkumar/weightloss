@@ -1,4 +1,5 @@
 class Restaurant < ActiveRecord::Base
+validates :city, :state, :zipcode, :country, :contact1, :email, :password, :presence=>true, :on => [:create]
 has_attached_file :photo,
      :styles => {
        :medium => "300X300",

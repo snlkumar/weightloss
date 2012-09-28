@@ -179,7 +179,7 @@ class VendorsController < ApplicationController
 	def vendorlogin1
 	@vendor=Vendor.find_by_sql("select * from vendors where email='"+params[:email]+"'")
 	if @vendor!=nil && !@vendor.empty?
-		if @vendor.first.password == params[:password]
+		if @vendor.first.password == params[:password] && !params[:password].empty?
 	   	session[:vendor]=@vendor.first
      	   redirect_to (vendorInfo_path(@vendor.first.id) +"/"+session[:vendor].vendor_type) 	 
       else
@@ -188,7 +188,7 @@ class VendorsController < ApplicationController
    else
      @vendor=Restaurant.find_by_sql("select * from restaurants where email='"+params[:email]+"'")
      if @vendor!=nil && !@vendor.empty?
-		if @vendor.first.password== params[:password]
+		if @vendor.first.password== params[:password] && !params[:password].empty?
 	   	session[:vendor]=@vendor.first
      	   redirect_to (vendorInfo_path(@vendor.first.id)+"/restaurants")	 
       else

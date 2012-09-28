@@ -47,15 +47,22 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 #new routes for webservice
 
   resources :MywwWebservices do
+    
+    member do
+    	post :photo
+    end
     collection do
      #get :register_user1
       post :login
       post :register_user
       get :getSession
       get :check
-      get :forget_pass
+      post :forget_pass
       post :inserWeight
-      get :photo
+      post :getDiaryMeal
+      post :getDiaryWorkout
+      get :avatar_path
+      post :goals
     end
   end 
   
