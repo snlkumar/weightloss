@@ -29,7 +29,11 @@ class MywwWebservicesController < ApplicationController
   
   def getSession
     if session[:user]
-      @status=session[:user]
+    #@weight=Weight.where(:user_id=>session[:user].id).first.weight
+    #session[:user].weight=@weight
+    @user=User.find(session[:user].id)
+    session[:user]=@user
+     @status=session[:user]
     else
       @status={"status-msg"=>"114"}   #114=> not login
    end
@@ -58,7 +62,7 @@ class MywwWebservicesController < ApplicationController
   
   def logout
     if session[:user]
-      session[:user].destroy
+      session[:user]=nil
       @status={"status-msg"=>"116"}   #116=> logout
     else
       @status={"status-msg"=>"114"}   #114=> not login
@@ -73,8 +77,8 @@ class MywwWebservicesController < ApplicationController
   
   def register_user
   
-    if params
-      @user=User.find_by_email(params[:user][:email]) # check user exist      
+    if params    
+          @user=User.find_by_email(params[:user][:email]) # check user exist      
       if @user!=nil
         @status={"status-msg"=>"117"}   #user already exist
       else
@@ -112,7 +116,7 @@ class MywwWebservicesController < ApplicationController
     respond_to do |format|
      format.js { render :json =>@status.to_json}
     end
-  end
+      end
 
   ########### Current Login Info #################
   def setCurrentLoginInfo
@@ -207,15 +211,46 @@ respond_to do |format|
   ################################################################
   
  
- 
  def photo
- 	@user=User.find(params[:id])
+  
+	if params[:id]
+		 @user=User.find(params[:id])
+		 @userfile= params[:userfile]
+		 @userfile.rewind
+		 @filename = "#{Rails.root}/public/"+params[:id].to_s+@userfile.original_filename
+	  
+	 File.open(@filename, "wb") do |file|
+		file.write(@userfile.read)
+	 end         
+    
+    @user.avatar=File.open(@filename)     
+     if @user.save
+        @status={"status-msg"=>"141"}
+        File.delete(@filename)
+		    @user=User.find(params[:id])
+          session[:user]=@user
+		  else
+		     @status={"status-msg"=>"142"}
+		  end  
+	  else
+		 @status={"status-msg"=>"user not exist"}
+	  end
+
+  respond_to do |format|
+       format.js { render :json =>@status.to_json}
+    end   
+end
+ 
+ 
+ 
+=begin 
+ def photo
+ 	@user=User.find(:id) 	
  	@userfile= params[:userfile]
  	@userfile.rewind
- 	@filename = "#{Rails.root}/public/"+@user.id.to_s+@userfile.original_filename
-			
+ 	@filename = "#{Rails.root}/public/#{@user.id}"+"@userfile.original_filename"
 	File.open(@filename, "wb") do |file|
-	  file.write(@userfile.read)
+	file.write(@userfile.read)
 	end      
    
    @user.avatar=File.open(@filename)
@@ -229,14 +264,16 @@ respond_to do |format|
  		
  	respond_to do |format|
      format.js { render :json =>@status.to_json}
- 	end
-  # end  
+ 	end  
 end
+=end
  
  def avatar_path
-   if session[:user]
-	 if !User.find(session[:user].id).avatar_file_name.nil? && User.find(session[:user].id).avatar_file_name!="NULL"
-		@url=User.find(session[:user].id).avatar.url(:profile)
+ 	if params[:id]
+
+ 	
+	 if !User.find(params[:id]).avatar_file_name.nil? && User.find(params[:id]).avatar_file_name!="NULL"
+		@url=User.find(params[:id]).avatar.url(:profile)
 		@path={"imagepath"=> request.protocol+request.host_with_port+@url}
 	 else
 	 	@path={"imagepath"=> "null"}
@@ -255,11 +292,13 @@ end
   
   def goals
     @user=User.find(params[:id])    
-    @user.update_attributes(:desired_weight=>params[:desired_weight],:height=>params[:height],:weight=>params[:weight], :activity_level=>params[:activity_level])
+    @user.update_attributes(:activity_level=>params[:activity_level], :desired_weight=>params[:desired_weight],:height=>params[:height],:weight=>params[:weight])
     
     @user.calculate_metabolic_rates
     
     if @user.save
+			@user=User.find(params[:id])
+          session[:user]=@user
       @status={"status-msg"=>"160"}
     else
       @status={"status-msg"=>"161"}  
@@ -269,8 +308,32 @@ end
      format.js { render :json =>@status.to_json}
     end
   end
- 
-
+   
+   def vendor
+   @vendors = Vendor.page(params[:page] || 1).per(3)
+   render :xml =>@vendors
+   return
+    respond_to do |format|
+     format.js { render :json =>@vendors.to_json}
+    end
+  
+   end
+   
+   
+	def updateprofile
+	@user=User.find(params[:id])
+   @user.update_attributes(:first_name=>params[:first_name], :last_name=>params[:last_name],:birthdate=>params[:birthdate],:gender=>params[:gender],:weight=>params[:weight],:height=>params[:height],:city=>params[:city],:state=>params[:state],:username=>params[:username],:email=>params[:email])
+   	if @user.save
+			@user=User.find(params[:id])
+          session[:user]=@user
+      @status={"status-msg"=>"160"}
+    else
+      @status={"status-msg"=>"161"}  
+    end     
+    respond_to do |format|
+     format.js { render :json =>@status.to_json}
+    end
+  end
   #this method for testing, to check webservice
   def check
 

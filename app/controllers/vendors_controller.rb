@@ -45,7 +45,6 @@ class VendorsController < ApplicationController
   end
  ##end
 
-
  def show
    if params[:id] && params[:restaurants]!=nil && params[:restaurants]=="restaurants"
     @status="true"  #for restaurants
@@ -80,7 +79,12 @@ class VendorsController < ApplicationController
     return
 	 else
      if @vendor.save
-        redirect_to(vendor_path, :notice => 'Vendor was successfully updated.')
+     @admin =User.where("admin=1")
+         @admin.each do |admin|
+         @admin=admin
+		  	 BusinessclaimMailer.newbusiness(@admin, @vendor).deliver
+		  	 end
+        redirect_to(vendor_path, :notice => 'Vendor was successfully created.')
      else
        render :action => "new"
      end
@@ -109,7 +113,7 @@ class VendorsController < ApplicationController
 		 @vendor=Vendor.find(params[:id])
 		  respond_to do |format|
 		   if @vendor.update_attributes(params[:vendor])
-		     format.html { redirect_to(vendorInfo_path(@vendor.id), :notice => 'Successfully updated.') }
+		     format.html { redirect_to(vendorInfo_path(@vendor.id)+"/#{session[:vendor].vendor_type}"+"/#{session[:vendor].vendor_name}") }
 		     format.xml  { head :ok }
 		   else
 		     format.html { render :action => "edit" }
@@ -120,7 +124,7 @@ class VendorsController < ApplicationController
         @vendor=Restaurant.find(params[:id])
 		  respond_to do |format|        
          if @vendor.update_attributes(params[:restaurant])
-        format.html { redirect_to(vendorInfo_path(@vendor.id)+"/restaurants") }
+        format.html { redirect_to(vendorInfo_path(@vendor.id)+"/restaurants"+"/#{session[:vendor].business_name}") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -181,7 +185,7 @@ class VendorsController < ApplicationController
 	if @vendor!=nil && !@vendor.empty?
 		if @vendor.first.password == params[:password] && !params[:password].empty?
 	   	session[:vendor]=@vendor.first
-     	   redirect_to (vendorInfo_path(@vendor.first.id) +"/"+session[:vendor].vendor_type) 	 
+     	   redirect_to (vendorInfo_path(@vendor.first.id)+"/#{session[:vendor].vendor_type}") 	 
       else
      	  redirect_to(vendorlogin_vendors_path, :notice => 'incorrect password.') 
 		end
@@ -190,7 +194,7 @@ class VendorsController < ApplicationController
      if @vendor!=nil && !@vendor.empty?
 		if @vendor.first.password== params[:password] && !params[:password].empty?
 	   	session[:vendor]=@vendor.first
-     	   redirect_to (vendorInfo_path(@vendor.first.id)+"/restaurants")	 
+     	   redirect_to (vendorInfo_path(@vendor.first.id)+"/restaurants"+"/#{session[:vendor].business_name}")	 
       else
      	  redirect_to(vendorlogin_vendors_path, :notice => 'incorrect password.') 
 		end

@@ -1,0 +1,62 @@
+<style type="text/css">
+.even { background: #E6EEEE; }
+.odd { background: #cccccc; }
+.head-table{background: #ccc; }
+</style>
+
+<script type="text/javascript">
+  <%content_for :js do%>
+    $("table tbody tr").mouseover(function(){
+      $(this).css("background-color","#ccc");
+    }).mouseout(function(){
+      $(this).css("background-color","");
+    });
+          
+  <%end%>
+</script>
+<div class="grid_16">
+  
+  <br/>
+  
+  <h1 align=center>Vendors</h1>
+
+<div>  
+  <form id="vendorform" method='get' action="<%=admin_vendors_path%>">
+  <input type="hidden" id="status" name="status" value="true">
+  <button style="width:95px;background-color:#2E8DC0;" onclick=submit()>Restaurants</button> 
+  </form>
+  
+    <form id="vendorform" method='get' action="<%=admin_vendors_path%>">
+  <input type="hidden" id="status" name="status" value="false">
+  <button style="width:95px;background-color:#2E8DC0;" onclick=submit()>Vendors</button>
+  </form></div>
+  <br/><br/>
+   <%= page_entries_info(@vendors) %>
+  
+  <%= paginate(@vendors, :params => pagination_params(request)) %>  
+  
+  <br/>
+
+
+  <table class="admin">
+    <thead>
+      <tr class="head-table">
+        <th>Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @vendors.each do |vendor| %>
+        <tr class="<%= cycle('odd', 'even') %>">
+          <!--<td><%#= link_to exercise.description, edit_admin_exercise_path(exercise) %></td>-->
+          <td><%=vendor.business_name%> </td>
+                    <td class="actions">
+           <%= link_to 'Vendor detail', admin_vendor_path(vendor) %> |
+            <%= link_to 'Edit', edit_admin_vendor_path(vendor) %> |
+            <%#= link_to 'Delete', [:admin, vendor], :confirm => 'Are you sure?', :method => :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>  
+</div>

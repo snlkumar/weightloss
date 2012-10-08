@@ -30,5 +30,12 @@ class Admin::DashboardsController < Admin::BaseController
       @claims = Businessclaim.page(1).per(50)
     end
     #end
+    
+    @vendors = Vendor.page(params[:page] || 1).per(50)
+    
+    if @vendors.empty?
+      @vendors = Vendor.page(1).per(50)
+    end
+    
   end
 end

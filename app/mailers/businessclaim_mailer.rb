@@ -21,4 +21,10 @@ include SendGrid
     mail(:from => "noreply@myweightworld.com", :to => @admin.email, :subject => "New business claim")
   end 
   
+  def newbusiness(admin, vendor)
+    @vendor = vendor
+    @admin = admin
+    mail(:from => "noreply@myweightworld.com", :to => @admin.email, :subject => "New business added")
+  
+  end
   end

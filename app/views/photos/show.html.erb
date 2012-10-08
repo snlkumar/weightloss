@@ -41,7 +41,7 @@ $('#gallery a').lightBox();
 <h3 align="center">Photos</h3>
 		
 		
-			<% if current_user && current_user.id == params[:id].to_i %>
+			<% if current_user && current_user.cached_slug == params[:id].to_s %>
 				<div style="margin-top:0%;width:100%;margin-bottom:1%;margin-left:22%;padding:1%;">
 					 <%= form_for @photo1, :url => photos_path, :multipart => true do |f| %>
 						  	<%= f.label 'Upload Photo' %><br/>
@@ -53,9 +53,9 @@ $('#gallery a').lightBox();
 		<% end %>
 
 <div id="showPhotosBeforeAfterMultiple" style="margin-left:23%;">
-<%= link_to "All photos", photo_path(@user_id)%>,
-<%= link_to "Show Before measurement photo", "/photos/#{@user_id}/before" %>,
-<%= link_to "Show After measurement photo", "/photos/#{@user_id}/after"%>
+<%= link_to "All photos", photo_path(@user.cached_slug)%>,
+<%= link_to "Show Before measurement photo", "/photos/#{@user.cached_slug}/before" %>,
+<%= link_to "Show After measurement photo", "/photos/#{@user.cached_slug}/after"%>
 </div>
 
 

@@ -19,7 +19,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 	#match '/foods/search/' =>'foods#search'
 
 	##create dynamic routes
-	match '/vendor/vendorInfo/:id/(:restaurants)' =>'Vendors#show',  :as=>'vendorInfo'
+	match '/vendor/vendorInfo/:id/(:restaurants)/(:vendorname)' =>'Vendors#show',  :as=>'vendorInfo'
 	match '/vendor/(:searchtype)/(:filterQuery)' => 'Vendors#search',   :as => 'vendor'
 	##
   match '/password/edit' => 'user_passwords#edit', :as => :edit_password, :via => :get
@@ -47,10 +47,6 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 #new routes for webservice
 
   resources :MywwWebservices do
-    
-    member do
-    	post :photo
-    end
     collection do
      #get :register_user1
       post :login
@@ -58,17 +54,24 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
       get :getSession
       get :check
       post :forget_pass
-      post :inserWeight
+      post :insertWeight
       post :getDiaryMeal
       post :getDiaryWorkout
       get :avatar_path
       post :goals
+      get :logout
+      post :updateprofile
+      get :vendor
+    end
+    member do
+      post :photo
     end
   end 
   
 #end  
   
   namespace :admin do
+   resources :vendors
    resources :businessclaims
 	resources :exercises do
       collection do

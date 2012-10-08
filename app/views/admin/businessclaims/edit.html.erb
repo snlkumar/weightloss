@@ -29,7 +29,7 @@
 
 	<div class="field">
     <%= f.label :status%>
-    <%=f.select :status, [["Rejected","rejected"],["Approved","approved"]], :selected=>"Rejected" %>
+    <%=f.select :status, [["Rejected","rejected"],["Approved","approved"], ["Pending approval","Pending approval"]] %>
   </div></br>
   <%=f.submit "Submit"%>
    <%end%>

@@ -43,7 +43,7 @@
                   <%= link_to 'Exercise Info', user_edit_exercise_info_path(current_user) %>
                 </li>
                 <li class="<%= active_settings_tab?('gallery') %>">
-                  <%= link_to 'Gallery', photo_path(current_user.id) %>
+                  <%= link_to 'Gallery', photo_path(current_user.cached_slug)%>
                 </li>
                 <li class="<%= active_settings_tab?('password') %>">
                   <%= link_to 'Password', edit_password_path %>

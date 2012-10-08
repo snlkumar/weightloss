@@ -11,40 +11,18 @@ class PhotosController < ApplicationController
 		@user=current_user
 		@photo=@user.photos.create(params[:photo])
 		if @photo.save
-     		redirect_to(photo_path(@user.id), :notice => 'photo created.')
+     		redirect_to(photo_path(@user.cached_slug), :notice => 'photo created.')
      	else
 			@notice = 'photo not upload.'
     	end
    end
 
   #end create
-  
-  def update
-  @photo= Photo.find(params[:id])
-
-    respond_to do |format|
-      if @photo.update_attributes(params[:photo])
-        format.html { redirect_to(photos_path, :notice => 'photo was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @photo.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-  
-  def edit
-    @photo=Photo.find(params[:id])
-  end
 	
 	def show
-		if current_user
-			@user_id=current_user.id
-		else
-			@user_id=params[:id]
-		end
-
-		@photo= Photo.where(:user_id=>params[:id])
+	   @user = User.find(params[:id])
+	   @user_id=@user.id	 
+		@photo= @user.photos.all
       @photo1=Photo.new
 		if @photo==nil
     		flash[:notice] = "User has no photos in gallery"
@@ -52,13 +30,9 @@ class PhotosController < ApplicationController
 	end
 	
 	def filterPhotosByBeforeAfter
-		if current_user
-			@user_id=current_user.id
-		else
-			@user_id=params[:id]
-		end
-
-		@photo= Photo.where("user_id=? and before_after=?",params[:id],params[:filterPhotosByBeforeAfter])
+	   @user = User.find(params[:id])	
+		@user_id=@user.id
+		@photo= Photo.where("user_id=? and before_after=?",@user_id,params[:filterPhotosByBeforeAfter])
       @photo1=Photo.new
 		if @photo==nil
     		flash[:notice] = "User has no photos"

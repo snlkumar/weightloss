@@ -23,7 +23,7 @@
               <div class="clear">&nbsp;</div>
           
               <div class="profile-avatar avatar"><%= user_avatar_image(@user, :profile) %></div>             
-                   <p class="grid_5"style="font-size:15px;margin-left:20px;"><%= link_to 'Gallery', photo_path(@user.id) %></p>
+                   <p class="grid_5"style="font-size:15px;margin-left:20px;"><%= link_to 'Gallery', photo_path(@user.cached_slug) %></p>
           
               <div class="clear">&nbsp;</div>
               <div class="clear">&nbsp;</div>
