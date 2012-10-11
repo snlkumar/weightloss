@@ -31,16 +31,16 @@ class MywwWebservicesController < ApplicationController
     if session[:user]
     #@weight=Weight.where(:user_id=>session[:user].id).first.weight
     #session[:user].weight=@weight
-    @user=User.find(session[:user].id)
-    session[:user]=@user
-     @status=session[:user]
-    else
-      @status={"status-msg"=>"114"}   #114=> not login
-   end
-   respond_to do |format|
-     format.js { render :json =>@status.to_json}
-   end
-  end
+      @user=User.find(session[:user].id)
+        session[:user]=@user
+          @status=session[:user]
+        else
+	    @status={"status-msg"=>"114"}   #114=> not login
+	   end
+	   respond_to do |format|
+	      format.js { render :json =>@status.to_json}
+	   end
+       end
   
   ###########################
   
@@ -239,9 +239,7 @@ respond_to do |format|
   respond_to do |format|
        format.js { render :json =>@status.to_json}
     end   
-end
- 
- 
+end 
  
 =begin 
  def photo
@@ -267,18 +265,19 @@ end
  	end  
 end
 =end
+
+####################################################################################################
  
  def avatar_path
- 	if params[:id]
-
- 	
-	 if !User.find(params[:id]).avatar_file_name.nil? && User.find(params[:id]).avatar_file_name!="NULL"
-		@url=User.find(params[:id]).avatar.url(:profile)
-		@path={"imagepath"=> request.protocol+request.host_with_port+@url}
-	 else
-	 	@path={"imagepath"=> "null"}
-	 end   
-   
+  if session[:user]
+	 if !User.find(session[:user].id).avatar_file_name.nil? && User.find(session[:user].id).avatar_file_name!="NULL"
+		@url=User.find(session[:user].id).avatar.url(:profile)
+		  @path={"imagepath"=> request.protocol+request.host_with_port+@url}
+	      else
+	 	 @path={"imagepath"=> "null"}
+	 end 
+render :json=>@path
+return
    respond_to do |format|
      format.js { render :json =>@path.to_json}
    end
@@ -288,7 +287,9 @@ end
   # @path={"imagepath"=> request.protocol+request.host_with_port+@url}
   # render :json=>@path
   # return
-  end
+end
+
+########################################################################################
   
   def goals
     @user=User.find(params[:id])    
@@ -308,32 +309,85 @@ end
      format.js { render :json =>@status.to_json}
     end
   end
+ ##################################################################################     
    
-   def vendor
-   @vendors = Vendor.page(params[:page] || 1).per(3)
-   render :xml =>@vendors
-   return
-    respond_to do |format|
-     format.js { render :json =>@vendors.to_json}
-    end
-  
-   end
-   
-   
-	def updateprofile
+     def updateprofile
 	@user=User.find(params[:id])
-   @user.update_attributes(:first_name=>params[:first_name], :last_name=>params[:last_name],:birthdate=>params[:birthdate],:gender=>params[:gender],:weight=>params[:weight],:height=>params[:height],:city=>params[:city],:state=>params[:state],:username=>params[:username],:email=>params[:email])
-   	if @user.save
-			@user=User.find(params[:id])
-          session[:user]=@user
-      @status={"status-msg"=>"160"}
-    else
-      @status={"status-msg"=>"161"}  
-    end     
+        @user.update_attributes(:first_name=>params[:first_name], :last_name=>params[:last_name],:birthdate=>params[:birthdate],:gender=>params[:gender],:weight=>params[:weight],:height=>params[:height],:city=>params[:city],:state=>params[:state],:username=>params[:username],:email=>params[:email])
+   	
+       if @user.save
+	   @user=User.find(params[:id])
+            session[:user]=@user
+             @status={"status-msg"=>"160"}
+         else
+          @status={"status-msg"=>"161"}  
+       end 
+    
     respond_to do |format|
      format.js { render :json =>@status.to_json}
     end
   end
+
+###########################################################################
+
+   def vendor
+
+     if !params[:searchtype].nil?
+      if params[:filterQuery].nil? 
+	params[:filterQuery]=""	
+      end
+      if params[:searchtype].capitalize=="All"
+
+@data=Vendor.where("city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(5)
+@data1=Vendor.where("city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%'").length
+	      if !@data.empty?
+	      	@status= @data.map{|f| {:id => f.id, :state=>f.state, :name=>f.vendor_name, :vendor_type=>f.vendor_type, :datalength=>@data1}}
+		else
+		@status={"status-msg"=>"No record found"} 
+	      end
+
+
+      elsif params[:searchtype].downcase=="restaurants"
+
+	@data=Restaurant.where("city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(5)
+	@data1=Restaurant.where("city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%'").length
+
+	      if !@data.empty?
+	      	@status= @data.map{|f| {:id => f.id, :state=>f.state, :name=>f.business_name, :vendor_type=>f.vendor_type, :datalength=>@data1}}
+		else
+		@status={"status-msg"=>"No record found"} 
+	      end
+
+
+      else
+           @data=Vendor.where("vendor_type ='"+params[:searchtype].downcase+"' and (city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%')").page(params[:page] || 1).per(5)
+	   @data1=Vendor.where("vendor_type ='"+params[:searchtype].downcase+"' and (city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%')").length
+
+	     if !@data.empty?
+	      	@status= @data.map{|f| {:id => f.id, :state=>f.state, :name=>f.vendor_name, :vendor_type=>f.vendor_type, :datalength=>@data1}}
+		else
+		@status={"status-msg"=>"No record found"} 
+	      end
+	   end
+         respond_to do |format|
+           format.js { render :json =>@status.to_json}
+         end
+      end   
+   end
+##############################
+   def vendordetail
+    if params[:id] && params[:vendor_type]=="restaurants"
+	  @vendor=Restaurant.find(params[:id])
+      else
+	  @vendor=Vendor.find(params[:id])
+   end
+	@status=@vendor        
+        respond_to do |format|
+        format.js { render :json =>@status.to_json}
+      end
+   end
+
+
   #this method for testing, to check webservice
   def check
 

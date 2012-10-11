@@ -46,7 +46,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
  
 #new routes for webservice
 
-  resources :MywwWebservices do
+    resources :MywwWebservices do
     collection do
      #get :register_user1
       post :login
@@ -57,17 +57,18 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
       post :insertWeight
       post :getDiaryMeal
       post :getDiaryWorkout
-      get :avatar_path
       post :goals
       get :logout
+      get :avatar_path
       post :updateprofile
-      get :vendor
+      post :vendor
+      get :datalength
+      post :vendordetail
     end
     member do
       post :photo
     end
   end 
-  
 #end  
   
   namespace :admin do
