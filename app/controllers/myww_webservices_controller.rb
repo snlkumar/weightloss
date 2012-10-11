@@ -270,14 +270,12 @@ end
  
  def avatar_path
   if session[:user]
-	 if !User.find(session[:user].id).avatar_file_name.nil? && User.find(session[:user].id).avatar_file_name!="NULL"
+	 if User.find(session[:user].id).avatar_file_name!="NULL"
 		@url=User.find(session[:user].id).avatar.url(:profile)
 		  @path={"imagepath"=> request.protocol+request.host_with_port+@url}
 	      else
 	 	 @path={"imagepath"=> "null"}
-	 end 
-render :json=>@path
-return
+	 end
    respond_to do |format|
      format.js { render :json =>@path.to_json}
    end
@@ -343,7 +341,7 @@ end
 	      if !@data.empty?
 	      	@status= @data.map{|f| {:id => f.id, :state=>f.state, :name=>f.vendor_name, :vendor_type=>f.vendor_type, :datalength=>@data1}}
 		else
-		@status={"status-msg"=>"No record found"} 
+		@status=nil 
 	      end
 
 
@@ -355,7 +353,7 @@ end
 	      if !@data.empty?
 	      	@status= @data.map{|f| {:id => f.id, :state=>f.state, :name=>f.business_name, :vendor_type=>f.vendor_type, :datalength=>@data1}}
 		else
-		@status={"status-msg"=>"No record found"} 
+		@status=nil 
 	      end
 
 
@@ -366,7 +364,7 @@ end
 	     if !@data.empty?
 	      	@status= @data.map{|f| {:id => f.id, :state=>f.state, :name=>f.vendor_name, :vendor_type=>f.vendor_type, :datalength=>@data1}}
 		else
-		@status={"status-msg"=>"No record found"} 
+		@status=nil
 	      end
 	   end
          respond_to do |format|
@@ -378,10 +376,11 @@ end
    def vendordetail
     if params[:id] && params[:vendor_type]=="restaurants"
 	  @vendor=Restaurant.find(params[:id])
+	  	
       else
 	  @vendor=Vendor.find(params[:id])
    end
-	@status=@vendor        
+	@status=@vendor       
         respond_to do |format|
         format.js { render :json =>@status.to_json}
       end
