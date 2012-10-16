@@ -46,7 +46,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
  
 #new routes for webservice
 
-    resources :MywwWebservices do
+  resources :MywwWebservices do
     collection do
      #get :register_user1
       post :login
@@ -55,21 +55,24 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
       get :check
       post :forget_pass
       post :insertWeight
-      post :getDiaryMeal
-      post :getDiaryWorkout
+      get 'getDiaryMeal/:userid/:date_on', :action =>'getDiaryMeal'
+      get 'getDiaryMealDetail/:foodid/:meal_item_id', :action =>'getDiaryMealDetail'
+      get 'getDiaryWorkout/:userid/:date_on', :action =>'getDiaryWorkout'
+      get 'getDiaryWorkoutDetail/:workout_id/:exercise_id', :action =>'getDiaryWorkoutDetail'
       post :goals
       get :logout
       get :avatar_path
       post :updateprofile
       post :vendor
-      get :datalength
       post :vendordetail
+      get 'foodsList/:foodname', :action =>'foodsList'
+      get 'exercisesList/:exercisename', :action =>'exercisesList'
+
     end
     member do
       post :photo
     end
-  end 
-#end  
+  end  
   
   namespace :admin do
    resources :vendors

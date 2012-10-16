@@ -156,47 +156,50 @@ class MywwWebservicesController < ApplicationController
   
   ###########################################################
   
+    ###########################################################
+  
   def getDiaryWorkout
-    if session[:user]
+    if params[:userid]
       if params[:date_on] && params[:date_on].downcase!="today"
         @start_date = Time.zone.parse(params[:date_on]).strftime("%Y-%m-%d")
       else
         @start_date = Time.zone.now.strftime("%Y-%m-%d")
       end
 
- @workouts=Workout.find_by_sql("SELECT wi.exercise_id,w.id,e.description,wi.calories,w.time_from,w.note,w.trained_on FROM exercises e ,workout_items wi, workouts w  WHERE w.user_id="+session[:user].id.to_s+" and trained_on='"+@start_date+"' and wi.exercise_id=e.id and w.id=wi.workout_id")
+    @workouts=Workout.find_by_sql("SELECT wi.exercise_id,w.id,e.description,wi.calories,w.time_from,w.note,w.trained_on FROM exercises e ,workout_items wi, workouts w  WHERE w.user_id="+params[:userid]+" and trained_on='"+@start_date+"' and wi.exercise_id=e.id and w.id=wi.workout_id")
 
     if @workouts.empty?
-       @status={"status-msg"=>"130"}  #empty data
+       @status=nil  #empty data
      else
       @status=@workouts
      end
      
-respond_to do |format|
+    respond_to do |format|
      format.js { render :json =>@status.to_json}
     end
     
     else
-      @status={"status-msg"=>"114"}   #114=> not login
+      @status={"status-msg"=>"114"}   #114=> not id not available
     end
   end
   
   ######################################################
   
   def getDiaryMeal
-    if session[:user]
+     
+    if params[:userid]
       if params[:date_on] && params[:date_on].downcase!="today"
         @start_date = Time.zone.parse(params[:date_on]).strftime("%Y-%m-%d")
       else
         @start_date = Time.zone.now.strftime("%Y-%m-%d")
       end
-      
-      @meals = Meal.find_by_sql("SELECT mi.food_id,m.id,f.name,m.meal_type,m.note,ifnull(mi.calories,0) as calories,ifnull(f.total_fat,0) as fat,ifnull(f.carbohydrt,0) as carbohydrt,ifnull(f.protein,0) as protein,m.ate_on from meals m,meal_items mi,foods f where f.id=mi.food_id and m.id = mi.meal_id and m.user_id="+session[:user].id.to_s+" and m.ate_on='"+ @start_date.to_s+"'")
+     
+     @meals = Meal.find_by_sql("SELECT mi.food_id,m.id,f.name,m.note from meals m,meal_items mi,foods f where f.id=mi.food_id and m.id = mi.meal_id and m.user_id="+params[:userid]+" and m.ate_on='"+ @start_date.to_s+"'")
      
      if @meals.empty?
-       @status={"status-msg"=>"130"}  #empty data
+        @status=nil  #empty data
      else
-      @status=@meals
+        @status=@meals
      end
 
     respond_to do |format|
@@ -204,9 +207,110 @@ respond_to do |format|
     end
     
     else
-      @status={"status-msg"=>"114"}   #114=> not login
+      @status={"status-msg"=>"114"}   #114=> not id not available
     end
   end
+  
+  ################################################################
+  
+ def getDiaryMealDetail
+    if params[:foodid] && params[:meal_item_id]
+      @meals_detail=Meal.find_by_sql("SELECT f.name,m.meal_type,ifnull(mi.calories,0) as calories,ifnull(f.total_fat,0) as fat,ifnull(f.carbohydrt,0) as carbohydrt,ifnull(f.protein,0) as protein from meals m, meal_items mi,foods f where f.id="+params[:foodid]+" and m.id=mi.meal_id and m.id ="+params[:meal_item_id])
+      
+       if @meals_detail.empty?
+         @status={"status-msg"=>"130"}  #empty data
+       else
+        @status=@meals_detail.first
+       end
+    else
+      @status={"status-msg"=>"id not found"}  #empty data
+    end
+   
+    respond_to do |format|
+     format.js { render :json =>@status.to_json}
+    end
+  end
+
+###################################################################
+  def getDiaryWorkoutDetail
+    if params[:exercise_id] && params[:workout_id]
+      @workout_detail=Workout.find_by_sql("SELECT e.description,wi.calories,w.time_from,w.note,w.trained_on FROM exercises e ,workout_items wi, workouts w where e.id="+params[:exercise_id]+" and w.id=wi.workout_id and w.id ="+params[:workout_id])
+      
+       if @workout_detail.empty?
+         @status={"status-msg"=>"130"}  #empty data
+       else
+        @status=@workout_detail.first
+       end
+    else
+      @status={"status-msg"=>"id not found"}  #empty data
+    end
+   
+    respond_to do |format|
+     format.js { render :json =>@status.to_json}
+    end
+  end
+  
+  ########################## get food list ############################
+  def foodsList
+    if session[:user] 
+      if params[:foodname]
+        terms  = params[:foodname].split(/,|\s/).reject(&:blank?)
+        conds  = terms.collect{|t| "name LIKE ?"}.join(' AND ')
+        @foods = Food.with_a_serving_size.find(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}])
+    
+        if @foods.empty?
+          @status = {:value => 'No Results', :id => nil}
+        else
+        
+        @status= @foods.map{|f| {:value => ("#{f.name} *** #{f.gmwt_desc1} *** #{f.energ_kcal} "), :id => f.id} }
+        end
+      else
+        @status={"status-msg"=>"food name field cannot be empty"}
+      end
+    else
+      @status={"status-msg"=>"user not exist"}
+    end
+    
+    render :json => @status
+    return
+    
+    respond_to do |format|
+     format.js { render :json =>@status.to_json}
+   	end
+   	
+  end
+  #####################################################################
+  
+  ########################## get exercise list ########################
+  def exercisesList
+    if session[:user]
+      if params[:exercisename]
+        terms  = params[:exercisename].split(/,|\s/).reject(&:blank?)
+
+        @exercises = Exercise.where("description like '%#{terms[0]}%'")
+    
+        if @exercises.empty?
+          @status = {:value => 'No Results', :id => nil}
+        else
+        @weight=session[:user].weight
+        @status= @exercises.map{|f| {:value => "#{f.description} *** #{f.mets ? (60*f.mets*3.5*@weight/200) : (0)} Cal/Hr", :id => f.id} }.to_json
+        end
+      else
+        @status={"status-msg"=>"exercise name field cannot be empty"}
+      end
+    else
+      @status={"status-msg"=>"user not exist"}
+    end
+    
+    render :json => @status
+    return
+    
+    respond_to do |format|
+     format.js { render :json =>@status.to_json}
+   	end
+   	
+  end
+  #####################################################################
   
   ################################################################
   
