@@ -1,20 +1,45 @@
+<link href="/assets/style_v4.css" rel="stylesheet" type="text/css" />
+
 <style type="text/css">
-  
-  textarea{
-    width:40%;
+
+.continue_button {
+    display: inline-block;
+    background: #e4e4e4;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f6f6f6), color-stop(100%,#d7d7d7));
+    background: -moz-linear-gradient(center top, #f6f6f6 0%, #d7d7d7 100%);
+    -webkit-box-shadow: -1px 1px 0px 0px #dfdcdc inset, 1px -1px 0px 0px #bfbfbf inset;
+    -moz-box-shadow: -1px 1px 0px 0px #dfdcdc inset, 1px -1px 0px 0px #bfbfbf inset;
+    box-shadow: -1px 1px 0px 0px #dfdcdc inset, 1px -1px 0px 0px #bfbfbf inset;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    
+    padding: 5px 10px;
+    display: inline-block;
+    font-family: arial;
+    font-size: 11px;
+    line-height: 30px;
+    color: #595959;
+    font-weight: bold;
+}
+select#vendor_state{
+    width:235px;
+    height:25px;
+margin-top:-5px; 
+padding:2px;
   }
-select#vendor_vendor_type, #country{
-    width:42%;
-    height:2em;
-
-
-  }
-
 </style>
 
-  
-  
-<script tyle="text/javascript">
+
+<script type="text/javascript">
+
+ $(document).ready(function(){
+    $("select#vendor_year").change(function(){
+        d1=new Date($(this).val());
+        d2=new Date();
+        $("#cal_year").val(d2.getFullYear()-d1.getFullYear());
+    });
+ });
+
 
 <% content_for :js do %>
     $('#distance-slider').slider({
@@ -37,76 +62,64 @@ select#vendor_vendor_type, #country{
 
 </script>
 
-<br><%= link_to 'Back', :back, :style=>"margin-left:20%;" %><br>
-	
-<%= form_for @vendor, :url => "/admin/vendors/#{@vendor.id}/up" ,:method => :put do |f| %>
-<div style="margin-left:40%">
-<br>
+ <% if @vendor.errors.any? %>
+    <div id="error_explanation" style="margin-left:30%;">
+      <h2><%= pluralize(@vendor.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-<h1 style="margin-left:0%;background-color:#BDBDBD;padding:5px;width:68%;text-align:center;color:#FBF2EF;">Business information</h1><br />
-
-  <div class="field">
-    <%= f.label :business_name %><br />
-    <%= f.text_field :business_name, :style => "height: 1.2em;width:40%;" %>
-  </div>
-
-<!--
-  <div class="field">
-    <%#= f.label :vendor_type %><br />
-    <%#= f.select :vendor_type, [["Gym","gym"],["Restaurants","restaurants"],["Nutritionist","nutritionist"],["Weight loss surgeons","weight_loss_surgeons"],["Physiologists","physiologists"],["Hospitals","hospitals"],["Law","law"],["Medical","medical"],["Plastic surgeon","plastic_surgeon"],["Spa","spa"],["Weight loss clinics","weight_loss_clinics"],["Weight loss doctors","weight_loss_doctors"]] {},:disabled => true :disabled => true ,:style=>"height: 1.5em;width:100%;" %>
-  </div> <br /> -->
-
-<div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :fname, :style => "height: 1.2em;width:40%;" %>
-  </div>
-
-<div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :lname, :style => "height: 1.2em;width:40%;" %>
-  </div>
-
- <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email, :style => "height: 1.2em;width:40%;" %>
-  </div>
-<!--
- <div class="field">
-    <%#= f.label :password %><br />
-    <%#= f.password_field :password, :style => "height: 1.2em;width:40%;" %>
-  </div>
-
-	<div class="field">
-    <%#= label "Confirm password","Confirm password" %><br />
-	<%#= password_field_tag 'cpassword', '', :style => "height: 1.2em;width:40%;",:onblur=>"if(document.getElementById('vendor_password').value!=document.getElementById('cpassword').value){alert('Password not matched');document.getElementById('vendor_password').value=document.getElementById('cpassword').value='';}" %>
-  </div> -->
-
-  <div class="field">
-    <%= f.label :Postal_code %><br />
-    <%= f.text_field :zipcode, :style => "height: 1.2em;width:40%;" %>
-  </div> 
-
-<h3>Business information</h3>	
-	
-	<div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address1, :style => "height: 1.2em;width:40%;" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city, :style => "height: 1.2em;width:40%;" %>
-  </div>
-
- <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state, :style => "height: 1.2em;width:40%;" %>
-  </div>
+      <ul>
+      <% @vendor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
 
-  <div class="field">
-  <%= f.label :country %><br /> 
-    <select name="vendor[country]" aria-required="true" id="country">
+<div style="margin-left:20%">
+
+	<table width="80%" border="0" align="center" cellpadding="0" cellspacing="0" class="border_grey">
+	<tbody>
+
+
+	<tr>        
+	<td height="40" colspan="2" ><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-2px;background-color:#0B2B42;padding:5px 5px 5px 5px;width:98.5%;text-align:center;color:#FBF2EF;">Business information</h1></td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :address %></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :address1, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;" %>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :city %></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :city, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;" %>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :state %></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+		<%= f.select :state, options_for_select(us_states),  :style=>"width:235px;height:25px;margin-top:-5px; padding:2px;"%>
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :country %></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <select name="vendor[country]" aria-required="true" id="country" style="width:235px;height:25px;margin-top:-5px;padding:2px;">
                     <option value=""   >Select One</option>
                     <option value="Afghanistan"  >Afghanistan</option>
                     <option value="Aland Islands"   >Aland Islands</option>
@@ -336,7 +349,7 @@ select#vendor_vendor_type, #country{
                     <option value="Ukraine"   >Ukraine</option>
                     <option value="United Arab Emirates"   >United Arab Emirates</option>
                     <option value="United Kingdom"   >United Kingdom</option>
-                    <option value="United States" >United States</option>
+                    <option value="United States"   SELECTED >United States</option>
                     <option value="United States Minor Outlying Islands"   >United States Minor Outlying Islands</option>
                     <option value="Uruguay"   >Uruguay</option>
                     <option value="US Virgin Islands"   >US Virgin Islands</option>
@@ -352,160 +365,295 @@ select#vendor_vendor_type, #country{
                     <option value="Zimbabwe"   >Zimbabwe</option>
                     <option value="Serbia"   >Serbia</option>
                     <option value="Montenegro"   >Montenegro</option>
-               </select> </div></br>
+               </select>
+
+	</td>
+	</tr>
 
 
 
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :contact1, :style => "height: 1.2em;width:40%;" %>
-  </div>
-
- <div class="field">
-    <%= f.label :cell %><br />
-    <%= f.text_field :contact2, :style => "height: 1.2em;width:40%;" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :biography %><br />
-    <%= f.text_area :biography, :cols=>"33" %>
-  </div></br>
-
- <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :b_email, :style => "height: 1.2em;width:40%;" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :website_address %><br />
-    <%= f.text_field :website_address, :style => "height: 1.2em;width:40%;" %>
-  </div>
-
-  <div>
- <%= f.label 'Business Logo' %><br/>
-  <%= f.file_field :photo %>
-</div><br/><br/>
-
-<h3> Qualifications </h3>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title, :style => "height: 1.2em;width:40%;" %>
-  </div>
 
 
-  <div class="field">
-    <%= f.label :school %><br />
-    <%= f.text_field :school, :style => "height: 1.2em;width:25%;"%>
-    <%=f.select :year_school, (1950..Time.now.year).to_a, :prompt => {:year => "Select year"}%>
-  </div>
+	<tr>
+	 <td style="padding:15px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :phone %><br /></td>
 
-  <div class="field">
-    <%= f.label :year_graduated %><br />
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :contact1, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :cell %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :contact2, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :biography %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_area :biography, :class=>"border_grey", :style=>"width:230px;height:50px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:15px 15px;" valign="top"><%= f.label :business_email %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :b_email, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label 'Business Logo' %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.file_field :photo, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:20px 15px;" valign="top"><%= f.label :website_address %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :website_address, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+       
+	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-2px;background-color:#0B2B42;padding:5px;width:98.5%;text-align:center;color:#FBF2EF;">Qualifications</h1></td>
+
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :title %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :title, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :school %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :school, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%> <%=f.select :year_school, (1950..Time.now.year).to_a, :prompt => {:year => "Select year"}%>
+
+	</td>
+	</tr>
+
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :year_graduated %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
     <%= f.select :year_graduated, (1950..Time.now.year).to_a, :prompt => {:year => "Select year"} %>
-  </div><br/>
 
-  <div class="field">
-    <%= f.label :degrees %><br />
-    <%= f.text_field :degrees, :style => "height: 1.2em;width:40%;" %>
-  </div>
+	</td>
+	</tr>
 
 
-  <div class="field">
-    <%= f.label :certifications %><br />
-    <%= f.text_field :certifications, :style => "height: 1.2em;width:40%;" %>
-  </div>
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :degrees %><br /></td>
 
-  <div class="field">
-    <%= f.label :specialities %><br />
-    <%= f.text_field :specialities, :style => "height: 1.2em;width:40%;" %>
-  </div>
- 
-   <div class="field">
-    <%= f.label :license_no %><br />
-    <%= f.text_field :licence_no, :style => "height: 1.2em;width:40%;" %>
-  </div>
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :degrees, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
 
-  <div class="field">
-    <%= f.label :license_state %><br />
-    <%= f.text_field :license_states, :style => "height: 1.2em;width:40%;" %>
-  </div><br />
+	</td>
+	</tr>
 
 
-<h3> Pricing </h3>
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :certifications %><br /></td>
 
-  <div class="field">
-    <%= f.label :cost %><br />    
-    <%= f.text_field :cost, :style => "height: 1.2em;width:40%;" %>
-  </div>
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :certifications, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
 
- <div style="float:left;margin-left:1%; width: 40%;" >
-      <%= f.label :average_cost, :style=>"margin:0;padding:0;" %>
-      <span id="distance-view"></span>
-      <div id="distance-slider" style="width: 100%;"></div>
-      <input type="hidden" name="vendor[average_cost]" value='1' id = "distance-val" />
- </div> <br/> <br/><br/><br/>
-
-<div class="field">
-    <%= f.label :accept_credit_card %><br />
-    <%=f.select :accept_credit_card, [["Yes","yes"],["No","no"]] %>
-  </div> </br>
-
-<div class="field">
-    <%= f.label :accept_cash %><br />
-    <%=f.select :accept_cash, [["Yes","yes"],["No","no"]] %>
-  </div> </br>
-
-<div class="field">
-    <%= f.label :accept_check %><br />
-    <%=f.select :accept_check, [["Yes","yes"],["No","no"]] %>
-  </div> </br>
-
-  <div class="field">
-    <%= f.label :payment_plans %><br />
-    <%=f.select :payment_plans, [["Yes","yes"],["No","no"]] %>
-  </div> </br>
-
-  <div class="field">
-    <%= f.label :insurance %><br />
-    <%=f.select :accept_insurance, [["Yes","yes"],["No","no"]] %>
-  </div> </br><br />
+	</td>
+	</tr>
 
 
-<h3> Hours </h3>
- 
- <div class="field">
-    <%= f.label :work_hours %><br />
-    <%=f.text_field :work_hour, :style => "height: 1.2em;width:40%;"%>
-  </div> </br>
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :specialities %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :specialities, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
 
 
-<h3> Personal information </h3>
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :license_no %><br /></td>
 
-<div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :vendor_name, :style => "height: 1.2em;width:40%;" %>
-  </div>
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :licence_no, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
 
-	<div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :p_address, :style => "height: 1.2em;width:40%;" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :p_city, :style => "height: 1.2em;width:40%;" %>
-  </div>
-
- <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :p_state, :style => "height: 1.2em;width:40%;" %>
-  </div>
+	</td>
+	</tr>
 
 
-  <div class="field">
-  <%= f.label :country %><br /> 
-    <select name="vendor[p_country]" aria-required="true" id="country">
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :license_state %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :license_states, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+
+
+	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-2px;background-color:#0B2B42;padding:5px;width:98.5%;text-align:center;color:#FBF2EF;">Pricing</h1></td>
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :cost %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :cost, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:10px 15px;" valign="top"><%= f.label :average_cost%><br /></td>
+
+	 <td style="padding:-10px 15px;" valign="top">
+<span id="distance-view" style="margin-top:-10px;"></span>
+<div id="distance-slider" style="width: 62%;margin-top:-0px;"></div>
+      <input type="hidden" name="vendor[average_cost]" value='1' id = "distance-val" class="border_grey" />
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:10px 15px;" valign="top"><%= f.label :accept_credit_card %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%=f.select :accept_credit_card, [["Yes","yes"],["No","no"]], :selected=>"Yes", :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :accept_cash %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.select :accept_cash, [["Yes","yes"],["No","no"]], :selected=>"Yes", :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :accept_check %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.select :accept_check, [["Yes","yes"],["No","no"]], :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :payment_plans %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.select :payment_plans, [["Yes","yes"],["No","no"]], :selected=>"Yes", :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :insurance %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.select :accept_insurance, [["Yes","yes"],["No","no"]], :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+
+
+	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-2px;background-color:#0B2B42;padding:5px;width:98.5%;text-align:center;color:#FBF2EF;">Hours</h1></td>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :work_hours %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :work_hour, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+
+	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-2px;background-color:#0B2B42;padding:5px;width:98.5%;text-align:center;color:#FBF2EF;">Personal information</h1></td>
+
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :name %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :vendor_name, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :address %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :p_address, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :city %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :p_city, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :state %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :p_state, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :country %></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <select name="vendor[p_country]" aria-required="true" id="country" style="width:230px; padding:2px;">
                     <option value=""   >Select One</option>
                     <option value="Afghanistan"  >Afghanistan</option>
                     <option value="Aland Islands"   >Aland Islands</option>
@@ -615,7 +763,7 @@ select#vendor_vendor_type, #country{
                     <option value="Iraq-Saudi Arabia Neutral Zone"   >Iraq-Saudi Arabia Neutral Zone</option>
                     <option value="Ireland"   >Ireland</option>
                     <option value="Israel"   >Israel</option>
-                    <option value="Italy"   >Italy</option>
+                    <option value="Italy"   >Italy</option>nter days per week on each day: monday-sunda
                     <option value="Ivory Coast"   >Ivory Coast</option>
                     <option value="Jamaica"   >Jamaica</option>
                     <option value="Japan"   >Japan</option>
@@ -640,7 +788,7 @@ select#vendor_vendor_type, #country{
                     <option value="Malawi"   >Malawi</option>
                     <option value="Malaysia"   >Malaysia</option>
                     <option value="Maldives"   >Maldives</option>
-                    <option value="Mali"   >Mali</option>
+                    <option value="Mali"   >Mali</option>nter days per week on each day: monday-sunda
                     <option value="Malta"   >Malta</option>
                     <option value="Marshall Islands"   >Marshall Islands</option>
                     <option value="Martinique"   >Martinique</option>
@@ -705,7 +853,7 @@ select#vendor_vendor_type, #country{
                     <option value="Slovenia"   >Slovenia</option>
                     <option value="Solomon Islands"   >Solomon Islands</option>
                     <option value="Somalia"   >Somalia</option>
-                    <option value="South Africa"   >South Africa</option>
+                    <option value="South Africa"   >South Africa</option>nter days per week on each day: monday-sunda
                     <option value="South Georgia and the South Sandwich Islands"   >South Georgia and the South Sandwich Islands</option>
                     <option value="South Korea"   >South Korea</option>
                     <option value="Spain"   >Spain</option>
@@ -735,7 +883,7 @@ select#vendor_vendor_type, #country{
                     <option value="Ukraine"   >Ukraine</option>
                     <option value="United Arab Emirates"   >United Arab Emirates</option>
                     <option value="United Kingdom"   >United Kingdom</option>
-                    <option value="United States" >United States</option>
+                    <option value="United States"   SELECTED >United States</option>
                     <option value="United States Minor Outlying Islands"   >United States Minor Outlying Islands</option>
                     <option value="Uruguay"   >Uruguay</option>
                     <option value="US Virgin Islands"   >US Virgin Islands</option>
@@ -751,26 +899,42 @@ select#vendor_vendor_type, #country{
                     <option value="Zimbabwe"   >Zimbabwe</option>
                     <option value="Serbia"   >Serbia</option>
                     <option value="Montenegro"   >Montenegro</option>
-               </select> </div></br>
+               </select>
 
- <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :p_contact, :style => "height: 1.2em;width:40%;" %>
-  </div>
+	</td>
+	</tr>
 
- <div class="field">
-    <%= f.label :cell %><br />
-    <%= f.text_field :p_cell, :style => "height: 1.2em;width:40%;" %>
-  </div>
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :phone %><br /></td>
 
-  <div class="field">
-    <%= f.label :gender %><br />
-    <%=f.select :gender, [["Male","male"],["Female","female"]]%>
-  </div></br>
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :p_contact, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :cell %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :p_cell, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+<input type="hidden" id="status" name="vendor[status]" value="approved">
+	</td>
+	</tr>
 
 
- <%= f.submit %>
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :gender %><br /></td>
 
-<% end %><br/>
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.select :gender, [["Male","male"],["Female","female"]], :selected=>"Male", :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
 
-</div>
+	</td>
+	</tr>
+
+	<td colspan="2" class="font_20" style="padding:10px 15px; border-top:solid 1px #bfbfbf;">
+
+ <input type="submit" class="button grid_3" name="submit" style="height:29px;font-size:10pt;width:6em;padding:0;margin-left:30%;" onclick=submit() value=" SUBMIT " /><input type="button" class="button grid_3" name="previous_button" style="height:29px;font-size:10pt;width:6em;padding:0;margin-left:0%;" onclick=back() value=" BACK " />
+</td>
+
+</tbody></table>

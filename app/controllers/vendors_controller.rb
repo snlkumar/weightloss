@@ -57,39 +57,71 @@ class VendorsController < ApplicationController
   #end show
   
   
+  
   def new
-    @vendor=Vendor.new
+   session[:vendor_params] ||= {}
+    @vendor = Vendor.new(session[:vendor_params])
+    @vendor.current_step = session[:vendor_step]
   end
 
   #end new
   
-  def create
-  if params[:vendor][:vendor_type]!= "restaurants"
-   @vendor=Vendor.new(params[:vendor])
-   else
-#new code added
-  params[:vendor]
-   @vendor=Restaurant.new(params[:vendor] )	
-    end
-   
-   check=verify_recaptcha(request.remote_ip, params)
+ def captchatest
+  	elements=Hash.new
+  	elements={:recaptcha_response_field => params[:xxx], :recaptcha_challenge_field => params[:vvv]}
+   check=verify_recaptcha(request.remote_ip, elements)
+
 	if check[:status] == 'false'
-	  @notice = "captcha incorrect"
-    render :action => "new"
-    return
-	 else
-     if @vendor.save
-     @admin =User.where("admin=1")
-         @admin.each do |admin|
-         @admin=admin
-		  	 BusinessclaimMailer.newbusiness(@admin, @vendor).deliver
-		  	 end
-        redirect_to(vendor_path, :notice => 'Vendor was successfully created.')
-     else
-       render :action => "new"
-     end
-   end
-  end
+		render :text=> "false"
+		return
+	else
+		render :text=> "true"
+		return
+	end
+ end
+
+
+
+    def create
+      session[:vendor_params].deep_merge!(params[:vendor]) if params[:vendor]  
+      @vendor = Vendor.new(session[:vendor_params])  
+      @vendor.current_step = session[:vendor_step]
+        if @vendor.valid?  
+		if params[:back_button]  
+		  @vendor.previous_step  
+		elsif @vendor.last_step?
+			if @vendor.vendor_type.downcase=="restaurants"
+				@rest=Restaurant.new(session[:vendor_params])
+				@rest.save
+				@vendor=nil
+				@vendor=@rest
+					@admin =User.where("admin=1")
+		      	@admin.each do |admin|
+		      	@admin=admin
+		  	 		BusinessclaimMailer.newbusiness(@admin, @vendor).deliver
+		  	 		end
+			else
+			      @vendor = Vendor.new(session[:vendor_params])
+				   @vendor.save if @vendor.all_valid? 
+						@admin =User.where("admin=1")
+				   	@admin.each do |admin|
+				   	@admin=admin
+			  	 		BusinessclaimMailer.newbusiness(@admin, @vendor).deliver 
+						end
+			end
+		else  
+		  @vendor.next_step  
+		end  
+		session[:vendor_step] = "profile" 
+        end  
+	      if @vendor.new_record?  
+		render 'new'  
+	      else  
+		session[:vendor_step] = session[:vendor_params] = nil  
+		flash[:notice] = "vendor saved."  
+		redirect_to vendor_path
+	  end  
+       end  
   #end create
 
   

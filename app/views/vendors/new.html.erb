@@ -1,7 +1,37 @@
+<script tyle="text/javascript">
+function submitvendorform()
+{
+a=document.getElementById('recaptcha_response_field').value;
+b=document.getElementById('recaptcha_challenge_field').value;
+$.ajax({
+  url: '<%=captchatest_vendors_path()%>',
+  data: { xxx : a, vvv: b},
+  dataType: 'text',
+  success: function(text) {
+if (text=="false")
+{
+    alert("captcha not correct");
+Recaptcha.reload();
+}
+else
+	
+{
+$("form").submit();
+
+}
+  }
+});
+
+}
+</script>
+
+
+
+
 <br/><br/><%#=link_to "Back", :back, :style=>"margin-left: 30%;" %><br/>
 
 <%= form_for @vendor, :url => vendors_path do |f| %>
- <%= render :partial => 'form', :locals => { :f => f } %>
-
+ <%= render :partial => "#{@vendor.current_step}_step", :locals => { :f => f } %>
+ 
 <% end %>
 <br/><br/><%#=link_to "Back", :back, :style => "margin-left: 0%;"  %><br/>

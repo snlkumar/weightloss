@@ -9,18 +9,20 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 	match '/custom_foods/new/:name' => 'custom_foods#new'
 	match '/custom_foods/(:id)/update/(:food_name)' => "custom_foods#update_meal"
 	match "/workouts/calorie" =>"workouts#calculate_calories"
-	#match '/workouts/getWorkout/'=> "workouts#getWorkout"
-	#match '/workouts/saveRoutines/'=> "workouts#saveRoutines"
+	
 	match '/meals/data/'=>'meals#data'
 	match '/workouts/data/'=>'workouts#data'
 	match '/workouts/dairy/(:id)'=>'workouts#dairy',		:as => 'dairy_workout'
 	match '/refresh_window'=> 'home#refresh_window'
-	#match '/workouts/dairy/:exercise_food/:id'=>'workouts#dairy',		:as => 'dairy_workout'
-	#match '/foods/search/' =>'foods#search'
-
+	
 	##create dynamic routes
-	match '/vendor/vendorInfo/:id/(:restaurants)/(:vendorname)' =>'Vendors#show',  :as=>'vendorInfo'
+	match '/admin/vendors/:id/up' =>'admin/vendors#update_vendor'
+	match '/vendor/vendorInfo/:id/(:restaurants)/(:name)' =>'Vendors#show',  :as=>'vendorInfo'
 	match '/vendor/(:searchtype)/(:filterQuery)' => 'Vendors#search',   :as => 'vendor'
+	match '/admin/vendors/:id/(:restaurants)' =>'admin/vendors#show'
+	match '/admin/vendors/:id/edit/(:restaurants)' =>'admin/vendors#edit_vendor'
+	match '/admin/vendors/:id/delete/(:restaurants)' =>'admin/vendors#delete_vendor'
+	 
 	##
   match '/password/edit' => 'user_passwords#edit', :as => :edit_password, :via => :get
   match '/password' => 'user_passwords#update', :as => :password, :via => :put
@@ -39,6 +41,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
       get :vendorlogin
       post :vendorlogin1
       get :logout_vendor
+		get :captchatest
     end
   end
 
@@ -72,7 +75,9 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
     member do
       post :photo
     end
-  end  
+  end 
+  
+#end  
   
   namespace :admin do
    resources :vendors
@@ -87,8 +92,8 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
     resources :foods do
       collection do
         post :search
-        get :search
-      end
+        get :search      
+		end
     end
     
     resources :users, :old_text_files
@@ -133,6 +138,10 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
       get :search
       post :meal_item_calories
     end
+	
+	member do
+		get :food_servings	
+	end
   end
   
   resources :exercises do

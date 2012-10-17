@@ -21,6 +21,12 @@ module Forem
                                           order('forem_posts.created_at DESC').
                                           order('forem_topics.id')
 
+def to_param
+  "#{id}-#{subject}".downcase.gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").strip
+end
+
+
+
     def to_s
       subject
     end

@@ -37,7 +37,7 @@
   
   <br/>
 
-
+<%if @status=="true"%>
   <table class="admin">
     <thead>
       <tr class="head-table">
@@ -51,12 +51,37 @@
           <!--<td><%#= link_to exercise.description, edit_admin_exercise_path(exercise) %></td>-->
           <td><%=vendor.business_name%> </td>
                     <td class="actions">
-           <%= link_to 'Vendor detail', admin_vendor_path(vendor) %> |
-            <%= link_to 'Edit', edit_admin_vendor_path(vendor) %> |
-            <%#= link_to 'Delete', [:admin, vendor], :confirm => 'Are you sure?', :method => :delete %>
-          </td>
+           <%= link_to 'Vendor detail', admin_vendor_path(vendor.id)+"/restaurants"%> |
+            <%= link_to 'Edit', "/admin/vendors/#{vendor.id}/edit/restaurants" %> |
+            <%= link_to 'Delete', "/admin/vendors/#{vendor.id}/delete/restaurants", :confirm => 'Are you sure?', :method => :delete %>
+	   </td>
         </tr>
       <% end %>
     </tbody>
-  </table>  
+  </table>
+
+<%else%>
+ 
+	<table class="admin">
+	    <thead>
+	      <tr class="head-table">
+		<th>Name</th>
+		<th>Action</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <% @vendors.each do |vendor| %>
+		<tr class="<%= cycle('odd', 'even') %>">
+		  <!--<td><%#= link_to exercise.description, edit_admin_exercise_path(exercise) %></td>-->
+		  <td><%=vendor.vendor_name%> </td>
+		            <td class="actions">
+		   <%= link_to 'Vendor detail', admin_vendor_path(vendor.id)%> |
+		    <%= link_to 'Edit', "/admin/vendors/#{vendor.id}/edit/vendors" %> |
+            <%= link_to 'Delete', "/admin/vendors/#{vendor.id}/delete/vendors", :confirm => 'Are you sure?', :method => :delete %>
+		   </td>
+		</tr>
+	      <% end %>
+	    </tbody>
+	  </table>
+ <%end%>
 </div>
