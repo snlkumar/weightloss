@@ -9,7 +9,7 @@ class MywwWebservicesController < ApplicationController
       #pass=::BCrypt::Engine.hash_secret("#{params[:password]}#{pepper}", bcrypt.salt)
       if @user.valid_password?(params[:password]) #Devise.secure_compare(@user.encrypted_password,pass)
           @status={"status-msg"=>"111"}   #111=>login success
-          session[:user_id] = @user.id
+          session[:user]=@user
           ## update login detail of user
           setCurrentLoginInfo
       else
@@ -24,12 +24,31 @@ class MywwWebservicesController < ApplicationController
       format.js { render :json =>@status.to_json}
     end
   end
+ 
+  ##########################
+  
+  def getSession
+    if session[:user]
+    #@weight=Weight.where(:user_id=>session[:user].id).first.weight
+    #session[:user].weight=@weight
+      @user=User.find(session[:user].id)
+        session[:user]=@user
+          @status=session[:user]
+        else
+	    @status={"status-msg"=>"114"}   #114=> not login
+	   end
+	   respond_to do |format|
+	      format.js { render :json =>@status.to_json}
+	   end
+       end
+  
+  ###########################
   
   def forget_pass
   @user=User.find_by_email(params[:email])
     @status="" 
     if @user!=nil
-    @user.send_reset_password_instructions()
+    	@user.send_reset_password_instructions()
       @status={"status-msg"=>"600"}       #113 =>email sent
     else
       @status={"status-msg"=>"601"}    #113 =>invalid email
@@ -39,14 +58,14 @@ class MywwWebservicesController < ApplicationController
    end
   end
  
-###############################################################################
+#################################
   
   def logout
-    if session[:user_id]
-      session[:user_id]=nil
+    if session[:user]
+      session[:user]=nil
       @status={"status-msg"=>"116"}   #116=> logout
     else
-      @status={"status-msg"=>"114"}   #114=> not logout
+      @status={"status-msg"=>"114"}   #114=> not login
     end
     
     respond_to do |format|
@@ -54,12 +73,12 @@ class MywwWebservicesController < ApplicationController
    end
   end
   
-  #############################################################################
+  ###############################
   
   def register_user
   
-    if params
-      @user=User.find_by_email(params[:user][:email]) # check user exist      
+    if params    
+          @user=User.find_by_email(params[:user][:email]) # check user exist      
       if @user!=nil
         @status={"status-msg"=>"117"}   #user already exist
       else
@@ -75,7 +94,7 @@ class MywwWebservicesController < ApplicationController
         @user=User.create(params[:user])
         if @user.save
          @status={"status-msg"=>"100"}   #100=> for successfully registration
-         session[:user_id] = @user.id
+         session[:user]=@user
          
          ##insert user weight in weight
           check=insertWeight(params[:user][:weight].to_i,@user.id)
@@ -99,9 +118,9 @@ class MywwWebservicesController < ApplicationController
     end
       end
 
-  ######################### Current Login Info ################################
+  ########### Current Login Info #################
   def setCurrentLoginInfo
-    @user=User.find(session[:user_id])
+    @user=User.find(session[:user].id)
     
     if @user.last_sign_in_at.nil?
       @user.last_sign_in_at=DateTime.now
@@ -120,10 +139,10 @@ class MywwWebservicesController < ApplicationController
     @user.update_attributes(:current_sign_in_at => DateTime.now, :current_sign_in_ip =>request.remote_ip , :last_sign_in_at => @user.last_sign_in_at , :last_sign_in_ip =>@user.last_sign_in_ip , :sign_in_count => @user.sign_in_count)
     
   end
-  ################################# end #######################################
+  #################### end ############################
   
   def insertWeight(weight,user_id)
-    if session[:user_id]
+    if session[:user]
       params=Hash.new
       params[:weight]={:user_id=>user_id,:weight=>weight}
       @weight=Weight.create(params[:weight])
@@ -135,7 +154,9 @@ class MywwWebservicesController < ApplicationController
     end
   end
   
-  #############################################################################
+  ###########################################################
+  
+    ###########################################################
   
   def getDiaryWorkout
     if params[:userid]
@@ -162,27 +183,8 @@ class MywwWebservicesController < ApplicationController
     end
   end
   
-  #############################################################################
+  ######################################################
   
-  ######################### getDiaryWorkoutDetail #############################
-   def getDiaryWorkoutDetail
-    if params[:exercise_id] && params[:workout_id]
-      @workout_detail=Workout.find_by_sql("SELECT e.description,wi.calories,w.time_from,w.note,w.trained_on FROM exercises e ,workout_items wi, workouts w where e.id="+params[:exercise_id]+" and w.id=wi.workout_id and w.id ="+params[:workout_id])
-      
-       if @workout_detail.empty?
-         @status={"status-msg"=>"130"}  #empty data
-       else
-        @status=@workout_detail.first
-       end
-    else
-      @status={"status-msg"=>"id not found"}  #empty data
-    end
-   
-    respond_to do |format|
-     format.js { render :json =>@status.to_json}
-    end
-  end
-  #############################################################################
   def getDiaryMeal
      
     if params[:userid]
@@ -209,9 +211,9 @@ class MywwWebservicesController < ApplicationController
     end
   end
   
-  #############################################################################
+  ################################################################
   
-  def getDiaryMealDetail
+ def getDiaryMealDetail
     if params[:foodid] && params[:meal_item_id]
       @meals_detail=Meal.find_by_sql("SELECT f.name,m.meal_type,ifnull(mi.calories,0) as calories,ifnull(f.total_fat,0) as fat,ifnull(f.carbohydrt,0) as carbohydrt,ifnull(f.protein,0) as protein from meals m, meal_items mi,foods f where f.id="+params[:foodid]+" and m.id=mi.meal_id and m.id ="+params[:meal_item_id])
       
@@ -228,10 +230,29 @@ class MywwWebservicesController < ApplicationController
      format.js { render :json =>@status.to_json}
     end
   end
+
+###################################################################
+  def getDiaryWorkoutDetail
+    if params[:exercise_id] && params[:workout_id]
+      @workout_detail=Workout.find_by_sql("SELECT e.description,wi.calories,w.time_from,w.note,w.trained_on FROM exercises e ,workout_items wi, workouts w where e.id="+params[:exercise_id]+" and w.id=wi.workout_id and w.id ="+params[:workout_id])
+      
+       if @workout_detail.empty?
+         @status={"status-msg"=>"130"}  #empty data
+       else
+        @status=@workout_detail.first
+       end
+    else
+      @status={"status-msg"=>"id not found"}  #empty data
+    end
+   
+    respond_to do |format|
+     format.js { render :json =>@status.to_json}
+    end
+  end
   
-  ############################ get food list ##################################
+  ########################## get food list ############################
   def foodsList
-    if session[:user_id] 
+    if session[:user] 
       if params[:foodname]
         terms  = params[:foodname].split(/,|\s/).reject(&:blank?)
         conds  = terms.collect{|t| "name LIKE ?"}.join(' AND ')
@@ -258,164 +279,38 @@ class MywwWebservicesController < ApplicationController
    	end
    	
   end
-  #############################################################################
+  #####################################################################
   
-  ############################ get exercise list ##############################
+  ########################## get exercise list ########################
   def exercisesList
-    if session[:user_id]
+    if session[:user]
       if params[:exercisename]
         terms  = params[:exercisename].split(/,|\s/).reject(&:blank?)
 
-        @exercises = Exercise.where("description like '%#{terms}%'")
-  
+        @exercises = Exercise.where("description like '%#{terms[0]}%'")
+    
         if @exercises.empty?
-          @status = nil
+          @status = {:value => 'No Results', :id => nil}
         else
-          @weight=(Weight.where(:user_id => session[:user_id]).select("weight").first).weight.to_f
-          @status= @exercises.map{|f| {:value => "#{f.description} #{f.mets ? (60*f.mets*3.5*@weight/200) : (0)} Cal/Hr", :id => f.id} }.to_json
+        @weight=session[:user].weight
+        @status= @exercises.map{|f| {:value => "#{f.description} *** #{f.mets ? (60*f.mets*3.5*@weight/200) : (0)} Cal/Hr", :id => f.id} }.to_json
         end
-       
       else
         @status={"status-msg"=>"exercise name field cannot be empty"}
       end
     else
       @status={"status-msg"=>"user not exist"}
     end
-   
-    respond_to do |format|
-     format.js { render :json =>@status}
-   	end
-   	
-  end
-  #############################################################################
-  
-  ############################ addWorkout (exercise) ##########################
-  def addWorkout
     
-    if params[:trained_on]
-      @start_date = Time.zone.parse(params[:trained_on]).strftime("%Y-%m-%d")
-    else
-      @start_date = Time.zone.now.strftime("%Y-%m-%d")
-params[:trained_on]=@start_date
-    end
-
-#for calories field data
-if !params[:duration1].nil? && !params[:time_from1].nil? && !params[:duration1].empty? && !params[:time_from1].empty?
-params[:duration]=params[:duration1]
-params[:time_from]=params[:time_from1]
-end
-
-if params[:calories].nil? || params[:calories]==""
-@workout = Workout.create(:user_id=>params[:userid], :trained_on=>@start_date,:time_from=>params[:time_from])
-@w=WorkoutItem.create(:workout_id=>@workout.id,:exercise_id=>params[:exercise_id],:duration=>params[:duration].delete(" "),:user_id=>params[:userid])
-else
-params[:exercise_id]=809	#this is custom calories execersise id
- #for activity entry by calories
- @workout = Workout.create(:user_id=>params[:userid],:trained_on=>@start_date,:time_from=>params[:time_from],:note=>params[:note])
- @w=WorkoutItem.create(:workout_id=>@workout.id,:exercise_id=>params[:exercise_id],:duration=>params[:duration].delete(" "),:calories=>params[:calories],:user_id=>params[:userid])
-end
-if @workout && @w
- session[:user_id]=params[:userid]
- @status={"status-msg"=>"success"}
-else  
- @status={"status-msg"=>"not created"}
-    end
-
-  respond_to do |format|
-       format.js { render :json =>@status.to_json}
-   	end
-  end
-  #############################################################################
-  
-  
-  ############################ addWorkout (exercise) ##########################
-  def addMeal
-  end
-  #############################################################################
-  
-  
-  def getSession
-    if session[:user_id]
-      @status=User.find(session[:user_id])  # use this for taking weight of user
-    else
-      @status={"status-msg"=>"114"}   #114=> not login
-    end
-    
-   respond_to do |format|
-     format.js { render :json =>@status.to_json}
-   end
-  end
-  
-  #############################################################################
-  
- def userPhotoUpload
-  
-if params[:id]
-   	@userfile= params[:userfile]
-   	@userfile.rewind
-   	@filename = "#{Rails.root}/public/"+params[:id].to_s+@userfile.original_filename
-  
- File.open(@filename, "wb") do |file|
-   file.write(@userfile.read)
- end         
-    
-    @user=User.find(params[:id])
-    @user.avatar=File.open(@filename)
-     
-     if @user.save
-       @status={"status-msg"=>"141"}
-       File.delete(@filename)
-     else
-        @status={"status-msg"=>"142"}
-     end  
- 	else
-    @status={"status-msg"=>"user not exist"}
-  end
-
-  respond_to do |format|
-       format.js { render :json =>@status.to_json}
-   	end
-   	
-end
- 
- def avatar_path
-   if session[:user_id]
-  if !User.find(session[:user_id]).avatar_file_name.nil? && User.find(session[:user_id]).avatar_file_name!="NULL"
- @url=User.find(session[:user_id]).avatar.url(:profile)  
- @path={"imagepath"=> request.protocol+request.host_with_port+@url}
-  else
-  @path={"imagepath"=> "null"}
-  end   
-else
- @status={"status-msg"=>"user not exist"}
-   end
-
-   respond_to do |format|
-     format.js { render :json =>@path.to_json}
-   end
- 
-  end
-  
-  def goals
-    if params[:id]
-      @user=User.find(params[:id])    
-      @user.update_attributes(:desired_weight=>params[:desired_weight],:height=>params[:height],:weight=>params[:weight], :activity_level=>params[:activity_level])
-      session[:user_id]=@user.id
-      @user.calculate_metabolic_rates
-      
-      if @user.save
-        @status={"status-msg"=>"160"}
-      else
-        @status={"status-msg"=>"161"}  
-      end 
-    else
-      @status={"status-msg"=>"user not exist"}
-    end
+    render :json => @status
+    return
     
     respond_to do |format|
      format.js { render :json =>@status.to_json}
-    end
+   	end
+   	
   end
+  #####################################################################
   
   ################################################################
   
@@ -436,8 +331,8 @@ else
      if @user.save
         @status={"status-msg"=>"141"}
         File.delete(@filename)
-#		    @user=User.find(params[:id])
-          session[:user_id]=params[:id]
+		    @user=User.find(params[:id])
+          session[:user]=@user
 		  else
 		     @status={"status-msg"=>"142"}
 		  end  
@@ -475,7 +370,47 @@ end
 end
 =end
 
+####################################################################################################
+ 
+ def avatar_path
+  if session[:user]
+	 if User.find(session[:user].id).avatar_file_name!="NULL"
+		@url=User.find(session[:user].id).avatar.url(:profile)
+		  @path={"imagepath"=> request.protocol+request.host_with_port+@url}
+	      else
+	 	 @path={"imagepath"=> "null"}
+	 end
+   respond_to do |format|
+     format.js { render :json =>@path.to_json}
+   end
+  end
+   
+  # @url=User.find(129).avatar.url(:profile)
+  # @path={"imagepath"=> request.protocol+request.host_with_port+@url}
+  # render :json=>@path
+  # return
+end
 
+########################################################################################
+  
+  def goals
+    @user=User.find(params[:id])    
+    @user.update_attributes(:activity_level=>params[:activity_level], :desired_weight=>params[:desired_weight],:height=>params[:height],:weight=>params[:weight])
+    
+    @user.calculate_metabolic_rates
+    
+    if @user.save
+			@user=User.find(params[:id])
+          session[:user]=@user
+      @status={"status-msg"=>"160"}
+    else
+      @status={"status-msg"=>"161"}  
+    end 
+    
+    respond_to do |format|
+     format.js { render :json =>@status.to_json}
+    end
+  end
  ##################################################################################     
    
      def updateprofile
@@ -483,8 +418,8 @@ end
         @user.update_attributes(:first_name=>params[:first_name], :last_name=>params[:last_name],:birthdate=>params[:birthdate],:gender=>params[:gender],:weight=>params[:weight],:height=>params[:height],:city=>params[:city],:state=>params[:state],:username=>params[:username],:email=>params[:email])
    	
        if @user.save
-#	   @user=User.find(params[:id])
-      session[:user_id]=params[:id]
+	   @user=User.find(params[:id])
+            session[:user]=@user
              @status={"status-msg"=>"160"}
          else
           @status={"status-msg"=>"161"}  

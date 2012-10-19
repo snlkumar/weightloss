@@ -44,12 +44,13 @@ select#vendor_vendor_type, #country{
 
 
 
-<div style="margin-left:30%">
+	<div style="border:1px solid grey;margin-left:20%;width:50em;height:69em;background-color:#FFFFFF;">
 
-<br>
+	<br>
+	<h1 style="margin-top:-2.5%;background-color:#0B2B42;padding:5px;width:98.5%;height:1em;text-align:center;font-size:22px;color:#FBF2EF;">Add Your Business</h1><br /><br />
+	<div id="div1" style="margin-left:7%;">
 
-<div id="div1">
-<h1 style="margin-left:0%;background-color:#0B2B42;padding:5px;width:62%;text-align:center;color:#FBF2EF;">Add Your Business</h1><br /><br />
+
 
   <div class="field">
     <%= f.label :business_name %><br />
@@ -63,15 +64,16 @@ select#vendor_vendor_type, #country{
     <%= f.select :vendor_type, [["Restaurants","restaurants"],["Gym","gym"],["Nutritionist","nutritionist"],["Weight loss surgeons","weight_loss_surgeons"],["Physiologists","physiologists"],["Hospitals","hospitals"],["Law","law"],["Medical","medical"],["Plastic surgeon","plastic_surgeon"],["Spa","spa"],["Weight loss clinics","weight_loss_clinics"],["Weight loss doctors","weight_loss_doctors"]] %>
   </div> <br />
 
-<div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :fname, :style => "height: 1.2em;width:40%;" %>
-  </div>
+	<div class="field">
+		 <%= f.label :first_name %><br />
+		 <%= f.text_field :fname, :style => "height: 1.2em;width:40%;" %>
+	  </div>
 
-<div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :lname, :style => "height: 1.2em;width:40%;" %>
-  </div>
+
+		<div class="field">
+			 <%= f.label :last_name %><br />
+			 <%= f.text_field :lname, :style => "height: 1.2em;width:40%;" %>
+		  </div>
 
  <div class="field">
     <%= f.label :email %><br />
@@ -94,15 +96,99 @@ select#vendor_vendor_type, #country{
     <%= f.text_field :zipcode, :style => "height: 1.2em;width:40%;" %>
   </div> 
 
- </div></br>
 	<div style="margin-left: 0%;">
          <%=render '/shared/recaptcha' %>
    </div></br>
 
-
-      <input type="button" class="button grid_3" style="height:29px;font-size:10pt;width:6em;padding:0;margin:0;" onclick=submitvendorform() value=" Continue " />
+<input type="button" class="button grid_3" style="height:34px;font-size:10pt;width:9em;padding:0;margin-left:8%;" onclick=submitvendorform() value=" Continue " />
 
 </div></div>
+
+
+
+
+<!-- for dynamic add multiple address textboxes
+
+<script type="text/javascript" src="/assets/jquery-1.3.2.min.js"></script>
+ 
+<style>
+    input[placeholder], [placeholder], *[placeholder]
+    {
+        color:grey !important;
+    }
+</style>
+
+
+<script type="text/javascript">
+ 
+$(document).ready(function(){
+ 
+    var counter = 2;
+ 
+    $("#addButton").click(function () {
+ 
+	if(counter>4){
+            alert("Only 4 textboxes allow");
+            return false;
+	}   
+ 
+	var newTextBoxDiv = $(document.createElement('tr'))
+	     .attr("id", 'TextBoxDiv' + counter);
+ 
+	newTextBoxDiv.after().html('<label>Address #'+ counter + ' : </label>' +
+	      '<input type="text" name="vendor[address' + counter + 
+	      ']" id="vendor_address' + counter + '" value="" >');
+ 
+	newTextBoxDiv.appendTo("#TextBoxesGroup");
+ 
+ 
+	counter++;
+     });
+ 
+     $("#removeButton").click(function () {
+	if(counter==2){
+          alert("No more textbox to remove");
+          return false;
+       }   
+ 
+	counter--;
+ 
+        $("#TextBoxDiv" + counter).remove();
+ 
+     });
+ 
+     $("#getButtonValue").click(function () {
+ 
+	var msg = '';
+	for(i=1; i<counter; i++){
+   	  msg += "\n Textbox #" + i + " : " + $('#address' + i).val();
+	}
+    	  alert(msg);
+     });
+  });
+</script>
+
+
+
+	<div style="border:1px solid grey;margin-left:20%;width:50em;height:100%;background-color:#FFFFFF;">
+	<table>
+		<tbody>
+			<tbody id='TextBoxesGroup'>
+				<tr id="TextBoxDiv1">
+				<td>	<label>Address #1 : </label><input type='text' id='vendor_address1' name='vendor[address1]' placeholder='Address and zipcode'></td>
+				</tr>
+			</tbody>
+	</tbody>
+</table>
+
+<input type='button' value='Add Button' id='addButton'>
+<input type='button' value='Remove Button' id='removeButton'>
+
+</div>
+
+
+
+-->
 
 
 

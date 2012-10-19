@@ -11,7 +11,8 @@ $.ajax({
 if (text=="false")
 {
     alert("captcha not correct");
-Recaptcha.reload();
+<!--Recaptcha.reload();-->
+location.reload();
 }
 else
 	
@@ -35,3 +36,35 @@ $("form").submit();
  
 <% end %>
 <br/><br/><%#=link_to "Back", :back, :style => "margin-left: 0%;"  %><br/>
+
+
+
+
+<!--- auto complete
+
+	$(document).ready(function(){
+		$("#vendor_business_name").keypress(function(){ 
+			$.ajax({
+				url: '/vendors/auto_search'+$("#vendor_business_name").val(),
+  				dataType: 'html',
+  				success: function(data) {
+				alert(data);
+					$('#vendor_business_name').autocomplete({
+   					source: data
+	  				});
+				},
+				error: function(data)
+				{
+					alert("error");
+				}
+			});
+		});
+	});
+
+
+-->
+
+
+
+
+

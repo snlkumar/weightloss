@@ -240,5 +240,6 @@ class VendorsController < ApplicationController
 		session[:vendor]=nil
 		redirect_to vendorlogin_vendors_path
 	end
-		 
+	
+	 
 end

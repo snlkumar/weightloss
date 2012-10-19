@@ -62,6 +62,8 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
       get 'getDiaryMealDetail/:foodid/:meal_item_id', :action =>'getDiaryMealDetail'
       get 'getDiaryWorkout/:userid/:date_on', :action =>'getDiaryWorkout'
       get 'getDiaryWorkoutDetail/:workout_id/:exercise_id', :action =>'getDiaryWorkoutDetail'
+		post :addWorkout
+      post :addMeal
       post :goals
       get :logout
       get :avatar_path

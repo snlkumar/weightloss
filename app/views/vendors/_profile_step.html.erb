@@ -32,15 +32,6 @@ padding:2px;
 
 <script type="text/javascript">
 
- $(document).ready(function(){
-    $("select#vendor_year").change(function(){
-        d1=new Date($(this).val());
-        d2=new Date();
-        $("#cal_year").val(d2.getFullYear()-d1.getFullYear());
-    });
- });
-
-
 <% content_for :js do %>
     $('#distance-slider').slider({
           range: "min",
@@ -369,9 +360,6 @@ padding:2px;
 
 	</td>
 	</tr>
-
-
-
 
 
 	<tr>
