@@ -17,8 +17,8 @@
 <div class="grid_16">
   
   <br/>
-  
-  <h1 align=center>Vendors</h1>
+    <h2 style="font-size:20px;align:center;background-color:#0B2B42;width:46em;">Vendors</h2>
+
 
 <div>  
   <form id="vendorform" method='get' action="<%=admin_vendors_path%>">
@@ -73,7 +73,7 @@
 	      <% @vendors.each do |vendor| %>
 		<tr class="<%= cycle('odd', 'even') %>">
 		  <!--<td><%#= link_to exercise.description, edit_admin_exercise_path(exercise) %></td>-->
-		  <td><%=vendor.vendor_name%> </td>
+		  <td><%=vendor.business_name%> </td>
 		            <td class="actions">
 		   <%= link_to 'Vendor detail', admin_vendor_path(vendor.id)%> |
 		    <%= link_to 'Edit', "/admin/vendors/#{vendor.id}/edit/vendors" %> |

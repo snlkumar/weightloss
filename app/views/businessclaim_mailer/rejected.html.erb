@@ -10,7 +10,7 @@
 
 	Your calim for 
     <%if @claim.business_type!="restaurants"%>
-    <%=@claim.business_type.split('_').join(' ')%> (<%=@business.vendor_name%>)
+    <%=@claim.business_type.split('_').join(' ')%> (<%=@business.business_name%>)
     <%else%>
 	<%=@business.business_name%> restaurant
 	<%end%>  

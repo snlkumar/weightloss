@@ -10,7 +10,7 @@
 
 <%=@claim.claimfname.capitalize%> <%=@claim.claimlname%> has requested to attach his profile with vendor
 <%if @claim.business_type!="restaurants"%>
-    <%=@claim.business_type.split('_').join(' ')%> (<%=@business.vendor_name%>)
+    <%=@claim.business_type.split('_').join(' ')%> (<%=@business.business_name%>)
     <%else%>
 	<%=@business.business_name%> restaurant
 	<%end%>. Please login to admin/approval section to approve it.<br/><br/>

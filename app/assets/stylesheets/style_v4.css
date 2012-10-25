@@ -5,7 +5,7 @@ body {
 	margin: 0px;
 	padding: 0px;
 	background-color:#f3f3f3;
-	overflow-x:hidden;
+
 }
 td {
 	font-family: Arial, Helvetica, sans-serif;
@@ -106,7 +106,7 @@ position: relative; /* Do not change this value */
 width: 350px;
 height: 230px; /* Set height to be able to contain height of largest content shown*/
 border: 5px solid #687C98;
-overflow: hidden;
+
 }
 /*
 	Total wrapper width: 350px+5px+5px=360px

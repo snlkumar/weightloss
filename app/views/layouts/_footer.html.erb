@@ -5,10 +5,12 @@
   <div id="footer" class="container_16">
     <div class="grid_8">
       <h3 class="footer-header">Get In Touch With MyWeightWorld</h3>
-      <%= mail_to 'support@myweightworld.com', nil, :class => 'footer-link grid_4 alpha' %>
-      <%= mail_to 'sales@myweightworld.com', nil, :class => 'footer-link grid_4 omega' %>
+     <%= link_to "Personal Trainer Scottsdale", "http://www.personalpowertraining.net", :class => 'footer-link grid_4 alpha',:style=>"color:white;"%>
+      <%= link_to 'Weight Loss Community', "www.myweightworld.com", :class => 'footer-link grid_4 omega', :style=>"color:white;" %>	
       <div style="clear:both"></div>
-      <%= mail_to 'press@myweightworld.com', nil, :class => 'footer-link grid_4 alpha' %>
+      <%= mail_to 'sales@myweightworld.com', nil, :class => 'footer-link grid_4 alpha' %>
+      <%= mail_to 'press@myweightworld.com', nil, :class => 'footer-link grid_4 omega' %>
+      <%= mail_to 'support@myweightworld.com', nil, :class => 'footer-link grid_4 alpha' %>
     </div>
     
     <div class="grid_8">
@@ -22,6 +24,19 @@
       <%= link_to 'Articles', posts_path, :class => 'footer-link' %>&nbsp;
       <%= link_to 'About Us', about_path, :class => 'footer-link' %>&nbsp;
 
+<br/><%= link_to 'Vendors:', "#{vendor_path()}"+"/all", :class => 'footer-link' %>&nbsp;
+		<%= link_to 'Gyms,', "#{vendor_path()}"+"/gym", :class => 'footer-link' %>&nbsp;
+		<%= link_to 'Restaurants,', "#{vendor_path()}"+"/restaurants", :class => 'footer-link' %>&nbsp;
+		<%= link_to 'Nutritionists,', "#{vendor_path()}"+"/nutritionist", :class => 'footer-link' %>&nbsp;
+		<%= link_to 'Weight loss surgeons,', "#{vendor_path()}"+"/weight_loss_surgeons", :class => 'footer-link' %>&nbsp;
+		<%= link_to 'Physiologists,', "#{vendor_path()}"+"/physiologists", :class => 'footer-link' %>&nbsp;  
+		<%= link_to 'Hospitals,', "#{vendor_path()}"+"/hospitals", :class => 'footer-link' %>&nbsp;
+		<%= link_to 'Law,', "#{vendor_path()}"+"/law", :class => 'footer-link' %>&nbsp;
+		<%= link_to 'Plastic surgeons,', "#{vendor_path()}"+"/Plastic_surgeon", :class => 'footer-link' %>&nbsp;
+		<%= link_to 'Spa,', "#{vendor_path()}"+"/spa", :class => 'footer-link' %>&nbsp;  
+		<%= link_to 'Weight loss doctors,', "#{vendor_path()}"+"/weight_loss_doctors", :class => 'footer-link' %>&nbsp;  
+		<%= link_to 'Weight loss clinics,', "#{vendor_path()}"+"/weight_loss_clinics", :class => 'footer-link' %>&nbsp;  
+		<%= link_to 'Medical equipment,', "#{vendor_path()}"+"/medical_equipment", :class => 'footer-link' %>&nbsp;  
     </div>
     
     <div style="clear:both">&nbsp;</div>

@@ -32,15 +32,15 @@ class VendorsController < ApplicationController
    if params[:searchtype]=="restaurants"
     @vendor = Restaurant.where("name like '%"+params[:filterQuery]+"%'")
    elsif params[:searchtype]!="all"
-    @vendor = Vendor.where("vendor_name like '%"+params[:filterQuery]+"%' and vendor_type='"+params[:searchtype]+"'")
+    @vendor = Vendor.where("business_name like '%"+params[:filterQuery]+"%' and vendor_type='"+params[:searchtype]+"'")
    else
-    @vendor = Vendor.where("vendor_name like '%"+params[:filterQuery]+"%'")
+    @vendor = Vendor.where("business_name like '%"+params[:filterQuery]+"%'")
    end
    
     if @vendor.empty?
       render :json => [{:value => 'No Results', :id => nil}].to_json
     else
-			render :json => @vendor.map{|f| {:value => (params[:searchtype]=="restaurants" ? "#{f.name.capitalize} - Restaurant @$ #{f.address} @$ #{f.city} @$ #{f.state} @$ #{f.zip}" : "#{f.vendor_name.capitalize} - #{(f.vendor_type).split('_').join(' ')} @$ #{f.address1} @$ #{f.city} @$ #{f.state} @$ #{f.zipcode}"), :id => f.id} }.to_json
+			render :json => @vendor.map{|f| {:value => (params[:searchtype]=="restaurants" ? "#{f.name.capitalize} - Restaurant @$ #{f.address} @$ #{f.city} @$ #{f.state} @$ #{f.zip}" : "#{f.business_name.capitalize} - #{(f.vendor_type).split('_').join(' ')} @$ #{f.address1} @$ #{f.city} @$ #{f.state} @$ #{f.zipcode}"), :id => f.id} }.to_json
     end
   end
  ##end
@@ -145,7 +145,7 @@ class VendorsController < ApplicationController
 		 @vendor=Vendor.find(params[:id])
 		  respond_to do |format|
 		   if @vendor.update_attributes(params[:vendor])
-		     format.html { redirect_to(vendorInfo_path(@vendor.id)+"/#{session[:vendor].vendor_type}"+"/#{session[:vendor].vendor_name}") }
+		     format.html { redirect_to(vendorInfo_path(@vendor.id)+"/#{session[:vendor].vendor_type}"+"/#{session[:vendor].business_name}") }
 		     format.xml  { head :ok }
 		   else
 		     format.html { render :action => "edit" }
@@ -217,7 +217,7 @@ class VendorsController < ApplicationController
 	if @vendor!=nil && !@vendor.empty?
 		if @vendor.first.password == params[:password] && !params[:password].empty?
 	   	session[:vendor]=@vendor.first
-     	   redirect_to (vendorInfo_path(@vendor.first.id)+"/#{session[:vendor].vendor_type}") 	 
+      	   redirect_to (vendorInfo_path(@vendor.first.id)+"/#{session[:vendor].vendor_type}") 	 
       else
      	  redirect_to(vendorlogin_vendors_path, :notice => 'incorrect password.') 
 		end
@@ -241,5 +241,9 @@ class VendorsController < ApplicationController
 		redirect_to vendorlogin_vendors_path
 	end
 	
-	 
+	def auto_search
+		@city=ActiveRecord::Base.connection.execute("select c.id, c.name,co.name from City c, Country co where c.name like '%"+params[:search]+"%' and c.countrycode=co.code")
+		render :json =>@city
+		return
+	end 
 end

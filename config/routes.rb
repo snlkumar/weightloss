@@ -42,6 +42,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
       post :vendorlogin1
       get :logout_vendor
 		get :captchatest
+		get 'auto_search/:search', :action => 'auto_search'
     end
   end
 
@@ -72,7 +73,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
       post :vendordetail
       get 'foodsList/:foodname', :action =>'foodsList'
       get 'exercisesList/:exercisename', :action =>'exercisesList'
-
+		get :measurement
     end
     member do
       post :photo

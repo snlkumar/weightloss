@@ -555,6 +555,20 @@ end
       end
    end
 
+##############################################################
+
+  def measurement
+   	@user=User.find(params[:id])
+		@meas=@user.measurements.all
+		if !@data.empty?
+		@status=@meas
+        else
+      @status=nil
+      respond_to do |format|
+        format.js { render :json =>@status.to_json}
+      end
+
+  end
 
   #this method for testing, to check webservice
   def check

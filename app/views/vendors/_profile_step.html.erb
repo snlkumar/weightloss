@@ -1,5 +1,4 @@
 <link href="/assets/style_v4.css" rel="stylesheet" type="text/css" />
-
 <style type="text/css">
 
 .continue_button {
@@ -27,10 +26,58 @@ select#vendor_state{
 margin-top:-5px; 
 padding:2px;
   }
+
+input[placeholder], [placeholder], *[placeholder]
+    {
+        color:grey !important;
+    }
+
 </style>
 
 
 <script type="text/javascript">
+
+$(document).ready(function(){
+ 
+    var counter = 2;
+ 
+    $("#addButton").click(function () {
+ 
+	if(counter>3){
+            alert("Maximum 3 addresses are allowed");
+            return false;
+	}   
+ 
+	var newTextBoxDiv = $(document.createElement('div')).attr("id", 'TextBoxDiv' + counter).append('<label style="margin-left:25px;">Address #'+ counter + ' : </label>' +'<textarea style="width:225px;height:50px;margin-top:5px; margin-left:75px; padding:5px;" name="vendor[address' + counter + ']" id="vendor_address' + counter + '" value="" >');
+ 
+	newTextBoxDiv.appendTo("#TextBoxesGroup");
+ 
+	counter++;
+     });
+ 
+     $("#removeButton").click(function () {
+	if(counter==2){
+          alert("Minimum one address is required");
+          return false;
+       }   
+ 
+	counter--;
+ 
+        $("#TextBoxDiv" + counter).remove();
+ 
+     });
+ 
+     $("#getButtonValue").click(function () {
+ 
+	var msg = '';
+	for(i=1; i<counter; i++){
+   	  msg += "\n Textbox #" + i + " : " + $('#address' + i).val();
+	}
+    	  alert(msg);
+     });
+  });
+
+
 
 <% content_for :js do %>
     $('#distance-slider').slider({
@@ -50,6 +97,7 @@ padding:2px;
     
     $( "#distance-view" ).html( miles);
   <% end %>
+
 
 </script>
 
@@ -73,18 +121,21 @@ padding:2px;
 
 
 	<tr>        
-	<td height="40" colspan="2" ><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-2px;background-color:#0B2B42;padding:5px 5px 5px 5px;width:98.5%;text-align:center;color:#FBF2EF;">Business information</h1></td>
+	<td height="40" colspan="2" ><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px 5px 5px 5px;width:98.5%;text-align:center;color:#FBF2EF;">Business information</h1></td>
 	</tr>
 
 
-	<tr>
-	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :address %></td>
+<tr>
+<td colspan="2">	
 
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :address1, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;" %>
+			<div id='TextBoxesGroup'>
+<label style="margin-left:20px;"><span class="txt_orange">*</span>Address #1 : </label><textarea style="width:225px;height:50px;margin-top:-20px; margin-left:75px; padding:5px;"id='vendor_address1' name='vendor[address1]' placeholder='Address and zipcode'></textarea><input type='button' style="width:30px;height:30px;background-color:#0B2B42;color:white;margin-left:3px;" value='+' id='addButton'><input type='button' style="width:30px;height:30px;background-color:#0B2B42;color:white;margin-left:3px;" value='-' id='removeButton'>
+				</div>
+</td>
+</tr>
 
-	</td>
-	</tr>
+
+
 
 
 	<tr>
@@ -92,7 +143,7 @@ padding:2px;
 
 	 <td style="padding:5px 15px;" valign="top">
 	    <%= f.text_field :city, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;" %>
-
+		<div id="ajaxAutoComplete" class="ajaxAutoComplete"></div>
 	</td>
 	</tr>
 
@@ -109,7 +160,7 @@ padding:2px;
 	<tr>
 	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :country %></td>
 
-	 <td style="padding:5px 15px;" valign="top">
+	 <td style="padding:10px 15px;" valign="top">
 	    <select name="vendor[country]" aria-required="true" id="country" style="width:235px;height:25px;margin-top:-5px;padding:2px;">
                     <option value=""   >Select One</option>
                     <option value="Afghanistan"  >Afghanistan</option>
@@ -403,7 +454,7 @@ padding:2px;
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label 'Business Logo' %><br /></td>
+	 <td style="padding:10px 15px;" valign="top"><%= f.label 'Business Logo' %><br /></td>
 
 	 <td style="padding:5px 15px;" valign="top">
 	    <%= f.file_field :photo, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
@@ -416,13 +467,14 @@ padding:2px;
 	 <td style="padding:20px 15px;" valign="top"><%= f.label :website_address %><br /></td>
 
 	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :website_address, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;"%>
+	    <%= f.text_field :website_address, :class=>"border_grey", :placeholder => "www.google.com",
+:style=>"width:230px;height:20px; padding:2px;"%>
 
 	</td>
 	</tr>
 
        
-	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-2px;background-color:#0B2B42;padding:5px;width:98.5%;text-align:center;color:#FBF2EF;">Qualifications</h1></td>
+	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px;width:98.5%;text-align:center;color:#FBF2EF;">Qualifications</h1></td>
 
 
 
@@ -457,19 +509,19 @@ padding:2px;
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :degrees %><br /></td>
+	 <td style="padding:15px 15px;" valign="top"><%= f.label :degree %><br /></td>
 
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :degrees, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+	 <td style="padding:10px 15px;" valign="top">
+	    <%= f.select :state, options_for_select(degrees), :style=>"width:235px;height:25px;margin-top:15px; padding:2px;"%>
 
 	</td>
 	</tr>
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :certifications %><br /></td>
+	 <td style="padding:15px 15px;" valign="top"><%= f.label :certifications %><br /></td>
 
-	 <td style="padding:5px 15px;" valign="top">
+	 <td style="padding:10px 15px;" valign="top">
 	    <%= f.text_field :certifications, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
 
 	</td>
@@ -507,7 +559,7 @@ padding:2px;
 
 
 
-	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-2px;background-color:#0B2B42;padding:5px;width:98.5%;text-align:center;color:#FBF2EF;">Pricing</h1></td>
+	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px;width:98.5%;text-align:center;color:#FBF2EF;">Pricing</h1></td>
 
 	<tr>
 	 <td style="padding:5px 15px;" valign="top"><%= f.label :cost %><br /></td>
@@ -581,7 +633,7 @@ padding:2px;
 
 
 
-	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-2px;background-color:#0B2B42;padding:5px;width:98.5%;text-align:center;color:#FBF2EF;">Hours</h1></td>
+	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px;width:98.5%;text-align:center;color:#FBF2EF;">Hours</h1></td>
 
 
 	<tr>
@@ -594,7 +646,7 @@ padding:2px;
 	</tr>
 
 
-	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-2px;background-color:#0B2B42;padding:5px;width:98.5%;text-align:center;color:#FBF2EF;">Personal information</h1></td>
+	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px;width:98.5%;text-align:center;color:#FBF2EF;">Personal information</h1></td>
 
 
 

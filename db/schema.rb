@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120928153702) do
+ActiveRecord::Schema.define(:version => 20121022105132) do
+
+  create_table "City", :primary_key => "ID", :force => true do |t|
+    t.string "Name",        :limit => 35, :default => "", :null => false
+    t.string "CountryCode", :limit => 3,  :default => "", :null => false
+    t.string "District",    :limit => 20, :default => "", :null => false
+  end
+
+  add_index "City", ["CountryCode"], :name => "CountryCode"
+
+  create_table "Country", :primary_key => "Code", :force => true do |t|
+    t.string "Name",      :limit => 52, :default => "",     :null => false
+    t.string "Continent", :limit => 0,  :default => "Asia", :null => false
+    t.string "Region",    :limit => 26, :default => "",     :null => false
+    t.string "LocalName", :limit => 45, :default => "",     :null => false
+    t.string "Code2",     :limit => 2,  :default => "",     :null => false
+  end
 
   create_table "bodyfats", :force => true do |t|
     t.integer  "user_id"
@@ -545,7 +562,7 @@ ActiveRecord::Schema.define(:version => 20120928153702) do
     t.string   "vendor_type"
     t.string   "title"
     t.string   "company_title"
-    t.string   "vendor_name"
+    t.string   "business_name"
     t.string   "address1"
     t.string   "address2"
     t.string   "city"
@@ -564,7 +581,7 @@ ActiveRecord::Schema.define(:version => 20120928153702) do
     t.datetime "updated_at"
     t.string   "status"
     t.string   "reason"
-    t.string   "business_name"
+    t.string   "vendor_name"
     t.string   "biography"
     t.float    "cost"
     t.float    "average_cost"

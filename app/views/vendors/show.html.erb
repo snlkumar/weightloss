@@ -4,7 +4,7 @@
       $("tr").mouseover(function(){
         $(this).css("background-color","#ccc");
       }).mouseout(function(){
-        $(this).css("background-color","#FFFFCC");
+        $(this).css("background-color","#FFFFFF");
       });
    });
   <%end%>
@@ -22,13 +22,16 @@
 <br><br><%#= link_to 'Back', :back, :style=>"margin-left:5%;" %><br><br>
   
   <% if @status!="true"%>
-    <table border="0" width="57%" style="margin-left:25em;height:40em;background-color:#FFFFCC;border:1px solid;" align="center">
-    <tr>
-      <td colspan="2"><h2 style="background-color:#cccccc;width:33em;"><%= @vendor.vendor_name %></h2></td>
-    </tr>
-    <tr>
-		    <td style="padding-left:10%;"><label>Vendor type</label></td>
-		    <td>
+    <table border="0" width="64%" style="margin-left:25em;height:42em;background-color:#FFFFFF;border:1px solid;" align="center">
+  
+	  	<tr>
+      <td colspan="2"><h2 style="background-color: #0B2B42; color:white;width:37em;"><%= @vendor.business_name %></h2></td>
+   	</tr>
+   
+
+		 <tr>
+		    <td width="40%" style="padding-left:10%;"><label>Vendor type</label></td>
+		    <td width="60%">
 		      <% 
 		        @vendor.vendor_type.split('_').each do |d|
 		      %>
@@ -36,13 +39,87 @@
 		      <%  end  %>
 		    </td>	
     </tr>
+ 
+   <tr>
+	    <td  width="40%" style="padding-left:10%;"><label>Title</label></td>
+	    <td width="60%"><%= @vendor.title %></td>	
+    </tr>
+
     <tr>
-	    <td style="padding-left:10%;"><label>Title</label></td>
-	    <td><%= @vendor.title %></td>	
+	    <td width="40%" style="padding-left:10%;"><label>Company title</label></td>
+	    <td width="60%" ><%= @vendor.company_title %></td>	
+    </tr>
+
+
+	    <td width="40%" style="padding-left:10%;"><label>Certifications</label></td>
+	    <td width="60%"><%= @vendor.certifications %></td>
     </tr>
     <tr>
-	    <td width="30%" style="padding-left:10%;"><label>Company title</label></td>
-	    <td><%= @vendor.company_title %></td>	
+	    <td width="40%" style="padding-left:10%;"><label>Specialities</label></td>
+	    <td width="60%"><%= @vendor.specialities %></td>
+    </tr>
+    <tr>
+	    <td width="40%" style="padding-left:10%;"><label>Cost</label></td>
+	    <td width="60%"><%= @vendor.cost %></td>
+    </tr>
+    <tr>
+	    <td width="40%" style="padding-left:10%;"><label>Gender</label></td>
+	    <td width="60%"><%= @vendor.gender %></td>
+    </tr>
+
+
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Accept credit card</label></td>
+	    <td width="60%"><%= @vendor.accept_credit_card %></td>
+    </tr>
+
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Accept cash</label></td>
+	    <td width="60%"><%= @vendor.accept_cash %></td>
+    </tr>
+
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Accept check</label></td>
+	    <td width="60%"><%= @vendor.accept_check %></td>
+    </tr>
+
+
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Payment plans</label></td>
+	    <td width="60%"><%= @vendor.payment_plans %></td>
+    </tr>
+
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Insurance</label></td>
+	    <td width="60%"><%= @vendor.accept_insurance %></td>
+    </tr>
+
+</table>
+
+    <table border="0" width="64%" style="margin-left:25em;height:35em;background-color:#FFFFFF;border:1px solid;" align="center">
+
+	<tr>
+      <td colspan="2"><h2 style="background-color:#0B2B42;color:white;width:37em;">Contact details</h2></td>
+    </tr>
+
+    <tr>
+	    <td width="40%" style="padding-left:10%;"><label>Phone</label></td>
+	    <td><%= @vendor.contact1 %></td>
+    </tr>
+
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Cell</label></td>
+	    <td><%= @vendor.contact2 %></td>
+    </tr>
+	
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>E-mail</label></td>
+	    <td><%= @vendor.email %></td>
+    </tr>
+
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Website address</label></td>
+	   <%if  !@vendor.website_address.nil? && !@vendor.website_address.blank?%> <td><%= link_to "http://" + "#{@vendor.website_address}", "http://" + "#{@vendor.website_address}" %></td><%end%>
     </tr>
 
     <tr>
@@ -70,53 +147,23 @@
 	    <td style="padding-left:10%;"><label>Country</label></td>
 	    <td><%= @vendor.country %></td>
     </tr>
-    <tr>
-	    <td width="30%" style="padding-left:10%;"><label>Contact 1</label></td>
-	    <td><%= @vendor.contact1 %></td>
-    </tr>
 
-    <tr>
-	    <td width="30%" style="padding-left:10%;"><label>Contact 2</label></td>
-	    <td><%= @vendor.contact2 %></td>
-    </tr>
-	
-    <tr>
-	    <td width="30%" style="padding-left:10%;"><label>E-mail</label></td>
-	    <td><%= @vendor.email %></td>
-    </tr>
-    <tr>
-	    <td width="30%" style="padding-left:10%;"><label>Website address</label></td>
-	    <td><%= @vendor.website_address %></td>
-    </tr>
-    <tr>
-	    <td width="30%" style="padding-left:10%;"><label>certifications</label></td>
-	    <td><%= @vendor.certifications %></td>
-    </tr>
-    <tr>
-	    <td width="30%" style="padding-left:10%;"><label>specialities</label></td>
-	    <td><%= @vendor.specialities %></td>
-    </tr>
-    <tr>
-	    <td width="30%" style="padding-left:10%;"><label>Cost</label></td>
-	    <td><%= @vendor.cost %></td>
-    </tr>
-    <tr>
-	    <td width="30%" style="padding-left:10%;"><label>Gender</label></td>
-	    <td><%= @vendor.gender %></td>
-    </tr>
 	</table>
+
+
+
 	<%else%>
 	
-    <table border="0" width="57%" style="margin-left:25em;height:30em;background-color:#FFFFCC;border:1px solid;" align="center">
+    <table border="0" width="57%" style="margin-left:25em;height:30em;background-color:#FFFFFF;border:1px solid;" align="center">
       <tr>
-        <td colspan="2"><h2 style="background-color:#cccccc;width:33em;"><%= @vendor.business_name %></h2></td>
+        <td colspan="2"><h2 style="background-color:#0B2B42;color:white;width:33em;"><%= @vendor.business_name %></h2></td>
       </tr>
 	    <tr>
 		    <td style="padding-left:10%;"><label>Address</label></td>
 		    <td><%=@vendor.address1%></td>	
 	    </tr>
 	    <tr>
-		    <td width="30%" style="padding-left:10%;"><label>City</label></td>
+		    <td width="40%" style="padding-left:10%;"><label>City</label></td>
 		    <td><%=@vendor.city%></td>
 	    </tr>
 	     <tr>

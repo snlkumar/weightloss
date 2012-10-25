@@ -308,7 +308,7 @@ function getTdVal(mid)
         <th>City</th>
         <th>State</th>
         <th>Zip</th>
-        <th>Restaurant Type</th>
+ <!--       <th>Restaurant Type</th>-->
         <th>Claim</th>
      <%end%>
     </tr>
@@ -317,14 +317,14 @@ function getTdVal(mid)
          <%if @cols!="restaurants"%>
 <td style="padding: .3%;">
 <% if row.photo.exists? then %>
-	<%= link_to image_tag (row.photo.url(:small)),vendorInfo_path(row.id)+"/"+row.vendor_name%>
+	<%= link_to image_tag (row.photo.url(:small)),vendorInfo_path(row.id)+"/"+row.business_name%>
 <% end %></td>
 				<% if @cols=="all"%>
           <td style="padding: .3%;"><%=row.vendor_type.split('_').join(' ')%>&nbsp;&nbsp;</td>
 				<%end%>
           <!--<td style="padding: .3%;"><%#=row.title%></td>-->
        <!--   <td style="padding: .3%;"><%#=row.business_name%></td> -->
-          <td style="padding: .3%;width:15em;"><%=link_to row.vendor_name ,vendorInfo_path(row.id)+"/"+row.vendor_name %></td>
+          <td style="padding: .3%;width:15em;"><%=link_to row.business_name ,vendorInfo_path(row.id)+"/"+row.business_name.downcase.gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").gsub('.'," ").strip %></td>
           <!--<td style="padding: .3%;"><%#=row.address1%></td>
           <td style="padding: .3%;"><%#=row.address2%></td>-->
           <td style="padding: .3%;"><%=row.city%></td>
@@ -347,12 +347,12 @@ function getTdVal(mid)
         	 <td style="padding: .3%;"><% if row.photo.exists? then %>
 	<%= link_to image_tag (row.photo.url(:small)),vendorInfo_path(row.id)+"/restaurants" %>
 <% end %></td>
-          <td style="padding: .3%;"><%=link_to row.business_name, vendorInfo_path(row.id)+"/restaurants"+"/#{row.business_name}"%></td>
+          <td style="padding: .3%;"><%=link_to row.business_name, vendorInfo_path(row.id)+"/restaurants"+"/"+"#{row.business_name}".downcase.gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").gsub('.'," ").strip%></td>
           <td style="padding: .3%;"><%=row.address1%></td>
           <td style="padding: .3%;"><%=row.city%></td>
           <td style="padding: .3%;"><%=row.state%></td>
           <td style="padding: .3%;"><%=row.zipcode%></td>
-          <td style="padding: .3%;"><%=row.restaurent_type%></td>
+<!--          <td style="padding: .3%;"><%#=row.restaurent_type%></td>-->
           <%if row.status.nil?%>
           <%row.status="notapproved"%>
           <%end%> 

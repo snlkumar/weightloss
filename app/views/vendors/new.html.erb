@@ -1,29 +1,103 @@
+<style type="text/css">
+.ajaxAutoComplete{
+	background-color:#fff;
+	border:1px solid black;
+  	width:24.4%;
+  	height:120px;
+	display:none;
+	position:absolute;
+
+	overflow-y:scroll;
+	z-index:300;
+}
+</style>
+
 <script tyle="text/javascript">
+function dataGrid(obj)
+{
+	data="<table id='city'>";
+	row="";
+	for(i=0;i<obj.length;i++)
+	{			
+		row+="<tr id="+(obj[i].toString().split(",")[0])+" onmouseover='selectedRow(this)' onclick=getTdVal('"+obj[i].toString().split(",")[0]+"') onmouseout='unSelectedRow(this)'><td style='width:60%;'>"+obj[i].toString().split(",")[1]+"</td><td style='width:40%;'>("+obj[i].toString().split(",")[2]+")</td></tr>";
+	}
+	data+=row+"</table>";
+	
+	return data;
+}
+function selectedRow(rw)
+{
+	rw.style.background="#A9BCF5";
+}
+function unSelectedRow(rw)
+{
+	rw.style.background="";
+}
+function getTdVal(cid)
+{
+	city=document.getElementById('city');
+	$("#vendor_city").val(city.rows[document.getElementById(cid).rowIndex].cells[0].innerHTML);
+	$("ajaxAutoComplete").css("display","none");
+}
 function submitvendorform()
 {
-a=document.getElementById('recaptcha_response_field').value;
-b=document.getElementById('recaptcha_challenge_field').value;
-$.ajax({
-  url: '<%=captchatest_vendors_path()%>',
-  data: { xxx : a, vvv: b},
-  dataType: 'text',
-  success: function(text) {
-if (text=="false")
-{
-    alert("captcha not correct");
-<!--Recaptcha.reload();-->
-location.reload();
-}
-else
+	a=document.getElementById('recaptcha_response_field').value;
+	b=document.getElementById('recaptcha_challenge_field').value;
+	$.ajax({
+	  url: '<%=captchatest_vendors_path()%>',
+	  data: { xxx : a, vvv: b},
+	  dataType: 'text',
+	  success: function(text) {
+			if (text=="false")
+			{
+				 alert("captcha not correct");
+			<!--Recaptcha.reload();-->
+			location.reload();
+			}
+			else
 	
+			{
+			$("form").submit();
+
+			}
+  		}
+	});
+}
+
+$(document).ready(function(){
+	var list=null;
+	$("#vendor_city").keyup(function(){ 
+	 if($("#vendor_city").val().length>2)
+	 {
+    var position = $("#vendor_city").position();
+		vleft=position.left;
+		vtop=position.top;
+		$.ajax({
+			url: '/vendors/auto_search/'+$("#vendor_city").val(),
+			dataType: 'html',
+			success: function(data) {
+				$("#ajaxAutoComplete").html(dataGrid(jQuery.parseJSON(data)));
+					$("#ajaxAutoComplete").css('left', vleft);
+					$("#ajaxAutoComplete").css('top', vtop+20);
+				$("#ajaxAutoComplete").css("display","block");
+			},
+			error: function(data)
+			{
+				alert("error");
+			}
+		});
+	  }
+else
 {
-$("form").submit();
-
+$("#ajaxAutoComplete").css("display","none");
 }
-  }
+	});
+
+	$(".full").click(function(){
+		$("#ajaxAutoComplete").css("display","none");
+
+	});	
 });
-
-}
 </script>
 
 
@@ -36,35 +110,3 @@ $("form").submit();
  
 <% end %>
 <br/><br/><%#=link_to "Back", :back, :style => "margin-left: 0%;"  %><br/>
-
-
-
-
-<!--- auto complete
-
-	$(document).ready(function(){
-		$("#vendor_business_name").keypress(function(){ 
-			$.ajax({
-				url: '/vendors/auto_search'+$("#vendor_business_name").val(),
-  				dataType: 'html',
-  				success: function(data) {
-				alert(data);
-					$('#vendor_business_name').autocomplete({
-   					source: data
-	  				});
-				},
-				error: function(data)
-				{
-					alert("error");
-				}
-			});
-		});
-	});
-
-
--->
-
-
-
-
-

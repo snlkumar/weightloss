@@ -9,14 +9,14 @@
    });
   <%end%>
 </script>
-<br><%= link_to 'Back', :back, :style=>"margin-left:20%;" %><br>
+<br><%= link_to 'Back', :back, :style=>"margin-left:0%;" %><br>
+    <h2 style="font-size:20px;align:center;background-color:#0B2B42;width:46em;">Vendor Detail</h2>
 
-<h1 style="margin-left:60%;">Vendor Detail</h1><br/><br/>
   
   <%#if @status!="true"%>
     <table border="0" width="57%" style="float:left;margin-left:15em;height:40em;background-color:#E6EEEE;border:1px solid;" align="center">
     <tr>
-      <td colspan="2"><h2 style="background-color:#cccccc;width:33em;"><%= @vendor.vendor_name %></h2></td>
+      <td colspan="2"><h2 style="background-color:#cccccc;width:33em;"><%= @vendor.business_name %></h2></td>
     </tr>
     <tr>
 		    <td style="padding-left:10%;"><label>Vendor type</label></td>
@@ -97,4 +97,4 @@
 
 	
 	<br/>	<br/>
-<%= link_to 'Back', :back, :style=>"margin-left:20%;" %>
+<%= link_to 'Back', :back, :style=>"margin-left:0%;" %>

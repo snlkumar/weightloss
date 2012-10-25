@@ -492,8 +492,6 @@ end
 
 
   #this method for testing, to check webservice
-  def check
-
-  end  
+  
   
 end

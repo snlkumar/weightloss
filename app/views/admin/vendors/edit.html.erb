@@ -37,13 +37,23 @@ select#vendor_vendor_type, #country{
 
 </script>
 
+ <% if @vendor.errors.any? %>
+    <div id="error_explanation" style="margin-left:30%;">
+      <h2><%= pluralize(@vendor.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @vendor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 <br><%= link_to 'Back', :back, :style=>"margin-left:20%;" %><br>
 	
 <%= form_for @vendor, :url => "/admin/vendors/#{@vendor.id}/up" ,:method => :put do |f| %>
 <div style="margin-left:40%">
 <br>
-
-<h1 style="margin-left:0%;background-color:#BDBDBD;padding:5px;width:68%;text-align:center;color:#FBF2EF;">Business information</h1><br />
+    <h2 style="font-size:20px;align:center;background-color:#0B2B42;width:20em;">Business information</h2>
 
   <div class="field">
     <%= f.label :business_name %><br />
