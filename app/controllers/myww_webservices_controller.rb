@@ -564,10 +564,11 @@ end
 		@status=@meas
         else
       @status=nil
+		end
       respond_to do |format|
         format.js { render :json =>@status.to_json}
       end
-
+	
   end
 
   #this method for testing, to check webservice
