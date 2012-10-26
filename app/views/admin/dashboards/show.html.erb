@@ -41,6 +41,7 @@ img {
 </style>
 	
 <script>
+
   function setActive(id)
   {
     $("#1").css("color","#A4A4A4");
@@ -49,7 +50,8 @@ img {
     $("#4").css("color","#A4A4A4");
     $("#5").css("color","#A4A4A4");
     $("#6").css("color","#A4A4A4");
-    $("#7").css("color","#A4A4A4");    
+    $("#7").css("color","#A4A4A4");
+    $("#8").css("color","#A4A4A4");        
     $("#"+id).css("color","#3688BA");
 
   }
@@ -120,6 +122,7 @@ img {
         <li><a href="<%=admin_posts_path%>" id="5" onclick="setActive('5')" target="dashboard_pages" title="Posts">Posts</a></li>
         <li><a href="<%=admin_businessclaims_path%>" id="6" onclick="setActive('6')" target="dashboard_pages" title="Claims">Business Claims</a></li>
      <li><a href="<%=admin_vendors_path%>" id="7" onclick="setActive('7')" target="dashboard_pages" title="Vendors">Vendors</a></li>
+     <li><a href="<%=admin_meta_path%>" id="8" onclick="setActive('8')" target="dashboard_pages" title="Metas">Add Meta</a></li>
       </ul>
     </div>
    </div>

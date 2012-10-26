@@ -1,0 +1,114 @@
+<link href="/assets/style_v4.css" rel="stylesheet" type="text/css" />
+<script language="javascript">
+<!-- array for controller-->
+		var controllerarray = new Array("Selct","User","Vendor","Video","Forum");
+
+<!-- include pages in this array -->
+		var arr = new Array();
+		arr[0] = new Array("-select-");
+		arr[1] = new Array("Login","Signup","Homepage");
+		arr[2] = new Array("Vendor Search","Add Vendor");
+		arr[3] = new Array("Florida","New York","Maryland");
+		arr[4] = new Array("Queensland","Victoria","Tasmania","New South Wales");
+
+		function change(combo1){
+		var comboValue = combo1.value;
+		document.forms["form"].elements["combo2"].options.length=0;
+		for (var i=0;i<arr[comboValue].length;i++){
+		var option = document.createElement("option");
+		option.setAttribute('value',i+1);
+		option.innerHTML = arr[comboValue][i];
+		document.forms["form"].elements["combo2"].appendChild(option);
+		}
+		}
+		
+		function setval(){
+			controller=controllerarray[$("#combo1").val()]
+         page=arr[$("#combo1").val()][$("#combo2").val()-1];		
+$("#metapage").val(page);
+$("#metacontroller").val(controller);
+		}
+
+</script>
+
+<h2 style="font-size:20px;align:center;background-color:#0B2B42;width:46em;">Create meta descriptions</h2>
+
+
+<div style="margin-left:30%;margin-top:20px;">
+
+	<table width="80%" border="0" align="center" cellpadding="0" cellspacing="0" class="border_grey">
+	<tbody>
+
+	<form name="form" method="post" action="<%=admin_meta_path%>">
+
+		<tr>        
+		<td height="40" colspan="2" ><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px 5px 5px 5px;width:97.5%;text-align:center;color:#FBF2EF;">Select page</h1></td>
+		</tr>
+
+
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top">Category:</td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <select id="combo1" name="combonew" value="" onchange="change(this);" style="margin-top:5px;width:13em;height:2em;">
+				<option value="0">-Select-</option>
+				<option value="1">User</option>
+				<option value="2">Vendor</option>
+				<option value="3">Video</option>
+				<option value="4">Forum</option>
+				</option>
+				</select>
+<input type="hidden" id="metacontroller" name="meta[controller]" value="">
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top">Page:</td>
+
+	 <td style="padding:5px 15px;" valign="top">
+<select id="combo2" name="combo" value=""  style="margin-top:5px;width:13em;height:2em;">
+	</select>
+<input type="hidden" id="metapage" name="meta[page]" value="">
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top">Meta title:</td>
+
+	 <td style="padding:5px 15px;" valign="top">
+<input type="text" id="title" name="meta[metatitle]" value="" style="height:1.2em;width:12em;"/>
+	</td>
+	</tr>
+
+
+		<tr>
+		<td style="padding:5px 15px;" valign="top">Keywords:</td>
+
+		<td style="padding:5px 15px;" valign="top">
+		<input type="text" id="claimfname" name="meta[keywords]" value="" style="height:1.2em;width:12em;"/>
+		</td>
+		</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top">Description:</td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	<input type="text" id="claimfname" name="meta[description]" value="" style="height:1.2em;width:12em;"/>
+	</td>
+	</tr>
+
+	<td colspan="2" class="font_20" style="padding:10px 15px; border-top:solid 1px #bfbfbf;">
+
+ <input type="submit" class="button grid_3" name="submit" style="height:29px;font-size:10pt;width:6em;padding:0;margin-left:35%;" onclick=setval() value=" SUBMIT " />
+</td>
+
+<form>
+	</tbody
+</table>
+
+<div>

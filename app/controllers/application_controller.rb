@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-
+  before_filter :meta_defaults
   helper :all # include all helpers, all the time
   protect_from_forgery 
   
@@ -78,5 +78,15 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
   
       session[:return_to] || stored_location_for(resource) || user_path(current_user)
+  end
+
+
+
+ private
+
+ def meta_defaults
+    @meta_title = "Welcome to"
+    @meta_keywords = "my keywords"
+    @meta_description = "my meta description"
   end
 end

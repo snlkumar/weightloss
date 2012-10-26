@@ -23,6 +23,13 @@ class VendorsController < ApplicationController
         @cols="other" 
       end	
     end
+
+		@meta=Meta.where("controller= 'Vendor' and  page='Vendor Search'").last
+		if !@meta.blank?
+		@meta_title=@meta.metatitle
+		@meta_keywords=@meta.keywords
+		@meta_description=@meta.description
+		end
   end
  #search method end
  
@@ -53,12 +60,22 @@ class VendorsController < ApplicationController
     @status="false"
     @vendor=Vendor.find(params[:id])
    end
+		@meta=Meta.where("controller= 'Vendor' and  page='Vendor Info'").last
+		@meta_keywords=@meta.keywords
+		@meta_description=@meta.description
+
  end
   #end show
   
   
   
   def new
+			@meta=Meta.where("controller= 'Vendor' and  page='Vendor Signup'").last
+			if !@meta.blank?
+			@meta_title=@meta.metatitle
+			@meta_keywords=@meta.keywords
+			@meta_description=@meta.description
+			end
    session[:vendor_params] ||= {}
     @vendor = Vendor.new(session[:vendor_params])
     @vendor.current_step = session[:vendor_step]
@@ -211,8 +228,18 @@ class VendorsController < ApplicationController
 	end 
 	end
 
+   def vendorlogin
+			@meta=Meta.where("controller= 'Vendor' and  page='Vendor Signin'").last
+			if !@meta.blank?
+			@meta_title=@meta.metatitle
+			@meta_keywords=@meta.keywords
+			@meta_description=@meta.description
+			end
+	end
+
 	
 	def vendorlogin1
+
 	@vendor=Vendor.find_by_sql("select * from vendors where email='"+params[:email]+"'")
 	if @vendor!=nil && !@vendor.empty?
 		if @vendor.first.password == params[:password] && !params[:password].empty?

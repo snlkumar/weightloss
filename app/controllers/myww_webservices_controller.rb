@@ -508,7 +508,7 @@ end
 @data=Vendor.where("city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(5)
 @data1=Vendor.where("city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%'").length
 	      if !@data.empty?
-	      	@status= @data.map{|f| {:id => f.id, :state=>f.state, :name=>f.vendor_name, :vendor_type=>f.vendor_type, :datalength=>@data1}}
+	      	@status= @data.map{|f| {:id => f.id, :state=>f.state, :name=>f.business_name, :vendor_type=>f.vendor_type, :datalength=>@data1}}
 		else
 		@status=nil 
 	      end
@@ -531,7 +531,7 @@ end
 	   @data1=Vendor.where("vendor_type ='"+params[:searchtype].downcase+"' and (city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%')").length
 
 	     if !@data.empty?
-	      	@status= @data.map{|f| {:id => f.id, :state=>f.state, :name=>f.vendor_name, :vendor_type=>f.vendor_type, :datalength=>@data1}}
+	      	@status= @data.map{|f| {:id => f.id, :state=>f.state, :name=>f.business_name, :vendor_type=>f.vendor_type, :datalength=>@data1}}
 		else
 		@status=nil
 	      end

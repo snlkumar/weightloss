@@ -1,0 +1,59 @@
+<style type="text/css">
+.even { background: #E6EEEE; }
+.odd { background: #cccccc; }
+.head-table{background: #ccc; }
+</style>
+
+<script type="text/javascript">
+  <%content_for :js do%>
+    $("table tbody tr").mouseover(function(){
+      $(this).css("background-color","#ccc");
+    }).mouseout(function(){
+      $(this).css("background-color","");
+    });
+          
+  <%end%>
+</script>
+<div class="grid_16">
+  
+  <br/>
+    <h2 style="font-size:20px;align:center;background-color:#0B2B42;width:46em;">All Meta List</h2>
+
+   <%#= page_entries_info(@metas) %>
+    <%#= paginate(@vendors, :params => pagination_params(request)) %>  
+            
+
+<%= link_to 'Create New', new_admin_metum_path()%> 
+  <br/><br/>
+
+  <table class="admin">
+    <thead>
+      <tr class="head-table">
+        <th>Category</th>
+        <th>Page</th>
+        <th>Meta title</th>
+        <th>Keywords</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @meta.each do |meta| %>
+        <tr class="<%= cycle('odd', 'even') %>">
+          <!--<td><%#= link_to exercise.description, edit_admin_exercise_path(exercise) %></td>-->
+          <td><%=meta.controller%> </td>
+          <td><%=meta.page%> </td>
+          <td><%=meta.metatitle%> </td>
+          <td><%=meta.keywords%> </td>
+          <td><%=meta.description%> </td>
+
+                    <td class="actions">
+           <%#= link_to 'Vendor detail', admin_vendor_path(vendor.id)+"/restaurants"%> |
+            <%#= link_to 'Edit', "/admin/vendors/#{vendor.id}/edit/restaurants" %> |
+            <%= link_to 'Delete', admin_metum_path(meta.id), :confirm => 'Are you sure?', :method => :delete %>
+	   </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

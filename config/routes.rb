@@ -85,6 +85,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
   namespace :admin do
    resources :vendors
    resources :businessclaims
+   resources :meta	
 	resources :exercises do
       collection do
         post :search
