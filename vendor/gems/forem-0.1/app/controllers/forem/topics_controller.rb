@@ -15,6 +15,13 @@ module Forem
         register_view
         @posts = @topic.posts.page(params[:page]).per(20)
       end
+				@meta=Meta.where("controller= 'Forum' and  page='Topic'").last
+				if !@meta.blank?
+				@meta_title=@meta.metatitle
+				@meta_keywords=@meta.keywords
+				@meta_description=@meta.description
+				end
+
     end
 
     def new

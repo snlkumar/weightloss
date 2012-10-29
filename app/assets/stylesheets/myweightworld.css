@@ -1,0 +1,225 @@
+
+.input {
+	background:#FFFFFF;
+	font-family:Verdana;
+	width:90px;  margin-left:5px;  line-height:22px;
+}
+.mandatory {
+	color: red;
+}
+.mandatory a {
+	color: red;
+}
+/*============================ Global properties ============================*/
+/*
+.wrapper {
+	margin: 0 auto;
+	overflow: visible;
+	width: 980px;
+	position:relative;
+	display:block;
+}
+a {
+	color: #5a84ac;
+	text-decoration: none;
+}
+a:hover {
+	color: #5a84ac;
+}*/
+/*========== Margin ==========*/
+
+.mar{
+	margin:10px;
+}
+.m1 {
+	margin-top:5px;
+}
+.m2 {
+	margin-top:10px;
+}
+.m3 {
+	margin-top:15px;
+}
+.m4 {
+	margin-top:20px;
+}
+.m5 {
+	margin-top:25px;
+}
+.m6 {
+	margin-right:5px;
+}
+.m7 {
+	margin-right:10px;
+}
+.m8 {
+	margin-right:15px;
+}
+.m9 {
+	margin-right:20px;
+}
+.m10 {
+	margin-right:25px;
+}
+.m11 {
+	margin-bottom:5px;
+}
+.m12 {
+	margin-bottom:10px;
+}
+.m13 {
+	margin-bottom:15px;
+}
+.m14 {
+	margin-bottom:20px;
+}
+.m15 {
+	margin-bottom:25px;
+}
+.m16 {
+	margin-left:5px;
+}
+.m17 {
+	margin-left:10px;
+}
+.m18 {
+	margin-left:15px;
+}
+.m19 {
+	margin-left:20px;
+}
+.m20 {
+	margin-left:25px;
+}
+
+/*========== padding ==========*/
+ .pad {
+	padding:10px;
+}
+.p1 {
+	padding-top:5px;
+}
+.p2 {
+	padding-top:10px;
+}
+.p3 {
+	padding-top:15px;
+}
+.p4 {
+	padding-top:20px;
+}
+.p5 {
+	padding-top:25px;
+}
+.p6 {
+	padding-right:5px;
+}
+.p7 {
+	padding-right:10px;
+}
+.p8 {
+	padding-right:15px;
+}
+.p9 {
+	padding-right:20px;
+}
+.p10 {
+	padding-right:25px;
+}
+.p11 {
+	padding-bottom:5px;
+}
+.p12 {
+	padding-bottom:10px;
+}
+.p13 {
+	padding-bottom:15px;
+}
+.p14 {
+	padding-bottom:20px;
+}
+.p15 {
+	padding-bottom:25px;
+}
+.p16 {
+	padding-left:5px;
+}
+.p17 {
+	padding-left:10px;
+}
+.p18 {
+	padding-left:15px;
+}
+.p19 {
+	padding-left:20px;
+}
+.p20 {
+	padding-left:25px;
+}
+/*========== Align ==========*/
+.fleft {
+	float:left;
+}
+.fright {
+	float:right;
+}
+.clear{ clear:both;}
+
+.alignright {
+	text-align:right;
+}
+.aligncenter {
+	text-align:center;
+}
+.alignmiddle * {
+	vertical-align:middle;
+}
+.alignjustify {
+	text-align:justify;
+}
+/*========== titles ==========*/
+
+.title {
+	font-size:25px;
+	text-align:center;
+	line-height:30px;
+	color:#00d9ff;
+	text-transform:uppercase;
+	width:572px;
+	position: absolute;
+	bottom:40px;
+}
+.large-font-size {
+	font-size:14px;
+	vertical-align:top;
+	line-height:14px;
+	color:#545f69;
+}
+.small-font-size {
+	font-size:12px;
+	vertical-align:top;
+	color:#838d96;
+}
+
+/*========== Color ==========*/
+
+.font-color-orange{ color:#f89f13;}
+.font-color-white{ color:#fff;}
+.font-color-gray{ color:#606060;}
+
+/*========== Page CSS ==========*/
+#wrapper{background:url(../assets/body-bg.png) left bottom repeat-x; width:640px; margin:20px auto 20px auto; height:960px;}
+.test-name{height:45px; margin:30px 0; text-align:center;}
+.bodyfat-man{background:url(../assets/body-fat-man.png) center top no-repeat; position: relative; margin-top:25px; min-height:620px; padding:40px 33px 0px 35px;}
+.bodyfat-woman{background:url(../assets/body-fat-woman.png) center top no-repeat; position: relative; margin-top:25px; min-height:620px; padding:40px 33px 0px 35px;}
+.measurements-man{background:url(../assets/measurements-man.png) center top no-repeat; position: relative; margin-top:25px; min-height:650px; padding:10px 33px 0px 35px;}
+.measurements-woman{background:url(../assets/measurements-woman.png) center top no-repeat; position: relative; margin-top:25px; min-height:650px; padding:10px 33px 0px 35px;}
+
+.top-menu{ width:590px; height:45px; margin:0 auto; list-style:none; padding:0px;}
+.top-menu ul{margin:0; font-family: Arial, Helvetica, sans-serif; list-style:none; padding:0px;}
+.top-menu li{margin:0; float:left; list-style:none; padding:0px; min-width:175px; background:url(../assets/top-menu.png); border-right:1px solid #b27825; padding:0px 10px;  text-align:center;}
+.top-menu li a{ font-size:18px; text-decoration:none; color:#fff; line-height:45px; display:inline-block; margin:0 auto;text-transform:uppercase;}
+
+.footer{background:url(../assets/footer-bg.jpg) left bottom repeat-x; height:75px; margin-top:10px;}
+.footer-logo{background:url(../assets/footer-logo.jpg) no-repeat; width:154px; height:73px; margin-top:-15px; margin-left:-77px; left:50%; position: absolute;}
+

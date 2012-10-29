@@ -1,0 +1,161 @@
+<link rel="stylesheet" type="text/css" href="/assets/myweightworld.css"/>
+<style type="text/css">
+input[placeholder], [placeholder], *[placeholder]
+    {
+        color:grey !important;
+    }
+</style>
+<%=link_to "Back", :back%><br/>
+<%= form_for @meas, :url => bodyfatcalculate_user_path do |f| %>
+<% if current_user.male?%>
+			<div id="wrapper">
+			  <div class="top-header"></div>
+			  <div class="test-name"><img src="/assets/body-fat.png" /></div>
+			  <div class="top-menu">
+				 <ul>
+					<li><%=link_to "CIRCUMFERENCE", measurement_user_path%></li>
+					<li><a href="#">BODY FAT %</a></li>
+					<li><%= link_to 'GRAPH', bodyfat_over_time_tracking_path %></li>
+					<div class="clear"></div>
+				 </ul>
+			  </div>
+			  <div class="bodyfat-man">
+				 <div class="left-col fleft" style="width:130px;">
+					<p class="font-color-orange"><strong>Chest</strong></p>
+					<input name="" class="input" placeholder="in" style="margin:1px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+
+					<p class="font-color-orange m3"><strong>Midaxillary</strong></p>
+					<input name="" class="input" placeholder="in" style="margin:5px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+
+					<p class="font-color-orange m3"><strong>Bicep</strong></p>
+					<input name="" class="input" placeholder="in" style="margin:1px 5px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+
+					<p class="font-color-orange m3"><strong>Abdominal</strong></p>
+					<input name="" class="input" placeholder="in" style="margin:2px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+
+					<p class="font-color-orange m3"><strong>Suprailiac</strong></p>
+					<input name="" class="input" placeholder="in" style="margin:4px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+
+					<p class="font-color-orange m3"><strong>Thigh</strong></p>
+					<input name="" class="input" placeholder="in" style="margin:0px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+
+					<p class="font-color-orange m3"><strong>Calf</strong></p>
+					<input name="" class="input" placeholder="in" style="margin:5px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+				 </div>
+
+
+				 <div class="left-col fright" style="width:107px;">
+					<p class="font-color-orange"><strong>Subscapular</strong></p>
+					<input name="" class="input" placeholder="in" style="margin:0px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+
+					<p class="font-color-orange m3"><strong>Tricep</strong></p>
+					<input name="" class="input" placeholder="in" style="margin:5px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+
+					<p class="font-color-orange m3"><strong>Lower Back</strong></p>
+					<input name="" class="input" placeholder="in" style="margin:0px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+
+					<p class="font-color-white" style="margin-top:128px;"><strong>Lean Body Mass</strong></p>
+					<input name="" class="input" style="margin:5px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+
+					<p class="font-color-white m3"><strong>Fat Mass</strong></p>
+					<input name="" class="input" style="margin:0px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+				 </div>
+				 <div class="clear"></div>
+				 <div class="title">Monitor your body FAT</div>
+			  </div>
+			  <div class="footer">
+				 <div class="footer-logo"></div>
+			  </div>
+
+
+<%else%>
+
+
+<div id="wrapper">
+  <div class="top-header"></div>
+  <div class="test-name"><img src="/assets/body-fat.png" /></div>
+  <div class="top-menu">
+    <ul>
+      <li><%=link_to "CIRCUMFERENCE", measurement_user_path%></li>
+      <li><a href="#">BODY FAT %</a></li>
+      <li><%= link_to 'GRAPH', bodyfat_over_time_tracking_path %></li>
+      <div class="clear"></div>
+    </ul>
+  </div>
+
+  <div class="bodyfat-woman">
+    <div class="left-col fleft" style="width:130px;">
+      <p class="font-color-orange"><strong>Chest</strong></p>
+      <input name="" class="input" placeholder="in" style="margin:0px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+
+      <p class="font-color-orange m3"><strong>Midaxillary</strong></p>
+      <input name="" class="input" placeholder="in" style="margin:5px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+
+      <p class="font-color-orange m3"><strong>Bicep</strong></p>
+      <input name="" class="input" placeholder="in" style="margin:0px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+
+      <p class="font-color-orange m3"><strong>Abdominal</strong></p>
+      <input name="" class="input" placeholder="in" style="margin:6px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+
+      <p class="font-color-orange m3"><strong>Suprailiac</strong></p>
+      <input name="" class="input" placeholder="in" style="margin:0px 4px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+
+      <p class="font-color-orange m3"><strong>Thigh</strong></p>
+      <input name="" class="input" placeholder="in" style="margin:6px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+
+      <p class="font-color-orange m3"><strong>Calf</strong></p>
+      <input name="" class="input" placeholder="in" style="margin:-3px 4px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+    </div>
+
+
+    <div class="left-col fright" style="width:107px;">
+      <p class="font-color-orange"><strong>Subscapular</strong></p>
+      <input name="" class="input" placeholder="in" style="margin:0px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+
+      <p class="font-color-orange m3"><strong>Tricep</strong></p>
+      <input name="" class="input" placeholder="in" style="margin:5px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+
+      <p class="font-color-orange m3"><strong>Lower Back</strong></p>
+      <input name="" class="input" placeholder="in" style="margin:0px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+
+      <p class="font-color-white" style="margin-top:128px;"><strong>Lean Body Mass</strong></p>
+      <input name="" class="input" style="margin:5px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+
+      <p class="font-color-white m3"><strong>Fat Mass</strong></p>
+      <input name="" class="input" style="margin:0px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+    </div>
+
+
+    <div class="clear"></div>
+    <div class="title">Monitor your body FAT</div>
+  </div>
+
+
+  <div class="footer">
+    <div class="footer-logo"></div>
+  </div>
+</div>
+
+		<%end%>
+	<%end%>

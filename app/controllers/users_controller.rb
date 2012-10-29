@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :set_defaults,       :only => [:step_two, :edit, :personal_info]
   
   layout 'signup', :only => [:create, :step_two, :finalize]
-  layout 'user_settings', :only => [:update, :account_info, :personal_info, :nutrition_info, :exercise_info, :measurement]
+  layout 'user_settings', :only => [:update, :account_info, :personal_info, :nutrition_info, :exercise_info, :measurement, :bodyfatpercent]
   
   def show
 
@@ -152,8 +152,24 @@ class UsersController < ApplicationController
 =end
 end
 
+
+############################### new code
+	def bodyfatpercent
+	@user=current_user
+	@meas=Bodyfat.new
+
+	end
+
+	def  bodyfatcalculation
+
+
+	end
+############################### new code end
+
 	def measurement 
+    @user = current_user
     @meas=Measurement.new
+
    end
   
   def newmeasurement

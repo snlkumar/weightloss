@@ -1,6 +1,13 @@
 class HomeController < ApplicationController
   
   def index
+		@meta=Meta.where("controller= 'User' and  page='Homepage'").last
+		 if !@meta.blank?
+			@meta_title=@meta.metatitle
+			 @meta_keywords=@meta.keywords
+			   @meta_description=@meta.description
+			end
+
     @recent_members = User.recent
     posts = OldTextFile.select("id").all
     @recent_posts = OldTextFile.find(posts.slice(rand(posts.size - 1), 2).map(&:id))

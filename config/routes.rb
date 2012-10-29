@@ -73,7 +73,8 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
       post :vendordetail
       get 'foodsList/:foodname', :action =>'foodsList'
       get 'exercisesList/:exercisename', :action =>'exercisesList'
-		get :measurement
+		post :measurement
+
     end
     member do
       post :photo
@@ -168,6 +169,8 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 		post :bodyfat_store
 		get :measurement
 		post :newmeasurement
+		get :bodyfatpercent
+		post:bodyfatcalculate
 		#end
     end
     

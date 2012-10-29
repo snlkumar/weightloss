@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121026100057) do
+ActiveRecord::Schema.define(:version => 20121029161125) do
 
   create_table "City", :primary_key => "ID", :force => true do |t|
     t.string "Name",        :limit => 35, :default => "", :null => false
@@ -232,6 +232,8 @@ ActiveRecord::Schema.define(:version => 20121026100057) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "weight"
+    t.float    "shoulder"
   end
 
   create_table "meta", :force => true do |t|

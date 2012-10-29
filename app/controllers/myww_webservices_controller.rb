@@ -555,21 +555,25 @@ end
       end
    end
 
-##############################################################
+##############################################################weight for graphs
 
   def measurement
+
    	@user=User.find(params[:id])
-		@meas=@user.measurements.all
-		if !@data.empty?
+
+		@meas=@user.weights.all
+		if !@meas.empty?
 		@status=@meas
         else
       @status=nil
 		end
+      session[:user_id]=@user.id
       respond_to do |format|
         format.js { render :json =>@status.to_json}
       end
 	
   end
+
 
   #this method for testing, to check webservice
   def check

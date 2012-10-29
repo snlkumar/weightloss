@@ -33,6 +33,9 @@ class VendorsController < ApplicationController
   end
  #search method end
  
+
+
+###########################################################################
  ##search for text field decipher
   def search_decipher
    
@@ -61,13 +64,15 @@ class VendorsController < ApplicationController
     @vendor=Vendor.find(params[:id])
    end
 		@meta=Meta.where("controller= 'Vendor' and  page='Vendor Info'").last
+		if !@meta.blank?
+		@meta_title=@meta.metatitle
 		@meta_keywords=@meta.keywords
-		@meta_description=@meta.description
-
+		@meta_description= "#{@vendor.business_name}"+","+"#{@vendor.vendor_type}".split('_').join(' ')
+		end
  end
   #end show
   
-  
+ ################################################################## 
   
   def new
 			@meta=Meta.where("controller= 'Vendor' and  page='Vendor Signup'").last
@@ -97,7 +102,7 @@ class VendorsController < ApplicationController
 	end
  end
 
-
+###########################################################################################
 
     def create
       session[:vendor_params].deep_merge!(params[:vendor]) if params[:vendor]  
@@ -141,7 +146,8 @@ class VendorsController < ApplicationController
        end  
   #end create
 
-  
+################################################################################# 
+ 
   def edit
   	if !session[:vendor].nil? 
 	  	if session[:vendor].id==params[:id].to_i
@@ -228,6 +234,9 @@ class VendorsController < ApplicationController
 	end 
 	end
 
+
+#############################################################
+
    def vendorlogin
 			@meta=Meta.where("controller= 'Vendor' and  page='Vendor Signin'").last
 			if !@meta.blank?
@@ -237,6 +246,8 @@ class VendorsController < ApplicationController
 			end
 	end
 
+
+############################################################
 	
 	def vendorlogin1
 
@@ -262,12 +273,16 @@ class VendorsController < ApplicationController
 	   end
      end
 	end
+
+###############################################################################
 	
 	def logout_vendor
 		session[:vendor]=nil
 		redirect_to vendorlogin_vendors_path
 	end
 	
+
+
 	def auto_search
 		@city=ActiveRecord::Base.connection.execute("select c.id, c.name,co.name from City c, Country co where c.name like '%"+params[:search]+"%' and c.countrycode=co.code")
 		render :json =>@city
