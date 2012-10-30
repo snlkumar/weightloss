@@ -495,10 +495,23 @@ end
     end
   end
 
+##############################
+   def vendordetail
+    if params[:id] && params[:vendor_type]=="restaurants"
+	  @vendor=Restaurant.find(params[:id])
+	  	
+      else
+	  @vendor=Vendor.find(params[:id])
+   end
+	@status=@vendor       
+        respond_to do |format|
+        format.js { render :json =>@status.to_json}
+      end
+   end
+
 ###########################################################################
 
    def vendor
-
      if !params[:searchtype].nil?
       if params[:filterQuery].nil? 
 	params[:filterQuery]=""	
@@ -508,7 +521,7 @@ end
 @data=Vendor.where("city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(5)
 @data1=Vendor.where("city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%'").length
 	      if !@data.empty?
-	      	@status= @data.map{|f| {:id => f.id, :state=>f.state, :name=>f.business_name, :vendor_type=>f.vendor_type, :datalength=>@data1}}
+	      	@status= @data.map{|f| {:id =>f.id, :state=>f.state, :name=>f.business_name, :vendor_type=>f.vendor_type, :datalength=>@data1}}
 		else
 		@status=nil 
 	      end
@@ -525,7 +538,6 @@ end
 		@status=nil 
 	      end
 
-
       else
            @data=Vendor.where("vendor_type ='"+params[:searchtype].downcase+"' and (city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%')").page(params[:page] || 1).per(5)
 	   @data1=Vendor.where("vendor_type ='"+params[:searchtype].downcase+"' and (city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%')").length
@@ -541,19 +553,7 @@ end
          end
       end   
    end
-##############################
-   def vendordetail
-    if params[:id] && params[:vendor_type]=="restaurants"
-	  @vendor=Restaurant.find(params[:id])
-	  	
-      else
-	  @vendor=Vendor.find(params[:id])
-   end
-	@status=@vendor       
-        respond_to do |format|
-        format.js { render :json =>@status.to_json}
-      end
-   end
+
 
 ##############################################################weight for graphs
 
