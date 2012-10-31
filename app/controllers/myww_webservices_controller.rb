@@ -557,22 +557,68 @@ end
 
 ##############################################################weight for graphs
 
-  def measurement
-
+  def weightmeasurement
    	@user=User.find(params[:id])
-
 		@meas=@user.weights.all
-		if !@meas.empty?
-		@status=@meas
-        else
-      @status=nil
-		end
-      session[:user_id]=@user.id
-      respond_to do |format|
-        format.js { render :json =>@status.to_json}
-      end
-	
+			if !@meas.empty?
+				@status=@meas
+				  else
+				@status=nil
+			end
+		   session[:user_id]=@user.id
+		   respond_to do |format|
+		     format.js { render :json =>@status.to_json}
+		   end	
   end
+
+
+############################################################################## net calories calculation
+  def netcalories
+    # creates a date to net calories mapping
+		@user=User.find(params[:id])
+		range=params[:range] 
+		@dates=dates_for_graph(range)
+    	temp = {}
+    	@dates.each {|day| temp[ day.strftime("%b %d %Y") ] = @user.net_calories_on(day) }
+    	temp
+render :json=>temp
+return
+  end
+
+
+	def range_to_date_map(range)
+		 case range
+    when '1wk'
+      1.week.ago
+    when '2wk'
+      2.weeks.ago
+    when '3wk'
+      3.weeks.ago
+    when '1mth'
+      1.month.ago
+    when '2mth'
+      2.months.ago
+    when '3mth'
+      3.months.ago
+    when '6mth'
+      6.months.ago
+    end
+	  end
+  
+  def dates_for_graph(range)
+    range = '1wk' if range.nil?
+    temp  = Time.zone.today.beginning_of_day
+    arr   = [ temp ]
+    
+    while temp > range_to_date_map( range )
+      temp -= 1.day
+      
+      arr << temp
+    end
+    arr.reverse
+  end
+
+##########################################################################
 
 
   #this method for testing, to check webservice

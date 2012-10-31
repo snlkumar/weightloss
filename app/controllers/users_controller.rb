@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :set_defaults,       :only => [:step_two, :edit, :personal_info]
   
   layout 'signup', :only => [:create, :step_two, :finalize]
-  layout 'user_settings', :only => [:update, :account_info, :personal_info, :nutrition_info, :exercise_info, :measurement, :bodyfatpercent]
+  layout 'user_settings', :only => [:update, :account_info, :personal_info, :nutrition_info, :exercise_info, :measurement,:newmeasurement, :bodyfatpercent]
   
   def show
 
@@ -156,7 +156,7 @@ end
 ############################### new code
 	def bodyfatpercent
 	@user=current_user
-	@meas=Bodyfat.new
+	@fat=Bodyfat.new
 
 	end
 
@@ -177,6 +177,8 @@ end
   @meas=@user.measurements.create(params[:measurement])
     if @meas.save
         redirect_to(measurement_over_time_tracking_path, :notice => 'measurement was successfully saved.')
+	else
+	   render "measurement"
     end
   end
 end

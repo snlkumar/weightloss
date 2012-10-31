@@ -3,24 +3,29 @@
 <style type="text/css">
 input[placeholder], [placeholder], *[placeholder]
     {
-        color:grey !important;
+        color:black !important;
     }
 </style>
+
+
 <%=link_to "Back", :back%><br/>
 
-<% if current_user.male?%>
-<%= form_for @meas, :url => newmeasurement_user_path do |f| %>
-<div id="wrapper">
-  <div class="top-header"></div>
-  <div class="test-name"><img src="/assets/measurements.png" /></div>
-  <div class="top-menu">
-    <ul>
-      <li><a href="">CIRCUMFERENCE</a></li>
-      <li><%=link_to "BODY FAT", bodyfatpercent_user_path%></li>
-      <li><%= link_to 'GRAPH', measurement_over_time_tracking_path %></li>
-      <div class="clear"></div>
-    </ul>
-  </div>
+
+	<% if current_user.male?%>
+
+
+	<%= form_for @meas, :url => newmeasurement_user_path do |f| %>
+	<div id="wrapper">
+	  <div class="top-header"></div>
+	  <div class="test-name"><img src="/assets/measurements.png" /></div>
+	  <div class="top-menu">
+		 <ul>
+		   <li><a href="">CIRCUMFERENCE</a></li>
+		   <li><%=link_to "BODY FAT%", bodyfatpercent_user_path%></li>
+		   <li><%= link_to 'GRAPH', measurement_over_time_tracking_path %></li>
+		   <div class="clear"></div>
+		 </ul>
+	  </div>
 
 
   <div class="measurements-man">

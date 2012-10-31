@@ -125,8 +125,7 @@ has_attached_file :photoafter, :styles      => { :thumb   => "16x16#", :medium =
   
   def calories_consumed_today
     cc=self.meals.today.inject(0){|tot, meal| tot += meal.meal_items.inject(0){|meal_tot, meal_item| meal_tot += meal_item.calories } }
-    
-   
+       
   end
   
   def calories_burned_today
