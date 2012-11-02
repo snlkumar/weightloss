@@ -527,14 +527,14 @@ end
 
 ##############################
    def vendordetail
-    if params[:id] && params[:vendor_type]=="restaurants"
-	  @vendor=Restaurant.find(params[:id])
+    if params[:vid] && params[:vendor_type]=="restaurants"
+	  @vendor=Restaurant.find(params[:vid])
 	  	
       else
-	  @vendor=Vendor.find(params[:id])
+	  @vendor=Vendor.find(params[:vid])
    end
 	@status=@vendor
-          session[:user_id]=params[:uid]       
+         session[:user_id]=params[:id]       
         respond_to do |format|
         format.js { render :json =>@status.to_json}
       end

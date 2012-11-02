@@ -1,6 +1,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/myweightworld.css"/>
 
 <style type="text/css">
+
 input[placeholder], [placeholder], *[placeholder]
     {
         color:black !important;
@@ -8,6 +9,17 @@ input[placeholder], [placeholder], *[placeholder]
 </style>
 
 
+ <% if @meas.errors.any? %>
+    <div id="error_explanation" style="margin-left:20%;">
+      <h2><%= pluralize(@meas.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @meas.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 <%=link_to "Back", :back%><br/>
 
 
