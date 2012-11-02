@@ -186,7 +186,7 @@ class MywwWebservicesController < ApplicationController
   def getDiaryMeal
      
     if params[:userid]
-      if params[:date_on] && params[:date_on].downcase!="today"
+      if params[:date_on]
         @start_date = Time.zone.parse(params[:date_on]).strftime("%Y-%m-%d")
       else
         @start_date = Time.zone.now.strftime("%Y-%m-%d")
@@ -231,27 +231,22 @@ class MywwWebservicesController < ApplicationController
   
   ############################ get food list ##################################
   def foodsList
-    if session[:user_id] 
+
       if params[:foodname]
         terms  = params[:foodname].split(/,|\s/).reject(&:blank?)
         conds  = terms.collect{|t| "name LIKE ?"}.join(' AND ')
         @foods = Food.with_a_serving_size.find(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}])
     
         if @foods.empty?
-          @status = {:value => 'No Results', :id => nil}
+          @status =nil
         else
         
-        @status= @foods.map{|f| {:value => ("#{f.name} *** #{f.gmwt_desc1} *** #{f.energ_kcal} "), :id => f.id} }
+        @status= @foods.map{|f| {:name=>f.name, :unit=>f.gmwt_desc1, :cal=>f.energ_kcal, :id => f.id} }
         end
       else
         @status={"status-msg"=>"food name field cannot be empty"}
       end
-    else
-      @status={"status-msg"=>"user not exist"}
-    end
     
-    render :json => @status
-    return
     
     respond_to do |format|
      format.js { render :json =>@status.to_json}
@@ -330,6 +325,40 @@ else
   
   ############################ addWorkout (exercise) ##########################
   def addMeal
+
+	@user=User.find(params[:id])
+
+	if params[:ate_on]
+	   @start_date = Time.zone.parse(params[:ate_on]).strftime("%Y-%m-%d")
+	else
+	   @start_date = Time.zone.now.strftime("%Y-%m-%d")
+ 	end
+
+	@serving=params[:units].to_i
+	@unit=(params[:units].split(@serving.to_s).length > 1) ? params[:units].split(@serving.to_s)[1] : ""
+
+
+
+#		if params[:meal][:calories]==""
+    	@meal = @user.meals.create(:ate_on=>@start_date,:meal_type=>params[:meal_type],:time_of_day=>Time.zone.now.strftime("%H-%M-%S"))
+
+			@meal.meal_items.create(:food_id=>params[:food_id],:serving=>@serving,:units=>@unit)
+#			else
+				#for food custom entry by calory
+#				@meal =@user.meals.create(:ate_on=>@start_date,:note => params[:meal][:note],:meal_type=>params[:meal][:meal_type],:time_of_day=>Time.zone.now.strftime("%H-%M-%S"))
+#			@meal.meal_items.create(:food_id=>8443,:calories=>params[:meal][:calories])
+#		end
+		
+		if @meal.save
+		 @status={"status-msg"=>"Success"}
+	  	else
+		  @status={"status-msg"=>"Fail"}
+		end  
+      session[:user_id]=params[:id]
+
+		respond_to do |format|
+	     format.js { render :json =>@status.to_json}
+   	end
   end
   #############################################################################
   
@@ -350,33 +379,34 @@ else
   
  def userPhotoUpload
   
-if params[:id]
-   	@userfile= params[:userfile]
-   	@userfile.rewind
-   	@filename = "#{Rails.root}/public/"+params[:id].to_s+@userfile.original_filename
-  
- File.open(@filename, "wb") do |file|
-   file.write(@userfile.read)
- end         
-    
-    @user=User.find(params[:id])
-    @user.avatar=File.open(@filename)
-     
-     if @user.save
-       @status={"status-msg"=>"141"}
-       File.delete(@filename)
-     else
-        @status={"status-msg"=>"142"}
-     end  
- 	else
-    @status={"status-msg"=>"user not exist"}
-  end
+	if params[:id]
+			@userfile= params[:userfile]
+			@userfile.rewind
+			@filename = "#{Rails.root}/public/"+params[:id].to_s+@userfile.original_filename
+	  
+	 File.open(@filename, "wb") do |file|
+		file.write(@userfile.read)
+	 end         
+		 
+		 @user=User.find(params[:id])
+		 @user.avatar=File.open(@filename)
+		  
+		  if @user.save
+		    @status={"status-msg"=>"141"}
+		    File.delete(@filename)
+		  else
+		     @status={"status-msg"=>"142"}
+		  end  
+	 	else
+		 @status={"status-msg"=>"user not exist"}
+	  end
 
-  respond_to do |format|
-       format.js { render :json =>@status.to_json}
-   	end
-   	
-end
+	  respond_to do |format|
+		    format.js { render :json =>@status.to_json}
+			end   	
+	end
+
+#############################################################################
  
  def avatar_path
    if session[:user_id]
@@ -503,7 +533,8 @@ end
       else
 	  @vendor=Vendor.find(params[:id])
    end
-	@status=@vendor       
+	@status=@vendor
+          session[:user_id]=params[:uid]       
         respond_to do |format|
         format.js { render :json =>@status.to_json}
       end
@@ -522,6 +553,7 @@ end
 @data1=Vendor.where("city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%'").length
 	      if !@data.empty?
 	      	@status= @data.map{|f| {:id =>f.id, :state=>f.state, :name=>f.business_name, :vendor_type=>f.vendor_type, :datalength=>@data1}}
+
 		else
 		@status=nil 
 	      end
@@ -533,7 +565,8 @@ end
 	@data1=Restaurant.where("city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%'").length
 
 	      if !@data.empty?
-	      	@status= @data.map{|f| {:id => f.id, :state=>f.state, :name=>f.business_name, :vendor_type=>f.vendor_type, :datalength=>@data1}}
+	      	@status= @data.map{|f| {:id =>f.id, :state=>f.state, :name=>f.business_name, :vendor_type=>f.vendor_type, :datalength=>@data1}}
+
 		else
 		@status=nil 
 	      end
@@ -548,6 +581,7 @@ end
 		@status=nil
 	      end
 	   end
+          session[:user_id]=params[:id]
          respond_to do |format|
            format.js { render :json =>@status.to_json}
          end

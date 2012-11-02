@@ -73,6 +73,10 @@
 
 <%= render :partial => '/users/personal_measurements', :locals => {:f => f} %><br />
 
+
+
+<!--
+
 <div class="panel">
 
 <p class="flip" style="font-weight:bold;font-size:15px;color:#0A2B42;">Calculate body fat</p><br/>
@@ -82,12 +86,7 @@
 	<input type="radio" id="in" name="cmi" checked="checked" />Inches
 </p><br/>
 
- <p>
-  <%= f.label :height, %Q{Height <span class="help-text">(Height will not be publicly displayed)</span> }.html_safe %><br/>
-  <span id="height-view"></span>
-  <div id="height-slider"></div>
-  <%= f.hidden_field :height, :id => 'height-val',  :value => @slider_height %>
-</p>
+
 
  </p> 
  <b style="color:#0A2B42;">Neck<b><br />
@@ -111,6 +110,20 @@
 <!---
 <div id="bodyfat_result" style="font-weight:bold;color:black;font-size:15px;"></div><br/>
 </div> -->
+
+
+
+
+
+
+ <p>
+  <%= f.label :height, %Q{Height <span class="help-text">(Height will not be publicly displayed)</span> }.html_safe %><br/>
+  <span id="height-view"></span>
+  <div id="height-slider"></div>
+  <%= f.hidden_field :height, :id => 'height-val',  :value => @slider_height %>
+</p>
+
+
 
 <p>
   <%= f.label :city %><br/>

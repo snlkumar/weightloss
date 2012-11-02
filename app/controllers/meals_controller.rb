@@ -39,7 +39,8 @@ class MealsController < ApplicationController
 		#@meal = current_user.meals.build(params[:meal])		
 		#
 		#raise params[:ate_on].inspect
-		
+
+
 		if params[:meal_cal]=="meal"
 			params[:meal][:meal_type]=params[:meal_type1]
 		else
