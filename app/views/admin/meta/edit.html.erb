@@ -1,0 +1,87 @@
+<link href="/assets/style_v4.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+  
+
+select#meta_controller{
+    width:80%;
+    height:2em;
+margin-top:-2px;
+
+  }
+
+</style>
+
+
+<h2 style="font-size:20px;align:center;background-color:#0B2B42;width:46em;">Meta descriptions</h2>
+
+
+<div style="margin-left:30%;margin-top:20px;">
+
+	<table width="80%" border="0" align="center" cellpadding="0" cellspacing="0" class="border_grey">
+	<tbody>
+
+<%= form_for @meta, :url => admin_metum_path(@meta.id) ,:method => :put do |f| %>
+
+		<tr>        
+		<td height="40" colspan="2" ><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px 5px 5px 5px;width:97.5%;text-align:center;color:#FBF2EF;">Edit Meta Info</h1></td>
+		</tr>
+
+
+
+	<tr>
+	 <td style="padding:15px 15px;font-size:15px" valign="top">Category:</td>
+
+	 <td style="padding:3px 15px;" valign="top">
+    <%= f.text_field :controller, :disabled=>"true",:style=>"height:1.2em;width:12em;border:0px;background-color:#F3F3F3;font-size:15px;"%>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:15px 15px;font-size:15px" valign="top">Page:</td>
+
+	 <td style="padding:3px 15px;" valign="top">
+    <%= f.text_field :page, :disabled=>"true", :style=>"height:1.2em;width:12em;border:0px;background-color:#F3F3F3;font-size:15px;"%>
+	</td>
+	</tr>
+
+
+
+	<tr>
+	 <td style="padding:15px 15px;font-size:15px" valign="top">Meta title:</td>
+
+	 <td style="padding:3px 15px;" valign="top">
+<%=f.text_field :metatitle, :style=>"height:1.2em;width:12em;font-size:15px;"%>
+	</td>
+	</tr>
+
+
+		<tr>
+		<td style="padding:15px 15px;font-size:15px" valign="top">Keywords:</td>
+
+		<td style="padding:3px 15px;" valign="top">
+		<%=f.text_field :keywords, :style=>"height:1.2em;width:12em;font-size:15px;"%>
+		</td>
+		</tr>
+
+
+	<tr>
+	 <td style="padding:15px 15px;font-size:15px" valign="top">Description:</td>
+
+	 <td style="padding:3px 15px;" valign="top">
+<%=f.text_field :description, :style=>"height:1.2em;width:12em;font-size:15px;"%>
+	</td>
+	</tr>
+
+	<td colspan="2" class="font_20" style="padding:10px 15px; border-top:solid 1px #bfbfbf;">
+
+ <input type="submit" class="button grid_3" name="submit" style="height:29px;font-size:10pt;width:6em;padding:0;margin-left:35%;" onclick=submitl() value=" SUBMIT " />
+</td>
+
+<%end%>
+	</tbody
+</table>
+
+<div>

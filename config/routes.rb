@@ -74,10 +74,13 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
       get 'foodsList/:foodname', :action =>'foodsList'
       get 'exercisesList/:exercisename', :action =>'exercisesList'
 		post :weightmeasurement
+		post :bodymeasurement
 		post :netcalories
+      post :photoGallery
     end
     member do
       post :photo
+
     end
   end 
   

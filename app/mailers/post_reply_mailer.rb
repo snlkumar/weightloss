@@ -18,5 +18,4 @@ class PostReplyMailer < ActionMailer::Base
     @user = user    
     mail(:to =>@user.email, :subject => 'Forum reply on MyWeightWorld')
   end
-  
 end

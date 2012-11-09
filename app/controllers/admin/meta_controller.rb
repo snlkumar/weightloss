@@ -26,4 +26,21 @@ class Admin::MetaController < ApplicationController
 	end
 
 
+	def edit
+    @meta=Meta.find(params[:id])
+
+	end
+
+
+ 	def update
+    @meta=Meta.find(params[:id])
+	respond_to do |format|
+		   if @meta.update_attributes(params[:meta])
+		     format.html {redirect_to((admin_meta_path), :notice => 'Successfully updated.')}
+		   else
+				format.html { render :action => "edit"}
+		   end
+		end
+	 end
+
 end

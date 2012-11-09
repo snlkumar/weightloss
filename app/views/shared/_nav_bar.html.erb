@@ -22,10 +22,11 @@
     <li>
       <%= link_to '', vendor_path, :id => 'dir-tab', :title => 'Directory' %>
     </li>
+
     <!-- end -->
     
     <li>
-      <%= link_to '', forum_engine_path, :id => 'forum-tab', :title => 'Forums' %>
+      <%= link_to '', measurement_user_path(current_user), :id => 'measurement-tab', :title => 'Measurements' %>
     </li>
   <% end %>
   

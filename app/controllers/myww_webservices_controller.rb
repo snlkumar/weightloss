@@ -327,7 +327,6 @@ else
   def addMeal
 
 	@user=User.find(params[:id])
-
 	if params[:ate_on]
 	   @start_date = Time.zone.parse(params[:ate_on]).strftime("%Y-%m-%d")
 	else
@@ -409,23 +408,23 @@ else
 #############################################################################
  
  def avatar_path
-   if session[:user_id]
-  if !User.find(session[:user_id]).avatar_file_name.nil? && User.find(session[:user_id]).avatar_file_name!="NULL"
- @url=User.find(session[:user_id]).avatar.url(:profile)  
- @path={"imagepath"=> request.protocol+request.host_with_port+@url}
-  else
-  @path={"imagepath"=> "null"}
-  end   
-else
- @status={"status-msg"=>"user not exist"}
-   end
+		if session[:user_id]
+	  if !User.find(session[:user_id]).avatar_file_name.nil? && User.find(session[:user_id]).avatar_file_name!="NULL"
+	 @url=User.find(session[:user_id]).avatar.url(:profile)  
+	 @path={"imagepath"=> request.protocol+request.host_with_port+@url}
+	  else
+	  @path={"imagepath"=> "null"}
+	  end   
+	else
+	 @status={"status-msg"=>"user not exist"}
+		end
 
    respond_to do |format|
      format.js { render :json =>@path.to_json}
-   end
- 
+   end 
   end
-  
+
+###############################################################  
   def goals
     if params[:id]
       @user=User.find(params[:id])    
@@ -603,7 +602,7 @@ end
 		   respond_to do |format|
 		     format.js { render :json =>@status.to_json}
 		   end	
-  end
+     end
 
 
 ############################################################################## net calories calculation
@@ -615,29 +614,27 @@ end
     	temp = {}
     	@dates.each {|day| temp[ day.strftime("%b %d %Y") ] = @user.net_calories_on(day) }
     	temp
-render :json=>temp
-return
   end
 
 
 	def range_to_date_map(range)
-		 case range
-    when '1wk'
-      1.week.ago
-    when '2wk'
-      2.weeks.ago
-    when '3wk'
-      3.weeks.ago
-    when '1mth'
-      1.month.ago
-    when '2mth'
-      2.months.ago
-    when '3mth'
-      3.months.ago
-    when '6mth'
-      6.months.ago
-    end
-	  end
+			 case range
+		 when '1wk'
+		   1.week.ago
+		 when '2wk'
+		   2.weeks.ago
+		 when '3wk'
+		   3.weeks.ago
+		 when '1mth'
+		   1.month.ago
+		 when '2mth'
+		   2.months.ago
+		 when '3mth'
+		   3.months.ago
+		 when '6mth'
+		   6.months.ago
+		 end
+   end
   
   def dates_for_graph(range)
     range = '1wk' if range.nil?
@@ -653,6 +650,49 @@ return
   end
 
 ##########################################################################
+
+		def photoGallery
+       if params[:id]
+			@user = User.find(params[:id])
+				if params[:type]=="all"
+						@photos= @user.photos.all	 					  
+					else
+						@photos= @user.photos.where("before_after='"+params[:type]+"'")
+				end
+	 
+					if @photos.empty?
+					 		@status = nil
+						else
+						  @status= @photos.map{|f| { :name =>request.protocol+request.host_with_port+f.photo.url}}
+				   end
+						session[:user_id]=@user.id
+						respond_to do |format|
+						format.js { render :json =>@status.to_json}
+						end	
+
+			else
+				 @status = {"status-msg"=>"User not exist"}
+			end			
+		end
+
+##########################################################################
+
+	def bodymeasurement
+	@meas=Measurement.create(params[:measurement])
+			if @meas.save
+             @status={"status-msg"=>"160"}
+         else
+          @status={"status-msg"=>"161"}  
+       end 
+    session[:user_id]=params[:measurement][:user_id]
+    respond_to do |format|
+     format.js { render :json =>@status.to_json}
+    end
+  end
+
+#########################################################################################
+
+
 
 
   #this method for testing, to check webservice

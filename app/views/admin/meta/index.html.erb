@@ -48,7 +48,7 @@
 
                     <td class="actions">
            <%#= link_to 'Vendor detail', admin_vendor_path(vendor.id)+"/restaurants"%> |
-            <%#= link_to 'Edit', "/admin/vendors/#{vendor.id}/edit/restaurants" %> |
+            <%= link_to 'Edit', edit_admin_metum_path(meta.id) %> |
             <%= link_to 'Delete', admin_metum_path(meta.id), :confirm => 'Are you sure?', :method => :delete %>
 	   </td>
         </tr>
