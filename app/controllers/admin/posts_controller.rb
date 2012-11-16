@@ -4,8 +4,7 @@ class Admin::PostsController < Admin::BaseController
   layout 'new_admin'
   
   def index
-    @posts = OldTextFile.order('page_title ASC').page(params[:page] || 1).per(50)
-    
+    @posts = OldTextFile.where('draft=0').order('page_title ASC').page(params[:page] || 1).per(50)   
     if !params[:page].nil?
       @num=(params[:page].to_i-1)*50
     else
@@ -13,6 +12,17 @@ class Admin::PostsController < Admin::BaseController
     end
   end
   
+  def drafts
+    @posts = OldTextFile.where('draft=1').order('page_title ASC').page(params[:page] || 1).per(50)   
+    if !params[:page].nil?
+      @num=(params[:page].to_i-1)*50
+    else
+      @num=0
+    end
+  end
+
+
+
   def new
     @post = OldTextFile.new
   end

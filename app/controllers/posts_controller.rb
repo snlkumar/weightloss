@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_filter :get_categories
   
   def index
-    @posts = OldTextFile.order("created_at DESC").page(params[:page]).per(10)
+    @posts = OldTextFile.where('draft=0').order("created_at DESC").page(params[:page]).per(10)
   end
   
   def show

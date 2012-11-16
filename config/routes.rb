@@ -16,6 +16,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 	match '/refresh_window'=> 'home#refresh_window'
 	
 	##create dynamic routes
+	match '/admin/posts/drafts' => 'admin/posts#drafts'
 	match '/admin/vendors/:id/up' =>'admin/vendors#update_vendor'
 	match '/vendor/vendorInfo/:id/(:restaurants)/(:name)' =>'Vendors#show',  :as=>'vendorInfo'
 	match '/vendor/(:searchtype)/(:filterQuery)' => 'Vendors#search',   :as => 'vendor'
@@ -77,6 +78,9 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 		post :bodymeasurement
 		post :netcalories
       post :photoGallery
+		get 'video/video_category', :action =>'video_category'
+		get 'video/:id', :action =>'show_video'
+		get 'video/(:category_id)/(:filter)', :action =>'video'
     end
     member do
       post :photo

@@ -208,7 +208,7 @@ a:hover {
 .font-color-gray{ color:#606060;}
 
 /*========== Page CSS ==========*/
-#wrapper{background:url(../assets/body-bg.png) left bottom repeat-x; width:640px; margin:20px auto 20px auto; height:960px;}
+#wrapper{background:url(../assets/body-bg.png) left bottom repeat-x; width:640px; margin:20px auto 20px auto; height:960px;box-shadow: 10px 10px 5px #888888;}
 .test-name{height:45px; margin:30px 0; text-align:center;}
 .bodyfat-man{background:url(../assets/body-fat-man.png) center top no-repeat; position: relative; margin-top:25px; min-height:620px; padding:40px 33px 0px 35px;}
 .bodyfat-woman{background:url(../assets/body-fat-woman.png) center top no-repeat; position: relative; margin-top:25px; min-height:620px; padding:40px 33px 0px 35px;}

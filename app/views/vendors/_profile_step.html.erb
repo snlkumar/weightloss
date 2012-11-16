@@ -20,7 +20,7 @@
     color: #595959;
     font-weight: bold;
 }
-select#vendor_state,#vendor_country,#vendor_p_country{
+select#vendor_state,#vendor_country,#vendor_p_country,#vendor_p_state{
     width:235px;
     height:25px;
 margin-top:-5px; 
@@ -187,7 +187,7 @@ $(document).ready(function(){
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :biography %><br /></td>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :About_us %><br /></td>
 
 	 <td style="padding:5px 15px;" valign="top">
 	    <%= f.text_area :biography, :class=>"border_grey", :style=>"width:230px;height:50px;margin-top:-5px; padding:2px;"%>
@@ -402,12 +402,21 @@ $(document).ready(function(){
 	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px;width:98.5%;text-align:center;color:#FBF2EF;">Personal information</h1></td>
 
 
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :fname %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :fname, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
+
 
 	<tr>
 	 <td style="padding:5px 15px;" valign="top"><%= f.label :name %><br /></td>
 
 	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :vendor_name, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+	    <%= f.text_field :lname, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
 
 	</td>
 	</tr>
@@ -428,19 +437,25 @@ $(document).ready(function(){
 
 	 <td style="padding:5px 15px;" valign="top">
 	    <%= f.text_field :p_city, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
-
+		<div id="ajaxAutoComplete1" class="ajaxAutoComplete"></div>
 	</td>
 	</tr>
+
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :state %><br /></td>
+	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :state %></td>
 
 	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :p_state, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
-
+		<%= f.select :p_state, options_for_select(us_states),:style=>"width:200px;height:25px;margin-top:-5px; padding:2px;"%>
 	</td>
 	</tr>
+
+
+
+
+
+
 
 	<tr>
 	 <td style="padding:5px 15px;" valign="top"><%= f.label :country %></td>

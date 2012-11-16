@@ -98,6 +98,43 @@ $("#ajaxAutoComplete").css("display","none");
 
 	});	
 });
+
+
+$(document).ready(function(){
+	var list=null;
+	$("#vendor_p_city").keyup(function(){ 
+	 if($("#vendor_p_city").val().length>2)
+	 {
+    var position = $("#vendor_p_city").position();
+		vleft=position.left;
+		vtop=position.top;
+		$.ajax({
+			url: '/vendors/auto_search/'+$("#vendor_p_city").val(),
+			dataType: 'html',
+			success: function(data) {
+				$("#ajaxAutoComplete1").html(dataGrid(jQuery.parseJSON(data)));
+					$("#ajaxAutoComplete1").css('left', vleft);
+					$("#ajaxAutoComplete1").css('top', vtop+20);
+				$("#ajaxAutoComplete1").css("display","block");
+			},
+			error: function(data)
+			{
+				alert("error");
+			}
+		});
+	  }
+else
+{
+$("#ajaxAutoComplete1").css("display","none");
+}
+	});
+
+	$(".full").click(function(){
+		$("#ajaxAutoComplete1").css("display","none");
+
+	});	
+});
+
 </script>
 
 

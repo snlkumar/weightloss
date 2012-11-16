@@ -693,8 +693,50 @@ end
 #########################################################################################
 
 
+  def video_category
+    @category=Category.all
+		respond_to do |format|
+		format.js { render :json =>@category.to_json}
+		end	
+  end
 
+###########################################################################
+  
+  def video
+    args={:search=>{:filter=>params[:filter],:category_id=>params[:category_id]}}
 
+    #@latest     = OldFlashFile.order("created_at DESC").limit(2)
+    #@medicals   = OldFlashFile.where(:category_id => Category.find_by_name('Medical').id).order("created_at DESC").limit(2)
+    #@exercises  = OldFlashFile.where(:category_id => Category.find_by_name('Exercise').id).order("created_at DESC").limit(2)
+    #@recipes    = OldFlashFile.where(:category_id => Category.find_by_name('Recipes').id).order("created_at DESC").limit(2)
+    #@nutritions = OldFlashFile.where(:category_id => Category.find_by_name('Nutrition').id).order("created_at DESC").limit(2)
+  
+    @search  = ContentSearch.new(args)
+   
+    @results = Kaminari.paginate_array( @search.results ).page(params[:page] || 1).per(25)
+    @total   = @search.total
+    
+    respond_to do |format|
+ format.js { render :json =>@results.to_json}
+end	
+  end
+  
+##################################################################################################
+
+  def show_video
+    @video = OldFlashFile.find(params[:id])    
+    if @video
+		   @status=request.protocol+request.host_with_port+@video.video.url
+		 else
+		   @status = {"status-msg"=>"Video not exist"}
+      end
+    
+    respond_to do |format|
+	 format.js { render :json =>@status.to_json}
+	 end	
+  end
+
+###################################################################
   #this method for testing, to check webservice
   def check
 

@@ -6,7 +6,7 @@
 
 <p>
   <%= f.label :body %><br/>
-  <%= f.tinymce :body, :rows => 30, :class => 'grid_14 alpha' %>
+ <%= f.text_area :body, :class=>"ckeditor" %>
   <span class="clear"></span>
 </p>
 
@@ -45,3 +45,11 @@
     <%= f.check_box :remove_file1 %> Delete?
   <% end %>
 </p>
+
+<!-- new code-->
+
+
+<div style="margin-top:15px;">
+<%= f.label :draft, 'Save As Draft' %>
+    <%= f.check_box :draft %>
+<div/><br /><br /> 

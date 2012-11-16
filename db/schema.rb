@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121029161125) do
+ActiveRecord::Schema.define(:version => 20121115192228) do
 
   create_table "City", :primary_key => "ID", :force => true do |t|
     t.string "Name",        :limit => 35, :default => "", :null => false
@@ -359,6 +359,7 @@ ActiveRecord::Schema.define(:version => 20121029161125) do
     t.string   "author"
     t.integer  "comments_count",      :default => 0
     t.integer  "view_count",          :default => 0
+    t.integer  "draft",               :default => 0, :null => false
   end
 
   create_table "old_tip_of_days", :force => true do |t|

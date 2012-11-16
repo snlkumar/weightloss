@@ -67,7 +67,7 @@ class VendorsController < ApplicationController
 		if !@meta.blank?
 		@meta_title=@meta.metatitle
 		@meta_keywords=@meta.keywords
-		@meta_description= "#{@vendor.business_name}"+","+"#{@vendor.vendor_type}".split('_').join(' ')
+		@meta_description=@meta.description+", "+"#{@vendor.business_name}"+","+"#{@vendor.vendor_type}".split('_').join(' ')
 		end
  end
   #end show
@@ -77,10 +77,12 @@ class VendorsController < ApplicationController
   def new
 			@meta=Meta.where("controller= 'Vendor' and  page='Vendor Signup'").last
 			if !@meta.blank?
-			@meta_title=@meta.metatitle
-			@meta_keywords=@meta.keywords
-			@meta_description=@meta.description
+				@meta_title=@meta.metatitle
+				@meta_keywords=@meta.keywords
+				@meta_description=@meta.description
 			end
+
+
    session[:vendor_params] ||= {}
     @vendor = Vendor.new(session[:vendor_params])
     @vendor.current_step = session[:vendor_step]

@@ -1,0 +1,61 @@
+<script type="text/javascript">
+  <%content_for :js do%>
+    $("table tbody tr").mouseover(function(){
+      $(this).css("background-color","#ccc");
+    }).mouseout(function(){
+      $(this).css("background-color","");
+    });
+  <%end%>
+</script> 
+  <br/>
+  
+  <h2 style="width:63em;">Drafts</h2>
+  
+  <%= link_to 'Back', admin_posts_path %> &nbsp;
+  <%= link_to 'New post', new_admin_post_path %>&nbsp&nbsp
+  <%= link_to 'Posts', admin_posts_path %>
+
+
+  <%= form_tag(search_admin_posts_path) do %>
+    <%= text_field_tag 'terms', '', :id => 'exercise-search', :style => "height:1.3em;" %>
+  
+    <%= submit_tag 'Search', :style => "height:2.2em;" %>
+  <% end %>
+
+  <% if params['terms'] && !params['terms'].blank? %>
+    Displaying results for "<%= params['terms'] %>"<br/>
+  <% end %>
+  
+  <%= page_entries_info(@posts, :entry_name => 'post') %>
+  <%= paginate(@posts, :params => pagination_params(request)) %>
+  
+  <br />
+  <table class="admin" style="width:80em;">
+    <thead>
+      <tr style="background-color:#ccc;color:#2E8EC1;">
+        <th style="width:2em;">#</th>
+        <th style="width:30em;padding:.3em 1em;">Title</th>
+        <th>Category</th>
+        <th>Body</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr class="<%#= cycle('odd', '') %>">
+          <td style="width:2em;"> <%= @num=@num+1 %></td>
+          <td style="width:28em;padding:.3em 1em;"><%= link_to post.page_title, edit_admin_post_path(post) %></td>
+          <td style="width:5em;"><%= post.category.try(:name) %></td>
+          <td style="width:21em;"><%= truncate(strip_tags(post.body), :length => 50) %></td>
+          <td class="actions">
+            <%= link_to 'Show', post_path(post), :target => '_blank' %> | 
+            <%= link_to 'Edit', edit_admin_post_path(post) %> | 
+            <%= link_to 'Delete', [:admin, post], :confirm => 'Are you sure?', :method => :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br/>
+  <%= paginate(@posts, :params => pagination_params(request)) %>
+  <%= link_to 'Back', admin_posts_path %>

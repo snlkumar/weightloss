@@ -42,6 +42,9 @@
     <thead>
       <tr class="head-table">
         <th>Name</th>
+        <th>Vendor Type</th>
+        <th>Phone</th>
+        <th>Email</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -50,6 +53,9 @@
         <tr class="<%= cycle('odd', 'even') %>">
           <!--<td><%#= link_to exercise.description, edit_admin_exercise_path(exercise) %></td>-->
           <td><%=vendor.business_name%> </td>
+          <td><%=vendor.vendor_type%> </td>
+          <td><%=vendor.contact1%> </td>
+          <td><%=vendor.email%> </td>
                     <td class="actions">
            <%= link_to 'Vendor detail', admin_vendor_path(vendor.id)+"/restaurants"%> |
             <%= link_to 'Edit', "/admin/vendors/#{vendor.id}/edit/restaurants" %> |
@@ -66,6 +72,9 @@
 	    <thead>
 	      <tr class="head-table">
 		<th>Name</th>
+        <th>Vendor Type</th>
+        <th>Phone</th>
+        <th>Email</th>
 		<th>Action</th>
 	      </tr>
 	    </thead>
@@ -74,6 +83,9 @@
 		<tr class="<%= cycle('odd', 'even') %>">
 		  <!--<td><%#= link_to exercise.description, edit_admin_exercise_path(exercise) %></td>-->
 		  <td><%=vendor.business_name%> </td>
+          <td><%=vendor.vendor_type.split('_').join(' ')%> </td>
+          <td><%=vendor.contact1%> </td>
+          <td><%=vendor.email%> </td>
 		            <td class="actions">
 		   <%= link_to 'Vendor detail', admin_vendor_path(vendor.id)%> |
 		    <%= link_to 'Edit', "/admin/vendors/#{vendor.id}/edit/vendors" %> |

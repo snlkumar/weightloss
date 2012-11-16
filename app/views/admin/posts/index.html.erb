@@ -12,7 +12,8 @@
   <h2 style="width:63em;">Posts</h2>
   
   <%= link_to 'Back', admin_posts_path %> &nbsp;
-  <%= link_to 'New post', new_admin_post_path %>
+  <%= link_to 'New post', new_admin_post_path %>&nbsp&nbsp
+  <%= link_to 'Drafts', admin_posts_drafts_path %>
 
   <%= form_tag(search_admin_posts_path) do %>
     <%= text_field_tag 'terms', '', :id => 'exercise-search', :style => "height:1.3em;" %>
