@@ -711,14 +711,18 @@ end
     #@recipes    = OldFlashFile.where(:category_id => Category.find_by_name('Recipes').id).order("created_at DESC").limit(2)
     #@nutritions = OldFlashFile.where(:category_id => Category.find_by_name('Nutrition').id).order("created_at DESC").limit(2)
   
-    @search  = ContentSearch.new(args)
-   
-    @results = Kaminari.paginate_array( @search.results ).page(params[:page] || 1).per(25)
+    @search  = ContentSearch.new(args)  
+    @results = Kaminari.paginate_array( @search.results )
     @total   = @search.total
     
-    respond_to do |format|
- format.js { render :json =>@results.to_json}
-end	
+ 		if !@results.empty?
+	      	@status= @results.map{|f| {:title =>f.title, :imageUrl=>request.protocol+request.host_with_port+f.preview_image.url, :videoUrl=>request.protocol+request.host_with_port+f.video.url}}
+			else
+				@status=nil 
+	 	 end  
+    	respond_to do |format|
+		format.js { render :json =>@status.to_json}
+		end	
   end
   
 ##################################################################################################

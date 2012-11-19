@@ -290,4 +290,19 @@ class VendorsController < ApplicationController
 		render :json =>@city
 		return
 	end 
+
+
+	def auto_search1
+		@colleges=ActiveRecord::Base.connection.execute("select c.id, c.colleges from colleges c where c.colleges like '%"+params[:search]+"%'")
+		render :json =>@colleges
+		return
+	end 
+
+	def auto_search2
+		@degrees=ActiveRecord::Base.connection.execute("select c.id, c.degrees from degrees c where c.degrees like '%"+params[:search]+"%'")
+		render :json =>@degrees
+		return
+	end 
+
+
 end

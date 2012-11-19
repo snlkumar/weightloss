@@ -135,6 +135,102 @@ $("#ajaxAutoComplete1").css("display","none");
 	});	
 });
 
+
+
+
+
+
+function degreesdataGrid(obj)
+{
+	data="<table id='school'>";
+	row="";
+	for(i=0;i<obj.length;i++)
+	{			
+		row+="<tr id="+(obj[i].toString().split(",")[0])+" onmouseover='selectedRow(this)' onclick=getTdVal('"+obj[i].toString().split(",")[0]+"') onmouseout='unSelectedRow(this)'><td style='width:60%;'>"+obj[i].toString().split(",")[1]+"</td></tr>";
+	}
+	data+=row+"</table>";
+	
+	return data;
+}
+
+
+
+$(document).ready(function(){
+	var list=null;
+	$("#vendor_school").keyup(function(){ 
+
+	 if($("#vendor_school").val().length>2)
+	 {
+    var position = $("#vendor_school").position();
+		vleft=position.left;
+		vtop=position.top;
+		$.ajax({
+			url: '/vendors/auto_search1/'+$("#vendor_school").val(),
+			dataType: 'html',
+			success: function(data) {
+				$("#ajaxAutoComplete2").html(degreesdataGrid(jQuery.parseJSON(data)));
+					$("#ajaxAutoComplete2").css('left', vleft);
+					$("#ajaxAutoComplete2").css('top', vtop+20);
+				$("#ajaxAutoComplete2").css("display","block");
+			},
+			error: function(data)
+			{
+				alert("error");
+			}
+		});
+	  }
+else
+{
+$("#ajaxAutoComplete2").css("display","none");
+}
+	});
+
+	$(".full").click(function(){
+		$("#ajaxAutoComplete2").css("display","none");
+
+	});	
+});
+
+
+
+
+$(document).ready(function(){
+	var list=null;
+	$("#vendor_degrees").keyup(function(){ 
+
+	 if($("#vendor_degrees").val().length>2)
+	 {
+    var position = $("#vendor_degrees").position();
+		vleft=position.left;
+		vtop=position.top;
+		$.ajax({
+			url: '/vendors/auto_search2/'+$("#vendor_degrees").val(),
+			dataType: 'html',
+			success: function(data) {
+				$("#ajaxAutoComplete3").html(degreesdataGrid(jQuery.parseJSON(data)));
+					$("#ajaxAutoComplete3").css('left', vleft);
+					$("#ajaxAutoComplete3").css('top', vtop+20);
+				$("#ajaxAutoComplete3").css("display","block");
+			},
+			error: function(data)
+			{
+				alert("error");
+			}
+		});
+	  }
+else
+{
+$("#ajaxAutoComplete3").css("display","none");
+}
+	});
+
+	$(".full").click(function(){
+		$("#ajaxAutoComplete3").css("display","none");
+
+	});	
+});
+
+
 </script>
 
 

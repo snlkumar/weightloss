@@ -44,6 +44,8 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
       get :logout_vendor
 		get :captchatest
 		get 'auto_search/:search', :action => 'auto_search'
+		get 'auto_search1/:search', :action => 'auto_search1'
+		get 'auto_search2/:search', :action => 'auto_search2'
     end
   end
 
