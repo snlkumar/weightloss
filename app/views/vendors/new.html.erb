@@ -25,6 +25,8 @@ function dataGrid(obj)
 	
 	return data;
 }
+
+
 function selectedRow(rw)
 {
 	rw.style.background="#A9BCF5";
@@ -100,6 +102,8 @@ $("#ajaxAutoComplete").css("display","none");
 });
 
 
+
+
 $(document).ready(function(){
 	var list=null;
 	$("#vendor_p_city").keyup(function(){ 
@@ -135,7 +139,12 @@ $("#ajaxAutoComplete1").css("display","none");
 	});	
 });
 
-
+function getTdVal(cid)
+{
+	city=document.getElementById('city');
+	$("#vendor_city").val(city.rows[document.getElementById(cid).rowIndex].cells[0].innerHTML);
+	$("ajaxAutoComplete").css("display","none");
+}
 
 
 

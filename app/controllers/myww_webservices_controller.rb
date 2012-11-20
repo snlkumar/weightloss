@@ -703,6 +703,15 @@ end
 ###########################################################################
   
   def video
+	if params[:category_id]=="all"
+	 @search=OldFlashFile.all
+   	if !@search.empty?
+	      	@status= @search.map{|f| {:title =>f.title, :imageUrl=>request.protocol+request.host_with_port+f.preview_image.url(:small), :videoUrl=>request.protocol+request.host_with_port+f.video.url ,:videotype=>f.video.content_type}}
+			else
+				@status=nil 
+	 	 end
+	
+  else
     args={:search=>{:filter=>params[:filter],:category_id=>params[:category_id]}}
 
     #@latest     = OldFlashFile.order("created_at DESC").limit(2)
@@ -716,10 +725,12 @@ end
     @total   = @search.total
     
  		if !@results.empty?
-	      	@status= @results.map{|f| {:title =>f.title, :imageUrl=>request.protocol+request.host_with_port+f.preview_image.url, :videoUrl=>request.protocol+request.host_with_port+f.video.url}}
+	      	@status= @results.map{|f| {:title =>f.title, :imageUrl=>request.protocol+request.host_with_port+f.preview_image.url(:small), :videoUrl=>request.protocol+request.host_with_port+f.video.url,:videotype=>f.video.content_type}}
 			else
 				@status=nil 
-	 	 end  
+	 	 end
+	end
+  
     	respond_to do |format|
 		format.js { render :json =>@status.to_json}
 		end	
