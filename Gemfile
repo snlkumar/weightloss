@@ -2,7 +2,7 @@ source :rubygems
 gem "rails", "3.1.0"
 gem "rake"
 gem "rdoc"
-
+gem 'ckeditor', '3.4.2.pre'
 gem 'paperclip','2.7.0'
 gem 'default_value_for'
 gem "fastercsv"
