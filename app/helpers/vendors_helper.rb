@@ -59,42 +59,9 @@ def us_states
     ]
 end
 
-def degrees
-[
-     ['Other', 'Other'],
-		['B.A', 'B.A'],
-      ['B.Arch', 'B.Arch'],
-      ['B.C.A', 'B.C.A'],
-      ['B.B.A', 'B.B.A'],
-      ['B.Com', 'B.Com'],
-      ['BDS', 'BDS'],
-      ['BHM', 'BHM'],
-      ['B.Pharma', 'B.Pharma'],
-      ['B.Sc.', 'B.Sc.'],
-      ['B.Tech', 'B.Tech'],
-      ['LLB', 'LLB'],
-      ['MBBS', 'MBBS'],
-      ['Diploma', 'Diploma'], 
-      ['M.A.', 'M.A.'],
-      ['M.Arch', 'M.Arch'],
-      ['M.Com', 'M.Com'],
-      ['M.Pharma', 'M.Pharma'],
-      ['M.Sc.', 'M.Sc.'],
-      ['M.Tech', 'M.Tech'],
-      ['MBA', 'MBA'],
-      ['MCA', 'MCA'],
-      ['MS', 'MS']
-
-    ]	
-
-
-end
-
-
-
-
 def countries
 [
+                    ['United States', 'United States'],
       ['Afghanistan','Afghanistan'],
                     ['Aland Islands', 'Aland Islands'],
                     ['Albania',   'Albania'],
@@ -323,7 +290,6 @@ def countries
                     ['Ukraine',   'Ukraine'],
                     ['United Arab Emirates',   'United Arab Emirates'],
                     ['United Kingdom',   'United Kingdom'],
-                    ['United States', 'United States'],
                     ['United States Minor Outlying Islands',   'United States Minor Outlying Islands'],
                     ['Uruguay',   'Uruguay'],
                     ['US Virgin Islands',   'US Virgin Islands'],

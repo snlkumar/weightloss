@@ -19,6 +19,12 @@ class Admin::MetaController < ApplicationController
     	end
 	end
 
+ def show
+ @meta=Meta.find(params[:id])
+  end
+
+
+
   def destroy
     @meta=Meta.find(params[:id])
   	 @meta.destroy

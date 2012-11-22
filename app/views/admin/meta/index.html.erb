@@ -23,7 +23,7 @@
     <%#= paginate(@vendors, :params => pagination_params(request)) %>  
             
 
-<%= link_to 'Create New', new_admin_metum_path()%> 
+<%= link_to 'Add New Page', new_admin_metum_path()%> 
   <br/><br/>
 
   <table class="admin">
@@ -32,8 +32,10 @@
         <th>Category</th>
         <th>Page</th>
         <th>Meta title</th>
+<!--
         <th>Keywords</th>
-        <th>Description</th>
+        <th>Description</th> -->
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -43,11 +45,11 @@
           <td><%=meta.controller%> </td>
           <td><%=meta.page%> </td>
           <td><%=meta.metatitle%> </td>
-          <td><%=meta.keywords%> </td>
-          <td><%=meta.description%> </td>
+ <!--         <td><%#=meta.keywords%> </td>
+          <td><%#=meta.description%> </td>-->
 
                     <td class="actions">
-           <%#= link_to 'Vendor detail', admin_vendor_path(vendor.id)+"/restaurants"%> |
+            <%= link_to 'Details', admin_metum_path(meta.id) %> |
             <%= link_to 'Edit', edit_admin_metum_path(meta.id) %> |
             <%= link_to 'Delete', admin_metum_path(meta.id), :confirm => 'Are you sure?', :method => :delete %>
 	   </td>

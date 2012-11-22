@@ -42,6 +42,6 @@ class Admin::OldTextFilesController < Admin::BaseController
     @text_file = OldTextFile.find(params[:id])
     @text_file.destroy
     
-    redirect_to(old_text_files_url)
+    redirect_to(admin_posts_path)
   end
 end

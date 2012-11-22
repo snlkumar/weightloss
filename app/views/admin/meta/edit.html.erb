@@ -13,18 +13,18 @@ margin-top:-2px;
 </style>
 
 
-<h2 style="font-size:20px;align:center;background-color:#0B2B42;width:46em;">Meta descriptions</h2>
+<h2 style="font-size:20px;align:center;background-color:#0B2B42;width:48em;">Meta descriptions</h2>
 
 
-<div style="margin-left:30%;margin-top:20px;">
+<div style="margin-left:20%;margin-top:20px;">
 
-	<table width="80%" border="0" align="center" cellpadding="0" cellspacing="0" class="border_grey">
+	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="border_grey">
 	<tbody>
 
 <%= form_for @meta, :url => admin_metum_path(@meta.id) ,:method => :put do |f| %>
 
 		<tr>        
-		<td height="40" colspan="2" ><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px 5px 5px 5px;width:97.5%;text-align:center;color:#FBF2EF;">Edit Meta Info</h1></td>
+		<td height="40" colspan="2" ><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px 5px 5px 5px;width:98.5%;text-align:center;color:#FBF2EF;">Edit Meta Info</h1></td>
 		</tr>
 
 
@@ -53,7 +53,7 @@ margin-top:-2px;
 	 <td style="padding:15px 15px;font-size:15px" valign="top">Meta title:</td>
 
 	 <td style="padding:3px 15px;" valign="top">
-<%=f.text_field :metatitle, :style=>"height:1.2em;width:12em;font-size:15px;"%>
+<%=f.text_area :metatitle, :style=>"height:5em;width:22em;font-size:15px;"%>
 	</td>
 	</tr>
 
@@ -62,7 +62,7 @@ margin-top:-2px;
 		<td style="padding:15px 15px;font-size:15px" valign="top">Keywords:</td>
 
 		<td style="padding:3px 15px;" valign="top">
-		<%=f.text_field :keywords, :style=>"height:1.2em;width:12em;font-size:15px;"%>
+		<%=f.text_area :keywords, :style=>"height:7em;width:22em;font-size:15px;"%>
 		</td>
 		</tr>
 
@@ -71,13 +71,13 @@ margin-top:-2px;
 	 <td style="padding:15px 15px;font-size:15px" valign="top">Description:</td>
 
 	 <td style="padding:3px 15px;" valign="top">
-<%=f.text_field :description, :style=>"height:1.2em;width:12em;font-size:15px;"%>
+<%=f.text_area :description, :style=>"height:5em;width:22em;font-size:15px;"%>
 	</td>
 	</tr>
 
 	<td colspan="2" class="font_20" style="padding:10px 15px; border-top:solid 1px #bfbfbf;">
 
- <input type="submit" class="button grid_3" name="submit" style="height:29px;font-size:10pt;width:6em;padding:0;margin-left:35%;" onclick=submitl() value=" SUBMIT " />
+ <input type="submit" class="button grid_3" name="submit" style="height:29px;font-size:10pt;width:6em;padding:0;margin-left:35%;" onclick=submitl() value=" UPDATE " />
 </td>
 
 <%end%>

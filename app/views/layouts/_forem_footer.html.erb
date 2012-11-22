@@ -1,3 +1,5 @@
+
+
 <div style="clear:both;"></div>
 
 <!-- Footer -->
@@ -5,10 +7,12 @@
   <div id="footer" class="container_16">
     <div class="grid_8">
       <h3 class="footer-header">Get In Touch With MyWeightWorld</h3>
-      <%= mail_to 'support@myweightworld.com', nil, :class => 'footer-link grid_4 alpha' %>
-      <%= mail_to 'sales@myweightworld.com', nil, :class => 'footer-link grid_4 omega' %>
+ <%= link_to "Personal Trainer ", "http://www.personalpowertraining.net", :class => 'footer-link grid_4 alpha',:style=>"color:white;"%>
+      <%= link_to 'Weight Loss', "http://www.myweightworld.com", :class => 'footer-link grid_4 omega', :style=>"color:white;" %>	
       <div style="clear:both"></div>
-      <%= mail_to 'press@myweightworld.com', nil, :class => 'footer-link grid_4 alpha' %>
+      <%= mail_to 'sales@myweightworld.com', nil, :class => 'footer-link grid_4 alpha' %>
+      <%= mail_to 'press@myweightworld.com', nil, :class => 'footer-link grid_4 omega' %>
+      <%= mail_to 'support@myweightworld.com', nil, :class => 'footer-link grid_4 alpha' %>
     </div>
     
     <div class="grid_8">
@@ -17,15 +21,32 @@
       <%= link_to 'Sign Up', main_app.new_user_registration_path, :class => 'footer-link' %>&nbsp;
       <%= link_to 'Video Library', main_app.videos_path, :class => 'footer-link' %>&nbsp;
       <%= link_to 'Articles', main_app.posts_path, :class => 'footer-link' %>&nbsp;
-      <%= link_to 'About Us', main_app.about_path, :class => 'footer-link' %>&nbsp;
+      <%= link_to 'About Us', main_app.about_path, :class => 'footer-link' %>&nbsp;</br>
+  
+    <%= link_to "Vendors: ", "http://www.myweightworld.com/vendor/all/", :class => 'footer-link'%>&nbsp;
+    <%= link_to "Gyms ", "http://www.myweightworld.com/vendor/gym/", :class => 'footer-link'%>&nbsp;
+    <%= link_to "Restaurants,", "http://www.myweightworld.com/vendor/restaurants/", :class => 'footer-link'%>&nbsp;
+    <%= link_to "Nutritionist,", "http://www.myweightworld.com/vendor/nutritionist/", :class => 'footer-link'%>&nbsp;
+    <%= link_to "Weight loss surgeons,", "http://www.myweightworld.com/vendor/weight_loss_surgeons/", :class => 'footer-link'%>&nbsp;
+    <%= link_to "Physiologists,", "http://www.myweightworld.com/vendor/physiologists/", :class => 'footer-link'%>&nbsp;
+    <%= link_to "Hospitals,", "http://www.myweightworld.com/vendor/hospitals/", :class => 'footer-link'%>&nbsp;
+    <%= link_to "Law,", "http://www.myweightworld.com/vendor/law/", :class => 'footer-link'%>&nbsp;
+    <%= link_to "Plastic surgeons,", "http://www.myweightworld.com/vendor/plastic_surgeon/", :class => 'footer-link'%>&nbsp;
+    <%= link_to "Spa ", "http://www.myweightworld.com/vendor/spa/", :class => 'footer-link'%>&nbsp;
+    <%= link_to "Weight loss doctors,", "http://www.myweightworld.com/vendor/weight_loss_doctors/", :class => 'footer-link'%>&nbsp;
+    <%= link_to "Medical equipment,", "http://www.myweightworld.com/vendor/medical_equipment/", :class => 'footer-link'%>&nbsp;
+    <%= link_to "Weight loss clinics", "http://www.myweightworld.com/vendor/weight_loss_clinics/", :class => 'footer-link'%>&nbsp;
+
     </div>
     
     <div style="clear:both">&nbsp;</div>
 
   </div>
   <!-- Copyright -->
-  <div class="full" id="footer-bg" >
+  <div class="full" id="footer-bg" >     
     <div id="copyright-container">
+     <%= link_to "Personal Trainer Scottsdale, ", "http://www.personalpowertraining.net", :class => 'footer-link grid_4 alpha',:style=>"color:white;"%>
+<%= link_to'Weight Loss Community', "http://www.myweightworld.com", :class => 'footer-link grid_4 alpha',:style=>"color:white;margin-left:2px;"%>
       <span id="copyright-text">
         Copyright 2011 MyWeightWorld
       </span>

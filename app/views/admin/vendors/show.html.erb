@@ -4,23 +4,26 @@
       $("tr").mouseover(function(){
         $(this).css("background-color","#ccc");
       }).mouseout(function(){
-        $(this).css("background-color","#E6EEEE");
+        $(this).css("background-color","#FFFFFF");
       });
    });
   <%end%>
 </script>
+
 <br><%= link_to 'Back', :back, :style=>"margin-left:0%;" %><br>
     <h2 style="font-size:20px;align:center;background-color:#0B2B42;width:46em;">Vendor Detail</h2>
 
   
-  <%#if @status!="true"%>
-    <table border="0" width="57%" style="float:left;margin-left:15em;height:40em;background-color:#E6EEEE;border:1px solid;" align="center">
-    <tr>
-      <td colspan="2"><h2 style="background-color:#cccccc;width:33em;"><%= @vendor.business_name %></h2></td>
-    </tr>
-    <tr>
-		    <td style="padding-left:10%;"><label>Vendor type</label></td>
-		    <td>
+     <table border="0" width="64%" style="margin-left:10em;height:42em;background-color:#FFFFFF;border:1px solid;">
+  
+	  	<tr>
+      <td colspan="2"><h2 style="background-color: #0B2B42; color:white;width:37em;"><%= @vendor.business_name %></h2></td>
+   	</tr>
+   
+
+		 <tr>
+		    <td width="40%" style="padding-left:10%;"><label>Vendor type</label></td>
+		    <td width="60%">
 		      <% 
 		        @vendor.vendor_type.split('_').each do |d|
 		      %>
@@ -28,24 +31,82 @@
 		      <%  end  %>
 		    </td>	
     </tr>
+ 
+   <tr>
+	    <td  width="40%" style="padding-left:10%;"><label>Title</label></td>
+	    <td width="60%"><%= @vendor.title %></td>	
+    </tr>
+
+ 
+	    <td width="40%" style="padding-left:10%;"><label>Certifications</label></td>
+	    <td width="60%"><%= @vendor.certifications %></td>
+    </tr>
     <tr>
-	    <td style="padding-left:10%;"><label>Title</label></td>
-	    <td><%= @vendor.title %></td>	
+	    <td width="40%" style="padding-left:10%;"><label>Specialities</label></td>
+	    <td width="60%"><%= @vendor.specialities %></td>
+    </tr>
+    <tr>
+	    <td width="40%" style="padding-left:10%;"><label>Cost</label></td>
+	    <td width="60%"><%= @vendor.cost %></td>
+    </tr>
+    <tr>
+	    <td width="40%" style="padding-left:10%;"><label>Gender</label></td>
+	    <td width="60%"><%= @vendor.gender %></td>
+    </tr>
+
+
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Accept credit card</label></td>
+	    <td width="60%"><%= @vendor.accept_credit_card %></td>
     </tr>
 
     <tr>
-	    <td style="padding-left:10%;"><label>Email</label></td>
-	    <td><%= @vendor.email %></td>	
+	    <td width="30%" style="padding-left:10%;"><label>Accept cash</label></td>
+	    <td width="60%"><%= @vendor.accept_cash %></td>
     </tr>
 
     <tr>
-	    <td style="padding-left:10%;"><label>Business Email</label></td>
-	    <td><%= @vendor.b_email %></td>	
+	    <td width="30%" style="padding-left:10%;"><label>Accept check</label></td>
+	    <td width="60%"><%= @vendor.accept_check %></td>
+    </tr>
+
+
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Payment plans</label></td>
+	    <td width="60%"><%= @vendor.payment_plans %></td>
     </tr>
 
     <tr>
-	    <td width="30%" style="padding-left:10%;"><label>Company</label></td>
-	    <td><%= @vendor.business_name %></td>	
+	    <td width="30%" style="padding-left:10%;"><label>Insurance</label></td>
+	    <td width="60%"><%= @vendor.accept_insurance %></td>
+    </tr>
+
+</table>
+
+    <table border="0" width="64%" style="margin-left:10em;height:35em;background-color:#FFFFFF;border:1px solid;" align="center">
+
+	<tr>
+      <td colspan="2"><h2 style="background-color:#0B2B42;color:white;width:37em;">Contact details</h2></td>
+    </tr>
+
+    <tr>
+	    <td width="40%" style="padding-left:10%;"><label>Phone</label></td>
+	    <td><%= @vendor.contact1 %></td>
+    </tr>
+
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Cell</label></td>
+	    <td><%= @vendor.contact2 %></td>
+    </tr>
+	
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Email</label></td>
+	    <td><%= @vendor.email %></td>
+    </tr>
+
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Website address</label></td>
+	   <%if  !@vendor.website_address.nil? && !@vendor.website_address.blank?%> <td><%= link_to "http://" + "#{@vendor.website_address}", "http://" + "#{@vendor.website_address}" %></td><%end%>
     </tr>
 
     <tr>
@@ -53,7 +114,10 @@
 	    <td><%= @vendor.address1 %></td>
     </tr>
 
-  
+    <tr>
+	    <td width="30%" style="padding-left:10%;"><label>Address 2</label></td>
+	    <td><%= @vendor.address2 %></td>
+    </tr>
     <tr>
 	    <td width="30%" style="padding-left:10%;"><label>City</label></td>
 	    <td><%= @vendor.city %></td>
@@ -70,26 +134,7 @@
 	    <td style="padding-left:10%;"><label>Country</label></td>
 	    <td><%= @vendor.country %></td>
     </tr>
-    <tr>
-	    <td width="30%" style="padding-left:10%;"><label>Phone</label></td>
-	    <td><%= @vendor.contact1 %></td>
-    </tr>
 
-    <tr>
-	    <td width="30%" style="padding-left:10%;"><label>Cell</label></td>
-	    <td><%= @vendor.contact2 %></td>
-    </tr>
-	
-	    <td width="30%" style="padding-left:10%;"><label>Website address</label></td>
-	    <td><%= @vendor.website_address %></td>
-    </tr>
-    <tr>
 	</table>
 
 
-
-
-
-	
-	<br/>	<br/>
-<%= link_to 'Back', :back, :style=>"margin-left:0%;" %>

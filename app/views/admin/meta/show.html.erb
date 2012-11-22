@@ -1,0 +1,76 @@
+<style type="text/css">
+.even { background: #E6EEEE; }
+.odd { background: #cccccc; }
+.head-table{background: #ccc; }
+</style>
+
+<script type="text/javascript">
+  <%content_for :js do%>
+    $("table tbody tr").mouseover(function(){
+      $(this).css("background-color","#ccc");
+    }).mouseout(function(){
+      $(this).css("background-color","");
+    });
+          
+  <%end%>
+</script>
+
+     <table border="0" width="25%" style="margin-left:10em;height:42em;background-color:#FFFFFF;border:1px solid;">
+<tbody>
+		<tr>        
+		<td height="40" colspan="2" ><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px 5px 5px 5px;width:22em;text-align:center;color:#FBF2EF;">Meta Info</h1></td>
+		</tr>
+
+
+	<tr>
+	 <td style="padding:15px 25px;font-size:15px;" valign="top">Category:</td>
+
+	 <td style="padding:15px 15px;font-size:15px" valign="top">
+    <%= @meta.controller%>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:15px 25px;font-size:15px" valign="top">Page:</td>
+
+	 <td style="padding:15px 15px;font-size:15px" valign="top">
+    <%= @meta.page%>
+	</td>
+	</tr>
+
+
+
+	<tr>
+	 <td style="padding:15px 25px;font-size:15px" valign="top">Meta title:</td>
+
+	 <td style="padding:15px 15px;font-size:15px" valign="top">
+<%=@meta.metatitle%>
+	</td>
+	</tr>
+
+
+		<tr>
+		<td style="padding:15px 25px;font-size:15px" valign="top">Keywords:</td>
+
+		<td style="padding:15px 15px;font-size:15px" valign="top">
+		<%=@meta.keywords%>
+		</td>
+		</tr>
+
+
+	<tr>
+	 <td style="padding:15px 25px;font-size:15px" valign="top">Description:</td>
+
+	 <td style="padding:15px 15px;font-size:15px" valign="top">
+<%=@meta.description%>
+	</td>
+	</tr>
+
+
+</td>
+
+	</tbody
+</table>
+
