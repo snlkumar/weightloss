@@ -37,23 +37,23 @@
 
 <div style="margin-left:30%;margin-top:20px;">
 
-	<table width="80%" border="0" align="center" cellpadding="0" cellspacing="0" class="border_grey">
+	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="border_grey">
 	<tbody>
 
 	<form name="form" method="post" action="<%=admin_meta_path%>">
 
 		<tr>        
-		<td height="40" colspan="2" ><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px 5px 5px 5px;width:97.5%;text-align:center;color:#FBF2EF;">Select page</h1></td>
+		<td height="40" colspan="2" ><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px 5px 5px 5px;width:98%;text-align:center;color:#FBF2EF;">Select page</h1></td>
 		</tr>
 
 
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top">Category:</td>
+	 <td style="padding:15px 15px;font-size:15px;" valign="top">Category:</td>
 
 	 <td style="padding:5px 15px;" valign="top">
-	    <select id="combo1" name="combonew" value="" onchange="change(this);" style="margin-top:5px;width:13em;height:2em;">
+	    <select id="combo1" name="combonew" value="" onchange="change(this);" style="margin-top:5px;width:20em;height:2.5em;">
 				<option value="0">-Select-</option>
 				<option value="1">User</option>
 				<option value="2">Vendor</option>
@@ -67,10 +67,10 @@
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top">Page:</td>
+	 <td style="padding:15px 15px;font-size:15px;" valign="top">Page:</td>
 
 	 <td style="padding:5px 15px;" valign="top">
-<select id="combo2" name="combo" value=""  style="margin-top:5px;width:13em;height:2em;">
+<select id="combo2" name="combo" value=""  style="margin-top:5px;width:20em;height:2.5em;">
 	</select>
 <input type="hidden" id="metapage" name="meta[page]" value="">
 	</td>
@@ -78,28 +78,28 @@
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top">Meta title:</td>
+	 <td style="padding:25px 15px;font-size:15px;" valign="top">Meta title:</td>
 
 	 <td style="padding:5px 15px;" valign="top">
-<input type="text" id="title" name="meta[metatitle]" value="" style="height:1.2em;width:12em;"/>
+<textarea type="text" id="title" name="meta[metatitle]" value="" style="height:5em;width:19em;"></textarea>
 	</td>
 	</tr>
 
 
 		<tr>
-		<td style="padding:5px 15px;" valign="top">Keywords:</td>
+		<td style="padding:25px 15px;font-size:15px;" valign="top">Keywords:</td>
 
 		<td style="padding:5px 15px;" valign="top">
-		<input type="text" id="claimfname" name="meta[keywords]" value="" style="height:1.2em;width:12em;"/>
+		<textarea type="text" id="claimfname" name="meta[keywords]" value="" style="height:5em;width:19em;"></textarea>
 		</td>
 		</tr>
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top">Description:</td>
+	 <td style="padding:25px 15px;font-size:15px;" valign="top">Description:</td>
 
 	 <td style="padding:5px 15px;" valign="top">
-	<input type="text" id="claimfname" name="meta[description]" value="" style="height:1.2em;width:12em;"/>
+	<textarea type="text" id="claimfname" name="meta[description]" value="" style="height:5em;width:19em;"></textarea>
 	</td>
 	</tr>
 

@@ -65,7 +65,7 @@ class VendorsController < ApplicationController
    end
 		@meta=Meta.where("controller= 'Vendor' and  page='Vendor Info'").last
 		if !@meta.blank?
-		@meta_title=@meta.metatitle
+		@meta_title=@vendor.business_name
 		@meta_keywords=@meta.keywords
 		@meta_description=@meta.description+", "+"#{@vendor.business_name}"+","+"#{@vendor.vendor_type}".split('_').join(' ')
 		end

@@ -38,13 +38,11 @@ input:-moz-placeholder {
 
   
 <script tyle="text/javascript">
-
-
 <% content_for :js do %>
     $('#distance-slider').slider({
           range: "min",
-          step:  10,
-          value: 0,
+          step:  1,
+          value: <%=@vendor_cost%>,
           min: 0,
           max: 500,
           slide: function( event, ui ) {
@@ -357,7 +355,7 @@ input:-moz-placeholder {
 	 <td style="padding:-10px 15px;" valign="top">
 <span id="distance-view" style="margin-top:-10px;"></span>
 <div id="distance-slider" style="width: 62%;margin-top:-0px;"></div>
-  <%= f.hidden_field :average_cost, :id => 'distance-val'%>
+  <%= f.hidden_field :average_cost, :id => 'distance-val', :value=> '@vendor_cost'%>
 
 
 	</td>

@@ -17,7 +17,7 @@ module Forem
       end
 				@meta=Meta.where("controller= 'Forum' and  page='Topic'").last
 				if !@meta.blank?
-				@meta_title=@meta.metatitle
+				@meta_title=@topic.subject
 				@meta_keywords=@meta.keywords
 				@meta_description=@meta.description
 				end
