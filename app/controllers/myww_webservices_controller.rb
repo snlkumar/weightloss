@@ -291,30 +291,32 @@ class MywwWebservicesController < ApplicationController
       @start_date = Time.zone.parse(params[:trained_on]).strftime("%Y-%m-%d")
     else
       @start_date = Time.zone.now.strftime("%Y-%m-%d")
-params[:trained_on]=@start_date
+		params[:trained_on]=@start_date
     end
 
 #for calories field data
-if !params[:duration1].nil? && !params[:time_from1].nil? && !params[:duration1].empty? && !params[:time_from1].empty?
-params[:duration]=params[:duration1]
-params[:time_from]=params[:time_from1]
+		if !params[:duration1].nil? && !params[:time_from1].nil? && !params[:duration1].empty? && !params[:time_from1].empty?
+			params[:duration]=params[:duration1]
+			params[:time_from]=params[:time_from1]
+		end
+
+		if params[:calories].nil? || params[:calories]==""
+			@workout = Workout.create(:user_id=>params[:userid], :trained_on=>@start_date,:time_from=>params[:time_from])
+			@w=WorkoutItem.create(:workout_id=>@workout.id,:exercise_id=>params[:exercise_id],:duration=>params[:duration].delete(" "),:user_id=>params[:userid])
+
+	else
+			params[:exercise_id]=809	#this is custom calories execersise id
+			 #for activity entry by calories
+			 @workout = Workout.create(:user_id=>params[:userid],:trained_on=>@start_date,:time_from=>params[:time_from],:note=>params[:note])
+			 @w=WorkoutItem.create(:workout_id=>@workout.id,:exercise_id=>params[:exercise_id],:duration=>params[:duration].delete(" "),:calories=>params[:calories],:user_id=>params[:userid])
 end
 
-if params[:calories].nil? || params[:calories]==""
-@workout = Workout.create(:user_id=>params[:userid], :trained_on=>@start_date,:time_from=>params[:time_from])
-@w=WorkoutItem.create(:workout_id=>@workout.id,:exercise_id=>params[:exercise_id],:duration=>params[:duration].delete(" "),:user_id=>params[:userid])
-else
-params[:exercise_id]=809	#this is custom calories execersise id
- #for activity entry by calories
- @workout = Workout.create(:user_id=>params[:userid],:trained_on=>@start_date,:time_from=>params[:time_from],:note=>params[:note])
- @w=WorkoutItem.create(:workout_id=>@workout.id,:exercise_id=>params[:exercise_id],:duration=>params[:duration].delete(" "),:calories=>params[:calories],:user_id=>params[:userid])
-end
-if @workout && @w
- session[:user_id]=params[:userid]
- @status={"status-msg"=>"success"}
-else  
- @status={"status-msg"=>"not created"}
-    end
+		if @workout && @w
+			 session[:user_id]=params[:userid]
+			 @status={"status-msg"=>"success"}
+		else  
+		 		@status={"status-msg"=>"not created"}
+			 end
 
   respond_to do |format|
        format.js { render :json =>@status.to_json}
@@ -706,11 +708,11 @@ end
 	if params[:category_id]=="all"
 	 @search=OldFlashFile.all
    	if !@search.empty?
-	      	@status= @search.map{|f| {:title =>f.title, :imageUrl=>request.protocol+request.host_with_port+f.preview_image.url(:small), :videoUrl=>request.protocol+request.host_with_port+f.video.url ,:videotype=>f.video.content_type}}
-			else
-				@status=nil 
-	 	 end
-	
+	      	@status= @search.map{|f| {:title =>f.title, :imageUrl=>request.protocol+request.host_with_port+f.preview_image.url(:small), :videoUrl=>(f.video.content_type=="video/x-flv") ? "#{request.protocol+request.host_with_port+f.video.url}".gsub(".flv", ".mp4") : "#{request.protocol+request.host_with_port+f.video.url}" ,:videotype=>f.video.content_type}}
+		else
+			@status=nil 
+	 	end
+
   else
     args={:search=>{:filter=>params[:filter],:category_id=>params[:category_id]}}
 
@@ -725,7 +727,8 @@ end
     @total   = @search.total
     
  		if !@results.empty?
-	      	@status= @results.map{|f| {:title =>f.title, :imageUrl=>request.protocol+request.host_with_port+f.preview_image.url(:small), :videoUrl=>request.protocol+request.host_with_port+f.video.url,:videotype=>f.video.content_type}}
+	      	@status= @results.map{|f| {:title =>f.title, :imageUrl=>request.protocol+request.host_with_port+f.preview_image.url(:small), :videoUrl=>(f.video.content_type=="video/x-flv") ? "#{request.protocol+request.host_with_port+f.video.url}".gsub(".flv", ".mp4") : "#{request.protocol+request.host_with_port+f.video.url}",:videotype=>f.video.content_type}}
+	
 			else
 				@status=nil 
 	 	 end
@@ -750,8 +753,62 @@ end
 	 format.js { render :json =>@status.to_json}
 	 end	
   end
+####################################
+
+def addWorkout1
+    
+    if params[:trained_on]
+      	@start_date = Time.zone.parse(params[:trained_on]).strftime("%Y-%m-%d")
+   	 else
+      		@start_date = Time.zone.now.strftime("%Y-%m-%d")
+			params[:trained_on]=@start_date
+    end
+
+		mets=7.5 #average mets
+		weight=User.find(params[:userid]).weights.last.weight
+		params[:calories]= 60 * ((mets * 3.5 * weight)/200)
+		params[:exercise_id]=809 #this is custom calories execersise id
+		params[:note]="running"
+
+
+ #for activity entry by calories
+ @workout = Workout.create(:user_id=>params[:userid],:trained_on=>@start_date,:time_from=>params[:time_from],:note=>params[:note])
+ @w=WorkoutItem.create(:workout_id=>@workout.id,:exercise_id=>params[:exercise_id],:duration=>params[:duration].delete(" "),:calories=>params[:calories],:user_id=>params[:userid])
+
+		if @workout && @w
+		 		session[:user_id]=params[:userid]
+		 			@status={"status-msg"=>"success"}
+					else  
+ 			@status={"status-msg"=>"not created"}
+      end
+
+  		respond_to do |format|
+       format.js { render :json =>@status.to_json}
+   	end
+  end
+
+
+
 
 ###################################################################
+
+	def bodyfat
+		params[:bodyfat][:bodyfat]=15
+		params[:bodyfat][:bodymass]=15
+		@fat=Bodyfat.create(params[:bodyfat])
+			if @fat.save
+             @status={"status-msg"=>"160"}
+            else
+           @status={"status-msg"=>"161"}  
+       end 
+     session[:user_id]=params[:bodyfat][:user_id]
+     respond_to do |format|
+     format.js { render :json =>@status.to_json}
+     end
+  end
+
+
+
   #this method for testing, to check webservice
   def check
 

@@ -13,17 +13,31 @@ class Admin::BusinessclaimsController < Admin::BaseController
   	@claim=Businessclaim.find(params[:id])
   	if @claim.business_type=="restaurants"
   	@status="true"
-  	@data=Restaurant.find(@claim.vr_id)
+
+		begin
+  	     @data=Restaurant.find(@claim.vr_id)
+			rescue
+	  		redirect_to admin_businessclaims_path
+	     flash[:error] = "Vendor does not exist"
+		end
+
   	else
     @status="false"
-  	@data=Vendor.find(@claim.vr_id) 
+
+		begin
+	  		@data=Vendor.find(@claim.vr_id) 
+			rescue
+	  		redirect_to admin_businessclaims_path
+	     flash[:error] = "Vendor does not exist"
+		end
   	 end
   end
   
   
  def update
  @claim = Businessclaim.find(params[:id])
-      if @claim.update_attributes(params[:businessclaim])
+  begin
+       @claim.update_attributes(params[:businessclaim])
 		  if params[:businessclaim][:business_type]=="restaurants"
 		  	Restaurant.find(params[:businessclaim][:vr_id]).update_attributes(:status=>params[:businessclaim][:status])
 		  	@business=Restaurant.find(params[:businessclaim][:vr_id])
@@ -46,8 +60,8 @@ class Admin::BusinessclaimsController < Admin::BaseController
 		  	end
 		  end
 	  		redirect_to(admin_businessclaims_path, :notice => 'Successfully updated.')
-		else
-		  render :action => "edit"
+			rescue
+	  		redirect_to(admin_businessclaims_path, :notice => 'Vendor does not exist')
 		end
 	end
 	

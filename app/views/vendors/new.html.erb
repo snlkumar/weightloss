@@ -13,18 +13,6 @@
 </style>
 
 <script tyle="text/javascript">
-function dataGrid(obj)
-{
-	data="<table id='city'>";
-	row="";
-	for(i=0;i<obj.length;i++)
-	{			
-		row+="<tr id="+(obj[i].toString().split(",")[0])+" onmouseover='selectedRow(this)' onclick=getTdVal('"+obj[i].toString().split(",")[0]+"') onmouseout='unSelectedRow(this)'><td style='width:60%;'>"+obj[i].toString().split(",")[1]+"</td><td style='width:40%;'>("+obj[i].toString().split(",")[2]+")</td></tr>";
-	}
-	data+=row+"</table>";
-	
-	return data;
-}
 
 
 function selectedRow(rw)
@@ -35,12 +23,8 @@ function unSelectedRow(rw)
 {
 	rw.style.background="";
 }
-function getTdVal(cid)
-{
-	city=document.getElementById('city');
-	$("#vendor_city").val(city.rows[document.getElementById(cid).rowIndex].cells[0].innerHTML);
-	$("ajaxAutoComplete").css("display","none");
-}
+
+
 function submitvendorform()
 {
 	a=document.getElementById('recaptcha_response_field').value;
@@ -65,6 +49,31 @@ function submitvendorform()
   		}
 	});
 }
+
+
+
+
+function dataGrid(obj)
+{
+	data="<table id='city'>";
+	row="";
+	for(i=0;i<obj.length;i++)
+	{			
+		row+="<tr id="+(obj[i].toString().split(",")[0])+" onmouseover='selectedRow(this)' onclick=getTdVal('"+obj[i].toString().split(",")[0]+"') onmouseout='unSelectedRow(this)'><td style='width:60%;'>"+obj[i].toString().split(",")[1]+"</td><td style='width:40%;'>("+obj[i].toString().split(",")[2]+")</td></tr>";
+	}
+	data+=row+"</table>";
+	
+	return data;
+}
+
+
+function getTdVal(cid)
+{
+	city=document.getElementById('city');
+	$("#vendor_city").val(city.rows[document.getElementById(cid).rowIndex].cells[0].innerHTML);
+	$("ajaxAutoComplete").css("display","none");
+}
+
 
 $(document).ready(function(){
 	var list=null;
@@ -104,6 +113,29 @@ $("#ajaxAutoComplete").css("display","none");
 
 
 
+
+
+
+function dataGrid1(obj)
+{
+	data="<table id='pcity'>";
+	row="";
+	for(i=0;i<obj.length;i++)
+	{			
+		row+="<tr id="+(obj[i].toString().split(",")[0])+" onmouseover='selectedRow(this)' onclick=getTdVal1('"+obj[i].toString().split(",")[0]+"') onmouseout='unSelectedRow(this)'><td style='width:60%;'>"+obj[i].toString().split(",")[1]+"</td><td style='width:40%;'>("+obj[i].toString().split(",")[2]+")</td></tr>";
+	}
+	data+=row+"</table>";
+	
+	return data;
+}
+
+function getTdVal1(cid)
+{
+	city=document.getElementById('pcity');
+	$("#vendor_p_city").val(city.rows[document.getElementById(cid).rowIndex].cells[0].innerHTML);
+	$("ajaxAutoComplete1").css("display","none");
+}
+
 $(document).ready(function(){
 	var list=null;
 	$("#vendor_p_city").keyup(function(){ 
@@ -116,7 +148,7 @@ $(document).ready(function(){
 			url: '/vendors/auto_search/'+$("#vendor_p_city").val(),
 			dataType: 'html',
 			success: function(data) {
-				$("#ajaxAutoComplete1").html(dataGrid(jQuery.parseJSON(data)));
+				$("#ajaxAutoComplete1").html(dataGrid1(jQuery.parseJSON(data)));
 					$("#ajaxAutoComplete1").css('left', vleft);
 					$("#ajaxAutoComplete1").css('top', vtop+20);
 				$("#ajaxAutoComplete1").css("display","block");
@@ -139,23 +171,16 @@ $("#ajaxAutoComplete1").css("display","none");
 	});	
 });
 
-function getTdVal(cid)
-{
-	city=document.getElementById('city');
-	$("#vendor_city").val(city.rows[document.getElementById(cid).rowIndex].cells[0].innerHTML);
-	$("ajaxAutoComplete").css("display","none");
-}
 
 
 
-
-function degreesdataGrid(obj)
+function schooldataGrid(obj)
 {
 	data="<table id='school'>";
 	row="";
 	for(i=0;i<obj.length;i++)
 	{			
-		row+="<tr id="+(obj[i].toString().split(",")[0])+" onmouseover='selectedRow(this)' onclick=getTdVal('"+obj[i].toString().split(",")[0]+"') onmouseout='unSelectedRow(this)'><td style='width:60%;'>"+obj[i].toString().split(",")[1]+"</td></tr>";
+		row+="<tr id="+(obj[i].toString().split(",")[0])+" onmouseover='selectedRow(this)' onclick=getTdVal2('"+obj[i].toString().split(",")[0]+"') onmouseout='unSelectedRow(this)'><td style='width:60%;'>"+obj[i].toString().split(",")[1]+"</td></tr>";
 	}
 	data+=row+"</table>";
 	
@@ -163,6 +188,12 @@ function degreesdataGrid(obj)
 }
 
 
+function getTdVal2(cid)
+{
+	city=document.getElementById('school');
+	$("#vendor_school").val(city.rows[document.getElementById(cid).rowIndex].cells[0].innerHTML);
+	$("ajaxAutoComplete2").css("display","none");
+}
 
 $(document).ready(function(){
 	var list=null;
@@ -177,7 +208,7 @@ $(document).ready(function(){
 			url: '/vendors/auto_search1/'+$("#vendor_school").val(),
 			dataType: 'html',
 			success: function(data) {
-				$("#ajaxAutoComplete2").html(degreesdataGrid(jQuery.parseJSON(data)));
+				$("#ajaxAutoComplete2").html(schooldataGrid(jQuery.parseJSON(data)));
 					$("#ajaxAutoComplete2").css('left', vleft);
 					$("#ajaxAutoComplete2").css('top', vtop+20);
 				$("#ajaxAutoComplete2").css("display","block");
@@ -202,6 +233,28 @@ $("#ajaxAutoComplete2").css("display","none");
 
 
 
+
+
+
+function degreesdataGrid(obj)
+{
+	data="<table id='degree'>";
+	row="";
+	for(i=0;i<obj.length;i++)
+	{			
+		row+="<tr id="+(obj[i].toString().split(",")[0])+" onmouseover='selectedRow(this)' onclick=getTdVal3('"+obj[i].toString().split(",")[0]+"') onmouseout='unSelectedRow(this)'><td style='width:60%;'>"+obj[i].toString().split(",")[1]+"</td></tr>";
+	}
+	data+=row+"</table>";
+	
+	return data;
+}
+
+function getTdVal3(cid)
+{
+	city=document.getElementById('degree');
+	$("#vendor_degrees").val(city.rows[document.getElementById(cid).rowIndex].cells[0].innerHTML);
+	$("ajaxAutoComplete3").css("display","none");
+}
 
 $(document).ready(function(){
 	var list=null;
@@ -238,6 +291,8 @@ $("#ajaxAutoComplete3").css("display","none");
 
 	});	
 });
+
+
 
 
 </script>

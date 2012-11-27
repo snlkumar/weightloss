@@ -83,6 +83,8 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 		get 'video/video_category', :action =>'video_category'
 		get 'video/:id', :action =>'show_video'
 		get 'video/(:category_id)/(:filter)', :action =>'video'
+		post :addWorkout1
+		post :bodyfat
     end
     member do
       post :photo

@@ -53,9 +53,9 @@
           <td class="actions">
             <%= link_to 'Business detail', admin_businessclaim_path(claim) %> |
             <%= link_to 'Edit info/Accept/Reject', edit_admin_businessclaim_path(claim) %> |
-            <% if claim.status.downcase=="rejected"%>
+            <%# if claim.status.downcase=="rejected"%>
             <%= link_to 'Delete', [:admin, claim], :confirm => 'Are you sure?', :method => :delete %>
-            <%end%>
+            <%#end%>
           </td>
         </tr>
       <% end %>

@@ -32,10 +32,17 @@ ActiveRecord::Schema.define(:version => 20121115192228) do
   create_table "bodyfats", :force => true do |t|
     t.integer  "user_id"
     t.float    "bodyfat"
-    t.float    "height"
-    t.float    "waist"
-    t.float    "neck"
-    t.float    "hips"
+    t.float    "bodymass"
+    t.float    "chest"
+    t.float    "midaxillary"
+    t.float    "bicep"
+    t.float    "abdominal"
+    t.float    "suprailiac"
+    t.float    "thigh"
+    t.float    "calf"
+    t.float    "subscapular"
+    t.float    "tricep"
+    t.float    "lower_back"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -65,6 +72,10 @@ ActiveRecord::Schema.define(:version => 20121115192228) do
     t.integer "pictures_count"
   end
 
+  create_table "colleges", :force => true do |t|
+    t.string "colleges", :limit => 51
+  end
+
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
     t.text     "comment"
@@ -78,6 +89,10 @@ ActiveRecord::Schema.define(:version => 20121115192228) do
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "degrees", :force => true do |t|
+    t.string "degrees", :limit => 55
+  end
 
   create_table "exercises", :force => true do |t|
     t.string   "description"

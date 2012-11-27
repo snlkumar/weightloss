@@ -25,6 +25,10 @@ class OldFlashFile < ActiveRecord::Base
   
   has_attached_file :video, :url  => "/system/:class/:attachment/:id/:normalized_video_file_name",
                             :path => ":rails_root/public/system/:class/:attachment/:id/:normalized_video_file_name"
+validates_attachment_content_type :video,
+    :content_type => ['video/mp4', 'video/x-flv' ]
+
+
   has_attached_file :preview_image, :styles => {:large => '308x200!', :small => '145x105!'}, 
                             :url  => '/system/:class/:attachment/:id/:style/:normalized_preview_image_file_name',
                             :path => ":rails_root/public/system/:class/:attachment/:id/:style/:normalized_preview_image_file_name",

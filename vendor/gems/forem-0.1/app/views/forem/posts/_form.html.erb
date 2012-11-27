@@ -1,4 +1,59 @@
-<%= f.input :text %>
-<% if params[:reply_to_id] %>
-  <%= f.hidden_field :reply_to_id, :value => params[:reply_to_id] %>
-<% end %>
+<style type="text/css">
+input:-moz-placeholder {
+      color: grey;
+}
+</style>
+
+<script type="text/javascript">
+
+function insert()
+{
+ 				myText = document.getElementById("post_text");
+            title = document.getElementById("insTitle");
+            url = document.getElementById("insUrl");
+            
+            
+                insertAtCursor(myText, title.value, url.value);
+   }         
+    
+    function insertAtCursor(myField, title, url)
+    { 
+        //IE support 
+        if (document.selection)
+        { 
+            myField.focus();
+            sel = document.selection.createRange(); 
+            sel.text = '<a href="'+url+'">'+title+'</a>'; 
+        }
+
+        //Mozilla/Firefox/Netscape 7+ support 
+        else if (myField.selectionStart || myField.selectionStart == '0')
+        {  
+            var startPos = myField.selectionStart;
+            var endPos = myField.selectionEnd; 
+            myField.value = myField.value.substring(0, startPos)+ '<a href="'+url+'">'+title+'</a>' + myField.value.substring(endPos, myField.value.length);
+        }
+
+        else
+        { 
+            myField.value += myValue; 
+        } 
+    }       
+    </script>
+
+
+  <% if @topic.user == forem_user || forem_admin? %>
+<div style="margin-left:0%;margin-top:-15%;">
+      <lable style="font-size:16px;color:#0B2B42;">Title: </lable> <input type="text" id="insTitle" style="width:10em;height:1.5em;"/><br />
+         <lable style="font-size:16px;color:#0B2B42;">URL:</lable></lable> <input type="text" id="insUrl" placeholder='http://google.com'  style="width:10em;height:1.5em;" />
+      <input type="button" id="btnInsertText" value="Add URL" onClick="insert()" style="width:5em;height:30px;background-color:#0B2B42;color:white;margin-left:3px;"/><br /><br />
+</div>
+    <% end %>
+
+
+		<%= f.input :text %>
+			<% if params[:reply_to_id] %>
+			  <%= f.hidden_field :reply_to_id, :value => params[:reply_to_id] %>
+			<% end %>
+
+

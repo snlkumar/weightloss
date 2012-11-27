@@ -429,14 +429,22 @@ input:-moz-placeholder {
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :name %><br /></td>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :first_name %><br /></td>
 
 	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :vendor_name, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+	    <%= f.text_field :fname, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
 
 	</td>
 	</tr>
 
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><%= f.label :last_name %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :lname, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
 
 	<tr>
 	 <td style="padding:5px 15px;" valign="top"><%= f.label :address %><br /></td>
