@@ -160,7 +160,14 @@ end
 
 	end
 
-	def  bodyfatcalculation
+	def  bodyfatcalculate
+	@user=current_user
+	@fat=@user.bodyfats.create(params[:bodyfat])
+	if @fat.save
+        redirect_to(bodyfat_over_time_tracking_path, :notice => 'Bodyfat successfully saved.')
+	else
+	   render "bodyfatpercent"
+    end
 
 
 	end

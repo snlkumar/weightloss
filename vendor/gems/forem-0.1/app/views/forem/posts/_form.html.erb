@@ -42,7 +42,7 @@ function insert()
     </script>
 
 
-  <% if @topic.user == forem_user || forem_admin? %>
+  <% if current_user.admin? %>
 <div style="margin-left:0%;margin-top:-15%;">
       <lable style="font-size:16px;color:#0B2B42;">Title: </lable> <input type="text" id="insTitle" style="width:10em;height:1.5em;"/><br />
          <lable style="font-size:16px;color:#0B2B42;">URL:</lable></lable> <input type="text" id="insUrl" placeholder='http://google.com'  style="width:10em;height:1.5em;" />

@@ -1,14 +1,93 @@
+  <%= javascript_include_tag "application" %>
 <link rel="stylesheet" type="text/css" href="/assets/myweightworld.css"/>
+<script type="text/javascript">
+$(document).ready(function(){
+
+ 	$("#bodyfat_bodyfat").attr("disabled", "disabled");
+ 	$("#bodyfat_bodymass").attr("disabled", "disabled");
+	
+ 	$("#calculate").click(function(e){
+
+		e.preventDefault();
+	   gender="<%=current_user.gender.downcase%>"
+	   age="<%=current_user.age%>"
+	fields="#bodyfat_chest,#bodyfat_abdominal,#bodyfat_thigh,#bodyfat_tricep,#bodyfat_subscapular,#bodyfat_suprailiac,#bodyfat_midaxillary,#bodyfat_lower_back,#bodyfat_calf,#bodyfat_bicep".split(",");
+	for(i=0;i<fields.length;i++)
+	{
+ 		if($(fields[i]).val()=="")
+		{
+			alert(fields[i].replace("#bodyfat_","")+" cannot be empty.");
+			return false;		
+		}
+	}	
+
+
+	for(i=0;i<fields.length;i++)
+			{
+				num=$(fields[i]).val();
+				if (num != parseFloat(num))
+					{
+						alert(fields[i].replace("#bodyfat_","") + ' is not numeric');
+						return false;					
+				}
+			}
+
+	 c=$('#bodyfat_chest').val();
+	 a=$('#bodyfat_abdominal').val();
+	 t=$('#bodyfat_thigh').val();
+	 tr=$('#bodyfat_tricep').val();
+	 su=$('#bodyfat_subscapular').val();
+	 s=$('#bodyfat_suprailiac').val();
+	 m=$('#bodyfat_midaxillary').val();
+
+	sum=parseFloat(c)+parseFloat(a)+parseFloat(s)+parseFloat(t)+parseFloat(su)+parseFloat(tr)+parseFloat(m);
+
+if (gender=="male")
+{   bd = (1.12000000-(0.00043499*sum)+(0.00000055*sum)-0.00028826*age).toFixed(6);
+
+}
+else
+{
+bd = (1.0970 - (0.00046971*sum) + 0.00000056*sum - 0.00012828*age).toFixed(6); 
+}
+
+	fat = [(4.95/bd) - 4.50]*100
+	fatpercent=fat.toFixed(2);
+	bodymass=100-fatpercent;
+	$('#bodyfat_bodyfat').css("background-color", "grey");
+	$('#bodyfat_bodymass').css("background-color", "grey");
+
+
+	$('#bodyfat_bodyfat').val(fatpercent);
+	$('#bodyfat_bodymass').val(bodymass);
+
+var answer = confirm("SAVE ?")
+	if (answer){
+	$('#new_bodyfat').submit();
+	}
+	else{
+		return;
+	}
+
+
+ });
+});
+
+</script>
+
+
 
 <style type="text/css">
-input[placeholder], [placeholder], *[placeholder]
-    {
-        color:grey !important;
-    }
+
+input:-moz-placeholder {
+      color: grey;
+}
 </style>
 <%=link_to "Back", :back%><br/>
-<%= form_for @fat, :url => newmeasurement_user_path do |f| %>
+
+<%= form_for @fat, :url => bodyfatcalculate_user_path do |f| %>
 <% if current_user.male?%>
+
 			<div id="wrapper">
 			  <div class="top-header"></div>
 			  <div class="test-name"><img src="/assets/body-fat.png" /></div>
@@ -22,61 +101,61 @@ input[placeholder], [placeholder], *[placeholder]
 			  </div>
 			  <div class="bodyfat-man">
 				 <div class="left-col fleft" style="width:130px;">
-<form>
+
 					<p class="font-color-orange"><strong>Chest</strong></p>
-					<input id="chest" name="" class="input" placeholder="in" style="margin:1px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+   <%= f.text_field :chest, :class=>"input", :placeholder=>"mm", :style=>"margin:1px 3px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
 
 					<p class="font-color-orange m3"><strong>Midaxillary</strong></p>
-					<input id="midaxillary"name="" class="input" placeholder="in" style="margin:5px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+   <%= f.text_field :midaxillary, :class=>"input", :placeholder=>"mm", :style=>"margin:4px 3px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
 
 					<p class="font-color-orange m3"><strong>Bicep</strong></p>
-					<input name="" class="input" placeholder="in" style="margin:1px 5px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+   <%= f.text_field :bicep, :class=>"input", :placeholder=>"mm", :style=>"margin:1px 3px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
 
 					<p class="font-color-orange m3"><strong>Abdominal</strong></p>
-					<input id="abdominal" name="" class="input" placeholder="in" style="margin:2px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+   <%= f.text_field :abdominal, :class=>"input", :placeholder=>"mm", :style=>"margin:4px 3px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
 
 					<p class="font-color-orange m3"><strong>Suprailiac</strong></p>
-					<input id="suprailiac" name="" class="input" placeholder="in" style="margin:4px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+   <%= f.text_field :suprailiac, :class=>"input", :placeholder=>"mm", :style=>"margin:1px 3px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
 
 					<p class="font-color-orange m3"><strong>Thigh</strong></p>
-					<input id="thigh" name="" class="input" placeholder="in" style="margin:0px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+   <%= f.text_field :thigh, :class=>"input", :placeholder=>"mm", :style=>"margin:5px 5px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
 
 					<p class="font-color-orange m3"><strong>Calf</strong></p>
-					<input name="" class="input" placeholder="in" style="margin:5px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+   <%= f.text_field :calf, :class=>"input", :placeholder=>"mm", :style=>"margin:0px 5px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
 				 </div>
 
 
-				 <div class="left-col fright" style="width:107px;">
+				 <div class="left-col fright" style="width:118px;text-align:center;">
 					<p class="font-color-orange"><strong>Subscapular</strong></p>
-					<input id="subscapular" name="" class="input" placeholder="in" style="margin:0px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+   <%= f.text_field :subscapular, :class=>"input", :placeholder=>"mm", :style=>"margin:3px 15px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
 
 					<p class="font-color-orange m3"><strong>Tricep</strong></p>
-					<input id="tricep" name="" class="input" placeholder="in" style="margin:5px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+   <%= f.text_field :tricep, :class=>"input", :placeholder=>"mm", :style=>"margin:0px 15px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
 
 					<p class="font-color-orange m3"><strong>Lower Back</strong></p>
-					<input name="" class="input" placeholder="in" style="margin:0px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+   <%= f.text_field :lower_back, :class=>"input", :placeholder=>"mm", :style=>"margin:5px 13px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
 
-					<p class="font-color-white" style="margin-top:128px;"><strong>Lean Body Mass</strong></p>
-					<input id="lbm" name="" class="input" style="margin:5px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+					<p class="font-color-white" style="margin-top:128px;"><strong>Lean Body Mass</strong> %</p>
+   <%= f.text_field :bodymass, :class=>"input", :placeholder=>"%", :style=>"margin:0px 15px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
 
-					<p class="font-color-white m3"><strong>Fat Mass</strong></p>
-					<input name="" class="input" style="margin:0px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+					<p class="font-color-white m3"><strong>Fat Mass</strong> %</p>
+   <%= f.text_field :bodyfat, :class=>"input", :placeholder=>"%", :style=>"margin:5px 15px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 				 </div>
 
 				 <div class="clear"></div>
 
-</form>
+</form><div><button id="calculate" value="" style="margin-top:2%;margin-left:41%;height:30px;font-weight:bold;width:100px;color:black;background-color:white;">Calculate</button></div>
 				 <div class="title">Monitor your body FAT</div>
 			  </div>
 			  <div class="footer">
@@ -85,7 +164,6 @@ input[placeholder], [placeholder], *[placeholder]
 
 
 <%else%>
-
 
 <div id="wrapper">
   <div class="top-header"></div>
@@ -102,57 +180,61 @@ input[placeholder], [placeholder], *[placeholder]
   <div class="bodyfat-woman">
     <div class="left-col fleft" style="width:130px;">
       <p class="font-color-orange"><strong>Chest</strong></p>
-      <input name="" class="input" placeholder="in" style="margin:0px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+      <%= f.text_field :chest, :class=>"input", :placeholder=>"mm", :style=>"margin:1px 3px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
 
       <p class="font-color-orange m3"><strong>Midaxillary</strong></p>
-      <input name="" class="input" placeholder="in" style="margin:5px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
 
+   <%= f.text_field :midaxillary, :class=>"input", :placeholder=>"mm", :style=>"margin:4px 3px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
       <p class="font-color-orange m3"><strong>Bicep</strong></p>
-      <input name="" class="input" placeholder="in" style="margin:0px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
 
+   <%= f.text_field :bicep, :class=>"input", :placeholder=>"mm", :style=>"margin:1px 3px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
       <p class="font-color-orange m3"><strong>Abdominal</strong></p>
-      <input name="" class="input" placeholder="in" style="margin:6px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
 
+   <%= f.text_field :abdominal, :class=>"input", :placeholder=>"mm", :style=>"margin:4px 3px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
       <p class="font-color-orange m3"><strong>Suprailiac</strong></p>
-      <input name="" class="input" placeholder="in" style="margin:0px 4px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
 
+   <%= f.text_field :suprailiac, :class=>"input", :placeholder=>"mm", :style=>"margin:1px 3px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
       <p class="font-color-orange m3"><strong>Thigh</strong></p>
-      <input name="" class="input" placeholder="in" style="margin:6px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
 
+   <%= f.text_field :thigh, :class=>"input", :placeholder=>"mm", :style=>"margin:5px 5px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
       <p class="font-color-orange m3"><strong>Calf</strong></p>
-      <input name="" class="input" placeholder="in" style="margin:-3px 4px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+
+   <%= f.text_field :calf, :class=>"input", :placeholder=>"mm", :style=>"margin:0px 5px;border:1px solid #fff;height:25.4px;padding:1px;"%>
     </div>
 
 
-    <div class="left-col fright" style="width:107px;">
+    <div class="left-col fright" style="width:118px;text-align:center;">
       <p class="font-color-orange"><strong>Subscapular</strong></p>
-      <input name="" class="input" placeholder="in" style="margin:0px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+  
+   <%= f.text_field :subscapular, :class=>"input", :placeholder=>"mm", :style=>"margin:3px 15px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
 
       <p class="font-color-orange m3"><strong>Tricep</strong></p>
-      <input name="" class="input" placeholder="in" style="margin:5px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
 
+   <%= f.text_field :tricep, :class=>"input", :placeholder=>"mm", :style=>"margin:0px 15px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
       <p class="font-color-orange m3"><strong>Lower Back</strong></p>
-      <input name="" class="input" placeholder="in" style="margin:0px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+ 
+   <%= f.text_field :lower_back, :class=>"input", :placeholder=>"mm", :style=>"margin:5px 13px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
+      <p class="font-color-white" style="margin-top:128px;"><strong>Lean Body Mass</strong> %</p>
 
-      <p class="font-color-white" style="margin-top:128px;"><strong>Lean Body Mass</strong></p>
-      <input name="" class="input" style="margin:5px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+   <%= f.text_field :bodymass, :class=>"input", :placeholder=>"%", :style=>"margin:0px 15px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
+      <p class="font-color-white m3"><strong>Fat Mass</strong> %</p>
 
-      <p class="font-color-white m3"><strong>Fat Mass</strong></p>
-      <input name="" class="input" style="margin:0px 3px;border:1px solid #fff;height:25.4px;padding:1px;" type="text" />
+   <%= f.text_field :bodyfat, :class=>"input", :placeholder=>"%", :style=>"margin:5px 15px;border:1px solid #fff;height:25.4px;padding:1px;"%>
     </div>
 
-
     <div class="clear"></div>
+
+</form><div><button id="calculate" value="" style="margin-top:2%;margin-left:41%;height:30px;font-weight:bold;width:100px;color:black;background-color:white;">Calculate</button></div>
     <div class="title">Monitor your body FAT</div>
   </div>
 

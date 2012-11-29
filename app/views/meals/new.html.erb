@@ -265,7 +265,7 @@ label.meal {
 
 
 					<div id="gridHeader" class="gridHeader">
-						<span style="padding-left:3%;padding-right:21%;float:left;font-weight:bold;">Food</span><span  style="padding-right:9%;float:left;font-weight:bold;">Serving Size</span><span style="padding-right:2%;float:left;font-weight:bold;">Calorie</span><span style="padding-right:4%;float:left;font-weight:bold;">Fat</span><span  style="padding-right:3%;float:left;font-weight:bold;">Carbs</span><span style="padding-right:1%;float:left;font-weight:bold;">Protein</span><span style="float:left;font-weight:bold;">Fiber</span>
+						<span style="padding-left:3%;padding-right:21%;float:left;font-weight:bold;">Food</span><span  style="padding-right:12%;float:left;font-weight:bold;">Serving Size</span><span style="padding-right:3%;float:left;font-weight:bold;">Calorie</span><span style="padding-right:4%;float:left;font-weight:bold;">Fat</span><span  style="padding-right:3%;float:left;font-weight:bold;">Carbs</span><span style="padding-right:2%;float:left;font-weight:bold;">Protein</span><span style="float:left;font-weight:bold;">Fiber</span>
 						</div>
 
 						<div id="ajaxAutoComplete" class="ajaxAutoComplete"></div>
@@ -557,7 +557,7 @@ function dataGrid(ojb)
 }
 function tCols(colData)
 {
-	cols=colData.split('-');
+	cols=colData.split('**');
 	col="";
 	for(j=0;j<cols.length;j++)
 	{
@@ -576,7 +576,7 @@ function tCols(colData)
 		else
 		{
 			
-			col+="<td style='width:9%;text-align:left;'>"+cols[j]+"</td>";
+			col+="<td style='width:9%;text-align:left;padding:0 0 0 9px'>"+cols[j]+"</td>";
 		}
 	}
 	return col+"</tr>";
