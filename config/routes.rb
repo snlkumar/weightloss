@@ -46,6 +46,8 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 		get 'auto_search/:search', :action => 'auto_search'
 		get 'auto_search1/:search', :action => 'auto_search1'
 		get 'auto_search2/:search', :action => 'auto_search2'
+		get 'profile/:vendortype/:id/(:name)', :action => 'profile'
+		get '/:id/edit/:name', :action=> 'edit'
     end
   end
 

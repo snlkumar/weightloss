@@ -13,15 +13,15 @@
           <div class="grid_5 ">
           <p id="user-name" class="grid_5" style="font-size:1.5em;"><%= @vendor.business_name %></p>
           <div class="profile-avatar avatar"><%= image_tag(@vendor.photo.url(:profile)) %></div>
-			 <div class="sidebar-container" style=""><%#if session[:vendor] && session[:vendor].email == @vendor.email%>
-			 <%#= link_to 'Edit', edit_vendor_path(@vendor.id), :id => 'edit-profile', :class => 'outlined-fade', :title => 'Edit your profile' %><%#end%>
+			 <div class="sidebar-container" style=""><%if session[:vendor] && session[:vendor].id == @vendor.id && session[:vendor].vendor_type==@vendor.vendor_type%>
+			 <%= link_to 'Edit', edit_vendor_path(@vendor.id)+"/"+"#{@vendor.business_name}".gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").gsub('.'," ").strip, :id => 'edit-profile', :class => 'outlined-fade', :title => 'Edit your profile' %><%end%>
 			 <div class="clear">&nbsp;</div>
 			 </div>
 			 </div>
 
 <br><br><%#= link_to 'Back', :back, :style=>"margin-left:5%;" %><br><br>
   
-  <% if @status!="true"%>
+
     <table border="0" width="64%" style="margin-left:25em;height:42em;background-color:#FFFFFF;border:1px solid;" align="center">
   
 	  	<tr>
@@ -47,12 +47,12 @@
  
    <tr>
 	    <td  width="40%" style="padding-left:10%;"><label>Title</label></td>
-	    <td width="60%"><%= @vendor.title %></td>	
+	    <td width="60%"><%#= @vendor.title %></td>	
     </tr>
 
     <tr>
 	    <td width="40%" style="padding-left:10%;"><label>Company title</label></td>
-	    <td width="60%" ><%= @vendor.company_title %></td>	
+	    <td width="60%" ><%#= @vendor.company_title %></td>	
     </tr>
 
 
@@ -157,33 +157,5 @@
 
 
 
-	<%else%>
-	
-    <table border="0" width="57%" style="margin-left:25em;height:30em;background-color:#FFFFFF;border:1px solid;" align="center">
-      <tr>
-        <td colspan="2"><h2 style="background-color:#0B2B42;color:white;width:33em;"><%= @vendor.business_name %></h2></td>
-      </tr>
-	    <tr>
-		    <td style="padding-left:10%;"><label>Address</label></td>
-		    <td><%=@vendor.address1%></td>	
-	    </tr>
-	    <tr>
-		    <td width="40%" style="padding-left:10%;"><label>City</label></td>
-		    <td><%=@vendor.city%></td>
-	    </tr>
-	     <tr>
-		    <td width="30%" style="padding-left:10%;"><label>State</label></td>
-		    <td><%=@vendor.state%></td>
-	    </tr>
-	    <tr>
-			  <td style="padding-left:10%;"><label>Zipcode</label></td>
-			  <td><%=@vendor.zipcode%></td>
-	    </tr>
-	    <tr>
-		    <td style="padding-left:10%;"><label>Restaurant type</label></td>
-		    <td><%=@vendor.restaurent_type%></td>	
-      </tr>
-	</table>
-<%end%>
 
 <br><%#= link_to 'Back', :back, :style=>"margin-left:35%;" %>

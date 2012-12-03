@@ -44,20 +44,20 @@ fields="#bodyfat_chest,#bodyfat_abdominal,#bodyfat_thigh,#bodyfat_tricep,#bodyfa
 	sum=parseFloat(c)+parseFloat(a)+parseFloat(s)+parseFloat(t)+parseFloat(su)+parseFloat(tr)+parseFloat(m);
 
 		if (gender=="male")
-			{   bd = (1.12000000-(0.00043499*sum)+(0.00000055*sum)-0.00028826*age).toFixed(6);
+			{   bd = (1.12000000-(0.00043499*sum)+(0.00000055*sum)-0.00028826*age).toFixed(4);
 
 				}
 					else
 				{
-				bd = (1.0970 - (0.00046971*sum) + 0.00000056*sum - 0.00012828*age).toFixed(6); 
+				bd = (1.0970 - (0.00046971*sum) + 0.00000056*sum - 0.00012828*age).toFixed(4); 
 			}
 
 
 	fat = [(4.95/bd) - 4.50]*100
 	fatpercent=fat.toFixed(2);
 	bodymass=100-fatpercent;
-	$('#bodyfat_bodyfat').css("background-color", "grey");
-	$('#bodyfat_bodymass').css("background-color", "grey");
+	$('#bodyfat_bodyfat').css("background-color", "#993333");
+	$('#bodyfat_bodymass').css("background-color", "#993333");
 
 	$("#bodyfat_bodyfat").removeAttr("disabled");
 	$("#bodyfat_bodymass").removeAttr("disabled");
@@ -65,7 +65,7 @@ fields="#bodyfat_chest,#bodyfat_abdominal,#bodyfat_thigh,#bodyfat_tricep,#bodyfa
 	$('#bodyfat_bodyfat').val(fatpercent);
 	$('#bodyfat_bodymass').val(bodymass);
 
-	var answer = confirm("SAVE ?")
+	var answer = confirm("Do you want to save?")
 	if (answer){
 	       $('#new_bodyfat').submit();
 	    }
@@ -153,11 +153,11 @@ input:-moz-placeholder {
 
 
 					<p class="font-color-white" style="margin-top:128px;"><strong>Lean Body Mass</strong> %</p>
-   				<%= f.text_field :bodymass, :class=>"input", :placeholder=>"%", :style=>"margin:0px 15px;border:1px solid #fff;height:25.4px;padding:1px;"%>
+   				<%= f.text_field :bodymass, :class=>"input", :placeholder=>"%", :style=>"color:white;margin:0px 15px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
 
 					<p class="font-color-white m3"><strong>Fat Mass</strong> %</p>
-   				<%= f.text_field :bodyfat, :class=>"input", :placeholder=>"%", :style=>"margin:5px 15px;border:1px solid #fff;height:25.4px;padding:1px;"%>
+   				<%= f.text_field :bodyfat, :class=>"input", :placeholder=>"%", :style=>"color:white;margin:5px 15px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 				 </div>
 
 				 <div class="clear"></div>

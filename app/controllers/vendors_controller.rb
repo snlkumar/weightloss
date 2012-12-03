@@ -40,10 +40,10 @@ class VendorsController < ApplicationController
   def search_decipher
    
    if params[:searchtype]=="restaurants"
-    @vendor = Restaurant.where("name like '%"+params[:filterQuery]+"%'")
-   elsif params[:searchtype]!="all"
-    @vendor = Vendor.where("business_name like '%"+params[:filterQuery]+"%' and vendor_type='"+params[:searchtype]+"'")
-   else
+    	@vendor = Restaurant.where("name like '%"+params[:filterQuery]+"%'")
+   		elsif params[:searchtype]!="all"
+    		@vendor = Vendor.where("business_name like '%"+params[:filterQuery]+"%' and vendor_type='"+params[:searchtype]+"'")
+   	else
     @vendor = Vendor.where("business_name like '%"+params[:filterQuery]+"%'")
    end
    
@@ -55,14 +55,17 @@ class VendorsController < ApplicationController
   end
  ##end
 
+####################################################################
+
  def show
    if params[:id] && params[:restaurants]!=nil && params[:restaurants]=="restaurants"
-    @status="true"  #for restaurants
-    @vendor=Restaurant.find(params[:id])
-   else
-    @status="false"
-    @vendor=Vendor.find(params[:id])
+		 @status="true"  #for restaurants
+		 	@vendor=Restaurant.find(params[:id])
+   		else
+			@status="false"
+		@vendor=Vendor.find(params[:id])
    end
+
 		@meta=Meta.where("controller= 'Vendor' and  page='Vendor Info'").last
 		if !@meta.blank?
 		@meta_title=@vendor.business_name
@@ -72,9 +75,20 @@ class VendorsController < ApplicationController
  end
   #end show
   
- ################################################################## 
-  
-  def new
+ ##################################################################
+
+	def profile
+		if params[:id] && params[:vendortype]!=nil && params[:vendortype]=="restaurants"
+			 @status="true"  #for restaurants
+			 	@vendor=Restaurant.find(params[:id])
+   				else
+			 	@status="false"
+			 @vendor=Vendor.find(params[:id])
+   	end
+ 	end
+
+  ####################################################################
+  		def new
 			@meta=Meta.where("controller= 'Vendor' and  page='Vendor Signup'").last
 			if !@meta.blank?
 				@meta_title=@meta.metatitle
@@ -111,9 +125,9 @@ class VendorsController < ApplicationController
       @vendor = Vendor.new(session[:vendor_params])  
       @vendor.current_step = session[:vendor_step]
         if @vendor.valid?  
-		if params[:back_button]  
-		  @vendor.previous_step  
-		elsif @vendor.last_step?
+		   if params[:back_button]  
+		     @vendor.previous_step  
+		     elsif @vendor.last_step?
 			if @vendor.vendor_type.downcase=="restaurants"
 				@rest=Restaurant.new(session[:vendor_params])
 				@rest.save
@@ -165,14 +179,18 @@ class VendorsController < ApplicationController
      redirect_to(vendorlogin_vendors_path, :notice => 'Please login to process.')          
 	end
   end
+
+
+
   def update
   if !session[:vendor].vendor_type.empty? && session[:vendor].vendor_type!="restaurants"
 		 @vendor=Vendor.find(params[:id])
 		  respond_to do |format|
 		   if @vendor.update_attributes(params[:vendor])
-		     format.html { redirect_to(vendorInfo_path(@vendor.id)+"/#{session[:vendor].vendor_type}"+"/#{session[:vendor].business_name}") }
+		     #format.html { redirect_to(vendorInfo_path(@vendor.id)+"/#{session[:vendor].vendor_type}") }
+ 	 format.html {	redirect_to "/vendors/profile/#{session[:vendor].vendor_type}/#{session[:vendor].id}/"+"#{session[:vendor].business_name}".gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").gsub('.'," ").strip }
 		     format.xml  { head :ok }
-		   else
+		       else
 		     format.html { render :action => "edit" }
 		     format.xml  { render :xml => @vendor.errors, :status => :unprocessable_entity }
 		    end
@@ -181,9 +199,10 @@ class VendorsController < ApplicationController
         @vendor=Restaurant.find(params[:id])
 		  respond_to do |format|        
          if @vendor.update_attributes(params[:restaurant])
-        format.html { redirect_to(vendorInfo_path(@vendor.id)+"/restaurants"+"/#{session[:vendor].business_name}") }
+        #format.html { redirect_to(vendorInfo_path(@vendor.id)+"/restaurants"+"/#{session[:vendor].business_name}") }
+ 	 		format.html {	redirect_to "/vendors/profile/#{session[:vendor].vendor_type}/#{session[:vendor].id}/"+"#{session[:vendor].business_name}".gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").gsub('.'," ").strip }
         format.xml  { head :ok }
-      else
+           else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @vendor.errors, :status => :unprocessable_entity }
       end
@@ -257,7 +276,10 @@ class VendorsController < ApplicationController
 	if @vendor!=nil && !@vendor.empty?
 		if @vendor.first.password == params[:password] && !params[:password].empty?
 	   	session[:vendor]=@vendor.first
-      	   redirect_to (vendorInfo_path(@vendor.first.id)+"/#{session[:vendor].vendor_type}") 	 
+      	   #redirect_to (vendorInfo_path(@vendor.first.id)+"/#{session[:vendor].vendor_type}")
+
+ 		redirect_to "/vendors/profile/#{session[:vendor].vendor_type}/#{session[:vendor].id}/"+"#{session[:vendor].business_name}".gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").gsub('.'," ").strip
+	 
       else
      	  redirect_to(vendorlogin_vendors_path, :notice => 'incorrect password.') 
 		end
@@ -266,8 +288,9 @@ class VendorsController < ApplicationController
      if @vendor!=nil && !@vendor.empty?
 		if @vendor.first.password== params[:password] && !params[:password].empty?
 	   	session[:vendor]=@vendor.first
-     	   redirect_to (vendorInfo_path(@vendor.first.id)+"/restaurants"+"/#{session[:vendor].business_name}")	 
-      else
+     	   #redirect_to (vendorInfo_path(@vendor.first.id)+"/restaurants"+"/#{session[:vendor].business_name}")
+			 redirect_to "/vendors/profile/#{session[:vendor].vendor_type}/#{session[:vendor].id}/"+"#{session[:vendor].business_name}".gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").gsub('.'," ").strip	 
+      		else
      	  redirect_to(vendorlogin_vendors_path, :notice => 'incorrect password.') 
 		end
      else

@@ -20,15 +20,16 @@ class VideosController < ApplicationController
   end
   
   def show
-			@meta=Meta.where("controller='Video Library' and  page='View Video'").last
-			if !@meta.blank?
-			@meta_title=@meta.metatitle
-			@meta_keywords=@meta.keywords
-			@meta_description=@meta.description
-			end
+
 
     @video = OldFlashFile.find(params[:id])
 #    @video = OldFlashFile.find(:all)
+			@meta=Meta.where("controller='Video Library' and  page='View Video'").last
+			if !@meta.blank?
+			@meta_title=@video.title
+			@meta_keywords=@meta.keywords
+			@meta_description=@meta.description
+			end
   end
   
 end

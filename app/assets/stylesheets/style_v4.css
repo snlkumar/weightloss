@@ -84,13 +84,6 @@ h2 {font-weight:bold; font-size:13px; color:#000; padding:0px; margin:0px;}
 .txt_yellow{color:#f0c231;}
 .txt_yellowlight {color:#f6ffc7;}
 
-.function_active_arrow{background:url(http://media.monsterindia.com/monster_2012/active_arrow.jpg) no-repeat right center; background-color:transparent;}
-
-.footer a{text-decoration:none; background:url(http://media.monsterindia.com/monster_2012/arrow_ftr.gif) no-repeat left 5px; color:#666; padding-left:10px;}
-.footer a:hover{text-decoration:underline;}
-
-.company_active_tab{background:url(http://media.monsterindia.com/monster_2012/company/company_active.jpg) repeat-y right top; border:solid 1px #bfbfbf; border-right:0px; width:27px; padding:5px 3px;}
-.company_normal_tab{background:url(http://media.monsterindia.com/monster_2012/company/company_normal.jpg) repeat-y right top; width:27px; padding:5px 3px;}
 
 .blackOverlay{display:none;position:fixed;_position:absolute;left:0;bottom:0;width:100%;height:100%;_height:100%;background-color:black;z-index:100;-moz-opacity:.5;opacity:.50;filter:alpha(opacity=50);}* html div.division{height:expression(this.scrollHeight>349 ? "350px":"auto");}div.division{max-height:350px;}
 
@@ -211,10 +204,6 @@ font-size:13px;
 }
 
 .chromestyle ul li a:hover, .chromestyle ul li a.selected{ /*script dynamically adds a class of "selected" to the current active menu item*/
-background: #563575 url(http://media.monsterindia.com/monster_2012/menu_arrow.jpg) right center no-repeat;
-text-decoration:none;
-/*THEME CHANGE HERE*/
-}
 
 /* ######### Style for Drop Down Menu ######### */
 
@@ -263,8 +252,6 @@ text-decoration:underline;
 /*  scrollgeneric is used for corrective styling of elements, and should not be modified or removed */ 
 .scrollgeneric {line-height: 1px;font-size: 1px; position: absolute;top: 0; left: 0; z-index:100;}
 
-.vscrollerbar {width: 7px; background: url(http://media.monsterindia.com/monster_2012/scroller_top.png) left top no-repeat;}
-.vscrollerbarbeg { background: url(http://media.monsterindia.com/monster_2012/scroller_bg2.png) repeat-y left bottom; margin-top:5px; height: auto;width: 7px;}
 .hscrollerbase {height: 16px; background-color: white;}
 .hscrollerbar {height: 16px; background-color: black;}
 .vscrollerbar, .hscrollerbar {padding: 1px;z-index: 2;}
