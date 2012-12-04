@@ -6,7 +6,7 @@ has_attached_file :photo,
        :medium => "300X300",
        :profile=> "137x137",
        :thumb=> "100x100#",
-       :small  => "50x80>" },
+       :small  => "15x30" },
        :url  => '/system/:class/:id/:style/:photo',
                              :path => ":rails_root/public/system/:class/:id/:style/:photo"
   has_one :businessclaim

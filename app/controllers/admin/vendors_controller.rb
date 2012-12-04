@@ -1,9 +1,30 @@
 class Admin::VendorsController < ApplicationController
   layout 'new_admin' 
 
+	def search
+	     if !params[:searchtype].nil?
+      if params[:filterQuery].nil? 
+        params[:filterQuery]=""	
+      end
 
+      if params[:searchtype]=="all"
 
-   def index 	
+        @vendors=Vendor.where("business_name like '%"+params[:filterQuery]+"%' or email like '%"+params[:filterQuery]+"%' or fname like '%"+params[:filterQuery]+"%' or lname like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
+
+      elsif params[:searchtype]=="restaurants"
+        @vendors=Restaurant.where("business_name like '%"+params[:filterQuery]+"%' or email like '%"+params[:filterQuery]+"%' or fname like '%"+params[:filterQuery]+"%' or lname like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
+
+      else
+		 @vendors=Vendor.where("vendor_type ='"+params[:searchtype]+"' and (business_name like '%"+params[:filterQuery]+"%' or email like '%"+params[:filterQuery]+"%' or fname like '%"+params[:filterQuery]+"%' or lname like '%"+params[:filterQuery]+"%')").page(params[:page] || 1).per(30)
+      end	
+    end
+
+    render :action => :search
+	end
+
+ 
+################################################################
+  def index 	
  	if params[:status]
   	 @status=params[:status]
   	 else
@@ -26,6 +47,11 @@ class Admin::VendorsController < ApplicationController
 		  @vendor=Vendor.find(params[:id])
 	  end
    end
+
+
+#####################################################3
+
+
 
 #####################################################
 

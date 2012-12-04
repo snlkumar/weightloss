@@ -691,6 +691,21 @@ end
      format.js { render :json =>@status.to_json}
     end
   end
+###########################################################################
+
+  def measurementDetails
+	   	@user=User.find(params[:user_id])
+		   @meas=@user.measurements.all
+			if !@meas.empty?
+				@status=@meas
+				  else
+				@status=nil
+			end
+		   session[:user_id]=@user.id
+		   respond_to do |format|
+		     format.js { render :json =>@status.to_json}
+		   end	
+	end
 
 #########################################################################################
 
@@ -755,7 +770,7 @@ end
   end
 ####################################
 
-def addWorkout1
+ def addWorkout1
     
     if params[:trained_on]
       	@start_date = Time.zone.parse(params[:trained_on]).strftime("%Y-%m-%d")
@@ -792,12 +807,26 @@ def addWorkout1
 
 ###################################################################
 
-	def bodyfat
-		params[:bodyfat][:bodyfat]=15
-		params[:bodyfat][:bodymass]=15
-		@fat=Bodyfat.create(params[:bodyfat])
+	def bodyfat	
+   @user=User.find(params[:bodyfat][:user_id])
+	gender=@user.gender
+	age=age(@user.birthdate)
+
+ 	sum=params[:bodyfat][:chest].to_i+params[:bodyfat][:abdominal].to_i+params[:bodyfat][:thigh].to_i+params[:bodyfat][:subscapular].to_i+params[:bodyfat][:tricep].to_i+params[:bodyfat][:midaxillary].to_i+params[:bodyfat][:suprailiac].to_i
+
+		if gender=="male"
+			  bd = (1.12000000-(0.00043499*sum)+(0.00000055*sum)-0.00028826*age).round(4);
+
+					else
+				bd = (1.0970 - (0.00046971*sum) + 0.00000056*sum - 0.00012828*age).round(4); 
+
+		end
+			fat = (((4.95/bd) - 4.50)*100).round(2);
+			params[:bodyfat][:bodyfat]=fat
+			bodymass=params[:bodyfat][:bodymass]=100-params[:bodyfat][:bodyfat]
+		   @fat=Bodyfat.create(params[:bodyfat])
 			if @fat.save
-             @status={"status-msg"=>"160"}
+             @status={"status-msg"=>"160","result"=>{"bodyfat"=>fat, "bodymass"=>bodymass}}
             else
            @status={"status-msg"=>"161"}  
        end 
@@ -807,8 +836,12 @@ def addWorkout1
      end
   end
 
+	def age(dob)
+		now = Time.now.utc.to_date
+		now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+	end
 
-
+####################################################################################
   #this method for testing, to check webservice
   def check
 

@@ -1,0 +1,72 @@
+<style type="text/css">
+.even { background: #E6EEEE; }
+.odd { background: #cccccc; }
+.head-table{background: #ccc; }
+
+input:-moz-placeholder {
+      color: grey;
+}
+
+</style>
+
+<script type="text/javascript">
+  <%content_for :js do%>
+    $("table tbody tr").mouseover(function(){
+      $(this).css("background-color","#ccc");
+    }).mouseout(function(){
+      $(this).css("background-color","");
+    });
+          
+  <%end%>
+
+</script>
+  <%= link_to 'Back', admin_vendors_path %> &nbsp;
+<div class="grid_16" style="width: 1000px;">
+     <h2 style="font-size:20px;align:center;background-color:#0B2B42;width:98%;">Search results</h2>
+ 
+  
+  <%= page_entries_info(@vendors, :entry_name => 'vendor') %>  
+  <%= paginate(@vendors, :params => pagination_params(request)) %> 
+
+
+  <br/>
+
+  <table class="admin">
+    <thead>
+      <tr class="head-table">
+        <th>Name</th>
+        <th>Vendor Type</th>
+        <th>Phone</th>
+        <th>Email</th>
+		  <th>Created on</th>		
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @vendors.each do |vendor| %>
+        <tr class="<%= cycle('odd', 'even') %>">
+          <!--<td><%#= link_to exercise.description, edit_admin_exercise_path(exercise) %></td>-->
+          <td><%=vendor.business_name%> </td>
+          <td><%=vendor.vendor_type.split('_').join(' ')%> </td>
+          <td><%=vendor.contact1%> </td>
+          <td><%=vendor.email%> </td>
+          <td><%=vendor.created_at.nil? ? "" : vendor.created_at.strftime("%m/%d/%Y")%> </td>			
+                    <td class="actions">
+
+			<% if vendor.vendor_type=="restaurants"%>
+           <%= link_to 'Details', admin_vendor_path(vendor.id)+"/restaurants"%>|
+            <%= link_to 'Edit', "/admin/vendors/#{vendor.id}/edit/restaurants" %>
+					<%else%>
+           <%= link_to 'Details', admin_vendor_path(vendor.id)+"/"+vendor.vendor_type%>|
+            <%= link_to 'Edit', "/admin/vendors/#{vendor.id}/edit/vendors" %>
+			<%end%> 
+
+            <%#= link_to 'Edit', "/admin/vendors/#{vendor.id}/edit/restaurants" %>
+            <%#= link_to 'Delete', "/admin/vendors/#{vendor.id}/delete/restaurants", :confirm => 'Are you sure?', :method => :delete %>
+	   </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+

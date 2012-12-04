@@ -316,7 +316,7 @@ function getTdVal(mid)
          <%if @cols!="restaurants"%>
 <td style="padding: .3%;">
 <% if row.photo.exists? then %>
-	<%= link_to image_tag (row.photo.url(:small)),vendorInfo_path(row.id)+"/"+row.business_name%>
+	<%= link_to image_tag (row.photo.url(:small)),vendorInfo_path(row.id)+"/"+row.business_name.downcase.gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").gsub('.'," ").strip%>
 <% end %></td>
 				<% if @cols=="all"%>
           <td style="padding: .3%;"><%=row.vendor_type.split('_').join(' ')%>&nbsp;&nbsp;</td>
@@ -344,7 +344,7 @@ function getTdVal(mid)
 				<%end%>
         <%elsif @cols=="restaurants"%>
         	 <td style="padding: .3%;"><% if row.photo.exists? then %>
-	<%= link_to image_tag (row.photo.url(:small)),vendorInfo_path(row.id)+"/restaurants" %>
+	<%= link_to image_tag (row.photo.url(:small)),vendorInfo_path(row.id)+"/restaurants"+"/"+"#{row.business_name}".downcase.gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").gsub('.'," ").strip %>
 <% end %></td>
           <td style="padding: .3%;"><%=link_to row.business_name, vendorInfo_path(row.id)+"/restaurants"+"/"+"#{row.business_name}".downcase.gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").gsub('.'," ").strip%></td>
           <td style="padding: .3%;"><%=row.address1%></td>

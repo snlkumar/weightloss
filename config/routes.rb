@@ -6,6 +6,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
    
   end
 	#new added routes
+	match '/admin/vendors/search' =>'admin/vendors#search'
 	match '/custom_foods/new/:name' => 'custom_foods#new'
 	match '/custom_foods/(:id)/update/(:food_name)' => "custom_foods#update_meal"
 	match "/workouts/calorie" =>"workouts#calculate_calories"
@@ -23,6 +24,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 	match '/admin/vendors/:id/(:restaurants)' =>'admin/vendors#show'
 	match '/admin/vendors/:id/edit/(:restaurants)' =>'admin/vendors#edit_vendor'
 	match '/admin/vendors/:id/delete/(:restaurants)' =>'admin/vendors#delete_vendor'
+
 	 
 	##
   match '/password/edit' => 'user_passwords#edit', :as => :edit_password, :via => :get
@@ -87,6 +89,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 		get 'video/(:category_id)/(:filter)', :action =>'video'
 		post :addWorkout1
 		post :bodyfat
+		post  :measurementDetails
     end
     member do
       post :photo
