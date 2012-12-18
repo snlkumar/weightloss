@@ -1,7 +1,7 @@
 <style type="text/css">
 .even { background: #E6EEEE; }
 .odd { background: #cccccc; }
-.head-table{background: #ccc; }
+.head-table{background: #E6EEEE; }
 
 input:-moz-placeholder {
       color: grey;
@@ -20,12 +20,13 @@ input:-moz-placeholder {
   <%end%>
 
 </script>
-  <%= link_to 'Back', admin_vendors_path %> &nbsp;
+<br/>
+  <%= link_to 'Back', admin_vendors_path %> &nbsp;<br/>
 <div class="grid_16" style="width: 1000px;">
-     <h2 style="font-size:20px;align:center;background-color:#0B2B42;width:98%;">Search results</h2>
+     <h2 style="font-size:20px;text-align:center;background-color:#0B2B42;width:100%;color:white;">Search results</h2>
  
   
-  <%= page_entries_info(@vendors, :entry_name => 'vendor') %>  
+  Displaying total <%= @vendor.length %> results.
   <%= paginate(@vendors, :params => pagination_params(request)) %> 
 
 
@@ -34,6 +35,7 @@ input:-moz-placeholder {
   <table class="admin">
     <thead>
       <tr class="head-table">
+      <th style="width:4%;">#</th>
         <th>Name</th>
         <th>Vendor Type</th>
         <th>Phone</th>
@@ -43,8 +45,9 @@ input:-moz-placeholder {
       </tr>
     </thead>
     <tbody>
-      <% @vendors.each do |vendor| %>
+      <% @vendors.each_with_index do |vendor, index | %>
         <tr class="<%= cycle('odd', 'even') %>">
+          <td><%= index + 1 %></td>
           <!--<td><%#= link_to exercise.description, edit_admin_exercise_path(exercise) %></td>-->
           <td><%=vendor.business_name%> </td>
           <td><%=vendor.vendor_type.split('_').join(' ')%> </td>

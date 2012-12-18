@@ -50,7 +50,19 @@ class WorkoutsController < ApplicationController
 
 		@workouts=Workout.find_by_sql("SELECT wi.exercise_id,w.id,e.description,wi.calories,w.time_from,w.note,w.trained_on FROM exercises e ,workout_items wi, workouts w  WHERE w.user_id="+current_user.id.to_s+" and trained_on='"+@start_date+"' and wi.exercise_id=e.id and w.id=wi.workout_id")
 
-		@meals = Meal.find_by_sql("SELECT mi.food_id,m.id,f.name,m.meal_type,m.note,ifnull(mi.calories,0) as calories,ifnull(f.total_fat,0) as fat,ifnull(f.carbohydrt,0) as carbohydrt,ifnull(f.protein,0) as protein,m.ate_on from meals m,meal_items mi,foods f where f.id=mi.food_id and m.id = mi.meal_id and m.user_id=" + current_user.id.to_s + " and m.ate_on='"+ @start_date.to_s+"'")
+		@meals = Meal.find_by_sql("SELECT mi.food_id,m.id,f.name,m.meal_type,m.note,ifnull(mi.calories,0) as calories,ifnull(f.lipid_tot,0) as fat,ifnull(f.carbohydrt,0) as carbohydrt,ifnull(f.protein,0) as protein,m.ate_on from meals m,meal_items mi,foods f where f.id=mi.food_id and m.id = mi.meal_id and m.user_id=" + current_user.id.to_s + " and m.ate_on='"+ @start_date.to_s+"'")
+
+
+# @meals=@foods.map{|f| {:food_id=>f.food_id, :calories=>"#{f.calories}", :fat=> "#{eq_calories(f.food_id,f.fat,"fat")}" ,:carbohydrt=> eq_calories(f.food_id,f.carbohydrt,"carbohydrt"),:protein=> eq_calories(f.food_id,f.protein,"protein"),:note=>f.note,:meal_type=>f.meal_type,:name=>f.name,:ate_on=>f.ate_on,:id=>f.id}}
+
+			@meals.each do |f|
+				if(f.food_id!=8443)
+					f.fat= eq_calories(f.food_id,f.calories,"fat") 
+					f.carbohydrt=eq_calories(f.food_id,f.calories,"carbohydrt") 
+					f.protein=eq_calories(f.food_id,f.calories,"protein")
+				end
+			end
+
   end
   
   #
@@ -118,4 +130,43 @@ class WorkoutsController < ApplicationController
       wants.js { render }
     end
   end	
+
+
+
+############################################################################# new added for fat cal proten calcution
+
+	  def eq_calories(fid, calories, type)
+
+			@food=Food.find(fid)
+			times=calories/@food.energ_kcal
+			 if !@food.custom
+
+					 case type
+						 when 'fat'
+								calories       = (@food.lipid_tot.to_f * times)
+						 when 'carbohydrt'
+								calories       = (@food.carbohydrt.to_f * times) 
+						 when 'protein'
+								calories       = (@food.protein.to_f * times) 						
+						 end
+
+			else
+					times=calories/@food.energ_kcal
+					 case type
+						 when 'calorie'
+								calories       = @food.energ_kcal.to_f* times
+						 when 'fat'
+								calories       = @food.total_fat.to_f * times
+						 when 'carbohydrt'
+								calories       = @food.carbohydrt.to_f * times
+						 when 'protein'
+								calories       = @food.protein.to_f * times
+						 when 'fiber_td'
+								calories       = @food.fiber_td.to_f * times
+						 end
+			end
+			return calories.round(2) unless calories.nil? 
+
+      end
+
 end

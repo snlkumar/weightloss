@@ -16,10 +16,64 @@
       #old code
 			#render :json => @foods.map{|f| {:value => (f.custom? ? "#{f.name} **" : "#{f.name} - #{f.gmwt_desc1} - #{f.energ_kcal} - #{f.total_fat} - #{f.carbohydrt} - #{f.protein} - #{f.fiber_td}"), :id => f.id} }.to_json
 			
-			render :json => @foods.map{|f| {:value => ("#{f.name} ** #{f.gmwt_desc1} ** #{f.energ_kcal} ** #{f.total_fat} ** #{f.carbohydrt} ** #{f.protein} ** #{f.fiber_td}"), :id => f.id} }.to_json
+			render :json => @foods.map{|f| {:value => ("#{f.name} ** #{f.gmwt_desc1} ** #{ eq_calories(f.id, "calorie")} ** #{eq_calories(f.id, "fat")} ** #{ eq_calories(f.id, "carbohydrt")} ** #{eq_calories(f.id, "protein")} ** #{eq_calories(f.id, "fiber_td")}"), :id => f.id} }.to_json
     end
     
   end
+
+
+###################################################################################
+
+	  def eq_calories(fid, type)
+
+			@food=Food.find(fid)
+			serving=@food.gmwt_desc1.gsub(/^\s+/,"").split(" ")[0].to_f;
+
+
+			#weight_for_quantity = @food.units.blank?  ? 0 : (!food.gmwt_desc1.nil? ? @food.gmwt_1 : (@food.gmwt_2.blank?  ? "
+
+			 if !@food.custom
+
+					 case type
+						 when 'calorie'
+								calories       = (@food.energ_kcal.to_f * (@food.gmwt_1.to_f * serving.to_f) / 100) 
+						 when 'fat'
+									calories       = (@food.lipid_tot.to_f * (@food.gmwt_1.to_f * serving.to_f) / 100) 
+						 when 'carbohydrt'
+								calories       = (@food.carbohydrt.to_f * (@food.gmwt_1.to_f * serving.to_f) / 100) 
+						 when 'protein'
+								calories       = (@food.protein.to_f * (@food.gmwt_1.to_f * serving.to_f) / 100) 
+						 when 'fiber_td'
+								calories       = (@food.fiber_td.to_f * (@food.gmwt_1.to_f * serving.to_f) / 100) 
+
+						 end
+
+
+						#calories       = (@food.energ_kcal.to_f * (@food.gmwt_1.to_f * serving.to_f) / 100) 
+			else
+				#servingSize1=@food.gmwt_desc1.gsub(/^\s+/,"").split(" ")[0].to_f 
+				#calories=@food.energ_kcal
+
+					 case type
+						 when 'calorie'
+								calories       = @food.energ_kcal
+						 when 'fat'
+									calories    = @food.total_fat
+						 when 'carbohydrt'
+								calories       = @food.carbohydrt
+						 when 'protein'
+								calories       = @food.protein
+						 when 'fiber_td'
+								calories       = @food.fiber_td
+
+						 end
+
+			end
+			return calories.round(2) unless calories.nil? 
+
+      end
+
+####################################################################################################
 
   def meal_item_calories
     meal_item = MealItem.new(params[:meal][:meal_items_attributes].first.last)

@@ -88,8 +88,8 @@ $(document).ready(function(){
 			dataType: 'html',
 			success: function(data) {
 				$("#ajaxAutoComplete").html(dataGrid(jQuery.parseJSON(data)));
-					$("#ajaxAutoComplete").css('left', vleft);
-					$("#ajaxAutoComplete").css('top', vtop+20);
+					$("#ajaxAutoComplete").css('left', vleft+130);
+					$("#ajaxAutoComplete").css('top', vtop+35);
 				$("#ajaxAutoComplete").css("display","block");
 			},
 			error: function(data)

@@ -125,8 +125,9 @@ class UsersController < ApplicationController
   def achievement_date
     render :partial => 'shared/achievement_date', :locals => {:user => current_user}
   end
-	
+###############################################################################	
 	#new added actions
+=begin
   def bodyfat_store
   	@bodyfat=Bodyfat.create(:bodyfat=>params[:bodyfat],:height=>params[:height].to_f,:waist=>params[:waist].to_f,:neck=>params[:neck].to_f,:hips=>params[:hips].to_f,:user_id=>current_user.id)
   	if @bodyfat.save
@@ -135,7 +136,7 @@ class UsersController < ApplicationController
   		@status="not"
   	end
   	render :text=>@status
-=begin
+
 	if params[:hips]=="" || params[:hips]==nil
   		params[:hips]=0
   	end	
@@ -149,10 +150,10 @@ class UsersController < ApplicationController
  
  	#@bodyfat=Bodyfat.create(:bodyfat=>bodyfat,:height=>params[:height].to_f,:waist=>params[:waist].to_f,:neck=>params[:neck].to_f,:hips=>params[:hips].to_f,:user_id=>current_user.id)
  
-=end
+
 end
 
-
+=end
 ############################### new code
 	def bodyfatpercent
 	@user=current_user

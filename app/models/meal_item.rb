@@ -16,17 +16,24 @@ class MealItem < ActiveRecord::Base
   def calculate_calories
 		if calories.blank?
 		  if food and food.custom?
-		    self.calories = food.energ_kcal* self.serving
+			servingSize1=food.gmwt_desc1.gsub(/^\s+/,"").split(" ")[0].to_f 
+		   self.calories =( (food.energ_kcal* self.serving)/servingSize1) 
+			#self.calories =(food.energ_kcal* self.serving)
+
 		  else
+
 		    energ_kcal          = food.energ_kcal
-		    
-				unit_desc = self.serving.to_s.gsub(".0","").gsub("0.",".") + self.units
-		 		
-		    weight_for_quantity = self.units.blank?  ? 0 : (food.gmwt_desc1.eql?(unit_desc) ? food.gmwt_1 : (food.gmwt_2.blank?  ? 0 : food.gmwt_2 ))
-		    
-		    self.calories       = (energ_kcal * (weight_for_quantity * self.serving) / 100)
-		 end
-		 
+
+#new added servingSize1
+
+				#servingSize1=food.gmwt_desc1.gsub(/^\s+/,"").split(" ")[0].to_f
+ 
+		    #weight_for_quantity = self.units.blank?  ? 0 : (food.gmwt_desc1.eql?(unit_desc) ? food.gmwt_1 : (food.gmwt_2.blank?  ? 0 : food.gmwt_2 ))	    
+			unit_desc = self.serving.to_s.gsub(".0","").gsub("0.",".") + self.units
+			weight_for_quantity = self.units.blank?  ? 0 : (!food.gmwt_desc1.nil? ? food.gmwt_1 : (food.gmwt_2.blank?  ? 0 : food.gmwt_2 ))	 		
+		   self.calories       = (energ_kcal * (weight_for_quantity * self.serving) / 100) 
+
+		   end
 		end  
 end 
 

@@ -9,17 +9,20 @@ class Admin::VendorsController < ApplicationController
 
       if params[:searchtype]=="all"
 
-        @vendors=Vendor.where("business_name like '%"+params[:filterQuery]+"%' or email like '%"+params[:filterQuery]+"%' or fname like '%"+params[:filterQuery]+"%' or lname like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
+        @vendor1=Vendor.where("business_name like '%"+params[:filterQuery]+"%' or email like '%"+params[:filterQuery]+"%' or fname like '%"+params[:filterQuery]+"%' or lname like '%"+params[:filterQuery]+"%'").order('business_name ASC')
+@vendor2=Restaurant.where("business_name like '%"+params[:filterQuery]+"%' or email like '%"+params[:filterQuery]+"%' or fname like '%"+params[:filterQuery]+"%' or lname like '%"+params[:filterQuery]+"%'")
+@vendor=(@vendor2|@vendor1)
+@vendors = Kaminari.paginate_array(@vendor).page(params[:page]).per(50)
 
       elsif params[:searchtype]=="restaurants"
-        @vendors=Restaurant.where("business_name like '%"+params[:filterQuery]+"%' or email like '%"+params[:filterQuery]+"%' or fname like '%"+params[:filterQuery]+"%' or lname like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
+        @vendors=Restaurant.where("business_name like '%"+params[:filterQuery]+"%' or email like '%"+params[:filterQuery]+"%' or fname like '%"+params[:filterQuery]+"%' or lname like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(50)
 
       else
-		 @vendors=Vendor.where("vendor_type ='"+params[:searchtype]+"' and (business_name like '%"+params[:filterQuery]+"%' or email like '%"+params[:filterQuery]+"%' or fname like '%"+params[:filterQuery]+"%' or lname like '%"+params[:filterQuery]+"%')").page(params[:page] || 1).per(30)
+		 @vendors=Vendor.where("vendor_type ='"+params[:searchtype]+"' and (business_name like '%"+params[:filterQuery]+"%' or email like '%"+params[:filterQuery]+"%' or fname like '%"+params[:filterQuery]+"%' or lname like '%"+params[:filterQuery]+"%')").page(params[:page] || 1).per(50)
       end	
     end
 
-    render :action => :search
+    render :layout => 'old_application'
 	end
 
  
@@ -32,10 +35,12 @@ class Admin::VendorsController < ApplicationController
        end
 
   	 if @status=="false"
-	    @vendors = Vendor.page(params[:page] || 1).per(50)
+	    @vendors = Vendor.page(params[:page] || 1).per(50).order('business_name ASC')
 	  else    
-	    @vendors = Restaurant.page(params[:page] || 1).per(50)
+	    @vendors = Restaurant.page(params[:page] || 1).per(50).order('business_name ASC')
 	  end    
+		render :layout => 'old_application'
+
    end
 ##########################################   
    def show

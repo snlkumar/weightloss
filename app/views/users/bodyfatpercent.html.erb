@@ -55,7 +55,7 @@ fields="#bodyfat_chest,#bodyfat_abdominal,#bodyfat_thigh,#bodyfat_tricep,#bodyfa
 
 	fat = [(4.95/bd) - 4.50]*100
 	fatpercent=fat.toFixed(2);
-	bodymass=100-fatpercent;
+	bodymass=(100-fatpercent).toFixed(2);
 	$('#bodyfat_bodyfat').css("background-color", "#993333");
 	$('#bodyfat_bodymass').css("background-color", "#993333");
 

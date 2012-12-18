@@ -1,7 +1,9 @@
 class MywwWebservicesController < ApplicationController
 
   def login
+
     @user=User.find_by_email(params[:email])
+
     @status=""
     
     if @user!=nil
@@ -10,6 +12,7 @@ class MywwWebservicesController < ApplicationController
       if @user.valid_password?(params[:password]) #Devise.secure_compare(@user.encrypted_password,pass)
           @status={"status-msg"=>"111"}   #111=>login success
           session[:user_id] = @user.id
+
           ## update login detail of user
           setCurrentLoginInfo
       else
@@ -20,6 +23,7 @@ class MywwWebservicesController < ApplicationController
     else
       @status={"status-msg"=>"113"}       #113 =>email error
     end
+
     respond_to do |format|
       format.js { render :json =>@status.to_json}
     end
@@ -610,12 +614,14 @@ end
 ############################################################################## net calories calculation
   def netcalories
     # creates a date to net calories mapping
-		@user=User.find(params[:id])
+		@user=User.find(params[:user_id])
 		range=params[:range] 
 		@dates=dates_for_graph(range)
-    	temp = {}
-    	@dates.each {|day| temp[ day.strftime("%b %d %Y") ] = @user.net_calories_on(day) }
-    	temp
+      @status= @dates.map{|f| {:date =>f.strftime("%b %d"), :calorie=>@user.net_calories_on(f)}}
+
+						respond_to do |format|
+						format.js { render :json =>@status.to_json}
+						end	
   end
 
 
@@ -648,7 +654,7 @@ end
       
       arr << temp
     end
-    arr.reverse
+    arr
   end
 
 ##########################################################################
