@@ -4,7 +4,9 @@ class Admin::VendorsController < ApplicationController
 	def search
 	     if !params[:searchtype].nil?
       if params[:filterQuery].nil? 
-        params[:filterQuery]=""	
+        params[:filterQuery]=""
+				else
+				params[:filterQuery]=params[:filterQuery].strip	
       end
 
       if params[:searchtype]=="all"
@@ -12,16 +14,16 @@ class Admin::VendorsController < ApplicationController
         @vendor1=Vendor.where("business_name like '%"+params[:filterQuery]+"%' or email like '%"+params[:filterQuery]+"%' or fname like '%"+params[:filterQuery]+"%' or lname like '%"+params[:filterQuery]+"%'").order('business_name ASC')
 @vendor2=Restaurant.where("business_name like '%"+params[:filterQuery]+"%' or email like '%"+params[:filterQuery]+"%' or fname like '%"+params[:filterQuery]+"%' or lname like '%"+params[:filterQuery]+"%'")
 @vendor=(@vendor2|@vendor1)
-@vendors = Kaminari.paginate_array(@vendor).page(params[:page]).per(50)
+
 
       elsif params[:searchtype]=="restaurants"
-        @vendors=Restaurant.where("business_name like '%"+params[:filterQuery]+"%' or email like '%"+params[:filterQuery]+"%' or fname like '%"+params[:filterQuery]+"%' or lname like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(50)
+        @vendor=Restaurant.where("business_name like '%"+params[:filterQuery]+"%' or email like '%"+params[:filterQuery]+"%' or fname like '%"+params[:filterQuery]+"%' or lname like '%"+params[:filterQuery]+"%'")
 
       else
-		 @vendors=Vendor.where("vendor_type ='"+params[:searchtype]+"' and (business_name like '%"+params[:filterQuery]+"%' or email like '%"+params[:filterQuery]+"%' or fname like '%"+params[:filterQuery]+"%' or lname like '%"+params[:filterQuery]+"%')").page(params[:page] || 1).per(50)
+		 @vendor=Vendor.where("vendor_type ='"+params[:searchtype]+"' and (business_name like '%"+params[:filterQuery]+"%' or email like '%"+params[:filterQuery]+"%' or fname like '%"+params[:filterQuery]+"%' or lname like '%"+params[:filterQuery]+"%')")
       end	
     end
-
+	@vendors = Kaminari.paginate_array(@vendor).page(params[:page]).per(50)
     render :layout => 'old_application'
 	end
 

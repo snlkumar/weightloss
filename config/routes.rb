@@ -93,7 +93,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
     end
     member do
       post :photo
-
+		post  'galleryPhotoUpload/:before_after', :action=>'galleryPhotoUpload'
     end
   end 
   

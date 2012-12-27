@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121217072717) do
+ActiveRecord::Schema.define(:version => 20121227151437) do
 
   create_table "City", :primary_key => "ID", :force => true do |t|
     t.string "Name",        :limit => 35, :default => "", :null => false
@@ -258,6 +258,8 @@ ActiveRecord::Schema.define(:version => 20121217072717) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "action"
+    t.string   "url"
   end
 
   create_table "old_departments", :force => true do |t|
@@ -455,22 +457,6 @@ ActiveRecord::Schema.define(:version => 20121217072717) do
     t.integer  "photo_file_size"
     t.string   "address2"
     t.string   "address3"
-    t.string   "city2"
-    t.string   "city3"
-    t.string   "state2"
-    t.string   "state3"
-    t.string   "contact3"
-    t.string   "contact4"
-    t.string   "contact5"
-    t.string   "contact6"
-    t.string   "certifications2"
-    t.string   "certifications3"
-    t.string   "specialities2"
-    t.string   "specialities3"
-    t.string   "licence_no1"
-    t.string   "licence_no2"
-    t.string   "license_states1"
-    t.string   "license_states2"
   end
 
   create_table "sessions", :force => true do |t|
@@ -661,23 +647,16 @@ ActiveRecord::Schema.define(:version => 20121217072717) do
     t.string   "p_contact"
     t.string   "b_email"
     t.string   "p_country"
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.string   "address3"
-    t.string   "city2"
-    t.string   "city3"
-    t.string   "state2"
-    t.string   "state3"
-    t.string   "contact3"
-    t.string   "contact4"
-    t.string   "contact5"
-    t.string   "contact6"
-    t.string   "certifications2"
-    t.string   "certifications3"
-    t.string   "specialities2"
-    t.string   "specialities3"
-    t.string   "licence_no1"
-    t.string   "licence_no2"
-    t.string   "license_states1"
-    t.string   "license_states2"
   end
 
   create_table "weights", :force => true do |t|

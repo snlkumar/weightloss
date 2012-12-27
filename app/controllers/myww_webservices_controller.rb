@@ -683,6 +683,48 @@ end
 			end			
 		end
 
+
+
+#########################################################################
+
+	def galleryPhotoUpload
+	  if params[:id]
+			@userfile= params[:userfile]
+			@userfile.rewind
+			@filename = "#{Rails.root}/public/"+rand(1000000000).to_s+@userfile.original_filename
+	  
+			 File.open(@filename, "wb") do |file|
+				file.write(@userfile.read)
+			 end         
+
+		 #@user.photos=File.open(@filename)
+		if params[:before_after]=="User_Photo"
+					params[:before_after]="user_photo"
+						elsif  params[:before_after]=="Photo_Before_Measurement"
+					params[:before_after]="before"
+				else 
+		 	params[:before_after]="after"
+		end
+
+		 picture=Photo.new(:photo=> open(@filename), :user_id=>params[:id], :before_after=>params[:before_after])
+			  
+		  if picture.save
+				 @status={"status-msg"=>"141"}
+				 File.delete(@filename)
+		  			else
+		     @status={"status-msg"=>"142"}
+		  end 
+	 	else
+		 @status={"status-msg"=>"user not exist"}
+	  end
+
+	  respond_to do |format|
+		    format.js { render :json =>@status.to_json}
+			end   	
+	end
+
+
+##########################################################################
 ##########################################################################
 
 	def bodymeasurement

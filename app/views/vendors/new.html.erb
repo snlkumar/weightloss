@@ -52,14 +52,14 @@ function submitvendorform()
 
 
 
-
-function dataGrid(obj)
+function dataGrid(obj,id)
 {
 	data="<table id='city'>";
 	row="";
+	
 	for(i=0;i<obj.length;i++)
 	{			
-		row+="<tr id="+(obj[i].toString().split(",")[0])+" onmouseover='selectedRow(this)' onclick=getTdVal('"+obj[i].toString().split(",")[0]+"') onmouseout='unSelectedRow(this)'><td style='width:60%;'>"+obj[i].toString().split(",")[1]+"</td><td style='width:40%;'>("+obj[i].toString().split(",")[2]+")</td></tr>";
+		row+="<tr id="+(obj[i].toString().split(",")[0])+" onmouseover='selectedRow(this)' onclick=getTdVal('"+id+"','"+obj[i].toString().split(",")[0]+"') onmouseout='unSelectedRow(this)'><td style='width:60%;'>"+obj[i].toString().split(",")[1]+"</td><td style='width:40%;'>("+obj[i].toString().split(",")[2]+")</td></tr>";
 	}
 	data+=row+"</table>";
 	
@@ -67,27 +67,29 @@ function dataGrid(obj)
 }
 
 
-function getTdVal(cid)
+function getTdVal(id,cid)
 {
 	city=document.getElementById('city');
-	$("#vendor_city").val(city.rows[document.getElementById(cid).rowIndex].cells[0].innerHTML);
+	
+	$("#"+id).val(city.rows[document.getElementById(cid).rowIndex].cells[0].innerHTML);
 	$("ajaxAutoComplete").css("display","none");
 }
 
 
 $(document).ready(function(){
 	var list=null;
-	$("#vendor_city").keyup(function(){ 
-	 if($("#vendor_city").val().length>2)
+	$('.cityAjax').keyup(function(){
+		id=this.id;
+	 if($(this).val().length>2)
 	 {
-    var position = $("#vendor_city").position();
+    var position = $(this).position();
 		vleft=position.left;
 		vtop=position.top;
 		$.ajax({
-			url: '/vendors/auto_search/'+$("#vendor_city").val(),
+			url: '/vendors/auto_search/'+$(this).val(),
 			dataType: 'html',
 			success: function(data) {
-				$("#ajaxAutoComplete").html(dataGrid(jQuery.parseJSON(data)));
+				$("#ajaxAutoComplete").html(dataGrid(jQuery.parseJSON(data),id));
 					$("#ajaxAutoComplete").css('left', vleft+130);
 					$("#ajaxAutoComplete").css('top', vtop+35);
 				$("#ajaxAutoComplete").css("display","block");
@@ -109,68 +111,6 @@ $("#ajaxAutoComplete").css("display","none");
 
 	});	
 });
-
-
-
-
-
-
-
-function dataGrid1(obj)
-{
-	data="<table id='pcity'>";
-	row="";
-	for(i=0;i<obj.length;i++)
-	{			
-		row+="<tr id="+(obj[i].toString().split(",")[0])+" onmouseover='selectedRow(this)' onclick=getTdVal1('"+obj[i].toString().split(",")[0]+"') onmouseout='unSelectedRow(this)'><td style='width:60%;'>"+obj[i].toString().split(",")[1]+"</td><td style='width:40%;'>("+obj[i].toString().split(",")[2]+")</td></tr>";
-	}
-	data+=row+"</table>";
-	
-	return data;
-}
-
-function getTdVal1(cid)
-{
-	city=document.getElementById('pcity');
-	$("#vendor_p_city").val(city.rows[document.getElementById(cid).rowIndex].cells[0].innerHTML);
-	$("ajaxAutoComplete1").css("display","none");
-}
-
-$(document).ready(function(){
-	var list=null;
-	$("#vendor_p_city").keyup(function(){ 
-	 if($("#vendor_p_city").val().length>2)
-	 {
-    var position = $("#vendor_p_city").position();
-		vleft=position.left;
-		vtop=position.top;
-		$.ajax({
-			url: '/vendors/auto_search/'+$("#vendor_p_city").val(),
-			dataType: 'html',
-			success: function(data) {
-				$("#ajaxAutoComplete1").html(dataGrid1(jQuery.parseJSON(data)));
-					$("#ajaxAutoComplete1").css('left', vleft);
-					$("#ajaxAutoComplete1").css('top', vtop+20);
-				$("#ajaxAutoComplete1").css("display","block");
-			},
-			error: function(data)
-			{
-				alert("error");
-			}
-		});
-	  }
-else
-{
-$("#ajaxAutoComplete1").css("display","none");
-}
-	});
-
-	$(".full").click(function(){
-		$("#ajaxAutoComplete1").css("display","none");
-
-	});	
-});
-
 
 
 
@@ -209,8 +149,8 @@ $(document).ready(function(){
 			dataType: 'html',
 			success: function(data) {
 				$("#ajaxAutoComplete2").html(schooldataGrid(jQuery.parseJSON(data)));
-					$("#ajaxAutoComplete2").css('left', vleft);
-					$("#ajaxAutoComplete2").css('top', vtop+20);
+					$("#ajaxAutoComplete2").css('left', vleft+111);
+					$("#ajaxAutoComplete2").css('top', vtop+30);
 				$("#ajaxAutoComplete2").css("display","block");
 			},
 			error: function(data)
@@ -230,8 +170,6 @@ $("#ajaxAutoComplete2").css("display","none");
 
 	});	
 });
-
-
 
 
 
@@ -270,8 +208,8 @@ $(document).ready(function(){
 			dataType: 'html',
 			success: function(data) {
 				$("#ajaxAutoComplete3").html(degreesdataGrid(jQuery.parseJSON(data)));
-					$("#ajaxAutoComplete3").css('left', vleft);
-					$("#ajaxAutoComplete3").css('top', vtop+20);
+					$("#ajaxAutoComplete3").css('left', vleft+108);
+					$("#ajaxAutoComplete3").css('top', vtop+32);
 				$("#ajaxAutoComplete3").css("display","block");
 			},
 			error: function(data)

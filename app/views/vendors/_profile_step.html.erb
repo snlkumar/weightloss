@@ -20,18 +20,85 @@
     color: #595959;
     font-weight: bold;
 }
-select#vendor_state,#vendor_country,#vendor_p_country,#vendor_p_state{
+select#vendor_year_graduated{
+    width:100px;
+    height:25px;
+margin-left:5.2em; 
+padding:2px;
+  }
+select#vendor_country,#vendor_year_graduated{
     width:235px;
     height:25px;
-margin-top:-5px; 
+margin-left:8.6em; 
+padding:2px;
+  }
+select#vendor_p_country{
+    width:235px;
+    height:25px;
+margin-left:7em; 
+padding:2px;
+  }
+select#vendor_p_state{
+    width:235px;
+    height:25px;
+margin-left:8em; 
+padding:2px;
+  }
+select#vendor_state,#vendor_state2,#vendor_state3,#vendor_country{
+    width:235px;
+    height:25px;
+margin-left:10.2em; 
+padding:2px;
+  }
+select#vendor_accept_credit_card{
+    width:50px;
+    height:25px;
+margin-left:3.2em; 
+padding:2px;
+  }
+select#vendor_accept_cash,#vendor_payment_plans{
+    width:50px;
+    height:25px;
+margin-left:6.2em; 
 padding:2px;
   }
 
+select#vendor_accept_insurance{
+    width:50px;
+    height:25px;
+margin-left:7em; 
+padding:2px;
+  }
+select#vendor_accept_check{
+    width:50px;
+    height:25px;
+margin-left:5.4em; 
+padding:2px;
+  }
+select#vendor_payment_plans{
+    width:50px;
+    height:25px;
+margin-left:5.0em; 
+padding:2px;
+  }
+select#vendor_gender{
+    width:60px;
+    height:25px;
+margin-left:7.0em; 
+padding:2px;
+  }
+select#vendor_year_graduated{
+    width:100px;
+    height:25px;
+margin-left:5.2em; 
+padding:2px;
+  }
 input:-moz-placeholder {
       color: grey;
 }
 
 </style>
+
 
 
 <script type="text/javascript">
@@ -40,41 +107,187 @@ $(document).ready(function(){
  
     var counter = 2;
  
-    $("#addButton").click(function () {
- 
+    $("#addButton1").click(function () {	
+	
 	if(counter>3){
             alert("Maximum 3 addresses are allowed");
             return false;
-	}   
+	} 
+counter++;
+	if(counter==3)
+		{
+			$('.hidd').css("display", "block");
+		}
+	if(counter==4)
+		{
+			$('.hidd0').css("display", "block");
+
+		}
+
+});
+  
+	$("#removeButton1").click(function () {
+		if(counter==2){
+		         alert("Minimum 1 address is required.");
+		         return false;
+		} 
+
+		if(counter==4)
+			{
+				$('.hidd0').css("display", "none");
+
+			}
+
+		if(counter==3)
+			{
+				$('.hidd').css("display", "none");
+
+			}
+		 counter--;
+
+	});
+
+});
+
+
+
+$(document).ready(function(){
  
-	var newTextBoxDiv = $(document.createElement('div')).attr("id", 'TextBoxDiv' + counter).append('<label style="margin-left:25px;">Address #'+ counter + ' : </label>' +'<textarea style="width:225px;height:50px;margin-top:5px; margin-left:75px; padding:5px;" name="vendor[address' + counter + ']" id="vendor_address' + counter + '" value="" >');
+    var counter1 = 2; 
+    $("#addButton2").click(function () {	
+
+	if(counter1>3){
+            alert("Maximum 3 are allowed");
+            return false;
+	} 
+
+	counter1++;
+		if(counter1==3)
+			{
+				$('.hidd1').css("display", "block");
+			}
+		if(counter1==4)
+			{
+				$('.hidd5').css("display", "block");
+			}
+	});
+
+
+
+	$("#removeButton2").click(function () {
+		if(counter1==2){
+		         alert("Minimum 1 is required.");
+		         return false;
+		} 
+
+		if(counter1==4)
+			{
+				$('.hidd5').css("display", "none");
+
+			}
+	if(counter1==3)
+			{
+				$('.hidd1').css("display", "none");
+
+			}
+		 counter1--;
+
+	});
+
+});
+
+
+
+$(document).ready(function(){
  
-	newTextBoxDiv.appendTo("#TextBoxesGroup");
+    var counter2 = 2; 
+    $("#addButton3").click(function () {	
+
+	if(counter2>3){
+            alert("Maximum 3 are allowed");
+            return false;
+	} 
+
+	counter2++;
+		if(counter2==3)
+			{
+				$('.hidd2').css("display", "block");
+			}
+		if(counter2==4)
+			{
+				$('.hidd6').css("display", "block");
+			}
+	});
+
+
+
+	$("#removeButton3").click(function () {
+		if(counter2==2){
+		         alert("Minimum 1 is required.");
+		         return false;
+		} 
+
+		if(counter2==4)
+			{
+				$('.hidd6').css("display", "none");
+
+			}
+	if(counter2==3)
+			{
+				$('.hidd2').css("display", "none");
+
+			}
+		 counter2--;
+
+	});
+
+});
+
+
+$(document).ready(function(){
  
-	counter++;
-     });
- 
-     $("#removeButton").click(function () {
-	if(counter==2){
-          alert("Minimum one address is required");
-          return false;
-       }   
- 
-	counter--;
- 
-        $("#TextBoxDiv" + counter).remove();
- 
-     });
- 
-     $("#getButtonValue").click(function () {
- 
-	var msg = '';
-	for(i=1; i<counter; i++){
-   	  msg += "\n Textbox #" + i + " : " + $('#address' + i).val();
-	}
-    	  alert(msg);
-     });
-  });
+    var counter3 = 2; 
+    $("#addButton4").click(function () {	
+
+	if(counter3>3){
+            alert("Maximum 3 are allowed");
+            return false;
+	} 
+
+	counter3++;
+		if(counter3==3)
+			{
+				$('.hidd3').css("display", "block");
+			}
+		if(counter3==4)
+			{
+				$('.hidd4').css("display", "block");
+			}
+	});
+
+
+
+	$("#removeButton4").click(function () {
+		if(counter3==2){
+		         alert("Minimum 1 is required.");
+		         return false;
+		} 
+
+		if(counter3==4)
+			{
+				$('.hidd4').css("display", "none");
+
+			}
+	if(counter3==3)
+			{
+				$('.hidd3').css("display", "none");
+
+			}
+		 counter3--;
+
+	});
+
+});
 
 
 
@@ -113,137 +326,215 @@ $(document).ready(function(){
   <% end %>
 
 
-<div style="margin-left:20%">
+<div style="margin-left:20%;border:solid 1px #bfbfbf;width:60%;">
 
-	<table width="80%" border="0" align="center" cellpadding="0" cellspacing="0" class="border_grey">
+	<table  border="0" align="center" cellpadding="0" cellspacing="0" >
 	<tbody>
 
 
 	<tr>        
-	<td height="40" colspan="2" ><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px 5px 5px 5px;width:98.5%;text-align:center;color:#FBF2EF;">Business information</h1></td>
+	<td height="40" colspan="2" ><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px 5px 5px 5px;width:99.5%;text-align:center;color:#FBF2EF;">Business information</h1></td>
 	</tr>
 
 
-<tr>
-<td colspan="2">	
+	<tr>
+	 <td style="padding:0px 15px;" valign="top" colspan="2"><span class="txt_orange">*</span><%= f.label :address1, "Address#1" %>
+	    <%= f.text_area :address1, :class=>"border_grey", :style=>"width:225px;height:50px;margin-top:-20px; margin-left:7.4em; padding:5px;" %><input type='button' style="height:30px;background-color:#0B2B42;color:white;margin-left:3px;" value='Add another' id='addButton1'><input type='button' style="width:30px;height:30px;background-color:#0B2B42;color:white;margin-left:3px;" value='-' id='removeButton1'>
 
-			<div id='TextBoxesGroup'>
-<label style="margin-left:20px;"><span class="txt_orange">*</span>Address #1 : </label><textarea style="width:225px;height:50px;margin-top:-20px; margin-left:75px; padding:5px;"id='vendor_address1' name='vendor[address1]' placeholder='Address and zipcode'></textarea><input type='button' style="width:30px;height:30px;background-color:#0B2B42;color:white;margin-left:3px;" value='+' id='addButton'><input type='button' style="width:30px;height:30px;background-color:#0B2B42;color:white;margin-left:3px;" value='-' id='removeButton'>
-				</div>
-</td>
-</tr>
-
-
+	</td>
+	</tr>
 
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :city %></td>
-
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :city, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;" %>
+	 <td style="padding:0px 15px;" valign="top" colspan="2"><span class="txt_orange">*</span><%= f.label :city %>
+	    <%= f.text_field :city, :class=>"cityAjax", :style=>"width:230px;height:20px; padding:2px;margin-top:10px; margin-left:10.9em;" %>
 		<div id="ajaxAutoComplete" class="ajaxAutoComplete"></div>
 	</td>
 	</tr>
 
 
-	<tr>
-	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :state %></td>
 
-	 <td style="padding:5px 15px;" valign="top">
-		<%= f.select :state, options_for_select(us_states),:style=>"width:200px;height:25px;margin-top:-5px; padding:2px;"%>
+	<tr>
+	 <td style="padding:0px 15px;" valign="top" colspan="2"><span class="txt_orange">*</span><%= f.label :state %>
+		<%= f.select :state, options_for_select(us_states),:style=>"width:200px;height:25px;padding:2px;margin-top:5px;margin-left:10.9em;"%>
 	</td>
 	</tr>
 
 
-	<tr>
-	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :country %></td>
-
-	 <td style="padding:10px 15px;" valign="top">
-	 <%= f.select :country, options_for_select(countries)%>
-	</td>
-	</tr>
-
 
 	<tr>
-	 <td style="padding:15px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :phone %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :contact1, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;"%>
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><span class="txt_orange">*</span><%= f.label :phone %>
+	    <%= f.text_field :contact1, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:9.6em;"%>
 
 	</td>
 	</tr>
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :cell %><br /></td>
+	 <td style="padding:0px 15px;" valign="top" colspan="2"><span class="txt_orange">*</span><%= f.label :cell %>
+	    <%= f.text_field :contact2, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-top:-10px; margin-left:10.6em;"%>
 
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :contact2, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+	</td>
+	</tr>
+
+
+
+
+
+
+	<tr>        
+	<td height="40" colspan="2" id="hiddentr1" class="hidd" style="display:none;" ><h1 style="margin-top:10px;margin-bottom:5%;margin-top:5px;background-color:#0B2B42;text-align:center;color:#FBF2EF;width:101%">Address 2</h1></td>
+	</tr>
+
+	<tr>
+	 <td style="padding:0px 15px;display:none;" id="hiddentr1" class="hidd" valign="top" colspan="2" ><span class="txt_orange">*</span><%= f.label :address2, "Address#2" %>
+	    <%= f.text_area :address2, :class=>"border_grey", :style=>"width:225px;height:50px;margin-top:-10px; margin-left:7.4em; padding:5px;" %>
+
+	</td>
+	</tr>
+
+	<tr>
+	 <td style="padding:0px 15px;display:none;" id="hiddentr1" class="hidd" valign="top" colspan="2"><span class="txt_orange">*</span><%= f.label :city %>
+	    <%= f.text_field :city2, :class=>"cityAjax", :style=>"width:230px;height:20px; padding:2px;margin-top:10px; margin-left:10.9em;" %>
+	</td>
+	</tr>
+
+
+
+	<tr>
+	 <td style="padding:0px 15px;display:none;" id="hiddentr1" class="hidd" valign="top" colspan="2"><span class="txt_orange">*</span><%= f.label :state %>
+		<%= f.select :state2, options_for_select(us_states),:style=>"width:200px;height:25px;padding:2px;margin-top:5px;margin-left:10.9em;"%>
+	</td>
+	</tr>
+
+
+
+	<tr>
+	 <td style="padding:5px 15px;display:none;" id="hiddentr1" class="hidd" valign="top" colspan="2"><span class="txt_orange">*</span><%= f.label :phone %>
+	    <%= f.text_field :contact3, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:9.6em;"%>
 
 	</td>
 	</tr>
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :About_us %><br /></td>
+	 <td style="padding:0px 15px;display:none;" id="hiddentr1" class="hidd" valign="top" colspan="2"><span class="txt_orange">*</span><%= f.label :cell %>
+	    <%= f.text_field :contact4, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-top:-10px; margin-left:10.6em;"%>
 
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_area :biography, :class=>"border_grey", :style=>"width:230px;height:50px;margin-top:-5px; padding:2px;"%>
+	</td>
+	</tr>
+
+
+
+
+
+	<tr>        
+	<td height="40" colspan="2" id="hiddentr1" class="hidd0" style="display:none;" ><h1 style="margin-top:10px;margin-bottom:5%;margin-top:5px;background-color:#0B2B42;text-align:center;color:#FBF2EF;width:101%">Address 3</h1></td>
+	</tr>
+
+	<tr>
+	 <td style="padding:0px 15px;display:none;" id="hiddentr1" class="hidd0" valign="top" colspan="2" ><span class="txt_orange">*</span><%= f.label :address2, "Address#3" %>
+	    <%= f.text_area :address3, :class=>"border_grey", :style=>"width:225px;height:50px;margin-top:-10px; margin-left:7.4em; padding:5px;" %>
+
+	</td>
+	</tr>
+
+	<tr>
+	 <td style="padding:0px 15px;display:none;" id="hiddentr1" class="hidd0" valign="top" colspan="2"><span class="txt_orange">*</span><%= f.label :city %>
+	    <%= f.text_field :city3, :class=>"cityAjax", :style=>"width:230px;height:20px; padding:2px;margin-top:10px; margin-left:10.9em;" %>
+	</td>
+	</tr>
+
+
+
+	<tr>
+	 <td style="padding:0px 15px;display:none;" id="hiddentr1" class="hidd0" valign="top" colspan="2"><span class="txt_orange">*</span><%= f.label :state %>
+		<%= f.select :state3, options_for_select(us_states),:style=>"width:200px;height:25px;padding:2px;margin-top:5px;margin-left:10.9em;"%>
+	</td>
+	</tr>
+
+
+
+	<tr>
+	 <td style="padding:5px 15px;display:none;" id="hiddentr1" class="hidd0" valign="top" colspan="2"><span class="txt_orange">*</span><%= f.label :phone %>
+	    <%= f.text_field :contact5, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:9.6em;"%>
 
 	</td>
 	</tr>
 
 
 	<tr>
-	 <td style="padding:15px 15px;" valign="top"><%= f.label :business_email %><br /></td>
+	 <td style="padding:0px 15px;display:none;" id="hiddentr1" class="hidd0" valign="top" colspan="2"><span class="txt_orange">*</span><%= f.label :cell %>
+	    <%= f.text_field :contact6, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-top:-10px; margin-left:10.6em;"%>
 
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :b_email, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;"%>
+	</td>
+	</tr>
+
+
+
+
+	<tr>        
+	<td height="10" colspan="2" ><h1 style="margin-left:0%;margin-bottom:5%;margin-top:0px;background-color:#0B2B42;text-align:center;color:#0B2B42;width:101%;height:7px;"></h1></td>
+	</tr>
+
+
+
+	<tr>
+	 <td style="padding:0px 15px;" valign="top" colspan="2"><span class="txt_orange">*</span><%= f.label :country %>
+	 <%= f.select :country, options_for_select(countries), :style=>"width:200px;height:25px;padding:2px;margin-top:-5px;margin-left:8.6em;"%>
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><%= f.label :About_us %>
+	    <%= f.text_area :biography, :class=>"border_grey", :style=>"width:230px;height:50px;padding:2px;margin-top:5px;margin-left:8.6em;"%>
 
 	</td>
 	</tr>
 
 
 	<tr>
-	 <td style="padding:10px 15px;" valign="top"><%= f.label 'Business Logo' %><br /></td>
+	 <td style="padding:15px 15px;" valign="top" colspan="2"><%= f.label :business_email %>
+	    <%= f.text_field :b_email, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:5.6em;"%>
 
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.file_field :photo, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+	</td>
+	</tr>
+
+
+
+	<tr>
+	 <td style="padding:10px 15px;" valign="top" colspan="2"><%= f.label 'Business Logo' %>
+	    <%= f.file_field :photo, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;margin-left:6.4em;"%>
 
 	</td>
 	</tr>
 
 
 	<tr>
-	 <td style="padding:20px 15px;" valign="top"><%= f.label :website_address %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
+	 <td style="padding:20px 15px;" valign="top" colspan="2"><%= f.label :website_address %>
 	    <%= f.text_field :website_address, :class=>"border_grey", :placeholder => "www.google.com",
-:style=>"width:230px;height:20px; padding:2px;"%>
+:style=>"width:230px;height:20px; padding:2px;margin-left:4.8em;"%>
 
 	</td>
 	</tr>
 
        
-	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px;width:98.5%;text-align:center;color:#FBF2EF;">Qualifications</h1></td>
+	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px;width:99.5%;text-align:center;color:#FBF2EF;">Qualifications</h1></td>
 
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :title %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :title, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+	 <td style="padding:5px 15px;" valign="top"  colspan="2"><%= f.label :title %>
+	    <%= f.text_field :title, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:10.6em;"%>
 
 	</td>
 	</tr>
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :school %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :school, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%> <%=f.select :year_school, (1950..Time.now.year).to_a, :prompt => {:year => "Select year"}%>
+	 <td style="padding:5px 15px;" valign="top"  colspan="2"><%= f.label :school %>
+	    <%= f.text_field :school, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:9.3em;"%> <%=f.select :year_school, (1950..Time.now.year).to_a, :prompt => {:year => "Select year"}%>
 		<div id="ajaxAutoComplete2" class="ajaxAutoComplete"></div>
 	</td>
 	</tr>
@@ -251,9 +542,7 @@ $(document).ready(function(){
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :year_graduated %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
+	 <td style="padding:5px 15px;" valign="top"  colspan="2"><%= f.label :year_graduated %>
     <%= f.select :year_graduated, (1950..Time.now.year).to_a, :prompt => {:year => "Select year"} %>
 
 	</td>
@@ -261,74 +550,136 @@ $(document).ready(function(){
 
 
 	<tr>
-	 <td style="padding:15px 15px;" valign="top"><%= f.label :degree %><br /></td>
-
-	 <td style="padding:10px 15px;" valign="top">
-	    <%= f.text_field :degrees, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><%= f.label :degree %>
+	    <%= f.text_field :degrees, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:9.0em;"%>
 		<div id="ajaxAutoComplete3" class="ajaxAutoComplete"></div>
 	</td>
 	</tr>
 
 
 	<tr>
-	 <td style="padding:15px 15px;" valign="top"><%= f.label :certifications %><br /></td>
-
-	 <td style="padding:10px 15px;" valign="top">
-	    <%= f.text_field :certifications, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><%= f.label :certifications %>
+	    <%= f.text_field :certifications, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:6.0em;"%><input type='button' style="width:30px;height:15px;background-color:#0B2B42;color:white;margin-left:3px;" value='+' id='addButton2'><input type='button' style="width:30px;height:15px;background-color:#0B2B42;color:white;margin-left:3px;" value='-' id='removeButton2'>
 
 	</td>
 	</tr>
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :specialities %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :specialities, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
-
-	</td>
-	</tr>
-
-
-	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :license_no %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :licence_no, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
-
-	</td>
-	</tr>
-
-
-	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :license_state %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :license_states, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+	 <td style="padding:5px 15px;display:none;" class="hidd1" valign="top" colspan="2"><%= f.label :certifications2, "Certification#"  %>
+	    <%= f.text_field :certifications2, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:6.0em;"%>
 
 	</td>
 	</tr>
 
 
 
-	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px;width:98.5%;text-align:center;color:#FBF2EF;">Pricing</h1></td>
+	<tr>
+	 <td style="padding:5px 15px;display:none;" class="hidd5" valign="top" colspan="2"><%= f.label :certifications, "Certification#"  %>
+	    <%= f.text_field :certifications3, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:6.0em;"%>
+
+	</td>
+	</tr>
+
+
+
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :cost %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :cost, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><%= f.label :specialities %>
+	    <%= f.text_field :specialities, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:7.0em;"%><input type='button' style="width:30px;height:15px;background-color:#0B2B42;color:white;margin-left:3px;" value='+' id='addButton3'><input type='button' style="width:30px;height:15px;background-color:#0B2B42;color:white;margin-left:3px;" value='-' id='removeButton3'>
 
 	</td>
 	</tr>
 
 
 	<tr>
-	 <td style="padding:10px 15px;" valign="top"><%= f.label :average_cost%><br /></td>
+	 <td style="padding:5px 15px;display:none;" valign="top" class="hidd2"colspan="2"><%= f.label :specialities2, "Specialities#" %>
+	    <%= f.text_field :specialities2, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:6.4em;"%>
 
-	 <td style="padding:-10px 15px;" valign="top">
-<span id="distance-view" style="margin-top:-10px;"></span>
-<div id="distance-slider" style="width: 62%;margin-top:-0px;"></div>
+	</td>
+	</tr>
+
+	<tr>
+	 <td style="padding:5px 15px;display:none;" valign="top" class="hidd6"colspan="2"><%= f.label :specialities3, "Specialities#" %>
+	    <%= f.text_field :specialities3, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:6.4em;"%>
+
+	</td>
+	</tr>
+
+
+
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><%= f.label :license_no %>
+	    <%= f.text_field :licence_no, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:7.4em;"%><input type='button' style="width:30px;height:15px;background-color:#0B2B42;color:white;margin-left:3px;" value='+' id='addButton4'><input type='button' style="width:30px;height:15px;background-color:#0B2B42;color:white;margin-left:3px;" value='-' id='removeButton4'>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top" colspan="2" ><%= f.label :license_state %>
+	    <%= f.text_field :license_states, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:6.0em;"%>
+
+	</td>
+	</tr>
+
+
+
+
+
+	<tr>
+	 <td style="padding:5px 15px;display:none;" valign="top" colspan="2" class="hidd3"><%= f.label :license_no1, "License 2#" %>
+	    <%= f.text_field :licence_no1, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:7.4em;"%>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;display:none;" valign="top" colspan="2" class="hidd3"><%= f.label :license_state1, "License state 2#" %>
+	    <%= f.text_field :license_states1, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:4.6em;"%>
+
+	</td>
+	</tr>
+
+
+
+	<tr>
+	 <td style="padding:5px 15px;display:none;" valign="top" colspan="2" class="hidd4"><%= f.label :license_no2, "License 3#" %>
+	    <%= f.text_field :licence_no2, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:7.4em;"%>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;display:none;" valign="top" colspan="2" class="hidd4"><%= f.label :license_state2, "License state 3#" %>
+	    <%= f.text_field :license_states2, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:4.6em;"%>
+
+	</td>
+	</tr>
+
+
+
+
+
+
+	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px;width:99.5%;text-align:center;color:#FBF2EF;">Pricing</h1></td>
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><%= f.label :cost %>
+	    <%= f.text_field :cost, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:9.9em;"%>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:10px 15px;" valign="top" colspan="2"><%= f.label :average_cost%>
+<span id="distance-view" style="margin-top:-10px;margin-left:5em;"></span>
+<div id="distance-slider" style="width: 40%;margin-left:13.8em;"></div>
       <input type="hidden" name="vendor[average_cost]" value='1' id = "distance-val" class="border_grey" />
 
 	</td>
@@ -336,9 +687,7 @@ $(document).ready(function(){
 
 
 	<tr>
-	 <td style="padding:10px 15px;" valign="top"><%= f.label :accept_credit_card %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
+	 <td style="padding:10px 15px;" valign="top" colspan="2"><%= f.label :accept_credit_card %>
 	    <%=f.select :accept_credit_card, [["Yes","yes"],["No","no"]], :selected=>"Yes", :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
 
 	</td>
@@ -346,9 +695,7 @@ $(document).ready(function(){
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :accept_cash %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><%= f.label :accept_cash %>
 	    <%= f.select :accept_cash, [["Yes","yes"],["No","no"]], :selected=>"Yes", :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
 
 	</td>
@@ -356,18 +703,14 @@ $(document).ready(function(){
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :accept_check %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><%= f.label :accept_check %>
 	    <%= f.select :accept_check, [["Yes","yes"],["No","no"]], :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
 
 	</td>
 	</tr>
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :payment_plans %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><%= f.label :payment_plans %>
 	    <%= f.select :payment_plans, [["Yes","yes"],["No","no"]], :selected=>"Yes", :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
 
 	</td>
@@ -375,9 +718,7 @@ $(document).ready(function(){
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :insurance %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><%= f.label :insurance %>
 	    <%= f.select :accept_insurance, [["Yes","yes"],["No","no"]], :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
 
 	</td>
@@ -385,55 +726,45 @@ $(document).ready(function(){
 
 
 
-	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px;width:98.5%;text-align:center;color:#FBF2EF;">Hours</h1></td>
+	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px;width:99.5%;text-align:center;color:#FBF2EF;">Hours</h1></td>
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :work_hours %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :work_hour, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><%= f.label :work_hours %>
+	    <%= f.text_field :work_hour, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:6em;"%>
 
 	</td>
 	</tr>
 
 
-	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px;width:98.5%;text-align:center;color:#FBF2EF;">Personal information</h1></td>
+	<td colspan="2" style="border-top:solid 1px #bfbfbf;"><h1 style="margin-left:0%;margin-bottom:5%;margin-top:-1px;background-color:#0B2B42;padding:5px;width:99.5%;text-align:center;color:#FBF2EF;">Personal information</h1></td>
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :first_name %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :fname, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><%= f.label :first_name %>
+	    <%= f.text_field :fname, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:6em;"%>
 
 	</td>
 	</tr>
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :last_name %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :lname, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><%= f.label :last_name %>
+	    <%= f.text_field :lname, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:6em;"%>
 
 	</td>
 	</tr>
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :address %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :p_address, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><%= f.label :address %>
+	    <%= f.text_field :p_address, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:7em;"%>
 
 	</td>
 	</tr>
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :city %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :p_city, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><%= f.label :city %>
+	    <%= f.text_field :p_city, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:9em;"%>
 		<div id="ajaxAutoComplete1" class="ajaxAutoComplete"></div>
 	</td>
 	</tr>
@@ -441,51 +772,41 @@ $(document).ready(function(){
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :state %></td>
-
-	 <td style="padding:5px 15px;" valign="top">
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><span class="txt_orange">*</span><%= f.label :state %>
 		<%= f.select :p_state, options_for_select(us_states),:style=>"width:200px;height:25px;margin-top:-5px; padding:2px;"%>
 	</td>
 	</tr>
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :country %></td>
-
-	 <td style="padding:5px 15px;" valign="top">
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><%= f.label :country %>
       <%= f.select :p_country, options_for_select(countries)%>    
 	</td>
 	</tr>
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :phone %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :p_contact, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><%= f.label :phone %>
+	    <%= f.text_field :p_contact, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:7.5em;"%>
 
 	</td>
 	</tr>
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :cell %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
-	    <%= f.text_field :p_cell, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><%= f.label :cell %>
+	    <%= f.text_field :p_cell, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;margin-bottome:0px; margin-left:8.5em;"%>
 <input type="hidden" id="status" name="vendor[status]" value="approved">
 	</td>
 	</tr>
 
 
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><%= f.label :gender %><br /></td>
-
-	 <td style="padding:5px 15px;" valign="top">
+	 <td style="padding:5px 15px;" valign="top" colspan="2"><%= f.label :gender %>
 	    <%= f.select :gender, [["Male","male"],["Female","female"]], :selected=>"Male", :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
 
 	</td>
 	</tr>
 
-	<td colspan="2" class="font_20" style="padding:10px 15px; border-top:solid 1px #bfbfbf;">
+	<td colspan="2" class="font_20" style="padding:10px 5px; border-top:solid 1px #bfbfbf;">
 
  <input type="submit" class="button grid_3" name="submit" style="height:29px;font-size:10pt;width:6em;padding:0;margin-left:30%;" onclick=submit() value=" SUBMIT " /><input type="button" class="button grid_3" name="previous_button" style="height:29px;font-size:10pt;width:6em;padding:0;margin-left:0%;" onclick=history.back() value=" BACK " />
 </td>
