@@ -1,7 +1,12 @@
+<link href="/assets/style_v4.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 .even { background: #E6EEEE; }
 .odd { background: #cccccc; }
 .head-table{background: #ccc; }
+select#meta_page{
+width:185px;
+height:30px;
+}
 </style>
 
 <script type="text/javascript">
@@ -11,50 +16,150 @@
     }).mouseout(function(){
       $(this).css("background-color","");
     });
-          
-  <%end%>
+     
+    $("#meta_page").change(function(){
+    $("#hide1").hide();   
+    page=$(this).val();
+    selected=$(this).find("option:selected").text();
+    if (page=="")
+    {
+     $("#meta_title").val("");
+	  $("#keywords").val("");
+	  $("#description").val("");
+	  $("#url").val("");  
+    return false;
+    }  
+       if (selected=="View Video") 
+       {
+          $("#hide1").show();
+         page=$("#videos").val();
+         alert(page);			
+         }   
+    	$.get("/admin/meta/"+page,
+   		function(data){
+     			$("#meta_title").val(data.metatitle);
+     			$("#keywords").val(data.keywords);
+     			$("#description").val(data.description);     			
+     			$("#url").val(data.url);     			     			     			
+   	},"json");
+
+    }); 
+
+    $("#videos").change(function(){
+             page=$("#videos").val();
+         alert(page);
+    	$.get("/admin/meta/"+page,
+   		function(data){
+     			$("#meta_title").val(data.metatitle);
+     			$("#keywords").val(data.keywords);
+     			$("#description").val(data.description);     			
+     			$("#url").val(data.url);     			     			     			
+   	},"json");
+    }); 
+    
+    $("#editbutton").click(function(){
+    page=$("#meta_page").val();
+    if (page=="")
+    	{alert("Please select a page.");
+    		return false;
+    	}
+    	
+    if ($("#url").val()=="")
+		 {alert("Url can not be blank.");
+		 	return false;
+		 }    
+    var answer = confirm("Do you want to save?")
+	if (answer)
+	{
+					 $.ajax({
+				  	 type: "PUT",
+				  	 url: "/admin/meta/"+page,
+					 data: { metatitle: $("#meta_title").val(), keywords: $("#keywords").val(), description: $("#description").val(), url: $("#url").val().trim().replace(/\s/g , "-").replace(/[^\w\-\/]+/g, '') }
+						  }).done(function( msg ) {
+					 alert( msg);
+					 parent.location.reload();
+	  $("#meta_page").val("");			 
+	  $("#meta_title").val("");
+	  $("#keywords").val("");
+	  $("#description").val("");
+	  $("#url").val("");  
+					});
+    }
+    else
+    {
+		return false;
+	} 
+ });      
+ <%end%>
 </script>
-<div class="grid_16">
+<div style="margin-left:20%;">
   
   <br/>
-    <h2 style="font-size:20px;align:center;background-color:#0B2B42;width:46em;">All Meta List</h2>
+
+<%#= select_tag 'meta_page', options_from_collection_for_select(Meta.where("controller like 'Videos'"),"id","page"),:prompt=>"Select a page", :style=>"height:30px;width:265px;margin-top:2em;"%>
+
+
 
    <%#= page_entries_info(@metas) %>
     <%#= paginate(@vendors, :params => pagination_params(request)) %>  
             
 
-<%= link_to 'Add New Page', new_admin_metum_path()%> 
+<%#= link_to 'Add New Page', new_admin_metum_path()%> 
   <br/><br/>
 
-  <table class="admin">
-    <thead>
+  <table class="border_grey" style="width:150%;">
+    <!--<thead>
       <tr class="head-table">
         <th>Category</th>
         <th>Page</th>
         <th>Meta title</th>
-<!--
         <th>Keywords</th>
-        <th>Description</th> -->
+        <th>Description</th>
         <th>Actions</th>
       </tr>
-    </thead>
+    </thead>-->
     <tbody>
-      <% @meta.each do |meta| %>
+      <%# @meta.each do |meta| %>
         <tr class="<%= cycle('odd', 'even') %>">
+        			<tr>
+				<td colspan="2"><h2 style="font-size:20px;align:center;background-color:#0B2B42;">Page Meta Manager</h2></td>
+			</tr>
+			<tr>
           <!--<td><%#= link_to exercise.description, edit_admin_exercise_path(exercise) %></td>-->
-          <td><%=meta.controller%> </td>
-          <td><%=meta.page%> </td>
-          <td><%=meta.metatitle%> </td>
- <!--         <td><%#=meta.keywords%> </td>
-          <td><%#=meta.description%> </td>-->
+          <td style="font-size:16px;color:#0B2B42;padding:30px 0px 0px 10px;">Page: </td>
+          <td><%= select_tag 'meta_page', options_from_collection_for_select(Meta.all,"id","page"),:prompt=>"Select a page", :style=>"height:30px;width:265px;margin-top:2em;"%> <input type="button" id="editbutton" class="button grid_3" name="previous_button" style="height:29px;font-size:10pt;width:6em;padding:0;float:right;margin-top:2em;margin-right:1.8em;" value=" SAVE " /></td>
 
-                    <td class="actions">
-            <%= link_to 'Details', admin_metum_path(meta.id) %> |
-            <%= link_to 'Edit', edit_admin_metum_path(meta.id) %> |
-            <%= link_to 'Delete', admin_metum_path(meta.id), :confirm => 'Are you sure?', :method => :delete %>
-	   </td>
         </tr>
-      <% end %>
+
+			<tr style="display:none;" id="hide1">	
+          <td style="font-size:16px;color:#0B2B42;padding:20px 0px 0px 10px;" >Select a video page: </td>
+          <td><%= select_tag 'videos', options_from_collection_for_select(Meta.where("controller like 'Videos'"),"id","page"),:prompt=>"Select a page", :style=>"height:30px;width:265px;margin-top:2em;"%></td>
+        </tr>     
+        
+			<tr>
+				<td style="font-size:16px;color:#0B2B42;padding:15px 0px 0px 10px;">Meta title:</td>
+				<td><%= text_area_tag 'meta_title',"", :style=>"height:40px;width:450px;"%></td>
+			</tr>
+			<tr>
+				<td style="font-size:16px;color:#0B2B42;padding:15px 0px 0px 10px;">Keywords:</td>
+				<td><%= text_area_tag 'keywords', "", :style=>"height:70px;width:450px;"%></td>
+			</tr>
+			<tr>
+				<td style="font-size:16px;color:#0B2B42;padding:15px 15px 50px 10px;">Description:</td>
+				<td><%= text_area_tag 'description',"", :style=>"height:40px;width:450px;"%></td>
+			</tr>
+			<tr>
+				<td style="font-size:16px;color:#0B2B42;padding:15px 15px 50px 10px;">Url:</td>
+				
+				<td >http://www.myweightworld.com/&nbsp;&nbsp;<%= text_field_tag 'url',"", :style=>"width:275px;"%></td>
+			</tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+      <%# end %>
     </tbody>
   </table>
 

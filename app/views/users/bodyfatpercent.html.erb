@@ -1,5 +1,6 @@
 <%= javascript_include_tag "application" %>
 <link rel="stylesheet" type="text/css" href="/assets/myweightworld.css"/>
+
 <script type="text/javascript">
 $(document).ready(function(){
 
@@ -11,6 +12,14 @@ $(document).ready(function(){
 		e.preventDefault();
 	   gender="<%=current_user.gender.downcase%>"
 	   age="<%=current_user.age%>"
+		formula=$('#formula').val();
+			if($("#formula").val()=="")
+		{
+			alert("Please select a method.");
+			return false;		
+		}
+
+<!--alert($('#formula option:selected').text()); to get the select field selected text-->
 
 fields="#bodyfat_chest,#bodyfat_abdominal,#bodyfat_thigh,#bodyfat_tricep,#bodyfat_subscapular,#bodyfat_suprailiac,#bodyfat_midaxillary,#bodyfat_lower_back,#bodyfat_calf,#bodyfat_bicep".split(",");
 	for(i=0;i<fields.length;i++)
@@ -41,20 +50,239 @@ fields="#bodyfat_chest,#bodyfat_abdominal,#bodyfat_thigh,#bodyfat_tricep,#bodyfa
 	 s=$('#bodyfat_suprailiac').val();
 	 m=$('#bodyfat_midaxillary').val();
 
-	sum=parseFloat(c)+parseFloat(a)+parseFloat(s)+parseFloat(t)+parseFloat(su)+parseFloat(tr)+parseFloat(m);
+	 b=$('#bodyfat_bicep').val();
+	 lb=$('#bodyfat_lower_back').val();
+	 cf=$('#bodyfat_calf').val();
+
+if (formula=="1")
+{
+
+	sum=parseFloat(t)+parseFloat(c)+parseFloat(a);
+		if (gender=="male")
+		{   bd = (1.10983-(0.0008267*sum) + (0.0000016*sum*sum) - 0.0002574*age).toFixed(4);
+
+		}
+		else
+		{
+			bd =  (1.0994921 - 0.0009929*sum + 0.00000023*sum*sum - 0.0001392*age).toFixed(4); 
+		}
+}
+
+
+else if(formula=="2") 
+{
+
+		sum=parseFloat(a)+parseFloat(t)+parseFloat(su)+parseFloat(tr);
 
 		if (gender=="male")
-			{   bd = (1.12000000-(0.00043499*sum)+(0.00000055*sum)-0.00028826*age).toFixed(4);
+		{   fatpercent = (0.29288*sum - (0.0005*sum*sum) + 0.15845*age-5.76377).toFixed(2);
 
-				}
-					else
+		}
+		else
+		{
+			fatpercent = (0.29669*(sum) - 0.00043*(sum*sum) + 0.02963*age + 1.4072).toFixed(2); 
+		}
+
+}
+
+
+else if(formula=="3") 
+{
+		sum=parseFloat(c)+parseFloat(a)+parseFloat(s)+parseFloat(t)+parseFloat(su)+parseFloat(tr)+parseFloat(m);
+
+		if (gender=="male")
+		{   bd = (1.12000000-(0.00043499*sum)+(0.00000055*sum)-0.00028826*age).toFixed(4);
+
+		}
+		else
+		{
+		bd = (1.0970 - (0.00046971*sum) + 0.00000056*sum - 0.00012828*age).toFixed(4); 
+		}
+}
+
+
+else if(formula=="4") 
+{
+
+		sum=parseFloat(c)+parseFloat(a)+parseFloat(t)+parseFloat(b)+parseFloat(tr)+parseFloat(su)+parseFloat(s)+parseFloat(lb)+parseFloat(cf);
+		var bodyweight=prompt("Enter your weight in lbs.");
+		if (bodyweight!=null && bodyweight!="")
+		{
+		if (bodyweight != parseFloat(bodyweight))
+		{
+		alert('Weight is not numeric');
+	   return false;					
+		}
+		fatpercent=((sum)*27/bodyweight).toFixed(2);
+		}
+		else if (bodyweight!=null)
+		{ alert("Please enter weight in lbs.");
+		return false;
+	   }
+		else
+		{ 
+		return false;
+	   }
+}
+
+
+
+else if(formula=="5") 
+{
+	sum=parseFloat(b)+parseFloat(tr)+parseFloat(su)+parseFloat(s);
+   if (gender=="male")
+		{  
+
+		if (age< 20)
+		{
+			 bd=  1.1620 - 0.0630 *  Math.log(sum)/Math.log(10).toFixed(4);
+		}
+
+		else if (age >=20 && age<30)
+		{
+			 bd= 1.1631 - 0.0632 *  Math.log(sum)/Math.log(10).toFixed(4);
+		}
+
+		else if (age >=30 && age<40)
+		{
+			 bd=1.1422 - 0.0544 *  Math.log(sum)/Math.log(10).toFixed(4);
+		}
+
+		else if (age >=40 && age<50)
+		{
+			 bd=1.1620 - 0.0700 *  Math.log(sum)/Math.log(10).toFixed(4);
+		}
+
+		else (age>=50)
+		{
+			 bd=1.1715 - 0.0779 *  Math.log(sum)/Math.log(10).toFixed(4);
+		}
+      }
+										
+    else
+			{ 
+				if (age< 20)
 				{
-				bd = (1.0970 - (0.00046971*sum) + 0.00000056*sum - 0.00012828*age).toFixed(4); 
+				 bd=  1.1549 - 0.0678 *  Math.log(sum)/Math.log(10).toFixed(4);
+				}
+
+				else if (age >=20 && age<30)
+				{
+				 bd= 1.1599 - 0.0717  *  Math.log(sum)/Math.log(10).toFixed(4);
+				}
+
+				else if (age >=30 && age<40)
+				{
+				 bd=1.1423 - 0.0632 *  Math.log(sum)/Math.log(10).toFixed(4);
+				}
+
+				else if (age >=40 && age<50)
+				{
+				 bd=1.1333 - 0.0612 *  Math.log(sum)/Math.log(10).toFixed(4);
+				}
+
+			  else (age>=50)
+			  {
+			   bd=1.1339 - 0.0645 *  Math.log(sum)/Math.log(10).toFixed(4);
+			  }					
+
+		}
+
+}
+
+
+else
+{ 
+	var waist=prompt("Waist measurement in inch.");
+	if (waist!=null && waist!="")
+		{
+			if (waist != parseFloat(waist))
+			{
+					alert('Waist is not numeric');
+					return false;					
 			}
 
+			var neck=prompt("Neck measurement in inch.");
+			if (neck!=null && neck!="")
+			{
+			if (neck != parseFloat(neck))
+					{
+						alert('Neck is not numeric');
+						return false;					
+					}
+					
+					if (parseFloat(neck) >= parseFloat(waist))
+					{
+						alert('Please check neck and waist values.');
+						return false;					
+					}
 
-	fat = [(4.95/bd) - 4.50]*100
-	fatpercent=fat.toFixed(2);
+						var height=prompt("Height measurement in inch.");
+						 if (height != parseFloat(height))
+							{
+								alert('Height is not numeric');
+								return false;					
+							 }
+
+							if (height!=null && height!="" )
+							{
+
+							if (gender=="male")
+							{   
+								fatpercent = (86.010 * Math.log(waist - neck)/Math.log(10) - 70.041 * Math.log(height)/Math.log(10) + 36.76).toFixed(2);
+      					}
+							else
+							{
+
+							var hip=prompt("Hip measurement in inch.");
+
+							if (hip!=null && hip!="")
+							{
+							 if (hip != parseFloat(hip))
+								{
+									alert('Hip value is not numeric');
+									return false;					
+								}
+
+						fatpercent =(163.205 * Math.log(waist + hip - neck)/Math.log(10) - 97.684 * Math.log(height)/Math.log(10) - 78.387).toFixed(2); 
+
+							}
+							else
+							{
+								return false;
+							}
+							}
+
+							}
+
+							else
+							{
+								return false;
+							}
+
+							}
+							else
+							{
+								return false;
+							}
+
+					}
+
+			else
+			{
+				return false;
+			}
+
+}
+
+
+
+	if(formula!="2" && formula!="4" && formula!="6")
+	{ 
+		fatpercent =([(4.95/bd) - 4.50]*100).toFixed(2);
+
+	}
+
 	bodymass=(100-fatpercent).toFixed(2);
 	$('#bodyfat_bodyfat').css("background-color", "#993333");
 	$('#bodyfat_bodymass').css("background-color", "#993333");
@@ -76,8 +304,8 @@ fields="#bodyfat_chest,#bodyfat_abdominal,#bodyfat_thigh,#bodyfat_tricep,#bodyfa
 		return false;
 	}
 
+ 	});
 
- });
 });
 
 </script>
@@ -137,8 +365,17 @@ input:-moz-placeholder {
    				<%= f.text_field :calf, :class=>"input", :placeholder=>"mm", :style=>"margin:0px 5px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
 				 </div>
-
-
+<div style="margin-left:80px;display:inline-block;margin-top:-4.5em;">
+	<h1 style="text-decoration:underline;color:grey;">Select a method</h1> <select id="formula" name="formula" value="" style="height:25px;width:130px;margin-left:.8em">
+					  <option value="">Select</option>
+					  <option value="1">Jackson/Pollock 3</option>
+					  <option value="2">Jackson/Pollock 4</option>
+					  <option value="3">Jackson/Pollock 7</option>
+					  <option value="4">Parrillo</option>
+					  <option value="5">Durnin/Womersley</option>
+					  <option value="6">Tape Measurement</option>    
+					  </select> 
+</div>
 				 <div class="left-col fright" style="width:118px;text-align:center;">
 					<p class="font-color-orange"><strong>Subscapular</strong></p>
   					 <%= f.text_field :subscapular, :class=>"input", :placeholder=>"mm", :style=>"margin:3px 15px;border:1px solid #fff;height:25.4px;padding:1px;"%>
@@ -216,6 +453,19 @@ input:-moz-placeholder {
    <%= f.text_field :calf, :class=>"input", :placeholder=>"mm", :style=>"margin:0px 5px;border:1px solid #fff;height:25.4px;padding:1px;"%>
     </div>
 
+
+<div style="margin-left:80px;display:inline-block;margin-top:-4.5em;">
+	<h1 style="text-decoration:underline;color:grey;">Select a method</h1> <select id="formula" name="formula" value="" style="height:25px;width:130px;margin-left:.8em">
+					  <option value="">Select</option>
+					  <option value="1">Jackson/Pollock 3</option>
+					  <option value="2">Jackson/Pollock 4</option>
+					  <option value="3">Jackson/Pollock 7</option>
+					  <option value="4">Parrillo</option>
+					  <option value="5">Durnin/Womersley</option>
+					  <option value="6">Tape Measurement</option>    
+					  </select> 
+</div>
+		
 
     <div class="left-col fright" style="width:118px;text-align:center;">
       <p class="font-color-orange"><strong>Subscapular</strong></p>

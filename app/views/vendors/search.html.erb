@@ -128,7 +128,7 @@ function unSelectedRow(rw)
 }
 function submitForm()
 {
-  location.href="<%=vendor_path%>/"+$("#searchtype").val()+"/"+$("#vendor-search-query").val().trim();
+  location.href="<%=vendor_path%>"+"?"+"searchtype="+$("#searchtype").val()+"&"+"filterQuery="+$("#vendor-search-query").val().trim();
 }
 function submitClaimForm()
 {
@@ -323,7 +323,7 @@ function getTdVal(mid)
 				<%end%>
           <!--<td style="padding: .3%;"><%#=row.title%></td>-->
        <!--   <td style="padding: .3%;"><%#=row.business_name%></td> -->
-          <td style="padding: .3%;width:15em;"><%=link_to row.business_name ,vendorInfo_path(row.id)+"/"+row.business_name.downcase.gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").gsub('.'," ").strip %></td>
+          <td style="padding: .3%;width:15em;"><%=link_to row.business_name ,vendorInfo_path(row.id)+"/"+"#{row.vendor_type}/"+row.business_name.downcase.gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").gsub('.'," ").strip %></td>
           <!--<td style="padding: .3%;"><%#=row.address1%></td>
           <td style="padding: .3%;"><%#=row.address2%></td>-->
           <td style="padding: .3%;"><%=row.city%></td>

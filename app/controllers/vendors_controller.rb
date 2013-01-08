@@ -24,7 +24,7 @@ class VendorsController < ApplicationController
       end	
     end
 
-		@meta=Meta.where("controller= 'Vendor' and  page='Vendor Search'").last
+		@meta=Meta.where("controller= 'Vendors' and  page='Vendor Search'").last
 		if !@meta.blank?
 		@meta_title=@meta.metatitle
 		@meta_keywords=@meta.keywords
@@ -66,7 +66,7 @@ class VendorsController < ApplicationController
 		@vendor=Vendor.find(params[:id])
    end
 
-		@meta=Meta.where("controller= 'Vendor' and  page='Vendor Info'").last
+		@meta=Meta.where("controller= 'Vendors' and  page='Vendor Info'").last
 		if !@meta.blank?
 		@meta_title=@vendor.business_name
 		@meta_keywords=@meta.keywords
@@ -259,7 +259,7 @@ class VendorsController < ApplicationController
 #############################################################
 
    def vendorlogin
-			@meta=Meta.where("controller= 'Vendor' and  page='Vendor Signin'").last
+			@meta=Meta.where("controller= 'Vendors' and  page='Vendor Signin'").last
 			if !@meta.blank?
 			@meta_title=@meta.metatitle
 			@meta_keywords=@meta.keywords

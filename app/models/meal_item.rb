@@ -29,8 +29,11 @@ class MealItem < ActiveRecord::Base
 				#servingSize1=food.gmwt_desc1.gsub(/^\s+/,"").split(" ")[0].to_f
  
 		    #weight_for_quantity = self.units.blank?  ? 0 : (food.gmwt_desc1.eql?(unit_desc) ? food.gmwt_1 : (food.gmwt_2.blank?  ? 0 : food.gmwt_2 ))	    
-			unit_desc = self.serving.to_s.gsub(".0","").gsub("0.",".") + self.units
-			weight_for_quantity = self.units.blank?  ? 0 : (!food.gmwt_desc1.nil? ? food.gmwt_1 : (food.gmwt_2.blank?  ? 0 : food.gmwt_2 ))	 		
+			#unit_desc = self.serving.to_s.gsub(".0","").gsub("0.",".") + self.units
+			#weight_for_quantity = self.units.blank?  ? 0 : (!food.gmwt_desc1.nil? ? food.gmwt_1 : (food.gmwt_2.blank?  ? 0 : food.gmwt_2 ))
+
+
+		    weight_for_quantity = self.units.blank?  ? 0 : (food.gmwt_desc1.eql?(units) ? food.gmwt_1 : (food.gmwt_2.blank?  ? 0 : food.gmwt_2))
 		   self.calories       = (energ_kcal * (weight_for_quantity * self.serving) / 100) 
 
 		   end

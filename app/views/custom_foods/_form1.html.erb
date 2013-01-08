@@ -43,47 +43,37 @@
 	}
 </style>
 
-<% unless in_admin? %>
-  <p>
-    Help us expand our food database.
-  </p>
-<% end %>
+
 
 <%= f.hidden_field :custom %>
 <table border="0" cellspacing="0" cellpadding="0" width="100%">
 
 <!-- new added code -->
-  <div style="display:none;" id="food-head">
-    <h2><%= @food.name %></h2>
-  </div>
+
 <!--end -->
 	<tr id="food-name">
-			<td><%= f.label :name %></td>
+			<td><%#= f.label :name %></td>
 			<td>
-				<%= f.text_field :name, :class => 'grid_6 alpha', :style=>"height:20px;width:50%;margin:0 0 10px 0;padding:0;" %> 
+				<%#= f.text_field :name, :class => 'grid_6 alpha', :style=>"height:20px;width:50%;margin:0 0 10px 0;padding:0;" %> 
 			</td>
   		<!--<span class="clear"></span>-->
 	</tr>
-	<tr>
-			<td><%= f.label :gmwt_desc1, 'Serving' %></td>
-			<td><%= f.text_field :gmwt_desc1,:class => 'grid_6 alpha', :style=>"height:20px;width:50%;margin:0 0 10px 0;padding:0;" %></td>	
-  		<!--<span class="clear"></span>-->
-	</tr>
+
 	  <!-- new added field -->
 	<tr>
-			<td><%= f.label :detailes, 'Detailed' %></td>
-			<td><%= f.text_area :detailes, :class => 'grid_6 alpha', :style=>"width:50%;margin:0 0 10px 0;padding:0;" %></td>	
+			<td><%#= f.label :detailes, 'Detailed' %></td>
+			<td><%#= f.text_area :detailes, :class => 'grid_6 alpha', :style=>"width:50%;margin:0 0 10px 0;padding:0;" %></td>	
   </tr>
 </table><br>
 
 <!-- new code for food photo-->
 <div id="upload_food_pic">
-  <div style="width:30%;"><%= f.label 'Upload Food Photo' %></div>
-  <div style="width:45%;"><%= f.file_field :avatar, :size => '6' %></div>
+  <div style="width:30%;"><%#= f.label 'Upload Food Photo' %></div>
+  <div style="width:45%;"><%#= f.file_field :avatar, :size => '6' %></div>
 </div>
-  <div style="float:right;margin-top:-8%;" id="food-img">
+  <div style="margin-left:25%;margin-top:0%;" id="food-img">
     <% if f.object.avatar.file? %>
-      <p style="margin-left:-30%;"><%=f.label f.object.avatar_file_name, :id=>"food_label" %></p>
+      <p style="margin-left:-30%;"><%#=f.label f.object.avatar_file_name, :id=>"food_label" %></p>
       <%= image_tag f.object.avatar.url, :id=>"foods_img", :size=>"130x90", :alt => "Food image", :style=>"margin-left:-30%;" %>
     <% end %> 
  </div>
@@ -92,17 +82,35 @@
 <div class="clear"></div>
 
 <table border="0" cellspacing="0" cellpadding="0" width="77%">
-		<tr align="left"><th colspan="2"><h1>Nutrition Facts</h1><span>Amount per serving</span><br><br><br></th></tr>
+		<tr align="left"><th colspan="2"><h1>Nutrition Facts:	 <font size="4" color="red"><%=@unit if !@food.custom?%></font> </h1>
+
+<span>Amount per serving</span><br><br><br></th></tr>
+
+<!-- <%# if @food.custom? %> -->
+<% if @food.custom? %>
+	<tr>
+			<td><%= f.label :gmwt_desc1, 'Serving' %></td>
+			<td><%= f.text_field :gmwt_desc1,:class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %></td>	
+  		<!--<span class="clear"></span>-->
+	</tr>
+<%end%>
+<!--<%#end%>-->
+
 		<tr>
 			<td width="30%"><%= f.label :energ_kcal, 'Calories' %></td>
 			<td><%= f.text_field :energ_kcal, :class => 'sz_input alpha', :style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %></td>
 		</tr>
-		
-		<tr>
-			<td width="30%"><%= f.label :total_fat, 'Fat' %></td>
-			<td><%= f.text_field :total_fat, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5",:onkeyup=>"convertValIntoPer('food_total_fat','fat')" %><span class="pd">g</span></td>
-		</tr>
-		
+<% if @food.custom? %>
+						<tr>
+							<td width="30%"><%= f.label :total_fat, 'Fat' %></td>
+							<td><%= f.text_field :total_fat, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5",:onkeyup=>"convertValIntoPer('food_total_fat','fat')" %><span class="pd">g</span></td>
+						</tr>
+<%else%>		
+						<tr>
+							<td width="30%"><%= f.label :lipid_tot, 'Fat' %></td>
+							<td><%= f.text_field :lipid_tot, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5",:onkeyup=>"convertValIntoPer('food_total_fat','fat')" %><span class="pd">g</span></td>
+						</tr>
+<%end%>		
 		<tr>
 			<td width="30%"><%= f.label :saturated_fat, 'Saturated Fat', :class=>'pd_sml', :style=>"font-weight:normal;" %></td>
 			<td><%= f.text_field :saturated_fat, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5",:onkeyup=>"convertValIntoPer('food_saturated_fat','saturated_fat')" %><span class="pd">g</span></td>
@@ -143,10 +151,15 @@
 			<td width="30%"><%= f.label :fiber_td, 'Dietry Fiber', :class=>'pd_sml', :style=>"font-weight:normal;" %></td>
 			<td><%= f.text_field :fiber_td, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5",:onkeyup=>"convertValIntoPer('food_fiber_td','fiber_td')" %><span class="pd">g</span></td>
 		</tr>
+
+<% if @food.custom? %>
 		<tr>
 			<td width="30%"><%= f.label :sugar_alchol, 'Alcohol' %></td>
 			<td><%= f.text_field :sugar_alchol, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">g</span></td>
 		</tr>
+<%end%>
+
+
 		<tr>
 			<td width="30%"><%= f.label :protein, 'Protein' %></td>
 			<td><%= f.text_field :protein, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5",:onkeyup=>"convertValIntoPer('food_protein','protein')" %><span class="pd">g</span></td>

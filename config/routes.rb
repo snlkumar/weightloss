@@ -5,6 +5,59 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
    
   end
+
+ Meta.find(:all).each do |page|
+  if page.controller.present? and page.action.present?
+	case page.controller.to_s.downcase
+		when "vendors"
+	  		if page.action.to_s.downcase=="show"
+		     match "/"+page.url.to_s+"/:id/(:restaurants)/(:name)" => page.controller.to_s.titlecase+"#"+"show", :as=> "vendorInfo"
+		   	elsif page.action.to_s.downcase=="search"
+		   		match "/"+page.url.to_s => page.controller.to_s.titlecase+"#"+"search", :as=> "vendor"
+		   		elsif page.action.to_s.downcase=="vendorlogin"
+		   			match "/"+page.url.to_s => page.controller.to_s.titlecase+"#"+"vendorlogin", :as=> "vendorlogin_vendors"
+		   			elsif page.action.to_s.downcase=="new"
+		   			 match "/"+page.url.to_s => page.controller.to_s.titlecase+"#"+"new", :as=> "new_vendor" 		       			                	        end
+	  when "users"
+	  		if page.action.to_s.downcase=="show"  
+			  match "/"+page.url.to_s => page.controller.to_s.titlecase+"#"+"show", :as=> "home"
+				end
+	  when "videos"
+	  		if page.action.to_s.downcase=="index"  
+			  match "/"+page.url.to_s => page.controller.to_s.titlecase+"#"+"index", :as=> "videos"
+				elsif page.action.to_s.downcase=="show"
+					match "/"+page.url.to_s+"/:id" => page.controller.to_s.titlecase+"#"+"show", :as=> "video"	     
+					end				       
+	  when "posts"
+	  		if page.action.to_s.downcase=="index"  
+			  match "/"+page.url.to_s => page.controller.to_s.titlecase+"#"+"index", :as=> "posts"
+				elsif page.action.to_s.downcase=="show"
+					match "/"+page.url.to_s+"/:id" => page.controller.to_s.titlecase+"#"+"show", :as=> "post"	     
+			     end			 
+	  when "home"
+	  		if page.action.to_s.downcase=="about"  
+			  match "/"+page.url.to_s => page.controller.to_s.titlecase+"#"+"about", :as=> "about"
+			    end
+	  when "forum"
+	  		if page.action.to_s.downcase=="forum"  
+		    mount Forem::Engine, :at => "/"+page.url.to_s, :as => 'forum_engine'            
+			    end	    
+	  when "meals"
+	  		if page.action.to_s.downcase=="new"  
+			  match "/"+page.url.to_s => page.controller.to_s.titlecase+"#"+"new", :as=> "new_meal"
+			    end
+	  when "workouts"
+	  		if page.action.to_s.downcase=="new"  
+			 match "/"+page.url.to_s => page.controller.to_s.titlecase+"#"+"new", :as=> "new_workout"
+	  		  elsif page.action.to_s.downcase=="diary"  
+			   match "/"+page.url.to_s+"/(:id)" => page.controller.to_s.titlecase+"#"+"dairy", :as=> "dairy_workout"			  
+			    end
+	 end
+   end
+ end
+
+
+
 	#new added routes
 	match '/admin/vendors/search' =>'admin/vendors#search'
 	match '/custom_foods/new/:name' => 'custom_foods#new'
@@ -13,14 +66,19 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 	
 	match '/meals/data/'=>'meals#data'
 	match '/workouts/data/'=>'workouts#data'
-	match '/workouts/dairy/(:id)'=>'workouts#dairy',		:as => 'dairy_workout'
+#	match '/workouts/dairy/(:id)'=>'workouts#dairy',		:as => 'dairy_workout'
 	match '/refresh_window'=> 'home#refresh_window'
 	
 	##create dynamic routes
 	match '/admin/posts/drafts' => 'admin/posts#drafts'
 	match '/admin/vendors/:id/up' =>'admin/vendors#update_vendor'
-	match '/vendor/vendorInfo/:id/(:restaurants)/(:name)' =>'Vendors#show',  :as=>'vendorInfo'
-	match '/vendor/(:searchtype)/(:filterQuery)' => 'Vendors#search',   :as => 'vendor'
+	
+	
+	
+#1	match '/vendor/vendorInfo/:id/(:restaurants)/(:name)' =>'Vendors#show',  :as=>'vendorInfo'
+#2	match '/vendor/(:searchtype)/(:filterQuery)' => 'Vendors#search',   :as => 'vendor'
+	
+	
 	match '/admin/vendors/:id/(:restaurants)' =>'admin/vendors#show'
 	match '/admin/vendors/:id/edit/(:restaurants)' =>'admin/vendors#edit_vendor'
 	match '/admin/vendors/:id/delete/(:restaurants)' =>'admin/vendors#delete_vendor'
@@ -31,7 +89,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
   match '/password' => 'user_passwords#update', :as => :password, :via => :put
   
   get '/sign_in', :controller => "devise/sessions", :action => "new", :as => "sign_in"
-  mount Forem::Engine, :at => "/forum", :as => 'forum_engine'
+#  mount Forem::Engine, :at => "/forum", :as => 'forum_engine'
 
   #new added routes
 	match "/photos/:id/:filterPhotosByBeforeAfter"=> "Photos#filterPhotosByBeforeAfter", :as =>"before_after"
@@ -41,7 +99,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
       post :search_decipher
       get :search_decipher
       post :businessclaim
-      get :vendorlogin
+#3      get :vendorlogin
       post :vendorlogin1
       get :logout_vendor
 		get :captchatest
@@ -90,10 +148,12 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 		post :addWorkout1
 		post :bodyfat
 		post  :measurementDetails
+
     end
     member do
       post :photo
 		post  'galleryPhotoUpload/:before_after', :action=>'galleryPhotoUpload'
+
     end
   end 
   
@@ -140,15 +200,16 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
   
   resource  :metabolic_rates
   resources :old_flash_files, :old_success_stories, :old_tip_of_days, :old_text_files, :old_items, :old_departments
-  resources :categories, :subcategories, :posts, :videos, :custom_foods
+  resources :categories, :subcategories, :custom_foods
+  resources :videos, :posts, :except => [:show, :index]
   
-  resources :meals do
+  resources :meals, :except => [:new] do
     collection do
       post :meal_item
     end
   end
   
-  resources :workouts do
+  resources :workouts, :except=>[:new] do
     collection do
       post :workout_item
     end
@@ -202,11 +263,11 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
   post  '/searches'     => 'searches#create'
   match '/privacy'      => 'home#privacy', :as => :privacy
   match '/terms'        => 'home#terms', :as => :terms
-  match '/about-us'     => 'home#about', :as => :about
+#6  match '/about-us'     => 'home#about', :as => :about
   match '/step_two'     => 'users#step_two'
   match '/finalize'     => 'users#finalize'
   match '/next'         => 'users#next'
-  match '/home'         => 'users#show', :as => :home
+#4  match '/home'         => 'users#show', :as => :home
 	#match '/meals/custom_foods/new/' => 'custom_foods#new
   root :to => "home#index"
 end

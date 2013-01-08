@@ -198,14 +198,23 @@ label.meal {
 					</div>
 
 
-					<div style="float:left;width:12em">
+					<div style="float:left;width:14em">
 							<label class="meal">How much?</label><br />
 							<input type=text name=meal[serving] id = 'gmwt_desc1' style='width:23px;margin-top:1%;height:15px;margin-right:10px;float:left;padding:5px;margin-bottom:0;'>	
-							<input type=text name=meal[units] id = 'serings', style='width:70px;margin-top:1%;height:15px;margin-right:10px;float:left;padding:5px;margin-bottom:0;'>
+<div id="waiting" style="display:none;position:absolute;top:42%;left:44%;z-index:1002">
+  <%=image_tag "/assets/ajax-loader.gif", :style=>"margin:-45% 0 0 50%" %>
+</div>
+<div id="unitbox" style="display:none;">
+ X &nbsp;<select type=text name=meal[units] id = 'serings', style="width:100px;height:28px;margin-top:1.5px;padding:1px;border: 1px solid #1D5C88;" onselect="chooseUnit">
+							</select></div>
+							<div class="clear"></div>
+
 							<div class="clear"></div>
 							<label style="font-size:12px;font-weight:normal;margin-left:12%" id="serving_name"></label>
 						</div>
-
+<div id="waiting" style="display:none;position:absolute;top:60%;left:50%;z-index:1002">
+  <%=image_tag "/assets/ajax-loader.gif", :style=>"margin:-45% 0 0 50%" %>
+</div>
 						
 						<div style="float:left;">
 							<label class="meal">When?</label><br/>
@@ -259,6 +268,7 @@ label.meal {
 						<div style="float:left;padding-top:.5%;margin-left:1%;"><br/>
 							<input type="submit" id="add-meal" value="Add Meal" onclick="javascript:if(document.getElementById('food_id').value==''){alert('please select a meal'); document.getElementById('food-item-entry1').focus(); return false;}" class="button" style="width:70px;height:33px;margin-left:-5%;">
 						</div>
+
 
 
 						<div class="clear"></div>
@@ -449,6 +459,20 @@ window.onload = function () {
 			document.getElementById("energ_kcal").value="";
 			currentDate(); //set current date in add meal date field(wdDt) 
 		 }	//when page load clear the textfield
+
+
+$(document).ready(function(){
+	
+ 	$("#serings").change(function(e){
+
+$("#serving_name").html($("#serings").val());
+$("#gmwt_desc1").val($("#serings").val().replace(/^\s+/,"").split(" ")[0]);
+
+	});
+});
+
+
+
 function selectedRow(rw)
 {
 	rw.style.background="#A9BCF5";
@@ -457,8 +481,52 @@ function unSelectedRow(rw)
 {
 	rw.style.background="#E6E6E6";
 }
+
+
 function getTdVal(mid)
+
 {
+
+      $("#waiting").css("display","block"); //show waiting icon when comment submit
+
+	$.ajax({
+      type : "GET",
+      url : "/foods/"+mid+"/food_servings",
+      dataType : "html",
+      success: function(data) {
+				//parse json data
+				obj=jQuery.parseJSON(data);
+				optVal=obj[0].value.split("$$");
+				unit1=optVal[1].substring(optVal[1].replace(/^\s+/,"").split(" ")[0].length+1,optVal[1].length).replace(/\s+$/,"");
+				if (optVal[3]=="")
+{
+					optVal[3]="N/A";
+				unit2="";
+				$("#waiting").css("display","none");
+				$("#unitbox").show();
+				$("#serings").text("").append("<option value='"+optVal[1]+"'>"+unit1+"</option>");
+					
+	}
+
+else
+{
+				unit2=optVal[3].substring(optVal[3].replace(/^\s+/,"").split(" ")[0].length+1,optVal[3].length).replace(/\s+$/,"");
+				$("#waiting").css("display","none");
+				$("#unitbox").show();
+             $("#serings").text("").append("<option value='"+optVal[1]+"'>"+unit1+"</option>").append("<option value='"+optVal[3]+"'>"+unit2+"</option>");
+
+
+}				
+				//alert(optVal[1].split(" ")[2]);
+
+				
+      },
+      error : function() {
+				alert("Sorry, could not be found.");
+      }
+    });
+
+
 	foodGridTable=document.getElementById('FoodGridTable');
 	document.getElementById("food-item-entry1").value=foodGridTable.rows[document.getElementById(mid).rowIndex].cells[0].innerHTML;
 	servingSize=foodGridTable.rows[document.getElementById(mid).rowIndex].cells[1].innerHTML;
@@ -522,6 +590,7 @@ function getTdVal(mid)
 });
 // for hide ajax grid which show when enter food name in Food/ Beverage field
 $(".full").click(function(){
+
 		$("#ajaxAutoComplete").css("display","none");
 		$("#gridHeader").css("display","none");
 });

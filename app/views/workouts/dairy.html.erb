@@ -243,7 +243,7 @@
 	}
 </script>
 
-<%=form_tag '/workouts/dairy', :id=>"dairy-form" do %>
+<%=form_tag dairy_workout_path, :id=>"dairy-form" do %>
 <div style="margin:1% 0 0 -3%;background:#fff;height:auto;width:98%;padding-right:1%;margin-bottom:2%;">
    <table width="95%" style="border-spacing:1px;border-collapse:separate;">
 			<tr>
@@ -289,7 +289,7 @@
 		</tr>
 	<%end end%>
 	<tr style="text-align:center;">
-		    	<td style="color:#09C;text-align:left;" colspan="4"><a href="/meals/new" style="color:blue;font-weight:bold;">Add Food</a><!--|<a href="#" style="color:blue;font-weight:bold;font-weight:bold;">Quick Tools</a>--></td>
+		    	<td style="color:#09C;text-align:left;" colspan="4"><a href="<%=new_meal_path%>" style="color:blue;font-weight:bold;">Add Food</a><!--|<a href="#" style="color:blue;font-weight:bold;font-weight:bold;">Quick Tools</a>--></td>
 	</tr>
 </table>
 <hr/> 
@@ -310,7 +310,7 @@
 	%>
   <tr style="background-color:#CEECF5;text-align:center;">    <!-- onclick="return showexercise('<%=w.exercise_id%>')" -->
     <td style="text-align:left" width="45%"><a href="/exercises/<%=u(exercise_path)%>" id="showfood"><%=(w.description=="custom calories") ? w.note.capitalize! : w.description %></a></td>
-    <td><%=(w.time_from.strftime("%H").to_i)>12 ?(w.time_from-12.hours).strftime("%l")+"pm" : w.time_from.strftime("%l")+"am" %></td>
+    <td><%=(w.time_from.nil? ?  "" : w.time_from.strftime("%H").to_i)>12 ?(w.time_from-12.hours).strftime("%l")+"pm" : w.time_from.strftime("%l")+"am" %></td>
     <td><%=w.calories%></td>
     <td><%= link_to image_tag("/assets/delete.png"), "/workouts/#{w.id}",:confirm=>'Are You Sure?', :method=>:Delete %></td>
 		</tr>
@@ -319,7 +319,7 @@
 		%>
 	<%end end%>
 	<tr style="text-align:center;">
-		    	<td style="color:#09C;text-align:left;" colspan="4"><a href="/workouts/new" style="color:blue;font-weight:bold;">Add Exercise</a><!--|<a href="#" style="color:blue;font-weight:bold;font-weight:bold;">Quick Tools</a>--></td>
+		    	<td style="color:#09C;text-align:left;" colspan="4"><a href="<%=new_workout_path%>" style="color:blue;font-weight:bold;">Add Exercise</a><!--|<a href="#" style="color:blue;font-weight:bold;font-weight:bold;">Quick Tools</a>--></td>
 	</tr>
 </table>
 <hr/>

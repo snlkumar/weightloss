@@ -72,7 +72,20 @@
 			return calories.round(2) unless calories.nil? 
 
       end
+####################################################################################
 
+
+	def food_servings	
+		if params[:id]	
+			@servings=Food.where(:id => params[:id]).select("gmwt_1, gmwt_desc1,gmwt_2, gmwt_desc2")
+
+			if @servings.empty?
+      		render :json => 'No Results'.to_json
+    		else
+				render :json => @servings.map{|f| {:value => ("#{f.gmwt_1} $$#{f.gmwt_desc1}$$ #{f.gmwt_2} $$#{f.gmwt_desc2}"), :id => params[:id]} }.to_json	
+			end
+		end
+	end
 ####################################################################################################
 
   def meal_item_calories

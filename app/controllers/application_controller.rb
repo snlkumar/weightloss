@@ -85,7 +85,7 @@ class ApplicationController < ActionController::Base
  private
 
  def meta_defaults
-    @meta_title = "Welcome to"
+    @meta_title = "Welcome to MyWeightWorld"
     @meta_keywords = "my keywords"
     @meta_description = "my meta description"
   end

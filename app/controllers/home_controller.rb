@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   
   def index
-		@meta=Meta.where("controller= 'User' and  page='Homepage'").last
+		@meta=Meta.where("controller= 'Users' and  page='Homepage'").last
 		 if !@meta.blank?
 			@meta_title=@meta.metatitle
 			 @meta_keywords=@meta.keywords

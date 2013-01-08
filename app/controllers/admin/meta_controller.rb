@@ -1,7 +1,6 @@
 class Admin::MetaController < ApplicationController
   layout 'new_admin'
 	def index
-	@meta=Meta.all
 	end
 
 	def meta
@@ -20,7 +19,11 @@ class Admin::MetaController < ApplicationController
 	end
 
  def show
- @meta=Meta.find(params[:id])
+ 	@meta=Meta.find(params[:id])
+ 	respond_to do |format|
+ 		format.html
+  		format.js  { render :json => @meta }
+ 	end
   end
 
 
@@ -39,12 +42,14 @@ class Admin::MetaController < ApplicationController
 
 
  	def update
-    @meta=Meta.find(params[:id])
+ 	@meta=Meta.find(params[:id])   
 	respond_to do |format|
-		   if @meta.update_attributes(params[:meta])
-		     format.html {redirect_to((admin_meta_path), :notice => 'Successfully updated.')}
+		   if @meta.update_attributes(:keywords=>params[:keywords], :metatitle=>params[:metatitle], :description=>params[:description], :url=>params[:url])
+		     format.html { render :json => "Successfully saved." }		   
+		     format.js  { render :json => "Successfully saved." }
 		   else
-				format.html { render :action => "edit"}
+		     format.html  { render :json => @meta.errors.full_messages.first }		   		   
+		     format.js  { render :json =>  @meta.errors.full_messages.first }
 		   end
 		end
 	 end

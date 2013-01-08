@@ -1,11 +1,35 @@
+<style>
+select#unit{
+    width:100px;
+    height:25px;
+padding:2px;
+  }
+
+
+</style>
+
 <script type="text/javascript">
 	function makeReadOnly()
 	{
-	  var e=document.forms[1].elements;
-	  
+	if (<%=@food.custom%>==false)
+	{
+	  		var e=document.forms[2].elements;		
+		}
+			else
+			{
+			  var e=document.forms[1].elements;
+ 		 }
+	
 		for(i=4;i<e.length;i++)
 		{
+		
 		  document.getElementById(e[i].id).disabled=true;
+				num=document.getElementById(e[i].id).value;
+				if (num == parseFloat(num))
+			{ 
+
+				document.getElementById(e[i].id).value=(parseFloat(document.getElementById(e[i].id).value)* <%=@multi%>).toFixed(2);
+			}
 		}
 		document.getElementById('upload_food_pic').style.display="none";  //for hide upload photo field
 		if(document.getElementById('foods-img')!=null)
@@ -18,20 +42,54 @@
 		e.parentNode.removeChild(e);
 		document.getElementById('food-head').style.display="block";
 	}
-	
+
 </script>
+
 <div>
   <% if notice %>
     <font color="red" size="3">Error: <%=notice%></font>
-  <%else%>
+  <%else%>	
+
+  <div style="display:block;" id="food-head">
+    <h2><%= @food.name %></h2>
+  </div>
+
+<% unless in_admin? %>
+  <p>
+    Help us expand our food database.
+  </p>
+<% end %>
+
+<% unless @food.custom? %>
+<div style="float:left;">  
+  <form id="vendorform" method='get' action="<%=custom_food_path%>">
+  			<input type="hidden" id="id" name="id" value="<%=@food.name%>">
+			<h1>Select a unit</h1> <select id="unit" name="unit" value="">
+					  <option value="1"><%=@food.gmwt_desc1%></option>
+					<% if !@food.gmwt_desc2.nil? && !@food.gmwt_desc2.empty? then%> <option value="2"><%=@food.gmwt_desc2%></option><%end%>
+				</select> 
+  		<button style="width:69px;background-color:#2E8DC0;" onclick=submit()>Caculate</button> 
+  </form>
+</div>
+<%end%>
     <%= form_for(@food) do |f| %>
       <%= f.error_messages %>
-      <%= render :partial => 'form', :locals => {:f => f } %>
+
+      <%= render :partial => 'form1', :locals => {:f => f } %>
     <% end %>
   <%end%>
 </div>
 
 <script>
 //call after page loaded
-window.onload=makeReadOnly(); 
+
+setTimeout(
+function(){
+			document.getElementById("edit_food_"+<%=@food.id%> ).reset();
+			window.onload=makeReadOnly(); 
+			},
+		5
+);
+
+
 </script>
