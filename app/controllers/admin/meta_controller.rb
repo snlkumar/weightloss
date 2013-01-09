@@ -9,6 +9,15 @@ class Admin::MetaController < ApplicationController
 
 
 	def create
+	
+=begin	
+	@videos=OldFlashFile.all
+	@videos.each do |p|
+	@meta=Meta.create(:url=>"videos/p.title", :controller=>"VideosLibrary", :page=>p.title, :action=>"show")
+
+	@meta.save
+	end
+=end	
 	@meta=Meta.create(params[:meta])
 
    if @meta.save

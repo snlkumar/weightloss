@@ -32,8 +32,7 @@ height:30px;
        if (selected=="View Video") 
        {
           $("#hide1").show();
-         page=$("#videos").val();
-         alert(page);			
+         page=$("#videos").val();			
          }   
     	$.get("/admin/meta/"+page,
    		function(data){
@@ -45,9 +44,10 @@ height:30px;
 
     }); 
 
+
+
     $("#videos").change(function(){
              page=$("#videos").val();
-         alert(page);
     	$.get("/admin/meta/"+page,
    		function(data){
      			$("#meta_title").val(data.metatitle);
@@ -56,6 +56,9 @@ height:30px;
      			$("#url").val(data.url);     			     			     			
    	},"json");
     }); 
+
+
+
     
     $("#editbutton").click(function(){
     page=$("#meta_page").val();
@@ -63,10 +66,10 @@ height:30px;
     	{alert("Please select a page.");
     		return false;
     	}
-    	
-    if ($("#url").val()=="")
-		 {alert("Url can not be blank.");
-		 	return false;
+    selected=$("#meta_page").find("option:selected").text();
+    if (selected=="View Video")
+		 {
+		 page=$("#videos").val();			
 		 }    
     var answer = confirm("Do you want to save?")
 	if (answer)
@@ -127,13 +130,13 @@ height:30px;
 			<tr>
           <!--<td><%#= link_to exercise.description, edit_admin_exercise_path(exercise) %></td>-->
           <td style="font-size:16px;color:#0B2B42;padding:30px 0px 0px 10px;">Page: </td>
-          <td><%= select_tag 'meta_page', options_from_collection_for_select(Meta.all,"id","page"),:prompt=>"Select a page", :style=>"height:30px;width:265px;margin-top:2em;"%> <input type="button" id="editbutton" class="button grid_3" name="previous_button" style="height:29px;font-size:10pt;width:6em;padding:0;float:right;margin-top:2em;margin-right:1.8em;" value=" SAVE " /></td>
+          <td><%= select_tag 'meta_page', options_from_collection_for_select(Meta.where("controller not like 'VideosLibrary'"),"id","page"),:prompt=>"Select a page", :style=>"height:30px;width:265px;margin-top:2em;"%> <input type="button" id="editbutton" class="button grid_3" name="previous_button" style="height:29px;font-size:10pt;width:6em;padding:0;float:right;margin-top:2em;margin-right:1.8em;" value=" SAVE " /></td>
 
         </tr>
 
 			<tr style="display:none;" id="hide1">	
           <td style="font-size:16px;color:#0B2B42;padding:20px 0px 0px 10px;" >Select a video page: </td>
-          <td><%= select_tag 'videos', options_from_collection_for_select(Meta.where("controller like 'Videos'"),"id","page"),:prompt=>"Select a page", :style=>"height:30px;width:265px;margin-top:2em;"%></td>
+          <td><%= select_tag 'videos', options_from_collection_for_select(Meta.where("controller like 'VideosLibrary'"),"id","page"), :style=>"height:30px;width:265px;margin-top:2em;"%></td>
         </tr>     
         
 			<tr>
