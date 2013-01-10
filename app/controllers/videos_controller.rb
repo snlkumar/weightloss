@@ -4,7 +4,7 @@ class VideosController < ApplicationController
   before_filter :get_categories
   
   def index
-			@meta=Meta.where("controller='Video Library' and  page='Videos List'").last
+			@meta=Meta.where("controller='Videos' and  action='index'").last
 			if !@meta.blank?
 			@meta_title=@meta.metatitle
 			@meta_keywords=@meta.keywords
@@ -24,7 +24,7 @@ class VideosController < ApplicationController
 
     @video = OldFlashFile.find(params[:id])
 #    @video = OldFlashFile.find(:all)
-			@meta=Meta.where("controller='Video Library' and  page='View Video'").last
+			@meta=Meta.where("controller='VideosLibrary' and  page='#{@video.title}'").last
 			if !@meta.blank?
 			@meta_title=@video.title
 			@meta_keywords=@meta.keywords

@@ -23,19 +23,19 @@
       <%= link_to 'Articles', main_app.posts_path, :class => 'footer-link' %>&nbsp;
       <%= link_to 'About Us', main_app.about_path, :class => 'footer-link' %>&nbsp;</br>
   
-    <%= link_to "Vendors: ", "http://www.myweightworld.com/vendor/all/", :class => 'footer-link'%>&nbsp;
-    <%= link_to "Gyms ", "http://www.myweightworld.com/vendor/gym/", :class => 'footer-link'%>&nbsp;
-    <%= link_to "Restaurants,", "http://www.myweightworld.com/vendor/restaurants/", :class => 'footer-link'%>&nbsp;
-    <%= link_to "Nutritionist,", "http://www.myweightworld.com/vendor/nutritionist/", :class => 'footer-link'%>&nbsp;
-    <%= link_to "Weight loss surgeons,", "http://www.myweightworld.com/vendor/weight_loss_surgeons/", :class => 'footer-link'%>&nbsp;
-    <%= link_to "Physiologists,", "http://www.myweightworld.com/vendor/physiologists/", :class => 'footer-link'%>&nbsp;
-    <%= link_to "Hospitals,", "http://www.myweightworld.com/vendor/hospitals/", :class => 'footer-link'%>&nbsp;
-    <%= link_to "Law,", "http://www.myweightworld.com/vendor/law/", :class => 'footer-link'%>&nbsp;
-    <%= link_to "Plastic surgeons,", "http://www.myweightworld.com/vendor/plastic_surgeon/", :class => 'footer-link'%>&nbsp;
-    <%= link_to "Spa ", "http://www.myweightworld.com/vendor/spa/", :class => 'footer-link'%>&nbsp;
-    <%= link_to "Weight loss doctors,", "http://www.myweightworld.com/vendor/weight_loss_doctors/", :class => 'footer-link'%>&nbsp;
-    <%= link_to "Medical equipment,", "http://www.myweightworld.com/vendor/medical_equipment/", :class => 'footer-link'%>&nbsp;
-    <%= link_to "Weight loss clinics", "http://www.myweightworld.com/vendor/weight_loss_clinics/", :class => 'footer-link'%>&nbsp;
+      <%= link_to 'Vendors:', main_app.vendor_path+"?searchtype=all&filterQuery=", :class => 'footer-link' %>&nbsp;
+		<%= link_to 'Gyms,', main_app.vendor_path+"?searchtype=gym&filterQuery=", :class => 'footer-link' %>&nbsp;
+		<%= link_to 'Restaurants,', main_app.vendor_path+"?searchtype=restaurants&filterQuery=", :class => 'footer-link' %>&nbsp;
+		<%= link_to 'Nutritionists,', main_app.vendor_path+"?searchtype=nutritionist&filterQuery=", :class => 'footer-link' %>&nbsp;
+		<%= link_to 'Weight loss surgeons,', main_app.vendor_path+"?searchtype=weight_loss_surgeons&filterQuery=", :class => 'footer-link' %>&nbsp;
+		<%= link_to 'Physiologists,', main_app.vendor_path+"?searchtype=physiologists&filterQuery=", :class => 'footer-link' %>&nbsp;  
+		<%= link_to 'Hospitals,', main_app.vendor_path+"?searchtype=hospitals&filterQuery=", :class => 'footer-link' %>&nbsp;
+		<%= link_to 'Law,', main_app.vendor_path+"?searchtype=law&filterQuery=", :class => 'footer-link' %>&nbsp;
+		<%= link_to 'Plastic surgeons,', main_app.vendor_path+"?searchtype=Plastic_surgeon&filterQuery=", :class => 'footer-link' %>&nbsp;
+		<%= link_to 'Spa,', main_app.vendor_path+"?searchtype=spa&filterQuery=", :class => 'footer-link' %>&nbsp;  
+		<%= link_to 'Weight loss doctors,', main_app.vendor_path+"?searchtype=weight_loss_doctors&filterQuery=", :class => 'footer-link' %>&nbsp;  
+		<%= link_to 'Weight loss clinics,', main_app.vendor_path+"?searchtype=weight_loss_clinics&filterQuery=", :class => 'footer-link' %>&nbsp;  
+		<%= link_to 'Medical equipment', main_app.vendor_path+"?searchtype=medical_equipment&filterQuery=", :class => 'footer-link' %>&nbsp; 
 
     </div>
     

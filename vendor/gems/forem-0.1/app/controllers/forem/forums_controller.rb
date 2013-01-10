@@ -4,7 +4,7 @@ module Forem
 
     def index
       @forums = Forem::Forum.all
-		@meta=Meta.where("controller= 'Forum' and  page='Forum List'").last
+		@meta=Meta.where("controller= 'Forum' and  action='forum'").last
 		if !@meta.blank?
 		@meta_title=@meta.metatitle
 		@meta_keywords=@meta.keywords
@@ -17,7 +17,7 @@ module Forem
       @forum = Forem::Forum.find(params[:id])
       @topics = @forum.topics.visible.by_pinned_or_most_recent_post.page(params[:page]).per(20)
 
-		@meta=Meta.where("controller= 'Forum' and  page='Forum Topics'").last
+		@meta=Meta.where("controller= 'Forum' and  action='forum'").last
 		if !@meta.blank?
 		@meta_title=@forum.title
 		@meta_keywords=@meta.keywords
