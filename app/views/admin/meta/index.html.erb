@@ -18,7 +18,8 @@ height:30px;
     });
      
     $("#meta_page").change(function(){
-    $("#hide1").hide();   
+    $("#hide1").hide();
+    $("#hide2").hide();          
     page=$(this).val();
     selected=$(this).find("option:selected").text();
     if (page=="")
@@ -29,11 +30,19 @@ height:30px;
 	  $("#url").val("");  
     return false;
     }  
-       if (selected=="View Video") 
-       {
-          $("#hide1").show();
-         page=$("#videos").val();			
-         }   
+    if (selected=="View Video") 
+    {
+       $("#hide1").show();
+      page=$("#videos").val();			
+    } 
+    
+    if (selected=="Read Article") 
+    {
+       $("#hide2").show();
+      page=$("#articles").val();			
+    }     
+    
+      
     	$.get("/admin/meta/"+page,
    		function(data){
      			$("#meta_title").val(data.metatitle);
@@ -58,7 +67,17 @@ height:30px;
     }); 
 
 
-
+    $("#articles").change(function(){
+             page=$("#articles").val();
+    	$.get("/admin/meta/"+page,
+   		function(data){
+     			$("#meta_title").val(data.metatitle);
+     			$("#keywords").val(data.keywords);
+     			$("#description").val(data.description);     			
+     			$("#url").val(data.url);     			     			     			
+   	},"json");
+    }); 
+    
     
     $("#editbutton").click(function(){
     page=$("#meta_page").val();
@@ -70,7 +89,11 @@ height:30px;
     if (selected=="View Video")
 		 {
 		 page=$("#videos").val();			
-		 }    
+		 }
+    if (selected=="Read Article")
+		 {
+		 page=$("#articles").val();			
+		 } 		     
     var answer = confirm("Do you want to save?")
 	if (answer)
 	{
@@ -130,15 +153,20 @@ height:30px;
 			<tr>
           <!--<td><%#= link_to exercise.description, edit_admin_exercise_path(exercise) %></td>-->
           <td style="font-size:16px;color:#0B2B42;padding:30px 0px 0px 10px;">Page: </td>
-          <td><%= select_tag 'meta_page', options_from_collection_for_select(Meta.where("controller not like 'VideosLibrary'"),"id","page"),:prompt=>"Select a page", :style=>"height:30px;width:265px;margin-top:2em;"%> <input type="button" id="editbutton" class="button grid_3" name="previous_button" style="height:29px;font-size:10pt;width:6em;padding:0;float:right;margin-top:2em;margin-right:1.8em;" value=" SAVE " /></td>
+          <td><%= select_tag 'meta_page', options_from_collection_for_select(Meta.where("controller not like 'VideosLibrary' and controller not like 'ArticlesLibrary'"),"id","page"),:prompt=>"Select a page", :style=>"height:30px;width:265px;margin-top:2em;"%> <input type="button" id="editbutton" class="button grid_3" name="previous_button" style="height:29px;font-size:10pt;width:6em;padding:0;float:right;margin-top:2em;margin-right:1.8em;" value=" SAVE " /></td>
 
         </tr>
 
 			<tr style="display:none;" id="hide1">	
-          <td style="font-size:16px;color:#0B2B42;padding:20px 0px 0px 10px;" >Select a video page: </td>
+          <td style="font-size:16px;color:#0B2B42;padding:20px 0px 0px 10px;" >Select a video: </td>
           <td><%= select_tag 'videos', options_from_collection_for_select(Meta.where("controller like 'VideosLibrary'"),"id","page"), :style=>"height:30px;width:265px;margin-top:2em;"%></td>
         </tr>     
         
+			<tr style="display:none;" id="hide2">	
+          <td style="font-size:16px;color:#0B2B42;padding:20px 0px 0px 10px;" >Select an article: </td>
+          <td><%= select_tag 'articles', options_from_collection_for_select(Meta.where("controller like 'ArticlesLibrary'"),"id","page"), :style=>"height:30px;width:265px;margin-top:2em;"%></td>
+        </tr> 
+
 			<tr>
 				<td style="font-size:16px;color:#0B2B42;padding:15px 0px 0px 10px;">Meta title:</td>
 				<td><%= text_area_tag 'meta_title',"", :style=>"height:40px;width:450px;"%></td>

@@ -31,8 +31,8 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 	  when "posts"
 	  		if page.action.to_s.downcase=="index"  
 			  match "/"+page.url.to_s => page.controller.to_s.titlecase+"#"+"index", :as=> "posts"
-				elsif page.action.to_s.downcase=="show"
-					match "/"+page.url.to_s+"/:id" => page.controller.to_s.titlecase+"#"+"show", :as=> "post"	     
+				#elsif page.action.to_s.downcase=="show"
+					#match "/"+page.url.to_s+"/:id" => page.controller.to_s.titlecase+"#"+"show", :as=> "post"	     
 			     end			 
 	  when "home"
 	  		if page.action.to_s.downcase=="about"  
@@ -57,6 +57,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
  end
 
 	match '/videos/:id' =>'Videos#show', :as=> "video"
+	match '/posts/:id' =>'Posts#show', :as=> "post"	
 	#new added routes
 	match '/admin/vendors/search' =>'admin/vendors#search'
 	match '/custom_foods/new/:name' => 'custom_foods#new'

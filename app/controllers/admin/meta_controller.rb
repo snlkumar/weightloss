@@ -9,15 +9,6 @@ class Admin::MetaController < ApplicationController
 
 
 	def create
-	
-=begin	
-	@videos=OldFlashFile.all
-	@videos.each do |p|
-	@meta=Meta.create(:url=>"videos/p.title", :controller=>"VideosLibrary", :page=>p.title, :action=>"show")
-
-	@meta.save
-	end
-=end	
 	@meta=Meta.create(params[:meta])
 
    if @meta.save
@@ -25,6 +16,25 @@ class Admin::MetaController < ApplicationController
      	else
 			@notice = 'meta not created.'
     	end
+		
+=begin	
+	@videos=OldFlashFile.all
+	@videos.each do |p|
+	@meta=Meta.create(:url=>"videos/"+p.title, :metatitle=>p.title, :controller=>"VideosLibrary", :page=>p.title, :action=>"show")
+
+	@meta.save
+	end
+	
+	
+##################	
+	@videos=OldTextFile.all
+	@videos.each do |p|
+	@meta=Meta.create(:url=>"articles/"+p.page_title, :controller=>"ArticlesLibrary", :page=>p.page_title, :action=>"show", :metatitle=>p.page_title)
+	@meta.save
+	end	
+	
+=end	    	
+    	
 	end
 
  def show
