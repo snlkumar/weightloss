@@ -10,7 +10,7 @@ class MywwWebservicesController < ApplicationController
       #bcrypt= ::BCrypt::Password.new(@user.encrypted_password)
       #pass=::BCrypt::Engine.hash_secret("#{params[:password]}#{pepper}", bcrypt.salt)
       if @user.valid_password?(params[:password]) #Devise.secure_compare(@user.encrypted_password,pass)
-          @status={"status-msg"=>"111"}   #111=>login success
+          @status={"status-msg"=>"111", "id"=>"#{@user.id}", "Gender"=>"#{@user.gender}"}   #111=>login success
           session[:user_id] = @user.id
 
           ## update login detail of user
@@ -890,6 +890,21 @@ end
 	end
 
 ####################################################################################
+
+ def vendormailer
+	if params[:id] && params[:vendor_type]=="restaurants"
+	  @vendor=Restaurant.find(params[:id])	  	
+      else
+	  @vendor=Vendor.find(params[:id])
+   end
+   BusinessclaimMailer.vendormailer(@vendor,params[:message],params[:email], params[:name]).deliver
+      @status={"status-msg"=>"600"}  
+        respond_to do |format|
+        format.js { render :json =>@status}
+      end
+ end 
+
+
   #this method for testing, to check webservice
   def check
 

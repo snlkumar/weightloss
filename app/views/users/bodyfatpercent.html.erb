@@ -1,14 +1,69 @@
 <%= javascript_include_tag "application" %>
 <link rel="stylesheet" type="text/css" href="/assets/myweightworld.css"/>
+<style type="text/css">
+body:first-of-type .safari{margin-top:25px;}
+
+#bodyfatpercent,#bodyfat_bodymass,#bodyfat_bodyfat,#bodyfat_bodyweight {
+-webkit-border-radius: 8px;
+-moz-border-radius: 8px;
+border-radius: 8px;
+}
+</style>
 
 <script type="text/javascript">
 $(document).ready(function(){
 
- 	$("#bodyfat_bodyfat").attr("disabled", "disabled");
- 	$("#bodyfat_bodymass").attr("disabled", "disabled");
+	$("#bodyfat_bodyfat, #bodyfat_bodymass, #bodyfatpercent").attr("disabled", "disabled");
+	$("#bodyfat_tricep, #bodyfat_subscapular, #bodyfat_suprailiac, #bodyfat_midaxillary, #bodyfat_bicep, #bodyfat_lower_back, #bodyfat_calf,#bodyfat_thigh, #bodyfat_chest, #bodyfat_abdominal").css("background-color", "white").removeAttr("disabled");
+
+
+	
+	$("#formula").change(function(){
+			$("#bodyfat_tricep, #bodyfat_subscapular, #bodyfat_suprailiac, #bodyfat_midaxillary, #bodyfat_bicep, #bodyfat_lower_back, #bodyfat_calf,#bodyfat_thigh, #bodyfat_chest, #bodyfat_abdominal").css("background-color", "white").removeAttr("disabled");
+
+		if($("#formula").val()=="")
+			{	
+			  $("#bodyfat_tricep, #bodyfat_subscapular, #bodyfat_suprailiac, #bodyfat_midaxillary, #bodyfat_bicep, #bodyfat_lower_back, #bodyfat_calf,#bodyfat_thigh, #bodyfat_chest, #bodyfat_abdominal").css("background-color", "white").removeAttr("disabled");		
+			}
+		else if($("#formula").val()=="1")
+			{
+			 	$("#bodyfat_tricep, #bodyfat_subscapular, #bodyfat_suprailiac, #bodyfat_midaxillary, #bodyfat_bicep, #bodyfat_lower_back, #bodyfat_calf").val("").css("background-color", "grey").attr("disabled", "disabled");
+
+			}
+		else if($("#formula").val()=="2")
+			{
+			 	$("#bodyfat_suprailiac, #bodyfat_midaxillary, #bodyfat_bicep, #bodyfat_lower_back, #bodyfat_calf, #bodyfat_chest").css("background-color", "grey").val("").attr("disabled", "disabled");
+
+			}		
+		
+		else if($("#formula").val()=="3")
+			{
+			 	$("#bodyfat_bicep, #bodyfat_lower_back, #bodyfat_calf").val("").css("background-color", "grey").attr("disabled", "disabled");
+			 	
+			}		
+
+		else if($("#formula").val()=="4")
+			{
+			 	$("#bodyfat_midaxillary").val("").css("background-color", "grey").attr("disabled", "disabled");
+			 	
+			}
+		else if($("#formula").val()=="5")
+			{
+			 	$("#bodyfat_midaxillary, #bodyfat_lower_back, #bodyfat_calf, #bodyfat_thigh, #bodyfat_chest, #bodyfat_abdominal").val("").css("background-color", "grey").attr("disabled", "disabled");
+			 	
+			}			
+
+		else
+			{
+	$("#bodyfat_tricep, #bodyfat_subscapular, #bodyfat_suprailiac, #bodyfat_midaxillary, #bodyfat_bicep, #bodyfat_lower_back, #bodyfat_calf,#bodyfat_thigh, #bodyfat_chest, #bodyfat_abdominal").val("").css("background-color", "grey").attr("disabled", "disabled");
+			alert("Click Calculate to enter values.");			 	
+			}
+		
+});
+
+
 	
  	$("#calculate").click(function(e){
-
 		e.preventDefault();
 	   gender="<%=current_user.gender.downcase%>"
 	   age="<%=current_user.age%>"
@@ -21,27 +76,8 @@ $(document).ready(function(){
 
 <!--alert($('#formula option:selected').text()); to get the select field selected text-->
 
-fields="#bodyfat_chest,#bodyfat_abdominal,#bodyfat_thigh,#bodyfat_tricep,#bodyfat_subscapular,#bodyfat_suprailiac,#bodyfat_midaxillary,#bodyfat_lower_back,#bodyfat_calf,#bodyfat_bicep".split(",");
-	for(i=0;i<fields.length;i++)
-	{
- 		if($(fields[i]).val()=="")
-		{
-			alert(fields[i].replace("#bodyfat_","")+" cannot be empty.");
-			return false;		
-		}
-	}	
 
-
-	  for(i=0;i<fields.length;i++)
-			{
-				num=$(fields[i]).val();
-				if (num != parseFloat(num))
-					{
-						alert(fields[i].replace("#bodyfat_","") + ' is not numeric');
-						return false;					
-				}
-			}
-
+	 bodyweight=$('#bodyfat_bodyweight').val();			
 	 c=$('#bodyfat_chest').val();
 	 a=$('#bodyfat_abdominal').val();
 	 t=$('#bodyfat_thigh').val();
@@ -54,8 +90,30 @@ fields="#bodyfat_chest,#bodyfat_abdominal,#bodyfat_thigh,#bodyfat_tricep,#bodyfa
 	 lb=$('#bodyfat_lower_back').val();
 	 cf=$('#bodyfat_calf').val();
 
+
+
+
 if (formula=="1")
 {
+   fields="#bodyfat_chest,#bodyfat_abdominal,#bodyfat_thigh,#bodyfat_bodyweight".split(",");
+		for(i=0;i<fields.length;i++)
+		{
+	 		if($(fields[i]).val()=="")
+			{
+				alert(fields[i].replace("#bodyfat_","")+" cannot be empty.");
+				return false;		
+			}
+		}	
+
+	  for(i=0;i<fields.length;i++)
+			{
+				num=$(fields[i]).val();
+				if (num != parseFloat(num))
+					{
+						alert(fields[i].replace("#bodyfat_","") + ' is not numeric');
+						return false;					
+				}
+			}
 
 	sum=parseFloat(t)+parseFloat(c)+parseFloat(a);
 		if (gender=="male")
@@ -71,7 +129,26 @@ if (formula=="1")
 
 else if(formula=="2") 
 {
+		fields="#bodyfat_abdominal,#bodyfat_thigh,#bodyfat_tricep,#bodyfat_subscapular,#bodyfat_bodyweight".split(",");
+		for(i=0;i<fields.length;i++)
+		{
+	 		if($(fields[i]).val()=="")
+			{
+				alert(fields[i].replace("#bodyfat_","")+" cannot be empty.");
+				return false;		
+			}
+		}	
 
+	  for(i=0;i<fields.length;i++)
+			{
+				num=$(fields[i]).val();
+				if (num != parseFloat(num))
+					{
+						alert(fields[i].replace("#bodyfat_","") + ' is not numeric');
+						return false;					
+				}
+			}
+			
 		sum=parseFloat(a)+parseFloat(t)+parseFloat(su)+parseFloat(tr);
 
 		if (gender=="male")
@@ -88,6 +165,27 @@ else if(formula=="2")
 
 else if(formula=="3") 
 {
+
+fields="#bodyfat_chest,#bodyfat_abdominal,#bodyfat_thigh,#bodyfat_tricep,#bodyfat_subscapular,#bodyfat_suprailiac,#bodyfat_midaxillary,#bodyfat_bodyweight".split(",");
+		for(i=0;i<fields.length;i++)
+		{
+	 		if($(fields[i]).val()=="")
+			{
+				alert(fields[i].replace("#bodyfat_","")+" cannot be empty.");
+				return false;		
+			}
+		}	
+
+	  for(i=0;i<fields.length;i++)
+			{
+				num=$(fields[i]).val();
+				if (num != parseFloat(num))
+					{
+						alert(fields[i].replace("#bodyfat_","") + ' is not numeric');
+						return false;					
+				}
+			}
+
 		sum=parseFloat(c)+parseFloat(a)+parseFloat(s)+parseFloat(t)+parseFloat(su)+parseFloat(tr)+parseFloat(m);
 
 		if (gender=="male")
@@ -104,31 +202,56 @@ else if(formula=="3")
 else if(formula=="4") 
 {
 
+fields="#bodyfat_chest,#bodyfat_abdominal,#bodyfat_thigh,#bodyfat_tricep,#bodyfat_subscapular,#bodyfat_suprailiac,#bodyfat_lower_back,#bodyfat_calf,#bodyfat_bicep,#bodyfat_bodyweight".split(",");
+		for(i=0;i<fields.length;i++)
+		{
+	 		if($(fields[i]).val()=="")
+			{
+				alert(fields[i].replace("#bodyfat_","")+" cannot be empty.");
+				return false;		
+			}
+		}	
+
+	  for(i=0;i<fields.length;i++)
+			{
+				num=$(fields[i]).val();
+				if (num != parseFloat(num))
+					{
+						alert(fields[i].replace("#bodyfat_","") + ' is not numeric');
+						return false;					
+				}
+			}
+			
 		sum=parseFloat(c)+parseFloat(a)+parseFloat(t)+parseFloat(b)+parseFloat(tr)+parseFloat(su)+parseFloat(s)+parseFloat(lb)+parseFloat(cf);
-		var bodyweight=prompt("Enter your weight in lbs.");
-		if (bodyweight!=null && bodyweight!="")
-		{
-		if (bodyweight != parseFloat(bodyweight))
-		{
-		alert('Weight is not numeric');
-	   return false;					
-		}
 		fatpercent=((sum)*27/bodyweight).toFixed(2);
-		}
-		else if (bodyweight!=null)
-		{ alert("Please enter weight in lbs.");
-		return false;
-	   }
-		else
-		{ 
-		return false;
-	   }
+
 }
 
 
 
 else if(formula=="5") 
 {
+fields="#bodyfat_tricep,#bodyfat_subscapular,#bodyfat_suprailiac,#bodyfat_bicep,#bodyfat_bodyweight".split(",");
+		for(i=0;i<fields.length;i++)
+		{
+	 		if($(fields[i]).val()=="")
+			{
+				alert(fields[i].replace("#bodyfat_","")+" cannot be empty.");
+				return false;		
+			}
+		}	
+
+	  for(i=0;i<fields.length;i++)
+			{
+				num=$(fields[i]).val();
+				if (num != parseFloat(num))
+					{
+						alert(fields[i].replace("#bodyfat_","") + ' is not numeric');
+						return false;					
+				}
+			}
+
+
 	sum=parseFloat(b)+parseFloat(tr)+parseFloat(su)+parseFloat(s);
    if (gender=="male")
 		{  
@@ -229,7 +352,7 @@ else
 
 							if (gender=="male")
 							{   
-								fatpercent = (86.010 * Math.log(waist - neck)/Math.log(10) - 70.041 * Math.log(height)/Math.log(10) + 36.76).toFixed(2);
+								fatpercent = (86.010 * Math.log(parseFloat(waist) - parseFloat(neck))/Math.log(10) - 70.041 * Math.log(parseFloat(height))/Math.log(10) + 36.76).toFixed(2);
       					}
 							else
 							{
@@ -244,8 +367,7 @@ else
 									return false;					
 								}
 
-						fatpercent =(163.205 * Math.log(waist + hip - neck)/Math.log(10) - 97.684 * Math.log(height)/Math.log(10) - 78.387).toFixed(2); 
-
+						fatpercent =(163.205 * Math.log(parseFloat(waist) + parseFloat(hip) - parseFloat(neck))/Math.log(10) - 97.684 * Math.log(parseFloat(height))/Math.log(10) - 78.387).toFixed(2); 
 							}
 							else
 							{
@@ -284,8 +406,7 @@ else
 	}
 
 	bodymass=(100-fatpercent).toFixed(2);
-	$('#bodyfat_bodyfat').css("background-color", "#993333");
-	$('#bodyfat_bodymass').css("background-color", "#993333");
+	$('#bodyfat_bodyfat,#bodyfat_bodymass,#bodyfatpercent').css("background-color", "#993333");
 
 	$("#bodyfat_bodyfat").removeAttr("disabled");
 	$("#bodyfat_bodymass").removeAttr("disabled");
@@ -293,6 +414,11 @@ else
 	$('#bodyfat_bodyfat').val(fatpercent);
 	$('#bodyfat_bodymass').val(bodymass);
 
+var fatweight=(bodyweight*fatpercent/100).toFixed(2);
+var massweight = (bodyweight-(bodyweight*fatpercent/100 )).toFixed(2);
+	$('#bodyfat_bodyfat').val(fatweight);
+	$('#bodyfat_bodymass').val(massweight);
+	$('#bodyfatpercent').val(fatpercent)
 	var answer = confirm("Do you want to save?")
 	if (answer){
 	       $('#new_bodyfat').submit();
@@ -376,7 +502,7 @@ input:-moz-placeholder {
 					  <option value="6">Tape Measurement</option>    
 					  </select> 
 </div>
-				 <div class="left-col fright" style="width:118px;text-align:center;">
+				 <div class="left-col fright" style="width:114px;text-align:center;">
 					<p class="font-color-orange"><strong>Subscapular</strong></p>
   					 <%= f.text_field :subscapular, :class=>"input", :placeholder=>"mm", :style=>"margin:3px 15px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
@@ -386,20 +512,30 @@ input:-moz-placeholder {
 
 
 					<p class="font-color-orange m3"><strong>Lower Back</strong></p>
-   				<%= f.text_field :lower_back, :class=>"input", :placeholder=>"mm", :style=>"margin:5px 13px;border:1px solid #fff;height:25.4px;padding:1px;"%>
+   				<%= f.text_field :lower_back, :class=>"input", :placeholder=>"mm", :style=>"margin:5px 13px;border:1px solid #fff;height:25.4px;padding:1px;"%><br/><br/>
+
+		<strong style="color:orange;">Body weight</strong>  
+		<input type="text" name="bodyweight" id="bodyfat_bodyweight" placeholder="lbs" style="margin-left:5px;width:85px;height:18px;border:white 3px solid;font-size:13px;font-family:Verdana;">
 
 
-					<p class="font-color-white" style="margin-top:128px;"><strong>Lean Body Mass</strong> %</p>
-   				<%= f.text_field :bodymass, :class=>"input", :placeholder=>"%", :style=>"color:white;margin:0px 15px;border:1px solid #fff;height:25.4px;padding:1px;"%>
+<div class="safari">
+					<p class="font-color-white"><strong>Lean Body Mass</strong></p>
+   				<%= f.text_field :bodymass, :class=>"input", :placeholder=>"%", :style=>"color:white;margin:3px 12px;border:1px solid #fff;height:25.4px;padding:1px;"%>
+</div>
+
+					<p class="font-color-white m3"><strong>Fat Mass</strong></p>
+   				<%= f.text_field :bodyfat, :class=>"input", :placeholder=>"%", :style=>"color:white;margin:3px 12px;border:1px solid #fff;height:25px;padding:1px;"%>
+   				
+<div style="margin-top:10px;">
+		<strong style="color:white;margin-top:5px;">Body Fat%</strong>  
+		<input type="text" name="fatpercent" id="bodyfatpercent" placeholder="%" style="margin-left:5px;width:85px;height:18px;border:white 3px solid;font-size:13px;font-family:Verdana;">
+	</div>   							
+   				
+</div>
 
 
-					<p class="font-color-white m3"><strong>Fat Mass</strong> %</p>
-   				<%= f.text_field :bodyfat, :class=>"input", :placeholder=>"%", :style=>"color:white;margin:5px 15px;border:1px solid #fff;height:25.4px;padding:1px;"%>
-				 </div>
-
-				 <div class="clear"></div>
-
-</form><div><button id="calculate" value="" style="margin-top:2%;margin-left:41%;height:30px;font-weight:bold;width:100px;color:black;background-color:white;">Calculate</button></div>
+</form><button id="calculate" value="" style="display:inline-block,margin-top:2%;margin-left:41%;height:30px;font-weight:bold;width:100px;color:black;background-color:white;">Calculate</button>				 
+					<div class="clear"></div>
 				 <div class="title">Monitor your body FAT</div>
 			  </div>
 			  <div class="footer">
@@ -440,7 +576,7 @@ input:-moz-placeholder {
 
 
       <p class="font-color-orange m3"><strong>Suprailiac</strong></p>
-	   <%= f.text_field :suprailiac, :class=>"input", :placeholder=>"mm", :style=>"margin:1px 3px;border:1px solid #fff;height:25.4px;padding:1px;"%>
+	   <%= f.text_field :suprailiac, :class=>"input", :placeholder=>"mm", :style=>"margin:0px 3px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
 
       <p class="font-color-orange m3"><strong>Thigh</strong></p>
@@ -467,7 +603,7 @@ input:-moz-placeholder {
 </div>
 		
 
-    <div class="left-col fright" style="width:118px;text-align:center;">
+    <div class="left-col fright" style="width:112px;text-align:center;">
       <p class="font-color-orange"><strong>Subscapular</strong></p>
 		<%= f.text_field :subscapular, :class=>"input", :placeholder=>"mm", :style=>"margin:3px 15px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
@@ -477,21 +613,29 @@ input:-moz-placeholder {
 
 
       <p class="font-color-orange m3"><strong>Lower Back</strong></p>
-		<%= f.text_field :lower_back, :class=>"input", :placeholder=>"mm", :style=>"margin:5px 13px;border:1px solid #fff;height:25.4px;padding:1px;"%>
+		<%= f.text_field :lower_back, :class=>"input", :placeholder=>"mm", :style=>"margin:5px 13px;border:1px solid #fff;height:25.4px;padding:1px;"%><br/><br/>
+
+		<strong style="color:orange;">Body weight</strong>  
+		<input type="text" name="bodyweight" id="bodyfat_bodyweight" placeholder="lbs" style="margin-left:5px;width:85px;height:18px;border:white 3px solid;font-size:13px;font-family:Verdana;">
+
+<div class="safari">
+				
+      <p class="font-color-white" style="magin-top:-2px"><strong>Lean Body Mass</strong></p>
+		<%= f.text_field :bodymass, :class=>"input", :placeholder=>"lbs", :style=>"margin:3px 12px;border:1px solid #fff;height:25.4px;padding:1px;"%>
+</div>
+      <p class="font-color-white m3"><strong>Fat Mass</strong></p>
+		<%= f.text_field :bodyfat, :class=>"input", :placeholder=>"lbs", :style=>"margin:3px 12px;border:1px solid #fff;height:25.4px;padding:1px;"%>
+
+<div style="margin-top:10px;">
+		<strong style="color:white;margin-top:5px;">Body Fat%</strong>  
+		<input type="text" name="fatpercent" id="bodyfatpercent" placeholder="%" style="margin-left:5px;width:85px;height:18px;border:white 3px solid;font-size:13px;font-family:Verdana;">
+	</div>
+</div>
 
 
-      <p class="font-color-white" style="margin-top:128px;"><strong>Lean Body Mass</strong> %</p>
-		<%= f.text_field :bodymass, :class=>"input", :placeholder=>"%", :style=>"margin:0px 15px;border:1px solid #fff;height:25.4px;padding:1px;"%>
 
-
-      <p class="font-color-white m3"><strong>Fat Mass</strong> %</p>
-		<%= f.text_field :bodyfat, :class=>"input", :placeholder=>"%", :style=>"margin:5px 15px;border:1px solid #fff;height:25.4px;padding:1px;"%>
-    </div>
-
-
-    <div class="clear"></div>
-
-</form><div><button id="calculate" value="" style="margin-top:2%;margin-left:41%;height:30px;font-weight:bold;width:100px;color:black;background-color:white;">Calculate</button></div>
+</form><button id="calculate" value="" style="display:inline-block;margin-left:41%;height:30px;font-weight:bold;width:100px;color:black;background-color:white;">Calculate</button> 
+	  <div class="clear"></div> 
     <div class="title">Monitor your body FAT</div>
   </div>
 

@@ -40,8 +40,9 @@ class Admin::OldTextFilesController < Admin::BaseController
   
   def destroy
     @text_file = OldTextFile.find(params[:id])
+    @meta=Meta.find_by_controller_and_page('ArticlesLibrary',"#{@text_file.page_title}")
     @text_file.destroy
-    
+    @meta.destroy
     redirect_to(admin_posts_path)
   end
 end

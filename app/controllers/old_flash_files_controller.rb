@@ -23,6 +23,7 @@ class OldFlashFilesController < ApplicationController
     
     if @flash_file.save
       redirect_to(old_flash_files_url, :notice => 'FlashFile was successfully created.')
+      	@meta=Meta.create(:url=>"videos/"+@flash_file.title, :metatitle=>@flash_file.title, :controller=>"VideosLibrary", :page=>@flash_file.title, :action=>"show")
     else
       render :action => "new"
     end
@@ -30,8 +31,9 @@ class OldFlashFilesController < ApplicationController
   
   def update
     @flash_file = OldFlashFile.find(params[:id])
-    
+    @meta=Meta.find_by_controller_and_page('VideosLibrary',"#{@flash_file.title}")
     if @flash_file.update_attributes(params[:old_flash_file])
+         @meta.update_attributes(:page=>params[:old_flash_file][:title],:metatitle=>params[:old_flash_file][:title])  
       redirect_to(old_flash_files_url, :notice => 'FlashFile was successfully updated.')
     else
       render :action => "edit"

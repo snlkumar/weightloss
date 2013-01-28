@@ -399,6 +399,52 @@ $("#ajaxAutoComplete3").css("display","none");
 </tr>
 
 
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :city %></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :city, :id=>"vendor_city", :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;" %>
+		<div id="ajaxAutoComplete" class="ajaxAutoComplete"></div>
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :state %></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+		<%= f.select :state, options_for_select(us_states),:style=>"width:200px;height:25px;margin-top:-5px; padding:2px;"%>
+	</td>
+	</tr>
+
+	<tr>
+	 <td style="padding:15px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :phone %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :contact1, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :cell %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :contact2, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+
+
+
+
+	<tr>        
+	<td height="40" colspan="2" ><h1 style="margin-top:10px;margin-bottom:5%;margin-top:5px;background-color:#0B2B42;text-align:center;color:#FBF2EF;">Address 2</h1></td>
+	</tr>
+
+
 <tr>
 	<tr>
 	 <td style="padding:15px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :address2, "Address#2" %></td>
@@ -407,17 +453,6 @@ $("#ajaxAutoComplete3").css("display","none");
 
 </td>
 </tr>
-
-<tr>
-	<tr>
-	 <td style="padding:15px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :address3, "Address#3" %></td>
- <td style="padding:5px 15px;" valign="top">   
-<%= f.text_area :address3, :class=>"border_grey", :style=>"width:225px;height:50px;margin-top:-10px; margin-left:0px; padding:5px;" %>
-
-</td>
-</tr>
-
-
 
 	<tr>
 	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :city %></td>
@@ -437,15 +472,63 @@ $("#ajaxAutoComplete3").css("display","none");
 	</td>
 	</tr>
 
-
 	<tr>
-	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :country %></td>
+	 <td style="padding:15px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :phone %><br /></td>
 
-	 <td style="padding:10px 15px;" valign="top">
-	 <%= f.select :country, options_for_select(countries)%>
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :contact1, :class=>"border_grey", :style=>"width:230px;height:20px; padding:2px;"%>
+
 	</td>
 	</tr>
 
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :cell %><br /></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :contact2, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
+
+	</td>
+	</tr>
+
+
+
+
+
+	<tr>        
+	<td height="40" colspan="2" ><h1 style="margin-top:10px;margin-bottom:5%;margin-top:5px;background-color:#0B2B42;text-align:center;color:#FBF2EF;">Address 3</h1></td>
+	</tr>
+
+
+
+
+
+<tr>
+	<tr>
+	 <td style="padding:15px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :address3, "Address#3" %></td>
+ <td style="padding:5px 15px;" valign="top">   
+<%= f.text_area :address3, :class=>"border_grey", :style=>"width:225px;height:50px;margin-top:-10px; margin-left:0px; padding:5px;" %>
+
+</td>
+</tr>
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :city %></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+	    <%= f.text_field :city, :id=>"vendor_city", :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;" %>
+		<div id="ajaxAutoComplete" class="ajaxAutoComplete"></div>
+	</td>
+	</tr>
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :state %></td>
+
+	 <td style="padding:5px 15px;" valign="top">
+		<%= f.select :state, options_for_select(us_states),:style=>"width:200px;height:25px;margin-top:-5px; padding:2px;"%>
+	</td>
+	</tr>
 
 	<tr>
 	 <td style="padding:15px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :phone %><br /></td>
@@ -463,6 +546,22 @@ $("#ajaxAutoComplete3").css("display","none");
 	 <td style="padding:5px 15px;" valign="top">
 	    <%= f.text_field :contact2, :class=>"border_grey", :style=>"width:230px;height:20px;margin-top:-5px; padding:2px;"%>
 
+	</td>
+	</tr>
+
+
+
+	<td height="10" colspan="2" ><h1 style="margin-left:0%;margin-bottom:5%;margin-top:0px;background-color:#0B2B42;text-align:center;color:#0B2B42;height:7px;"></h1></td>
+	</tr>
+
+
+
+
+	<tr>
+	 <td style="padding:5px 15px;" valign="top"><span class="txt_orange">*</span><%= f.label :country %></td>
+
+	 <td style="padding:10px 15px;" valign="top">
+	 <%= f.select :country, options_for_select(countries)%>
 	</td>
 	</tr>
 

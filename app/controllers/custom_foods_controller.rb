@@ -1,7 +1,7 @@
 class CustomFoodsController < ApplicationController
   layout 'tracking'
   
- 	 before_filter :authenticate_user!
+ 	 before_filter :authenticate_user!, :except => [:show]
   
   def new
     if params[:name]
@@ -46,6 +46,7 @@ def show
 			end
 		 else
 		@multi=1
+	
 	end
 
 #	weight_for=@food.gmwt_1
@@ -57,5 +58,14 @@ def show
   if @food.nil?
     flash[:notice]=params[:id]+" food not exist."
   end
+  
+  
+	if user_signed_in?
+		  render :layout=>'tracking'
+		else
+		  render :layout=>'custom_food_public'
+	end
 end
+
+
 end

@@ -27,4 +27,14 @@ include SendGrid
     mail(:from => "noreply@myweightworld.com", :to => @admin.email, :subject => "New business added")
   
   end
+  
+  def vendormailer(vendor, message, email, name)
+  @vendor=vendor
+  @name=name
+  @email="#{@vendor.email}"
+  @text=message
+  @contact=email
+  mail(:from => "noreply@myweightworld.com", :to => @email, :subject => "Client Query (MyweightWorld.com)")
+  end
+  
   end

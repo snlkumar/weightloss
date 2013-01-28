@@ -148,7 +148,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 		post :addWorkout1
 		post :bodyfat
 		post  :measurementDetails
-
+		post  :vendormailer
     end
     member do
       post :photo

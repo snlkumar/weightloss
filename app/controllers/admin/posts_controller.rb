@@ -35,6 +35,7 @@ class Admin::PostsController < Admin::BaseController
     @post = OldTextFile.new(params[:post])
     
     if @post.save
+   @meta=Meta.create(:url=>"articles/"+@post.page_title, :controller=>"ArticlesLibrary", :page=>@post.page_title, :action=>"show", :metatitle=>@post.page_title)
       redirect_to(admin_posts_path, :notice => 'Post was successfully created.')
     else
       render :action => "new"
@@ -43,8 +44,10 @@ class Admin::PostsController < Admin::BaseController
   
   def update
     @post = OldTextFile.find(params[:id])
-    
+    @meta=Meta.find_by_controller_and_page('ArticlesLibrary',"#{@post.page_title}")   
     if @post.update_attributes(params[:post])
+    	@meta.update_attributes(:page=>params[:post][:page_title],:metatitle=>params[:post][:page_title])   
+    	 
       redirect_to(admin_posts_path, :notice => "Successfully updated Post: #{@post.page_title}")
     else
       render :action => "edit"
@@ -53,7 +56,9 @@ class Admin::PostsController < Admin::BaseController
   
   def destroy
     @post = OldTextFile.find(params[:id])
+    @meta=Meta.find_by_controller_and_page('ArticlesLibrary',"#{@post.page_title}")
     @post.destroy
+    @meta.destroy
     redirect_to(admin_posts_path)
     
   end

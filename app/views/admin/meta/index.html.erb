@@ -30,13 +30,13 @@ height:30px;
 	  $("#url").val("");  
     return false;
     }  
-    if (selected=="View Video") 
+    if (selected=="Video Show") 
     {
        $("#hide1").show();
       page=$("#videos").val();			
     } 
     
-    if (selected=="Read Article") 
+    if (selected=="Article Show") 
     {
        $("#hide2").show();
       page=$("#articles").val();			
@@ -86,11 +86,11 @@ height:30px;
     		return false;
     	}
     selected=$("#meta_page").find("option:selected").text();
-    if (selected=="View Video")
+    if (selected=="Video Show")
 		 {
 		 page=$("#videos").val();			
 		 }
-    if (selected=="Read Article")
+    if (selected=="Article Show")
 		 {
 		 page=$("#articles").val();			
 		 } 		     
@@ -152,35 +152,35 @@ height:30px;
 			</tr>
 			<tr>
           <!--<td><%#= link_to exercise.description, edit_admin_exercise_path(exercise) %></td>-->
-          <td style="font-size:16px;color:#0B2B42;padding:30px 0px 0px 10px;">Page: </td>
-          <td><%= select_tag 'meta_page', options_from_collection_for_select(Meta.where("controller not like 'VideosLibrary' and controller not like 'ArticlesLibrary'"),"id","page"),:prompt=>"Select a page", :style=>"height:30px;width:265px;margin-top:2em;"%> <input type="button" id="editbutton" class="button grid_3" name="previous_button" style="height:29px;font-size:10pt;width:6em;padding:0;float:right;margin-top:2em;margin-right:1.8em;" value=" SAVE " /></td>
+          <td style="font-size:16px;color:#0B2B42;padding:30px 0px 30px 30px;">Page: </td>
+          <td><%= select_tag 'meta_page', options_from_collection_for_select(Meta.where("controller not like 'VideosLibrary' and controller not like 'ArticlesLibrary'"),"id","page"),:prompt=>"Select a page", :style=>"height:30px;width:265px;margin-top:2em;"%> <input type="button" id="editbutton" class="button grid_3" name="editbutton" style="height:29px;font-size:10pt;width:6em;padding:0;float:right;margin-top:2em;margin-right:1.8em;" value=" SAVE " /></td>
 
         </tr>
 
 			<tr style="display:none;" id="hide1">	
-          <td style="font-size:16px;color:#0B2B42;padding:20px 0px 0px 10px;" >Select a video: </td>
+          <td style="font-size:16px;color:#0B2B42;padding:20px 0px 30px 30px;" >Select a video: </td>
           <td><%= select_tag 'videos', options_from_collection_for_select(Meta.where("controller like 'VideosLibrary'"),"id","page"), :style=>"height:30px;width:265px;margin-top:2em;"%></td>
         </tr>     
         
 			<tr style="display:none;" id="hide2">	
-          <td style="font-size:16px;color:#0B2B42;padding:20px 0px 0px 10px;" >Select an article: </td>
+          <td style="font-size:16px;color:#0B2B42;padding:20px 0px 30px 30px;" >Select an article: </td>
           <td><%= select_tag 'articles', options_from_collection_for_select(Meta.where("controller like 'ArticlesLibrary'"),"id","page"), :style=>"height:30px;width:265px;margin-top:2em;"%></td>
         </tr> 
 
 			<tr>
-				<td style="font-size:16px;color:#0B2B42;padding:15px 0px 0px 10px;">Meta title:</td>
+				<td style="font-size:16px;color:#0B2B42;padding:15px 0px 40px 30px;">Meta title:</td>
 				<td><%= text_area_tag 'meta_title',"", :style=>"height:40px;width:450px;"%></td>
 			</tr>
 			<tr>
-				<td style="font-size:16px;color:#0B2B42;padding:15px 0px 0px 10px;">Keywords:</td>
+				<td style="font-size:16px;color:#0B2B42;padding:15px 0px 70px 30px;">Keywords:</td>
 				<td><%= text_area_tag 'keywords', "", :style=>"height:70px;width:450px;"%></td>
 			</tr>
 			<tr>
-				<td style="font-size:16px;color:#0B2B42;padding:15px 15px 50px 10px;">Description:</td>
+				<td style="font-size:16px;color:#0B2B42;padding:15px 15px 50px 30px;">Description:</td>
 				<td><%= text_area_tag 'description',"", :style=>"height:40px;width:450px;"%></td>
 			</tr>
 			<tr>
-				<td style="font-size:16px;color:#0B2B42;padding:15px 15px 50px 10px;">Url:</td>
+				<td style="font-size:16px;color:#0B2B42;padding:15px 15px 50px 30px;">Url:</td>
 				
 				<td >http://www.myweightworld.com/&nbsp;&nbsp;<%= text_field_tag 'url',"", :style=>"width:275px;"%></td>
 			</tr>

@@ -48,7 +48,13 @@ Myweightworld::Application.configure do
   config.active_support.deprecation = :notify
   
   config.action_mailer.default_url_options = { :host => 'myweightworld.com' }
-  
+
+
+  config.middleware.use ExceptionNotifier,	
+  :email_prefix => "notifier",	
+  :sender_address => %{"notifier" <no-reply@myweightworld.com>},
+  :exception_recipients => %w{"jony@idifysolutions.com","swhite@personalpowertraining.net","ravixyz44@yahoo.com"}
+   
   # Compress both stylesheets and JavaScripts
   config.assets.js_compressor  = :uglifier
   config.assets.css_compressor = :scss
@@ -57,4 +63,4 @@ Myweightworld::Application.configure do
   
   # SendGrid Configuration
  
-end
+end''
