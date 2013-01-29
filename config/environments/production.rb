@@ -53,7 +53,7 @@ Myweightworld::Application.configure do
   config.middleware.use ExceptionNotifier,	
   :email_prefix => "notifier",	
   :sender_address => %{"notifier" <no-reply@myweightworld.com>},
-  :exception_recipients => %w{"jony@idifysolutions.com","swhite@personalpowertraining.net","ravixyz44@yahoo.com"}
+  :exception_recipients => %w{"jony@idifysolutions.com","swhite@personalpowertraining.net"}
    
   # Compress both stylesheets and JavaScripts
   config.assets.js_compressor  = :uglifier
@@ -63,4 +63,4 @@ Myweightworld::Application.configure do
   
   # SendGrid Configuration
  
-end''
+end
