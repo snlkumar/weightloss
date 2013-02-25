@@ -1,6 +1,21 @@
 class Admin::MetaController < ApplicationController
   layout 'new_admin'
 	def index
+=begin	
+	@meta=Meta.where('controller ="VideosLibrary"')
+ 	@meta.each do |meta|
+ 	meta.url="videos/"+meta.page.gsub(/[^0-9a-z’ ]/i, '').strip.gsub(/\s+/, "-")
+ 	meta.save	
+ 	end
+
+	@meta=Meta.where('controller ="ArticlesLibrary"')
+ 	@meta.each do |meta|
+ 	meta.url="articles/"+meta.page.gsub(/[^0-9a-z’ ]/i, '').strip.gsub(/\s+/, "-")
+ 	meta.save	
+ 	end
+ 	
+ 	render :text=>"completed" 
+=end 	
 	end
 
 	def meta

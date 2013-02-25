@@ -17,6 +17,11 @@
 </p>
 
 <p>
+  <%= label_tag 'Sub category' %><br />
+  <%=f.select :subcategory_id, Subcategory.all.map{|s|  [s.name,s.id]} %>
+</p>
+
+<p>
   <%= f.label :image1, 'Content Image' %><br />
   <%= f.file_field :image1 %><br />
   <% if f.object.image1.file? %>

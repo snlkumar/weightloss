@@ -54,6 +54,18 @@ Myweightworld::Application.configure do
   :email_prefix => "notifier",	
   :sender_address => %{"notifier" <no-reply@myweightworld.com>},
   :exception_recipients => %w{"jony@idifysolutions.com","swhite@personalpowertraining.net"}
+	
+ ActionMailer::Base.delivery_method = :smtp
+ ActionMailer::Base.smtp_settings = {
+  :user_name => "myww",
+  :password => "myww1234",
+  :domain => "myweightworld.com",
+  :address => "smtp.sendgrid.net",
+  :port => 587,
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
+ 
    
   # Compress both stylesheets and JavaScripts
   config.assets.js_compressor  = :uglifier

@@ -1,4 +1,5 @@
 <div class='user'>
-  <div class='username'><%= user -%></div>
-  <div class='icon'><%= avatar(user, :size => 60) %></div>
+  <div class='icon'><%=link_to avatar(user, :size => 60), "/users/#{user.friendly_id}" %></div>
+  
+  <div class='username' style="position:absolute; bottom:0;"><%=link_to user, "/users/#{user.friendly_id}", :style=>"font-size:12px;"%></div>
 </div>

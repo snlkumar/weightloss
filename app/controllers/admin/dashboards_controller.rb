@@ -37,5 +37,11 @@ class Admin::DashboardsController < Admin::BaseController
       @vendors = Vendor.page(1).per(50)
     end
     
+    @notifications=Notification.page(params[:page] || 1).per(50)
+    
+    if @notifications.empty?
+      @notifications = Notification.page(1).per(50)
+  end
+  
   end
 end

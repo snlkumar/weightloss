@@ -6,6 +6,10 @@
 <!--[if gt IE 8]><!--> 
 <html class="no-js" lang="en"> <!--<![endif]-->
   <head>
+  <title><%= @meta_title %></title>
+<meta name="keywords" content="<%= @meta_keywords %>" />
+<meta name="description" content="<%= @meta_description %>" />
+<!---new code ended for meta -->
     <%= render :partial => '/layouts/head' %>
   </head>
   <body>
@@ -29,16 +33,16 @@
          
           </div>
       
-          <%= yield :sidebar %>
+          <%#= yield :sidebar %>
                     
           </br>
           
           <div id="nav-bar">
-            <%= render :partial => 'shared/nav_bar' %>
+            <%#= render :partial => 'shared/nav_bar' %>
           </div>
       
           <div id="content" class="grid_11 profile">
-            <%= render :partial => '/shared/flash', :locals => {:flash => flash} %>
+            <%#= render :partial => '/shared/flash', :locals => {:flash => flash} %>
         
             <%= yield %>
           </div>
@@ -57,7 +61,7 @@
       $(document).ready(function() {
         <%= yield :js %>
         
-        <%= render :partial => 'shared/weight_update_js' %>
+        <%#= render :partial => 'shared/weight_update_js' %>
       });
     </script>
   </body>

@@ -3,8 +3,8 @@ class VideoSearch
   
   def initialize(params = {})
     @keywords     = params[:keywords] ? params[:keywords].gsub(/[^a-zA-Z0-9\s]/, '').split(/\s/) : []
-    @per_page     = 15
-    @page         = params[:page] || 1
+#    @per_page     = 15
+#    @page         = params[:page] || 1
     @category_id  = params[:category_id] || nil
     
     @query_string = []
@@ -48,7 +48,8 @@ class VideoSearch
     if @query_string.empty?
       OldFlashFile.all
     else
-      OldFlashFile.includes(:category).where(query).page(@page).per(@per_page)
+#      OldFlashFile.includes(:category).where(query).page(@page).per(@per_page)
+      OldFlashFile.includes(:category).where(query)
     end
   end
   

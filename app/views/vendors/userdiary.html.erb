@@ -1,0 +1,277 @@
+<style type="text/css">
+	td{
+		font-size:14px;
+		padding:.3%;
+	}
+
+</style>
+<%= render :partial => 'shared/vedorUserSidebar', :locals => {:user => @user} %>
+<div  style="margin-left:33%">
+<%=link_to "Back", :back, :style=>"background-color:#CCCCCC;font-size:15px;"%>
+<h1 style="background-color:#ccc; color:#0B2B42;width:35.1em;height:1.5em;text-align:center;margin-left:-1%;">User Diary Tracker</h1><br/>
+
+<div class="grid_12">
+	<% total_workout_calories=total_meal_calories=0 %>
+	
+
+	<script type="text/javascript">
+	
+	
+	function	newtip()
+	{
+		weight1=$("#userweight").val();
+		$.ajax({
+		type: "post",
+		url: "/vendors/notifications",
+		data:{message:$("#message").val().trim(),notificatonToId:<%=@user.id%>}
+		}).done(function( msg ) {
+			 alert( msg);
+		location.reload();	 
+			 });
+	}
+	
+		$(function() {
+		
+		  $('#wkDt2').datepicker({
+          onSelect:function(){
+            document.getElementById("dairy-form").submit();
+          }
+      });
+     
+			$( "#wkDt2" ).datepicker();
+			$( "#wkDt2" ).datepicker( {minDate: -93, maxDate: "+0D" });
+			$( "#wkDt2" ).datepicker("option", "dateFormat",'yy-mm-dd' );
+			$("#ui-datepicker-div").wrap('<div style="position:absolute;left:0;top:-3em;"></div>');
+			
+		});
+	  
+
+		function prevDate()
+		{
+			var today="";
+			if(document.getElementById("wkDt2").value=="Today")
+			{
+				dt=currentDt;
+			}
+			else
+			{
+				dt=document.getElementById("wkDt2").value;
+			}
+			today = new Date(dt);	//document.getElementById("wkDt").value
+			var msecPerDay = 24 * 60 * 60 * 1000;
+		
+			var yesterday = new Date(today.getTime() - msecPerDay);
+			day=yesterday.getDate();
+			month=yesterday.getMonth()+1;
+			if(day<10)
+			{
+				day="0"+day;
+			}
+			if(month<10)
+			{
+				month="0"+month;
+			}
+			document.getElementById("wkDt2").value=yesterday.getFullYear()+"-"+month+"-"+day;
+      document.getElementById("prevDate").onclick=null;
+			document.getElementById("dairy-form").submit();
+		}
+		function currentDate()
+		{
+			var today = new Date();
+			day=today.getDate();
+			month=today.getMonth()+1;
+
+			if(day<10)
+			{
+				day="0"+day;
+			}
+			if(month<10)
+			{
+				month="0"+month;
+			}
+			<% 
+				#	if !@workouts[0].nil? || !@meals[0].nil?
+				#		trained=(@workouts[0])?(@workouts[0].trained_on).strftime("%Y-%m-%d") : (@meals[0].ate_on).strftime("%Y-%m-%d")
+				#	else
+				#		trained="Today"
+				#	end
+					
+				#	if trained==DateTime.now.strftime("%Y-%m-%d")
+				#		trained="Today"
+				#	end
+					
+					if params[:date_on]==nil || params[:date_on]==""
+					  params[:date_on]="Today"
+					end
+			%>
+			var dt="<%=params[:date_on]%>";
+			document.getElementById("wkDt2").value=dt;
+			currentDt=today.getFullYear()+"-"+month+"-"+day;
+		}
+		function nextDate()
+		{
+			var today="";
+			if(document.getElementById("wkDt2").value=="Today")
+			{
+				dt=currentDt;
+			}
+			else
+			{
+				dt=document.getElementById("wkDt2").value;
+			}
+			today = new Date(dt);	//document.getElementById("wkDt").value
+			var msecPerDay = 24 * 60 * 60 * 1000;
+		
+			var tomorrow = new Date(today.getTime() + msecPerDay);
+			day=tomorrow.getDate();
+			month=tomorrow.getMonth()+1;
+
+			if(tomorrow>new Date())
+			{
+				alert("Date cannot be greater then current date");
+				return;
+			}
+			if(day<10)
+			{
+				day="0"+day;
+			}
+			if(month<10)
+			{
+				month="0"+month;
+			}
+			document.getElementById("wkDt2").value=tomorrow.getFullYear()+"-"+month+"-"+day;
+      document.getElementById("nextDate").onclick=null; //remove click event for user not click next button before pageload after page load this event automatically come again
+			document.getElementById("dairy-form").submit();
+		}
+
+
+
+
+		window.onload = function () {
+			currentDate(); //set current date in add meal date field(wdDt2) 
+			//showFoodOrExerciseDetail();
+	}
+</script>
+
+<%=form_tag userdiary_vendors_path, :id=>"dairy-form" do %>
+<div style="margin:1% 0 0 -3%;background:#fff;height:auto;width:98%;padding-right:1%;margin-bottom:2%;">
+   <table width="95%" style="border-spacing:1px;border-collapse:separate;">
+			<tr>
+				<td><h1 style="margin:1% 0;padding:0;">Diary for: </h1></td>
+				<td width="40%">
+					<span class="button" id="prevDate" onclick="prevDate()">&lt;</span>
+					<input class="today" type="text" style="margin-top:0;height:27px;margin-left:0;margin-right:0;" value="" id="wkDt2" name="date_on" />
+					<span class="button" id="nextDate" onclick="nextDate()">&gt;</span>
+				</td>
+
+			</tr>
+		</table>
+		<hr/><br>
+<%end%>
+
+<!-- for food -->
+<table width="100%" style="border-spacing:1px;border-collapse:separate;">
+	<tr style="background-color:#09F;color:#fff;font-weight:bold;text-align:center;">
+    <th style="background-color:#fff;color:#F60;font-weight:bold;text-align:left;font-size:18px;width:45%;">Meals</th>
+    <td width="30%" style="padding-top:5px;">Time</td>
+    <td width="25%" style="padding-top:5px;">Calories</td>
+    <td width="9%" style="padding:5px;">Fat</td>
+    <td width="9%" style="padding:5px;">Carbs</td>
+    <td width="9%" style="padding:5px;padding-right:5px;">Protein</td>
+  </tr>
+
+	<% if @meals
+			@meals.each do |m|
+			food_path=(((m.name).gsub(/[.]+/,'$')).gsub("/",' or ').gsub(/[%]+/,'"%"')).gsub(/["]+/,'-')
+  %>
+  <tr style="background-color:#CEECF5;text-align:center;">    <!-- onclick="return showfood('<%=m.food_id%>')" -->
+    <td style="text-align:left" width="45%"><a href="/custom_foods/<%=u(food_path)%>" id="showfood"><%=(m.name=="custom calories") ? m.note.capitalize! : m.name %></a></td>
+    <td><%=m.meal_type%></td>
+    <td><%=m.calories%></td>
+    <% 
+			total_meal_calories+=m.calories
+		%>
+    <td><%=m.fat%></td>
+    <td><%=m.carbohydrt%></td>
+    <td><%=m.protein%></td>
+    <td><%#= link_to image_tag("/assets/delete.png"), "/meals/#{m.id}",:confirm=>'Are You Sure?', :method=>:Delete %></td>
+		</tr>
+	<%end end%>
+<!--	<tr style="text-align:center;">
+		    	<td style="color:#09C;text-align:left;" colspan="4"><a href="<%#=new_meal_path%>" style="color:blue;font-weight:bold;">Add Food</a><!--|<a href="#" style="color:blue;font-weight:bold;font-weight:bold;">Quick Tools</a></td>
+	</tr>-->
+</table>
+<hr/> 
+<br/>
+
+<!-- for exercise -->
+<table width="83%" style="border-spacing:1px;border-collapse:separate;">
+	<tr style="background-color:#09F;color:#fff;font-weight:bold;text-align:center;">
+    <th style="background-color:#fff;color:#F60;font-weight:bold;text-align:left;font-size:18px;width:45%;">Workouts</th>
+    <td width="28%" style="padding-top:5px;">Time</td>
+    <td width="30%" style="padding-top:5px;">Calories Burned</td>
+    
+  </tr>
+	<% if @workouts
+			@workouts.each do |w| 
+			
+			exercise_path=(((w.description).gsub(/[.]+/,'$')).gsub("/",' or ')).gsub(/[%]+/,'"%"')
+	%>
+  <tr style="background-color:#CEECF5;text-align:center;">    <!-- onclick="return showexercise('<%=w.exercise_id%>')" -->
+    <td style="text-align:left" width="45%"><a href="/exercises/<%=u(exercise_path)%>" id="showfood"><%=(w.description=="custom calories") ? w.note.capitalize! : w.description %></a></td>
+    <td><%=(w.time_from.nil? ?  "" : w.time_from.strftime("%H").to_i)>12 ?(w.time_from-12.hours).strftime("%l")+"pm" : w.time_from.strftime("%l")+"am" %></td>
+    <td><%=w.calories%></td>
+    <td><%#= link_to image_tag("/assets/delete.png"), "/workouts/#{w.id}",:confirm=>'Are You Sure?', :method=>:Delete %></td>
+		</tr>
+		<% 
+			total_workout_calories+=w.calories
+		%>
+	<%end end%>
+<!--	<tr style="text-align:center;">
+		    	<td style="color:#09C;text-align:left;" colspan="4"><a href="<%=new_workout_path%>" style="color:blue;font-weight:bold;">Add Exercise</a>|<a href="#" style="color:blue;font-weight:bold;font-weight:bold;">Quick Tools</a></td>
+	</tr>->
+</table>
+<hr/>
+
+		
+		<!-- total remaining calories -->
+<table width="63%" style="border-spacing:1px;border-collapse:separate;font-weight:bold;margin-left:12%;"> 
+	<tr>
+		<td style="text-align:left;width:30%;">Total Meals Calories<!--/Goal--></td>
+		<td style="text-align:right;width:33%;"><%=total_meal_calories.to_f%><!--/Goal--></td>
+	</tr>
+		<tr>
+		<td style="text-align:left;width:30%;">Total Workouts Calories<!--/Goal--></td>
+		<td style="text-align:right;width:33%;"><%=total_workout_calories.to_f%><!--/Goal--></td>
+	</tr>
+	<tr>
+		<td style="text-align:left;width:30%;">Total Remaining Calories<!--/Goal--></td>
+		<td style="text-align:right;width:33%;"><%=(total_meal_calories-total_workout_calories).to_f%><!--/Goal--></td>
+	</tr>
+
+	</tr>
+</table>
+<hr/> 
+
+</div>
+</div>
+
+</div>
+		<div style="margin-top:20em;margin-left:25em;height:30em;">
+		<form name="input" action="" method="">
+		<h1><u>Suggest food to user:</u></h1> <TEXTAREA Name="comments"  id="message" rows="8" cols="60"></TEXTAREA><br/>
+		<input type="button" style="background-color:#CCCCCC;height:1.9em;font-size:10pt;width:5em;padding:0;color:black;" onclick="newtip()" value="Send" />
+		</form> 
+		</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

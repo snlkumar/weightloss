@@ -1,8 +1,9 @@
 class Food < ActiveRecord::Base
   #scope :with_a_serving_size, :conditions => "gmwt_desc1 is NOT NULL OR gmwt_desc2 is NOT NULL"
   scope :with_a_serving_size, :conditions => "(gmwt_desc1 is NOT NULL OR gmwt_1 is NOT NULL) and gmwt_desc1!=''" #OR gmwt_desc2 is NOT NULL"
+  has_friendly_id :name, :use_slug => true
   
-validates_presence_of :name
+	validates_presence_of :name
   validates_uniqueness_of :name
   
   validate :calories_and_serving

@@ -1,3 +1,8 @@
+
+<%if current_user.nil?%>
+<blink><font size=4 color=orange><a href="http://www.myweightworld.com">We want to hear from you!! Have a question or want to make a comment in our Forum Section? Posting is simple and totally FREE! Click the “SIGN UP” button at the top and within minutes you can be interacting with our experts and members!</a> </font></blink><br/><br/>
+<%end%>
+
 <h2><%= t('.title') %></h2>
 <table id='forums' class='forums subdued' cellspacing='0'>
   <thead>

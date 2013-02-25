@@ -12,21 +12,21 @@
     <% end %>
 
     <ul class='actions'>
-      <% if forem_user %>
+      <%# if forem_user %>
         <% if @topic.can_be_replied_to? %>
         	<!-- old code -->
         	<!-- <li><%#= link_to "Reply", new_topic_post_path(@topic, :reply_to_id => post.id) %></li> -->
         	
         	<!-- new code -->
-          <li><%= link_to "Reply", '#', :onclick=>"show('#{new_topic_post_path(@topic)}','?reply_to_id=#{post.id}')" %></li>
+          <li ><%= link_to "Reply", '#', :onclick=>"show('#{new_topic_post_path(@topic)}','?reply_to_id=#{post.id}')" , :id=>"deletelink", :style=>"background-color:#0B2B42;color:white;"%></li>
         <% end %>
         <% if @topic.can_be_replied_to? %>
-          <li><%= link_to "Quote", new_topic_post_path(@topic, :reply_to_id => post.id, :quote => true) %></li>
+          <li><%#= link_to "Quote", new_topic_post_path(@topic, :reply_to_id => post.id, :quote => true) %><%= link_to "Quote", '#', :onclick=>"show('#{new_topic_post_path(@topic, :quote => true )}','&reply_to_id=#{post.id}')",:id=>"deletelink", :style=>"background-color:#0B2B42;color:white;" %></li>
         <% end %>
         <% if forem_user == post.user || forem_admin? %>
-          <li><%= link_to "Delete", topic_post_path(@topic, post), :method => :delete, :confirm => "Are you sure?" %></li>
+          <li><%= link_to "Delete", topic_post_path(@topic, post), :method => :delete, :confirm => "Are you sure?",:id=>"deletelink", :style=>"background-color:#0B2B42;color:white;" %></li>
         <% end %>
-      <% end %>
+      <%# end %>
     </ul>
   </div>
 </div>

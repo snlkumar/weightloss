@@ -18,16 +18,12 @@ height:30px;
     });
      
     $("#meta_page").change(function(){
-    $("#hide1").hide();
-    $("#hide2").hide();          
+    $("#hide1, #hide2").hide();
     page=$(this).val();
     selected=$(this).find("option:selected").text();
     if (page=="")
     {
-     $("#meta_title").val("");
-	  $("#keywords").val("");
-	  $("#description").val("");
-	  $("#url").val("");  
+     $("#meta_title, #keywords, #description, #url").val("");
     return false;
     }  
     if (selected=="Video Show") 
@@ -100,15 +96,12 @@ height:30px;
 					 $.ajax({
 				  	 type: "PUT",
 				  	 url: "/admin/meta/"+page,
-					 data: { metatitle: $("#meta_title").val(), keywords: $("#keywords").val(), description: $("#description").val(), url: $("#url").val().trim().replace(/\s/g , "-").replace(/[^\w\-\/]+/g, '') }
+					 data: { metatitle: $("#meta_title").val(), keywords: $("#keywords").val(), description: $("#description").val(), url: $("#url").val().trim().replace(/\s/g , "-").replace(/[^\w\-\_\’\/]+/g, '') }
 						  }).done(function( msg ) {
 					 alert( msg);
 					 parent.location.reload();
-	  $("#meta_page").val("");			 
-	  $("#meta_title").val("");
-	  $("#keywords").val("");
-	  $("#description").val("");
-	  $("#url").val("");  
+	  $("#meta_page, #meta_title, #keywords, #description,#url").val("");			 
+  
 					});
     }
     else
@@ -117,6 +110,7 @@ height:30px;
 	} 
  });      
  <%end%>
+ 
 </script>
 <div style="margin-left:20%;">
   
@@ -158,13 +152,13 @@ height:30px;
         </tr>
 
 			<tr style="display:none;" id="hide1">	
-          <td style="font-size:16px;color:#0B2B42;padding:20px 0px 30px 30px;" >Select a video: </td>
-          <td><%= select_tag 'videos', options_from_collection_for_select(Meta.where("controller like 'VideosLibrary'"),"id","page"), :style=>"height:30px;width:265px;margin-top:2em;"%></td>
+          <td style="font-size:16px;color:#0B2B42;padding:0px 0px 30px 30px;" >Select a video: </td>
+          <td><%= select_tag 'videos', options_from_collection_for_select(Meta.where("controller like 'VideosLibrary'"),"id","page"), :style=>"height:30px;width:265px;margin-top:0em;"%></td>
         </tr>     
         
 			<tr style="display:none;" id="hide2">	
-          <td style="font-size:16px;color:#0B2B42;padding:20px 0px 30px 30px;" >Select an article: </td>
-          <td><%= select_tag 'articles', options_from_collection_for_select(Meta.where("controller like 'ArticlesLibrary'"),"id","page"), :style=>"height:30px;width:265px;margin-top:2em;"%></td>
+          <td style="font-size:16px;color:#0B2B42;padding:0px 0px 30px 30px;" >Select an article: </td>
+          <td><%= select_tag 'articles', options_from_collection_for_select(Meta.where("controller like 'ArticlesLibrary'"),"id","page"), :style=>"height:30px;width:265px;margin-top:0em;"%></td>
         </tr> 
 
 			<tr>

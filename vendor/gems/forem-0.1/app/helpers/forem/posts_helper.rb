@@ -4,7 +4,7 @@ module Forem
       # if (email = user.try(:email)).present?
       #         image_tag(avatar_url(email, options), :alt => "Gravatar")
       #       end
-      user_avatar_image user, :medium
+      user_avatar_image user, :tracking
     end
 
     def avatar_url(email, options = {})

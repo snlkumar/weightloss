@@ -77,7 +77,13 @@ class ApplicationController < ActionController::Base
   
   def after_sign_in_path_for(resource)
   
-      session[:return_to] || stored_location_for(resource) || user_path(current_user)
+	if resource.class.to_s=="User"
+
+		   session[:return_to] || stored_location_for(resource) ||user_path(current_user)
+	else
+
+	session[:return_to] || stored_location_for(resource)|| profile_vendors_path(current_vendor)
+	end
   end
 
 

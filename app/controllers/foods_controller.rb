@@ -1,5 +1,6 @@
 	class FoodsController < ApplicationController
-  before_filter :authenticate_user!
+   before_filter :authenticate_user!
+
   
   def search
     terms  = params[:term].split(/,|\s/).reject(&:blank?)
@@ -22,14 +23,40 @@
   end
 
 
-###################################################################################
+
+
+####################################################################################
+
+
+	def food_servings	
+		if params[:id]	
+			@servings=Food.where(:id => params[:id]).select("gmwt_1, gmwt_desc1,gmwt_2, gmwt_desc2")
+
+			if @servings.empty?
+      		render :json => 'No Results'.to_json
+    		else
+				render :json => @servings.map{|f| {:value => ("#{f.gmwt_1} $$#{f.gmwt_desc1}$$ #{f.gmwt_2} $$#{f.gmwt_desc2}"), :id => params[:id]} }.to_json	
+			end
+		end
+	end
+####################################################################################################
+
+  def meal_item_calories
+    meal_item = MealItem.new(params[:meal][:meal_items_attributes].first.last)
+    meal_item.determine_quantity
+    meal_item.calculate_calories
+    render :json => {:calories => meal_item.calories}
+  end
+  
+  
+  
+#################################################################################################
+
 
 	  def eq_calories(fid, type)
 
 			@food=Food.find(fid)
 			serving=@food.gmwt_desc1.gsub(/^\s+/,"").split(" ")[0].to_f;
-
-
 			#weight_for_quantity = @food.units.blank?  ? 0 : (!food.gmwt_desc1.nil? ? @food.gmwt_1 : (@food.gmwt_2.blank?  ? "
 
 			 if !@food.custom
@@ -72,27 +99,7 @@
 			return calories.round(2) unless calories.nil? 
 
       end
-####################################################################################
-
-
-	def food_servings	
-		if params[:id]	
-			@servings=Food.where(:id => params[:id]).select("gmwt_1, gmwt_desc1,gmwt_2, gmwt_desc2")
-
-			if @servings.empty?
-      		render :json => 'No Results'.to_json
-    		else
-				render :json => @servings.map{|f| {:value => ("#{f.gmwt_1} $$#{f.gmwt_desc1}$$ #{f.gmwt_2} $$#{f.gmwt_desc2}"), :id => params[:id]} }.to_json	
-			end
-		end
-	end
-####################################################################################################
-
-  def meal_item_calories
-    meal_item = MealItem.new(params[:meal][:meal_items_attributes].first.last)
-    meal_item.determine_quantity
-    meal_item.calculate_calories
-    render :json => {:calories => meal_item.calories}
-  end
+      
+#############################################################################################################        
 end
 #protein

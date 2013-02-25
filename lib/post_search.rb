@@ -3,10 +3,10 @@ class PostSearch
   
   def initialize(params = {})
     @keywords     = params[:keywords] ? params[:keywords].gsub(/[^a-zA-Z0-9\s]/, '').split(/\s/) : []
-    @per_page     = 15
-    @page         = params[:page] || 1
+#    @per_page     = 15
+#    @page         = params[:page] || 1
     @category_id  = params[:category_id] || nil
-    @category     = Category.find_by_id(@category_id)
+#    @category     = Category.find_by_id(@category_id)
     
     @query_string = []
     @query_params = []
@@ -49,7 +49,8 @@ class PostSearch
     if @query_string.empty?
       OldTextFile.all
     else
-      OldTextFile.includes(:category).where(query).page(@page).per(@per_page)
+#      OldTextFile.includes(:category).where(query).page(@page).per(@per_page)
+      OldTextFile.includes(:category).where(query)     
     end
   end
   

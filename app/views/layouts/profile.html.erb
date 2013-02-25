@@ -47,8 +47,10 @@
           </div>
           
           <%= yield :sidebar %>
+ 
+       
+          <% if user_signed_in? %>        
           
-          <% if user_signed_in? %>
             <div id="add-meal" class="button">
               <%= link_to "+ Add Meal", new_meal_path, :title => 'Add a Meal' %>
             </div>
@@ -78,12 +80,15 @@
     
     <%= render :partial => "layouts/js_libs" %>
     
+
+    
     <script type="text/javascript" charset="utf-8">
       $(document).ready(function() {
         <%= yield :js %>
-        
         <%= render :partial => 'shared/weight_update_js' %>
+
       });
     </script>
+
   </body>
 </html>

@@ -13,11 +13,29 @@
           <div class="grid_5 ">
           <p id="user-name" class="grid_5" style="font-size:1.5em;"><%= @vendor.business_name %></p>
           <div class="profile-avatar avatar"><%= image_tag(@vendor.photo.url(:profile)) %></div>
-			 <div class="sidebar-container" style=""><%if session[:vendor] && session[:vendor].id == @vendor.id && session[:vendor].vendor_type==@vendor.vendor_type%>
-			 <%= link_to 'Edit', edit_vendor_path(@vendor.id)+"/"+"#{@vendor.business_name}".gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").gsub('.'," ").strip, :id => 'edit-profile', :class => 'outlined-fade', :title => 'Edit your profile' %><%end%>
+			 <div class="sidebar-container" style=""><%if current_vendor && current_vendor.id == @vendor.id%>
+			 <%= link_to 'Edit', edit_vendor_path(current_vendor.id), :id => 'edit-profile', :class => 'outlined-fade', :title => 'Edit your profile' %><%end%>
+
+
+
 			 <div class="clear">&nbsp;</div>
+			               <ul id="user-settings-tabs">
+                <li class="vendor-class">
+ 			<%if current_vendor%>
+                  <%= link_to 'Add MyWeightWorld Users', usersearch_vendors_path%>                
+                </li>
+                <li class="vendor-class">
+                  <%= link_to 'Add a Member', addmember_vendors_path%>
+                </li>                
+                <li class="vendor-class">
+                  <%= link_to 'Members List', memberlist_vendors_path%>
+                </li> 
+              </ul>
+			<%end%>
 			 </div>
+
 			 </div>
+
 
 <br><br><%#= link_to 'Back', :back, :style=>"margin-left:5%;" %><br><br>
 

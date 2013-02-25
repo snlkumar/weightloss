@@ -1,0 +1,118 @@
+<div class="grid_5 ">
+	<p id="user-name" class="grid_5" style="font-size:1.5em;"><%= @user.first_name %> <%=@user.last_name%></p>
+	<div class="profile-avatar avatar"><%= user_avatar_image(@user, :profile) %></div>
+		<div class="sidebar-container" style="">
+			<div class="clear">&nbsp;</div>
+			</div>
+<div class="sidebar-container subsection" >
+  <h4 class="sidebar-subheader">Achievement Date</h4>
+  
+  <div id="achievement-calendar" class="">
+    <div id="achievement-date">
+      <%= render :partial => 'shared/achievement_date', :locals => {:user => @user} %>
+    </div>
+  </div>
+  
+  <div id='achievement-text' class="grid_3">
+    <span id="pounds"><span class="edit"><%= @user.weight %></span> lbs</span><br/>
+    recorded <span id="days-ago"><%= distance_of_time_in_words_to_now(@user.weights.first.try(:created_at)).gsub('about', 'about<br/>').html_safe %> ago</span>
+ 
+ 
+ 
+ 
+ 
+ <!-***************************************************************-->
+    
+    <%#= link_to 'Update Weight', edit_metabolic_rates_path, :id => 'update-weight', :class => 'outlined-fade' %>
+ 
+ <!-***************************************************************--> 
+ 
+ 
+ 
+ 
+  </div>
+  
+  <div class="clear">&nbsp;</div>
+<!-- style="padding: 20px; width: 240px; position: absolute; right: 0px; top: 106px; background-color: #FFF; -->
+</div>
+
+<div class="sidebar-container subsection">
+  <% if @user.bmr && @user.rmr %>
+    <p class="goal-explanation-header">BMR: <span class="bold"><%= @user.bmr %> / </span>day</p>
+    <p class="goal-explanation-text">This is the total number of calories you need in order to maintain your current weight.</p>
+
+    <p class="goal-explanation-header">Goal: <span class="bold"><%= five_hundred_calorie_deficit(@user) %> / </span>day</p>
+    <p class="goal-explanation-text">Performing this will give you 1lb of weight loss per week. If you want to lose 2lbs of weight per week we recommend you burn an additional 500 calories per day.</p>
+
+  
+    <p>
+      <% if @user.trying_to_lose_weight? %>
+        <span style="font-size: 12px; font-weight: bold;">If you manage</span><br/>
+        <p style="font-size: 20px; font-weight: bold; color: #3399cc;"><%= five_hundred_calorie_deficit(@user) %> total daily calories</p>
+        <p style="font-size: 12px; font-weight: bold; margin-top: 10px;">You can reach your goal in <%= days_to_goal(@user, 500) %> days.</p>
+        <span style="font-size: 20px; font-weight: bold; color: #3399cc;">Losing <%= pounds_to_lose(@user) %> lbs by <%= days_to_goal(@user, 500).days.from_now.strftime("%b %d") %></span>
+
+      <% elsif 1 == 0 %>
+        If you exceed your BMR calorie intake by <%= five_hundred_calorie_surplus(@user) %> calories a day (a 500 calorie surplus).  You can reach your goal of gaining <%= pounds_to_gain(@user) %> lbs in <%= days_to_goal(@user, 500) %> days (<%= days_to_goal(@user, 500).days.from_now.strftime("%b %d") %>)
+
+      <% end %>
+    </p>
+  <% end %>
+  <div class="clear">&nbsp;</div>
+
+  
+  
+</div>
+
+
+
+           <div class="clear">&nbsp;</div>
+     
+         <div class="sidebar-container subsection" >
+           <h4 class="sidebar-subheader">Burned Calories</h4>
+       
+           <div class="large-calories">
+             <span><%= number_with_delimiter(@user.calories_burned_today) %></span>
+           </div>
+           <div class="small-text">burned today</div>
+           <div class="calories-this-week">
+             <span><%= number_with_delimiter(@user.calories_burned_this_week) %></span> this week
+           </div>
+           <div class="clear">&nbsp;</div>
+         </div>
+     
+         <div class="sidebar-container subsection" >
+           <h4 class="sidebar-subheader">Consumed Calories</h4>
+       
+           <div class="large-calories">
+             <span style="color: #7cc576"><%= number_with_delimiter(@user.calories_consumed_today) %></span>
+           </div>
+           <div class="small-text">consumed today</div>
+           <div class="calories-this-week">
+             <span style="color: #7cc576"><%= number_with_delimiter(@user.calories_consumed_this_week) %></span>/<%= number_with_delimiter(five_hundred_calorie_deficit(@user) * 7) %> this week
+           </div>
+       
+           <div class="clear">&nbsp;</div>
+         </div>
+        
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

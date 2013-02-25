@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <p style="margin-left:250px;font-size:20pt;color:#0A263B;" ><b>Vendor Membership</b></p><br/><br/>
+    
+<p>Dear <%=@user.full_name%>,</p><br/>
+
+<%=@vendor.business_name%> wants to add you to the membership.  Please be advised, vendor will be able to track your activities and meausrements.  To accept the membership please login to your MyWeightWorld account.  Go to Edit (Membership) in user profile to accept or reject the membersip.
+<br/><br/>
+Sender:<%=@vendor.business_name%><br/><br/>
+<b>MyWeightWorld.com<b>
+
+  </body>
+</html>

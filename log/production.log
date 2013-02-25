@@ -46391,3 +46391,2660 @@ ActiveRecord::ConnectionTimeoutError (could not obtain a database connection wit
 Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
 Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
 Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.1ms)
+
+
+Started GET "/vendorsearch" for 127.0.0.1 at Thu Feb 21 20:37:24 +0530 2013
+  Processing by VendorsController#search as HTML
+Rendered shared/_nav_bar.html.erb (41.5ms)
+Rendered shared/_recaptcha.erb (0.5ms)
+Rendered vendors/search.html.erb within layouts/application (130.2ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.4ms)
+Rendered layouts/_js_libs.html.erb (1.3ms)
+Compiled HTML5.js  (2ms)  (pid 7083)
+Compiled modernizr-1.7.min.js  (0ms)  (pid 7083)
+Compiled respond.js  (0ms)  (pid 7083)
+Rendered layouts/_head.html.erb (12.9ms)
+Rendered shared/_session_menu_bar.html.erb (2.4ms)
+Rendered shared/_nav_tabs.html.erb (1.0ms)
+Rendered shared/_overlay.html.erb (0.2ms)
+Rendered layouts/_header.html.erb (6.4ms)
+Rendered shared/_flash.html.erb (0.3ms)
+Rendered layouts/_footer.html.erb (4.3ms)
+Completed 200 OK in 177ms (Views: 171.3ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/vendorsearch" for 127.0.0.1 at Thu Feb 21 20:37:39 +0530 2013
+  Processing by VendorsController#search as HTML
+Rendered shared/_nav_bar.html.erb (75.8ms)
+Rendered shared/_recaptcha.erb (0.2ms)
+Rendered vendors/search.html.erb within layouts/application (78.6ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.4ms)
+Rendered layouts/_head.html.erb (0.5ms)
+Rendered shared/_session_menu_bar.html.erb (1.4ms)
+Rendered shared/_nav_tabs.html.erb (0.8ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.5ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (3.2ms)
+Completed 200 OK in 89ms (Views: 87.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/vendorsearch" for 127.0.0.1 at Thu Feb 21 20:37:56 +0530 2013
+  Processing by VendorsController#search as HTML
+Rendered shared/_nav_bar.html.erb (4.7ms)
+Rendered shared/_recaptcha.erb (0.2ms)
+Rendered vendors/search.html.erb within layouts/application (6.6ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Rendered layouts/_head.html.erb (0.5ms)
+Rendered shared/_session_menu_bar.html.erb (1.4ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.4ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (3.6ms)
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/vendorsearch" for 127.0.0.1 at Thu Feb 21 20:37:59 +0530 2013
+  Processing by VendorsController#search as HTML
+Rendered shared/_nav_bar.html.erb (2.8ms)
+Rendered shared/_recaptcha.erb (0.2ms)
+Rendered vendors/search.html.erb within layouts/application (4.4ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Rendered layouts/_head.html.erb (0.6ms)
+Rendered shared/_session_menu_bar.html.erb (1.5ms)
+Rendered shared/_nav_tabs.html.erb (1.0ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (4.0ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (3.0ms)
+Completed 200 OK in 15ms (Views: 13.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/vendorsearch?searchtype=all&filterQuery=" for 127.0.0.1 at Thu Feb 21 20:38:02 +0530 2013
+  Processing by VendorsController#search as HTML
+  Parameters: {"searchtype"=>"all", "filterQuery"=>""}
+Rendered shared/_nav_bar.html.erb (3.7ms)
+Rendered shared/_recaptcha.erb (0.2ms)
+Rendered vendors/search.html.erb within layouts/application (385.0ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.6ms)
+Rendered layouts/_head.html.erb (0.5ms)
+Rendered shared/_session_menu_bar.html.erb (1.5ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.5ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (3.3ms)
+Completed 200 OK in 397ms (Views: 199.0ms | ActiveRecord: 196.2ms)
+
+
+Started GET "/vendorsearch?searchtype=all&filterQuery=" for 127.0.0.1 at Thu Feb 21 20:38:32 +0530 2013
+  Processing by VendorsController#search as HTML
+  Parameters: {"searchtype"=>"all", "filterQuery"=>""}
+Rendered shared/_nav_bar.html.erb (2.1ms)
+Rendered shared/_recaptcha.erb (0.3ms)
+Rendered vendors/search.html.erb within layouts/application (27.9ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Rendered layouts/_head.html.erb (0.4ms)
+Rendered shared/_session_menu_bar.html.erb (1.3ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.2ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (3.0ms)
+Completed 200 OK in 38ms (Views: 35.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/vendorsearch?searchtype=all&filterQuery=" for 127.0.0.1 at Thu Feb 21 20:38:34 +0530 2013
+  Processing by VendorsController#search as HTML
+  Parameters: {"searchtype"=>"all", "filterQuery"=>""}
+Rendered shared/_nav_bar.html.erb (2.8ms)
+Rendered shared/_recaptcha.erb (0.2ms)
+Rendered vendors/search.html.erb within layouts/application (25.9ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (80.0ms)
+Rendered layouts/_js_libs.html.erb (84.8ms)
+Rendered layouts/_head.html.erb (0.6ms)
+Rendered shared/_session_menu_bar.html.erb (1.5ms)
+Rendered shared/_nav_tabs.html.erb (0.8ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.7ms)
+Rendered shared/_flash.html.erb (0.2ms)
+Rendered layouts/_footer.html.erb (3.6ms)
+Completed 200 OK in 122ms (Views: 119.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/vendorsearch?searchtype=all&filterQuery=" for 127.0.0.1 at Thu Feb 21 20:39:09 +0530 2013
+  Processing by VendorsController#search as HTML
+  Parameters: {"searchtype"=>"all", "filterQuery"=>""}
+Rendered shared/_nav_bar.html.erb (2.9ms)
+Rendered shared/_recaptcha.erb (0.2ms)
+Rendered vendors/search.html.erb within layouts/application (32.3ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Rendered layouts/_head.html.erb (0.4ms)
+Rendered shared/_session_menu_bar.html.erb (1.3ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.2ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (3.0ms)
+Completed 200 OK in 44ms (Views: 39.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/vendorsearch?searchtype=all&filterQuery=" for 127.0.0.1 at Thu Feb 21 20:39:12 +0530 2013
+  Processing by VendorsController#search as HTML
+  Parameters: {"searchtype"=>"all", "filterQuery"=>""}
+Rendered shared/_nav_bar.html.erb (4.9ms)
+Rendered shared/_recaptcha.erb (0.5ms)
+Rendered vendors/search.html.erb within layouts/application (32.6ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.4ms)
+Rendered layouts/_head.html.erb (0.4ms)
+Rendered shared/_session_menu_bar.html.erb (1.3ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.1ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (2.9ms)
+Completed 200 OK in 44ms (Views: 39.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/vendorsearch" for 127.0.0.1 at Thu Feb 21 20:39:47 +0530 2013
+  Processing by VendorsController#search as HTML
+Rendered shared/_nav_bar.html.erb (2.1ms)
+Rendered shared/_recaptcha.erb (0.2ms)
+Rendered vendors/search.html.erb within layouts/application (3.5ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.4ms)
+Rendered layouts/_head.html.erb (0.4ms)
+Rendered shared/_session_menu_bar.html.erb (1.6ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.7ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (3.6ms)
+Completed 200 OK in 15ms (Views: 13.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/vendorsearch?searchtype=all&filterQuery=ny" for 127.0.0.1 at Thu Feb 21 20:39:52 +0530 2013
+  Processing by VendorsController#search as HTML
+  Parameters: {"searchtype"=>"all", "filterQuery"=>"ny"}
+Rendered shared/_nav_bar.html.erb (2.9ms)
+Rendered shared/_recaptcha.erb (0.2ms)
+Rendered vendors/search.html.erb within layouts/application (77.9ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Rendered layouts/_head.html.erb (0.5ms)
+Rendered shared/_session_menu_bar.html.erb (1.5ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.4ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (2.9ms)
+Completed 200 OK in 90ms (Views: 41.7ms | ActiveRecord: 45.7ms)
+
+
+Started GET "/vendorsearch?searchtype=all&filterQuery=ny" for 127.0.0.1 at Thu Feb 21 20:41:36 +0530 2013
+  Processing by VendorsController#search as HTML
+  Parameters: {"filterQuery"=>"ny", "searchtype"=>"all"}
+Rendered shared/_nav_bar.html.erb (51.6ms)
+Rendered shared/_recaptcha.erb (0.4ms)
+Rendered vendors/search.html.erb within layouts/application (135.8ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.3ms)
+Rendered layouts/_js_libs.html.erb (1.2ms)
+Rendered layouts/_head.html.erb (73.5ms)
+Rendered shared/_session_menu_bar.html.erb (2.5ms)
+Rendered shared/_nav_tabs.html.erb (1.1ms)
+Rendered shared/_overlay.html.erb (0.3ms)
+Rendered layouts/_header.html.erb (6.8ms)
+Rendered shared/_flash.html.erb (0.3ms)
+Rendered layouts/_footer.html.erb (4.7ms)
+Completed 200 OK in 324ms (Views: 318.3ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/vendors/cindy/9/weight_loss_surgeons/kathleen-baker" for 127.0.0.1 at Thu Feb 21 20:41:39 +0530 2013
+  Processing by VendorsController#show as HTML
+  Parameters: {"name"=>"kathleen-baker", "restaurants"=>"weight_loss_surgeons", "id"=>"9"}
+Rendered vendors/_form1.html.erb (1.2ms)
+Rendered vendors/show.html.erb within layouts/application (2.6ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.6ms)
+Rendered layouts/_head.html.erb (0.5ms)
+Rendered shared/_session_menu_bar.html.erb (3.6ms)
+Rendered shared/_nav_tabs.html.erb (1.0ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (6.4ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (4.6ms)
+Completed 200 OK in 22ms (Views: 16.5ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/vendors/cindy/9/weight_loss_surgeons/kathleen-baker" for 127.0.0.1 at Thu Feb 21 20:42:21 +0530 2013
+  Processing by VendorsController#show as HTML
+  Parameters: {"name"=>"kathleen-baker", "restaurants"=>"weight_loss_surgeons", "id"=>"9"}
+Rendered vendors/_form1.html.erb (0.3ms)
+Rendered vendors/show.html.erb within layouts/application (0.8ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.6ms)
+Rendered layouts/_head.html.erb (0.5ms)
+Rendered shared/_session_menu_bar.html.erb (2.6ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (4.4ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (3.0ms)
+Completed 200 OK in 13ms (Views: 10.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/vendors/cindy/9/weight_loss_surgeons/kathleen-baker" for 127.0.0.1 at Thu Feb 21 20:42:25 +0530 2013
+  Processing by VendorsController#show as HTML
+  Parameters: {"name"=>"kathleen-baker", "restaurants"=>"weight_loss_surgeons", "id"=>"9"}
+Rendered vendors/_form1.html.erb (0.3ms)
+Rendered vendors/show.html.erb within layouts/application (1.0ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Rendered layouts/_head.html.erb (0.4ms)
+Rendered shared/_session_menu_bar.html.erb (2.6ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (4.7ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (3.9ms)
+Completed 200 OK in 15ms (Views: 11.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/vendors/cindy/9/weight_loss_surgeons/kathleen-baker" for 127.0.0.1 at Thu Feb 21 20:43:14 +0530 2013
+  Processing by VendorsController#show as HTML
+  Parameters: {"name"=>"kathleen-baker", "restaurants"=>"weight_loss_surgeons", "id"=>"9"}
+Rendered vendors/_form1.html.erb (0.6ms)
+Rendered vendors/show.html.erb within layouts/application (1.4ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.3ms)
+Rendered layouts/_js_libs.html.erb (1.1ms)
+Rendered layouts/_head.html.erb (0.7ms)
+Rendered shared/_session_menu_bar.html.erb (2.8ms)
+Rendered shared/_nav_tabs.html.erb (0.8ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (5.4ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (3.4ms)
+Completed 200 OK in 95ms (Views: 91.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/vendorsearch?searchtype=all&filterQuery=ny" for 127.0.0.1 at Thu Feb 21 20:43:26 +0530 2013
+  Processing by VendorsController#search as HTML
+  Parameters: {"filterQuery"=>"ny", "searchtype"=>"all"}
+Rendered shared/_nav_bar.html.erb (4.5ms)
+Rendered shared/_recaptcha.erb (0.4ms)
+Rendered vendors/search.html.erb within layouts/application (31.2ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Rendered layouts/_head.html.erb (0.4ms)
+Rendered shared/_session_menu_bar.html.erb (1.4ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.4ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (3.1ms)
+Completed 200 OK in 44ms (Views: 39.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/vendorsearch" for 127.0.0.1 at Thu Feb 21 20:44:25 +0530 2013
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_request.text.erb (2.1ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.3ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_session.text.erb (2.0ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.1ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_environment.text.erb (10.8ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.3ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_backtrace.text.erb (1.1ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.2ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/exception_notification.text.erb (46.5ms)
+
+Sent mail to "jony@idifysolutions.com", "swhite@personalpowertraining.net" (27ms)
+
+SocketError (getaddrinfo: Name or service not known):
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/net/smtp.rb:551:in `initialize'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/net/smtp.rb:551:in `open'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/net/smtp.rb:551:in `do_start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/timeout.rb:67:in `timeout'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/timeout.rb:101:in `timeout'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/net/smtp.rb:551:in `do_start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/net/smtp.rb:525:in `start'
+  mail (2.3.3) lib/mail/network/delivery_methods/smtp.rb:128:in `deliver!'
+  mail (2.3.3) lib/mail/message.rb:1989:in `do_delivery'
+  mail (2.3.3) lib/mail/message.rb:230:in `deliver'
+  actionmailer (3.1.0) lib/action_mailer/base.rb:432:in `deliver_mail'
+  activesupport (3.1.0) lib/active_support/notifications.rb:53:in `instrument'
+  activesupport (3.1.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (3.1.0) lib/active_support/notifications.rb:53:in `instrument'
+  actionmailer (3.1.0) lib/action_mailer/base.rb:430:in `deliver_mail'
+  mail (2.3.3) lib/mail/message.rb:230:in `deliver'
+  exception_notification (2.6.1) lib/exception_notifier.rb:42:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.3.6) lib/rack/etag.rb:23:in `call'
+  rack (1.3.6) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/flash.rb:243:in `call'
+  rack (1.3.6) lib/rack/session/abstract/id.rb:195:in `context'
+  rack (1.3.6) lib/rack/session/abstract/id.rb:190:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/cookies.rb:326:in `call'
+  ckeditor (3.4.2.pre) lib/ckeditor/middleware.rb:15:in `call'
+  activerecord (3.1.0) lib/active_record/query_cache.rb:62:in `call'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:477:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/callbacks.rb:29:in `call'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:392:in `_run_call_callbacks'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:81:in `send'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.1.0) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+  rack (1.3.6) lib/rack/sendfile.rb:101:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (3.8ms)
+
+
+Started GET "/vendorsearch" for 127.0.0.1 at Thu Feb 21 20:45:16 +0530 2013
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_request.text.erb (0.5ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.1ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_session.text.erb (1.0ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.0ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_environment.text.erb (5.4ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.2ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_backtrace.text.erb (0.2ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.1ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/exception_notification.text.erb (10.0ms)
+
+Sent mail to "jony@idifysolutions.com", "swhite@personalpowertraining.net" (14ms)
+
+SocketError (getaddrinfo: Name or service not known):
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/net/smtp.rb:551:in `initialize'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/net/smtp.rb:551:in `open'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/net/smtp.rb:551:in `do_start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/timeout.rb:67:in `timeout'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/timeout.rb:101:in `timeout'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/net/smtp.rb:551:in `do_start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/net/smtp.rb:525:in `start'
+  mail (2.3.3) lib/mail/network/delivery_methods/smtp.rb:128:in `deliver!'
+  mail (2.3.3) lib/mail/message.rb:1989:in `do_delivery'
+  mail (2.3.3) lib/mail/message.rb:230:in `deliver'
+  actionmailer (3.1.0) lib/action_mailer/base.rb:432:in `deliver_mail'
+  activesupport (3.1.0) lib/active_support/notifications.rb:53:in `instrument'
+  activesupport (3.1.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (3.1.0) lib/active_support/notifications.rb:53:in `instrument'
+  actionmailer (3.1.0) lib/action_mailer/base.rb:430:in `deliver_mail'
+  mail (2.3.3) lib/mail/message.rb:230:in `deliver'
+  exception_notification (2.6.1) lib/exception_notifier.rb:42:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.3.6) lib/rack/etag.rb:23:in `call'
+  rack (1.3.6) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/flash.rb:243:in `call'
+  rack (1.3.6) lib/rack/session/abstract/id.rb:195:in `context'
+  rack (1.3.6) lib/rack/session/abstract/id.rb:190:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/cookies.rb:326:in `call'
+  ckeditor (3.4.2.pre) lib/ckeditor/middleware.rb:15:in `call'
+  activerecord (3.1.0) lib/active_record/query_cache.rb:62:in `call'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:477:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/callbacks.rb:29:in `call'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:392:in `_run_call_callbacks'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:81:in `send'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.1.0) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+  rack (1.3.6) lib/rack/sendfile.rb:101:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (3.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Thu Feb 21 22:40:14 +0530 2013
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/homepage (1.6ms)
+Rendered layouts/_head.html.erb (13.0ms)
+Rendered shared/_session_menu_bar.html.erb (5.4ms)
+Rendered shared/_nav_tabs.html.erb (1.2ms)
+Rendered shared/_overlay.html.erb (0.3ms)
+Rendered layouts/_header.html.erb (95.2ms)
+Rendered home/_large_orange_button.html.erb (0.7ms)
+Rendered home/_post.html.erb (49.8ms)
+Rendered home/_post.html.erb (9.1ms)
+Rendered home/_post.html.erb (8.1ms)
+Rendered home/_post.html.erb (7.8ms)
+Rendered users/_recent_member.html.erb (39.3ms)
+Rendered users/_recent_member.html.erb (2.8ms)
+Rendered layouts/_footer.html.erb (4.9ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.4ms)
+Rendered layouts/_js_libs.html.erb (1.4ms)
+Completed 200 OK in 294ms (Views: 250.7ms | ActiveRecord: 12.3ms)
+
+
+Started GET "/system/old_text_files/image1s/308/small/food-choice.bmp?1322991967" for 127.0.0.1 at Thu Feb 21 22:40:15 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/old_text_files/image1s/308/small/food-choice.bmp"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/system/old_text_files/image1s/9/small/diving.jpg?1322991794" for 127.0.0.1 at Thu Feb 21 22:40:15 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/old_text_files/image1s/9/small/diving.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
+
+
+Started GET "/system/old_text_files/image1s/309/small/food-labels.bmp?1322991968" for 127.0.0.1 at Thu Feb 21 22:40:15 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/old_text_files/image1s/309/small/food-labels.bmp"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/system/old_text_files/image1s/10/small/atkins.jpg?1322991795" for 127.0.0.1 at Thu Feb 21 22:40:15 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/old_text_files/image1s/10/small/atkins.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
+
+
+Started GET "/system/users/avatars/181/medium/800px-obese_male_shirt_side.jpg?1354651624" for 127.0.0.1 at Thu Feb 21 22:40:15 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/users/avatars/181/medium/800px-obese_male_shirt_side.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/system/header.m4v?1319738021" for 127.0.0.1 at Thu Feb 21 22:40:15 +0530 2013
+
+ActiveRecord::ConnectionTimeoutError (could not obtain a database connection within 5 seconds.  The max pool size is currently 5; consider increasing it.):
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:276:in `checkout'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:261:in `loop'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:261:in `checkout'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:260:in `checkout'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:162:in `connection'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:409:in `retrieve_connection'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_specification.rb:107:in `retrieve_connection'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_specification.rb:89:in `connection'
+  activerecord (3.1.0) lib/active_record/query_cache.rb:65:in `call'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:477:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/callbacks.rb:29:in `call'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:392:in `_run_call_callbacks'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:81:in `send'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.1.0) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+  rack (1.3.6) lib/rack/sendfile.rb:101:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.4ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.7ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.5ms)
+
+
+Started GET "/forum2" for 127.0.0.1 at Thu Feb 21 22:40:25 +0530 2013
+
+ActiveRecord::ConnectionTimeoutError (could not obtain a database connection within 5 seconds.  The max pool size is currently 5; consider increasing it.):
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:276:in `checkout'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:261:in `loop'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:261:in `checkout'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:260:in `checkout'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:162:in `connection'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:409:in `retrieve_connection'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_specification.rb:107:in `retrieve_connection'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_specification.rb:89:in `connection'
+  activerecord (3.1.0) lib/active_record/query_cache.rb:65:in `call'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:477:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/callbacks.rb:29:in `call'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:392:in `_run_call_callbacks'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:81:in `send'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.1.0) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+  rack (1.3.6) lib/rack/sendfile.rb:101:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (2.9ms)
+
+
+Started GET "/forum2" for 127.0.0.1 at Thu Feb 21 22:40:42 +0530 2013
+  Processing by Forem::ForumsController#index as HTML
+Rendered vendor/gems/forem-0.1/app/views/forem/forums/index.html.erb within layouts/forem (86.2ms)
+Rendered layouts/_head.html.erb (0.6ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_forem_header.html.erb (2.7ms)
+Rendered shared/_flash.html.erb (0.3ms)
+Rendered layouts/_forem_footer.html.erb (3.6ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Completed 200 OK in 184ms (Views: 170.4ms | ActiveRecord: 11.7ms)
+
+
+Started GET "/forum2/forums/1-my-weight-world-community-support" for 127.0.0.1 at Thu Feb 21 22:41:25 +0530 2013
+  Processing by Forem::ForumsController#show as HTML
+  Parameters: {"id"=>"1-my-weight-world-community-support"}
+Rendered vendor/gems/forem-0.1/app/views/forem/forums/_head.html.erb (1.7ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/topics/_topic_listing.html.erb (92.7ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/forums/show.html.erb within layouts/forem (192.4ms)
+Rendered layouts/_head.html.erb (1.3ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_forem_header.html.erb (3.9ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_forem_footer.html.erb (2.6ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Completed 200 OK in 205ms (Views: 186.5ms | ActiveRecord: 16.6ms)
+
+
+Started GET "/forum2/forums/1-my-weight-world-community-support/topics/58-wwwwwwww" for 127.0.0.1 at Thu Feb 21 22:41:28 +0530 2013
+  Processing by Forem::TopicsController#show as HTML
+  Parameters: {"id"=>"58-wwwwwwww", "forum_id"=>"1-my-weight-world-community-support"}
+Rendered vendor/gems/forem-0.1/app/views/forem/topics/_head.html.erb (2.7ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (2.4ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (0.7ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (0.7ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (0.7ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_user_details.html.erb (0.6ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/posts/_post.html.erb (26.8ms)
+Rendered vendor/gems/forem-0.1/app/views/forem/topics/show.html.erb within layouts/forem (42.3ms)
+Rendered layouts/_head.html.erb (0.5ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_forem_header.html.erb (1.8ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_forem_footer.html.erb (2.7ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.4ms)
+Completed 200 OK in 165ms (Views: 59.7ms | ActiveRecord: 88.0ms)
+
+
+Started GET "/assets/footer-logo-a12ba17d8be3124a972183af6a94b8a5.jpg" for 127.0.0.1 at Thu Feb 21 22:41:28 +0530 2013
+Served asset /footer-logo-a12ba17d8be3124a972183af6a94b8a5.jpg - 200 OK (0ms)
+
+
+Started GET "/assets/button-big-orange.png" for 127.0.0.1 at Thu Feb 21 22:41:33 +0530 2013
+Served asset /button-big-orange.png - 200 OK (2ms)
+
+
+Started GET "/vendorsearch" for 127.0.0.1 at Thu Feb 21 23:17:52 +0530 2013
+  Processing by VendorsController#search as HTML
+Rendered shared/_nav_bar.html.erb (0.8ms)
+Rendered shared/_recaptcha.erb (0.3ms)
+Rendered vendors/search.html.erb within layouts/application (6.0ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Rendered layouts/_head.html.erb (0.4ms)
+Rendered shared/_session_menu_bar.html.erb (1.7ms)
+Rendered shared/_nav_tabs.html.erb (0.8ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (4.1ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (4.0ms)
+Completed 200 OK in 26ms (Views: 24.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/vendorsearch?searchtype=all&filterQuery=" for 127.0.0.1 at Thu Feb 21 23:17:58 +0530 2013
+  Processing by VendorsController#search as HTML
+  Parameters: {"filterQuery"=>"", "searchtype"=>"all"}
+Rendered shared/_nav_bar.html.erb (0.3ms)
+Rendered shared/_recaptcha.erb (0.2ms)
+Rendered vendors/search.html.erb within layouts/application (73.3ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.4ms)
+Rendered layouts/_head.html.erb (0.4ms)
+Rendered shared/_session_menu_bar.html.erb (1.4ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.0ms)
+Rendered layouts/_header.html.erb (3.2ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (3.2ms)
+Completed 200 OK in 83ms (Views: 76.6ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/vendors/cindy/2/weight_loss_surgeons/cindy-crouch" for 127.0.0.1 at Thu Feb 21 23:18:00 +0530 2013
+  Processing by VendorsController#show as HTML
+  Parameters: {"restaurants"=>"weight_loss_surgeons", "id"=>"2", "name"=>"cindy-crouch"}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/vendors/cindy/2/weight_loss_surgeons/cindy-crouch" for 127.0.0.1 at Thu Feb 21 23:18:36 +0530 2013
+  Processing by VendorsController#show as HTML
+  Parameters: {"restaurants"=>"weight_loss_surgeons", "id"=>"2", "name"=>"cindy-crouch"}
+Rendered vendors/_form1.html.erb (1.2ms)
+Rendered vendors/show.html.erb within layouts/application (7.2ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.4ms)
+Rendered layouts/_js_libs.html.erb (1.6ms)
+Compiled HTML5.js  (2ms)  (pid 8788)
+Compiled modernizr-1.7.min.js  (0ms)  (pid 8788)
+Compiled respond.js  (0ms)  (pid 8788)
+Rendered layouts/_head.html.erb (13.5ms)
+Rendered shared/_session_menu_bar.html.erb (5.1ms)
+Rendered shared/_nav_tabs.html.erb (1.1ms)
+Rendered shared/_overlay.html.erb (0.3ms)
+Rendered layouts/_header.html.erb (9.4ms)
+Rendered shared/_flash.html.erb (0.3ms)
+Rendered layouts/_footer.html.erb (4.9ms)
+Completed 200 OK in 194ms (Views: 53.0ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/vendors/cindy/2/weight_loss_surgeons/cindy-crouch" for 127.0.0.1 at Thu Feb 21 23:18:37 +0530 2013
+  Processing by VendorsController#show as HTML
+  Parameters: {"restaurants"=>"weight_loss_surgeons", "id"=>"2", "name"=>"cindy-crouch"}
+Rendered vendors/_form1.html.erb (0.3ms)
+Rendered vendors/show.html.erb within layouts/application (0.7ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Rendered layouts/_head.html.erb (0.5ms)
+Rendered shared/_session_menu_bar.html.erb (1.7ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.6ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (3.4ms)
+Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/vendors/cindy/1/weight_loss_surgeons/cindy-crouch" for 127.0.0.1 at Thu Feb 21 23:18:41 +0530 2013
+  Processing by VendorsController#show as HTML
+  Parameters: {"restaurants"=>"weight_loss_surgeons", "id"=>"1", "name"=>"cindy-crouch"}
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_request.text.erb (0.7ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.2ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_session.text.erb (0.5ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.1ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_environment.text.erb (5.7ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.2ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_backtrace.text.erb (0.9ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.2ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/exception_notification.text.erb (13.7ms)
+
+Sent mail to "jony@idifysolutions.com", "swhite@personalpowertraining.net" (25ms)
+Completed 500 Internal Server Error in 166ms
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_request.text.erb (0.4ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.1ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_session.text.erb (0.3ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.0ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_environment.text.erb (5.5ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.2ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_backtrace.text.erb (0.2ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.1ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/exception_notification.text.erb (9.2ms)
+
+Sent mail to "jony@idifysolutions.com", "swhite@personalpowertraining.net" (13ms)
+
+SocketError (getaddrinfo: Name or service not known):
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/net/smtp.rb:551:in `initialize'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/net/smtp.rb:551:in `open'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/net/smtp.rb:551:in `do_start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/timeout.rb:67:in `timeout'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/timeout.rb:101:in `timeout'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/net/smtp.rb:551:in `do_start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/net/smtp.rb:525:in `start'
+  mail (2.3.3) lib/mail/network/delivery_methods/smtp.rb:128:in `deliver!'
+  mail (2.3.3) lib/mail/message.rb:1989:in `do_delivery'
+  mail (2.3.3) lib/mail/message.rb:230:in `deliver'
+  actionmailer (3.1.0) lib/action_mailer/base.rb:432:in `deliver_mail'
+  activesupport (3.1.0) lib/active_support/notifications.rb:53:in `instrument'
+  activesupport (3.1.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (3.1.0) lib/active_support/notifications.rb:53:in `instrument'
+  actionmailer (3.1.0) lib/action_mailer/base.rb:430:in `deliver_mail'
+  mail (2.3.3) lib/mail/message.rb:230:in `deliver'
+  exception_notification (2.6.1) lib/exception_notifier.rb:42:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.3.6) lib/rack/etag.rb:23:in `call'
+  rack (1.3.6) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/flash.rb:243:in `call'
+  rack (1.3.6) lib/rack/session/abstract/id.rb:195:in `context'
+  rack (1.3.6) lib/rack/session/abstract/id.rb:190:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/cookies.rb:326:in `call'
+  ckeditor (3.4.2.pre) lib/ckeditor/middleware.rb:15:in `call'
+  activerecord (3.1.0) lib/active_record/query_cache.rb:62:in `call'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:477:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/callbacks.rb:29:in `call'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:392:in `_run_call_callbacks'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:81:in `send'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.1.0) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+  rack (1.3.6) lib/rack/sendfile.rb:101:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (3.5ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at Fri Feb 22 00:21:14 +0530 2013
+  Processing by RegistrationsController#new as HTML
+Rendered users/_form.html.erb (2.7ms)
+Rendered registrations/new.html.erb within layouts/signup (88.4ms)
+Rendered layouts/_head.html.erb (0.6ms)
+Rendered shared/_session_menu_bar.html.erb (1.6ms)
+Rendered shared/_nav_tabs.html.erb (0.8ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (4.2ms)
+Rendered layouts/_footer.html.erb (3.8ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.6ms)
+Completed 200 OK in 139ms (Views: 105.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at Fri Feb 22 00:21:17 +0530 2013
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/shared/_links.erb (1.3ms)
+Rendered devise/sessions/new.html.erb within layouts/application (4.7ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.6ms)
+Rendered layouts/_head.html.erb (0.5ms)
+Rendered shared/_session_menu_bar.html.erb (1.7ms)
+Rendered shared/_nav_tabs.html.erb (0.8ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.7ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (3.5ms)
+Completed 200 OK in 24ms (Views: 22.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at Fri Feb 22 00:21:20 +0530 2013
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"user"=>{"password"=>"[FILTERED]", "remember_me"=>"0", "email"=>"ravixyz44@yahoo.com"}, "utf8"=>"✓", "authenticity_token"=>"kOD7X7QHkKLqkuWMIbvAttBuiWaBncu5MDZ7lfbZD0k="}
+Completed 401 Unauthorized in 93ms
+  Processing by Devise::SessionsController#new as HTML
+  Parameters: {"user"=>{"password"=>"[FILTERED]", "remember_me"=>"0", "email"=>"ravixyz44@yahoo.com"}, "utf8"=>"✓", "authenticity_token"=>"kOD7X7QHkKLqkuWMIbvAttBuiWaBncu5MDZ7lfbZD0k="}
+Rendered devise/shared/_links.erb (0.6ms)
+Rendered devise/sessions/new.html.erb within layouts/application (2.9ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Rendered layouts/_head.html.erb (0.4ms)
+Rendered shared/_session_menu_bar.html.erb (1.5ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.3ms)
+Rendered shared/_flash.html.erb (0.1ms)
+Rendered layouts/_footer.html.erb (3.2ms)
+Completed 200 OK in 90ms (Views: 11.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Fri Feb 22 00:40:42 +0530 2013
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/homepage (0.2ms)
+Rendered layouts/_head.html.erb (0.8ms)
+Rendered shared/_session_menu_bar.html.erb (1.7ms)
+Rendered shared/_nav_tabs.html.erb (1.0ms)
+Rendered shared/_overlay.html.erb (0.2ms)
+Rendered layouts/_header.html.erb (4.5ms)
+Rendered home/_large_orange_button.html.erb (0.8ms)
+Rendered home/_post.html.erb (110.6ms)
+Rendered home/_post.html.erb (4.2ms)
+Rendered home/_post.html.erb (3.8ms)
+Rendered home/_post.html.erb (4.3ms)
+Rendered users/_recent_member.html.erb (5.2ms)
+Rendered users/_recent_member.html.erb (3.0ms)
+Rendered layouts/_footer.html.erb (3.4ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Completed 200 OK in 182ms (Views: 148.9ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/system/old_text_files/image1s/92/small/weight-loss-option.jpg?1322991844" for 127.0.0.1 at Fri Feb 22 00:40:43 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/old_text_files/image1s/92/small/weight-loss-option.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/system/old_text_files/image1s/9/small/diving.jpg?1322991794" for 127.0.0.1 at Fri Feb 22 00:40:43 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/old_text_files/image1s/9/small/diving.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
+
+
+Started GET "/system/old_text_files/image1s/93/small/lap-band-2.jpg?1322991845" for 127.0.0.1 at Fri Feb 22 00:40:43 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/old_text_files/image1s/93/small/lap-band-2.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
+
+
+Started GET "/system/old_text_files/image1s/10/small/atkins.jpg?1322991795" for 127.0.0.1 at Fri Feb 22 00:40:43 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/old_text_files/image1s/10/small/atkins.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/system/users/avatars/181/medium/800px-obese_male_shirt_side.jpg?1354651624" for 127.0.0.1 at Fri Feb 22 00:40:43 +0530 2013
+
+ActiveRecord::ConnectionTimeoutError (could not obtain a database connection within 5 seconds.  The max pool size is currently 5; consider increasing it.):
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:276:in `checkout'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:261:in `loop'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:261:in `checkout'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:260:in `checkout'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:162:in `connection'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:409:in `retrieve_connection'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_specification.rb:107:in `retrieve_connection'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_specification.rb:89:in `connection'
+  activerecord (3.1.0) lib/active_record/query_cache.rb:65:in `call'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:477:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/callbacks.rb:29:in `call'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:392:in `_run_call_callbacks'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:81:in `send'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.1.0) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+  rack (1.3.6) lib/rack/sendfile.rb:101:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.3ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.0ms)
+
+
+Started GET "/system/header.m4v?1319738021" for 127.0.0.1 at Fri Feb 22 00:40:53 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/header.m4v"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
+
+
+Started GET "/MywwWebservices/login" for 192.168.1.7 at Fri Feb 22 11:09:01 +0530 2013
+
+AbstractController::ActionNotFound (The action 'show' could not be found for MywwWebservicesController):
+  actionpack (3.1.0) lib/abstract_controller/base.rb:116:in `process'
+  actionpack (3.1.0) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.1.0) lib/action_controller/metal.rb:193:in `dispatch'
+  actionpack (3.1.0) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.1.0) lib/action_controller/metal.rb:236:in `action'
+  actionpack (3.1.0) lib/action_dispatch/routing/route_set.rb:65:in `call'
+  actionpack (3.1.0) lib/action_dispatch/routing/route_set.rb:65:in `dispatch'
+  actionpack (3.1.0) lib/action_dispatch/routing/route_set.rb:29:in `call'
+  rack-mount (0.8.3) lib/rack/mount/route_set.rb:152:in `call'
+  rack-mount (0.8.3) lib/rack/mount/code_generation.rb:96:in `recognize'
+  rack-mount (0.8.3) lib/rack/mount/code_generation.rb:96:in `optimized_each'
+  rack-mount (0.8.3) lib/rack/mount/code_generation.rb:95:in `recognize'
+  rack-mount (0.8.3) lib/rack/mount/route_set.rb:141:in `call'
+  actionpack (3.1.0) lib/action_dispatch/routing/route_set.rb:531:in `call'
+  omniauth (1.1.0) lib/omniauth/strategy.rb:177:in `call!'
+  omniauth (1.1.0) lib/omniauth/strategy.rb:157:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/rack.rb:27:in `call'
+  exception_notification (2.6.1) lib/exception_notifier.rb:34:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.3.6) lib/rack/etag.rb:23:in `call'
+  rack (1.3.6) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/flash.rb:243:in `call'
+  rack (1.3.6) lib/rack/session/abstract/id.rb:195:in `context'
+  rack (1.3.6) lib/rack/session/abstract/id.rb:190:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/cookies.rb:326:in `call'
+  ckeditor (3.4.2.pre) lib/ckeditor/middleware.rb:15:in `call'
+  activerecord (3.1.0) lib/active_record/query_cache.rb:62:in `call'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:477:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/callbacks.rb:29:in `call'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:392:in `_run_call_callbacks'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:81:in `send'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.1.0) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+  rack (1.3.6) lib/rack/sendfile.rb:101:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started GET "/" for 192.168.1.13 at Fri Feb 22 11:09:06 +0530 2013
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/homepage (0.0ms)
+Rendered layouts/_head.html.erb (0.8ms)
+Rendered shared/_session_menu_bar.html.erb (1.7ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.7ms)
+Rendered home/_large_orange_button.html.erb (0.3ms)
+Rendered home/_post.html.erb (4.9ms)
+Rendered home/_post.html.erb (5.0ms)
+Rendered home/_post.html.erb (3.9ms)
+Rendered home/_post.html.erb (4.7ms)
+Rendered users/_recent_member.html.erb (4.9ms)
+Rendered users/_recent_member.html.erb (3.1ms)
+Rendered layouts/_footer.html.erb (3.8ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.9ms)
+Completed 200 OK in 139ms (Views: 44.3ms | ActiveRecord: 81.8ms)
+
+
+Started GET "/assets/HTML5-59681dff3a572cf0b060fc7445d69b7b.js" for 192.168.1.13 at Fri Feb 22 11:09:07 +0530 2013
+Served asset /HTML5-59681dff3a572cf0b060fc7445d69b7b.js - 200 OK (1ms)
+
+
+Started GET "/system/old_text_files/image1s/45/small/hcg.jpg?1322991815" for 192.168.1.13 at Fri Feb 22 11:09:08 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/old_text_files/image1s/45/small/hcg.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started GET "/system/old_text_files/image1s/46/small/eating-disorder.jpg?1322991816" for 192.168.1.13 at Fri Feb 22 11:09:08 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/old_text_files/image1s/46/small/eating-disorder.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started GET "/system/old_text_files/image1s/10/small/atkins.jpg?1322991795" for 192.168.1.13 at Fri Feb 22 11:09:08 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/old_text_files/image1s/10/small/atkins.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started GET "/system/old_text_files/image1s/9/small/diving.jpg?1322991794" for 192.168.1.13 at Fri Feb 22 11:09:08 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/old_text_files/image1s/9/small/diving.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started GET "/system/users/avatars/181/medium/800px-obese_male_shirt_side.jpg?1354651624" for 192.168.1.13 at Fri Feb 22 11:09:08 +0530 2013
+
+ActiveRecord::ConnectionTimeoutError (could not obtain a database connection within 5 seconds.  The max pool size is currently 5; consider increasing it.):
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:276:in `checkout'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:261:in `loop'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:261:in `checkout'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:260:in `checkout'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:162:in `connection'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:409:in `retrieve_connection'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_specification.rb:107:in `retrieve_connection'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_specification.rb:89:in `connection'
+  activerecord (3.1.0) lib/active_record/query_cache.rb:65:in `call'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:477:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/callbacks.rb:29:in `call'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:392:in `_run_call_callbacks'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:81:in `send'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.1.0) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+  rack (1.3.6) lib/rack/sendfile.rb:101:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started GET "/system/header.m4v?1319738021" for 192.168.1.13 at Fri Feb 22 11:09:18 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/header.m4v"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started POST "/MywwWebservices/login" for 192.168.1.7 at Fri Feb 22 11:10:50 +0530 2013
+  Processing by MywwWebservicesController#login as HTML
+  Parameters: {"password"=>"[FILTERED]", "email"=>"ravixyz44@yahoo.com"}
+[paperclip] Saving attachments.
+Completed 406 Not Acceptable in 377ms
+
+
+Started POST "/MywwWebservices/login" for 192.168.1.7 at Fri Feb 22 11:15:24 +0530 2013
+  Processing by MywwWebservicesController#login as HTML
+  Parameters: {"password"=>"[FILTERED]", "email"=>"ravixyz44@yahoo.com"}
+[paperclip] Saving attachments.
+Completed 406 Not Acceptable in 136ms
+
+
+Started POST "/MywwWebservices/login" for 192.168.1.7 at Fri Feb 22 11:17:18 +0530 2013
+  Processing by MywwWebservicesController#login as HTML
+  Parameters: {"password"=>"[FILTERED]", "email"=>"ravixyz44@yahoo.com"}
+[paperclip] Saving attachments.
+Completed 406 Not Acceptable in 148ms
+
+
+Started POST "/MywwWebservices/login" for 192.168.1.7 at Fri Feb 22 11:19:17 +0530 2013
+  Processing by MywwWebservicesController#login as HTML
+  Parameters: {"password"=>"[FILTERED]", "email"=>"ravixyz44@yahoo.com"}
+[paperclip] Saving attachments.
+Completed 406 Not Acceptable in 145ms
+
+
+Started POST "/MywwWebservices/login" for 192.168.1.7 at Fri Feb 22 11:22:56 +0530 2013
+  Processing by MywwWebservicesController#login as HTML
+  Parameters: {"password"=>"[FILTERED]", "email"=>"ravixyz44@yahoo.com"}
+[paperclip] Saving attachments.
+Completed 406 Not Acceptable in 148ms
+
+
+Started POST "/MywwWebservices/login" for 192.168.1.7 at Fri Feb 22 11:24:35 +0530 2013
+  Processing by MywwWebservicesController#login as HTML
+  Parameters: {"password"=>"[FILTERED]", "email"=>"ravixyz44@yahoo.com"}
+[paperclip] Saving attachments.
+Completed 406 Not Acceptable in 139ms
+
+
+Started POST "/MywwWebservices/login" for 192.168.1.7 at Fri Feb 22 11:26:25 +0530 2013
+  Processing by MywwWebservicesController#login as HTML
+  Parameters: {"password"=>"[FILTERED]", "email"=>"ravixyz44@yahoo.com"}
+[paperclip] Saving attachments.
+Completed 406 Not Acceptable in 142ms
+
+
+Started POST "/MywwWebservices/login" for 192.168.1.7 at Fri Feb 22 11:31:16 +0530 2013
+  Processing by MywwWebservicesController#login as HTML
+  Parameters: {"password"=>"[FILTERED]", "email"=>"ravixyz44@yahoo.com"}
+[paperclip] Saving attachments.
+Completed 406 Not Acceptable in 160ms
+
+
+Started POST "/MywwWebservices/login" for 192.168.1.7 at Fri Feb 22 11:32:02 +0530 2013
+  Processing by MywwWebservicesController#login as HTML
+  Parameters: {"password"=>"[FILTERED]", "email"=>"ravixyz44@yahoo.com"}
+[paperclip] Saving attachments.
+Completed 406 Not Acceptable in 150ms
+
+
+Started POST "/MywwWebservices/login" for 192.168.1.7 at Fri Feb 22 11:33:20 +0530 2013
+  Processing by MywwWebservicesController#login as HTML
+  Parameters: {"password"=>"[FILTERED]", "email"=>"ravixyz44@yahoo.com"}
+[paperclip] Saving attachments.
+Completed 406 Not Acceptable in 231ms
+
+
+Started POST "/MywwWebservices/login" for 192.168.1.7 at Fri Feb 22 11:42:06 +0530 2013
+  Processing by MywwWebservicesController#login as HTML
+  Parameters: {"password"=>"[FILTERED]", "email"=>"ravixyz44@yahoo.com"}
+[paperclip] Saving attachments.
+Completed 406 Not Acceptable in 138ms
+
+
+Started POST "/MywwWebservices/login" for 192.168.1.7 at Fri Feb 22 11:44:17 +0530 2013
+  Processing by MywwWebservicesController#login as HTML
+  Parameters: {"password"=>"[FILTERED]", "email"=>"ravixyz44@yahoo.com"}
+[paperclip] Saving attachments.
+Completed 406 Not Acceptable in 152ms
+
+
+Started GET "/" for 192.168.1.7 at Fri Feb 22 11:45:00 +0530 2013
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/homepage (0.1ms)
+Rendered layouts/_head.html.erb (1.8ms)
+Rendered shared/_session_menu_bar.html.erb (3.5ms)
+Rendered shared/_nav_tabs.html.erb (0.8ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (5.8ms)
+Rendered home/_large_orange_button.html.erb (0.3ms)
+Rendered home/_post.html.erb (3.8ms)
+Rendered home/_post.html.erb (4.3ms)
+Rendered home/_post.html.erb (3.6ms)
+Rendered home/_post.html.erb (4.4ms)
+Rendered users/_recent_member.html.erb (4.9ms)
+Rendered users/_recent_member.html.erb (3.2ms)
+Rendered layouts/_footer.html.erb (3.7ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.2ms)
+Rendered layouts/_js_libs.html.erb (0.6ms)
+Completed 200 OK in 157ms (Views: 41.7ms | ActiveRecord: 11.5ms)
+
+
+Started POST "/MywwWebservices/login" for 192.168.1.7 at Fri Feb 22 11:48:23 +0530 2013
+  Processing by MywwWebservicesController#login as HTML
+  Parameters: {"password"=>"[FILTERED]", "email"=>"ravixyz44@yahoo.com"}
+[paperclip] Saving attachments.
+Completed 406 Not Acceptable in 154ms
+
+
+Started GET "/system/old_text_files/image1s/119/small/powder.jpg?1322991861" for 192.168.1.7 at Fri Feb 22 11:50:02 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/old_text_files/image1s/119/small/powder.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started GET "/system/old_text_files/image1s/9/small/diving.jpg?1322991794" for 192.168.1.7 at Fri Feb 22 11:50:38 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/old_text_files/image1s/9/small/diving.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started GET "/system/old_text_files/image1s/10/small/atkins.jpg?1322991795" for 192.168.1.7 at Fri Feb 22 11:50:38 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/old_text_files/image1s/10/small/atkins.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started GET "/system/old_text_files/image1s/120/small/protein.jpg?1322991862" for 192.168.1.7 at Fri Feb 22 11:50:38 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/old_text_files/image1s/120/small/protein.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started GET "/system/header.m4v?1319738021" for 192.168.1.7 at Fri Feb 22 11:50:38 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/header.m4v"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started GET "/system/users/avatars/181/medium/800px-obese_male_shirt_side.jpg?1354651624" for 192.168.1.7 at Fri Feb 22 11:51:08 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/users/avatars/181/medium/800px-obese_male_shirt_side.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started POST "/MywwWebservices/check" for 192.168.1.7 at Fri Feb 22 11:51:13 +0530 2013
+
+ActiveRecord::ConnectionTimeoutError (could not obtain a database connection within 5 seconds.  The max pool size is currently 5; consider increasing it.):
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:276:in `checkout'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:261:in `loop'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:261:in `checkout'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:260:in `checkout'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:162:in `connection'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:409:in `retrieve_connection'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_specification.rb:107:in `retrieve_connection'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_specification.rb:89:in `connection'
+  activerecord (3.1.0) lib/active_record/query_cache.rb:65:in `call'
+  activerecord (3.1.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:477:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/callbacks.rb:29:in `call'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:392:in `_run_call_callbacks'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:81:in `send'
+  activesupport (3.1.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.1.0) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+  rack (1.3.6) lib/rack/sendfile.rb:101:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:139:in `pass'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:151:in `invalidate'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:70:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started POST "/MywwWebservices/login" for 192.168.1.7 at Fri Feb 22 11:53:19 +0530 2013
+  Processing by MywwWebservicesController#login as HTML
+  Parameters: {"password"=>"[FILTERED]", "email"=>"ravixyz44@yahoo.com"}
+[paperclip] Saving attachments.
+Completed 406 Not Acceptable in 152ms
+
+
+Started POST "/MywwWebservices/login" for 192.168.1.7 at Fri Feb 22 11:55:37 +0530 2013
+  Processing by MywwWebservicesController#login as HTML
+  Parameters: {"password"=>"[FILTERED]", "email"=>"ravixyz44@yahoo.com"}
+[paperclip] Saving attachments.
+Completed 406 Not Acceptable in 143ms
+
+
+Started POST "/MywwWebservices/login" for 192.168.1.7 at Fri Feb 22 11:58:09 +0530 2013
+  Processing by MywwWebservicesController#login as HTML
+  Parameters: {"password"=>"[FILTERED]", "email"=>"ravixyz44@yahoo.com"}
+[paperclip] Saving attachments.
+Completed 406 Not Acceptable in 138ms
+
+
+Started POST "/MywwWebservices/login" for 192.168.1.7 at Fri Feb 22 11:59:15 +0530 2013
+  Processing by MywwWebservicesController#login as HTML
+  Parameters: {"password"=>"[FILTERED]", "email"=>"ravixyz44@yahoo.com"}
+[paperclip] Saving attachments.
+Completed 406 Not Acceptable in 152ms
+
+
+Started POST "/MywwWebservices/login" for 192.168.1.7 at Fri Feb 22 11:59:44 +0530 2013
+  Processing by MywwWebservicesController#login as HTML
+  Parameters: {"password"=>"[FILTERED]", "email"=>"ravixyz44@yahoo.com"}
+[paperclip] Saving attachments.
+Completed 406 Not Acceptable in 150ms
+
+
+Started POST "/MywwWebservices/check" for 192.168.1.7 at Fri Feb 22 12:01:38 +0530 2013
+
+ActionController::RoutingError (No route matches [POST] "/MywwWebservices/check"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:139:in `pass'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:151:in `invalidate'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:70:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started GET "/MywwWebservices/check" for 192.168.1.7 at Fri Feb 22 12:02:24 +0530 2013
+  Processing by MywwWebservicesController#check as HTML
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_request.text.erb (0.4ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.0ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_session.text.erb (0.3ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.0ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_environment.text.erb (5.7ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.1ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_backtrace.text.erb (0.2ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.1ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/exception_notification.text.erb (9.2ms)
+
+Sent mail to "jony@idifysolutions.com", "swhite@personalpowertraining.net" (14862ms)
+Completed 200 OK in 14914ms
+
+
+Started GET "/MywwWebservices/check" for 192.168.1.7 at Fri Feb 22 12:05:00 +0530 2013
+  Processing by MywwWebservicesController#check as HTML
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_request.text.erb (0.4ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.1ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_session.text.erb (0.3ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.1ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_environment.text.erb (7.3ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.3ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_backtrace.text.erb (0.3ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.3ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/exception_notification.text.erb (11.3ms)
+
+Sent mail to "jony@idifysolutions.com", "swhite@personalpowertraining.net" (12183ms)
+Completed 200 OK in 12227ms
+
+
+Started GET "/" for 192.168.1.7 at Fri Feb 22 12:05:27 +0530 2013
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/homepage (0.0ms)
+Rendered layouts/_head.html.erb (0.6ms)
+Rendered shared/_session_menu_bar.html.erb (1.6ms)
+Rendered shared/_nav_tabs.html.erb (0.7ms)
+Rendered shared/_overlay.html.erb (0.1ms)
+Rendered layouts/_header.html.erb (3.5ms)
+Rendered home/_large_orange_button.html.erb (0.3ms)
+Rendered home/_post.html.erb (3.3ms)
+Rendered home/_post.html.erb (3.5ms)
+Rendered home/_post.html.erb (2.9ms)
+Rendered home/_post.html.erb (3.6ms)
+Rendered users/_recent_member.html.erb (3.7ms)
+Rendered users/_recent_member.html.erb (2.6ms)
+Rendered layouts/_footer.html.erb (3.3ms)
+TINYMCE Activated?: false
+Rendered shared/_gridder_config.html.erb (0.1ms)
+Rendered layouts/_js_libs.html.erb (0.5ms)
+Completed 200 OK in 52ms (Views: 32.0ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/system/old_text_files/image1s/33/small/free.jpg?1322991808" for 192.168.1.7 at Fri Feb 22 12:06:43 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/old_text_files/image1s/33/small/free.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started GET "/system/old_text_files/image1s/9/small/diving.jpg?1322991794" for 192.168.1.7 at Fri Feb 22 12:06:43 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/old_text_files/image1s/9/small/diving.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started GET "/system/old_text_files/image1s/34/small/healthy-weight.jpg?1322991808" for 192.168.1.7 at Fri Feb 22 12:06:43 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/old_text_files/image1s/34/small/healthy-weight.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started GET "/system/old_text_files/image1s/10/small/atkins.jpg?1322991795" for 192.168.1.7 at Fri Feb 22 12:06:44 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/old_text_files/image1s/10/small/atkins.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started GET "/system/users/avatars/181/medium/800px-obese_male_shirt_side.jpg?1354651624" for 192.168.1.7 at Fri Feb 22 12:06:49 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/users/avatars/181/medium/800px-obese_male_shirt_side.jpg"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started GET "/MywwWebservices/check.js" for 192.168.1.7 at Fri Feb 22 12:06:49 +0530 2013
+  Processing by MywwWebservicesController#check as JS
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_request.text.erb (0.5ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.1ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_session.text.erb (0.4ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.1ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_environment.text.erb (8.0ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.3ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_backtrace.text.erb (0.2ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.2ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/exception_notification.text.erb (11.8ms)
+
+Sent mail to "jony@idifysolutions.com", "swhite@personalpowertraining.net" (6365ms)
+Completed 200 OK in 6413ms
+
+
+Started GET "/system/header.m4v?1319738021" for 192.168.1.7 at Fri Feb 22 12:06:55 +0530 2013
+
+ActionController::RoutingError (No route matches [GET] "/system/header.m4v"):
+  actionpack (3.1.0) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.1.0) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.3.6) lib/rack/methodoverride.rb:24:in `call'
+  rack (1.3.6) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.1.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.3.6) lib/rack/lock.rb:15:in `call'
+  actionpack (3.1.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:132:in `forward'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:243:in `fetch'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:181:in `lookup'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:65:in `call!'
+  rack-cache (1.0.3) lib/rack/cache/context.rb:50:in `call'
+  hoptoad_notifier (2.4.11) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.1.0) lib/rails/engine.rb:455:in `call'
+  railties (3.1.0) lib/rails/rack/content_length.rb:16:in `call'
+  railties (3.1.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.3.6) lib/rack/handler/webrick.rb:59:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /home/ravi/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.3.6) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.3.6) lib/rack/server.rb:265:in `start'
+  railties (3.1.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.1.0) lib/rails/commands.rb:54
+  railties (3.1.0) lib/rails/commands.rb:49:in `tap'
+  railties (3.1.0) lib/rails/commands.rb:49
+  script/rails:6:in `require'
+  script/rails:6
+
+
+
+Started GET "/MywwWebservices/check" for 192.168.1.7 at Fri Feb 22 12:07:52 +0530 2013
+  Processing by MywwWebservicesController#check as HTML
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_request.text.erb (0.4ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.1ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_session.text.erb (0.3ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.0ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_environment.text.erb (7.7ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.1ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_backtrace.text.erb (0.1ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/_title.text.erb (0.0ms)
+Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/lib/exception_notifier/views/exception_notifier/exception_notification.text.erb (10.1ms)
+
+Sent mail to "jony@idifysolutions.com", "swhite@personalpowertraining.net" (6686ms)
+Completed 200 OK in 6727ms

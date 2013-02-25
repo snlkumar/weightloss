@@ -1,0 +1,151 @@
+<style type="text/css">
+
+	th{
+		font-size:14px;
+		text-align:left;
+		padding: .3%;
+	}
+
+.head-table{background: #ccc; }
+.gridHeader{
+	background-color:#fff;
+	border:1px solid black;
+  width:63%;
+  height:25px;
+	display:none;
+
+	top:27%;
+	left:21%;
+	z-index:300;
+}
+
+}
+</style>
+
+
+          <div class="grid_5 ">
+          <p id="user-name" class="grid_5" style="font-size:1.5em;"><%= current_vendor.business_name %></p>
+          <div class="profile-avatar avatar"><%= image_tag(current_vendor.photo.url(:profile)) %></div>
+			 <div class="sidebar-container" style="">
+			 <div class="clear">&nbsp;</div>
+			               <ul id="user-settings-tabs">
+
+                <li class="vendor-class">
+                  <%= link_to 'Add new member', addmember_vendors_path%>
+                </li>
+                <li class="vendor-class">
+                  <%= link_to 'Members List', memberlist_vendors_path%>                
+                </li>
+              
+
+                <li class="vendor-class">
+                  <%= link_to 'Back', :back%>
+                </li>                   
+              </ul>
+			 </div>
+			 </div>
+
+<div style="margin-left:33%;height:1%;padding:1%;">
+	
+	
+ <% if @member.errors.any? %>
+    <div id="error_explanation" style="margin-left:35%;">
+      <h2><%= pluralize(@member.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @member.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>		 
+			 
+
+<div style="overflow:auto;width:50em;">
+<div >
+
+<h1 style="background-color:#ccc; color:#0B2B42;width:25.1em;height:1.5em;text-align:center;">Add New Member</h1><br/>
+
+<%=form_for @member, :url => createmember_vendors_path  do |f|%>
+  <table style="border-collapse:separate;border-spacing:2px;">
+<tbody>
+
+      <tr>   
+          <td style="padding: .3%;"><%= f.label :first_name%></td>                    
+          <td style="padding: .3%;"><%=f.text_field :first_name%>
+      </tr>
+      
+      
+      <tr>   
+          <td style="padding: .3%;"><%= f.label :last_name%></td>                    
+          <td style="padding: .3%;"><%=f.text_field :last_name%>
+      </tr>
+
+
+
+      <tr>   
+          <td style="padding: .3%;"><%= f.label :email%></td>                    
+          <td style="padding: .3%;"><%=f.text_field :email%>
+      </tr>
+      
+      <tr>   
+          <td style="padding: .3%;"><%= f.label :username%></td>                    
+          <td style="padding: .3%;"><%=f.text_field :username%></td> 
+      </tr>
+
+                     
+      <tr>   
+          <td style="padding: .3%;"><%= f.label :password%></td>                    
+          <td style="padding: .3%;"><%=f.password_field :password%></td> 
+      </tr>
+
+      <tr>   
+          <td style="padding: .3%;"><%= f.label :password_confirmation%></td>                  
+          <td style="padding: .3%;"> <%= f.password_field :password_confirmation, :title => "Confirm Your Password" %></td> 
+      </tr>  
+      
+      
+      <tr>   
+          <td style="padding: .3%;"><%= f.label :weight, "weight (lbs)"%></td>                    
+          <td style="padding: .3%;"><%=f.text_field :weight%></td> 
+      </tr>              
+
+      <tr>   
+          <td style="padding: .3%;"><%= f.label :height, "height (in)"%></td>                    
+          <td style="padding: .3%;"><%=f.text_field :height%></td> 
+      </tr>
+
+      <tr>   
+          <td style="padding: .3%;"><%= f.label :avatar%></td>                    
+          <td style="padding: .3%;"><%=f.file_field :avatar%></td> 
+      </tr>      
+
+
+		
+	<tr>
+  		 <td style="padding: .3%;"> <%= f.label :birthdate %></td>
+  		 <td style="padding: .3%;"> <%= f.date_select :birthdate, :start_year => Time.zone.now.year, :end_year => 100.years.ago.year %></td>  
+	</tr>		
+
+
+      <tr>   
+          <td style="padding: .3%;"><%= f.label :gender%></td>                  
+          <td style="padding: .3%;"> <%= f.select :gender, [['Male', 'male'], ['Female', 'female']] %></td> 
+      </tr> 
+     
+   
+     
+      
+   <input type="hidden" name="user[status]" value="finalize">   		
+		<tr>
+			<td colspan="2" style="padding: .3%;margin-top:5em;"><%= f.submit :style=>"margin-left:30%;"%></td> 
+
+		</tr>		
+
+</tbody>      
+  </table>
+<%end%>  
+  </div>
+</div>  
+</div>
+

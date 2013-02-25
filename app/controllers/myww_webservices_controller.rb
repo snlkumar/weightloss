@@ -23,10 +23,11 @@ class MywwWebservicesController < ApplicationController
     else
       @status={"status-msg"=>"113"}       #113 =>email error
     end
-
-    respond_to do |format|
-      format.js { render :json =>@status.to_json}
-    end
+   
+   render :json =>@status.to_json
+    #respond_to do |format|
+     # format.js { render :json =>@status.to_json}
+   # end
   end
   
   def forget_pass
@@ -38,9 +39,11 @@ class MywwWebservicesController < ApplicationController
     else
       @status={"status-msg"=>"601"}    #113 =>invalid email
     end
-     respond_to do |format|
-     format.js { render :json =>@status.to_json}
-   end
+    
+    render :json =>@status.to_json
+#     respond_to do |format|
+#     format.js { render :json =>@status.to_json}
+#   end
   end
  
 ###############################################################################
@@ -367,6 +370,52 @@ end
   end
   #############################################################################
   
+ 
+    def addcustomfood
+ 
+    	@user=User.find(params[:id])
+		@params=params[:meals]
+		mealsdata=@params.split("**").collect{|a| a}
+		mealname=mealsdata[0]
+		mealcalorie=mealsdata[1]
+		mealserving=mealsdata[0]
+
+		
+	   @userfile= params[:userfile]
+		@userfile.rewind
+		@filename = "#{Rails.root}/public/"+params[:id].to_s+@userfile.original_filename
+		 
+		 File.open(@filename, "wb") do |file|
+			file.write(@userfile.read)
+		 end			
+		
+
+		@customfood=Food.create(:custom=>true, :name=>mealname,:energ_kcal=>mealcalorie,:gmwt_desc1=>mealserving)
+		@customfood.avatar=File.open(@filename)			
+		
+		if @customfood.save
+
+			 @status={"status-msg"=>"Success"}
+
+		else 
+			  if  @customfood.errors.full_messages
+				 		@status={"status-msg"=>"taken"} 
+			 	else
+	  			 	@status={"status-msg"=>"Success"}
+	  			 end 
+  			end   	
+     	session[:user_id]=params[:id]
+		File.delete(@filename)
+		
+	  	respond_to do |format|
+	     format.js { render :json =>@status.to_json}
+   	end
+  end
+  
+   
+
+  
+  ##############################################
   
   def getSession
     if session[:user_id]
@@ -374,10 +423,10 @@ end
     else
       @status={"status-msg"=>"114"}   #114=> not login
     end
-    
-   respond_to do |format|
-     format.js { render :json =>@status.to_json}
-   end
+ render :json =>@status.to_json   
+  # respond_to do |format|
+   #  format.js { render :json =>@status.to_json}
+  # end
   end
   
   #############################################################################
@@ -819,7 +868,9 @@ end
 ####################################
 
  def addWorkout1
-    
+ 
+ render :json=>params
+ return 
     if params[:trained_on]
       	@start_date = Time.zone.parse(params[:trained_on]).strftime("%Y-%m-%d")
    	 else
@@ -907,6 +958,8 @@ end
 
   #this method for testing, to check webservice
   def check
+  render :text=>"shivam sahi se kaam kr"
+  return
 
   end  
   

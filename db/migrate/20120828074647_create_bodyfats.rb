@@ -14,6 +14,7 @@ class CreateBodyfats < ActiveRecord::Migration
 		t.float :subscapular
 		t.float :tricep
 	   t.float :lower_back
+      t.float :fatpercent	   
       t.timestamps
     end
   end

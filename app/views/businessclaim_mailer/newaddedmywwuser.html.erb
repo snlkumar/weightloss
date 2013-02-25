@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <p style="margin-left:250px;font-size:20pt;color:#0A263B;" ><b>Wecome To MyWeightWorld</b></p><br/><br/>
+    
+<p>Dear <%=@user.full_name%>,</p><br/>
+
+<%=@vendor.business_name%> registered you for My Weight World to better help track your progress to ensure you receive the best results. Please login, confirm, and complete your profile on My Weight World. We at MYWW are excited to help <%=@vendor.business_name%> and you. Thank You, My Weight World. You can change your credentails after login. Your creadentials are:<br/>
+
+Email:<%=@user.email%><br/>
+Password:<%=@password%><br/>
+
+Sender:<%=@vendor.business_name%><br/>
+<b><%=link_to "MyWeightWorld.com", "http://myweightworld.com/"%><b>
+
+  </body>
+</html>

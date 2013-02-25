@@ -37,4 +37,26 @@ include SendGrid
   mail(:from => "noreply@myweightworld.com", :to => @email, :subject => "Client Query (MyweightWorld.com)")
   end
   
+  
+  def mywwmembership(user,vendor)
+    @user = user
+    @vendor= vendor
+    mail(:from => "noreply@myweightworld.com", :to => @user.email, :subject => "Membership")   
+  end
+  
+  def newaddedmywwuser(user,vendor,password)
+    @password=password
+	 @user = user
+	 @vendor= vendor
+	 mail(:from => "noreply@myweightworld.com", :to => @user.email, :subject => "Membership") 
+  end
+  
+  
+	def usernotifications(message,user)
+	@user=user
+    @message=message
+	 @email = @user.email
+	 mail(:from => "noreply@myweightworld.com", :to => @email, :subject => "Notification") 
+  end
+  
   end

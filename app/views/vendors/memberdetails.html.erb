@@ -1,0 +1,277 @@
+	<script type="text/javascript" src="/assets/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript" src="/assets/jquery.rating.js"></script>
+	<link rel="stylesheet" media="screen" type="text/css" href="/assets/jquery.rating.css" />
+
+<style type="text/css">
+.black_overlay{
+			display: none;
+			position: fixed;
+			top: -20%;
+			left: -17%;
+			width: 150em;
+			height: 100em;
+			background-color: black;
+			z-index:1001;
+			-moz-opacity: 0.8;
+			opacity:.80;
+			filter: alpha(opacity=80);
+		}
+		.white_content {
+		
+	 -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: 1px solid #888888;
+			display: none;
+			position: fixed;
+			top: 29%;
+			left: 38%;
+			width: 25%;
+			padding: 16px;
+			border: 10px solid #888888;
+			background-color: white;
+			z-index:1002;
+		}
+.shadowdiv
+{
+box-shadow: 5px 5px 5px 5px #888888;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: 1px solid #888888;
+} 
+p{
+color: #0B2B42;
+    font-size: 1.15em;
+  }
+
+
+th{
+	font-size:14px;
+	text-align:center;
+	padding: .3%;
+	color:#2E8DC0;
+}
+.even { background: #99ccff; }
+.odd { background: #cccccc; }
+.head-table{background: #ccc; }
+
+</style>
+
+
+<script>
+			$(document).ready(function(){
+				//Turn all the select boxes into rating controls
+				 $("#serialStar").val(<%=@rating%>); 			
+				 $(".rating").rating();
+				 
+				 $("#serialStar").change(function(){ 
+              vendorrating=$('#serialStar').val();
+
+							$.get("/vendors/ratings/"+<%=@user.id%>+"/"+vendorrating)
+							.done(function(data) {
+							alert(data);
+							});
+								  		
+				});			
+
+			});		
+
+function newweight() {
+
+document.getElementById('light').style.display='block';
+document.getElementById('fade').style.display='block';
+}
+
+function submitweight()	{
+weight1=$("#userweight").val();
+$.ajax({
+type: "get",
+url: "/vendors/userweight"+"?weight="+weight1+"&user_id="+<%=@user.id%>
+}).done(function( msg ) {
+	 alert( msg);
+location.reload();	 
+	 });
+}
+</script>
+
+<%= render :partial => 'shared/vedorUserSidebar', :locals => {:user => @user} %>
+
+
+<div style="margin-left:33%;">
+<h1 style="background-color:#ccc; color:#0B2B42;width:38.6em;height:1.6em;text-align:center;margin-left:.4em;">User Details</h1></br>
+
+<label>Rate User</label><select name="myRating" class="rating" id="serialStar">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option> 
+    <option value="5">5</option>       
+</select>   <%=link_to "Food and Workout Diary",userdiary_vendors_path(@user), :style=>"float:right;background-color:#ccc;font-size:15px;margin-right:-8em;"%>
+
+ <br/>  <br/>   
+       
+		<div class="shadowdiv"style="height:23.6em;width:26em;float:left;">
+			<div style="height:20.6em;width:23em;margin-left:1.7em;margin-top:2em;overflow:auto;">
+				<h1 style="background-color:#ccc; margin-top:0em;color:#0B2B42;width:13.2em;height:1em;text-align:center;">Member's Profile</h1>
+
+				<h3 id="personal-info">Personal Info</h3>
+				<p>Age:  <%= @user.age%></p><br/>
+				<p>Email: <%= @user.email%></p><br/>
+				<h3 id="personal-info">Nutrition Info</h3>
+
+				<p>Height (in):  <%= @user.height%></p><br/>
+
+				<p>Weight (lbs):  <%= @user.weight%></p><br/>
+
+				<p>Desired weight (lbs): <%= @user.desired_weight%></p><br/>
+
+
+			</div>
+		</div>
+
+
+
+
+
+			<div class="shadowdiv" style="float:right;margin-right:-20%;width:26em;height:23.6em;">
+
+
+			<%if @weights%>
+			   <%#= page_entries_info(@weights) %>  
+			   <%#= paginate(@weights, :params => pagination_params(request)) %>
+					<h1 style="background-color:#ccc; color:#0B2B42;width:13.0em;height:1em;text-align:center;margin-left:1.5em;">Weight Measurements</h1><input type="button" style="background-color:#CCCCCC;height:1.7em;font-size:10pt;width:3em;padding:0;float:right;margin-right:.8em;margin-top:-2.3em;color:#2E8DC0;" onclick="newweight()" value="New" />
+					<div style="height:18.6em;width:22em;overflow:auto;margin-left:2em;"> 
+
+						 <table style="border-collapse:separate;border-spacing:2px;width:20em;text-align:center;">
+					 		<tr class="head-table">
+								<th>Weight (lbs)</th>
+								<th>Date</th>
+							</tr>
+							 <% @weights.each do |row| %>
+								  <tr class="<%= cycle('even','odd') %>">
+									 <td style="padding: .3%;"><%=row.weight%></td>
+									 <td style="padding: .3%;"><%=row.created_at.strftime("%d-%m-%Y")%></td>
+								 </tr>
+							 <%end%>
+					</table>  
+				</div>
+				<%end%>
+			 </div>
+			 
+<br/><br/>
+
+			<div style="float:left;margin-top:3em;width:64em;">
+			<h1 style="background-color:#3B3131;width:39.5em;height:.1em;text-align:center;"></h1><%=link_to "New Bodyfat",userbodyfat_vendors_path(@user), :style=>"background-color:#ccc;font-size:15px;"%>
+			<div class="shadowdiv" style="margin-top:2em;width:60em;height:24em;"><br/>
+			
+			<h1 style="background-color:#ccc; color:#0B2B42;width:35.1em;height:1.2em;text-align:center;margin-left:1.8em;">Bodyfat Measurements</h1></br>
+
+			<%if @bodyfats%>
+			   <%#= page_entries_info(@bodyfats) %>  
+			   <%#= paginate(@bodyfats, :params => pagination_params(request)) %>			
+					<div style="height:15em;width:55em;overflow:auto;margin-left:2.5em;"> 
+						 <table style="border-collapse:separate;border-spacing:2px;width:53em;text-align:center;">
+					 		<tr class="head-table" >
+								<th>Fatmass (lbs)</th>
+								<th>Bodymass (lbs)</th>
+								<th>Bodyfat (%)</th>								
+								<th>Date</th>								
+							</tr>
+					 <% @bodyfats.each do |row| %>
+						  <tr class="<%= cycle('even','odd') %>">
+							 <td style="padding: .3%;"><%=row.bodyfat%></td>
+							 <td style="padding: .3%;"><%=row.bodymass%></td>
+							 <td style="padding: .3%;"><%=row.fatpercent%></td>							 							 							 
+							 <td style="padding: .3%;"><%=row.created_at.strftime("%m-%d-%Y")%></td>
+						 </tr>
+					 <%end%>
+					</table>  
+				</div>
+				<%end%>
+			 </div>
+			</div>
+ 
+<div style="float:left;width:64em;margin-top:2em;">
+						<h1 style="background-color:#3B3131;width:41.6em;height:.1em;text-align:center;"></h1><%=link_to "New Measurement",usermeasurementnew_vendors_path(@user),:style=>"background-color:#ccc;font-size:15px;"%>
+			<div class="shadowdiv" style="float:left;width:64em;height:24em;margin-top:3em;">
+
+			<h1 style="background-color:#ccc; color:#0B2B42;width:41.6em;height:1.2em;text-align:center;margin-left:.4em;">Body Measurements (inch)</h1></br>
+			
+ 			<%if @measuremets%>
+			   <%#= page_entries_info(@measuremets) %>  
+			   <%#= paginate(@measuremets, :params => pagination_params(request)) %>	
+					<div style="height:17em;width:63em;overflow:auto;margin-left:.5em;"> 
+						 <table style="border-collapse:separate;border-spacing:2px;width:80em;text-align:center;">
+					 		<tr class="head-table">
+								<th>Date</th>
+								<th>Neck</th>
+								<th>Chest</th>
+								<th>Right UpArm</th>								
+								<th>Right ForeArm</th>
+								<th>Right Thigh</th>
+								<th>Right calf</th>								
+								<th>Shoulder</th>
+								<th>Height</th>
+								<th>Waist</th>
+								<th>Hip</th>								
+								<th>Left UpArm</th>								
+								<th>Left ForeArm</th>
+								<th>Left Thigh</th>
+							   <th>Left calf<th>
+							</tr>
+					 <% @measuremets.each do |row| %>
+						  <tr class="<%= cycle('even','odd') %>">
+							 <td style="padding: .3%;"><%=row.created_at.strftime("%m/%d/%Y")%></td>
+							 <td style="padding: .3%;"><%=row.neck%></td>
+							 <td style="padding: .3%;"><%=row.chest%></td>
+							 <td style="padding: .3%;"><%=row.uparmright%></td>							 							 							 
+							 <td style="padding: .3%;"><%=row.forearmright%></td>
+							 <td style="padding: .3%;"><%=row.thighright%></td>							 							 							 
+							 <td style="padding: .3%;"><%=row.calfright%></td>
+							 <td style="padding: .3%;"><%=row.shoulder%></td>
+							 <td style="padding: .3%;"><%=row.height%></td>								 
+							 <td style="padding: .3%;"><%=row.waist%></td>							 
+							 <td style="padding: .3%;"><%=row.hips%></td>
+							 <td style="padding: .3%;"><%=row.uparmleft%></td>							 							 							 
+							 <td style="padding: .3%;"><%=row.forearmleft%></td>
+							 <td style="padding: .3%;"><%=row.thighleft%></td>							 							 							 
+							 <td style="padding: .3%;"><%=row.calfleft%></td>						 							 							 
+						 </tr>
+					 <%end%>
+					</table>  
+				</div>
+				<%end%>
+			 </div>
+        </div>
+        
+    
+        
+  
+<div id="light" class="white_content">
+	<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
+<div style="background-image:url('/assets/close.png');float:right;width:30px;height:30px;margin-right:-2.8em;margin-top:-2.8em;"></div>
+</a>
+
+	<form id="weight" method="" action="">
+			<div style="margin-left:14%;">
+			<h1 style="color:#0A2B42; font-size:25px;">Enter weight in lbs</h1>
+				</div><br/>
+
+			<div style="margin-left:15%">
+			<label style="color:#2E8DC0; font-size:17px;">Weight (lbs):</label>&nbsp;&nbsp;
+      	<input type="text" id="userweight" name="weight" value="" style="height:1.5em;width:7em;"/></br>
+      	
+						</div>
+
+<input type="button" style="background-color:#CCCCCC;height:1.7em;font-size:10pt;width:5em;padding:0;margin-left:10em;margin-top:-2.3em;color:#2E8DC0;" onclick="submitweight()" value="Save" />
+
+	</form>
+
+</div>
+<div id="fade" class="black_overlay"></div>      
+
+
+        
+</div>
+

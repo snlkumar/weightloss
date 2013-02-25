@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121227151437) do
+ActiveRecord::Schema.define(:version => 20130220050106) do
 
   create_table "City", :primary_key => "ID", :force => true do |t|
     t.string "Name",        :limit => 35, :default => "", :null => false
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20121227151437) do
     t.float    "subscapular"
     t.float    "tricep"
     t.float    "lower_back"
+    t.float    "fatpercent"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -92,6 +93,22 @@ ActiveRecord::Schema.define(:version => 20121227151437) do
   create_table "degrees", :force => true do |t|
     t.string "degrees", :limit => 55
   end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "exercises", :force => true do |t|
     t.string   "description"
@@ -262,6 +279,17 @@ ActiveRecord::Schema.define(:version => 20121227151437) do
     t.string   "url"
   end
 
+  create_table "notifications", :force => true do |t|
+    t.integer  "notificationable_id"
+    t.string   "notificationable_type"
+    t.string   "notificationTo"
+    t.string   "notificationToId"
+    t.string   "message"
+    t.integer  "hideNotification",      :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "old_departments", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -385,6 +413,14 @@ ActiveRecord::Schema.define(:version => 20121227151437) do
     t.datetime "updated_at"
   end
 
+  create_table "pages", :force => true do |t|
+    t.string   "url"
+    t.string   "controller"
+    t.string   "action"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "photos", :force => true do |t|
     t.string   "photo_file_name"
     t.string   "photo_content_type"
@@ -404,6 +440,16 @@ ActiveRecord::Schema.define(:version => 20121227151437) do
     t.datetime "updated_at"
     t.boolean  "homepage"
     t.string   "kind"
+  end
+
+  create_table "ratings", :force => true do |t|
+    t.integer  "ratingable_id"
+    t.string   "ratingable_type"
+    t.string   "ratingFor"
+    t.integer  "ratingForid"
+    t.integer  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "restaurants", :force => true do |t|
@@ -457,6 +503,22 @@ ActiveRecord::Schema.define(:version => 20121227151437) do
     t.integer  "photo_file_size"
     t.string   "address2"
     t.string   "address3"
+    t.string   "city2"
+    t.string   "city3"
+    t.string   "state2"
+    t.string   "state3"
+    t.string   "contact3"
+    t.string   "contact4"
+    t.string   "contact5"
+    t.string   "contact6"
+    t.string   "certifications2"
+    t.string   "certifications3"
+    t.string   "specialities2"
+    t.string   "specialities3"
+    t.string   "licence_no1"
+    t.string   "licence_no2"
+    t.string   "license_states1"
+    t.string   "license_states2"
   end
 
   create_table "sessions", :force => true do |t|
@@ -589,6 +651,15 @@ ActiveRecord::Schema.define(:version => 20121227151437) do
     t.datetime "reset_password_sent_at"
   end
 
+  create_table "vendormembers", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "vendor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "userApproved", :default => 0
+    t.string   "status"
+  end
+
   create_table "vendors", :force => true do |t|
     t.string   "vendor_type"
     t.string   "title"
@@ -647,6 +718,23 @@ ActiveRecord::Schema.define(:version => 20121227151437) do
     t.string   "p_contact"
     t.string   "b_email"
     t.string   "p_country"
+    t.string   "address3"
+    t.string   "city2"
+    t.string   "city3"
+    t.string   "state2"
+    t.string   "state3"
+    t.string   "contact3"
+    t.string   "contact4"
+    t.string   "contact5"
+    t.string   "contact6"
+    t.string   "certifications2"
+    t.string   "certifications3"
+    t.string   "specialities2"
+    t.string   "specialities3"
+    t.string   "licence_no1"
+    t.string   "licence_no2"
+    t.string   "license_states1"
+    t.string   "license_states2"
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -656,8 +744,9 @@ ActiveRecord::Schema.define(:version => 20121227151437) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "address3"
   end
+
+  add_index "vendors", ["reset_password_token"], :name => "index_vendors_on_reset_password_token", :unique => true
 
   create_table "weights", :force => true do |t|
     t.integer  "user_id"

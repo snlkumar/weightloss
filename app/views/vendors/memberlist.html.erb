@@ -1,0 +1,126 @@
+<style type="text/css">
+
+	th{
+		font-size:14px;
+		text-align:left;
+		padding: .3%;
+	}
+.even { background: #99ccff; }
+.odd { background: #cccccc; }
+.head-table{background: #ccc; }
+.gridHeader{
+	background-color:#fff;
+	border:1px solid black;
+  width:63%;
+  height:25px;
+	display:none;
+	position:absolute;
+	top:27%;
+	left:21%;
+	z-index:300;
+}
+
+}
+</style>
+
+
+
+<script tyle="text/javascript">
+
+function removemembership(id,first,last)
+{
+	var answer = confirm("Do you want to remove "+first+" "+last+" from members?")
+	if (answer){	    
+					 $.ajax({
+							  	 type: "post",
+							  	 url: "/vendors/removemember",
+								 data: { user_id: id, vendor_id: "<%=current_vendor.id%>"  }
+									  }).done(function( msg ) {
+
+										 alert(msg);
+									location.reload();
+							});
+
+					}
+					else
+					{
+						return false;
+					}
+}
+
+
+
+function selectedRow(rw)
+{
+	rw.style.background="#A9BCF5";
+}
+function unSelectedRow(rw)
+{
+	rw.style.background="#E6E6E6";
+}
+
+</script>
+
+
+
+       <div class="grid_5 ">
+       <p id="user-name" class="grid_5" style="font-size:1.5em;"><%= @vendor.business_name %></p>
+       <div class="profile-avatar avatar"><%= image_tag(current_vendor.photo.url(:profile)) %></div>
+		 <div class="sidebar-container" style="">
+		 <div class="clear">&nbsp;</div>
+		               <ul id="user-settings-tabs">
+             <li class="vendor-class">
+               <%= link_to 'Add MyWeightWorld Users', usersearch_vendors_path%>                
+             </li>
+           
+             <li class="vendor-class">
+               <%= link_to 'Add a Member', addmember_vendors_path%>
+             </li>
+
+             <li class="vendor-class">
+               <%= link_to 'Back', :back%>
+             </li>                   
+           </ul>
+		 </div>
+		 </div>
+
+<% if @members %>
+
+
+<div style="margin-left:33%;">
+<br/>
+  <h2 style="background-color: #0B2B42; color:white;width:43.4em;height:1.2em;text-align:center;">Members</h2>
+<div style="float:right%;">
+   <%= page_entries_info(@members) %>
+  <%= paginate(@members, :params => pagination_params(request)) %><br/><br/>
+  <table style="border-collapse:separate;border-spacing:2px;width:56em;">
+    <tr class="head-table">
+        <th width="10%">Profile</th>       
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Username</th>
+        <th>Gender</th>
+        <th>Details</th> 
+ <!--       <th>Send Notification</th>    -->                   
+        <th>Remove User</th>
+
+    </tr>
+    <% @members.each do |row| %>
+      <tr class="<%= cycle('even','odd') %>">
+        	 <td style="padding: .3%;"><%# if row.avatar.exists? then %>
+        	 	       <%= link_to user_avatar_image(row, :small), user_path(row) %>
+	       <%#= link_to image_tag (row.avatar.url(:small),:size => "30x30"),user_path(row) %>
+      <%# end %></td>      
+          <td style="padding: .3%;"><%=row.first_name%></td>
+          <td style="padding: .3%;"><%=row.last_name%></td>
+          <td style="padding: .3%;"><%=row.username%></td>      
+          <td style="padding: .3%;"><%=row.gender%></td>
+	       <td style="padding: .3%;"><%= link_to "Details", memberdetails_vendors_path(row)+"?token=#{row.id}" %></td>
+ <!--         <td style="padding: .3%;text-align:center;"><input type="checkbox" class="checked" name="notification" value="<%=row.id%>" ></td>  -->        
+          <td style="padding: .3%;text-align:center;"><%=image_tag("/assets/remove.png",:id=>row.id, :onclick=>"removemembership('#{row.id}','#{row.first_name}','#{row.last_name}')") %></td>          
+          <%end%>
+      </tr>
+    <%end%>
+  </table>
+  </div>
+</div>

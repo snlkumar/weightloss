@@ -34,6 +34,18 @@ after 'deploy:update_code', "deploy:precompile_assets"
 after "deploy",             "deploy:cleanup"
 # after "deploy",             "deploy:build_missing_paperclip_styles"
 
+
+
+after "deploy:symlink", "deploy:update_crontab"
+
+namespace :deploy do
+  desc "Update the crontab file"
+  task :update_crontab, :roles => :db do
+    run "cd #{release_path} && whenever --update-crontab #{application}"
+  end
+end
+
+
 namespace :deploy do
   desc "build missing paperclip styles"
   task :build_missing_paperclip_styles, :roles => :app do

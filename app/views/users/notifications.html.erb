@@ -1,0 +1,53 @@
+<style type="text/css">
+
+.even { background: #99ccff; }
+.odd { background: #cccccc; }
+.head-table{background: #ccc; }
+
+}
+</style>
+
+<script tyle="text/javascript">
+
+function hidenotification(rowid)
+{
+
+$.get("/users/"+rowid+"/hidenotification").done(function( msg ) {
+
+alert(msg);
+location.reload();
+});
+
+}
+	
+</script>
+
+
+
+
+<br/>
+  <h2 style="background-color: #0B2B42; color:white;width:46.8em;height:.5em;text-align:center;">Notifications</h2>
+<% if @notifications %>
+
+<div style="overflow:auto;width:110em;">
+  <table style="border-collapse:separate;border-spacing:2px;width:60em;">
+    <tr class="head-table">
+		<th style="width:15%;">Vendor Name</th>
+        <th style="width:20%;">Vendor Type</th>
+        <th>Notification</th> 
+        <th>Delete</th>               
+    </tr>
+    <% @notifications.each do |row| %>
+	 <tr class="<%= cycle('even','odd') %>">
+          <td style="padding: .3%;"><%=link_to Vendor.find(row.notificationable_id).business_name, vendorInfo_path(row.notificationable_id)+"/"+"#{ Vendor.find(row.notificationable_id).vendor_type}/"+ Vendor.find(row.notificationable_id).business_name.downcase.gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").gsub('.'," ").strip%></td>
+          <td style="padding: .3%;"><%=Vendor.find(row.notificationable_id).vendor_type.split('_').join(' ')%></td>
+          <td><%=truncate row.message, :length=> 40%></td>
+          <td style="padding: .3%;text-align:center;"><%=image_tag("/assets/remove.png", :id=>row.id, :onclick=>"hidenotification('#{row.id}')") %></td> 
+<%end%>
+  </table>
+<%end%>
+</div>
+
+<br/><br/><br/>
+
+

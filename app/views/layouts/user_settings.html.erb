@@ -48,7 +48,16 @@
                 <li class="<%= active_settings_tab?('password') %>">
                   <%= link_to 'Password', edit_password_path %>
                 </li>
-                <li>
+ 
+                 <li>
+                  <%= link_to 'Notifications', notifications_user_path(current_user) %>
+                </li>
+
+                 <li>
+                  <%= link_to 'Memberships', memberships_user_path(current_user) %>
+                </li>
+                 
+                 <li>
                   <%= link_to 'Back to Profile', user_path(current_user) %>
                 </li>
               </ul>
@@ -92,9 +101,19 @@
     
     <%= render :partial => "layouts/js_libs" %>
     
+ 	<script type="text/javascript" src="/assets/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript" src="/assets/jquery.rating.js"></script>
+	<link rel="stylesheet" media="screen" type="text/css" href="/assets/jquery.rating.css" />
+	   
     <script type="text/javascript" charset="utf-8">
       $(document).ready(function() {
         <%= yield :js %>
+
+         $("#serialStar").val(<%=@averageRating%>);
+			$("#serialStar").attr("disabled","disabled");                        
+        $(".rating").rating();
+
+
       });
     </script>
   </body>

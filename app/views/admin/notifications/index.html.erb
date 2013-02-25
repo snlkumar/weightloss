@@ -1,0 +1,46 @@
+<script type="text/javascript">
+  <%content_for :js do%>
+    $("table tbody tr").mouseover(function(){
+      $(this).css("background-color","#ccc");
+    }).mouseout(function(){
+      $(this).css("background-color","");
+    });
+  <%end%>
+</script> 
+  <br/>
+  
+  <h2 style="width:63em;">Notifications</h2>
+
+ <%= link_to 'New Message', new_admin_notification_path() %><br/><br/>
+  <%= page_entries_info(@notifications, :entry_name => 'notification') %>
+  <%= paginate(@notifications, :params => pagination_params(request)) %>
+  
+  <br/> <br/>
+  <table class="admin" style="width:80em;">
+    <thead>
+      <tr style="background-color:#ccc;color:#2E8EC1;">
+        <th >Notification From</th>
+        <th>To</th>
+        <th>Message </th>
+        <th>Created on</th>
+        <th>Actions</th>        
+      </tr>
+    </thead>
+    <tbody>
+      <% @notifications.each do |note| %>
+        <tr class="<%#= cycle('odd', 'even') %>">
+           <td style="width:20%;"><%= note.notificationable_type %></td>
+           <td style="width:10%;">Users</td>                  
+          <td style="width:40%;"><%=truncate note.message.html_safe, :length=> 40 %></td>
+           <td style="width:10%;"><%=note.created_at.strftime("%Y-%m-%d")%></td>                  
+          <td class="actions">
+            <%= link_to 'Show', admin_notification_path(note) %> | 
+            <%#= link_to 'Edit', edit_admin_post_path(post) %> | 
+            <%= link_to 'Delete', [:admin, note], :confirm => 'Are you sure?', :method => :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br/>
+ 

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :create, :next, :bmi_update, :weight_update, :step_two]
+  before_filter :authenticate_user!, :except => [:show, :create, :next, :bmi_update, :weight_update, :step_two,:bodyfatpercent]
   before_filter :set_defaults,       :only => [:step_two, :edit, :personal_info]
   
   layout 'signup', :only => [:create, :step_two, :finalize]
@@ -112,8 +112,7 @@ class UsersController < ApplicationController
   
   def weight_update
     current_user.update_attributes(params[:user])
-    bodyfat
-    render :text => current_user.weight	
+   render :text => current_user.weight	
   end
   
   def bmi_update
@@ -169,8 +168,6 @@ end
 	else
 	   render "bodyfatpercent"
     end
-
-
 	end
 ############################### new code end
 
@@ -189,4 +186,56 @@ end
 	   render "measurement"
     end
   end
+  
+#########################################################
+
+	def notifications
+    @user =current_user
+    @notifications=Notification.where("notificationable_type='Vendor' and notificationTo='User' and notificationToId='#{@user.id}' and hideNotification=0")
+	# @MywwNotifications=Notification.where("notificationable_type='Admin' and notificationTo='User' ")
+			      render :layout => "user_settings"
+     end  
+
+################################################################3 
+
+ def memberships
+ 	@user =current_user
+ 	 @memberships=@user.vendormembers.all( :conditions=>['status=? or status=?',"waiting","accepted" ])
+ 	 	 @vendorRatings=Rating.where("ratingFor='user' and ratingForid='#{@user.id}'") 
+
+			if  @vendorRatings.blank?
+			  @averageRating=0
+		    else
+		      total=0
+					@vendorRatings.each do |d|					
+					total+=d.rating
+			      end
+		        @averageRating=total/@vendorRatings.length
+			end
+      render :layout => "user_settings"
+ end
+ 
+ ####################################################################3
+ 
+ def addmembership
+  	@user=current_user
+	@vendormember=Vendormember.find(params[:row])
+	@vendormember.update_attributes(:userApproved=>params[:userApproved],:status=>params[:status])
+	if params[:status]=="rejected"
+	puts "===============================>"
+	@vendormember.destroy
+	end	
+	render :text=>"sucessfully "+params[:status].to_s
+ end 
+ 
+############################################################################
+
+
+def hidenotification
+
+	@notification=Notification.find(params[:id])
+	@notification.update_attributes(:hideNotification=>true)
+	render :text=>"Sucessfully removed"
+end 
+
 end

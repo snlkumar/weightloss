@@ -1,11 +1,39 @@
 <link rel="stylesheet" href="/assets/website.css" type="text/css" media="screen"/>
 
 <style type="text/css">
+
+#deletelink{
+    color: #FFFFFF;
+    display: inline-block;
+    float: left;
+    font-size: 1em;
+    font-weight: bold;
+    background-color:blue;
+    height: 20px;
+    line-height: 25px;
+    margin: 12px 0 0 20px;
+    padding: 3px 0 5px;
+    text-align: center;
+    width: 84px;
+    }
+#large-orange-button {
+    background: url("/assets/button-big-orange.png") repeat-x scroll 0 0 transparent;
+    box-shadow: 2px 2px 2px #174C70;
+    display: block;
+    height: 43px;
+    padding: 9px;
+    position: relative;
+    text-decoration: none;
+    width: 170px;
+}
+
+
+
   #closeReply{
     display:none;
-    position:absolute;
-    top:-22%;
-    left:104%;
+    position:relative;
+    top:10.5%;
+    left:79.5%;
     z-index:1000;
   }
    #replyBox{
@@ -13,12 +41,12 @@
     opacity:.90;
     border:5px solid #BBC;
     display:none;
-    position:absolute;
-    width:80%;
-    height:64%;
+    position:relative;
+    width:35%;
+    height:10em;
     padding:15%;
-    top:-20%;
-    left:-5%;
+    top:3%;
+    left:15%;
     z-index:999;
    }
    #locking_screen{
@@ -32,6 +60,40 @@
     opacity:.75;
     z-index:1001;
    }
+   
+   
+.black_overlay{
+	display: none;
+	position: fixed;
+	top: -20%;
+	left: -17%;
+	width: 150em;
+	height: 100em;
+	background-color: black;
+	z-index:1001;
+	-moz-opacity: 0.8;
+	opacity:.80;
+	filter: alpha(opacity=80);
+}
+
+.white_content {
+
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	border: 1px solid #888888;
+	display: none;
+	position: fixed;
+	top: 12%;
+	left: 22%;
+	width: 45%;
+	height:65%;
+	padding: 16px;
+	border: 8px solid #888888;
+	background-color:#FBF9FF;
+	z-index:1002;
+}
+		
 </style>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -45,6 +107,12 @@ $("#closeReply").click(function(){
 });
 </script>	
 <div id='topic' class='<%= @topic.locked? ? 'locked' : 'unlocked' %>'>
+
+<%if current_user.nil?%>
+<blink><font size=4 color=orange><a href="http://www.myweightworld.com">We want to hear from you!! Have a question or want to make a comment in our Forum Section? Posting is simple and totally FREE! Click the “SIGN UP” button at the top and within minutes you can be interacting with our experts and members!</a> </font></blink><br/><br/>
+
+<%end%>
+
   <%= render :partial => 'forem/topics/head', :locals => { :topic => @topic } %>
   <menu>
     <%# if @topic.can_be_replied_to? %>
@@ -62,7 +130,7 @@ $("#closeReply").click(function(){
   <% end %>
   <%= paginate @posts %>
 
-<div id="scrollbar1">
+<!--<div id="scrollbar1"> -->
 <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
 <div class="viewport">
 <div class="overview">
@@ -72,25 +140,83 @@ $("#closeReply").click(function(){
  </div>
 </div>
 </div>
+
+
+
+
+
+<!------------- alert---------------------->
+
+<div id="light" class="white_content">
+
+	<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
+	
+<div style="background-image:url('/assets/close.png');float:right;width:30px;height:30px;margin-right:-2.8em;margin-top:-2.8em;"></div>
+</a>
+
+			<div style="margin-left:0%;">
+			<h1 style="color:#0A2B42; font-size:20px;">You must be logged in to post the comment !!</h1>
+			<HR>
+			</div><br/><br/>
+					
+					<font size="5">Dont have an account?</font><div style="float:right;margin-right:7%;"><%= image_tag 'footer-logo.jpg' %> </div><br/><br/>         
+					<div><a href="<%= main_app.new_user_registration_path %>" id="large-orange-button">
+				 	 	<div>Sign Up!</div>
+				  		<span>It's super easy and fun.</span>
+				  		<%= image_tag 'arrow.png' %>
+				  		</div></a><br/>
+				  
+				  
+					<font size="3" color="#0A2B42"><font color="grey">FREE &raquo; </font>Join Now<br/><br/>
+					<font color="grey">Signing up for a MyWeightWorld account<br/>	 gives you unlimited access to</font> <br/> <br/>
+					&raquo;Customized Content<br/>
+					&raquo;Massive Online Community<br/>
+					&raquo;Track Your Progress</font>
+
+
+</div>
+<div id="fade" class="black_overlay"></div>      
+
+        
+</div>
+
+
+
+<!--------------------end--------------->
+
+
+
 <!-- new code -->
   <!-- for show reply box(show textarea for comment) -->
-  <span id="closeReply"><%= image_tag '/assets/close.png' %></span>
+  <span id="closeReply" style="margin-bottom:-2%;"><%= image_tag '/assets/close.png' %></span>
   <div id="replyBox"> 
 
 </div>
-</div>
+<!--</div>-->
 
 <div id="locking_screen">
-  <h1 style="position:absolute;top:51%;left:48%;">Processing...</h1>
+  <h1 style="position:fixed;top:51%;left:48%;">Processing...</h1>
 </div>
 
-<div id="waiting" style="display:none;position:absolute;top:60%;left:50%;z-index:1002">
+<div id="waiting" style="display:none;position:fixed;top:60%;left:50%;z-index:1002">
   <%=image_tag "/assets/ajax-loader.gif", :style=>"margin:-45% 0 0 50%" %>
 </div>
 <!-- new code -->
 <!-- to show reply messages through ajax -->
 <script type="text/javascript">
+
 function show(loc,rplyId)	// this loc and rplyId send by forem/posts/post page's this link <li><%#= link_to "Reply", '#', :onclick=>"show('#{new_topic_post_path(@topic)}','?reply_to_id=#{post.id}')" %></li>
+{
+if (<%=current_user.nil?%>)
+{
+document.getElementById('light').style.display='block';
+document.getElementById('fade').style.display='block';
+
+return false;
+}
+
+else
+
 {
   $.ajax({
   type : "GET",
@@ -106,6 +232,11 @@ alert("Sorry, page not found.");
       }
     });
 }
+
+}
+
+
+
 function takeReplyForm(data)
 {
 return(data.substring(data.indexOf("<h2>Post reply</h2>")+("<h2>Post reply</h2>").length+1,data.lastIndexOf("</form>")+("</form>").length));

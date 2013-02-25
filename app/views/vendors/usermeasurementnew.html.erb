@@ -1,0 +1,276 @@
+<link rel="stylesheet" type="text/css" href="/assets/myweightworld.css"/>
+
+
+<script type="text/javascript">
+function	newtip()
+{
+	weight1=$("#userweight").val();
+	$.ajax({
+	type: "post",
+	url: "/vendors/notifications",
+	data:{message:$("#message").val().trim(),notificatonToId:<%=@user.id%>}
+	}).done(function( msg ) {
+		 alert( msg);
+	location.reload();	 
+		 });
+}
+	
+</script>
+
+	
+<style type="text/css">
+.footer-logo{
+margin-left: 7%;
+
+}
+input:-moz-placeholder {
+      color: grey;
+}
+</style>
+
+
+ <% if @meas.errors.any? %>
+    <div id="error_explanation" style="margin-left:20%;">
+      <h2><%= pluralize(@meas.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @meas.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+<div class="grid_5 ">
+	<p id="user-name" class="grid_5" style="font-size:1.5em;"><%= @user.first_name %> <%=@user.last_name%></p>
+	<div class="profile-avatar avatar"><%= user_avatar_image(@user, :profile) %></div>
+		<div class="sidebar-container" style="">
+			<div class="clear">&nbsp;</div>
+			</div>
+</div>
+<%=link_to "Back", :back, :style=>"background-color:#CCCCCC;font-size:15px;"%><br/>
+<div style="margin-left:30%;">
+	<% if @user.male?%>
+
+
+	<%= form_for @meas, :url => usermeasurementcreate_vendors_path do |f| %>
+	<div id="wrapper">
+	  <div class="top-header"></div>
+	  <div class="test-name"><img src="/assets/measurements.png" /></div>
+	  <div class="top-menu">
+		 <ul>
+			<li><%=link_to "CIRCUMFERENCE", measurement_user_path%></li>
+		   <li><%=link_to "BODY FAT%", bodyfatpercent_user_path%></li>
+		   <li><%= link_to 'GRAPH', measurement_over_time_tracking_path %></li>
+		   <div class="clear"></div>
+		 </ul>
+	  </div>
+
+
+  <div class="measurements-man">
+ <input type="hidden" name="id" value="<%=@user.id%>">
+   <div class="left-col fleft" style="width:130px; margin-top:50px;">
+
+      <p class="font-color-orange" style="margin-top:-2px;"><strong>Neck</strong></p>
+      <%= f.text_field :neck, :placeholder=>"in", :class=>"input", :style=>"margin:5px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:1px;"%>
+
+
+      <p class="font-color-orange m2"><strong>Chest</strong></p>
+      <%= f.text_field :chest, :placeholder=>"in",:class=>"input", :style=>"margin:-2px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:1px;" %>
+     
+
+
+ 		<p class="font-color-orange" style="margin-top:77px;"><strong>Right Upper Arm</strong></p>
+	   <%= f.text_field :uparmright, :placeholder=>"in",:class=>"input", :style=>"margin:3px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:0.5px;" %>
+
+
+
+      <p class="font-color-orange m2" ><strong>Right Forearm</strong></p>
+      <%= f.text_field :forearmright, :placeholder=>"in",:class=>"input", :style=>"margin:0px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:0.3px;" %>
+
+
+      <p class="font-color-orange m2"><strong>Right Thigh</strong></p>
+      <%= f.text_field :thighright, :placeholder=>"in",:class=>"input", :style=>"margin:0px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:0.5px;"%>
+
+      
+		<p class="font-color-orange m2"><strong>Right Calf</strong></p>
+	   <%= f.text_field :calfright, :placeholder=>"in",:class=>"input", :style=>"margin:5px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:0.5px;" %>
+
+    </div>
+
+
+
+    <div class="fleft" style="width:102px; margin-left:16px;">
+    	<p class="font-color-white aligncenter"><strong>Height</strong></p>
+      <%= f.text_field :height, :placeholder=>"in",:class=>"input", :style=>"margin:5px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:1px;" %>
+    </div>
+
+
+    <div class="fleft" style="width:102px; margin-left:68px;">
+    	<p class="font-color-white aligncenter"><strong>Weight</strong></p>
+    <%= f.text_field :weight, :placeholder=>"lbs",:class=>"input", :style=>"margin:5px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:1px;" %>
+    </div>
+
+
+    <div class="left-col fright" style="width:109px; margin-top:50px;">
+
+
+      <p class="font-color-orange"><strong>Shoulder</strong></p>
+      <%= f.text_field :shoulder, :placeholder=>"in",:class=>"input", :style=>"margin:5px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:0.5px;" %>
+
+
+      <p class="font-color-orange m2"><strong>Waist</strong></p>
+      <%= f.text_field :waist, :placeholder=>"in",:class=>"input", :style=>"margin:0px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:1px;" %>
+
+
+      <p class="font-color-orange m2"><strong>Hip</strong></p>
+      <%= f.text_field :hips, :placeholder=>"in",:class=>"input", :style=>"margin:0px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:1px;" %>
+
+
+      <p class="font-color-orange m2"><strong>Left Upper Arm</strong></p>
+      <%= f.text_field :uparmleft, :placeholder=>"in",:class=>"input", :style=>"margin:0px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:1px;" %>
+
+
+      <p class="font-color-orange m2"><strong>Left Forearm</strong></p>
+      <%= f.text_field :forearmleft, :placeholder=>"in",:class=>"input", :style=>"margin:0px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:1px;" %>
+
+
+      <p class="font-color-orange m2"><strong>Left Thigh</strong></p>
+      <%= f.text_field :thighleft, :placeholder=>"in",:class=>"input", :style=>"margin:0px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:1px;" %>
+
+
+      <p class="font-color-orange m2"><strong>Left Calf</strong></p>     
+      <%= f.text_field :calfleft, :placeholder=>"in",:class=>"input", :style=>"margin:0px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:1px;" %>
+
+    </div>
+
+    <div class="clear"></div>
+<div><%=f.submit "SAVE",:style=>"margin-top:2%;margin-left:41%;height:30px;font-weight:bold;width:100px;color:black;background-color:white;"%></div>
+    <div class="title">Enter your circumference Measurements</div>
+  </div>
+  <div class="footer">
+    <div class="footer-logo"></div>
+  </div>
+</div>
+
+ <% end %>
+
+
+ <%else%>
+
+<%= form_for @meas, :url => usermeasurementcreate_vendors_path do |f| %>
+
+	<div id="wrapper">
+	  <div class="top-header"></div>
+	  <div class="test-name"><img src="/assets/measurements.png" /></div>
+	  <div class="top-menu">
+		 <ul>
+					<li><%=link_to "CIRCUMFERENCE", measurement_user_path%></li>
+		   <li><%=link_to "BODY FAT%", bodyfatpercent_user_path%></li>
+		   <li><%= link_to 'GRAPH', measurement_over_time_tracking_path %></li>
+		   <div class="clear"></div>
+		 </ul>
+	  </div>
+	  <div class="measurements-woman">
+	  <input type="hidden" name="id" value="<%=@user.id%>">
+		 <div class="left-col fleft" style="width:130px; margin-top:50px;">
+
+      <p class="font-color-orange" style="margin-top:-2px;"><strong>Neck</strong></p>
+      <%= f.text_field :neck, :placeholder=>"in",:class=>"input", :style=>"margin:5px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:1px;" %>
+
+
+      <p class="font-color-orange m2"><strong>Chest</strong></p>
+      <%= f.text_field :chest, :placeholder=>"in",:class=>"input", :style=>"margin:-2px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:1px;" %>
+     
+
+
+ 		<p class="font-color-orange" style="margin-top:77px;"><strong>Right Upper Arm</strong></p>
+	   <%= f.text_field :uparmright, :placeholder=>"in",:class=>"input", :style=>"margin:3px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:0.5px;" %>
+
+
+
+      <p class="font-color-orange m2" ><strong>Right Forearm</strong></p>
+      <%= f.text_field :forearmright, :placeholder=>"in",:class=>"input", :style=>"margin:0px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:0.3px;" %>
+
+
+      <p class="font-color-orange m2"><strong>Right Thigh</strong></p>
+      <%= f.text_field :thighright, :placeholder=>"in",:class=>"input", :style=>"margin:0px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:0.5px;"%>
+
+      
+		<p class="font-color-orange m2"><strong>Right Calf</strong></p>
+	   <%= f.text_field :calfright, :placeholder=>"in",:class=>"input", :style=>"margin:5px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:0.5px;" %>
+
+    </div>
+
+
+
+    <div class="fleft" style="width:102px; margin-left:16px;">
+    	<p class="font-color-white aligncenter"><strong>Height</strong></p>
+      <%= f.text_field :height, :placeholder=>"in",:class=>"input", :style=>"margin:5px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:1px;" %>
+    </div>
+
+
+    <div class="fleft" style="width:102px; margin-left:68px;">
+    	<p class="font-color-white aligncenter"><strong>Weight</strong></p>
+    <%= f.text_field :weight, :placeholder=>"lbs",:class=>"input", :style=>"margin:5px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:1px;" %>
+    </div>
+
+
+    <div class="left-col fright" style="width:109px; margin-top:50px;">
+
+
+      <p class="font-color-orange"><strong>Shoulder</strong></p>
+      <%= f.text_field :shoulder, :placeholder=>"in",:class=>"input", :style=>"margin:5px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:0.5px;" %>
+
+
+      <p class="font-color-orange m2"><strong>Waist</strong></p>
+      <%= f.text_field :waist, :placeholder=>"in",:class=>"input", :style=>"margin:0px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:1px;" %>
+
+
+      <p class="font-color-orange m2"><strong>Hip</strong></p>
+      <%= f.text_field :hips, :placeholder=>"in",:class=>"input", :style=>"margin:0px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:1px;" %>
+
+
+      <p class="font-color-orange m2"><strong>Left Upper Arm</strong></p>
+      <%= f.text_field :uparmleft, :placeholder=>"in",:class=>"input", :style=>"margin:0px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:1px;" %>
+
+
+      <p class="font-color-orange m2"><strong>Left Forearm</strong></p>
+      <%= f.text_field :forearmleft, :placeholder=>"in",:class=>"input", :style=>"margin:0px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:1px;" %>
+
+
+      <p class="font-color-orange m2"><strong>Left Thigh</strong></p>
+      <%= f.text_field :thighleft, :placeholder=>"in",:class=>"input", :style=>"margin:0px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:1px;" %>
+
+
+      <p class="font-color-orange m2"><strong>Left Calf</strong></p>     
+      <%= f.text_field :calfleft, :placeholder=>"in",:class=>"input", :style=>"margin:0px 5px 5px 5px;border:1px solid #fff;height:25.4px;padding:1px;" %>
+
+    </div>		 <div class="clear"></div>
+<div><%=f.submit "SAVE",:style=>"margin-top:2%;margin-left:41%;height:30px;font-weight:bold;width:100px;color:black;background-color:white;"%></div>
+		 <div class="clear"></div>
+		 <div class="title">Enter your circumference Measurements</div>
+	  </div>
+	  <div class="footer">
+		 <div class="footer-logo"></div>
+	  </div>
+	</div>
+
+
+		<%end%>
+	 <%end%>
+
+		<div style="margin-top:3em;margin-left:1em;height:10em;">
+		<form name="input" action="" method="">
+		<h1><u>Suggest tips to user:</u></h1> <TEXTAREA Name="comments"  id="message" rows="8" cols="60"></TEXTAREA><br/>
+		<input type="button" style="background-color:#CCCCCC;height:1.9em;font-size:10pt;width:5em;padding:0;color:black;" onclick="newtip()" value="Send" />
+		</form> 
+		</div>
+</div>
+
+
+
+ 
+ 

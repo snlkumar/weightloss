@@ -6,9 +6,10 @@ gem 'ckeditor', '3.4.2.pre'
 gem 'paperclip','2.7.0'
 gem 'default_value_for'
 gem "fastercsv"
-
+gem 'delayed_job_active_record'
 gem 'hoptoad_notifier'
-
+gem "daemon-spawn", "~> 0.4.2"
+gem 'whenever', :require => false
 # gem 'airbrake'
 #gem 'fastercsv','~>1.5.4'
 #gem 'iconv'

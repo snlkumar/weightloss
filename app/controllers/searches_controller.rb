@@ -16,8 +16,7 @@ class SearchesController < ApplicationController
   
   def create
     # (redirect_to(new_search_path) && return) if params[:search].nil?
-    @search  = ContentSearch.new(params)
-    
+    @search  = ContentSearch.new(params)    
     @results = Kaminari.paginate_array( @search.results ).page(params[:page] || 1).per(25)
     @total   = @search.total
   

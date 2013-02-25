@@ -43,17 +43,17 @@ function insert()
 
 
   <% if current_user.admin? %>
-<div style="margin-left:0%;margin-top:-15%;">
+<div style="margin-left:-25%;margin-top:-30%;">
       <lable style="font-size:16px;color:#0B2B42;">Title: </lable> <input type="text" id="insTitle" style="width:10em;height:1.5em;"/><br />
          <lable style="font-size:16px;color:#0B2B42;">URL:</lable></lable> <input type="text" id="insUrl" placeholder='http://google.com'  style="width:10em;height:1.5em;" />
       <input type="button" id="btnInsertText" value="Add URL" onClick="insert()" style="width:5em;height:30px;background-color:#0B2B42;color:white;margin-left:3px;"/><br /><br />
 </div>
     <% end %>
 
-
-		<%= f.input :text %>
+<div id="replybox1" style="margin-left:-26%;">
+		<%= f.text_area :text, :style=>"width:40em;20em;"%>
 			<% if params[:reply_to_id] %>
 			  <%= f.hidden_field :reply_to_id, :value => params[:reply_to_id] %>
 			<% end %>
-
+</div>
 

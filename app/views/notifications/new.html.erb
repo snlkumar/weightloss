@@ -1,0 +1,14 @@
+<div sytle="margin-left:30%">
+
+<%=form_for @notification do |f|%>
+	
+	<%= f.label :notificationTo %>
+	<%#= f.select :notificationTo, User.all.collect{|u| [u.first_name, u.id]}, {:multiple => true, :size => 10} %><br>
+	<%=select_tag 'notificationTo[]', options_for_select(User.all.map {|s| [s.first_name, s.id]}), :multiple => true, :size => 10%>
+
+	<%= f.label :message %>
+	<%= f.text_area :message %><br>
+	
+	<%= f.submit %>
+<%end%>
+</div>

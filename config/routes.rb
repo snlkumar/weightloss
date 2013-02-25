@@ -1,17 +1,24 @@
 Myweightworld::Application.routes.draw do
 
+devise_for :vendors
+
 devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "users/omniauth_callbacks" } do
     get '/sign_in', :to => 'devise/sessions#new'
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
    
   end
 
+resources :notifications
+
+if ActiveRecord::Base.connection.table_exists? 'meta'
+
+
  Meta.find(:all).each do |page|
   if page.controller.present? and page.action.present?
 	case page.controller.to_s.downcase
 		when "vendors"
 	  		if page.action.to_s.downcase=="show"
-		     match "/"+page.url.to_s+"/:id/(:restaurants)/(:name)" => page.controller.to_s.titlecase+"#"+"show", :as=> "vendorInfo"
+		     match "/"+page.url.to_s+"/:id" => page.controller.to_s.titlecase+"#"+"show", :as=> "vendorInfo"
 		   	elsif page.action.to_s.downcase=="search"
 		   		match "/"+page.url.to_s => page.controller.to_s.titlecase+"#"+"search", :as=> "vendor"
 		   		elsif page.action.to_s.downcase=="vendorlogin"
@@ -55,12 +62,15 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 	 end
    end
  end
-
+ 
+ end
+ 
 	match '/videos/:id' =>'Videos#show', :as=> "video"
-	match '/posts/:id' =>'Posts#show', :as=> "post"	
+	match '/articles/:id' =>'Posts#show', :as=> "post"	
 	#new added routes
 	match '/admin/vendors/search' =>'admin/vendors#search'
 	match '/custom_foods/new/:name' => 'custom_foods#new'
+	match '/custom_foods/searchFood' => 'custom_foods#searchFood', :as=>"searchFood"	
 	match '/custom_foods/(:id)/update/(:food_name)' => "custom_foods#update_meal"
 	match "/workouts/calorie" =>"workouts#calculate_calories"
 	
@@ -72,7 +82,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 	##create dynamic routes
 	match '/admin/posts/drafts' => 'admin/posts#drafts'
 	match '/admin/vendors/:id/up' =>'admin/vendors#update_vendor'
-	
+
 	
 	
 #1	match '/vendor/vendorInfo/:id/(:restaurants)/(:name)' =>'Vendors#show',  :as=>'vendorInfo'
@@ -96,6 +106,20 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 	resources :photos
   resources :vendors do
     collection do
+    	get 'userweight', :action=>'userweight', :as=> "userweight"
+    	get 'userdiary/:id', :action=>'userdiary', :as=> "userdiary"
+    	post 'userdiary/:id', :action=>'userdiary', :as=> "userdiary"
+      post :usermeasurementcreate, :action=> :usermeasurementcreate, :as=>"usermeasurementcreate"
+    	get 'usermeasurementnew/:id', :action=>'usermeasurementnew', :as=> "usermeasurementnew"
+      post :userbodyfatcreate, :action=> :userbodyfatcreate, :as=>"userbodyfatcreate"
+    	get 'userbodyfat/:id', :action=>'userbodyfat', :as=> "userbodyfat"
+    	get 'ratings/:userid/:rating', :action=> 'ratings'
+      get  'member/:id', :action=> 'memberdetails', :as=>"memberdetails"
+    	post :removemember
+      get  :memberlist
+      post :addmywwmember
+      get :addmember
+      post :createmember       
       post :search_decipher
       get :search_decipher
       post :businessclaim
@@ -106,8 +130,10 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 		get 'auto_search/:search', :action => 'auto_search'
 		get 'auto_search1/:search', :action => 'auto_search1'
 		get 'auto_search2/:search', :action => 'auto_search2'
-		get 'profile/:vendortype/:id/(:name)', :action => 'profile'
+		get 'usersearch', :action => 'usersearch', :as=>"usersearch"		
+		get 'profile/:id', :action => 'profile', :as=>"profile"
 		get '/:id/edit/:name', :action=> 'edit'
+		post :notifications, :action=>:notifications, :as=>"notifications"
     end
   end
 
@@ -149,6 +175,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 		post :bodyfat
 		post  :measurementDetails
 		post  :vendormailer
+		post  ':id/addcustomfood', :action=>'addcustomfood'
     end
     member do
       post :photo
@@ -162,7 +189,8 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
   namespace :admin do
    resources :vendors
    resources :businessclaims
-   resources :meta	
+   resources :meta
+   resources :notifications	
 	resources :exercises do
       collection do
         post :search
@@ -248,6 +276,10 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
 		post :newmeasurement
 		get :bodyfatpercent
 		post:bodyfatcalculate
+		get :notifications
+		get :memberships
+		get :addmembership
+		get :hidenotification				
 		#end
     end
     

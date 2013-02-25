@@ -7,6 +7,7 @@
   <%= render :partial => "form", :locals => { :f => f } %>
   
   <!-- new code  :onclick=>'return uploadComment()' -->
+<div style="margin-left:-25%;">
   <%= f.submit t("forem.post.buttons.reply"), :id=>"replyComment", :onclick=>'return uploadComment()' %>
-  
+</div>  
 <% end %>
