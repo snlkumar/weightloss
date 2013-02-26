@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable, :timeoutable
 #validates :password, :presence => true, :length => { :minimum => 6 }
+  has_one :mywwnotification
   has_many :vendormembers
   has_many :vendors, :through => :vendormembers
   has_friendly_id :full_name, :use_slug => true

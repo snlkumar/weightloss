@@ -14,7 +14,7 @@ task :checkBreakfast => :environment do
 #task :checkLunch => :environment do
 #          obj = NotificationsController.new
  #         obj.lunchNotifications
-        end        
+ #       end        
 #                
 
 #task :checkDinner => :environment do

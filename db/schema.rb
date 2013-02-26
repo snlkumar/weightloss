@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130220050106) do
+ActiveRecord::Schema.define(:version => 20130225212056) do
 
   create_table "City", :primary_key => "ID", :force => true do |t|
     t.string "Name",        :limit => 35, :default => "", :null => false
@@ -277,6 +277,16 @@ ActiveRecord::Schema.define(:version => 20130220050106) do
     t.datetime "updated_at"
     t.string   "action"
     t.string   "url"
+  end
+
+  create_table "mywwnotifications", :force => true do |t|
+    t.string   "lunch"
+    t.string   "dinner"
+    t.string   "breakfast"
+    t.string   "goal"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "notifications", :force => true do |t|
