@@ -191,10 +191,18 @@ end
 
 	def notifications
     @user =current_user
-    @notifications=Notification.where("notificationable_type='Vendor' and notificationTo='User' and notificationToId='#{@user.id}' and hideNotification=0")
+    if @user.mywwnotification.nil?
+    	Mywwnotification.create(:lunch=>1,:dinner=>1,:breakfast=>1,:goal=>1,:user_id=>current_user.id)
+    	redirect_to(user_path)
+    else
+    
+    #@notifications=Notification.where("notificationable_type='Vendor' and notificationTo='User' and notificationToId='#{@user.id}' and hideNotification=0")
 	# @MywwNotifications=Notification.where("notificationable_type='Admin' and notificationTo='User' ")
-			      render :layout => "user_settings"
-     end  
+	
+	@notification=@user.mywwnotification
+   render :layout => "user_settings"
+   end
+end  
 
 ################################################################3 
 
@@ -222,7 +230,6 @@ end
 	@vendormember=Vendormember.find(params[:row])
 	@vendormember.update_attributes(:userApproved=>params[:userApproved],:status=>params[:status])
 	if params[:status]=="rejected"
-	puts "===============================>"
 	@vendormember.destroy
 	end	
 	render :text=>"sucessfully "+params[:status].to_s
@@ -237,5 +244,23 @@ def hidenotification
 	@notification.update_attributes(:hideNotification=>true)
 	render :text=>"Sucessfully removed"
 end 
+
+
+#######################################################################################
+
+	def changeNotifications
+
+	@user=current_user
+ 	@notification=@user.mywwnotification
+ 	@notification.update_attributes(:lunch=>params[:mywwnotification][:lunch],:breakfast=>params[:mywwnotification][:breakfast], :goal=>params[:mywwnotification][:goal], :dinner=>params[:mywwnotification][:dinner])
+	if @notification.save
+        redirect_to(user_path, :notice => 'successfully saved.')
+	else
+	   render "notifications"
+    end
+	end
+	
+
+###################################################################3
 
 end

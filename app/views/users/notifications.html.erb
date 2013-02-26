@@ -35,7 +35,14 @@ location.reload();
 });
 
 }
-	
+
+function submitnotifications()
+{
+alert($("#breakfast").val());
+
+
+}	
+
 </script>
 
 <!--
@@ -75,28 +82,39 @@ location.reload();
 
 
   <h2 style="background-color: #0B2B42; color:white;width:26.8em;height:.5em;text-align:center;">Notifications Settings</h2><br/>
+  
+  
+ <%= form_for @notification, :url =>changeNotifications_user_path() ,:method => :put do |f| %>
+ 
+ 
  <table style="border-collapse:separate;border-spacing:2px;width:35em;">
     <tr class="head-table" >
 		<th style="width:15%;">Notifications</th>
-        <th style="width:20%;">Check</th>
+        <th style="width:20%;text-align:center;">Check</th>
     </tr>
+    
+    
 <tr>
- <td style="padding: .3%;font-size:18px;">Breakfast</td>
- <td style="padding: .3%;"><input type="checkbox" class="checked" name="notification" value="" > </td> 
+ <td style="padding: .3%;font-size:18px;"><%=f.label :breakfast%> </td>
+ <td style="padding: .3%;text-align:center;"><%=f.check_box :breakfast%> </td> 
 </tr>          
  
  <tr>
- <td style="padding: .3%;font-size:18px;">Lunch</td>
- <td style="padding: .3%;"><input type="checkbox" class="checked" name="notification" value="" ></td> 
+ <td style="padding: .3%;font-size:18px;"><%=f.label :lunch%></td>
+ <td style="padding: .3%;text-align:center;"><%=f.check_box :lunch%></td> 
 </tr>          
        
  <tr>
- <td style="padding: .3%;font-size:18px;">Dinner</td>
- <td style="padding: .3%;"><input type="checkbox" class="checked" name="notification" value="" ></td> 
+ <td style="padding: .3%;font-size:18px;"><%=f.label :dinner%></td>
+ <td style="padding: .3%;text-align:center;"><%=f.check_box :dinner%></td> 
 </tr>          
              
  <tr>
- <td style="padding: .3%;font-size:18px;">Goal</td>
- <td style="padding: .3%;"><input type="checkbox" class="checked" name="notification" value="" ></td> 
+ <td style="padding: .3%;font-size:18px;"><%=f.label :goal%></td>
+ <td style="padding: .3%;text-align:center;"><%=f.check_box :goal%></td> 
 </tr>        
-  </table>        
+  </table>  <br/>
+ <%=f.submit "SAVE", :style=>"margin-left:10%;width:6em;height:2em;"%>
+<%end%>  
+ 
+        

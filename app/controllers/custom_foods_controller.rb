@@ -15,10 +15,18 @@ class CustomFoodsController < ApplicationController
   def create
 		session[:fd_name]=params[:food]["name"]
 		@food = Food.new(params[:food])
+			check=verify_recaptcha(request.remote_ip, params)
+	if check[:status] == 'false'
+	  @notice = "captcha incorrect"
+    render :action => "new"
+    return
+ else
+		
     if @food.save
       redirect_to new_meal_path
     else
       render :action => 'new'
+    end
     end
   end
   

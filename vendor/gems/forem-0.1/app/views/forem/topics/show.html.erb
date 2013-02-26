@@ -5,7 +5,6 @@
 #deletelink{
     color: #FFFFFF;
     display: inline-block;
-    float: left;
     font-size: 1em;
     font-weight: bold;
     background-color:blue;
@@ -17,7 +16,7 @@
     width: 84px;
     }
 #large-orange-button {
-    background: url("/assets/button-big-orange.png") repeat-x scroll 0 0 transparent;
+    background: url("/assets/button-big-orange-7ec9e2869751a31a12b87dc63120e265.png") repeat-x scroll 0 0 transparent;
     box-shadow: 2px 2px 2px #174C70;
     display: block;
     height: 43px;
@@ -109,7 +108,11 @@ $("#closeReply").click(function(){
 <div id='topic' class='<%= @topic.locked? ? 'locked' : 'unlocked' %>'>
 
 <%if current_user.nil?%>
-<blink><font size=4 color=orange><a href="http://www.myweightworld.com">We want to hear from you!! Have a question or want to make a comment in our Forum Section? Posting is simple and totally FREE! Click the “SIGN UP” button at the top and within minutes you can be interacting with our experts and members!</a> </font></blink><br/><br/>
+<div style="background-color:#FCFCFC;opacity:.90;border:5px solid #BBC;">
+<font size=4 color=orange><a href="<%=main_app.new_user_registration_path%>" >We want to hear from you!! Have a question or want to make a comment in our Forum Section? Posting is simple and totally FREE! Click the “SIGN UP” button at the top and within minutes you can be interacting with our experts and members!</a> </font>
+</div>
+
+<br/><br/>
 
 <%end%>
 

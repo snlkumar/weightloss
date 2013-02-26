@@ -1,6 +1,10 @@
 
 <%if current_user.nil?%>
-<blink><font size=4 color=orange><a href="http://www.myweightworld.com">We want to hear from you!! Have a question or want to make a comment in our Forum Section? Posting is simple and totally FREE! Click the “SIGN UP” button at the top and within minutes you can be interacting with our experts and members!</a> </font></blink><br/><br/>
+<div style="background-color:#FCFCFC;opacity:.90;border:5px solid #BBC;">
+<font size=4 color=orange><a href="<%=main_app.new_user_registration_path%>" >We want to hear from you!! Have a question or want to make a comment in our Forum Section? Posting is simple and totally FREE! Click the “SIGN UP” button at the top and within minutes you can be interacting with our experts and members!</a> </font>
+</div>
+
+<br/><br/>
 <%end%>
 
 <h2><%= t('.title') %></h2>

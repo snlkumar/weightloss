@@ -1,5 +1,5 @@
 class SearchesController < ApplicationController
-  #before_filter :get_categories
+  before_filter :get_categories
   before_filter :get_subcategories
   
   def index

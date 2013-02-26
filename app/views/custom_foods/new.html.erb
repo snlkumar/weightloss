@@ -7,6 +7,11 @@
     <%= render :partial => 'form', :locals => {:f => f } %>
     
     <p>
+    </br>
+	<div style="margin-left: 0%;">
+         <%=render '/shared/recaptcha' %>
+   </div></br>
+    
 	 <%= f.submit 'Create this Food' %> | <%= link_to 'Cancel', new_meal_path %>
     </p>
   <% end %>

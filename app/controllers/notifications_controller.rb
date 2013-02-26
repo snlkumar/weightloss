@@ -1,5 +1,35 @@
 class NotificationsController < ApplicationController
 
+
+
+	def sendmailsToUsers
+		@users=User.find(:all)
+		@notification="Contratulations, you achieved your desired weight goal !!!"
+			@users.each do |user|		
+				if user.desired_weight >= user.weight
+				BusinessclaimMailer.usernotifications(@notification,user).deliver 
+				end
+	 		end
+	end
+
+
+	def sendmailsToUsers1
+	@user=User.find(:all)
+	@notification="Contratulations, you achieved your desired weight goal !!!"
+	#@users.each do |user|		
+		#if user.desired_weight >= user.weight
+		BusinessclaimMailer.usernotifications(@notification,@user).deliver 
+		#end
+	 #end     	
+	end
+
+
+
+
+
+
+
+
 	def goalAchieved
 	@users=User.all
 	@users.each do |user|		
@@ -13,15 +43,17 @@ class NotificationsController < ApplicationController
 
 
 	def breakfatNotifications1
-	@user=User.find(129)
-	#@users.each do |user|				
-		@breakfast=@user.meal.where("meal_type='Breakfast' and ate_on='Time.today'")
-		if @breakfast.nil?
-		notificaion="Breakfast is the most important meal of the day !!!"
-		BusinessclaimMailer.usernotifications(notification,user).deliver 
+	@users=User.find(:all)
+	   @users.each do |user|
+				if user.mywwnotificaion.breakfast				
+				@breakfast=@user.meal.where("meal_type='Breakfast' and ate_on='Time.today'")
+					if @breakfast.nil?
+					notificaion="Breakfast is the most important meal of the day !!!"
+					BusinessclaimMailer.usernotifications(notification,user).deliver
+					end 
+			end
 		end
-	
-	   #end     	
+	     	
 	end
 
 

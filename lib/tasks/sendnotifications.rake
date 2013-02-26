@@ -1,20 +1,18 @@
-task :sendGoalNotifications => :environment do
+task :sendnotifications2 => :environment do
           obj = NotificationsController.new
-          obj.goalAchieved
+          obj.sendmailsToUsers
         end
         
-        
-task :checkBreakfast => :environment do
-          #obj = NotificationsController.new
-          #obj.breakfastNotifications1
-          'mkdir /home/ravi/Desktop/ravi11'
-        end
+#task :sendnotifications3 => :environment do
+#          obj = NotificationsController.new
+ #         obj.sendmailsToUsers1
+ #       end      
         
         
 #task :checkLunch => :environment do
 #          obj = NotificationsController.new
  #         obj.lunchNotifications
- #       end        
+#        end        
 #                
 
 #task :checkDinner => :environment do
