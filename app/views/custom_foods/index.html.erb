@@ -61,7 +61,7 @@ input:-moz-placeholder {
 <div style="width:60em;margin-left:-10em;"> 
  <%end%> 
   <br/>
-    <h2 style="font-size:20px;width:30em;height:.7em;text-align:center;background-color:#0B2B42;color:white;">Foods List</h2>
+    <h2 style="font-size:20px;width:38em;height:.7em;text-align:center;background-color:#0B2B42;color:white;">Foods List</h2>
 
 
   <%= form_tag(searchFood_path) do %>
@@ -84,28 +84,25 @@ input:-moz-placeholder {
   <thead>
     <tr>
         <th class="headerTable" style="text-align:left;width:60%;">Name</th>
-       <th class="headerTable" style="text-align:left;width:20%;">Serving</th>
-        <th class="headerTable" style="text-align:left;width:20%;">Calories</th>
-         <th class="headerTable" style="text-align:left;width:10%;">Protein</th>
-                
+       <th class="headerTable" style="text-align:left;width:10%;">Calories</th>
+        <th class="headerTable" style="text-align:left;width:10%;">Protein</th>
+         <th class="headerTable" style="text-align:left;width:20%;">Carbohydrate</th>
+         <th class="headerTable" style="text-align:left;width:10%;">Fat</th>                
     </tr>
     
 
     
   </thead>
   <tbody>
-  <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+  <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
   
   <% @foods.each do |f| %>
       <tr class="<%= cycle('even', 'odd') %>">
           <td><%=link_to f.name, custom_food_path(f)%> </td>
-          <%if !f.custom%>
-          <td>100 g </td>
-          <%else%>
-          <td>1<%=f.gmwt_desc1%> </td>
-          <%end%>                   
           <td><%=f.energ_kcal%> </td>
           <td><%=f.protein%> </td>
+          <td style="text-align:center"><%=f.carbohydrt%> </td>
+          <td><%= f.custom ? f.total_fat : f.lipid_tot %> </td>
       </tr>
   <% end %>
   </tbody>

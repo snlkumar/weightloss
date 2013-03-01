@@ -273,10 +273,11 @@
 
 	<% if @meals
 			@meals.each do |m|
-			food_path=(((m.name).gsub(/[.]+/,'$')).gsub("/",' or ').gsub(/[%]+/,'"%"')).gsub(/["]+/,'-')
+			
   %>
+<%food=Food.find(m.food_id)%>
   <tr style="background-color:#CEECF5;text-align:center;">    <!-- onclick="return showfood('<%=m.food_id%>')" -->
-    <td style="text-align:left" width="45%"><a href="/custom_foods/<%=u(food_path)%>" id="showfood"><%=(m.name=="custom calories") ? m.note.capitalize! : m.name %></a></td>
+    <td style="text-align:left" width="45%"><%=link_to (m.name=="custom calories") ? m.note.capitalize! : m.name, custom_food_path(food) %></td>
     <td><%=m.meal_type%></td>
     <td><%=m.calories%></td>
     <% 

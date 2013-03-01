@@ -4,8 +4,10 @@ class Meta < ActiveRecord::Base
 	after_destroy :rebuild_routes
 
 	def rebuild_routes
-	    `touch #{Rails.root}/config/routes.rb`
-		#Myweightworld::Application.reload_routes!
+          #  `touch #{Rails.root}/config/routes.rb`
+        #       Myweightworld::Application.reload_routes!
+                Rails.application.reload_routes!
+
 	end
 	
 	def show_action

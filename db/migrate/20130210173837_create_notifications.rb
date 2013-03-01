@@ -2,6 +2,11 @@ class CreateNotifications < ActiveRecord::Migration
   def change
     create_table :notifications do |t|
           t.integer :notificationable_id
+
+      t.string  :notification_type
+      t.string :notificationFrequency
+      t.string :turnOnNotification           
+    
       t.string  :notificationable_type
       t.string :notificationTo
       t.string :notificationToId      

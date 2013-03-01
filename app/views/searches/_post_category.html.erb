@@ -3,3 +3,12 @@
     <%= link_to category.name, searches_path("search[category_id]" => category.id, "search[filter]" => 'articles'), "data-id" => category.id %>
   </li>
 <% end %>
+
+
+<!--
+<%# if category.has_text_content? %>
+  <li class="<%#= params[:search] && params[:search][:category_id] == category.id.to_s ? 'selected' : '' %>">
+    <%#= link_to category.name, searches_path("search[category_id]" => category.id, "search[filter]" => 'articles'), "data-id" => category.id %>
+  </li>
+<% #end %>
+-->

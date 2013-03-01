@@ -1,5 +1,5 @@
 class VendorsController < ApplicationController
-	before_filter :authenticated_vendor, :only=> [:usersearch,:addmember, :createmember, :memberlist, :addmywwmember,:edit]
+	before_filter :authenticate_vendor!, :only=> [:usersearch,:addmember, :createmember, :memberlist, :addmywwmember,:edit]
 #  before_filter :authenticate_vendor!, :only=>[:profile, :search, :show,:new,:create]
   def search
     if !params[:searchtype].nil?

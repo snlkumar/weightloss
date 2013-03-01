@@ -83,29 +83,28 @@ class CustomFoodsController < ApplicationController
   end
   
   
-	if current_user
-		  render :layout=>'tracking'
-		else
-		  render :layout=>'custom_food_public'
-	end
+			if current_user
+				  render :layout=>'tracking'
+				else
+				  render :layout=>'custom_food_public'
+			end
 
-                        #@meta=Meta.where("controller= 'Food' and  page='Food List'").last
-                                #if !@meta.blank?
-                                @meta_title=@food.name
-                                @meta_keywords=@food.name
-                                @meta_description=@food.name
-                        #end
-	
+               #@meta=Meta.where("controller= 'Food' and  page='Food List'").last
+                       #if !@meta.blank?
+                       @meta_title=@food.name
+                       @meta_keywords=@food.name
+                       @meta_description=@food.name
+               #end
 	
 end
 ###############################################################################
 
 
 	def index 	
-	@foods=Food.with_a_serving_size.page(params[:page] || 1).per(50).order('name ASC')
+	@foods=Food.with_a_serving_size.page(params[:page] || 1).per(25).order('name ASC')
 		if current_user
 		  	 render :layout=>'tracking'
-			else
+		else
 	  		 render :layout=>'custom_food_public'
 		end
 		

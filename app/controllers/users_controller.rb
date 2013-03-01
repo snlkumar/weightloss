@@ -207,6 +207,18 @@ end
 ################################################################3 
 
  def memberships
+ 
+=begin  
+@users=User.find(:all)
+
+@users.each do |user|
+    	Mywwnotification.create(:lunch=>1,:dinner=>1,:breakfast=>1,:goal=>1,:user_id=>user.id)
+
+end 
+ 
+ render :text=>"done"
+=end 
+  
  	@user =current_user
  	 @memberships=@user.vendormembers.all( :conditions=>['status=? or status=?',"waiting","accepted" ])
  	 	 @vendorRatings=Rating.where("ratingFor='user' and ratingForid='#{@user.id}'") 

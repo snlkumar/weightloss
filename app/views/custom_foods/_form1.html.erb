@@ -100,21 +100,38 @@
 			<td width="30%"><%= f.label :energ_kcal, 'Calories' %></td>
 			<td><%= f.text_field :energ_kcal, :class => 'sz_input alpha', :style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %></td>
 		</tr>
-<% if @food.custom? %>
+		
+		
+		<% if @food.custom? %>
 						<tr>
 							<td width="30%"><%= f.label :total_fat, 'Fat' %></td>
 							<td><%= f.text_field :total_fat, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5",:onkeyup=>"convertValIntoPer('food_total_fat','fat')" %><span class="pd">g</span></td>
 						</tr>
-<%else%>		
+		<%else%>		
 						<tr>
 							<td width="30%"><%= f.label :lipid_tot, 'Fat' %></td>
 							<td><%= f.text_field :lipid_tot, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5",:onkeyup=>"convertValIntoPer('food_total_fat','fat')" %><span class="pd">g</span></td>
 						</tr>
-<%end%>		
+		<%end%>	
+
+
+
+	<% if @food.custom? %>
+	
 		<tr>
 			<td width="30%"><%= f.label :saturated_fat, 'Saturated Fat', :class=>'pd_sml', :style=>"font-weight:normal;" %></td>
 			<td><%= f.text_field :saturated_fat, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5",:onkeyup=>"convertValIntoPer('food_saturated_fat','saturated_fat')" %><span class="pd">g</span></td>
 		</tr>
+
+	<%else%>		
+
+		<tr>
+			<td width="30%"><%= f.label :fa_sat, 'Saturated Fat', :class=>'pd_sml', :style=>"font-weight:normal;" %></td>
+			<td><%= f.text_field :fa_sat, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5",:onkeyup=>"convertValIntoPer('food_saturated_fat','saturated_fat')" %><span class="pd">g</span></td>
+		</tr>
+	<%end%>	
+
+
 		<tr>
 			<td width="30%"><%= f.label :fa_poly, 'Polyunsaturated Fat', :class=>'pd_sml', :style=>"font-weight:normal;" %></td>
 			<td><%= f.text_field :fa_poly, :class => 'sz_input alpha mr_lrg',:style=>"height:20px;margin:0 0 10px 0;padding:0;", :size=>"5" %><span class="pd">g</span></td>

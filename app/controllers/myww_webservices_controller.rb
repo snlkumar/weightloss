@@ -956,6 +956,38 @@ end
  end 
 
 
+############################################################################################
+
+
+ def forumlist
+   @forumlist=Forem::Forum.all
+  	respond_to do |format|
+   format.js { render :json =>@forumlist}
+   end
+ 
+ end
+
+
+	def forumtopics
+	  @forum=Forem::Forum.find(params[:id])
+	  @topics=@forum.topics
+	  
+	  #check visibility of forem an topics.........................
+  		respond_to do |format|
+  		format.js { render :json =>@topics}
+		end
+		
+	end 	
+
+	def topicposts
+	  @forum=Forem::Forum.find(params[:id])
+	  
+  		respond_to do |format|
+  		format.js { render :json =>@topics}
+		end
+		
+	end 
+
   #this method for testing, to check webservice
   def check
   render :text=>"shivam sahi se kaam kr"

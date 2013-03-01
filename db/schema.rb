@@ -291,6 +291,9 @@ ActiveRecord::Schema.define(:version => 20130225212056) do
 
   create_table "notifications", :force => true do |t|
     t.integer  "notificationable_id"
+    t.string   "notification_type"
+    t.string   "notificationFrequency"
+    t.string   "turnOnNotification"
     t.string   "notificationable_type"
     t.string   "notificationTo"
     t.string   "notificationToId"

@@ -52,10 +52,9 @@ include SendGrid
   end
   
   
-	def usernotifications(message,user)
-	@user=user
+	def usernotifications(message,email)
     @message=message
-	 @email = @user.email
+	 @email =email
 	 mail(:from => "noreply@myweightworld.com", :to => @email, :subject => "Notification") 
   end
   

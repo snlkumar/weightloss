@@ -30,24 +30,27 @@
 
   #closeReply{
     display:none;
-    position:relative;
-    top:10.5%;
-    left:79.5%;
+    position:fixed;
+    top:12.3%;
+    left:74.5%;
     z-index:1000;
   }
+
+
    #replyBox{
     background-color:#848484;
     opacity:.90;
     border:5px solid #BBC;
     display:none;
-    position:relative;
-    width:35%;
-    height:10em;
+    position:fixed;
+    width:25%;
+    height:10%;
     padding:15%;
-    top:3%;
-    left:15%;
+    top:15%;
+    left:20%;
     z-index:999;
    }
+
    #locking_screen{
     background-color:#F2F2F2;
     display:none;
@@ -107,14 +110,18 @@ $("#closeReply").click(function(){
 </script>	
 <div id='topic' class='<%= @topic.locked? ? 'locked' : 'unlocked' %>'>
 
+
 <%if current_user.nil?%>
-<div style="background-color:#FCFCFC;opacity:.90;border:5px solid #BBC;">
-<font size=4 color=orange><a href="<%=main_app.new_user_registration_path%>" >We want to hear from you!! Have a question or want to make a comment in our Forum Section? Posting is simple and totally FREE! Click the “SIGN UP” button at the top and within minutes you can be interacting with our experts and members!</a> </font>
+<div style="background-color:#FCFCFC;opacity:.90;border:5px solid #BBC;"><div style=margin-left:.7em>
+<font size=4 color=black>We want to hear from you!! Have a question or want to make a comment in our Forum Section? Posting is simple and totally FREE! Click the <a href="<%=main_app.new_user_registration_path%>" >“SIGN UP”</a> button at the top and within minutes you can be interacting with our experts and members! </font></div>
 </div>
 
 <br/><br/>
 
 <%end%>
+
+
+
 
   <%= render :partial => 'forem/topics/head', :locals => { :topic => @topic } %>
   <menu>
@@ -126,12 +133,15 @@ $("#closeReply").click(function(){
     <% end %>
   </menu> 
 
+
   <% if forem_admin? %>
     <%= link_to t(".hide.#{@topic.hidden}"), toggle_hide_admin_topic_path(@topic), :method => :put %> | 
     <%= link_to t(".lock.#{@topic.locked}"), toggle_lock_admin_topic_path(@topic), :method => :put %> |
     <%= link_to t(".pin.#{@topic.pinned}"), toggle_pin_admin_topic_path(@topic), :method => :put %>
   <% end %>
   <%= paginate @posts %>
+
+
 
 <!--<div id="scrollbar1"> -->
 <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
@@ -252,8 +262,8 @@ function uploadComment()
  {
    return;
  }
- $("#locking_screen").css("display","block");
- $("#waiting").css("display","block"); //show waiting icon when comment submit
+<!-- $("#locking_screen").css("display","block");-->
+<!-- $("#waiting").css("display","block"); -->//show waiting icon when comment submit
  $("#replyComment").attr("disabled", "disabled");  //disable button when comment submit
  $("#replyBox, #closeReply").css("display","none");
 

@@ -2,8 +2,8 @@ class Vendor < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, 
+         :recoverable, :rememberable, :trackable, :validatable#,:registerable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
@@ -23,8 +23,8 @@ class Vendor < ActiveRecord::Base
                              :path => ":rails_root/public/system/:class/:id/:style/:photo"
   has_one :businessclaim
 
-  validates_presence_of :business_name, :email, :password, :zipcode, :presence=>true, :on => [:create], :if => :business?  
-  validates_presence_of :city, :state,  :country, :contact1,:presence=>true, :on => [:create], :if => :profile? 
+#  validates_presence_of :business_name, :email, :password, :zipcode, :presence=>true, :on => [:create], :if => :business?  
+#  validates_presence_of :city, :state,  :country, :contact1,:presence=>true, :on => [:create], :if => :profile? 
 
  
 #vendor registration form methods

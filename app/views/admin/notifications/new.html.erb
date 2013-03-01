@@ -46,24 +46,55 @@
  
 
   <p>
-    <%#= f.label :notificationToId,  %Q{Notification To: <span class="help-text">(Multiple select holding CTRL key)</span> }.html_safe %>
+    <%= f.label :notificationToId,  %Q{Notification To: <span class="help-text">(Multiple select holding CTRL key)</span> }.html_safe %>
 
     
     <br />
-	<%#=select_tag 'notificationToId[]', options_for_select(User.find(:all, :order=>'first_name ASC').map {|s| ["#{s.first_name} "+ "#{s.last_name}", s.id]}), :multiple => true, :size => 10, :id=>"noticefor",:style=>"width:10em;"%>
+	<%=select_tag 'notificationToId[]', options_for_select(User.find(:all, :order=>'first_name ASC').map {|s| ["#{s.first_name} "+ "#{s.last_name}", s.email]}), :multiple => true, :size => 10, :id=>"noticefor",:style=>"width:10em;"%>
 
   </p>
-    
+
+
+ <p>
+ <%= f.label :notification_type, "Notification type:" %>
+ <%=f.select   :notification_type, options_for_select([ ['Lunch','lunch' ],['Dinner','dinner' ] ,['Breakfast','breakfast' ], ['Goal','goal' ] ,['Protein','protein' ]   ]) %> 
+  
+ </p> 
+   <br/>  
+   
+   
+ <p>
+ <%=f.label  :notificationFrequency, %Q{Every: <span class="help-text">(Multiple select holding CTRL key)</span> }.html_safe %><br/>
+ <%=select_tag  'notificationFrequency[]', options_for_select([ ['1 day','1.day' ],['2 day','2.days' ] ,['3 day','3.days' ], ['weekely','7.days' ] ,['Bi weekely','14.days' ] ,['monthly','30.days' ] ]),:multiple => true, :size => 5 %> 
+  
+ </p>
+  <br/>  
+
+
+
+<p>
+ <%=f.label  "At:"%>
+  <%= select_tag "time", options_for_select([["6am", "6:00 am"], ["7am", "7:00 am"], ["8am", "8:00 am"], ["9am", "9:00 am"], ["10am", "10:00 am"], ["11am","11:00 am"], ["12pm","12:00 pm"], ["1pm", "1:00 pm"], ["2pm", "2:00 pm"], ["3pm", "3:00 pm"], ["4pm", "4:00 pm"], ["5pm", "5:00 pm"], ["6pm", "6:00 pm"], ["7pm", "7:00 pm"], ["8pm", "8:00 pm"], ["9pm", "9:00 pm"], ["10pm", "10:00 pm"], ["11pm", "11:00 pm"], ["12am", "12:00 am"], ["1am", "1:00 am"], ["2am", "2:00 am"], ["3am", "3:00 am"], ["4am","4:00 am" ], ["5am", "5:00 am"]])%>
+
+<p></br>
    
   <p>
-    <%= f.label :message %><br/><br/>
+    <%= f.label :message, "Message:" %><br/><br/>
     <%= f.text_area :message , :style=>"width:10em;"%>
 
   </p>
  <br/><br/>
-    
+
+ <p>
+ <%=f.label :turnOnNotification, "Turn on" %>
+ <%=f.check_box  :turnOnNotification %> 
+  
+ </p>
+
+  <br/>  
+      
     <p>
-      <%= f.submit 'Send Notification' %> | <%= link_to 'Cancel', admin_notifications_path %>
+      <%= f.submit 'Create Notification' %> | <%= link_to 'Cancel', admin_notifications_path %>
     </p>
   <% end %>
   

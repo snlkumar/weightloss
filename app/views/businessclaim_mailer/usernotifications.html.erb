@@ -6,12 +6,12 @@
   <body>
     <p style="margin-left:250px;font-size:20pt;color:#0A263B;" ><b>MyWeightWorld Notifications</b></p><br/><br/>
     
-<p>Hi <%=@user.first_name%>, </p><br/>
+<p>Dear user, </p><br/>
 
-<%=@message%> 
+<%=@message.html_safe%> 
 <br/><br/>
 
-
+This is a notification from MyWeightWrold.com.<br/> 
 In great health and happiness<br/><br/>
  
 Scott White<br/>

@@ -49,7 +49,7 @@ padding:2px;
   <% if notice %>
     <font color="red" size="3">Error: <%=notice%></font>
   <%else%>	
-
+<%=link_to "Foods List", custom_foods_path() , :style=>"font-size:16px;background-color:white;"%><br/><br/>
   <div style="display:block;" id="food-head">
     <h2><%= @food.name %></h2>
   </div>
@@ -63,7 +63,7 @@ padding:2px;
 <% unless @food.custom? %>
 <div style="float:left;">  
   <form id="vendorform" method='get' action="<%=custom_food_path%>">
-  			<input type="hidden" id="id" name="id" value="<%=@food.name%>">
+  			<input type="hidden" id="id" name="id" value="<%=@food.id%>">
 			<h1>Select a unit</h1> <select id="unit" name="unit" value="">
 					  <option value="1"><%=@food.gmwt_desc1%></option>
 					<% if !@food.gmwt_desc2.nil? && !@food.gmwt_desc2.empty? then%> <option value="2"><%=@food.gmwt_desc2%></option><%end%>
