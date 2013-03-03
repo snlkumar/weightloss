@@ -51,7 +51,7 @@ class Admin::NotificationsController < ApplicationController
     
   
        
-      redirect_to(admin_notifications_path, :notice => 'Notification was successfully created.')
+      redirect_to(memberlist_vendors_path, :notice => 'Notification was successfully created.')
     else
       render :action => "new"
     end

@@ -104,8 +104,34 @@ class VendorsController < ApplicationController
 end
 render :text=> "done"
 
-=end
 
+
+@vendor=Vendor.find(3)
+			stretches=10
+			pepper=nil
+			password="12345678"
+encrypt=::BCrypt::Password.create("#{password}#{pepper}", :cost =>stretches ).to_s
+@vendor.update_attributes(:title=>"ravi")
+	render :text=>"done"
+	
+	
+@vendors=Vendor.all
+		@vendors.each do |f|
+		if f.email.present?
+			if !f.password.present?
+				f.encrypted_password=""
+			else
+			stretches=10
+			pepper=nil					 
+			encrypted_password=::BCrypt::Password.create("#{f.password}#{pepper}", :cost =>stretches ).to_s
+			f.update_attributes(:encrypted_password=>encrypted_password)
+			end
+		else
+					f.encrypted_password=""
+  		end
+	end
+	render :text=>"done"
+=end
 
 			@meta=Meta.where("controller= 'Vendor' and  page='Vendor Signup'").last
 			if !@meta.blank?
@@ -118,6 +144,7 @@ render :text=> "done"
    	session[:vendor_params] ||= {}
    	 @vendor = Vendor.new(session[:vendor_params])
     	@vendor.current_step = session[:vendor_step]
+
 
   end
 
@@ -352,7 +379,7 @@ render :text=> "done"
 
 	def usersearch
       if !params[:filterQuery].nil? 
-        @data=User.where("first_name like '%"+params[:filterQuery]+"%' or last_name like '%"+params[:filterQuery]+"%' or email like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
+        @data=User.where("first_name like '%"+params[:filterQuery]+"%' or last_name like '%"+params[:filterQuery]+"%' or email like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(15)
         end
 
 	end 
@@ -523,7 +550,55 @@ render :text=> "done"
 #########################################################################################3
 
 
+  def vendorNotificationsNew
+    @notification = Notification.new
+    @members=current_vendor.users.where("userApproved=1").order('first_name ASC')
+  end
 
+
+
+  def vendorNotificationsCreate
+		params[:notification][:notificationToId]=params[:notificationToId].collect{|a| a.split(",") }.join(",").to_s
+		params[:notification][:notificationFrequency]=params[:notificationFrequency].collect{|a| a.split(",") }.join(",").to_s
+       @notification = Notification.create(params[:notification])
+   	 @emails=User.select(:email)
+    	 if @notification.save
+  
+#writing schedule and rake task file
+					`rm -f '#{Rails.root}/config/schedule.rb' '#{Rails.root}/lib/tasks/sendnotifications.rake'`
+				 envr = 'set :environment,"development"'
+				 `echo '#{envr}' >> '#{Rails.root}/config/schedule.rb'`
+				 auto_mail = Notification.all
+				 if auto_mail
+					i=0
+							auto_mail.each do |a|
+							 a.notificationFrequency.split(",").each do |frequency|
+							 	@cron_time="every "+frequency+", "+':at=>'+" "+'"'+params[:time]+'"'
+							  	txt =@cron_time+" "+'do
+								 rake "sendnotifications'+i.to_s+'"
+							  end'
+							  	task='task :sendnotifications'+i.to_s+' => :environment do
+								 obj = NotificationsController.new
+							 	 obj.'+a.notification_type+'AutoNotifications
+							  end'
+							  `echo '#{txt}' >> '#{Rails.root}/config/schedule.rb'`
+							  `echo '#{task}' >> '#{Rails.root}/lib/tasks/sendnotifications.rake'`
+							  i+=1
+							 end
+							end
+					`whenever -i`
+				 end
+    
+  
+       
+      redirect_to(memberlist_vendors_path, :notice => 'Notification was successfully created.')
+    else
+      render :action => "new"
+    end
+
+end
+
+#########################################################################################
   def notifications
 
   @user=User.find(params[:notificatonToId])

@@ -106,6 +106,7 @@ if ActiveRecord::Base.connection.table_exists? 'meta'
 	resources :photos
   resources :vendors do
     collection do
+    	get 'vendorNotificationsNew',:action=>'vendorNotificationsNew', :as=>"vendorNotificationsNew"
     	get 'userweight', :action=>'userweight', :as=> "userweight"
     	get 'userdiary/:id', :action=>'userdiary', :as=> "userdiary"
     	post 'userdiary/:id', :action=>'userdiary', :as=> "userdiary"

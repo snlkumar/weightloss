@@ -86,10 +86,10 @@
 	border: 1px solid #888888;
 	display: none;
 	position: fixed;
-	top: 12%;
+	top: 8%;
 	left: 22%;
 	width: 45%;
-	height:65%;
+	height:70%;
 	padding: 16px;
 	border: 8px solid #888888;
 	background-color:#FBF9FF;
@@ -167,27 +167,63 @@ $("#closeReply").click(function(){
 <div style="background-image:url('/assets/close.png');float:right;width:30px;height:30px;margin-right:-2.8em;margin-top:-2.8em;"></div>
 </a>
 
-			<div style="margin-left:0%;">
+			<div style="margin-left:0%;margin-top:2em;">
+			
 			<h1 style="color:#0A2B42; font-size:20px;">You must be logged in to post the comment !!</h1>
 			<HR>
-			</div><br/><br/>
+			</div>
+			<br/>
+			
+			
+					<div style="float:right;margin-right:4%;margin-top:5%;"><%= image_tag 'footer-logo.jpg',:style=>"float:right;margin-right:14%;"%> 
+					<br/><br/>
+		  			<div style="width:15em;margin-top:6em;"> <font size="3" color="grey"> Already a User ? <font color="#0A2B42">Login</font> </font><br/><br/>							
+												 <%#= render :partial => '/shared/flash', :locals => {:flash => flash} %>
+												 
+												 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+													<p>
+													  <%= f.label :email, "Email:" %> 
+													  <%= f.text_field :email, :autofocus => 'autofocus',:style=>"width:13em;height:1.2em;" %><br/>
+
+													  <%= f.label :password, "Password" %> 
+													  <%= f.password_field :password,:style=>"width:13em;height:1.2em;"  %><br/>
+								<input type="button" class="button grid_3" style="height:26px;font-size:10pt;width:4.6em;padding:0;margin:0;" onclick="submit()" value=" Sign In " />
+													</p>
+											
+											<% end %>
+								  </div>		
+										
+					</div> 
+	
+	
 					
-					<font size="5">Dont have an account?</font><div style="float:right;margin-right:7%;"><%= image_tag 'footer-logo.jpg' %> </div><br/><br/>         
-					<div><a href="<%= main_app.new_user_registration_path %>" id="large-orange-button">
-				 	 	<div>Sign Up!</div>
-				  		<span>It's super easy and fun.</span>
-				  		<%= image_tag 'arrow.png' %>
-				  		</div></a><br/>
-				  
-				  
+					      
+	<div>						
+					<font size="5">Dont have an account?</font>	<br/>	<br/>		
+			<div>
+					<a href="<%= main_app.new_user_registration_path %>" id="large-orange-button">
+			 	 	<div>Sign Up!</div>
+			  		<span>It's super easy and fun.</span>
+			  		<%= image_tag 'arrow.png' %>
+			  		</a></div><br/><br/><br/>
+			  
+						  
 					<font size="3" color="#0A2B42"><font color="grey">FREE &raquo; </font>Join Now<br/><br/>
 					<font color="grey">Signing up for a MyWeightWorld account<br/>	 gives you unlimited access to</font> <br/> <br/>
 					&raquo;Customized Content<br/>
 					&raquo;Massive Online Community<br/>
 					&raquo;Track Your Progress</font>
 
+		</div>
 
-</div>
+</div>				  
+
+				 
+				  
+
+
+  
+
 <div id="fade" class="black_overlay"></div>      
 
         
@@ -222,10 +258,10 @@ function show(loc,rplyId)	// this loc and rplyId send by forem/posts/post page's
 {
 if (<%=current_user.nil?%>)
 {
-document.getElementById('light').style.display='block';
-document.getElementById('fade').style.display='block';
+	document.getElementById('light').style.display='block';
+	document.getElementById('fade').style.display='block';
 
-return false;
+	return false;
 }
 
 else
