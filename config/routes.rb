@@ -107,6 +107,7 @@ if ActiveRecord::Base.connection.table_exists? 'meta'
   resources :vendors do
     collection do
     	get 'vendorNotificationsNew',:action=>'vendorNotificationsNew', :as=>"vendorNotificationsNew"
+    	post 'vendorNotificationsCreate',:action=>'vendorNotificationsCreate', :as=>"vendorNotificationsCreate"
     	get 'userweight', :action=>'userweight', :as=> "userweight"
     	get 'userdiary/:id', :action=>'userdiary', :as=> "userdiary"
     	post 'userdiary/:id', :action=>'userdiary', :as=> "userdiary"

@@ -57,14 +57,14 @@ Myweightworld::Application.configure do
 	
  ActionMailer::Base.delivery_method = :smtp
  ActionMailer::Base.smtp_settings = {
-  :user_name => "myww",
-  :password => "myww1234",
-  :domain => "myweightworld.com",
-  :address => "smtp.sendgrid.net",
-  :port => 587,
-  :authentication => :plain,
-  :enable_starttls_auto => true
-}
+ :address              => "smtp.gmail.com",
+ :port                 => 587,
+ :domain               => "gmail.com",
+ :user_name            => "harish@idifysolutions.com" ,
+ :password             => "Harry_Harsh",
+ :authentication       => "plain",
+ :enable_starttls_auto => true
+ }
  
    
   # Compress both stylesheets and JavaScripts

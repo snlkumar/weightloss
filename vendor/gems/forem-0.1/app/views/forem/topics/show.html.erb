@@ -185,7 +185,7 @@ $("#closeReply").click(function(){
 													  <%= f.label :email, "Email:" %> 
 													  <%= f.text_field :email, :autofocus => 'autofocus',:style=>"width:13em;height:1.2em;" %><br/>
 
-													  <%= f.label :password, "Password" %> 
+													  <%= f.label :password, "Password:" %> 
 													  <%= f.password_field :password,:style=>"width:13em;height:1.2em;"  %><br/>
 								<input type="button" class="button grid_3" style="height:26px;font-size:10pt;width:4.6em;padding:0;margin:0;" onclick="submit()" value=" Sign In " />
 													</p>
@@ -199,7 +199,7 @@ $("#closeReply").click(function(){
 					
 					      
 	<div>						
-					<font size="5">Dont have an account?</font>	<br/>	<br/>		
+					<font size="5">Don't have an account?</font>	<br/>	<br/>		
 			<div>
 					<a href="<%= main_app.new_user_registration_path %>" id="large-orange-button">
 			 	 	<div>Sign Up!</div>
@@ -257,7 +257,7 @@ $("#closeReply").click(function(){
 function show(loc,rplyId)	// this loc and rplyId send by forem/posts/post page's this link <li><%#= link_to "Reply", '#', :onclick=>"show('#{new_topic_post_path(@topic)}','?reply_to_id=#{post.id}')" %></li>
 {
 if (<%=current_user.nil?%>)
-{
+{	<%session[:return_to] = request.fullpath%>
 	document.getElementById('light').style.display='block';
 	document.getElementById('fade').style.display='block';
 

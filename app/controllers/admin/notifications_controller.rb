@@ -21,7 +21,7 @@ class Admin::NotificationsController < ApplicationController
 		params[:notification][:notificationToId]=params[:notificationToId].collect{|a| a.split(",") }.join(",").to_s
 		params[:notification][:notificationFrequency]=params[:notificationFrequency].collect{|a| a.split(",") }.join(",").to_s
        @notification = Notification.create(params[:notification])
-   	 @emails=User.select(:email)
+   	 #@emails=User.select(:email)
     	 if @notification.save
   
 #writing schedule and rake task file
@@ -51,7 +51,7 @@ class Admin::NotificationsController < ApplicationController
     
   
        
-      redirect_to(memberlist_vendors_path, :notice => 'Notification was successfully created.')
+      redirect_to(admin_notifications_path, :notice => 'Notification was successfully created.')
     else
       render :action => "new"
     end
