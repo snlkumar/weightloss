@@ -1,7 +1,7 @@
 class CustomFoodsController < ApplicationController
   layout 'tracking'
   
- 	 before_filter :authenticate_user!, :except => [:show, :index, :searchFood]
+ 	 before_filter :authenticate_user!, :except => [:new, :create, :show, :index, :searchFood]
   
   def new
     if params[:name]
@@ -9,12 +9,20 @@ class CustomFoodsController < ApplicationController
     else
       @food = Food.new(:custom => true)
     end
+
+			if current_user
+				  render :layout=>'tracking'
+				else
+				  render :layout=>'custom_food_public'
+			end    
+    
   end
 
 #################################################
   def create
 		session[:fd_name]=params[:food]["name"]
 		params[:food][:shrt_desc]=params[:food][:name]
+		params[:food][:adminApproved]=0
 		@food = Food.new(params[:food])
 			check=verify_recaptcha(request.remote_ip, params)
 	if check[:status] == 'false'
@@ -24,7 +32,11 @@ class CustomFoodsController < ApplicationController
  else
 		
     if @food.save
-      redirect_to new_meal_path
+		  if current_user
+		   redirect_to new_meal_path
+		   else
+		   redirect_to custom_foods_path  
+		   end    
     else
       render :action => 'new'
     end
@@ -123,7 +135,7 @@ end
 
 	def searchFood	
     terms  = params[:terms].split(/,|\s/).reject(&:blank?)
-    conds  = terms.collect{|t| "shrt_desc LIKE ?"}.join(' AND ')
+    conds  = terms.collect{|t| "shrt_desc LIKE ? and adminApproved=1"}.join(' AND ')
     @foods1 = Food.with_a_serving_size.find(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}])
     @foods = Kaminari.paginate_array(@foods1).page(params[:page]).per(25)	
 		if current_user

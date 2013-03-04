@@ -69,6 +69,14 @@ input:-moz-placeholder {
   
     <%= submit_tag 'Search', :style => "height:2.2em;" %>
   <% end %>
+
+
+  <% unless in_admin? %>
+  <p>
+    Help us expand our food database.&emsp;&emsp; <%=link_to "Add new food", new_custom_food_path() , :style=>"font-size:16px;background-color:white;"%>
+  </p>
+<% end %><br/>
+
   
   <% if params['terms'] && !params['terms'].blank? %>
   
@@ -79,7 +87,10 @@ input:-moz-placeholder {
 
   <%= page_entries_info(@foods) %>
      <%= paginate(@foods, :params => pagination_params(request)) %><br/>
-  <% end %>
+  <% end %><br/>
+  
+
+  
 <table class="sort-table">
   <thead>
     <tr>

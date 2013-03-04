@@ -7,7 +7,9 @@
     <%= f.error_messages %>
     
     <%= render :partial => '/custom_foods/form', :locals => {:f => f} %>
-    
+
+
+<%=hidden_field :adminApproved, :value=>"1"%>    
     <p>
       <%= f.submit 'Create' %> | <%= link_to 'Cancel', admin_foods_path %>
     </p>

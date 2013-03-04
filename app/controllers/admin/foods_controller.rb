@@ -4,8 +4,14 @@ class Admin::FoodsController < Admin::BaseController
   layout 'new_admin'
   
   def index
-    @foods = Food.page(params[:page] || 1).per(50)
+    if params[:adminApproved]
+    @foods = Food.where("adminApproved=0").page(params[:page] || 1).per(50)
+     else
+     @foods = Food.where("adminApproved=1").page(params[:page] || 1).per(50)    
+     end
   end
+
+
   
   def new
     @food = Food.new(:custom => true)
@@ -16,6 +22,7 @@ class Admin::FoodsController < Admin::BaseController
   end
   
   def create
+  	params[:food][:shrt_desc]=params[:food][:name]
     @food = Food.new(params[:food])
     
     if @food.save

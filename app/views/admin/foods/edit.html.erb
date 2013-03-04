@@ -21,9 +21,19 @@
     <%# else %>
       <%#= render :partial => 'form', :locals => {:f => f} %>
     <%# end %>
-    
+
+
+<p>
+  <%= f.label :adminApproved, 'Approve food' %>
+  <%= f.check_box :adminApproved, :class => 'grid_6 alpha' %>
+</p><br/> <br/>   
     <!-- new code -->
     	<%= render :partial => '/custom_foods/form', :locals => {:f => f} %>
+
+
+
+
+
     <p>
       <%= f.submit 'Update' %> | <%= link_to 'Cancel', admin_foods_path %>
     </p>

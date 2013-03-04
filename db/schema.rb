@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130225212056) do
+ActiveRecord::Schema.define(:version => 20130304175800) do
 
   create_table "City", :primary_key => "ID", :force => true do |t|
     t.string "Name",        :limit => 35, :default => "", :null => false
@@ -191,6 +191,7 @@ ActiveRecord::Schema.define(:version => 20130225212056) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.text     "detailes"
+    t.integer  "adminApproved",                                     :default => 1
   end
 
   create_table "forem_forums", :force => true do |t|

@@ -49,14 +49,14 @@ padding:2px;
   <% if notice %>
     <font color="red" size="3">Error: <%=notice%></font>
   <%else%>	
-<%=link_to "Foods List", custom_foods_path() , :style=>"font-size:16px;background-color:white;"%><br/><br/>
+<%=link_to "Foods List", custom_foods_path() , :style=>"font-size:16px;background-color:white;"%><br/><br/><br/><br/>
   <div style="display:block;" id="food-head">
     <h2><%= @food.name %></h2>
   </div>
 
 <% unless in_admin? %>
   <p>
-    Help us expand our food database.
+    Help us expand our food database.&emsp;&emsp; <%=link_to "Add new food", new_custom_food_path() , :style=>"font-size:16px;background-color:white;"%>
   </p>
 <% end %>
 
