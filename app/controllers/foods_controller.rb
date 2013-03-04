@@ -4,7 +4,7 @@
   
   def search
     terms  = params[:term].split(/,|\s/).reject(&:blank?)
-    conds  = terms.collect{|t| "name LIKE ?"}.join(' AND ')
+    conds  = terms.collect{|t| "shrt_desc LIKE ?"}.join(' AND ')
     @foods = Food.with_a_serving_size.find(:all, :limit=>20, :conditions => [conds, *terms.collect{|t| "%#{t}%"}])
     
     if @foods.empty?

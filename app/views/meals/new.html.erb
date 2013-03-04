@@ -616,7 +616,7 @@ function dataGrid(ojb)
 	row="";
 	for(i=0;i<obj.length;i++)
 	{									
-			row+="<tr style='height:40px;font-size:14px;' id="+obj[i].id+" onmouseover='selectedRow(this)' onclick=getTdVal('"+obj[i].id+"') onmouseout='unSelectedRow(this)'>"+tCols(obj[i].value);
+			row+="<tr style='height:40px;font-size:12.5px;' id="+obj[i].id+" onmouseover='selectedRow(this)' onclick=getTdVal('"+obj[i].id+"') onmouseout='unSelectedRow(this)'>"+tCols(obj[i].value);
 	}
 	foodname = document.getElementById("food-item-entry1").value;
 	val=$('#food-item-entry1').val();

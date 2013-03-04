@@ -178,6 +178,7 @@ if ActiveRecord::Base.connection.table_exists? 'meta'
 		post  :measurementDetails
 		post  :vendormailer
 		post  ':id/addcustomfood', :action=>'addcustomfood'
+		get   :forumlist
     end
     member do
       post :photo

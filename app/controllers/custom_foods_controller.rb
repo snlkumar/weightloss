@@ -14,6 +14,7 @@ class CustomFoodsController < ApplicationController
 #################################################
   def create
 		session[:fd_name]=params[:food]["name"]
+		params[:food][:shrt_desc]=params[:food][:name]
 		@food = Food.new(params[:food])
 			check=verify_recaptcha(request.remote_ip, params)
 	if check[:status] == 'false'
@@ -122,7 +123,7 @@ end
 
 	def searchFood	
     terms  = params[:terms].split(/,|\s/).reject(&:blank?)
-    conds  = terms.collect{|t| "name LIKE ?"}.join(' AND ')
+    conds  = terms.collect{|t| "shrt_desc LIKE ?"}.join(' AND ')
     @foods1 = Food.with_a_serving_size.find(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}])
     @foods = Kaminari.paginate_array(@foods1).page(params[:page]).per(25)	
 		if current_user
