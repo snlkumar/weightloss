@@ -26,3 +26,15 @@ task :sendnotifications6 => :environment do
 								 obj = NotificationsController.new
 							 	 obj.lunchAutoNotifications
 							  end
+task :sendnotifications7 => :environment do
+								 obj = NotificationsController.new
+							 	 obj.lunchAutoNotifications
+							  end
+task :sendnotifications8 => :environment do
+								 obj = NotificationsController.new
+							 	 obj.lunchAutoNotifications
+							  end
+task :sendnotifications9 => :environment do
+								 obj = NotificationsController.new
+							 	 obj.lunchAutoNotifications
+							  end

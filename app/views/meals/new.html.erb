@@ -106,7 +106,7 @@
 .ajaxAutoComplete{
 	background-color:#fff;
 	border:1px solid black;
-  width:90%;
+  width:55em;
   height:250px;
 	display:none;
 	position:absolute;
@@ -118,7 +118,7 @@
 .gridHeader{
 	background-color:#fff;
 	border:1px solid black;
-  width:90%;
+  width:55em;
   height:25px;
 	display:none;
 	position:absolute;
@@ -275,7 +275,7 @@ label.meal {
 
 
 					<div id="gridHeader" class="gridHeader">
-						<span style="padding-left:3%;padding-right:21%;float:left;font-weight:bold;">Food</span><span  style="padding-right:12%;float:left;font-weight:bold;">Serving Size</span><span style="padding-right:3%;float:left;font-weight:bold;">Calorie</span><span style="padding-right:4%;float:left;font-weight:bold;">Fat</span><span  style="padding-right:3%;float:left;font-weight:bold;">Carbs</span><span style="padding-right:2%;float:left;font-weight:bold;">Protein</span><span style="float:left;font-weight:bold;">Fiber</span>
+						<span style="padding-left:3%;padding-right:21%;float:left;font-weight:bold;">Food</span><span  style="padding-right:12%;float:left;font-weight:bold;">Serving Size</span><span style="padding-right:8%;float:left;font-weight:bold;">Calorie</span><span style="padding-right:4%;float:left;font-weight:bold;">Fat</span><span  style="padding-right:3%;float:left;font-weight:bold;">Carbs</span><span style="padding-right:2%;float:left;font-weight:bold;">Protein</span><span style="float:left;font-weight:bold;">Fiber</span>
 						</div>
 
 						<div id="ajaxAutoComplete" class="ajaxAutoComplete"></div>
@@ -616,10 +616,11 @@ function dataGrid(ojb)
 	row="";
 	for(i=0;i<obj.length;i++)
 	{									
-			row+="<tr style='height:30px;font-size:12px;' id="+obj[i].id+" onmouseover='selectedRow(this)' onclick=getTdVal('"+obj[i].id+"') onmouseout='unSelectedRow(this)'>"+tCols(obj[i].value);
+			row+="<tr style='height:40px;font-size:14px;' id="+obj[i].id+" onmouseover='selectedRow(this)' onclick=getTdVal('"+obj[i].id+"') onmouseout='unSelectedRow(this)'>"+tCols(obj[i].value);
 	}
 	foodname = document.getElementById("food-item-entry1").value;
-	row += "<tr'><td colspan='6'><a href='/custom_foods/new/"+foodname+"'>\"Can\'t find an item? Add a new item to our database</a>!</td></tr>"; 
+	val=$('#food-item-entry1').val();
+	row += "<tr><td colspan='3'><a href='/custom_foods/new/"+foodname+"'>\"Can\'t find an item? Add a new item to our database</a>!</td><td colspan='3'><a href='/custom_foods/searchFood?terms="+val+"'>Show all results for "+val+" </a></td></tr>"; 
 	data+=row+"</table>";
 	
 	return data;
@@ -670,8 +671,8 @@ function tCols(colData)
       open: function(event, ui){
         var foodname = document.getElementById("food-item-entry").value;
 	
-        var url = "<a href='/custom_foods/new/"+foodname+"'>\"Can\'t find an item? Add a new item to our database</a>!"; 
-        var last_item = $("<li></li>").append(url)
+        var url = "<a href='/custom_foods/new/"+foodname+"'>\"Can\'t find an item? Add a new item to our database</a>!." ; 
+        var last_item = $("<li></li>").append(url);
         	$("ul.ui-autocomplete.ui-menu").append(last_item);
       }
     });
