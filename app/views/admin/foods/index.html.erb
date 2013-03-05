@@ -11,11 +11,15 @@
   
   
   <br/>
+
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
   
   <h2>Listing Foods</h2>
   
   <%= link_to 'Back', admin_foods_path %>&emsp;&emsp; 
-  <%= link_to 'New food', new_admin_food_path %> &emsp;&emsp;  <%= link_to 'Pending Approval', admin_foods_path(:adminApproved=>0) %>
+  <%= link_to 'New food', new_admin_food_path %> &emsp;&emsp;  <%= link_to 'Pending Approval', admin_foods_path(:adminApproved=>0) %>&emsp;&emsp;  <%= link_to 'Approved Foods', admin_foods_path() %>
   
   <br/>
   

@@ -24,10 +24,11 @@ class CustomFoodsController < ApplicationController
 		params[:food][:shrt_desc]=params[:food][:name]
 		params[:food][:adminApproved]=0
 		@food = Food.new(params[:food])
-			check=verify_recaptcha(request.remote_ip, params)
+		check=verify_recaptcha(request.remote_ip, params)
+
 	if check[:status] == 'false'
 	  @notice = "captcha incorrect"
-    render :action => "new"
+    render :action => "new", :layout=>'custom_food_public'
     return
  else
 		
@@ -35,10 +36,10 @@ class CustomFoodsController < ApplicationController
 		  if current_user
 		   redirect_to new_meal_path
 		   else
-		   redirect_to custom_foods_path  
+		   redirect_to (custom_foods_path  , :notice=> "Food created.  Waiting admin approval.") 
 		   end    
     else
-      render :action => 'new'
+      render :action => 'new',:layout=>'custom_food_public'
     end
     end
   end
