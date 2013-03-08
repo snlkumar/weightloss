@@ -1,16 +1,18 @@
-class RegistrationsController < Devise::RegistrationsController
-  
-  def create
+class VendorregistrationsController < Devise::RegistrationsController
+ 
+
+ def create
   	begin
 		  build_resource
+		  
 
 		  if resource.save
-		    @user.update_attribute(:status, 'step_two')
+		  
 		    
 		    if resource.active_for_authentication?
-		      set_flash_message :notice, :signed_up if is_navigational_format?
+
 		      sign_in(resource_name, resource)
-		      redirect_to '/step_two'
+		      redirect_to '/second_step'
 					#respond_with resource, :location => redirect_location(resource_name, resource)
 		    else
 		      set_flash_message :notice, :inactive_signed_up, :reason => inactive_reason(resource) if is_navigational_format?
@@ -25,11 +27,11 @@ class RegistrationsController < Devise::RegistrationsController
 		  end
 			rescue Exception => exc
 				logger.error("Message for the log file #{exc.message}")
-				redirect_to '/users/sign_up', :notice => "User already exists"
+				redirect_to '/vendors/sign_up', :notice => "Vendor already exist."
    end
   end
   
-  def update
+   def update
     if resource.update_with_password(params[resource_name])
       set_flash_message :notice, :updated
       sign_in resource_name, resource, :bypass => true
@@ -39,11 +41,12 @@ class RegistrationsController < Devise::RegistrationsController
       render_with_scope :edit
     end
   end
-  
     
   protected
 
   def after_sign_up_path_for(resource)
     step_two_path
   end
+
+
 end

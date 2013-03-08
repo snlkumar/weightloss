@@ -118,18 +118,25 @@ $(window).load(function() {
 
 <script tyle="text/javascript">
 
+
 function selectedRow(rw)
 {
 	rw.style.background="#A9BCF5";
 }
+
+
 function unSelectedRow(rw)
-{
-	rw.style.background="#E6E6E6";
-}
+	{
+		rw.style.background="#E6E6E6";
+	}
+
+
 function submitForm()
-{
-  location.href="<%=vendor_path%>"+"?"+"searchtype="+$("#searchtype").val()+"&"+"filterQuery="+$("#vendor-search-query").val().trim();
-}
+	{
+	  location.href="<%=vendor_path%>"+"?"+"searchtype="+$("#searchtype").val()+"&"+"filterQuery="+$("#vendor-search-query").val().trim();
+	}
+
+
 function submitClaimForm()
 {
 
@@ -180,11 +187,13 @@ if($("#claimcontact").val()=='')
 $("#vendor-claim").submit();}
 }
 
+
+
 function getTdVal(mid)
-{
-	vendorGridTable=document.getElementById('VendorGridTable');
-	document.getElementById("vendor-search-query").value=(vendorGridTable.rows[document.getElementById(mid).rowIndex].cells[0].innerHTML).split('-')[0];
-}
+	{
+		vendorGridTable=document.getElementById('VendorGridTable');
+		document.getElementById("vendor-search-query").value=(vendorGridTable.rows[document.getElementById(mid).rowIndex].cells[0].innerHTML).split('-')[0];
+	}
 
 </script>
 
@@ -229,14 +238,28 @@ function getTdVal(mid)
     </div>
     <div style="float:left;margin-left:1%;padding-top:.5em;">
     <br>
+
+
+<!--
       <input type="button" class="button grid_3" style=" height:26px;font-size:10pt;width:10em;padding:0;margin:0%;" onclick="location.href='<%=new_vendor_path()%>'" value=" Add Your Business " />
-    </div>
-   </form>
-   
+      
+-->      
+      
+      
+ </div>
+</form>
+
+
+
+
+<!--   
    <div style="float:left;margin-left:1%;padding-top:.5em;">
     <br>
-      <input type="button" class="button grid_3" style=" height:26px;font-size:10pt;width:7.5em;padding:0;margin:0%;" onclick="location.href='<%=vendorlogin_vendors_path()%>'" value="Vendor Sign in " />
+      <input type="button" class="button grid_3" style=" height:26px;font-size:10pt;width:7.5em;padding:0;margin:0%;" onclick="location.href='<%#=vendorlogin_vendors_path()%>'" value="Vendor Sign in " />
     </div>
+-->
+
+
 </div>
 <div class="clear"></div>
 

@@ -23,10 +23,10 @@
     <%# end %>
 
 
-<p>
+<div>
   <%= f.label :adminApproved, 'Approve food' %>
-  <%= f.check_box :adminApproved, :class => 'grid_6 alpha' %>
-</p><br/> <br/>   
+  <%= f.check_box :adminApproved %>
+</div><br/>  
     <!-- new code -->
     	<%= render :partial => '/custom_foods/form', :locals => {:f => f} %>
 

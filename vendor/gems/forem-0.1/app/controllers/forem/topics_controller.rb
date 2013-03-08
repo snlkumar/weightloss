@@ -13,9 +13,9 @@ module Forem
         redirect_to @forum
       else
         register_view
-#        @posts = @topic.posts.page(params[:page]).per(20) #posts to reverse from latest to oldest
-        @posts1 = @topic.posts.reverse
-        @posts = Kaminari.paginate_array(@posts1).page(params[:page]).per(10)
+        @posts = @topic.posts.page(params[:page]).per(10) #posts to reverse from latest to oldest
+        #@posts1 = @topic.posts.reverse
+        #@posts = Kaminari.paginate_array(@posts1).page(params[:page]).per(10)
       end
 				@meta=Meta.where("controller= 'Forum' and  page='forum'").last
 				if !@meta.blank?

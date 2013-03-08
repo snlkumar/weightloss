@@ -198,8 +198,8 @@ Devise.setup do |config|
                     {:client_options => {:ssl => {:ca_path => '/etc/ssl/certs'}}}
   else
     # MyWeightWorldDemoLocal
-    config.omniauth :facebook, '276705819010706', 'e2b32acfa1be8de6cc0277114d0b0a69',
-                    {:client_options => {:ssl => {:ca_path => '/etc/ssl/certs'}}}
+    config.omniauth :facebook, '529697903749066', '3f57c6be8c1321c9f3ae5fea39fc271f'#,
+                    #{:client_options => {:ssl => {:ca_path => '/etc/ssl/certs'}}}
   end
   
   # ==> Warden configuration

@@ -1,0 +1,127 @@
+<style>
+ textarea{
+    width:40%;
+  }
+select#vendor_vendor_type, #country{
+    width:42%;
+    height:2em;
+  }
+
+.continue_button {
+    display: inline-block;
+    background: #e4e4e4;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f6f6f6), color-stop(100%,#d7d7d7));
+    background: -moz-linear-gradient(center top, #f6f6f6 0%, #d7d7d7 100%);
+    -webkit-box-shadow: -1px 1px 0px 0px #dfdcdc inset, 1px -1px 0px 0px #bfbfbf inset;
+    -moz-box-shadow: -1px 1px 0px 0px #dfdcdc inset, 1px -1px 0px 0px #bfbfbf inset;
+    box-shadow: -1px 1px 0px 0px #dfdcdc inset, 1px -1px 0px 0px #bfbfbf inset;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    
+    padding: 5px 10px;
+    display: inline-block;
+    font-family: arial;
+    font-size: 11px;
+    line-height: 30px;
+    color: #595959;
+    font-weight: bold;
+}
+</style>
+
+<%=resource.errors.full_messages%>
+
+ <% if @vendor.errors.any? %>
+    <div id="error_explanation" style="margin-left:30%;">
+      <h2><%= pluralize(@vendor.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @vendor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<!-- SIGN UP BOX BEGINS -->
+<div class="signup-process grid_11 alpha">
+  <% if notice%>
+   <font color="red" size="5"><%=notice%></font>
+  <%end%>
+
+  
+  <div id="sign-up-form" id="signup-content" class="grid_10 alpha push_1">
+    <br/>
+	<h1 style=background-color:#0B2B42;padding:5px;width:80%;height:1em;text-align:center;font-size:22px;color:#FBF2EF;">Add Your Business</h1><br /><br />
+    <p>
+      Welcome!  Joining our community is easy; just enter your information below and follow the next few steps. Immediately after you will have complete access to all of our features, tools, articles, videos, forum as well as the ability to become part of our community along with scores of others just like yourself!
+    </p>
+   
+    
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+      
+      <ol class="forms">
+        <%#= render :partial => '/users/form', :locals => {:f => f} %>
+        
+
+
+
+	<div id="div1" style="margin-left:2%;">
+
+
+
+  <div class="field">
+    <%= f.label :business_name %><br />
+    <%= f.text_field :business_name, :style => "height: 1.2em;width:40%;" %>
+
+  </div>
+
+
+
+  <div class="field">
+    <%= f.label :vendor_type %><br />
+    <%= f.select :vendor_type, [["Restaurants","restaurants"],["Gym","gym"],["Nutritionist","nutritionist"],["Weight loss surgeons","weight_loss_surgeons"],["Physiologists","physiologists"],["Hospitals","hospitals"],["Law","law"],["Medical","medical"],["Plastic surgeon","plastic_surgeon"],["Spa","spa"],["Weight loss clinics","weight_loss_clinics"],["Weight loss doctors","weight_loss_doctors"]] %>
+  </div> <br />
+
+
+ <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email, :style => "height: 1.2em;width:40%;" %>
+  </div>
+
+ <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, :style => "height: 1.2em;width:40%;" %>
+  </div>
+
+	<div class="field">
+    <%= label "Confirm password","Confirm password" %><br />
+	<%= password_field_tag 'cpassword', '', :style => "height: 1.2em;width:40%;",:onblur=>"if(document.getElementById('vendor_password').value!=document.getElementById('cpassword').value){alert('Password not matched');document.getElementById('vendor_password').value=document.getElementById('cpassword').value='';}" %>
+  </div> 
+
+
+  <div class="field">
+    <%= f.label :Postal_code %><br />
+    <%= f.text_field :zipcode, :style => "height: 1.2em;width:40%;" %>
+  </div> 
+
+<!--
+	<div style="margin-left: 0%;">
+         <%=render '/shared/recaptcha' %>
+   </div></br>-->
+
+<input type="button" class="button grid_3" style="height:34px;font-size:10pt;width:9em;padding:0;margin-left:8%;" onclick=submit() value=" Continue " />
+
+</div></div>
+
+       
+      </ol>
+
+      
+    <% end %>
+  </div>
+  
+  <div style="clear:both">&nbsp;</div>
+</div>
+

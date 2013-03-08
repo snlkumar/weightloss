@@ -1,0 +1,567 @@
+
+<%= stylesheet_link_tag    "application" %>
+<%= javascript_include_tag "application" %>
+
+
+<style type="text/css">
+
+.continue_button {
+    display: inline-block;
+    background: #e4e4e4;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f6f6f6), color-stop(100%,#d7d7d7));
+    background: -moz-linear-gradient(center top, #f6f6f6 0%, #d7d7d7 100%);
+    -webkit-box-shadow: -1px 1px 0px 0px #dfdcdc inset, 1px -1px 0px 0px #bfbfbf inset;
+    -moz-box-shadow: -1px 1px 0px 0px #dfdcdc inset, 1px -1px 0px 0px #bfbfbf inset;
+    box-shadow: -1px 1px 0px 0px #dfdcdc inset, 1px -1px 0px 0px #bfbfbf inset;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    
+    padding: 5px 10px;
+    display: inline-block;
+    font-family: arial;
+    font-size: 11px;
+    line-height: 30px;
+    color: #595959;
+    font-weight: bold;
+}
+
+select#vendor_year_graduated{
+		 width:100px;
+		 height:25px;
+	margin-left:5.2em; 
+	padding:2px;
+	  }
+
+select#vendor_country,#vendor_year_graduated{
+    width:235px;
+    height:25px;
+margin-left:8.6em; 
+padding:2px;
+  }
+
+select#vendor_p_country{
+    width:235px;
+    height:25px;
+margin-left:7em; 
+padding:2px;
+  }
+
+select#vendor_p_state{
+    width:235px;
+    height:25px;
+margin-left:8em; 
+padding:2px;
+  }
+
+select#vendor_state,#vendor_state2,#vendor_state3,#vendor_country{
+    width:235px;
+    height:25px;
+margin-left:10.2em; 
+padding:2px;
+  }
+
+select#vendor_accept_credit_card{
+    width:50px;
+    height:25px;
+margin-left:3.2em; 
+padding:2px;
+  }
+
+select#vendor_accept_cash,#vendor_payment_plans{
+    width:50px;
+    height:25px;
+margin-left:6.2em; 
+padding:2px;
+  }
+
+select#vendor_accept_insurance{
+    width:50px;
+    height:25px;
+margin-left:7em; 
+padding:2px;
+  }
+
+select#vendor_accept_check{
+    width:50px;
+    height:25px;
+margin-left:5.4em; 
+padding:2px;
+  }
+
+select#vendor_payment_plans{
+    width:50px;
+    height:25px;
+margin-left:5.0em; 
+padding:2px;
+  }
+
+select#vendor_gender{
+    width:60px;
+    height:25px;
+margin-left:7.0em; 
+padding:2px;
+  }
+
+select#vendor_year_graduated{
+    width:100px;
+    height:25px;
+margin-left:5.2em; 
+padding:2px;
+  }
+input:-moz-placeholder {
+      color: grey;
+}
+
+.ajaxAutoComplete{
+	background-color:#fff;
+	border:1px solid black;
+  	width:40.4%;
+  	height:120px;
+	display:none;
+	position:absolute;
+
+	overflow-y:scroll;
+	z-index:300;
+}
+</style>
+
+
+
+<script type="text/javascript">
+
+function selectedRow(rw)
+	{
+		rw.style.background="#A9BCF5";
+	}
+	
+function unSelectedRow(rw)
+	{
+		rw.style.background="";
+	}
+
+
+function dataGrid(obj,id)
+{
+	data="<table id='city'>";
+	row="";
+	
+	for(i=0;i<obj.length;i++)
+	{			
+		row+="<tr id="+(obj[i].toString().split(",")[0])+" onmouseover='selectedRow(this)' onclick=getTdVal('"+id+"','"+obj[i].toString().split(",")[0]+"') onmouseout='unSelectedRow(this)'><td style='width:60%;'>"+obj[i].toString().split(",")[1]+"</td><td style='width:40%;'>("+obj[i].toString().split(",")[2]+")</td></tr>";
+	}
+	data+=row+"</table>";
+	
+	return data;
+}
+
+
+function getTdVal(id,cid)
+{
+	city=document.getElementById('city');
+	
+	$("#"+id).val(city.rows[document.getElementById(cid).rowIndex].cells[0].innerHTML);
+	$("ajaxAutoComplete").css("display","none");
+}
+
+
+$(document).ready(function(){
+	var list=null;
+	$('.cityAjax').keyup(function(){
+		id=this.id;
+	 if($(this).val().length>2)
+	 {
+    var position = $(this).position();
+		vleft=position.left;
+		vtop=position.top;
+		$.ajax({
+			url: '/vendors/auto_search/'+$(this).val(),
+			dataType: 'html',
+			success: function(data) {
+				$("#ajaxAutoComplete").html(dataGrid(jQuery.parseJSON(data),id));
+					$("#ajaxAutoComplete").css('left', vleft+140);
+					$("#ajaxAutoComplete").css('top', vtop+35);
+				$("#ajaxAutoComplete").css("display","block");
+			},
+			error: function(data)
+			{
+				alert("error");
+			}
+		});
+	  }
+else
+{
+$("#ajaxAutoComplete").css("display","none");
+}
+	});
+
+	$(".full").click(function(){
+		$("#ajaxAutoComplete").css("display","none");
+
+	});	
+});
+
+
+
+function schooldataGrid(obj)
+{
+	data="<table id='school'>";
+	row="";
+	for(i=0;i<obj.length;i++)
+	{			
+		row+="<tr id="+(obj[i].toString().split(",")[0])+" onmouseover='selectedRow(this)' onclick=getTdVal2('"+obj[i].toString().split(",")[0]+"') onmouseout='unSelectedRow(this)'><td style='width:60%;'>"+obj[i].toString().split(",")[1]+"</td></tr>";
+	}
+	data+=row+"</table>";
+	
+	return data;
+}
+
+
+
+
+function getTdVal2(cid)
+{
+	city=document.getElementById('school');
+	$("#vendor_school").val(city.rows[document.getElementById(cid).rowIndex].cells[0].innerHTML);
+	$("ajaxAutoComplete2").css("display","none");
+}
+
+$(document).ready(function(){
+	var list=null;
+	$("#vendor_school").keyup(function(){ 
+
+	 if($("#vendor_school").val().length>2)
+	 {
+    var position = $("#vendor_school").position();
+		vleft=position.left;
+		vtop=position.top;
+		$.ajax({
+			url: '/vendors/auto_search1/'+$("#vendor_school").val(),
+			dataType: 'html',
+			success: function(data) {
+				$("#ajaxAutoComplete2").html(schooldataGrid(jQuery.parseJSON(data)));
+					$("#ajaxAutoComplete2").css('left', vleft+120);
+					$("#ajaxAutoComplete2").css('top', vtop+30);
+				$("#ajaxAutoComplete2").css("display","block");
+			},
+			error: function(data)
+			{
+				alert("error");
+			}
+		});
+	  }
+else
+{
+$("#ajaxAutoComplete2").css("display","none");
+}
+	});
+
+	$(".full").click(function(){
+		$("#ajaxAutoComplete2").css("display","none");
+
+	});	
+});
+
+
+
+
+function degreesdataGrid(obj)
+{
+	data="<table id='degree'>";
+	row="";
+	for(i=0;i<obj.length;i++)
+	{			
+		row+="<tr id="+(obj[i].toString().split(",")[0])+" onmouseover='selectedRow(this)' onclick=getTdVal3('"+obj[i].toString().split(",")[0]+"') onmouseout='unSelectedRow(this)'><td style='width:60%;'>"+obj[i].toString().split(",")[1]+"</td></tr>";
+	}
+	data+=row+"</table>";
+	
+	return data;
+}
+
+function getTdVal3(cid)
+{
+	city=document.getElementById('degree');
+	$("#vendor_degrees").val(city.rows[document.getElementById(cid).rowIndex].cells[0].innerHTML);
+	$("ajaxAutoComplete3").css("display","none");
+}
+
+
+
+
+$(document).ready(function(){
+	var list=null;
+	$("#vendor_degrees").keyup(function(){ 
+
+	 if($("#vendor_degrees").val().length>2)
+	 {
+    var position = $("#vendor_degrees").position();
+		vleft=position.left;
+		vtop=position.top;
+		$.ajax({
+			url: '/vendors/auto_search2/'+$("#vendor_degrees").val(),
+			dataType: 'html',
+			success: function(data) {
+				$("#ajaxAutoComplete3").html(degreesdataGrid(jQuery.parseJSON(data)));
+					$("#ajaxAutoComplete3").css('left', vleft+108);
+					$("#ajaxAutoComplete3").css('top', vtop+32);
+				$("#ajaxAutoComplete3").css("display","block");
+			},
+			error: function(data)
+			{
+				alert("error");
+			}
+		});
+	  }
+else
+{
+$("#ajaxAutoComplete3").css("display","none");
+}
+	});
+
+	$(".full").click(function(){
+		$("#ajaxAutoComplete3").css("display","none");
+
+	});	
+});
+
+
+
+$(document).ready(function(){
+ 
+    var counter = 2;
+ 
+    $("#addButton1").click(function () {	
+	
+	if(counter>3){
+            alert("Maximum 3 addresses are allowed");
+            return false;
+	} 
+counter++;
+	if(counter==3)
+		{
+			$('.hidd').css("display", "block");
+		}
+	if(counter==4)
+		{
+			$('.hidd0').css("display", "block");
+
+		}
+
+});
+  
+	$("#removeButton1").click(function () {
+		if(counter==2){
+		         alert("Minimum 1 address is required.");
+		         return false;
+		} 
+
+		if(counter==4)
+			{
+				$('.hidd0').css("display", "none");
+
+			}
+
+		if(counter==3)
+			{
+				$('.hidd').css("display", "none");
+
+			}
+		 counter--;
+
+	});
+
+});
+
+
+
+$(document).ready(function(){
+ 
+    var counter1 = 2; 
+    $("#addButton2").click(function () {	
+
+	if(counter1>3){
+            alert("Maximum 3 are allowed");
+            return false;
+	} 
+
+	counter1++;
+		if(counter1==3)
+			{
+				$('.hidd1').css("display", "block");
+			}
+		if(counter1==4)
+			{
+				$('.hidd5').css("display", "block");
+			}
+	});
+
+
+
+	$("#removeButton2").click(function () {
+		if(counter1==2){
+		         alert("Minimum 1 is required.");
+		         return false;
+		} 
+
+		if(counter1==4)
+			{
+				$('.hidd5').css("display", "none");
+
+			}
+	if(counter1==3)
+			{
+				$('.hidd1').css("display", "none");
+
+			}
+		 counter1--;
+
+	});
+
+});
+
+
+
+$(document).ready(function(){
+ 
+    var counter2 = 2; 
+    $("#addButton3").click(function () {	
+
+	if(counter2>3){
+            alert("Maximum 3 are allowed");
+            return false;
+	} 
+
+	counter2++;
+		if(counter2==3)
+			{
+				$('.hidd2').css("display", "block");
+			}
+		if(counter2==4)
+			{
+				$('.hidd6').css("display", "block");
+			}
+	});
+
+
+
+	$("#removeButton3").click(function () {
+		if(counter2==2){
+		         alert("Minimum 1 is required.");
+		         return false;
+		} 
+
+		if(counter2==4)
+			{
+				$('.hidd6').css("display", "none");
+
+			}
+	if(counter2==3)
+			{
+				$('.hidd2').css("display", "none");
+
+			}
+		 counter2--;
+
+	});
+
+});
+
+
+$(document).ready(function(){
+ 
+    var counter3 = 2; 
+    $("#addButton4").click(function () {	
+
+	if(counter3>3){
+            alert("Maximum 3 are allowed");
+            return false;
+	} 
+
+	counter3++;
+		if(counter3==3)
+			{
+				$('.hidd3').css("display", "block");
+			}
+		if(counter3==4)
+			{
+				$('.hidd4').css("display", "block");
+			}
+	});
+
+
+
+	$("#removeButton4").click(function () {
+		if(counter3==2){
+		         alert("Minimum 1 is required.");
+		         return false;
+		} 
+
+		if(counter3==4)
+			{
+				$('.hidd4').css("display", "none");
+
+			}
+	if(counter3==3)
+			{
+				$('.hidd3').css("display", "none");
+
+			}
+		 counter3--;
+
+	});
+
+});
+
+
+
+<% content_for :js do %>
+    $('#distance-slider').slider({
+          range: "min",
+          step:  10,
+          value: 0,
+          min: 0,
+          max: 500,
+          slide: function( event, ui ) {
+            miles=ui.value;
+            $( "#distance-view" ).html(miles);
+            $( "#distance-val" ).val( ui.value );
+          }
+        });
+    
+    miles= $( "#distance-slider" ).slider( "value" );
+    
+    $( "#distance-view" ).html( miles);
+  <% end %>
+
+
+</script>
+
+
+
+
+
+<div class="signup-process grid_11 alpha">
+
+  <div id="signup-content" class="grid_10 push_1 alpha">
+    
+    <%= form_for current_vendor, :url => "/finalize", :html => { :multipart => true, :class => "forms" } do |f| %>
+      <%= f.error_messages %>
+      
+      <ol class="forms">
+        <%= render :partial => "second_step", :locals => {:f => f} %>
+      </ol>
+
+			<div style="margin-left:10em;">      
+					<button class="button grid_4 alpha" type="submit" >
+					  SUBMIT
+					</button>
+			</div> 
+				  
+    <% end %>
+  </div>
+
+<div style="clear:both">&nbsp;</div>
+
+<% content_for :sidebar do %>
+  <div class="signup-sidebar-header" style="margin-top: 35px;">We know - this is personal information.</div>
+
+<% end %>

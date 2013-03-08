@@ -13,9 +13,10 @@ class PostReplyMailer < ActionMailer::Base
   end
 =end
   #new added logic for sending mail
-  def reply_notification(topic,user)
+  def reply_notification(topic,user,text)
     @topic = topic
-    @user = user    
+    @user = user 
+    @post=text   
     mail(:to =>@user.email, :subject => 'Forum reply on MyWeightWorld')
   end
 end

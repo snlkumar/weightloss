@@ -32,29 +32,25 @@ input:-moz-placeholder {
 }
 </style>
 <script type="text/javascript">
+
+function newweight(fid)
+{
+window.location='<%=new_meal_path()+"?iatethis=""'+fid+'"%>';
+}
+
   <%content_for :js do%>
     $("table tbody tr").mouseover(function(){
       $(this).css("background-color","#ccc");
     }).mouseout(function(){
       $(this).css("background-color","");
     });
-
-    $('.sort-table').tablesorter({ 
-        // pass the headers argument and assing a object 
-        headers: { 
-            // assign the secound column (we start counting zero) 
-            6: { 
-                // disable it by setting the property sorter to false 
-                sorter: false }
-	}
-
-})
           
   <%end%>
 
 
 </script>
  
+  
 <%if current_user%> 
 <div style="width:60em;">
  <%else%>
@@ -94,11 +90,12 @@ input:-moz-placeholder {
 <table class="sort-table">
   <thead>
     <tr>
-        <th class="headerTable" style="text-align:left;width:60%;">Name</th>
+        <th class="headerTable" style="text-align:left;width:40%;">Name</th>
        <th class="headerTable" style="text-align:left;width:10%;">Calories</th>
         <th class="headerTable" style="text-align:left;width:10%;">Protein</th>
-         <th class="headerTable" style="text-align:left;width:20%;">Carbohydrate</th>
+         <th class="headerTable" style="text-align:left;width:15%;">Carbohydrate</th>
          <th class="headerTable" style="text-align:left;width:10%;">Fat</th>                
+         <th class="headerTable" style="text-align:left;width:10%;">Add</th>                
     </tr>
     
 
@@ -109,11 +106,12 @@ input:-moz-placeholder {
   
   <% @foods.each do |f| %>
       <tr class="<%= cycle('even', 'odd') %>">
-          <td><%=link_to f.name, custom_food_path(f)%> </td>
-          <td><%=f.energ_kcal%> </td>
-          <td><%=f.protein%> </td>
-          <td style="text-align:center"><%=f.carbohydrt%> </td>
-          <td><%= f.custom ? f.total_fat : f.lipid_tot %> </td>
+          <td style="padding:8px;"><%=link_to f.name, custom_food_path(f)%> </td>
+          <td style="padding:8px;"><%=f.energ_kcal%> </td>
+          <td style="padding:8px;"><%=f.protein%> </td>
+          <td style="padding:8px;text-align:center;"><%=f.carbohydrt%> </td>
+          <td style="padding:8px;"><%= f.custom ? f.total_fat : f.lipid_tot %> </td>
+          <td style="padding:6px 0 0 0;"><input type="button" style="background-color:#0B2B42;height:2em;font-size:10pt;width:5em;padding:0;float:right;margin-right:.8em;color:white;" onclick="newweight(<%=f.id%>)" value="I ate this" /></td>
       </tr>
   <% end %>
   </tbody>

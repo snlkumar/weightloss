@@ -1,0 +1,2 @@
+module VendorregistrationsHelper
+end

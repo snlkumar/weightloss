@@ -452,24 +452,34 @@ label.meal {
 </div>
 <script type="text/javascript" charset="utf-8">
 window.onload = function () {
-			document.getElementById("food-item-entry1").value="";
+		//	document.getElementById("food-item-entry1").value="";
 			document.getElementById("gmwt_desc1").value="1";
 			document.getElementById("serings").value="";
-			document.getElementById("food_id").value="";
+//			document.getElementById("food_id").value="";
 			document.getElementById("energ_kcal").value="";
 			currentDate(); //set current date in add meal date field(wdDt) 
 		 }	//when page load clear the textfield
 
 
 $(document).ready(function(){
-	
- 	$("#serings").change(function(e){
 
+ 	$("#serings").change(function(e){
 $("#serving_name").html($("#serings").val());
 $("#gmwt_desc1").val($("#serings").val().replace(/^\s+/,"").split(" ")[0]);
 
 	});
 });
+
+
+	<% if params[:iatethis]%>
+	getTdVal("<%=params[:iatethis]%>");
+	$("#food_id").val()="<%=params[:iatethis]%>";
+
+	<%end%>
+	
+	
+	
+
 
 
 
@@ -528,14 +538,26 @@ else
 
 
 	foodGridTable=document.getElementById('FoodGridTable');
-	document.getElementById("food-item-entry1").value=foodGridTable.rows[document.getElementById(mid).rowIndex].cells[0].innerHTML;
-	servingSize=foodGridTable.rows[document.getElementById(mid).rowIndex].cells[1].innerHTML;
+
+	<% if params[:iatethis]%>
+	
+		$("#food-item-entry1").val("<%=Food.find(params[:iatethis]).name%>");
+		$("#food_id").val("<%=params[:iatethis]%>");
+		servingSize="<%=Food.find(params[:iatethis]).gmwt_desc1%>";
+	<%else%>
+	{
+		document.getElementById("food-item-entry1").value=foodGridTable.rows[document.getElementById(mid).rowIndex].cells[0].innerHTML;
+	   document.getElementById("food_id").value=mid;
+		servingSize=foodGridTable.rows[document.getElementById(mid).rowIndex].cells[1].innerHTML;
+	}
+	<%end%>
+
 	document.getElementById("serving_name").innerHTML=servingSize;
 	
 	document.getElementById("gmwt_desc1").value=servingSize.replace(/^\s+/,"").split(" ")[0];
 	document.getElementById("serings").value=servingSize.substring(servingSize.replace(/^\s+/,"").split(" ")[0].length+1,servingSize.length).replace(/\s+$/,"");
 
-	document.getElementById("food_id").value=mid;
+
 	document.getElementById("energ_kcal").value=foodGridTable.rows[document.getElementById(mid).rowIndex].cells[2].innerHTML;
 	if(document.getElementById("energ_kcal").value=="")
 	{
@@ -620,7 +642,7 @@ function dataGrid(ojb)
 	}
 	foodname = document.getElementById("food-item-entry1").value;
 	val=$('#food-item-entry1').val();
-	row += "<tr><td colspan='3'><a href='/custom_foods/new/"+foodname+"'>\"Can\'t find an item? Add a new item to our database</a>!</td><td colspan='3'><a href='/custom_foods/searchFood?terms="+val+"'>Show all results for "+val+" </a></td></tr>"; 
+	row += "<tr><td colspan='3'><a href='/custom_foods/new/"+foodname+"'>\"Can\'t find an item? Add a new item to our database</a>!</td><td colspan='3'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='/custom_foods/searchFood?terms="+val+"'>Show all results for "+val+" </a></td></tr>"; 
 	data+=row+"</table>";
 	
 	return data;

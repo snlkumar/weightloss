@@ -27,7 +27,9 @@ class MealsController < ApplicationController
 	end
 
 	def new
+
    	 @meal = current_user.meals.new(:ate_on => Time.zone.now)
+   	 
 	  end
 
   def edit
@@ -65,12 +67,16 @@ class MealsController < ApplicationController
    #
     redirect_to dairy_workout_path #meals_path
   end
+
+
   
   def update
     @meal = current_user.meals.find(params[:id])
     @meal.update_attributes(params[:meal])
     redirect_to meals_path
   end
+
+
   
   def destroy
     @meal = current_user.meals.find(params[:id])
@@ -80,6 +86,7 @@ class MealsController < ApplicationController
     redirect_to dairy_workout_path #meals_path
   end
   
+
   # Ajax add to meal
   def meal_item
 	

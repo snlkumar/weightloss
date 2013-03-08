@@ -48,25 +48,7 @@ Myweightworld::Application.configure do
   config.active_support.deprecation = :notify
   
   config.action_mailer.default_url_options = { :host => 'myweightworld.com' }
-
-
-  config.middleware.use ExceptionNotifier,	
-  :email_prefix => "notifier",	
-  :sender_address => %{"notifier" <no-reply@myweightworld.com>},
-  :exception_recipients => %w{"jony@idifysolutions.com","swhite@personalpowertraining.net"}
-	
- ActionMailer::Base.delivery_method = :smtp
- ActionMailer::Base.smtp_settings = {
- :address              => "smtp.gmail.com",
- :port                 => 587,
- :domain               => "gmail.com",
- :user_name            => "harish@idifysolutions.com" ,
- :password             => "Harry_Harsh",
- :authentication       => "plain",
- :enable_starttls_auto => true
- }
  
-   
   # Compress both stylesheets and JavaScripts
   config.assets.js_compressor  = :uglifier
   config.assets.css_compressor = :scss
@@ -74,5 +56,20 @@ Myweightworld::Application.configure do
   config.assets.digest = true
   
   # SendGrid Configuration
- 
+   config.middleware.use ExceptionNotifier,
+    :email_prefix => "An exception occured: ",
+    :sender_address => %{"notifier" <no-reply@myweightworld.com>},
+    :exception_recipients => %w{jony@idifysolutions.com swhite@personalpowertraining.net},
+    :normalize_subject => true,
+    :email_format => :html,
+    :smtp_settings => {
+      :address              => "smtp.gmail.com",
+      :port                 => 587,
+      :domain               => "gmail.com",
+      :user_name            => "idifytest@gmail.com" ,
+      :password             => "#dl6cd1357#",
+      :authentication       => "plain",
+      :enable_starttls_auto => true
+    }
 end
+

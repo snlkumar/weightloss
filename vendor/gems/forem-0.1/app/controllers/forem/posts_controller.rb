@@ -26,7 +26,7 @@ module Forem
   		  @ids.each do |id|
   		  if id != current_user.id
         @user=User.find_by_id(id)
-        PostReplyMailer.reply_notification(@topic,@user).deliver   #adding new parameter(forem_user) for send mail to current user
+        PostReplyMailer.reply_notification(@topic,@user, @post.text).deliver   #adding new parameter(forem_user) for send mail to current user
         end
       end
         ##end code

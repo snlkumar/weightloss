@@ -31,8 +31,11 @@ class Admin::FoodsController < Admin::BaseController
       render :action => "new"
     end
   end
+
   
   def update
+  
+
     @food = Food.find(params[:id])
     
     if @food.update_attributes(params[:food])
@@ -41,6 +44,21 @@ class Admin::FoodsController < Admin::BaseController
       render :action => "edit"
     end
   end
+
+
+
+ def adminApproved   
+    @food = Food.find(params[:id])    
+    if @food.update_attributes(:adminApproved=>1)
+      redirect_to(admin_foods_path, :notice => 'Food was successfully updated.')
+    else
+      render :action => "edit"
+    end
+ 
+ end
+
+
+
   
   def destroy
     @food = Food.find(params[:id])

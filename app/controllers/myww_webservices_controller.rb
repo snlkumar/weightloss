@@ -64,7 +64,7 @@ class MywwWebservicesController < ApplicationController
   #############################################################################
   
   def register_user
-  
+
     if params
       @user=User.find_by_email(params[:user][:email]) # check user exist      
       if @user!=nil
@@ -76,7 +76,7 @@ class MywwWebservicesController < ApplicationController
         #create encypted password for user
         encrypt_pass=::BCrypt::Password.create("#{params[:user][:password]}#{pepper}", :cost =>stretches ).to_s
 
-        params[:user][:password]=""
+        #params[:user][:password]=""
         params[:user][:encrypted_password]=encrypt_pass
         
         @user=User.create(params[:user])
@@ -101,9 +101,10 @@ class MywwWebservicesController < ApplicationController
       @status={"status-msg"=>"119"}   #119=> params is null
     end
 
-    respond_to do |format|
-     format.js { render :json =>@status.to_json}
-    end
+   render :json =>@status
+#    respond_to do |format|
+#     format.js { render :json =>@status.to_json}
+ #   end
       end
 
   ######################### Current Login Info ################################
@@ -193,11 +194,11 @@ class MywwWebservicesController < ApplicationController
   def getDiaryMeal
      
     if params[:userid]
-      if params[:date_on]
-        @start_date = Time.zone.parse(params[:date_on]).strftime("%Y-%m-%d")
-      else
-        @start_date = Time.zone.now.strftime("%Y-%m-%d")
-      end
+		   if params[:date_on]
+		     @start_date = Time.zone.parse(params[:date_on]).strftime("%Y-%m-%d")
+		   else
+		     @start_date = Time.zone.now.strftime("%Y-%m-%d")
+		   end
      
      @meals = Meal.find_by_sql("SELECT mi.food_id,m.id,f.name,m.note from meals m,meal_items mi,foods f where f.id=mi.food_id and m.id = mi.meal_id and m.user_id="+params[:userid]+" and m.ate_on='"+ @start_date.to_s+"'")
      
@@ -207,13 +208,15 @@ class MywwWebservicesController < ApplicationController
         @status=@meals
      end
 
-    respond_to do |format|
-     format.js { render :json =>@status.to_json}
-    end
+#    respond_to do |format|
+#     format.js { render :json =>@status.to_json}
+ #   end
     
     else
       @status={"status-msg"=>"114"}   #114=> not id not available
     end
+    
+    render :json=>@status.to_json
   end
   
   #############################################################################
@@ -254,10 +257,10 @@ class MywwWebservicesController < ApplicationController
         @status={"status-msg"=>"food name field cannot be empty"}
       end
     
-    
-    respond_to do |format|
-     format.js { render :json =>@status.to_json}
-   	end
+    render :json =>@status.to_json
+    #respond_to do |format|
+     #format.js { render :json =>@status.to_json}
+   	#end
    	
   end
   #############################################################################
@@ -364,9 +367,11 @@ end
 		end  
       session[:user_id]=params[:id]
 
-		respond_to do |format|
-	     format.js { render :json =>@status.to_json}
-   	end
+		#respond_to do |format|
+	   #  format.js { render :json =>@status.to_json}
+   	#end
+   	
+   	 render :json =>@status.to_json
   end
   #############################################################################
   
@@ -969,10 +974,10 @@ end
 
 
 	def forumtopics
-	  @forum=Forem::Forum.find(params[:id])
-	  @topics=@forum.topics
-	  
-	  #check visibility of forem an topics.........................
+		@forum = Forem::Forum.find(params[:id])
+      @results = @forum.topics.visible.by_pinned_or_most_recent_post
+	   @topics=@results.map{|f| { :topic_id=>f.id, :subject =>f.subject, :locked=>f.locked, :started_by=>f.posts.try(:last).try(:user)==nil ? "User No longer exist" : "started by "+f.posts.try(:last).try(:user).try(:full_name)}}
+
   		respond_to do |format|
   		format.js { render :json =>@topics}
 		end
@@ -980,17 +985,37 @@ end
 	end 	
 
 	def topicposts
-	  @forum=Forem::Forum.find(params[:id])
-	  
+      #@forum = Forem::Forum.find(params[:forum_id])
+	   @topic=Forem::Topic.find(params[:topic_id])
+	   @posts=@topic.posts
+	   @posts1=@posts.map{|f| { :post=>f.text.html_safe, :created_at =>f.created_at.strftime("%m-%d-%Y"), :topic_id=>f.topic_id, :post_by=>f.try(:user)==nil ? "User No longer exist" : "Post by "+f.try(:user).try(:full_name)}}
+	   
   		respond_to do |format|
-  		format.js { render :json =>@topics}
+  		format.js { render :json =>@posts1}
 		end
 		
 	end 
 
+
+
+	def postcomment
+
+		@post=Forem::Post.create(:topic_id=>params[:topic_id],:text=>params[:text], :user_id=>params[:user_id])
+		if @post.save
+	      @status={"status"=>"posted"}	  		
+		else
+			@status={"status"=>"failed"}
+		end
+
+		respond_to do |format|
+  		format.js { render :json =>@status}
+		end
+		
+	end
+
   #this method for testing, to check webservice
   def check
-  render :text=>"shivam sahi se kaam kr"
+
   return
 
   end  

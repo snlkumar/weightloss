@@ -1,6 +1,8 @@
 class VendorsController < ApplicationController
 	before_filter :authenticate_vendor!, :only=> [:usersearch,:addmember, :createmember, :memberlist, :addmywwmember,:edit]
 #  before_filter :authenticate_vendor!, :only=>[:profile, :search, :show,:new,:create]
+
+
   def search
     if !params[:searchtype].nil?
       if params[:filterQuery].nil? 
@@ -32,6 +34,7 @@ class VendorsController < ApplicationController
 
 ###########################################################################
  ##search for text field decipher
+=begin
   def search_decipher
    
    if params[:searchtype]=="restaurants"
@@ -48,19 +51,13 @@ class VendorsController < ApplicationController
 			render :json => @vendor.map{|f| {:value => (params[:searchtype]=="restaurants" ? "#{f.name.capitalize} - Restaurant @$ #{f.address} @$ #{f.city} @$ #{f.state} @$ #{f.zip}" : "#{f.business_name.capitalize} - #{(f.vendor_type).split('_').join(' ')} @$ #{f.address1} @$ #{f.city} @$ #{f.state} @$ #{f.zipcode}"), :id => f.id} }.to_json
     end
   end
- ##end
+=end
 
 ####################################################################
 
  def show
 
-   if params[:id] && params[:restaurants]!=nil && params[:restaurants]=="restaurants"
-		 @status="true"  #for restaurants
-		 	@vendor=Restaurant.find(params[:id])
-   		else
-			@status="false"
 		@vendor=Vendor.find(params[:id])
-   end
 
 		@meta=Meta.where("controller= 'Vendors' and  page='Vendor Info'").last
 		if !@meta.blank?
@@ -73,14 +70,42 @@ class VendorsController < ApplicationController
   
  ##################################################################
 
-	def profile
-			
+	def profile			
 	 @vendor=Vendor.find(params[:id])	 
  	end
 
   ####################################################################
-  		def new
+
+
+  def second_step
+    render :layout => 'signup' 
+  end
+
+
+
+  def finalize
+  
+    if current_vendor.update_attributes(params[:vendor])
+
+      current_vendor.save # TODO: needed?
+      redirect_to profile_vendors_path(current_vendor)
+    else
+
+      render :action => :second_step, :layout => 'signup'
+    end
+  end
+
+
+
+###################################################################
+
+
 =begin
+
+
+
+  		def new
+
   		@vendor1=Restaurant.find(:all)
 @vendor1.each do |vendor|
 @vend=Vendor.create(:business_name=>vendor.business_name, :vendor_type=>"restaurants",
@@ -131,7 +156,7 @@ encrypt=::BCrypt::Password.create("#{password}#{pepper}", :cost =>stretches ).to
   		end
 	end
 	render :text=>"done"
-=end
+
 
 			@meta=Meta.where("controller= 'Vendor' and  page='Vendor Signup'").last
 			if !@meta.blank?
@@ -174,29 +199,21 @@ encrypt=::BCrypt::Password.create("#{password}#{pepper}", :cost =>stretches ).to
 		   if params[:back_button]  
 		     @vendor.previous_step  
 		     elsif @vendor.last_step?
-			if @vendor.vendor_type.downcase=="restaurants"
-				@rest=Restaurant.new(session[:vendor_params])
-				@rest.save
-				@vendor=nil
-				@vendor=@rest
-					@admin =User.where("admin=1")
-		      	@admin.each do |admin|
-		      	@admin=admin
-		  	 		BusinessclaimMailer.newbusiness(@admin, @vendor).deliver
-		  	 		end
-			else
-			      @vendor = Vendor.new(session[:vendor_params])
+			
+			      @vendor = Vendor.create(session[:vendor_params])
 				   @vendor.save if @vendor.all_valid? 
-						@admin =User.where("admin=1")
-				   	@admin.each do |admin|
-				   	@admin=admin
-			  	 		BusinessclaimMailer.newbusiness(@admin, @vendor).deliver 
-						end
-			end
+				   
+				   
+						#@admin =User.where("admin=1")
+				   	#@admin.each do |admin|
+				   	#@admin=admin
+			  	 		#BusinessclaimMailer.newbusiness(@admin, @vendor).deliver 
+						#end
+
 		else  
 		  @vendor.next_step  
 		end  
-		session[:vendor_step] = "profile" 
+		session[:vendor_step] = @vendor.current_step 
         end  
 	      if @vendor.new_record?  
 		render 'new'  
@@ -208,57 +225,35 @@ encrypt=::BCrypt::Password.create("#{password}#{pepper}", :cost =>stretches ).to
        end  
   #end create
 
+=end
 ################################################################################# 
  
   def edit
-  	if !session[:vendor].nil? 
-	  	if session[:vendor].id==params[:id].to_i
-			if !session[:vendor].vendor_type.empty? && session[:vendor].vendor_type!="restaurants"
-			 	@vendor=Vendor.find(params[:id])
-			 else
-			 	@vendor=Restaurant.find(params[:id])
-			 end
-		else
-			@vendor=session[:vendor] #for user couldn't access other profile only saw own
-		end
-	else
-     redirect_to(vendorlogin_vendors_path, :notice => 'Please login to process.')          
-	end
+
+ 	@vendor=Vendor.find(params[:id])
+			
   end
 
 
 
   def update
-  if !session[:vendor].vendor_type.empty? && session[:vendor].vendor_type!="restaurants"
 		 @vendor=Vendor.find(params[:id])
 		  respond_to do |format|
-		   if @vendor.update_attributes(params[:vendor])
-		     #format.html { redirect_to(vendorInfo_path(@vendor.id)+"/#{session[:vendor].vendor_type}") }
- 	 format.html {	redirect_to "/vendors/profile/#{session[:vendor].vendor_type}/#{session[:vendor].id}/"+"#{session[:vendor].business_name}".gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").gsub('.'," ").strip }
-		     format.xml  { head :ok }
-		       else
-		     format.html { render :action => "edit" }
-		     format.xml  { render :xml => @vendor.errors, :status => :unprocessable_entity }
-		    end
+					if @vendor.update_attributes(params[:vendor])
+					  #format.html { redirect_to(vendorInfo_path(@vendor.id)+"/#{session[:vendor].vendor_type}") }
+		 	 format.html {	redirect_to profile_vendors_path(current_vendor) }
+					  format.xml  { head :ok }
+						 else
+					  format.html { render :action => "edit" }
+					  format.xml  { render :xml => @vendor.errors, :status => :unprocessable_entity }
+					 end
 		   end      
-    else
-        @vendor=Restaurant.find(params[:id])
-		  respond_to do |format|        
-         if @vendor.update_attributes(params[:restaurant])
-        #format.html { redirect_to(vendorInfo_path(@vendor.id)+"/restaurants"+"/#{session[:vendor].business_name}") }
- 	 		format.html {	redirect_to "/vendors/profile/#{session[:vendor].vendor_type}/#{session[:vendor].id}/"+"#{session[:vendor].business_name}".gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").gsub('.'," ").strip }
-        format.xml  { head :ok }
-           else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @vendor.errors, :status => :unprocessable_entity }
-      end
-      end
-    end
-  end
-
+end
+  
+  
   
   def businessclaim
-  params[:businessclaim]
+  	params[:businessclaim]
 	@cfname= params[:businessclaim][:claimfname]
 	@clname= params[:businessclaim][:claimlname]
 	@cemail= params[:businessclaim][:claimemail]
@@ -272,86 +267,28 @@ encrypt=::BCrypt::Password.create("#{password}#{pepper}", :cost =>stretches ).to
 	@captchastatus="false"
 	render 'search'
 	#redirect_to(vendor_path) 
-	  else	 	  
+  else	 	  
 	  @claim=Businessclaim.new(params[:businessclaim])
 	   
-	  if @claim.save
-	  	  
-		  if params[:businessclaim][:business_type].downcase=="restaurants"
-		  	Restaurant.find(params[:businessclaim][:vr_id]).update_attributes(:status=>"Pending approval")
-		  	@business=Restaurant.find(params[:businessclaim][:vr_id])
-		  	@admin =User.where("admin=1")
-         @admin.each do |admin|
-         @admin=admin
-		  	 BusinessclaimMailer.businessclaim(@admin, @claim, @business).deliver
-		  	 end
-		  else
-		  	Vendor.find(params[:businessclaim][:vr_id]).update_attributes(:status=>"Pending approval")
-		  	@business=Vendor.find(params[:businessclaim][:vr_id])
-		  	@admin =User.where("admin=1")
-         @admin.each do |admin|
-         @admin=admin
-		  	 BusinessclaimMailer.businessclaim(@admin, @claim, @business).deliver
-		  	 end
-		  end
-	  		redirect_to(vendor_path, :notice => 'Successfully claimed.')
-		else
-		  render :action => "new"
-		end
+		  if @claim.save
+			  	Vendor.find(params[:businessclaim][:vr_id]).update_attributes(:status=>"Pending approval")
+			  	@business=Vendor.find(params[:businessclaim][:vr_id])
+			  	@admin =User.where("admin=1")
+						@admin.each do |admin|
+						@admin=admin
+					  	BusinessclaimMailer.businessclaim(@admin, @claim, @business).deliver
+				  	   end
+
+		  		redirect_to(vendor_path, :notice => 'Successfully claimed.')
+			else
+			  render :action => "new"
+			end
 	end 
-	end
+end
 
 
 #############################################################
 
-   def vendorlogin
-			@meta=Meta.where("controller= 'Vendors' and  page='Vendor Signin'").last
-			if !@meta.blank?
-			@meta_title=@meta.metatitle
-			@meta_keywords=@meta.keywords
-			@meta_description=@meta.description
-			end
-	end
-
-
-############################################################
-	
-	def vendorlogin1
-
-	@vendor=Vendor.find_by_sql("select * from vendors where email='"+params[:email]+"'")
-	if @vendor!=nil && !@vendor.empty?
-		if @vendor.first.password == params[:password] && !params[:password].empty?
-	   	session[:vendor]=@vendor.first
-      	   #redirect_to (vendorInfo_path(@vendor.first.id)+"/#{session[:vendor].vendor_type}")
-
- 		redirect_to "/vendors/profile/#{session[:vendor].vendor_type}/#{session[:vendor].id}/"+"#{session[:vendor].business_name}".gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").gsub('.'," ").strip
-	 
-      else
-     	  redirect_to(vendorlogin_vendors_path, :notice => 'incorrect password.') 
-		end
-   else
-     @vendor=Restaurant.find_by_sql("select * from restaurants where email='"+params[:email]+"'")
-     if @vendor!=nil && !@vendor.empty?
-		if @vendor.first.password== params[:password] && !params[:password].empty?
-	   	session[:vendor]=@vendor.first
-     	   #redirect_to (vendorInfo_path(@vendor.first.id)+"/restaurants"+"/#{session[:vendor].business_name}")
-			 redirect_to "/vendors/profile/#{session[:vendor].vendor_type}/#{session[:vendor].id}/"+"#{session[:vendor].business_name}".gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").gsub('.'," ").strip	 
-      		else
-     	  redirect_to(vendorlogin_vendors_path, :notice => 'incorrect password.') 
-		end
-     else
-       redirect_to(vendorlogin_vendors_path, :notice => 'User not found.')          
-	   end
-     end
-	end
-
-###############################################################################
-	
-	def logout_vendor
-		session[:vendor]=nil
-		redirect_to vendorlogin_vendors_path
-	end
-	
 
 
 	def auto_search
@@ -599,6 +536,9 @@ encrypt=::BCrypt::Password.create("#{password}#{pepper}", :cost =>stretches ).to
 end
 
 #########################################################################################
+
+
+
   def notifications
 
   @user=User.find(params[:notificatonToId])

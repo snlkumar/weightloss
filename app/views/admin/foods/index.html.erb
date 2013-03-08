@@ -48,9 +48,12 @@
         <tr  class="<%#= cycle('odd', '') %>">
           <td><%=link_to food.name, edit_admin_food_path(food) %></td>
           <td class="actions">
+				<%if params[:adminApproved]%>
+				<%= link_to "Approve", :controller => "admin/foods", :action => "adminApproved", :id => food.id %> | 
+				<%end%>
             <%= link_to 'Edit', edit_admin_food_path(food)%> | 
-            <%= link_to 'Delete', [:admin, food], :confirm => 'Are you sure?', :method => :delete %>
-          </td>
+            <%= link_to 'Delete', [:admin, food], :confirm => 'Are you sure?', :method => :delete %> 
+
         </tr>
       <% end %>
     </tbody>

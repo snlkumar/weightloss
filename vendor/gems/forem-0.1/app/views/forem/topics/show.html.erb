@@ -86,10 +86,10 @@
 	border: 1px solid #888888;
 	display: none;
 	position: fixed;
-	top: 8%;
+	top: 2.4%;
 	left: 22%;
 	width: 45%;
-	height:70%;
+	height:89%;
 	padding: 16px;
 	border: 8px solid #888888;
 	background-color:#FBF9FF;
@@ -157,80 +157,6 @@ $("#closeReply").click(function(){
 
 
 
-
-<!------------- alert---------------------->
-
-<div id="light" class="white_content">
-
-	<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
-	
-<div style="background-image:url('/assets/close.png');float:right;width:30px;height:30px;margin-right:-2.8em;margin-top:-2.8em;"></div>
-</a>
-
-			<div style="margin-left:0%;margin-top:2em;">
-			
-			<h1 style="color:#0A2B42; font-size:20px;">You must be logged in to post the comment !!</h1>
-			<HR>
-			</div>
-			<br/>
-			
-			
-					<div style="float:right;margin-right:4%;margin-top:5%;"><%= image_tag 'footer-logo.jpg',:style=>"float:right;margin-right:14%;"%> 
-					<br/><br/>
-		  			<div style="width:15em;margin-top:6em;"> <font size="3" color="grey"> Already a User ? <font color="#0A2B42">Login</font> </font><br/><br/>							
-												 <%#= render :partial => '/shared/flash', :locals => {:flash => flash} %>
-												 
-												 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-													<p>
-													  <%= f.label :email, "Email:" %> 
-													  <%= f.text_field :email, :autofocus => 'autofocus',:style=>"width:13em;height:1.2em;" %><br/>
-
-													  <%= f.label :password, "Password:" %> 
-													  <%= f.password_field :password,:style=>"width:13em;height:1.2em;"  %><br/>
-								<input type="button" class="button grid_3" style="height:26px;font-size:10pt;width:4.6em;padding:0;margin:0;" onclick="submit()" value=" Sign In " />
-													</p>
-											
-											<% end %>
-								  </div>		
-										
-					</div> 
-	
-	
-					
-					      
-	<div>						
-					<font size="5">Don't have an account?</font>	<br/>	<br/>		
-			<div>
-					<a href="<%= main_app.new_user_registration_path %>" id="large-orange-button">
-			 	 	<div>Sign Up!</div>
-			  		<span>It's super easy and fun.</span>
-			  		<%= image_tag 'arrow.png' %>
-			  		</a></div><br/><br/><br/>
-			  
-						  
-					<font size="3" color="#0A2B42"><font color="grey">FREE &raquo; </font>Join Now<br/><br/>
-					<font color="grey">Signing up for a MyWeightWorld account<br/>	 gives you unlimited access to</font> <br/> <br/>
-					&raquo;Customized Content<br/>
-					&raquo;Massive Online Community<br/>
-					&raquo;Track Your Progress</font>
-
-		</div>
-
-</div>				  
-
-				 
-				  
-
-
-  
-
-<div id="fade" class="black_overlay"></div>      
-
-        
-</div>
-
-
-
 <!--------------------end--------------->
 
 
@@ -250,9 +176,82 @@ $("#closeReply").click(function(){
 <div id="waiting" style="display:none;position:fixed;top:60%;left:50%;z-index:1002">
   <%=image_tag "/assets/ajax-loader.gif", :style=>"margin:-45% 0 0 50%" %>
 </div>
+
+
+
+
+
+<!------------- alert---------------------->
+
+<div id="light" class="white_content">
+
+	<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">
+	
+<div style="background-image:url('/assets/close.png');float:right;width:30px;height:30px;margin-right:-2.8em;margin-top:-2.8em;"></div>
+</a>
+				
+					      
+	<div>	
+	
+
+			<p align="left"><img src="/assets/youmustbe.png"></p>
+
+			<p align="left"><img src="/assets/divider.png"></p>
+
+			<p align="left"><font size="2"><font face="arial"><b>Log In With MyWeightWorld Account</b></font></font></p>
+
+			<align="left"><img src="/assets/memberlog.png" alt="Member Log"> <br/>
+
+
+		  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+			  <input type="email" "text" size="20" style="height:30px"  name="user[email]" ><br/>
+
+			  <input type="password" "text" size="20" style="height:30px;padding:0px;" name="user[password]"><br/>
+
+			  <font size="2"><font face="arial">
+			  <input type="checkbox" name="password" name="user[remember_me]" >Remeber Me</font></font>
+
+			  <p><img src="/assets/login.png" onclick="submitme()"></p>
+		 <% end %>
+		
+				<div style="float:right;">
+				 <p><img src="/assets/girl.png" align="right" style="margin-top:-9em;"></p>
+				</div>
+				
+			<font size="3"><font face="arial"><b>Don't Have an Account?<align="left"><img src="/assets/freejoin.png"></b></font></font>
+			<p align="left"><font size="2"><font face="arial">In addition to liking and commenting,<br>
+			signing up to a free MyWeightWorld<br>
+			account gives you unlimited access to<br></font></font></p>
+			
+			
+			<align="left"><img src="/assets/arrow1.png"><font size="3"><font face="arial"><b>Massive Online Community</b></font></font><br>
+			<align="left"><img src="/assets/arrow1.png"><font size="3"><font face="arial"><b>Track Your Progress</b></font></font><br> 
+			<align="left"><img src="/assets/arrow1.png"><font size="3"><font face="arial"><b>Connect to Leading Experts</b></font></font><br>
+			<align="left"><img src="/assets/arrow1.png"><font size="3"><font face="arial"><b>Be Motivated By Others</b></font></font><br>
+			<align="left"><img src="/assets/arrow1.png"><font size="3"><font face="arial"><b>Track Your Calories/Activity and More</b></font></font></font>  &nbsp;&nbsp;&nbsp;&nbsp;	<a href="http://www.myweightworld.com">
+			<img src="/assets/sign-up.png"></a>		
+
+			</div>
+	
+		</div>
+
+	</div>				  
+
+<div id="fade" class="black_overlay"></div>      
+        
+</div>
+
+
+
 <!-- new code -->
 <!-- to show reply messages through ajax -->
 <script type="text/javascript">
+
+function submitme()
+{
+user_new.submit();
+}
+
 
 function show(loc,rplyId)	// this loc and rplyId send by forem/posts/post page's this link <li><%#= link_to "Reply", '#', :onclick=>"show('#{new_topic_post_path(@topic)}','?reply_to_id=#{post.id}')" %></li>
 {

@@ -1,12 +1,16 @@
 Myweightworld::Application.routes.draw do
 
-devise_for :vendors
-
+devise_for :vendors, :controllers => { :registrations => "vendorregistrations"}
+    get '/signvendor_in', :to => 'devise/sessions#new'
+    
 devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "users/omniauth_callbacks" } do
     get '/sign_in', :to => 'devise/sessions#new'
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
    
   end
+
+
+  get '/signvendor_in', :controller => "devise/sessions", :action => "new", :as => "sign_in"
 
 resources :notifications
 
@@ -65,9 +69,14 @@ if ActiveRecord::Base.connection.table_exists? 'meta'
  
  end
  
+ 
+ 
+   match '/finalize'     => 'vendors#finalize' , :as=>"vendorfinal"
+   match '/second_step'     => 'vendors#second_step'
 	match '/videos/:id' =>'Videos#show', :as=> "video"
 	match '/articles/:id' =>'Posts#show', :as=> "post"	
 	#new added routes
+	match '/admin/foods/adminApproved' =>'admin/foods#adminApproved', :as=>"adminApproved"	
 	match '/admin/vendors/search' =>'admin/vendors#search'
 	match '/custom_foods/new/:name' => 'custom_foods#new'
 	match '/custom_foods/searchFood' => 'custom_foods#searchFood', :as=>"searchFood"	
@@ -179,6 +188,9 @@ if ActiveRecord::Base.connection.table_exists? 'meta'
 		post  :vendormailer
 		post  ':id/addcustomfood', :action=>'addcustomfood'
 		get   :forumlist
+		get   ':id/forumtopics', :action=>'forumtopics'
+		get   ':forum_id/:topic_id/topicposts', :action=>'topicposts'
+		post  :postcomment
     end
     member do
       post :photo
