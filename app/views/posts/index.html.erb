@@ -1,4 +1,26 @@
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
 <h2>Articles</h2>
+
+<script>
+
+ $("li").hover(function () {
+
+ 	liclass=$(this).text().trim("\n");
+
+ 		$("#"+liclass).css("display","block");
+
+
+ 	
+});
+
+/*
+ $("#search-categories-sidebar").mouseout(function () {alert
+
+ 		$(".hiddenli").css("display","none");
+ 	
+}); */
+</script>
 
  <%= form_tag searches_path , :id => 'content-search' do %>
  <p>

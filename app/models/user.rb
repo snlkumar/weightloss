@@ -213,16 +213,18 @@ has_attached_file :photoafter, :styles      => { :thumb   => "16x16#", :medium =
   
   # CLass Methods  
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
-    data = access_token['extra']['user_hash']
+    data = access_token['extra']['raw_info']
+
     Rails.logger.error("FACEBOOK DATA: #{data.inspect}")
+
     Rails.logger.error("EXTRA: #{access_token['extra'].inspect}")
-    
+
     if user = User.find_by_email(data["email"])
       user
-    # else # Create a user with a stub password. 
-    #       User.create(:email => data["email"], :password => Devise.friendly_token[0,20], 
-    #                   :first_name => data["first_name"], :last_name => data["last_name"],
-    #                   :username => data["nickname"]) 
+     else # Create a user with a stub password. 
+           User.create(:email => data["email"], :password => Devise.friendly_token[0,20], 
+                      :first_name => data["first_name"], :last_name => data["last_name"],
+                      :username => data["nickname"],:gender=>data["gender"]) 
     end
   end
   

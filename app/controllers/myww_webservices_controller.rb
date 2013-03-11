@@ -986,8 +986,11 @@ end
 
 	def topicposts
       #@forum = Forem::Forum.find(params[:forum_id])
-	   @topic=Forem::Topic.find(params[:topic_id])
-	   @posts=@topic.posts
+	   #@topic=Forem::Topic.find(params[:topic_id])
+	   @posts=Forem::Post.where("topic_id="+params[:topic_id]+"") 
+
+	   
+	   #@posts=@topic.posts.all
 	   @posts1=@posts.map{|f| { :post=>f.text.html_safe, :created_at =>f.created_at.strftime("%m-%d-%Y"), :topic_id=>f.topic_id, :post_by=>f.try(:user)==nil ? "User No longer exist" : "Post by "+f.try(:user).try(:full_name)}}
 	   
   		respond_to do |format|
@@ -999,8 +1002,7 @@ end
 
 
 	def postcomment
-
-		@post=Forem::Post.create(:topic_id=>params[:topic_id],:text=>params[:text], :user_id=>params[:user_id])
+		@post=Forem::Post.create(:topic_id=>params[:topic_id].to_i,:text=>params[:text], :user_id=>params[:user_id].to_i)
 		if @post.save
 	      @status={"status"=>"posted"}	  		
 		else

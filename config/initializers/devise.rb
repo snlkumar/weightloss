@@ -194,13 +194,14 @@ Devise.setup do |config|
   
   if Rails.env.production?
     # MyWeightWorldDemo
-    config.omniauth :facebook, '205791342811826', 'c2c82ea2e63878c6688bf144e69de702',
-                    {:client_options => {:ssl => {:ca_path => '/etc/ssl/certs'}}}
+   config.omniauth :facebook, '529697903749066', '3f57c6be8c1321c9f3ae5fea39fc271f'#,
+                   #{:client_options => {:ssl => {:ca_path => '/etc/ssl/certs'}}}
   else
     # MyWeightWorldDemoLocal
     config.omniauth :facebook, '529697903749066', '3f57c6be8c1321c9f3ae5fea39fc271f'#,
                     #{:client_options => {:ssl => {:ca_path => '/etc/ssl/certs'}}}
   end
+
   
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

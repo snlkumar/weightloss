@@ -1,8 +1,26 @@
+
 <% if category.has_content? %>
+
   <li class="<%= params[:search] && params[:search][:category_id] == category.id.to_s ? 'selected' : '' %>">
     <%= link_to category.name, searches_path("search[category_id]" => category.id, "search[filter]" => 'articles'), "data-id" => category.id %>
   </li>
 <% end %>
 
 
+<!-- &#187;-->
+
+
+<% if category.descendants%>
+<div class="hiddenli" id="<%=category.name%>" style="display:none;">
+	<div style="margin-left:2em;" >
+	<% category.descendants.each do |category| %>
+	<%# if category.has_content? %>
+  		<li class="<%= params[:search] && params[:search][:category_id] == category.id.to_s ? 'selected' : '' %>">
+   &#187;		<%= link_to category.name, searches_path("search[category_id]" => category.id, "search[filter]" => 'articles'), "data-id" => category.id %>
+  		</li> 
+	<%# end %>
+	<%end%>
+	</div>
+</div>
+<%end%>
 
