@@ -56,13 +56,9 @@ input:-moz-placeholder {
           <td><%=vendor.created_at.nil? ? "" : vendor.created_at.strftime("%m/%d/%Y")%> </td>			
                     <td class="actions">
 
-			<% if vendor.vendor_type=="restaurants"%>
-           <%= link_to 'Details', admin_vendor_path(vendor.id)+"/restaurants"%>|
-            <%= link_to 'Edit', "/admin/vendors/#{vendor.id}/edit/restaurants" %>
-					<%else%>
-           <%= link_to 'Details', admin_vendor_path(vendor.id)+"/"+vendor.vendor_type%>|
-            <%= link_to 'Edit', "/admin/vendors/#{vendor.id}/edit/vendors" %>
-			<%end%> 
+		   <%= link_to 'Details', admin_vendor_path(vendor)%> |
+		    <%= link_to 'Edit', edit_admin_vendor_path(vendor) %>
+
 
             <%#= link_to 'Edit', "/admin/vendors/#{vendor.id}/edit/restaurants" %>
             <%#= link_to 'Delete', "/admin/vendors/#{vendor.id}/delete/restaurants", :confirm => 'Are you sure?', :method => :delete %>

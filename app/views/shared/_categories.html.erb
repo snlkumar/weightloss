@@ -1,15 +1,20 @@
 <!-- Categories  -->
+
 <div id="search-categories-sidebar" class="sidebar-container subsection" >
   <h4 class="sidebar-subheader">Categories</h4>
 
   <p>We have an extensive library to help you with many facets of fitness and wellness - peruse by category</p>
 
-  <ul id="search-categories">
-    <li>
-      <%= link_to 'All', searches_path %>
-    </li>
-    <%= render :partial => '/searches/category', :collection => @categories %>
-  </ul>
+   <%= content_for :js do %>
+      jQuery("#search-categories").superfish();
+    <% end %>
+
+    <ul class="sf-menu sf-vertical" id="search-categories">
+      <li>
+        <%= link_to 'All', searches_path %>
+      </li>
+      <%= render :partial => '/searches/post_category', :collection => @categories, :as => :category %>
+    </ul>
 
   <div class="clear">&nbsp;</div>
 </div>

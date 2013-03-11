@@ -976,7 +976,7 @@ end
 	def forumtopics
 		@forum = Forem::Forum.find(params[:id])
       @results = @forum.topics.visible.by_pinned_or_most_recent_post
-	   @topics=@results.map{|f| { :topic_id=>f.id, :subject =>f.subject, :locked=>f.locked, :started_by=>f.posts.try(:last).try(:user)==nil ? "User No longer exist" : "started by "+f.posts.try(:last).try(:user).try(:full_name)}}
+	   @topics=@results.map{|f| { :topic_id=>f.id, :subject =>f.subject, :locked=>f.locked?.to_s, :started_by=>f.posts.try(:last).try(:user)==nil ? "User No longer exist" : "started by "+f.posts.try(:last).try(:user).try(:full_name)}}
 
   		respond_to do |format|
   		format.js { render :json =>@topics}
@@ -989,10 +989,12 @@ end
 	   #@topic=Forem::Topic.find(params[:topic_id])
 	   @posts=Forem::Post.where("topic_id="+params[:topic_id]+"") 
 
-	   
-	   #@posts=@topic.posts.all
-	   @posts1=@posts.map{|f| { :post=>f.text.html_safe, :created_at =>f.created_at.strftime("%m-%d-%Y"), :topic_id=>f.topic_id, :post_by=>f.try(:user)==nil ? "User No longer exist" : "Post by "+f.try(:user).try(:full_name)}}
-	   
+			if @posts.present?
+			   #@posts=@topic.posts.all
+			@posts1=@posts.map{|f| { :post=>f.text.html_safe, :created_at =>f.created_at.strftime("%m-%d-%Y"), :topic_id=>f.topic_id, :post_by=>f.try(:user)==nil ? "User No longer exist" : "Post by "+f.try(:user).try(:full_name)}}
+			else
+				@posts1="NULL"
+			end
   		respond_to do |format|
   		format.js { render :json =>@posts1}
 		end

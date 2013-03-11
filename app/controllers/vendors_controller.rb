@@ -5,20 +5,20 @@ class VendorsController < ApplicationController
 
   def search
     if !params[:searchtype].nil?
-      if params[:filterQuery].nil? 
-        params[:filterQuery]=""	
-      end
+		   if params[:filterQuery].nil? 
+		     params[:filterQuery]=""	
+		   end
 
-      if params[:searchtype]=="all"
+		   if params[:searchtype]=="all"
 
-        @data=Vendor.where("city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
-        @cols="all"
+		     @data=Vendor.where("city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(30)
+		     @cols="all"
 
-      else
-      
-		 @data=Vendor.where("vendor_type ='"+params[:searchtype]+"' and (city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%')").page(params[:page] || 1).per(30)
-        @cols="other" 
-      end	
+		   else
+		   
+			 @data=Vendor.where("vendor_type ='"+params[:searchtype]+"' and (city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%')").page(params[:page] || 1).per(30)
+		     @cols="other" 
+		   end	
     end
 
 		@meta=Meta.where("controller= 'Vendors' and  page='Vendor Search'").last
@@ -241,7 +241,7 @@ encrypt=::BCrypt::Password.create("#{password}#{pepper}", :cost =>stretches ).to
 		  respond_to do |format|
 					if @vendor.update_attributes(params[:vendor])
 					  #format.html { redirect_to(vendorInfo_path(@vendor.id)+"/#{session[:vendor].vendor_type}") }
-		 	 format.html {	redirect_to profile_vendors_path(current_vendor) }
+		 			 format.html {	redirect_to profile_vendors_path(current_vendor) }
 					  format.xml  { head :ok }
 						 else
 					  format.html { render :action => "edit" }
@@ -258,7 +258,7 @@ end
 	@clname= params[:businessclaim][:claimlname]
 	@cemail= params[:businessclaim][:claimemail]
 	@contact= params[:businessclaim][:claimcontact]
-	@vr_id= params[:businessclaim][:vr_id]
+	@vendor_id= params[:businessclaim][:vendor_id]
 	@btype= params[:businessclaim][:business_type]
 	@stat= params[:businessclaim][:status]
 	
@@ -269,10 +269,9 @@ end
 	#redirect_to(vendor_path) 
   else	 	  
 	  @claim=Businessclaim.new(params[:businessclaim])
-	   
+	  	@business=Vendor.find(params[:businessclaim][:vendor_id])	   
 		  if @claim.save
-			  	Vendor.find(params[:businessclaim][:vr_id]).update_attributes(:status=>"Pending approval")
-			  	@business=Vendor.find(params[:businessclaim][:vr_id])
+			  	@business.update_attributes(:status=>"Pending approval") # devise not updating it if email is blank........
 			  	@admin =User.where("admin=1")
 						@admin.each do |admin|
 						@admin=admin

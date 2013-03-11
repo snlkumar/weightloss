@@ -105,8 +105,8 @@
     <%= render :partial => 'layouts/footer' %>
     
     <%= render :partial => "layouts/js_libs" %>
-    
-    <%= javascript_include_tag 'search' %>
+    <%= stylesheet_link_tag 'superfish', 'superfish-vertical' %>
+    <%= javascript_include_tag 'search', 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', 'hoverIntent', 'superfish' %>
     
     <script type="text/javascript">var switchTo5x=true;</script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>

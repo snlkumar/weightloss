@@ -1,7 +1,11 @@
 Myweightworld::Application.routes.draw do
 
-devise_for :vendors, :controllers => { :registrations => "vendorregistrations"}
-    get '/signvendor_in', :to => 'devise/sessions#new'
+devise_for :vendors, :controllers => { :registrations => "vendorregistrations"} do
+
+  get '/signvendor_in', :controller => "devise/sessions", :action => "new", :as => "sign_in"
+#    get '/signvendor_in', :to => 'devise/sessions#new'
+
+ end
     
 devise_for :users, :controllers => { :registrations => "registrations", :omniauth_callbacks => "users/omniauth_callbacks" } do
     get '/sign_in', :to => 'devise/sessions#new'
@@ -10,7 +14,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
   end
 
 
-  get '/signvendor_in', :controller => "devise/sessions", :action => "new", :as => "sign_in"
+
 
 resources :notifications
 
@@ -90,7 +94,7 @@ if ActiveRecord::Base.connection.table_exists? 'meta'
 	
 	##create dynamic routes
 	match '/admin/posts/drafts' => 'admin/posts#drafts'
-	match '/admin/vendors/:id/up' =>'admin/vendors#update_vendor'
+#	match '/admin/vendors/:id/up' =>'admin/vendors#update_vendor'
 
 	
 	
@@ -98,9 +102,9 @@ if ActiveRecord::Base.connection.table_exists? 'meta'
 #2	match '/vendor/(:searchtype)/(:filterQuery)' => 'Vendors#search',   :as => 'vendor'
 	
 	
-	match '/admin/vendors/:id/(:restaurants)' =>'admin/vendors#show'
-	match '/admin/vendors/:id/edit/(:restaurants)' =>'admin/vendors#edit_vendor'
-	match '/admin/vendors/:id/delete/(:restaurants)' =>'admin/vendors#delete_vendor'
+#	match '/admin/vendors/:id' =>'admin/vendors#show'
+#	match '/admin/vendors/:id/edit/(:restaurants)' =>'admin/vendors#edit_vendor'
+#	match '/admin/vendors/:id/delete/(:restaurants)' =>'admin/vendors#delete_vendor'
 
 	 
 	##
@@ -189,7 +193,8 @@ if ActiveRecord::Base.connection.table_exists? 'meta'
 		post  ':id/addcustomfood', :action=>'addcustomfood'
 		get   :forumlist
 		get   ':id/forumtopics', :action=>'forumtopics'
-		get   ':forum_id/:topic_id/topicposts', :action=>'topicposts'
+#		get   ':forum_id/:topic_id/topicposts', :action=>'topicposts'
+		post   :topicposts, :action=>'topicposts'
 		post  :postcomment
     end
     member do

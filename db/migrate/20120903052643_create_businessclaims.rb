@@ -7,7 +7,7 @@ class CreateBusinessclaims < ActiveRecord::Migration
       t.string :claimcontact
       t.string :business_type      
       t.string :status            
-		t.integer :vr_id	
+		t.integer :vendor_id	
 
       t.timestamps
     end

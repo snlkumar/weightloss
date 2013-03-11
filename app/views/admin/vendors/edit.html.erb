@@ -1,7 +1,7 @@
 <link href="/assets/style_v4.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 
-select#vendor_state,#vendor_country,#vendor_p_country,#vendor_p_state,#vendor_vendor_type,#restaurant_state,#restaurant_country,#restaurant_p_country,#restaurant_p_state,#restaurant_vendor_type{
+select#vendor_state,#vendor_country,#vendor_p_country,#vendor_p_state,#vendor_vendor_type{
     width:235px;
     height:25px;
 margin-top:-5px; 
@@ -58,7 +58,7 @@ input:-moz-placeholder {
 
 <div style="margin-left:5%">
 	
-<%= form_for @vendor, :url => "/admin/vendors/#{@vendor.id}/up" ,:method => :put do |f| %>
+<%= form_for @vendor, :url => "/admin/vendors/#{@vendor.id}" ,:method => :put do |f| %>
 
 
 	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="border_grey">

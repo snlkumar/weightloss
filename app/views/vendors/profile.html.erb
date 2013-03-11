@@ -14,7 +14,7 @@
           <p id="user-name" class="grid_5" style="font-size:1.5em;"><%= @vendor.business_name %></p>
           <div class="profile-avatar avatar"><%= image_tag(@vendor.photo.url(:profile)) %></div>
 			 <div class="sidebar-container" style=""><%if current_vendor && current_vendor.id == @vendor.id%>
-			 <%= link_to 'Edit', edit_vendor_path(current_vendor.id), :id => 'edit-profile', :class => 'outlined-fade', :title => 'Edit your profile' %><%end%>
+			 <%= link_to 'Edit', edit_vendor_path(current_vendor), :id => 'edit-profile', :class => 'outlined-fade', :title => 'Edit your profile' %><%end%>
 
 
 

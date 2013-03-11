@@ -36,7 +36,7 @@ input:-moz-placeholder {
   <br/>
     <h2 style="font-size:20px;text-align:center;background-color:#0B2B42;color:white;">Vendors</h2>
 
-
+<!--
 <div style="float:left;">  
   <form id="vendorform" method='get' action="<%=admin_vendors_path%>">
   <input type="hidden" id="status" name="status" value="true">
@@ -49,7 +49,7 @@ input:-moz-placeholder {
   <input type="hidden" id="status" name="status" value="false">
   <button style="width:95px;background-color:#2E8DC0;" onclick=submit()>Vendors</button>
   </form></div>
-
+-->
 <!--
 <div style="float:right;">    
   <button style="width:95px;background-color:#2E8DC0;" onclick="document.location='<%=admin_vendors_search_path()%>'">Search</button> 
@@ -77,42 +77,6 @@ input:-moz-placeholder {
   
   <br/>
 
-<%if @status=="true"%>
-
-<table class="sort-table">
-  <thead>
-    <tr>
-      <th class="header">#</th>
-        <th class="header">Name</th>
-        <th class="header">Vendor Type</th>
-        <th class="header">Phone</th>
-        <th class="header">Email</th>
-		  <th class="header">Created on</th>		
-        <th class="header">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @vendors.each_with_index do |vendor, index| %>
-      <tr class="<%= cycle('even', 'odd') %>">
-      <td><%= index + 1 %></td>
-          <td><%=vendor.business_name%> </td>
-          <td><%=vendor.vendor_type%> </td>
-          <td><%=vendor.contact1%> </td>
-          <td><%=vendor.email%> </td>
-          <td><%=vendor.created_at.nil? ? "" : vendor.created_at.strftime("%m/%d/%Y")%> </td>			
-                    <td class="actions">
-           <%= link_to 'Details', admin_vendor_path(vendor.id)+"/restaurants"%> |
-            <%= link_to 'Edit', "/admin/vendors/#{vendor.id}/edit/restaurants" %> |
-            <%= link_to 'Delete', "/admin/vendors/#{vendor.id}/delete/restaurants", :confirm => 'Are you sure?', :method => :delete %>
-	   </td>
-
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
-<%else%>
-
 <table class="sort-table">
   <thead>
     <tr>
@@ -135,9 +99,9 @@ input:-moz-placeholder {
           <td><%=vendor.email%> </td>
           <td><%=vendor.created_at.nil? ? "" : vendor.created_at.strftime("%m/%d/%Y")%> </td>			
                     <td class="actions">
-		   <%= link_to 'Details', admin_vendor_path(vendor.id)%> |
-		    <%= link_to 'Edit', "/admin/vendors/#{vendor.id}/edit/vendors" %> |
-            <%= link_to 'Delete', "/admin/vendors/#{vendor.id}/delete/vendors", :confirm => 'Are you sure?', :method => :delete %>
+		   <%= link_to 'Details', admin_vendor_path(vendor)%> |
+		    <%= link_to 'Edit', edit_admin_vendor_path(vendor) %> |
+            <%= link_to 'Delete', admin_vendor_path(vendor), :confirm => 'Are you sure?', :method => :delete %>
 	   </td>
 
     </tr>
@@ -145,7 +109,6 @@ input:-moz-placeholder {
   </tbody>
 </table>
 
- <%end%>
 </div> 
 
   

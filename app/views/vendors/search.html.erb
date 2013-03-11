@@ -87,9 +87,10 @@ function submitFormByEnter(event) {
         submitForm();
     }
 }
+
 function showClaimForm(a,b){
 document.getElementById('business_type').value=a;
-document.getElementById('vr_id').value=b;
+document.getElementById('vendor_id').value=b;
 document.getElementById('light').style.display='block';
 document.getElementById('fade').style.display='block';
 }
@@ -102,7 +103,7 @@ $(window).load(function() {
 	document.getElementById('claimlname').value="<%=@clname%>";
 	document.getElementById('claimemail').value="<%=@cemail%>";
 	document.getElementById('business_type').value="<%=@btype%>";
-   document.getElementById('vr_id').value="<%=@vr_id%>";
+   document.getElementById('vendor_id').value="<%=@vendor_id%>";
    document.getElementById('status').value="<%=@stat%>";
    document.getElementById('claimcontact').value="<%=@contact%>";
    document.getElementById('fade').style.display='block';
@@ -188,13 +189,15 @@ $("#vendor-claim").submit();}
 }
 
 
-
+/*
 function getTdVal(mid)
 	{
 		vendorGridTable=document.getElementById('VendorGridTable');
 		document.getElementById("vendor-search-query").value=(vendorGridTable.rows[document.getElementById(mid).rowIndex].cells[0].innerHTML).split('-')[0];
 	}
 
+
+*/
 </script>
 
 <div id="nav-bar" style="margin-left:22.7em;margin-top:-4.4%;">
@@ -234,7 +237,7 @@ function getTdVal(mid)
   
     <div style="float:left;margin-left:1%;padding-top:.5em;">
     <br>
-      <input type="button" class="button grid_3" style="height:26px;font-size:10pt;width:4em;padding:0;margin:0;" onclick="submitForm()" value=" Search " />
+      <input type="button" class="button grid_3" style="height:26px;font-size:10pt;width:6em;padding:0;margin:0;" onclick="submitForm()" value=" Search " />
     </div>
     <div style="float:left;margin-left:1%;padding-top:.5em;">
     <br>
@@ -305,7 +308,6 @@ function getTdVal(mid)
 <div style="overflow:auto;width:90em;">
   <table style="border-collapse:separate;border-spacing:2px;width:87em;">
     <tr class="head-table">
-     <%if @cols!="restaurants"%>
 		<th>Company</th>
 		<% if @cols=="all"%>
       <th>Vendor Type</th>
@@ -323,16 +325,7 @@ function getTdVal(mid)
         <th>Email</th>
         <th>Website Address</th>-->
         <th>Claim</th>
-      <%elsif @cols=="restaurants"%>
-      <th>Company</th>
-        <th>Name</th>
-        <th>Address</th>
-        <th>City</th>
-        <th>State</th>
-        <th>Zip</th>
- <!--       <th>Restaurant Type</th>-->
-        <th>Claim</th>
-     <%end%>
+
     </tr>
     <% @data.each do |row| %>
       <tr class="<%= cycle('even','odd') %>">
@@ -404,7 +397,7 @@ function getTdVal(mid)
         <input type="text" id="claimcontact" name="businessclaim[claimcontact]" value="" style="height:1.2em;width:12em;"/></br>
       	
         <input type="hidden" id="business_type" name="businessclaim[business_type]" value="">
-        <input type="hidden" id="vr_id" name="businessclaim[vr_id]" value="">
+        <input type="hidden" id="vendor_id" name="businessclaim[vendor_id]" value="">
         <input type="hidden" id="status" name="businessclaim[status]" value="Pending approval">
 						</div>
 			
@@ -418,8 +411,12 @@ function getTdVal(mid)
 <div id="fade" class="black_overlay"></div>
 <!-- end -->
 
+
+
+
+<!--
 <script type="text/javascript" charset="utf-8">
-  <% content_for :js do %>
+/*  <% content_for :js do %>
 	jQuery("#vendor-search-query").keyup(function() {
 			data=$("#vendor-search-query").val();			
 			if(data.length>2 && data!="")
@@ -497,5 +494,5 @@ function tCols(colData)
 	return col+"</tr>";
 }
 
-<% end %>
-</script>
+<% end %> */
+</script>-->

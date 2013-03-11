@@ -14,7 +14,7 @@
     <h2 style="font-size:20px;align:center;background-color:#0B2B42;width:46em;">Business Detail</h2>
 
   
-  <% if @status!="true"%>
+
     <table border="0" width="57%" style="float:left;margin-left:15em;height:40em;background-color:#E6EEEE;border:1px solid;" align="center">
     <tr>
       <td colspan="2"><h2 style="background-color:#cccccc;width:33em;"><%= @data.business_name %></h2></td>
@@ -83,32 +83,5 @@
     </tr>
     <tr>
 	</table>
-	<%else%>
-    <table border="0" width="57%" style="float:left;margin-left:15em;height:20em;background-color:#E6EEEE;border:1px solid;" align="center">
-      <tr>
-        <td colspan="2"><h2 style="background-color:#cccccc;width:33em;"><%= @data.business_name %></h2></td>
-      </tr>
-	    <tr>
-		    <td style="padding-left:10%;"><label>Address</label></td>
-		    <td><%=@data.address1%></td>	
-	    </tr>
-	    <tr>
-		    <td width="30%" style="padding-left:10%;"><label>City</label></td>
-		    <td><%=@data.city%></td>
-	    </tr>
-	     <tr>
-		    <td width="30%" style="padding-left:10%;"><label>State</label></td>
-		    <td><%=@data.state%></td>
-	    </tr>
-	    <tr>
-			  <td style="padding-left:10%;"><label>Zipcode</label></td>
-			  <td><%=@data.zipcode%></td>
-	    </tr>
-	    <tr>
-		    <td style="padding-left:10%;"><label>Restaurent type</label></td>
-		    <td><%=@data.restaurent_type%></td>	
-      </tr>
-	</table><br/><br/>
-<%end%>
 
 <%= link_to 'Back', :back, :style=>"margin-left:0%;" %>
