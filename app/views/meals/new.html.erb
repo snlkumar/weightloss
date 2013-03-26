@@ -570,18 +570,21 @@ else
 
 <script type="text/javascript" charset="utf-8">
   <% content_for :js do %>
+  var lastXhr;
+  
 	jQuery("#food-item-entry1").keyup(function() {
 			data=$("#food-item-entry1").val();			
 			if(data.length>2 && data!="")
 			{
-				$.ajax({
+        if (lastXhr) lastXhr.abort();
+			   lastXhr = $.ajax({
             type : "GET",
             url : '/foods/search/?term='+$("#food-item-entry1").val(),
             dataType : "html",
             success: function(data) {
 						//parse json data
 						obj=jQuery.parseJSON(data);
-            $("#ajaxAutoComplete").html(dataGrid(obj));
+                  $("#ajaxAutoComplete").html(dataGrid(obj));
 						$("#ajaxAutoComplete").css("display","block");
 						$("#gridHeader").css("display","block");
 					
@@ -596,11 +599,15 @@ else
 							$("#gridHeader").css("top","76%");
 						}*/
 
-            },
+            }
+            
+        /*    ,
             error : function() {
              // $("#dt").html("Sorry, The requested property could not be found.");
 							alert("Sorry, The requested property could not be found.");
             }
+            
+           */ 
           });
 			}
 			else

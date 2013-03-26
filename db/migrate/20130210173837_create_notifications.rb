@@ -5,13 +5,17 @@ class CreateNotifications < ActiveRecord::Migration
 
       t.string  :notification_type
       t.string :notificationFrequency
-      t.string :turnOnNotification           
-    
+      t.date :nextrundate
+
+      t.string :mealslist          
+      t.string :exerciseslist          
+      t.string :amount          
+      t.string :do_dont, :default => 0          
+    	t.string :time
       t.string  :notificationable_type
       t.string :notificationTo
       t.string :notificationToId      
       t.string :message
-      t.integer :hideNotification, :default => 0
       t.timestamps
     end
   end

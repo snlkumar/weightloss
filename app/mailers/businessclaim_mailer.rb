@@ -2,40 +2,45 @@ class BusinessclaimMailer < ActionMailer::Base
 include SendGrid
   default :from => "noreply@myweightworld.com"
    
-   def rejected(claim, business)
-    @claim = claim
-    @business= business
-    mail(:from => "noreply@myweightworld.com", :to => @claim.claimemail, :subject => "Business claim status")
-  end
+	def rejected(claim, business)
+		@claim = claim
+		@business= business
+		mail(:from => "noreply@myweightworld.com", :to => @claim.claimemail, :subject => "Business claim status")
+	end
   
-    def accepted(claim, business)
-    @claim = claim
-    @business= business
-    mail(:from => "noreply@myweightworld.com", :to => @claim.claimemail, :subject => "Business claim status")
-  end
+	def accepted(claim, business)
+		@claim = claim
+		@business= business
+		mail(:from => "noreply@myweightworld.com", :to => @claim.claimemail, :subject => "Business claim status")
+	end
+ 
+ 
   
-   def businessclaim(admin, claim, business)
-    @claim = claim
-    @admin = admin
-    @business= business
-    mail(:from => "noreply@myweightworld.com", :to => @admin.email, :subject => "New business claim")
-  end 
+	def businessclaim(admin, claim, business)
+		@claim = claim
+		@admin = admin
+		@business= business
+		mail(:from => "noreply@myweightworld.com", :to => @admin.email, :subject => "New business claim")
+	end 
+
+
   
-  def newbusiness(admin, vendor)
-    @vendor = vendor
-    @admin = admin
-    mail(:from => "noreply@myweightworld.com", :to => @admin.email, :subject => "New business added")
+	def newbusiness(admin, vendor)
+		@vendor = vendor
+		@admin = admin
+		mail(:from => "noreply@myweightworld.com", :to => @admin.email, :subject => "New business added")
+	end
+
   
-  end
-  
-  def vendormailer(vendor, message, email, name)
-  @vendor=vendor
-  @name=name
-  @email="#{@vendor.email}"
-  @text=message
-  @contact=email
-  mail(:from => "noreply@myweightworld.com", :to => @email, :subject => "Client Query (MyweightWorld.com)")
-  end
+	def vendormailer(vendor, message, email, name)
+		@vendor=vendor
+		@name=name
+		@email="#{@vendor.email}"
+		@text=message
+		@contact=email
+		mail(:from => "noreply@myweightworld.com", :to => @email, :subject => "Client Query (MyweightWorld.com)")
+	end
+ 
   
   
   def mywwmembership(user,vendor)
@@ -43,6 +48,9 @@ include SendGrid
     @vendor= vendor
     mail(:from => "noreply@myweightworld.com", :to => @user.email, :subject => "Membership")   
   end
+
+
+
   
   def newaddedmywwuser(user,vendor,password)
     @password=password
@@ -58,4 +66,44 @@ include SendGrid
 	 mail(:from => "noreply@myweightworld.com", :to => @email, :subject => "Notification") 
   end
   
-  end
+
+
+
+	def weightcheck(message , email, amount)
+		@message=message
+		@email=email
+		@amount=amount
+		mail(:from => "noreply@myweightworld.com", :to => @email, :subject => "Goal not achieved Notification")
+	end  
+ 
+ 
+ 
+	def caloriecheck(message , email, amount)
+		@message=message
+		@email=email
+		@amount=amount
+		mail(:from => "noreply@myweightworld.com", :to => @email, :subject => "Goal not achieved Notification")
+	end  
+
+ 
+ 
+	def fatcheck(message , email, amount)
+		@message=message
+		@email=email
+		@amount=amount
+		mail(:from => "noreply@myweightworld.com", :to => @email, :subject => "Goal not achieved Notification")
+	end   
+ 
+ 
+  
+	def foodshouldtaken(message, email,foodids)
+		@message=message
+		@email=email
+		@foodids=foodids
+		mail(:from => "noreply@myweightworld.com", :to => @email, :subject => "Food Should Taken Notification")
+		
+	end
+
+
+  
+end

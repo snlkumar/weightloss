@@ -2,25 +2,19 @@
    before_filter :authenticate_user!
 
   
-  def search
-    terms  = params[:term].split(/,|\s/).reject(&:blank?)
-    conds  = terms.collect{|t| "shrt_desc LIKE ? and adminApproved=1"}.join(' AND ')
-    @foods = Food.with_a_serving_size.find(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}])
-    
-    if @foods.empty?
-      render :json => [{:value => 'No Results', :id => nil}].to_json
-    else
-			#@newjson=@foods.map{|f| {:value => (f.custom? ? "#{f.name} **" : "#{f.name}-#{f.gmwt_desc1}-#{f.energ_kcal}-#{f.total_fat}-#{f.carbohydrt}-#{f.protein}-#{f.fiber_td}"), :id => f.id} }.to_json
+	def search
+	terms  = params[:term].split(/,|\s/).reject(&:blank?)
+	conds  = terms.collect{|t| "shrt_desc LIKE ? and adminApproved=1"}.join(' AND ')
+	@foods = Food.with_a_serving_size.find(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}])
 
-#puts @newjson
-      #render :json => @foods.map{|f| {:value => (f.custom? ? "#{f.name} **" : f.name), :id => f.id} }.to_json
-      #old code
-			#render :json => @foods.map{|f| {:value => (f.custom? ? "#{f.name} **" : "#{f.name} - #{f.gmwt_desc1} - #{f.energ_kcal} - #{f.total_fat} - #{f.carbohydrt} - #{f.protein} - #{f.fiber_td}"), :id => f.id} }.to_json
-			
-			render :json => @foods.map{|f| {:value => ("#{f.name} ** #{f.gmwt_desc1} ** #{ eq_calories(f.id, "calorie")} ** #{eq_calories(f.id, "fat")} ** #{ eq_calories(f.id, "carbohydrt")} ** #{eq_calories(f.id, "protein")} ** #{eq_calories(f.id, "fiber_td")}"), :id => f.id} }.to_json
-    end
-    
-  end
+	if @foods.empty?
+	render :json => [{:value => 'No Results', :id => nil}].to_json
+	else
+
+	render :json => @foods.map{|f| {:value => ("#{f.name} ** #{f.gmwt_desc1} ** #{ eq_calories(f.id, "calorie")} ** #{eq_calories(f.id, "fat")} ** #{ eq_calories(f.id, "carbohydrt")} ** #{eq_calories(f.id, "protein")} ** #{eq_calories(f.id, "fiber_td")}"), :id => f.id} }.to_json
+	end
+
+	end
 
 
 
@@ -29,16 +23,17 @@
 
 
 	def food_servings	
-		if params[:id]	
-			@servings=Food.where(:id => params[:id]).select("gmwt_1, gmwt_desc1,gmwt_2, gmwt_desc2")
+	if params[:id]	
+	@servings=Food.where(:id => params[:id]).select("gmwt_1, gmwt_desc1,gmwt_2, gmwt_desc2")
 
-			if @servings.empty?
-      		render :json => 'No Results'.to_json
-    		else
-				render :json => @servings.map{|f| {:value => ("#{f.gmwt_1} $$#{f.gmwt_desc1}$$ #{f.gmwt_2} $$#{f.gmwt_desc2}"), :id => params[:id]} }.to_json	
-			end
-		end
+	if @servings.empty?
+	render :json => 'No Results'.to_json
+	else
+	render :json => @servings.map{|f| {:value => ("#{f.gmwt_1} $$#{f.gmwt_desc1}$$ #{f.gmwt_2} $$#{f.gmwt_desc2}"), :id => params[:id]} }.to_json	
 	end
+	end
+	end
+	
 ####################################################################################################
 
   def meal_item_calories

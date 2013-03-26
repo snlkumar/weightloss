@@ -293,12 +293,16 @@ ActiveRecord::Schema.define(:version => 20130304175800) do
     t.integer  "notificationable_id"
     t.string   "notification_type"
     t.string   "notificationFrequency"
-    t.string   "turnOnNotification"
+    t.date     "nextrundate"
+    t.string   "mealslist"
+    t.string   "exerciseslist"
+    t.string   "amount"
+    t.string   "do_dont",               :default => "0"
+    t.string   "time"
     t.string   "notificationable_type"
     t.string   "notificationTo"
     t.string   "notificationToId"
     t.string   "message"
-    t.integer  "hideNotification",      :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

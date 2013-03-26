@@ -40,7 +40,9 @@ has_attached_file :photoafter, :styles      => { :thumb   => "16x16#", :medium =
   has_many :measurements,    :dependent => :destroy
   has_many :photos,    :dependent => :destroy
   has_many :meals,    :dependent => :destroy
+  has_many :meal_items, :through=> :meals
   has_many :workouts, :dependent => :destroy
+  has_many :workout_items, :through=> :workouts
   has_many :weights,  :dependent => :destroy, :order => 'created_at DESC'
   has_many :bodyfats	,  :dependent => :destroy, :order => 'created_at DESC'  
   # Scopes

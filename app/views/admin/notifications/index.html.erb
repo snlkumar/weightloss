@@ -11,7 +11,7 @@
   
   <h2 style="width:63em;">Notifications</h2>
 
- <%#= link_to 'New Message', new_admin_notification_path() %><br/><br/>
+ <%= link_to 'New Message', new_admin_notification_path() %><br/><br/>
   <%= page_entries_info(@notifications, :entry_name => 'notification') %>
   <%= paginate(@notifications, :params => pagination_params(request)) %>
   
@@ -35,8 +35,8 @@
            <td style="width:10%;"><%=note.created_at.strftime("%Y-%m-%d")%></td>                  
           <td class="actions">
             <%= link_to 'Show', admin_notification_path(note) %> | 
-            <%#= link_to 'Edit', edit_admin_post_path(post) %> | 
-            <%#= link_to 'Delete', [:admin, note], :confirm => 'Are you sure?', :method => :delete %>
+            <%#= link_to 'Edit', edit_admin_post_path(post) %>  
+            <%= link_to 'Delete', [:admin, note], :confirm => 'Are you sure?', :method => :delete %>
           </td>
         </tr>
       <% end %>

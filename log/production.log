@@ -49048,3 +49048,20 @@ Rendered /home/ravi/.rvm/gems/ruby-1.8.7-p358/gems/exception_notification-2.6.1/
 
 Sent mail to "jony@idifysolutions.com", "swhite@personalpowertraining.net" (6686ms)
 Completed 200 OK in 6727ms
+
+
+Started GET "/MywwWebservices/check" for 127.0.0.1 at Wed Mar 20 12:55:50 +0530 2013
+  Processing by MywwWebservicesController#check as HTML
+Command :: identify -format %wx%h :file
+[paperclip] An error was received while processing: #<Paperclip::NotIdentifiedByImageMagickError: /tmp/stream20130320-5759-hd2rms-0.jpg is not recognized by the 'identify' command.>
+Command :: identify -format %wx%h :file
+[paperclip] An error was received while processing: #<Paperclip::NotIdentifiedByImageMagickError: /tmp/stream20130320-5759-hd2rms-0.jpg is not recognized by the 'identify' command.>
+Command :: identify -format %wx%h :file
+[paperclip] An error was received while processing: #<Paperclip::NotIdentifiedByImageMagickError: /tmp/stream20130320-5759-hd2rms-0.jpg is not recognized by the 'identify' command.>
+Command :: identify -format %wx%h :file
+[paperclip] An error was received while processing: #<Paperclip::NotIdentifiedByImageMagickError: /tmp/stream20130320-5759-hd2rms-0.jpg is not recognized by the 'identify' command.>
+Command :: identify -format %wx%h :file
+[paperclip] An error was received while processing: #<Paperclip::NotIdentifiedByImageMagickError: /tmp/stream20130320-5759-hd2rms-0.jpg is not recognized by the 'identify' command.>
+Command :: identify -format %wx%h :file
+[paperclip] An error was received while processing: #<Paperclip::NotIdentifiedByImageMagickError: /tmp/stream20130320-5759-hd2rms-0.jpg is not recognized by the 'identify' command.>
+Completed 406 Not Acceptable in 226ms

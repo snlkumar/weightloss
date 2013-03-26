@@ -139,7 +139,7 @@ $("#closeReply").click(function(){
     <%= link_to t(".lock.#{@topic.locked}"), toggle_lock_admin_topic_path(@topic), :method => :put %> |
     <%= link_to t(".pin.#{@topic.pinned}"), toggle_pin_admin_topic_path(@topic), :method => :put %>
   <% end %>
-  <%= paginate @posts %>
+  <%#= paginate @posts %>
 
 
 
@@ -200,7 +200,7 @@ $("#closeReply").click(function(){
 
 			<p align="left"><font size="2"><font face="arial"><b>Log In With MyWeightWorld Account</b></font></font></p>
 
-			<align="left"><img src="/assets/memberlog.png" alt="Member Log"> <br/>
+			<align="left"><img src="/assets/memberlog.png" alt="Member Log">
 
 
 		  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
@@ -231,17 +231,12 @@ $("#closeReply").click(function(){
 			<align="left"><img src="/assets/arrow1.png"><font size="3"><font face="arial"><b>Track Your Calories/Activity and More</b></font></font></font>  &nbsp;&nbsp;&nbsp;&nbsp;	<a href="http://www.myweightworld.com">
 			<img src="/assets/sign-up.png"></a>		
 
+
 			</div>
-	
-		</div>
-
-	</div>				  
-
-<div id="fade" class="black_overlay"></div>      
-        
+       
 </div>
 
-
+<div id="fade" class="black_overlay"></div>      		  
 
 <!-- new code -->
 <!-- to show reply messages through ajax -->

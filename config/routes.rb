@@ -73,9 +73,9 @@ if ActiveRecord::Base.connection.table_exists? 'meta'
  
  end
  
+ match 'weightAutoNotifications' => 'notifications#weightAutoNotifications'
  
- 
-   match '/finalize'     => 'vendors#finalize' , :as=>"vendorfinal"
+   match '/final'     => 'vendors#final' , :as=>"vendorfinal"
    match '/second_step'     => 'vendors#second_step'
 	match '/videos/:id' =>'Videos#show', :as=> "video"
 	match '/articles/:id' =>'Posts#show', :as=> "post"	

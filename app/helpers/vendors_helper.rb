@@ -309,6 +309,13 @@ def countries
 	]
 	end
 
+
+	def allfoods
+	Food.where("(gmwt_desc1 is NOT NULL OR gmwt_1 is NOT NULL) and gmwt_desc1!=''").order("name ASC")	
+	end
+
+
+
   def five_hundred_calorie_deficit(user)
     if user.bmr
       user.bmr - 500

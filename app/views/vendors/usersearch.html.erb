@@ -1,10 +1,10 @@
 <style type="text/css">
 
-	th{
+th{
 		font-size:14px;
 		text-align:left;
 		padding: .3%;
-	}
+  }
 .even { background: #99ccff; }
 .odd { background: #cccccc; }
 .head-table{background: #ccc; }
@@ -27,49 +27,53 @@
 <script tyle="text/javascript">
 
 function addmembership(id,first,last)
-{
+	{
 
 
-	var answer = confirm("Do you want to add "+first+" "+last+" as member?")
-	if (answer){	    
-					 $.ajax({
-							  	 type: "Post",
-							  	 url: "/vendors/addmywwmember",
-								 data: { user_id: id, message: "<%=current_vendor.business_name%> wants to add you to membership." }
-									  }).done(function( msg ) {
-									  
-									  if (msg=="User has already been taken")
-									  {
-										 alert( "User is already a member.");}
-									  else
-									  {
-										 alert(msg);
-									  }
-							});
+		var answer = confirm("Do you want to add "+first+" "+last+" as member?")
+		if (answer){	    
+						 $.ajax({
+								  	 type: "Post",
+								  	 url: "/vendors/addmywwmember",
+									 data: { user_id: id, message: "<%=current_vendor.business_name%> wants to add you to membership." }
+										  }).done(function( msg ) {
+										  
+										  if (msg=="User has already been taken")
+										  {
+											 alert( "User is already a member.");}
+										  else
+										  {
+											 alert(msg);
+										  }
+								});
 
-					}
-					else
-					{
-						return false;
-					}
-}
+						}
+						else
+						{
+							return false;
+						}
+	}
 
 
-function submitFormByEnter(event) {
-    if (event.keyCode && event.keyCode == '13') {
-        submitForm();
-    }
-}
+function submitFormByEnter(event) 
+
+	{
+		 if (event.keyCode && event.keyCode == '13') 
+		 {
+		     submitForm();
+		 }
+	}
 
 
 function selectedRow(rw)
-{
-	rw.style.background="#A9BCF5";
-}
+	{
+		rw.style.background="#A9BCF5";
+	}
+	
 function unSelectedRow(rw)
-{
-	rw.style.background="#E6E6E6";
-}
+	{
+		rw.style.background="#E6E6E6";
+	}
 function submitForm()
 {
 if($("#users-search-query").val().trim()=='')
@@ -96,7 +100,7 @@ if($("#users-search-query").val().trim()=='')
 			 <div class="clear">&nbsp;</div>
 			               <ul id="user-settings-tabs">
                 <li class="vendor-class">
- 			<%if current_vendor%>
+			<%if current_vendor%>
                   <%= link_to 'Add MyWeightWorld Users', usersearch_vendors_path%>                
                 </li>
                 <li class="vendor-class">
@@ -117,17 +121,20 @@ if($("#users-search-query").val().trim()=='')
 
 <div style="margin-left:33%;height:1%;padding:1%;">
 <h2 style="background-color: #0B2B42; color:white;width:43em;height:.6em;font-size:14px;">Search MyWeightWorld Members</h2>  
-  <form id="user-search" method='get' onsubmit="return false" action="">
 
-	 	 <div style="margin-right:1em;float:left;">
-		 <label style="font-size:14px;">Search Users:</label>
-		 <input type="text" id="users-search-query" onkeyup="submitFormByEnter(event)" name="filterQuery" value="<%=params[:filterQuery]%>" style="height:1.2em;width:12em;margin-left:-2em;" placeholder="Enter name or email.."/>
-		</div>
-  
-		 <div style="float:left;margin-left:1%;padding-top:.5em;">
-		   <input type="button" class="button grid_3" style="height:26px;font-size:10pt;width:4em;padding:0;margin:0;" onclick="submitForm()" value=" Search " />
-		 </div>
-  </form>
+
+
+	   <form id="user-search" method='get' onsubmit="return false" action="">
+
+			 	 <div style="margin-right:1em;float:left;">
+					 <label style="font-size:14px;">Search Users:</label>
+					 <input type="text" id="users-search-query" onkeyup="submitFormByEnter(event)" name="filterQuery" value="<%=params[:filterQuery]%>" style="height:1.2em;width:12em;margin-left:-2em;" placeholder="Enter name or email.."/>
+				 </div>
+		  
+				 <div style="float:left;margin-left:1%;padding-top:.5em;">
+					<input type="button" class="button grid_3" style="height:26px;font-size:10pt;width:4em;padding:0;margin:0;" onclick="submitForm()" value=" Search " />
+				 </div>
+    	</form>
  
  
  <% if @data %>
@@ -136,16 +143,17 @@ if($("#users-search-query").val().trim()=='')
 <div style="overflow:auto;width:60em;">
 <div >
    <%= page_entries_info(@data) %>
-  <%= paginate(@data, :params => pagination_params(request)) %><br/><br/>
-  <table style="border-collapse:separate;border-spacing:2px;width:48em;">
-    <tr class="head-table">   
-        <th style="width:10em;">Profile</th>       
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Username</th>
-        <th>Gender</th>
-        <th>Add</th>
-    </tr>
+   <%= paginate(@data, :params => pagination_params(request)) %><br/><br/>
+   <table style="border-collapse:separate;border-spacing:2px;width:48em;">
+		  <tr class="head-table">   
+		     <th style="width:10em;">Profile</th>       
+		     <th>First name</th>
+		     <th>Last name</th>
+		     <th>Username</th>
+		     <th>Gender</th>
+		     <th>Add</th>
+		 </tr>
+		 
     <% @data.each do |row| %>
       <tr class="<%= cycle('even','odd') %>">
        	 <td style="padding: .3%;">
