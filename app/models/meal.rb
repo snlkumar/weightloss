@@ -20,6 +20,12 @@ class Meal < ActiveRecord::Base
   #scope :today,     :conditions => ["ate_on >= ? AND ate_on <= ?", Time.zone.now.beginning_of_day, Time.zone.now.end_of_day]
   scope :today,     :conditions => ["ate_on = ?",Date.today]		#this is my code. old code is above
   scope :past_week, :conditions => ["ate_on >= ?", 6.days.ago]
+  scope :past_month,   :conditions => ["ate_on >= ?", 30.days.ago]
+  
+  has_attached_file :mealpic, :styles      => { :medium => '70x80#'}, 
+                             :url  => '/system/:class/:attachment/:id/:style/:filename',
+                             :path => ":rails_root/public/system/:class/:attachment/:id/:style/:filename"
+  
   
 # Nested Attributes
   accepts_nested_attributes_for :meal_items, :allow_destroy => true

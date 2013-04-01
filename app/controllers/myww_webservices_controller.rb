@@ -353,7 +353,7 @@ class MywwWebservicesController < ApplicationController
 
 
 
-		if params[:calories]==""
+#		if params[:calories]==""
 
 
 				@serving=params[:units].to_i
@@ -361,13 +361,13 @@ class MywwWebservicesController < ApplicationController
 				@meal = @user.meals.create(:ate_on=>@start_date,:meal_type=>params[:meal_type],:time_of_day=>Time.zone.now.strftime("%H-%M-%S"))
 
 				@meal.meal_items.create(:food_id=>params[:food_id],:serving=>@serving,:units=>@unit)
-		else
+#		else
 		#for food custom entry by calory
 
 		
-						@meal =@user.meals.create(:ate_on=>@start_date,:note => params[:note],:meal_type=>params[:meal_type],:time_of_day=>Time.zone.now.strftime("%H-%M-%S"))
-					@meal.meal_items.create(:food_id=>8443,:calories=>params[:calories])
-				end
+#						@meal =@user.meals.create(:ate_on=>@start_date,:note => params[:note],:meal_type=>params[:meal_type],:time_of_day=>Time.zone.now.strftime("%H-%M-%S"))
+#					@meal.meal_items.create(:food_id=>8443,:calories=>params[:calories])
+#				end
 
 		if @meal.save
 		@status={"status-msg"=>"Success"}
@@ -377,9 +377,43 @@ class MywwWebservicesController < ApplicationController
 
 		render :json =>@status.to_json
 		end
+
+  ####################### Custom Calories with picute #######################################
+
+	def addcustomcalories
+			
+		@user=User.find(params[:id])
+		@params=params[:meals]
+		mealsdata=@params.split("**").collect{|a| a}
+
+
+		@userfile= params[:userfile]
+		@userfile.rewind
+		@filename = "#{Rails.root}/public/"+params[:id].to_s+@userfile.original_filename
+
+		File.open(@filename, "wb") do |file|
+		file.write(@userfile.read)
+		end
 		
 		
-  #########################  User Add new Food (custom food) #####################################
+		@meal =@user.meals.create(:ate_on=>mealsdata[0],:note => mealsdata[1],:meal_type=>mealsdata[2],:time_of_day=>Time.zone.now.strftime("%H-%M-%S"))
+		@meal.meal_items.create(:food_id=>8443,:calories=>mealsdata[3])			
+		@meal.mealpic=File.open(@filename)
+		
+		if @meal.save
+		@status={"status-msg"=>"Success"}
+		else
+		@status={"status-msg"=>"Fail"}
+		end
+		
+		  
+		File.delete(@filename)
+		render :json =>@status.to_json			
+	
+	end
+		
+		
+  #########################  User Add new Food (custom food) ################################
   
  
 		def addcustomfood
@@ -398,7 +432,7 @@ class MywwWebservicesController < ApplicationController
 		end			
 
 
-		@customfood=Food.create(:custom=>true, :adminApproved=>"0":name=>mealsdata[0], :gmwt_desc1=>mealsdata[1], :energ_kcal=>mealsdata[2], :total_fat=>mealsdata[3], :cholestrl=>mealsdata[4], :sodium=>mealsdata[5],:potassium=>mealsdata[6], :carbohydrt=>mealsdata[7], :sugar_alchol=>mealsdata[8], :protein=>mealsdata[9], :vit_a_iu=>mealsdata[10],:vit_c=>mealsdata[11],:calcium=>mealsdata[12], :iron=>mealsdata[13], :vivit_d_iu=>mealsdata[14], :vit_e=>mealsdata[15], :vit_b12=>mealsdata[16], :vit_b6=>mealsdata[17], :manganese=>mealsdata[18], :phosphorus=>mealsdata[19],:copper=>mealsdata[20], :selenium=>mealsdata[21], :magnesium=>mealsdata[22], :zinc=>mealsdata[23])
+		@customfood=Food.create(:custom=>true, :adminApproved=>"0",:name=>mealsdata[0], :gmwt_desc1=>mealsdata[1], :energ_kcal=>mealsdata[2], :total_fat=>mealsdata[3], :cholestrl=>mealsdata[4], :sodium=>mealsdata[5],:potassium=>mealsdata[6], :carbohydrt=>mealsdata[7], :sugar_alchol=>mealsdata[8], :protein=>mealsdata[9], :vit_a_iu=>mealsdata[10],:vit_c=>mealsdata[11],:calcium=>mealsdata[12], :iron=>mealsdata[13], :vivit_d_iu=>mealsdata[14], :vit_e=>mealsdata[15], :vit_b12=>mealsdata[16], :vit_b6=>mealsdata[17], :manganese=>mealsdata[18], :phosphorus=>mealsdata[19],:copper=>mealsdata[20], :selenium=>mealsdata[21], :magnesium=>mealsdata[22], :zinc=>mealsdata[23])
 		
 		
 		@customfood.avatar=File.open(@filename)			
@@ -652,29 +686,6 @@ end
 		arr << temp
 		end
 		arr
-		end
-
-		######################  User Photo Gallery  ################################################
-
-		def photoGallery
-		if params[:id]
-		@user = User.find(params[:id])
-		if params[:type]=="all"
-		@photos= @user.photos.all	 					  
-		else
-		@photos= @user.photos.where("before_after='"+params[:type]+"'")
-		end
-
-		if @photos.empty?
-		@status = nil
-		else
-		@status= @photos.map{|f| { :name =>request.protocol+request.host_with_port+f.photo.url}}
-		end
-		else
-		@status = {"status-msg"=>"User not exist"}
-		end
-		
-		render :json =>@status.to_json			
 		end
 
 
@@ -931,6 +942,33 @@ end
 		end
 
 
+		######################  User Photo Gallery  ################################################
+
+		def photoGallery
+		
+		if params[:id]
+		@user = User.find(params[:id])
+		if params[:type]=="all"
+		@photos= @user.photos.all	 					  
+		else
+		@photos= @user.photos.where("before_after='"+params[:type]+"'")
+		end
+
+		if @photos.empty?
+		@status = nil
+		else
+		@status= @photos.map{|f| { :name =>request.protocol+request.host_with_port+f.photo.url}}
+		end
+		else
+		@status = {"status-msg"=>"User not exist"}
+		end
+		
+		render :json =>@status.to_json			
+		end
+
+
+
+
 		##########################################################################################
 
  	  #this method for testing, to check webservice
@@ -941,7 +979,7 @@ end
   
     ###################################################### Find Connection ##################  
 
-
+=begin
 	  private
 		 
 	  def authenticate_connection
@@ -951,6 +989,6 @@ end
 	  end
 
 	  end
-  
+=end
   
 end

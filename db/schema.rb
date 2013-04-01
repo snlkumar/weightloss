@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304175800) do
+ActiveRecord::Schema.define(:version => 20130401061552) do
 
   create_table "City", :primary_key => "ID", :force => true do |t|
     t.string "Name",        :limit => 35, :default => "", :null => false
@@ -244,6 +244,10 @@ ActiveRecord::Schema.define(:version => 20130304175800) do
     t.datetime "updated_at"
     t.string   "meal_type"
     t.datetime "time_of_day"
+    t.string   "mealpic_file_name"
+    t.string   "mealpic_content_type"
+    t.integer  "mealpic_file_size"
+    t.datetime "mealpic_updated_at"
   end
 
   create_table "measurements", :force => true do |t|
@@ -280,10 +284,13 @@ ActiveRecord::Schema.define(:version => 20130304175800) do
   end
 
   create_table "mywwnotifications", :force => true do |t|
-    t.string   "lunch"
-    t.string   "dinner"
-    t.string   "breakfast"
-    t.string   "goal"
+    t.string   "weight"
+    t.string   "activity"
+    t.string   "food"
+    t.string   "supplements"
+    t.string   "bodyfat"
+    t.string   "calories"
+    t.string   "other"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -294,6 +301,7 @@ ActiveRecord::Schema.define(:version => 20130304175800) do
     t.string   "notification_type"
     t.string   "notificationFrequency"
     t.date     "nextrundate"
+    t.string   "duration"
     t.string   "mealslist"
     t.string   "exerciseslist"
     t.string   "amount"

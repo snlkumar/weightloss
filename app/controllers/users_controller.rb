@@ -124,36 +124,13 @@ class UsersController < ApplicationController
   def achievement_date
     render :partial => 'shared/achievement_date', :locals => {:user => current_user}
   end
+  
+  
+  
 ###############################################################################	
-	#new added actions
-=begin
-  def bodyfat_store
-  	@bodyfat=Bodyfat.create(:bodyfat=>params[:bodyfat],:height=>params[:height].to_f,:waist=>params[:waist].to_f,:neck=>params[:neck].to_f,:hips=>params[:hips].to_f,:user_id=>current_user.id)
-  	if @bodyfat.save
-  		@status="saved"
-  	else
-  		@status="not"
-  	end
-  	render :text=>@status
 
-	if params[:hips]=="" || params[:hips]==nil
-  		params[:hips]=0
-  	end	
-	if current_user.gender.downcase=="male"
-		#body fat calculator formula for man
-		bodyfat=495/(1.0324-0.19077*(Math.log(params[:waist].to_f-params[:neck].to_f))+0.15456*(Math.log(params[:height].to_f)))-450
-	else
-		#body fat calculator formula for woman:
-		bodyfat=495/(1.29579-0.35004*(Math.log(params[:waist].to_f+params[:hips].to_f-params[:neck].to_f))+0.22100*(Math.log(params[:height].to_f)))-450 
-	end
- 
- 	#@bodyfat=Bodyfat.create(:bodyfat=>bodyfat,:height=>params[:height].to_f,:waist=>params[:waist].to_f,:neck=>params[:neck].to_f,:hips=>params[:hips].to_f,:user_id=>current_user.id)
- 
 
-end
 
-=end
-############################### new code
 	def bodyfatpercent
 	@user=current_user
 	@fat=Bodyfat.new
@@ -171,11 +148,14 @@ end
 	end
 ############################### new code end
 
+
 	def measurement 
     @user = current_user
     @meas=Measurement.new
 
    end
+
+
   
   def newmeasurement
   @user=current_user
@@ -190,9 +170,10 @@ end
 #########################################################
 
 	def notifications
+=begin
     @user =current_user
     if @user.mywwnotification.nil?
-    	Mywwnotification.create(:lunch=>1,:dinner=>1,:breakfast=>1,:goal=>1,:user_id=>current_user.id)
+    	Mywwnotification.create(:weight=>1,:activity=>1,:food=>1,:supplements=>1, :bodyfat=>1, :calories=>1, :other=>1, :user_id=>current_user.id)
     	redirect_to(user_path)
     else
     
@@ -202,9 +183,82 @@ end
 	@notification=@user.mywwnotification
    render :layout => "user_settings"
    end
+=end
+
+@notification=Notification.new   
+     render :layout => "user_settings" 
+   
 end  
 
-################################################################3 
+
+   #######################################################################
+
+	def notificationcreate
+	
+		params[:notification][:notificationFrequency]=params[:notificationFrequency].collect{|a| a.split(",") }.join(",").to_s
+
+		if params[:notification][:notification_type]=="food"
+			params[:notification][:mealslist]=params[:mealslist].collect{|a| a.split(",") }.join(",").to_s
+		end			
+		
+		if params[:notification][:notification_type]=="activity"
+			params[:notification][:exerciseslist]=params[:exerciseslist].collect{|a| a.split(",") }.join(",").to_s	
+				
+		end
+
+		nextruntime=[]
+		params[:notificationFrequency].collect{|a| a.split(",") }.join(",").to_s.each do |frequency|
+		nextruntime << Date.today+frequency.to_i
+		end
+		params[:notification][:nextrundate]=nextruntime.min
+		
+		
+		 	
+       @notification = Notification.create(params[:notification])
+   	 #@emails=User.select(:email)
+    	 if @notification.save
+  
+#writing schedule and rake task file
+					`rm -f '#{Rails.root}/config/schedule.rb' '#{Rails.root}/lib/tasks/sendnotifications.rake'`
+				 envr = 'set :environment,"development"'
+				 `echo '#{envr}' >> '#{Rails.root}/config/schedule.rb'`
+				 auto_mail = Notification.all
+				 if auto_mail
+					i=0
+							auto_mail.each do |a|
+							 a.notificationFrequency.split(",").each do |frequency|
+							
+							 	@cron_time="every "+frequency+", "+':at=>'+" "+'"'+a.time+'"'
+							 	
+							  	txt =@cron_time+" "+'do
+								 rake "sendnotifications'+i.to_s+'"
+							  end'
+							  	task='task :sendnotifications'+i.to_s+' => :environment do
+								 obj = NotificationsController.new
+							 	 obj.'+a.notification_type+'AutoNotifications
+							  end'
+							  `echo '#{txt}' >> '#{Rails.root}/config/schedule.rb'`
+							  `echo '#{task}' >> '#{Rails.root}/lib/tasks/sendnotifications.rake'`
+							  i+=1
+							 end
+							end
+					`whenever -i`
+				 end
+    
+  
+       
+      redirect_to(user_path, :notice => 'Notification was successfully created.')
+    else
+      render :action => "notifications"
+    end
+	
+	
+	end
+
+
+
+
+   ###########################################################3 
 
  def memberships
  
@@ -264,7 +318,7 @@ end
 
 	@user=current_user
  	@notification=@user.mywwnotification
- 	@notification.update_attributes(:lunch=>params[:mywwnotification][:lunch],:breakfast=>params[:mywwnotification][:breakfast], :goal=>params[:mywwnotification][:goal], :dinner=>params[:mywwnotification][:dinner])
+ 	@notification.update_attributes(:weight=>params[:mywwnotification][:weight],:activity=>params[:mywwnotification][:activity], :food=>params[:mywwnotification][:food], :supplements=>params[:mywwnotification][:supplements],:bodyfat=>params[:mywwnotification][:bodyfat], :calories=>params[:mywwnotification][:calories], :other=>params[:mywwnotification][:other] )
 	if @notification.save
         redirect_to(user_path, :notice => 'successfully saved.')
 	else
@@ -272,7 +326,6 @@ end
     end
 	end
 	
-
 ###################################################################3
 
 end

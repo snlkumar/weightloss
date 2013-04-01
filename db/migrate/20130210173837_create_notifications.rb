@@ -6,7 +6,7 @@ class CreateNotifications < ActiveRecord::Migration
       t.string  :notification_type
       t.string :notificationFrequency
       t.date :nextrundate
-
+		t.string :duration
       t.string :mealslist          
       t.string :exerciseslist          
       t.string :amount          

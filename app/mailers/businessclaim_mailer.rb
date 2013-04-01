@@ -73,7 +73,7 @@ include SendGrid
 		@message=message
 		@email=email
 		@amount=amount
-		mail(:from => "noreply@myweightworld.com", :to => @email, :subject => "Goal not achieved Notification")
+		mail(:from => "noreply@myweightworld.com", :to => @email, :subject => "Weight Tracker Notification")
 	end  
  
  
@@ -82,7 +82,7 @@ include SendGrid
 		@message=message
 		@email=email
 		@amount=amount
-		mail(:from => "noreply@myweightworld.com", :to => @email, :subject => "Goal not achieved Notification")
+		mail(:from => "noreply@myweightworld.com", :to => @email, :subject => "Calorie Tracker Notification")
 	end  
 
  
@@ -91,7 +91,7 @@ include SendGrid
 		@message=message
 		@email=email
 		@amount=amount
-		mail(:from => "noreply@myweightworld.com", :to => @email, :subject => "Goal not achieved Notification")
+		mail(:from => "noreply@myweightworld.com", :to => @email, :subject => "Fat Tracker Notification")
 	end   
  
  

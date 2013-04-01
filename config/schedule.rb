@@ -5,9 +5,3 @@ every 1.day, :at=> "6:00 am" do
 every 1.day, :at=> "6:00 am" do
 								 rake "sendnotifications1"
 							  end
-every 1.day, :at=> "6:00 am" do
-								 rake "sendnotifications2"
-							  end
-every 1.day, :at=> "6:00 am" do
-								 rake "sendnotifications3"
-							  end

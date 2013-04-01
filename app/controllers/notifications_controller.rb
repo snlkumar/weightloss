@@ -178,32 +178,45 @@ class NotificationsController < ApplicationController
 		@notification=Notification.where("notification_type='weight'")
 		if @notification.present?
 		@notification.each do |f|
-		if f.nextrundate=Date.today
+		if f.nextrundate==Date.today
 		
 		@emails=f.notificationToId.split(",").collect{|a| a }
 		checkweight= []
 		@emails.each do |email|
 		@user=User.find_by_email("#{email}")
-		@weights=@user.weights.reverse
-			if @weights.length>1
-				@weightloss=@weights.last.weight-@weights[-2].weight
-				 if f.do_dont=="1"
 
-					if @weightloss >= f.amount.to_i # if weight loss amount mentioned achieved... email will be sent....
-					checkweight << email
-					end
-	
-				 else
-
-					if @weightloss < f.amount.to_i # if weight loss amount mentioned not achieved... email will be sent....
-					checkweight << email
-					end
-				
-				end
+			if f.duration=="week"
+			@weights=@user.weights.past_week
+			elsif f.duration="month"
+			@weights=@user.weights.past_month
+			else 
+			@weights=@user.weights.today
 			end
-		end
 		
-			BusinessclaimMailer.weightcheck(f.message,checkweight,f.amount.to_i).deliver 
+		
+#			@weights=@user.weights.reverse
+			if @weights.length>1
+			@weightloss=@weights.first.weight-@weights.last.weight
+			if f.do_dont=="1"
+
+				if (@weightloss + f.amount.to_i ) <=0 # if weight loss amount mentioned achieved... email will be sent....
+				checkweight << email
+				end
+
+			else
+
+				if (@weightloss + f.amount.to_i ) >= 0 # if weight loss amount mentioned not achieved... email will be sent....
+				checkweight << email										 
+				end
+
+			end
+
+			BusinessclaimMailer.weightcheck(f.message,checkweight,f.amount.to_i).deliver if  checkweight.present?
+			else
+			BusinessclaimMailer.weightcheck("Plase keep updating your weights to track your progress....",email,f.amount.to_i).deliver 
+			end
+
+		end
 		end
 		end		
 		end
@@ -215,14 +228,25 @@ class NotificationsController < ApplicationController
 		@notification=Notification.where("notification_type='calories'")
 		if @notification.present?
 		@notification.each do |f|
-		if f.nextrundate=Date.today
+		
+		if f.nextrundate==Date.today
 		@emails=f.notificationToId.split(",").collect{|a| a }
 		checkcalories= []
 		
 		@emails.each do |email|
 		@user=User.find_by_email("#{email}")
-		@netcalories=@user.calories_consumed_this_week
-
+		
+			if f.duration=="week"
+            @netcalories=@user.calories_consumed_this_week
+			elsif f.duration=="month"
+				@netcalories=@user.calories_consumed_this_month
+			else 
+				@netcalories=@user.calories_consumed_today
+			end		
+		
+		
+#		@netcalories=@user.calories_consumed_this_week
+					
 			if f.do_dont=="1"
 				if @netcalories >=f.amount.to_i # if calorie loss amount mentioned achieved... email will be sent....
 					checkcalories << email
@@ -236,7 +260,7 @@ class NotificationsController < ApplicationController
 
 		end
 
-		BusinessclaimMailer.caloriecheck(f.message,checkcalories,f.amount).deliver 
+		BusinessclaimMailer.caloriecheck(f.message,checkcalories,f.amount).deliver if checkcalories.present?
 		end
 		end			
 		end		
@@ -254,20 +278,37 @@ class NotificationsController < ApplicationController
 		checkfat= []		
 		@emails.each do |email|
 		@user=User.find_by_email("#{email}")
-		@netcalories=@user.bodyfats.reverse
+		
+			if f.duration=="week"
+            @bodyfat=@user.bodyfats.past_week
+			elsif f.duration=="month"
+				@bodyfat=@user.bodyfats.past_month
+			else 
+				@bodyfat=@user.bodyfats.today
+			end			
+		
+		
+			if @bodyfat.length>1
+						@fatloss=@bodyfat.first.fatpercent-@bodyfat.last.fatpercent
 
-		if f.do_dont=="1"
-		if @netcalories>=f.amount.to_i  # if calorie loss amount mentioned achieved... email will be sent....
-		checkfat << email
-		end
-		else
 
-		if @netcalories<f.amount.to_i # if calorie loss amount mentioned not achieved... email will be sent....
-		checkfat << email
-		end			
-		end
-		end
-			BusinessclaimMailer.fatcheck(f.message,fatcheck, f.amount.to_i ).deliver 
+						if f.do_dont=="1"
+							if @fatloss>=f.amount.to_i  # if calorie loss amount mentioned achieved... email will be sent....
+							checkfat << email
+							end
+						else
+
+							if @fatloss<=f.amount.to_i # if calorie loss amount mentioned not achieved... email will be sent....
+							checkfat << email
+							end			
+						end
+						
+			BusinessclaimMailer.fatcheck(f.message,fatcheck, f.amount.to_i ).deliver if checkfat.present?
+			else
+			BusinessclaimMailer.fatcheck("Plase keep updating your bodyfat to track your progress....",email,f.amount.to_i).deliver 
+			end
+						
+		end	
 		end
 		end		
 		end

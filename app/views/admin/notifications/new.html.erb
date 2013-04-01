@@ -1,7 +1,7 @@
 
-  <%= stylesheet_link_tag    "application" %>
+  <%#= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "/javascripts/ckeditor/ckeditor.js" %>
+  <%#= javascript_include_tag "/javascripts/ckeditor/ckeditor.js" %>
 <script>
 
  $(document).ready(function(){
@@ -113,7 +113,7 @@ function submitform()
 
 <p>
 	<%= f.label :notification_type, "Notification type:" %>
-	<%=f.select   :notification_type, options_for_select([ ['Weight loss','weight' ],['Activity','activity' ] , ['Food','food' ],['Supplements','supplements' ] ,['Body fat','bodyfat' ], ['Calories','calories' ], ['Other','other']   ]) %> 
+	<%=f.select   :notification_type, options_for_select([ ['Weight loss','weight' ],['Supplements','supplements' ] ,['Body fat','bodyfat' ], ['Calories','calories' ], ['Activity','activity' ] , ['Food','food' ], ['Other','other']   ]) %> 
 
 
 </p> <br/>  
@@ -144,13 +144,13 @@ function submitform()
 
 <p>
 	<label>Amount :</label>
-	<%=f.text_field :amount, :style=>"width:4em;height:1.3em;"%>&nbsp;&nbsp;&nbsp;Per:<%=select_tag   "Per", options_for_select([ ['Day','day' ],['Week','week' ] , ['15 days','15days' ],['Month','month' ] ]) %> 
+	<%=f.text_field :amount, :style=>"width:4em;height:1.3em;"%>&nbsp;&nbsp;&nbsp;Per:<%=f.select   :duration, options_for_select([ ['Day','day' ],['Week','week' ],['Month','month' ] ]) %> 
 
 </p>
 
    
 <p>
-	<%=f.label  :notificationFrequency, %Q{ Send Nofication every: <span class="help-text">(Frequency: Multiple select holding CTRL key)</span> }.html_safe %><br/>
+	<%=f.label  :notificationFrequency, %Q{ Send Nofication every: <span class="help-text">(Frequency: Multiple select holding CTRL key)</span> }.html_safe %><br/> <%=select_tag '', options_for_select(1..10)%> x <br>
 	<%=select_tag  'notificationFrequency[]', options_for_select([ ['day','1.day' ],['2 day','2.days' ] ,['3 day','3.days' ], ['weekely','7.days' ] ,['Bi weekely','14.days' ] ,['monthly','30.days' ] ]),:multiple => true, :size => 5 %> 
 
 </p> <br/>  

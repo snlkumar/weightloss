@@ -73,8 +73,7 @@ if ActiveRecord::Base.connection.table_exists? 'meta'
  
  end
  
- match 'weightAutoNotifications' => 'notifications#weightAutoNotifications'
- 
+ 	match 'bodyfatAutoNotifications' =>'notifications#bodyfatAutoNotifications'
    match '/final'     => 'vendors#final' , :as=>"vendorfinal"
    match '/second_step'     => 'vendors#second_step'
 	match '/videos/:id' =>'Videos#show', :as=> "video"
@@ -162,6 +161,7 @@ if ActiveRecord::Base.connection.table_exists? 'meta'
       post :login
       post :register_user
       get :getSession
+      post :photoGallery      
       get :check
       post :forget_pass
       post :insertWeight
@@ -182,7 +182,7 @@ if ActiveRecord::Base.connection.table_exists? 'meta'
 		post :weightmeasurement
 		post :bodymeasurement
 		post :netcalories
-      post :photoGallery
+
 		get 'video/video_category', :action =>'video_category'
 		get 'video/:id', :action =>'show_video'
 		get 'video/(:category_id)/(:filter)', :action =>'video'
@@ -196,6 +196,7 @@ if ActiveRecord::Base.connection.table_exists? 'meta'
 #		get   ':forum_id/:topic_id/topicposts', :action=>'topicposts'
 		post   :topicposts, :action=>'topicposts'
 		post  :postcomment
+		post  ':id/addcustomcalories', :action=>'addcustomcalories'
     end
     member do
       post :photo
@@ -297,6 +298,7 @@ if ActiveRecord::Base.connection.table_exists? 'meta'
 		get :bodyfatpercent
 		post:bodyfatcalculate
 		get :notifications
+		post :notificationcreate
 		get :memberships
 		get :addmembership
 		get :hidenotification

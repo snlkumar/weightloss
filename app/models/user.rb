@@ -141,6 +141,16 @@ has_attached_file :photoafter, :styles      => { :thumb   => "16x16#", :medium =
     end
 	
   end
+
+
+  def calories_consumed_this_month
+    self.meals.past_month.inject(0) do |tot, meal|
+      tot += meal.meal_items.inject(0) do | meal_tot, meal_item|
+        meal_tot += meal_item.calories
+      end
+    end
+  end
+
   
   def calories_consumed_this_week
     self.meals.past_week.inject(0) do |tot, meal|

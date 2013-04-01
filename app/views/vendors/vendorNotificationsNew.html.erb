@@ -1,55 +1,21 @@
-
-<%#= stylesheet_link_tag    "application" %>
-<%= javascript_include_tag "application" %>
-<%= javascript_include_tag "/javascripts/ckeditor/ckeditor.js" %>
 <script>
 
  $(document).ready(function(){
-   if (CKEDITOR.instances['notification_message']) {
-       CKEDITOR.remove(CKEDITOR.instances['notification_message']);}
-       
-      CKEDITOR.replace( 'notification_message', {
-     toolbar: [
-           //['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print', 'SpellChecker', 'Scayt'],
-           //['Cut','Copy','Paste','PasteText','PasteFromWord'],
-           ['Cut','Copy','Paste', 'SpellChecker'],
-           ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
-           ['ImageButton'],//['Form','Checkbox','Radio','TextField','Textarea','Select','Button','ImageButton','HiddenField'],
-           //'/',
-           ['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
-           //['NumberedList','BulletedList','-','Outdent','Indent','Blockquote','CreateDiv'],
-           ['NumberedList','BulletedList','-','Outdent','Indent'],
-           ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
-           //['BidiLtr', 'BidiRtl'],
-           ['Link','Unlink','Anchor'],
-           //'/',
-           //['Styles','Format','Font','FontSize'],
-           ['Format','FontSize'],
-           ['TextColor','BGColor'],
-           //['Maximize','ShowBlocks','-','About']
-           ['Maximize']
-     ],
-     height: 100,
-       	width: 500
+  
 
-     });
-
-
-
-	$("#exercisetips").css("display","none");
-	$("#mealnotifications").css("display","none");
-
+	$("#exercisetips, #mealnotifications").css("display","none");
 
 	$("#notification_notification_type").change(function(){ 
+
 	type=$("#notification_notification_type").find("option:selected").text();
 
-	if (type=="Nutrition")
+	if (type=="Food")
 	{
 	$("#exercisetips").css("display","none");
 	$("#mealnotifications").css("display","block");
 
 	}
-	else if (type=="Exercise")
+	else if (type=="Activity")
 	{
 	$("#mealnotifications").css("display","none");
 	$("#exercisetips").css("display","block");
@@ -57,50 +23,71 @@
 	}
 	else
 	{
-	$("#exercisetips").css("display","none");
-	$("#mealnotifications").css("display","none");
+	$("#exercisetips, #mealnotifications").css("display","none");
 	}
 
 
 	});
-	
-
-	
-	
-	
 
 });
 
+
 function submitform()
 {
-alert($("#noticefor").val()=="null");
-
-	if ($("#noticefor").val()=="")
+	if ($("#noticefor").find("option:selected").text()=='')
 	{
-	alert("Notification To field cannot be empty.");
+	alert("Please select recepients.");
 	return false;		
 	}
-	else if ($("#notificationFrequency_").val()=="")	
+	else if ($("#notificationFrequency_").find("option:selected").text()=='')	
 	{
-	alert("Notification On Every field cannot be empty.");
+	alert("Notification frequency field cannot be empty.");
 	return false;		
 	}
-	else if ($("#notification_message").val()=="")	
+	else if ( $("#message").val()=='')	
 	{
-	alert("Message field cannot be empty.");
+	alert("Message frequency field cannot be empty.");
 	return false;		
 	}
    else
-   {return false;
-   }
+   {
    
-	
+	type=$("#notification_notification_type").find("option:selected").text();
 
+	if (type=="Activity")
+	{
+		 if ($("#excercises").find("option:selected").text()=='')	
+	{
+	alert("Excercises field cannot be empty.");
+	return false;		
+	}
+	else
+	{
+     notification_new.submit();
+	}
+
+	}
+	else if (type=="Food")
+	{
+		 if ($("#meals").find("option:selected").text()=='')	
+	{
+	alert("Meals field cannot be empty.");
+	return false;		
+	}
+	else
+	{
+     notification_new.submit();
+	}
+	}
+	else
+	{
+     $("#notification_new").submit();
+	}
+   
+  }
+ 
 }
-
-
 </script>
-
 		<div class="grid_5 ">
 			<p id="user-name" class="grid_5" style="font-size:1.5em;"><%= current_vendor.business_name %></p>
 			<div class="profile-avatar avatar"><%= image_tag(current_vendor.photo.url(:profile)) %></div>
@@ -136,175 +123,101 @@ alert($("#noticefor").val()=="null");
 
 
 <div style="margin-left:26em;">
-<h1>Create Notification</h1>
-<hr><br />
-<%= form_for(@notification, :as => :notification, :url => vendorNotificationsCreate_vendors_path(), :html => {:multipart => true} ) do |f| %>
- 
+
+
+
+ <h1>New Notification</h1>
+  <hr><br />
+<%= form_for(@notification, :as => :notification, :url => admin_notifications_path, :html => {:multipart => true} ) do |f| %>
+
 	<%=f.hidden_field :notificationTo, :value=>"User"%>
-	<%=f.hidden_field :notificationable_type, :value=>"Vendor"%>
+	<%=f.hidden_field :notificationable_type, :value=>"Admin"%>
 	<%=f.hidden_field :notificationable_id, :value=>"#{current_vendor.id}"%>  
  
 
 <p>
+
 	<%= f.label :notificationToId,  %Q{Notification To: <span class="help-text">(Multiple select holding CTRL key)</span> }.html_safe %> <br/> 
 	<%=select_tag 'notificationToId[]', options_for_select(@members.map {|s| ["#{s.first_name} "+ "#{s.last_name}", s.email]}), :multiple => true, :size => 7, :id=>"noticefor",:style=>"width:10em;"%>
 
 </p>
 
 
+
 <p>
 	<%= f.label :notification_type, "Notification type:" %>
-	<%=f.select   :notification_type, options_for_select([ ['Lunch','lunch' ],['Dinner','dinner' ] ,['Breakfast','breakfast' ], ['Goal','goal' ] ,['Protein','protein' ] , ['Nutrition', 'nutrition'], ['Exercise', 'Exercise']  ])%> 
+	<%=f.select   :notification_type, options_for_select([ ['Weight loss','weight' ],['Activity','activity' ] , ['Food','food' ],['Supplements','supplements' ] ,['Body fat','bodyfat' ], ['Calories','calories' ], ['Other','other']   ]) %> 
 
-</p> <br/> 
- 
+
+</p> <br/>  
    
-   
-<p>
-	<%=f.label  :notificationFrequency, %Q{Notification on Every: <span class="help-text">(Multiple select holding CTRL key)</span> }.html_safe %><br/>
-	<%=select_tag  'notificationFrequency[]', options_for_select([ ['1 day','1.day' ],['2 day','2.days' ] ,['3 day','3.days' ], ['weekely','7.days' ] ,['Bi weekely','14.days' ] ,['monthly','30.days' ] ]),:multiple => true, :size => 5 %> 
-
-</p><br/>
-    
-
-<p>
-	<%=f.label  "Notifcation at:"%>
-	<%= select_tag "time", options_for_select([["6am", "6:00 am"], ["7am", "7:00 am"], ["8am", "8:00 am"], ["9am", "9:00 am"], ["10am", "10:00 am"], ["11am","11:00 am"], ["12pm","12:00 pm"], ["1pm", "1:00 pm"], ["2pm", "2:00 pm"], ["3pm", "3:00 pm"], ["4pm", "4:00 pm"], ["5pm", "5:00 pm"], ["6pm", "6:00 pm"], ["7pm", "7:00 pm"], ["8pm", "8:00 pm"], ["9pm", "9:00 pm"], ["10pm", "10:00 pm"], ["11pm", "11:00 pm"], ["12am", "12:00 am"], ["1am", "1:00 am"], ["2am", "2:00 am"], ["3am", "3:00 am"], ["4am","4:00 am" ], ["5am", "5:00 am"]], :id=>"notificationTime")%>
-
-</p></br>
-
-
-
 
 <div id= "mealnotifications" style="display:none;">
 
 <p>
-		<label>Recommend Meal Per Day :</label>
-		<%=select("Meal", "per_day", (1..5).step(1).collect {|p| [ "#{p}", p ] }) %><br/><br/>
+		<label>Choose Food: <span class="help-text">(Multiple select holding CTRL key)</span></label><br/>
+		<%=select_tag 'mealslist[]', options_for_select(allfoods.map {|s| ["#{s.name} ", s.id]}), :multiple => true, :size => 7, :id=>"meals",:style=>"width:20em;"%><br/><br/>
 </p>
 
-
-<p>
-		<label>Meals Required to Eat: </label><br/><br/>
-		<%#=select_tag   "meal[]", options_for_select([ ['Lunch','lunch' ],['Dinner','dinner' ] ,['Breakfast','breakfast' ] ]), :multiple => true, :size => 7, :id=>"requiredmeal",:style=>"width:10em;height:5em;" %>
-</p>
-
-
-<p>
-		<label>Breakfast: </label><br/>
-		<%=select_tag 'mealstoavoid[]', options_for_select(allfoods.map {|s| ["#{s.name} ", s.id]}), :multiple => true, :size => 7, :id=>"noticefor",:style=>"width:20em;"%><br/><br/>
-</p>
-
-
-<p>
-		<label>Lunch: </label><br/>
-		<%=select_tag 'mealstoavoid[]', options_for_select(allfoods.map {|s| ["#{s.name} ", s.id]}), :multiple => true, :size => 7, :id=>"noticefor",:style=>"width:20em;"%><br/><br/>
-</p>
-
-
-<p>
-		<label>Dinner: </label><br/>
-		<%=select_tag 'mealstoavoid[]', options_for_select(allfoods.map {|s| ["#{s.name} ", s.id]}), :multiple => true, :size => 7, :id=>"noticefor",:style=>"width:20em;"%><br/><br/>
-</p>
-
-
-<p>
-		<label>Meal Timings</label><br> 
-
-		<%= select_tag "time", options_for_select([["6am", "6:00 am"], ["7am", "7:00 am"], ["8am", "8:00 am"], ["9am", "9:00 am"], ["10am", "10:00 am"], ["11am","11:00 am"], ["12pm","12:00 pm"], ["1pm", "1:00 pm"], ["2pm", "2:00 pm"], ["3pm", "3:00 pm"], ["4pm", "4:00 pm"], ["5pm", "5:00 pm"], ["6pm", "6:00 pm"], ["7pm", "7:00 pm"], ["8pm", "8:00 pm"], ["9pm", "9:00 pm"], ["10pm", "10:00 pm"], ["11pm", "11:00 pm"], ["12am", "12:00 am"], ["1am", "1:00 am"], ["2am", "2:00 am"], ["3am", "3:00 am"], ["4am","4:00 am" ], ["5am", "5:00 am"]]), :multiple => true, :size => 7, :id=>"noticefor",:style=>"width:10em;"%><br/><br/>
-
-</p>
-
-
-<p>
-		<label>Protein:</label>
-		<%=text_field_tag  "Protein", "", :placeholder=>"in grams...." , :style=>"height:1.3em;width:6em;"%><br/>
-</p>
-
-
-<p>
-
-		<label>Carbohydrates:</label>
-		<%=text_field_tag  "Carbohydrates", "", :placeholder=>"in grams...." , :style=>"height:1.3em;width:6em;"%><br/>
-</p>
-
-
-<p>
-		<label>Vegetables:</label><br/>
-		<%=text_area_tag  "vegetables"%>
-</p>
-
-
-
-<p>
-		<label>Meals to Avoid :</label><br />
-		<%=select_tag 'mealstoavoid[]', options_for_select(allfoods.map {|s| ["#{s.name} ", s.id]}), :multiple => true, :size => 7, :id=>"avoidmeal",:style=>"width:20em;"%>
-
-</p>
-
-
-	</div>
-
+</div>
 
 
 
 <div id="exercisetips">
 
 <p>		
-		<label>Recommend Exercise :</label><br/><br/>
-			<%=select_tag 'mealstoavoid[]', options_for_select(Exercise.all.map {|s| ["#{s.description} ", s.id]}), :multiple => true, :size => 7, :id=>"noticefor",:style=>"width:20em;"%><br/><br/>
+		<label>Recommend Exercise :<span class="help-text">(Multiple select holding CTRL key)</span> </label><br/><br/>
+			<%=select_tag 'exerciseslist[]', options_for_select(Exercise.all.map {|s| ["#{s.description} ", s.id]}), :multiple => true, :size => 7, :id=>"excercises",:style=>"width:20em;"%><br/><br/>
 
-</p>		
+</p>	
 
-
-<p>		
-		<label>No of Cardio (per day): </label><br/>
-		 <%=text_field_tag   "cardioNo" %><br/>
-</p>		
-
-
-<p>		
-		<label>Time: </label><br/>
-		 <%=text_field_tag   "timeofcardio" %><br/>
-</p>		
-
-<p>		
-		<label>Intensity: </label><br/>
-		 <%=text_field_tag   "intensity" %><br/>
-</p>		
-
-
-<p>				 
-		<label>Additonal Exercise: </label><br/>
-		 <%=text_field_tag   "additionalExercises" %><br/> 
-</p>		
-		 
 </div>
 
 
+
+<p>
+	<label>Amount :</label>
+	<%=f.text_field :amount, :style=>"width:4em;height:1.3em;"%>
+
+</p>
+
+   
+<p>
+	<%=f.label  :notificationFrequency, %Q{ Send Nofication every: <span class="help-text">(Frequency: Multiple select holding CTRL key)</span> }.html_safe %><br/>
+	<%=select_tag  'notificationFrequency[]', options_for_select([ ['day','1.day' ],['2 day','2.days' ] ,['3 day','3.days' ], ['weekely','7.days' ] ,['Bi weekely','14.days' ] ,['monthly','30.days' ] ]),:multiple => true, :size => 5 %> 
+
+</p> <br/>  
+
+
+
+<p>
+ <%=f.label  "Send notification at:"%>
+  <%= f.select "time", options_for_select([["6am", "6:00 am"], ["7am", "7:00 am"], ["8am", "8:00 am"], ["9am", "9:00 am"], ["10am", "10:00 am"], ["11am","11:00 am"], ["12pm","12:00 pm"], ["1pm", "1:00 pm"], ["2pm", "2:00 pm"], ["3pm", "3:00 pm"], ["4pm", "4:00 pm"], ["5pm", "5:00 pm"], ["6pm", "6:00 pm"], ["7pm", "7:00 pm"], ["8pm", "8:00 pm"], ["9pm", "9:00 pm"], ["10pm", "10:00 pm"], ["11pm", "11:00 pm"], ["12am", "12:00 am"], ["1am", "1:00 am"], ["2am", "2:00 am"], ["3am", "3:00 am"], ["4am","4:00 am" ], ["5am", "5:00 am"]])%>
+
+<p></br>
+
+
+
+<p>
+	<%= f.label :do_dont, "Do/Don't" %>
+	<%=f.select   :do_dont, options_for_select([ ['Do','1' ],['Dont','0' ] ]) %> 
+
+</p> <br/>  
    
 <p>
 	<%= f.label :message, "Message:" %><br/><br/>
-	<%= f.text_area :message , :style=>"width:10em;"%>
+	<%= f.text_area :message , :id=>"message",:style=>"width:25em;height:10em;"%>
 
-</p>
-  
- <br/><br/>
-
-<p>
-	<%=f.label :turnOnNotification, "Turn on" %>
-	<%=f.check_box  :turnOnNotification %> 
-
-</p>  <br/> 
+</p><br/><br/>
 
  
       
 <p>
+<!--	<%#= f.submit 'Create Notification' %> | <%#= link_to 'Cancel', admin_notifications_path %>-->
 <input type="button" value="Save" onclick="submitform();"/>
-	<%#= f.submit 'Create Notification' %> | <%#= link_to 'Cancel', :back %>
 </p>
 
-  <% end %>
+<% end %>
 
   
 </div>

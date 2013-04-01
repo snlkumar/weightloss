@@ -1,10 +1,14 @@
 class CreateMywwnotifications < ActiveRecord::Migration
   def change
     create_table :mywwnotifications do |t|
-      t.string  :lunch
-      t.string :dinner
-      t.string  :breakfast
-      t.string  :goal
+      t.string  :weight
+      t.string :activity
+      t.string  :food
+      t.string  :supplements
+      t.string  :bodyfat
+      t.string :calories
+      t.string  :other
+      
       t.integer  :user_id
       t.timestamps
     end
