@@ -189,8 +189,8 @@ class NotificationsController < ApplicationController
 		@user=User.find_by_email("#{email}")
 
 			if @notification.duration=="week"
-			@weights=@user.weights.past_week
-			elsif @notification.duration="month"
+			@weights=@user.weights.past_week.order('created_at DESC')
+			elsif @notification.duration=="month"
 			@weights=@user.weights.past_month
 			else 
 			@weights=@user.weights.today
@@ -199,8 +199,9 @@ class NotificationsController < ApplicationController
 		
 #			@weights=@user.weights.reverse
 			if @weights.length>1
-			@weightloss=@weights.first.weight-@weights.last.weight
+			@weightloss=@weights.last.weight-@weights.first.weight
 			if @notification.do_dont=="1"
+
 
 				if (@weightloss + @notification.amount.to_i ) <=0 # if weight loss amount mentioned achieved... email will be sent....
 				checkweight << email
@@ -208,11 +209,13 @@ class NotificationsController < ApplicationController
 
 			else
 
-				if (@weightloss + @notification.amount.to_i ) >= 0 # if weight loss amount mentioned not achieved... email will be sent....
+				if (@weightloss + @notification.amount.to_i ) > 0 # if weight loss amount mentioned not achieved... email will be sent....
 				checkweight << email										 
 				end
 
 			end
+
+
 
 			BusinessclaimMailer.weightcheck(@notification.message,checkweight,@notification.amount.to_i).deliver if  checkweight.present?
 			else
@@ -258,7 +261,7 @@ class NotificationsController < ApplicationController
 				end
 			else
 
-				if @netcalories <@notification.amount.to_i  # if calorie loss amount mentioned not achieved... email will be sent....
+				if @netcalories < @notification.amount.to_i  # if calorie loss amount mentioned not achieved... email will be sent....
 				checkcalories << email
 				end			
 			end

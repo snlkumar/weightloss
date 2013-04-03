@@ -98,78 +98,7 @@ function submitform()
 
 
 
-<p>
-	<%= f.label :notification_type, "Notification type:" %>
-	<%=f.select   :notification_type, options_for_select([ ['Weight loss','weight' ],['Supplements','supplements' ] ,['Body fat','bodyfat' ], ['Calories','calories' ], ['Activity','activity' ] , ['Food','food' ], ['Other','other']   ]) %> 
-
-
-</p> <br/>  
-   
-
-<div id= "mealnotifications" style="display:none;">
-
-<p>
-		<label>Choose Food: <span class="help-text">(Multiple select holding CTRL key)</span></label><br/>
-		<%=select_tag 'mealslist[]', options_for_select(allfoods.map {|s| ["#{s.name} ", s.id]}), :multiple => true, :size => 7, :id=>"meals",:style=>"width:20em;"%><br/><br/>
-</p>
-
-</div>
-
-
-
-<div id="exercisetips">
-
-<p>		
-		<label>Recommend Exercise :<span class="help-text">(Multiple select holding CTRL key)</span> </label><br/><br/>
-			<%=select_tag 'exerciseslist[]', options_for_select(Exercise.all.map {|s| ["#{s.description} ", s.id]}), :multiple => true, :size => 7, :id=>"excercises",:style=>"width:20em;"%><br/><br/>
-
-</p>	
-
-</div>
-
-
-
-<p>
-	<label>Amount :</label>
-	<%=f.text_field :amount, :style=>"width:4em;height:1.3em;"%>&nbsp;&nbsp;&nbsp;Per:<%=f.select   :duration, options_for_select([ ['Day','day' ],['Week','week' ],['Month','month' ] ]) %> 
-
-</p>
-
-   
-<p>
-	<%=f.label  :notificationFrequency, %Q{ Send Nofication every: <span class="help-text">(Frequency: Multiple select holding CTRL key)</span> }.html_safe %><br/> <%=select_tag 'times', options_for_select(1..10), :id=>"times"%>&nbsp;&nbsp; x &nbsp;&nbsp;&nbsp;
-	<%=select_tag  'notificationFrequency[]', options_for_select([ ['Day','day' ],['Week','week' ] ,['Month','month' ], ['Year','year' ]]) %> 
-
-</p> <br/>  
-
-
-<!--
-<p>
- <%#=f.label  "Send notification at:"%>
-  <%#= f.select "time", options_for_select([["6am", "6:00 am"], ["7am", "7:00 am"], ["8am", "8:00 am"], ["9am", "9:00 am"], ["10am", "10:00 am"], ["11am","11:00 am"], ["12pm","12:00 pm"], ["1pm", "1:00 pm"], ["2pm", "2:00 pm"], ["3pm", "3:00 pm"], ["4pm", "4:00 pm"], ["5pm", "5:00 pm"], ["6pm", "6:00 pm"], ["7pm", "7:00 pm"], ["8pm", "8:00 pm"], ["9pm", "9:00 pm"], ["10pm", "10:00 pm"], ["11pm", "11:00 pm"], ["12am", "12:00 am"], ["1am", "1:00 am"], ["2am", "2:00 am"], ["3am", "3:00 am"], ["4am","4:00 am" ], ["5am", "5:00 am"]])%>
-
-<p></br>
-
--->
-
-<p>
-	<%= f.label :do_dont, "Do/Don't" %>
-	<%=f.select   :do_dont, options_for_select([ ['Do','1' ],['Dont','0' ] ]) %> 
-
-</p> <br/>  
-   
-<p>
-	<%= f.label :message, "Message:" %><br/><br/>
-	<%= f.text_area :message , :id=>"message",:style=>"width:25em;height:10em;"%>
-
-</p><br/><br/>
-
- 
-      
-<p>
-<!--	<%#= f.submit 'Create Notification' %> | <%#= link_to 'Cancel', admin_notifications_path %>-->
-<input type="button" value="Save" onclick="submitform();"/>
-</p>
+    <%= render :partial => 'admin/notifications/form', :locals => {:f => f} %>
 
 <% end %>
   
