@@ -93,14 +93,14 @@ function submitform()
 	<%=f.hidden_field :notificationTo, :value=>"User"%>
 	<%=f.hidden_field :notificationable_type, :value=>"User"%>
 	<%=f.hidden_field :notificationable_id, :value=>"#{current_user.id}"%>  
-	<%=f.hidden_field :notificationToId, :value=>"#{current_user.id}"%> 
+	<%=f.hidden_field :notificationToId, :value=>"#{current_user.email}"%> 
 
 
 
 
 <p>
 	<%= f.label :notification_type, "Notification type:" %>
-	<%=f.select   :notification_type, options_for_select([ ['Weight loss','weight' ],['Supplements','supplements' ] ,['Body fat','bodyfat' ], ['Calories','calories' ], ['Activity','activity' ] , ['Food','food' ] ]) %> 
+	<%=f.select   :notification_type, options_for_select([ ['Weight loss','weight' ],['Supplements','supplements' ] ,['Body fat','bodyfat' ], ['Calories','calories' ], ['Activity','activity' ] , ['Food','food' ], ['Other','other']   ]) %> 
 
 
 </p> <br/>  
@@ -131,26 +131,26 @@ function submitform()
 
 <p>
 	<label>Amount :</label>
-	<%=f.text_field :amount, :placeholder=>"lbs", :style=>"width:4em;height:1.3em;"%>&nbsp;&nbsp;&nbsp;Duration:<%=select_tag   "Duration", options_for_select([ ['Day','day' ],['Week','week' ],['Month','month' ] ]) %> 
+	<%=f.text_field :amount, :style=>"width:4em;height:1.3em;"%>&nbsp;&nbsp;&nbsp;Per:<%=f.select   :duration, options_for_select([ ['Day','day' ],['Week','week' ],['Month','month' ] ]) %> 
 
 </p>
 
    
 <p>
-	<%=f.label  :notificationFrequency, %Q{ Send Nofication every: <span class="help-text">(Frequency: Multiple select holding CTRL key)</span> }.html_safe %><br/>
-	<%=select_tag  'notificationFrequency[]', options_for_select([ ['day','1.day' ],['2 day','2.days' ] ,['3 day','3.days' ], ['weekely','7.days' ] ,['Bi weekely','14.days' ] ,['monthly','30.days' ] ]),:multiple => true, :size => 5 %> 
+	<%=f.label  :notificationFrequency, %Q{ Send Nofication every: <span class="help-text">(Frequency: Multiple select holding CTRL key)</span> }.html_safe %><br/> <%=select_tag 'times', options_for_select(1..10), :id=>"times"%>&nbsp;&nbsp; x &nbsp;&nbsp;&nbsp;
+	<%=select_tag  'notificationFrequency[]', options_for_select([ ['Day','day' ],['Week','week' ] ,['Month','month' ], ['Year','year' ]]) %> 
 
 </p> <br/>  
 
 
-
+<!--
 <p>
- <%=f.label  "Send notification at:"%>
-  <%= f.select "time", options_for_select([["6am", "6:00 am"], ["7am", "7:00 am"], ["8am", "8:00 am"], ["9am", "9:00 am"], ["10am", "10:00 am"], ["11am","11:00 am"], ["12pm","12:00 pm"], ["1pm", "1:00 pm"], ["2pm", "2:00 pm"], ["3pm", "3:00 pm"], ["4pm", "4:00 pm"], ["5pm", "5:00 pm"], ["6pm", "6:00 pm"], ["7pm", "7:00 pm"], ["8pm", "8:00 pm"], ["9pm", "9:00 pm"], ["10pm", "10:00 pm"], ["11pm", "11:00 pm"], ["12am", "12:00 am"], ["1am", "1:00 am"], ["2am", "2:00 am"], ["3am", "3:00 am"], ["4am","4:00 am" ], ["5am", "5:00 am"]])%>
+ <%#=f.label  "Send notification at:"%>
+  <%#= f.select "time", options_for_select([["6am", "6:00 am"], ["7am", "7:00 am"], ["8am", "8:00 am"], ["9am", "9:00 am"], ["10am", "10:00 am"], ["11am","11:00 am"], ["12pm","12:00 pm"], ["1pm", "1:00 pm"], ["2pm", "2:00 pm"], ["3pm", "3:00 pm"], ["4pm", "4:00 pm"], ["5pm", "5:00 pm"], ["6pm", "6:00 pm"], ["7pm", "7:00 pm"], ["8pm", "8:00 pm"], ["9pm", "9:00 pm"], ["10pm", "10:00 pm"], ["11pm", "11:00 pm"], ["12am", "12:00 am"], ["1am", "1:00 am"], ["2am", "2:00 am"], ["3am", "3:00 am"], ["4am","4:00 am" ], ["5am", "5:00 am"]])%>
 
 <p></br>
 
-
+-->
 
 <p>
 	<%= f.label :do_dont, "Do/Don't" %>

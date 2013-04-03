@@ -9,7 +9,7 @@ class Forem::ApplicationController < ApplicationController
     if !forem_user
       session[:return_to] = request.fullpath
       #flash[:error] = t("forem.errors.not_signed_in")
-      #redirect_to main_app.sign_in_path
+      redirect_to main_app.sign_in_path
     end
   end
   

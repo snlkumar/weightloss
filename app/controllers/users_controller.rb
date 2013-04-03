@@ -197,6 +197,22 @@ end
 	
 		params[:notification][:notificationFrequency]=params[:notificationFrequency].collect{|a| a.split(",") }.join(",").to_s
 
+		if params[:notificationFrequency].to_s=="day"
+		params[:notification][:notificationFrequency]="every #{(24/params[:times].to_f).round(2)}"+".hours"
+
+		elsif params[:notificationFrequency].to_s=="week"
+		params[:notification][:notificationFrequency]="every #{24*7/params[:times].to_f}"+".hours"
+		
+		
+		elsif params[:notificationFrequency].to_s=="month"
+		params[:notification][:notificationFrequency]="every #{24*30/params[:times].to_f}"+".hours"
+		
+		
+		else
+		params[:notification][:notificationFrequency]="every #{(24*30*12/params[:times].to_f).round(2)}"+".hours"
+		end
+
+
 		if params[:notification][:notification_type]=="food"
 			params[:notification][:mealslist]=params[:mealslist].collect{|a| a.split(",") }.join(",").to_s
 		end			
@@ -205,13 +221,6 @@ end
 			params[:notification][:exerciseslist]=params[:exerciseslist].collect{|a| a.split(",") }.join(",").to_s	
 				
 		end
-
-		nextruntime=[]
-		params[:notificationFrequency].collect{|a| a.split(",") }.join(",").to_s.each do |frequency|
-		nextruntime << Date.today+frequency.to_i
-		end
-		params[:notification][:nextrundate]=nextruntime.min
-		
 		
 		 	
        @notification = Notification.create(params[:notification])
@@ -224,23 +233,21 @@ end
 				 `echo '#{envr}' >> '#{Rails.root}/config/schedule.rb'`
 				 auto_mail = Notification.all
 				 if auto_mail
-					i=0
+				 					i=0
 							auto_mail.each do |a|
-							 a.notificationFrequency.split(",").each do |frequency|
 							
-							 	@cron_time="every "+frequency+", "+':at=>'+" "+'"'+a.time+'"'
+							 #	@cron_time="every "+a.notificationFrequency+", "+':at=>'+" "+'"'+a.time+'"'
 							 	
-							  	txt =@cron_time+" "+'do
+							  	txt =a.notificationFrequency+" "+'do
 								 rake "sendnotifications'+i.to_s+'"
 							  end'
 							  	task='task :sendnotifications'+i.to_s+' => :environment do
 								 obj = NotificationsController.new
-							 	 obj.'+a.notification_type+'AutoNotifications
+							 	 obj.'+a.notification_type+'AutoNotifications'+'('+a.id.to_s+')
 							  end'
 							  `echo '#{txt}' >> '#{Rails.root}/config/schedule.rb'`
 							  `echo '#{task}' >> '#{Rails.root}/lib/tasks/sendnotifications.rake'`
 							  i+=1
-							 end
 							end
 					`whenever -i`
 				 end

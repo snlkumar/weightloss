@@ -3,6 +3,7 @@ gem "rails", "3.1.0"
 gem "rake"
 gem "rdoc"
 gem 'ckeditor', '3.4.2.pre'
+gem "cocaine", "0.3.2"
 gem 'paperclip','2.7.0'
 gem 'default_value_for'
 gem "fastercsv"
@@ -27,7 +28,7 @@ gem 'chronic'
 gem "jquery-rails"
 gem "friendly_id", "~> 3.1"
 gem 'dynamic_form' # for Rails 2 form error helpers
-gem 'acts_as_commentable'
+gem 'acts_as_commentable', '3.0.1'
 gem 'omniauth', '>=0.2.6'
 gem 'json'
 gem 'sass-rails', "  ~> 3.1"
