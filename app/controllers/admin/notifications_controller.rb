@@ -61,7 +61,7 @@ class Admin::NotificationsController < ApplicationController
   
 #writing schedule and rake task file
 					`rm -f '#{Rails.root}/config/schedule.rb' '#{Rails.root}/lib/tasks/sendnotifications.rake'`
-				 envr = 'set :environment,"production"'
+				 envr = 'set :environment,"development"'
 				 `echo '#{envr}' >> '#{Rails.root}/config/schedule.rb'`
 				 auto_mail = Notification.all
 				 if auto_mail

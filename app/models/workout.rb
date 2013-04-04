@@ -16,6 +16,8 @@ class Workout < ActiveRecord::Base
   
   scope :today, :conditions => ["trained_on = ?", Date.today]		#this is my code. old code is above
   scope :past_week, :conditions => ["trained_on >= ?", 6.days.ago]
+  scope :past_month,   :conditions => ["trained_on >= ?", 30.days.ago]
+
 
 # Nested Attributes
   accepts_nested_attributes_for :workout_items, :allow_destroy => true

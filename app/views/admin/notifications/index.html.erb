@@ -11,7 +11,7 @@
   
   <h2 style="width:63em;">Notifications</h2>
 
- <%= link_to 'New Message', new_admin_notification_path() %><br/><br/>
+ <%= link_to 'New Notification', new_admin_notification_path() %><br/><br/>
   <%= page_entries_info(@notifications, :entry_name => 'notification') %>
   <%= paginate(@notifications, :params => pagination_params(request)) %>
   
@@ -30,8 +30,8 @@
       <% @notifications.each do |note| %>
         <tr class="<%#= cycle('odd', 'even') %>">
            <td style="width:20%;"><%= note.notificationable_type %></td>
-           <td style="width:10%;">Users</td>                  
-          <td style="width:40%;"><%=truncate note.message.html_safe, :length=> 40 %></td>
+           <td style="width:30%;"><%=truncate (usersemails(note.notificationToId)), :length=>40 %></td>                  
+          <td style="width:30%;"><%=truncate note.message.html_safe, :length=> 40 %></td>
            <td style="width:10%;"><%=note.created_at.strftime("%Y-%m-%d")%></td>                  
           <td class="actions">
             <%= link_to 'Show', admin_notification_path(note) %> | 

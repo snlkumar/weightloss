@@ -1,6 +1,15 @@
 class RegistrationsController < Devise::RegistrationsController
   
   def create
+  
+  		check=verify_recaptcha(request.remote_ip, params)
+
+	if check[:status] == 'false'
+	  #@notice = "captcha value is not correct"
+    render :action => "new", :notice => "captcha value is not correct"
+    return
+ else
+  
   	begin
 		  build_resource
 
@@ -28,6 +37,8 @@ class RegistrationsController < Devise::RegistrationsController
 				redirect_to '/users/sign_up', :notice => "User already exists"
    end
   end
+end
+
   
   def update
     if resource.update_with_password(params[resource_name])

@@ -96,14 +96,22 @@ include SendGrid
  
  
   
-	def foodshouldtaken(message, email,foodids)
+	def foodcheck(message, email,foodids)
 		@message=message
 		@email=email
 		@foodids=foodids
-		mail(:from => "noreply@myweightworld.com", :to => @email, :subject => "Food Should Taken Notification")
+		mail(:from => "noreply@myweightworld.com", :to => @email, :subject => "Meal Tracker Notification")
 		
 	end
 
+  
+	def workoutscheck(message, email,workoutids)
+		@message=message
+		@email=email
+		@workoutids=workoutids
+		mail(:from => "noreply@myweightworld.com", :to => @email, :subject => "Workout Tracker Notification")
+		
+	end
 
   
 end

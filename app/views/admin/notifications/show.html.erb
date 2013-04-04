@@ -34,23 +34,8 @@
 	</tr>
 	
 	
-<!--	
-			<tr>
-	 			<td style="padding:15px 25px;font-size:16px;color:#2E8EC1;" valign="top">Users:</td>
-	 			<td style="padding:15px 15px;font-size:15px" valign="top">
-	 				<%#data=@notification.notificationToId%>
-								<%#if data!="all"%>
-								<%#data1=data.split(",")%>
-									<%#for i in 0...data1.length%>
-									<% #if User.find_by_id(data1[i].to_i)!=nil%>
-									<%#=link_to User.find_by_id(data1[i].to_i).full_name,user_path(User.find_by_id(data1[i].to_i)) %>,
 
-									<%#end%>
-								<%#end%>
-						<%#end%>
-				</td>
-			</tr>
--->
+
 
 		<tr>
 			 <td style="padding:15px 25px;font-size:16px;color:#2E8EC1;" valign="top">Created on:</td>
@@ -71,7 +56,17 @@
 			
 		</tr>
 
-
+	
+			<tr>
+	 			<td style="padding:15px 25px;font-size:16px;color:#2E8EC1;" valign="top">Users:</td>
+	 			<td style="padding:15px 15px;font-size:15px" valign="top">
+		
+	 			
+	 			    <%=usersemails(@notification.notificationToId) %></td>                  
+	 			
+	 			
+				</td>
+			</tr>
 
 
 	</tbody>

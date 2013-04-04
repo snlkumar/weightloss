@@ -5,9 +5,6 @@ every 2.4.hours do
 every 2.4.hours do
 								 rake "sendnotifications1"
 							  end
-every 2.4.hours do
+every 24.0.hours do
 								 rake "sendnotifications2"
-							  end
-every 2.4.hours do
-								 rake "sendnotifications3"
 							  end

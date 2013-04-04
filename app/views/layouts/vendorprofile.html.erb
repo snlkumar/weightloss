@@ -1,0 +1,70 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js" lang="en"> <!--<![endif]-->
+  <head>
+    <%= render :partial => '/layouts/head' %>
+  </head>
+  <body>
+    <div id="wrap" class="full">
+      <div id="main" class="full">
+        <%= render :partial => '/layouts/header' %>
+    
+        <div class="container_16">
+          <div class="grid_5 ">
+            <div class="sidebar-container" style="">
+              <p id="user-name" class="grid_5"><%= @vendor.business_name %></p>
+          
+              <div class="clear">&nbsp;</div>
+          
+              <div class="profile-avatar avatar"><%= image_tag(@vendor.photo.url(:profile)) %></div>
+          
+              <%= link_to 'Edit', edit_vendor_path(current_vendor), :id => 'edit-profile', :class => 'outlined-fade', :title => 'Edit your profile' %>
+          
+              <div class="clear">&nbsp;</div>
+			               <ul id="user-settings-tabs">
+                <li class="vendor-class">
+				 			<%if current_vendor%>
+								      <%= link_to 'Add MyWeightWorld Users', usersearch_vendors_path%>                
+								    </li>
+								    <li class="vendor-class">
+								      <%= link_to 'Add a Member', addmember_vendors_path%>
+								    </li>                
+								    <li class="vendor-class">
+								      <%= link_to 'Members List', memberlist_vendors_path%>
+								    </li> 
+								    <li class="vendor-class">
+								      <%= link_to 'Notification Settings', vendorNotificationsNew_vendors_path%>
+								    </li> 
+
+								  </ul>
+							<%end%>
+
+            </div>
+            
+            <div class="clear">&nbsp;</div>
+            <br/>
+            
+          </div>
+          
+  
+     
+          <div id="content" class="grid_11 profile">
+            <%= render :partial => '/shared/flash', :locals => {:flash => flash} %>
+            
+            <%= yield %>
+          </div>
+          
+          <br/>
+        </div>
+      </div>
+    </div>
+    
+    <%= render :partial => 'layouts/footer' %>
+      
+
+  </body>
+</html>

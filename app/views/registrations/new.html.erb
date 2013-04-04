@@ -18,11 +18,14 @@
     </p>
     
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
+      <%#= devise_error_messages! %>
       
       <ol class="forms">
         <%= render :partial => '/users/form', :locals => {:f => f} %>
       </ol>
+ 	<div style="margin-left: 0%;">
+         <%=render '/shared/recaptcha' %>
+   </div></br>
       
       <button class="button grid_4 alpha" type="submit">
         On to the Next Step!

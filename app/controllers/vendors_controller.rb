@@ -56,6 +56,7 @@ class VendorsController < ApplicationController
 
 		def profile			
 		@vendor=Vendor.find(params[:id])	 
+		render :layout=>'vendorprofile'
 		end
 
 
