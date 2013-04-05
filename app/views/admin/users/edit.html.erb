@@ -9,7 +9,13 @@
     <%= render :partial => 'form', :locals => {:f => f} %>
     
     <%= render :partial => '/users/personal_info', :locals => {:f => f} %>
-    
+ 
+	<p>
+	  <%= f.label :hideForemPost, "Hide Forum Posts", :style=>"float:left;" %>
+		<%=f.check_box :hideForemPost, :class => 'alpha'%>   
+	  <span class="clear"></span><br>
+	</p>   
+	
     <p>
       <%= f.submit 'Update' %>
     </p>

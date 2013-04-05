@@ -1,5 +1,11 @@
+
 <a name='post-<%= post.id %>'></a>
+
+<% if post.user.try(:hideForemPost)==0 %>
+
 <div id='post_<%= post.id %>' class='post <%= cycle('odd', 'even') -%>'>
+
+
   <%= render :partial => 'forem/posts/user_details', :locals => { :user => post.user } %>
   <div class='contents'>
     <time datetime="<%= post.created_at.to_s(:db) -%>"><%= time_ago_in_words(post.created_at) -%> ago</time>
@@ -20,14 +26,26 @@
         	<!-- new code -->
           <li ><%= link_to "Reply", '#', :onclick=>"show('#{new_topic_post_path(@topic)}','?reply_to_id=#{post.id}')" , :id=>"deletelink", :style=>"background-color:#0B2B42;color:white;"%></li>
         <% end %>
+
+
+
         <% if @topic.can_be_replied_to? %>
-          <li><%#= link_to "Quote", new_topic_post_path(@topic, :reply_to_id => post.id, :quote => true) %><%= link_to "Quote", '#', :onclick=>"show('#{new_topic_post_path(@topic, :quote => true )}','&reply_to_id=#{post.id}')",:id=>"deletelink", :style=>"background-color:#0B2B42;color:white;" %></li>
+          <li><%#= link_to "Quote", new_topic_post_path(@topic, :reply_to_id => post.id, :quote => true) %>
+          
+          <%= link_to "Quote", '#', :onclick=>"show('#{new_topic_post_path(@topic, :quote => true )}','&reply_to_id=#{post.id}')",:id=>"deletelink", :style=>"background-color:#0B2B42;color:white;" %></li>
         <% end %>
-        <% if forem_user == post.user || forem_admin? %>
-          <li><%= link_to "Delete", topic_post_path(@topic, post), :method => :delete, :confirm => "Are you sure?",:id=>"deletelink", :style=>"background-color:#0B2B42;color:white;" %></li>
-        <% end %>
+        
+        
+        
+        <% if forem_admin? || forem_user == post.user %>
+          <li><%= link_to "Delete", '#', :onclick=>"deletepost('#{topic_post_path(@topic, post)}')", :id=>"deletelink", :style=>"background-color:#0B2B42;color:white;"%></li>
+        <% end %>        
+        
+        
       <%# end %>
     </ul>
   </div>
-</div>
 
+</div>
+  
+<%end%>

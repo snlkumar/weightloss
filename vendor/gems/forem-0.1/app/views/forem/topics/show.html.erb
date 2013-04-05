@@ -318,6 +318,27 @@ $("#waiting").css("display","none");
    });
  return false;
 }
+
+
+function deletepost(path)
+{
+	jQuery.ajax({
+       //type : "GET",	
+       url : path,
+		type: "DELETE",
+       success: function(data) 
+		{
+		  //reload comments
+  			reloadPage("<%=request.url%>");
+       },
+       error : function() 
+		{
+         alert("Sorry, The requested property could not be found.");
+      }
+   });
+}
+
+
 function reloadPage(href)
 {
  $("body").load(href);

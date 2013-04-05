@@ -1,3 +1,5 @@
+
+
 <p>
   <%= f.label :admin, :style=>"float:left;" %>
   <%= f.check_box :admin, :class => 'alpha', :disabled=> (@user.id==current_user.id) ? true : false %>
@@ -28,3 +30,5 @@
   <%= f.text_field :email, :placeholder => "Ex: email@address.com", :class => 'grid_6 alpha' %>
   <span class="clear"></span>
 </p>
+
+
