@@ -22,30 +22,44 @@ class Admin::NotificationsController < ApplicationController
 		params[:notification][:notificationToId]=params[:notificationToId].collect{|a| a.split(",") }.join(",").to_s
 #		params[:notification][:notificationFrequency]=params[:notificationFrequency].collect{|a| a.split(",") }.join(",").to_s
 
-		if params[:notificationFrequency].to_s=="day"
-		params[:notification][:notificationFrequency]="every #{(24/params[:times].to_f).round(2)}"+".hours"
 
-		elsif params[:notificationFrequency].to_s=="week"
-		params[:notification][:notificationFrequency]="every #{24*7/params[:times].to_f}"+".hours"
-		
-		
-		elsif params[:notificationFrequency].to_s=="month"
-		params[:notification][:notificationFrequency]="every #{24*30/params[:times].to_f}"+".hours"
-		
-		
+		if params[:notificationFrequency]=="first"
+			if params[:notificationFrequency1].to_s=="day"
+				params[:notification][:notificationFrequency]="#{(24/params[:times].to_f).round(2)}"+".hours"
+			elsif params[:notificationFrequency1].to_s=="week"
+				params[:notification][:notificationFrequency]="#{24*7/params[:times].to_f}"+".hours"				
+			elsif params[:notificationFrequency1].to_s=="month"
+				params[:notification][:notificationFrequency]="#{24*30/params[:times].to_f}"+".hours"
+			else
+				params[:notification][:notificationFrequency]="#{(24*30*12/params[:times].to_f).round(2)}"+".hours"
+			end
+		 params[:notification][:frequency_type]="first"			
 		else
-		params[:notification][:notificationFrequency]="every #{(24*30*12/params[:times].to_f).round(2)}"+".hours"
+
+       params[:notification][:notificationFrequency]=params[:notificationFrequency2].split(",").collect{|a| a+".days" }.join(",").to_s
+		 params[:notification][:frequency_type]="second"
 		end
-
-
+		
 		if params[:notification][:notification_type]=="food"
 			params[:notification][:mealslist]=params[:mealslist].collect{|a| a.split(",") }.join(",").to_s
 		end			
 		
 		if params[:notification][:notification_type]=="activity"
-			params[:notification][:exerciseslist]=params[:exerciseslist].collect{|a| a.split(",") }.join(",").to_s	
-				
+			params[:notification][:exerciseslist]=params[:exerciseslist].collect{|a| a.split(",") }.join(",").to_s					
 		end
+
+
+		if params[:notificationPeriodUnit]=="days"
+      	params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.days.from_now		
+		elsif params[:notificationPeriodUnit]=="weeks"
+	   	params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.weeks.from_now		
+		elsif params[:notificationPeriodUnit]=="months"
+      	params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.months.from_now		
+		else
+      	params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.years.from_now		
+		end
+		
+
 
 #		nextruntime=[]
 #		params[:notificationFrequency].collect{|a| a.split(",") }.join(",").to_s.each do |frequency|
@@ -60,32 +74,8 @@ class Admin::NotificationsController < ApplicationController
     	 if @notification.save
   
 #writing schedule and rake task file
-					`rm -f '#{Rails.root}/config/schedule.rb' '#{Rails.root}/lib/tasks/sendnotifications.rake'`
-				 envr = 'set :environment,"development"'
-				 `echo '#{envr}' >> '#{Rails.root}/config/schedule.rb'`
-				 auto_mail = Notification.all
-				 if auto_mail
-					i=0
-							auto_mail.each do |a|
-							
-							 #	@cron_time="every "+a.notificationFrequency+", "+':at=>'+" "+'"'+a.time+'"'
-							 	
-							  	txt =a.notificationFrequency+" "+'do
-								 rake "sendnotifications'+i.to_s+'"
-							  end'
-							  	task='task :sendnotifications'+i.to_s+' => :environment do
-								 obj = NotificationsController.new
-							 	 obj.'+a.notification_type+'AutoNotifications'+'('+a.id.to_s+')
-							  end'
-							  `echo '#{txt}' >> '#{Rails.root}/config/schedule.rb'`
-							  `echo '#{task}' >> '#{Rails.root}/lib/tasks/sendnotifications.rake'`
-							  i+=1
-							 end
-					`whenever -i`
-				 end
-    
-  
-       
+		Notification.updateCronTab
+						       
       redirect_to(admin_notifications_path, :notice => 'Notification was successfully created.')
     else
       render :action => "new"
@@ -106,30 +96,7 @@ class Admin::NotificationsController < ApplicationController
     @notification = Notification.find(params[:id])
     @notification.destroy
     
-					`rm -f '#{Rails.root}/config/schedule.rb' '#{Rails.root}/lib/tasks/sendnotifications.rake'`
-				 envr = 'set :environment,"development"'
-				 `echo '#{envr}' >> '#{Rails.root}/config/schedule.rb'`
-				 auto_mail = Notification.all
-				 if auto_mail
-					i=0
-							auto_mail.each do |a|
-							
-							 #	@cron_time="every "+a.notificationFrequency+", "+':at=>'+" "+'"'+a.time+'"'
-							 	
-							  	txt =a.notificationFrequency+" "+'do
-								 rake "sendnotifications'+i.to_s+'"
-							  end'
-							  	task='task :sendnotifications'+i.to_s+' => :environment do
-								 obj = NotificationsController.new
-							 	 obj.'+a.notification_type+'AutoNotifications'+'('+a.id.to_s+')
-							  end'
-							  `echo '#{txt}' >> '#{Rails.root}/config/schedule.rb'`
-							  `echo '#{task}' >> '#{Rails.root}/lib/tasks/sendnotifications.rake'`
-							  i+=1
-							 end
-					`whenever -i`
-				 end
-				 
+	 Notification.updateCronTab	
     redirect_to(admin_notifications_path)
     
   end

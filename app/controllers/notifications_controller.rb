@@ -27,113 +27,6 @@ class NotificationsController < ApplicationController
 		end
 		end
 	
-	
-	
-	
-	
-		############################## consecutive 3 days no breakfast entered ########################
- 
-		def breakfastAutoNotifications
-		@notification=Notification.where("notification_type='breakfast' and turnOnNotification=1").last
-
-		if @notification.present? 	#check if admin has created lunch notification and turnOn the notification
-		@emails=@notification.notificationToId.split(",").collect{|a| a }
-		allrecipient= []
-		@emails.each do |email|
-		@user=User.find_by_email("#{email}")
-		@userpermission=@user.mywwnotification.breakfast							
-		if @userpermission=="1"#check if user wants breakfast notifications
-
-		bld=@user.meals.where(:ate_on=>["#{Date.today}","#{Date.today-1.day}","#{Date.today-2.day}"] )
-		if bld.present?
-		breakfast=bld.where(:meal_type=>['7am','8am','9am','11am','10am'])			
-
-		if !breakfast.present?	
-		allrecipient << email
-		end						
-		else
-		allrecipient << email
-
-		end
-
-		end
-		end
-		mailernotificaton(@notification.message,allrecipient)
-
-		end	
-		end
-	 
-
-
-		###################### consecutive 3 days no Lunch entered ################################
-
-		def lunchAutoNotifications
-		@notification=Notification.where("notification_type='lunch' and turnOnNotification=1").last
-
-		if @notification.present? 	#check if admin has created lunch notification and turnOn the notification
-		@emails=@notification.notificationToId.split(",").collect{|a| a }
-		allrecipient= []
-		@emails.each do |email|
-		@user=User.find_by_email("#{email}")
-		@userpermission=@user.mywwnotification.lunch							
-		if @userpermission=="1"#check if user wants lunch notifications
-
-		bld=@user.meals.where(:ate_on=>["#{Date.today}","#{Date.today-1.day}","#{Date.today-2.day}"] )
-		if bld.present?
-		lunch=bld.where(:meal_type=>['12pm','1pm','2pm','3pm','4pm','5pm','6pm'])			
-
-		if !lunch.present?	
-		allrecipient << email
-
-		end						
-		else
-		allrecipient << email
-
-		end
-
-		end
-		end
-		mailernotificaton(@notification.message,allrecipient)
-
-		end	
-		end
-
-
-
-		####################### consecutive 3 days no dinner entered ################################
- 
-		def dinnerAutoNotifications
-		@notification=Notification.where("notification_type='dinner' and turnOnNotification=1").last
-
-		if @notification.present? 	#check if admin has created dinner notification and turnOn the notification
-		@emails=@notification.notificationToId.split(",").collect{|a| a }
-		allrecipient= []
-		@emails.each do |email|
-		@user=User.find_by_email("#{email}")
-		@userpermission=@user.mywwnotification.dinner							
-		if @userpermission=="1"#check if user wants dinner notifications
-
-		bld=@user.meals.where(:ate_on=>["#{Date.today}","#{Date.today-1.day}","#{Date.today-2.day}"] )
-		if bld.present?
-		dinner=bld.where(:meal_type=>['1am','12am','11pm','10pm','9pm','8pm','7pm'])			
-
-		if !dinner.present?	
-		allrecipient << email
-
-		end						
-		else
-		allrecipient << email
-
-		end
-
-		end
-		end
-		mailernotificaton(@notification.message,allrecipient)
-
-		end	
-		end
-
-
 		#####################################  Protein notification #################################
 		
 		def proteinNotifications
@@ -170,9 +63,156 @@ class NotificationsController < ApplicationController
 
 
 
-=end
+=end	
+	
+		############################## Inactive Diary ########################	
+	
+		def inactivityAutoNotifications(id)
+		notification=id
+		@notification=Notification.find_by_id(notification)
+		if @notification.present? 	#check if admin has created lunch notification and turnOn the notification
+		@emails=@notification.notificationToId.split(",").collect{|a| a }
+		allrecipient= []
+		@emails.each do |email|
+		@user=User.find_by_email("#{email}")
+
+
+		#bld=@user.meals.where("ate_on < '#{Date.today}' && ate_on >= '#{Date.today-5.days}'" )
+
+		bld=@user.meals.where("ate_on < '#{Date.today}' && ate_on >= '#{Date.today-@notification.inactivityDays.to_i.days}'")				
+		workout=@user.workouts.where("trained_on < '#{Date.today}' && trained_on >= '#{Date.today-@notification.inactivityDays.to_i.days}'")
+						
+				
+			if @notification.do_dont=="1"
+					if bld.present? && workout.present? # if calorie loss amount mentioned achieved... email will be sent....
+					allrecipient << email
+					end
+			else
+					if !bld.present? && !workout.present?  # if calorie loss amount mentioned not achieved... email will be sent....
+					allrecipient << email
+					end			
+			end
+
+
+		end
+				BusinessclaimMailer.usernotifications(@notification.message,allrecipient).deliver if allrecipient.present?		
+			   rescheduleDates(notification) if @notification.frequency_type=="second"
+		end
+		end
+	
+	
+		############################## consecutive 3 days no breakfast entered ########################
+ 
+		def breakfastAutoNotifications(id)
+		notification=id
+		@notification=Notification.find(notification)
+
+		if @notification.present? 	#check if admin has created lunch notification and turnOn the notification
+		@emails=@notification.notificationToId.split(",").collect{|a| a }
+		allrecipient= []
+		@emails.each do |email|
+		@user=User.find_by_email("#{email}")
+
+
+		bld=@user.meals.where("ate_on < '#{Date.today}' && ate_on >= '#{Date.today-@notification.inactivityDays.to_i.days}'")
+		breakfast=bld.where(:meal_type=>['7am','8am','9am','11am','10am'])
+		
+			if @notification.do_dont=="1"
+					if breakfast.present? # if calorie loss amount mentioned achieved... email will be sent....
+					allrecipient << email
+					end
+			else
+					if !breakfast.present? # if calorie loss amount mentioned not achieved... email will be sent....
+					allrecipient << email
+					end			
+			end
+
+		end
+
+				BusinessclaimMailer.usernotifications(@notification.message,allrecipient).deliver if allrecipient.present?		
+			   rescheduleDates(notification) if @notification.frequency_type=="second"
+
+		end	
+		end
+	 
+
+
+		###################### consecutive 3 days no Lunch entered ################################
+
+		def lunchAutoNotifications(id)
+		notification=id
+		@notification=Notification.find(notification)
+
+
+		if @notification.present? 	#check if admin has created lunch notification and turnOn the notification
+		@emails=@notification.notificationToId.split(",").collect{|a| a }
+		allrecipient= []
+		@emails.each do |email|
+		@user=User.find_by_email("#{email}")
+		@userpermission=@user.mywwnotification.lunch							
+
+		bld=@user.meals.where("ate_on < '#{Date.today}' && ate_on >= '#{Date.today-@notification.inactivityDays.to_i.days}'" )
+		lunch=bld.where(:meal_type=>['12pm','1pm','2pm','3pm','4pm','5pm','6pm'])						
+			
+			
+			if @notification.do_dont=="1"
+				if lunch.present? # if calorie loss amount mentioned achieved... email will be sent....
+				allrecipient << email
+				end
+			else
+				if !lunch.present? # if calorie loss amount mentioned not achieved... email will be sent....
+				allrecipient << email
+				end			
+			end
+
+		end
+				BusinessclaimMailer.usernotifications(@notification.message,allrecipient).deliver if allrecipient.present?		
+			   rescheduleDates(notification) if @notification.frequency_type=="second"
+
+		end	
+		end
+
+
+
+		####################### consecutive 3 days no dinner entered ################################
+ 
+		def dinnerAutoNotifications(id)
+		notification=id
+		@notification=Notification.find(notification)
+
+		if @notification.present? 	#check if admin has created dinner notification and turnOn the notification
+		@emails=@notification.notificationToId.split(",").collect{|a| a }
+		allrecipient= []
+		@emails.each do |email|
+		@user=User.find_by_email("#{email}")
+		@userpermission=@user.mywwnotification.dinner							
+
+		bld=@user.meals.where("ate_on < '#{Date.today}' && ate_on >= '#{Date.today-@notification.inactivityDays.to_i.days}'")
+		dinner=bld.where(:meal_type=>['1am','12am','11pm','10pm','9pm','8pm','7pm'])			
+		
+		
+			if @notification.do_dont=="1"
+				if dinner.present? # if calorie loss amount mentioned achieved... email will be sent....
+				allrecipient << email
+				end
+			else
+				if !dinner.present? # if calorie loss amount mentioned not achieved... email will be sent....
+				allrecipient << email
+				end			
+			end
+
+		end
+				BusinessclaimMailer.usernotifications(@notification.message,allrecipient).deliver if allrecipient.present?		
+			   rescheduleDates(notification) if @notification.frequency_type=="second"
+
+		end	
+		end
+
+
 
 		######################## Weight loss do/dont ##############################
+
+
 
 		def weightAutoNotifications(id)
 		notification=id
@@ -185,41 +225,40 @@ class NotificationsController < ApplicationController
 		@emails.each do |email|
 		@user=User.find_by_email("#{email}")
 
-										if @notification.duration=="week"
-										@weights=@user.weights.past_week
-										elsif @notification.duration=="month"
-										@weights=@user.weights.past_month
-										else 
-										@weights=@user.weights.today
-										end
+				if @notification.duration=="week"
+				@weights=@user.weights.past_week
+				elsif @notification.duration=="month"
+				@weights=@user.weights.past_month
+				else 
+				@weights=@user.weights.today
+				end
 		
-		
-
 			if @weights.length>1
 			@weightloss=@weights.first.weight-@weights.last.weight
-										if @notification.do_dont=="1"
+				if @notification.do_dont=="1"
 
 
-											if (@weightloss + @notification.amount.to_i ) <=0 # if weight loss amount mentioned achieved... email will be sent....
-											checkweight << email
-											end
+					if (@weightloss + @notification.amount.to_i ) <=0 # if weight loss amount mentioned achieved... email will be sent....
+					checkweight << email
+					end
 
-										else
+				else
 
-											if (@weightloss + @notification.amount.to_i ) > 0 # if weight loss amount mentioned not achieved... email will be sent....
-											checkweight << email										 
-											end
+					if (@weightloss + @notification.amount.to_i ) > 0 # if weight loss amount mentioned not achieved... email will be sent....
+					checkweight << email										 
+					end
 
-										end
+				end
 
 			else
 			BusinessclaimMailer.weightcheck("Plase keep updating your weights to track your progress....",email,@notification.amount.to_i).deliver 
 			end
 
-		end
+		 end
 			BusinessclaimMailer.weightcheck(@notification.message,checkweight,@notification.amount.to_i).deliver if  checkweight.present?
+	      rescheduleDates(notification) if @notification.frequency_type=="second"
 		end
-		end
+	end
 		
 		############################  Calories #########################
 		
@@ -234,31 +273,30 @@ class NotificationsController < ApplicationController
 		@emails.each do |email|
 		@user=User.find_by_email("#{email}")
 		
-						if @notification.duration=="week"
-						   @netcalories=@user.calories_consumed_this_week
-						elsif @notification.duration=="month"
-							@netcalories=@user.calories_consumed_this_month
-						else 
-							@netcalories=@user.calories_consumed_today
-						end		
-		
-		
+			if @notification.duration=="week"
+			   @netcalories=@user.calories_consumed_this_week
+			elsif @notification.duration=="month"
+				@netcalories=@user.calories_consumed_this_month
+			else 
+				@netcalories=@user.calories_consumed_today
+			end		
+			
 					
-						if @notification.do_dont=="1"
-							if @netcalories >=@notification.amount.to_i # if calorie loss amount mentioned achieved... email will be sent....
-								checkcalories << email
-							end
-						else
+			if @notification.do_dont=="1"
+				if @netcalories >=@notification.amount.to_i # if calorie loss amount mentioned achieved... email will be sent....
+				checkcalories << email
+				end
+			else
 
-							if @netcalories < @notification.amount.to_i  # if calorie loss amount mentioned not achieved... email will be sent....
-							checkcalories << email
-							end			
-						end
+				if @netcalories < @notification.amount.to_i  # if calorie loss amount mentioned not achieved... email will be sent....
+				checkcalories << email
+				end			
+			end
 
 		end
 
 		BusinessclaimMailer.caloriecheck(@notification.message,checkcalories,@notification.amount).deliver if checkcalories.present?
-			
+	   rescheduleDates(notification) if @notification.frequency_type=="second"	
 		end		
 		end
 				
@@ -275,42 +313,39 @@ class NotificationsController < ApplicationController
 		@emails.each do |email|
 		@user=User.find_by_email("#{email}")
 		
-						if @notification.duration=="week"
-						   @bodyfat=@user.bodyfats.past_week
-						elsif @notification.duration=="month"
-							@bodyfat=@user.bodyfats.past_month
-						else 
-							@bodyfat=@user.bodyfats.today
-						end			
+			if @notification.duration=="week"
+			   @bodyfat=@user.bodyfats.past_week
+			elsif @notification.duration=="month"
+				@bodyfat=@user.bodyfats.past_month
+			else 
+				@bodyfat=@user.bodyfats.today
+			end			
 		
 		
 			if @bodyfat.length>1
-						@fatloss=@bodyfat.first.fatpercent-@bodyfat.last.fatpercent
+				@fatloss=@bodyfat.first.fatpercent-@bodyfat.last.fatpercent
 
+				if f.do_dont=="1"
+					if @fatloss>=@notification.amount.to_i  # if calorie loss amount mentioned achieved... email will be sent....
+					checkfat << email
+					end
+				else
 
-						if f.do_dont=="1"
-							if @fatloss>=@notification.amount.to_i  # if calorie loss amount mentioned achieved... email will be sent....
-							checkfat << email
-							end
-						else
-
-							if @fatloss<=@notification.amount.to_i # if calorie loss amount mentioned not achieved... email will be sent....
-							checkfat << email
-							end			
-						end
+					if @fatloss<=@notification.amount.to_i # if calorie loss amount mentioned not achieved... email will be sent....
+					checkfat << email
+					end			
+				end
 						
-
 			else
 			BusinessclaimMailer.fatcheck("Plase keep updating your bodyfat to track your progress....",email,@notification.amount.to_i).deliver 
-			end
-						
-
-		end
-		
+			end						
+		end		
 			BusinessclaimMailer.fatcheck(@notification.message,checkfat, @notification.amount.to_i ).deliver if checkfat.present?		
-				
+		   rescheduleDates(notification) if @notification.frequency_type=="second"	
 		end
 		end
+
+
 
 		#############################  Supplements  ###################################
 
@@ -326,7 +361,7 @@ class NotificationsController < ApplicationController
 		def foodAutoNotifications(id)
 		notification=id
 		@notification=Notification.find(notification)		
-									if @notification.present?
+		if @notification.present?
 
 		@emails=@notification.notificationToId.split(",").collect{|a| a }
 
@@ -338,46 +373,45 @@ class NotificationsController < ApplicationController
 				@user=User.find_by_email("#{email}")
 				
 				
-							if @notification.duration=="week"
-							meals=@user.meals.past_week
-							elsif @notification.duration=="month"
-							meals=@user.meals.past_month
-							else 
-							meals=@user.meals.today
-							end	
-	
+				if @notification.duration=="week"
+				meals=@user.meals.past_week
+				elsif @notification.duration=="month"
+				meals=@user.meals.past_month
+				else 
+				meals=@user.meals.today
+				end	
+
 			
-							 if meals.present?
+				 if meals.present?
 
-									meals.each do |p|
-									@mealids=MealItem.find_by_meal_id(p.id,:select=>:food_id)
-									mealids << @mealids.food_id
-									end
+					meals.each do |p|
+					@mealids=MealItem.find_by_meal_id(p.id,:select=>:food_id)
+					mealids << @mealids.food_id
+					end
 
-									if @notification.do_dont=="1"											
-								
-										@remain=@foodids-mealids
-										if @remain.length==0	
-										checkfood << email
-										end						 
+					if @notification.do_dont=="1"											
+				
+						@remain=@foodids-mealids
+						if @remain.length==0	
+						checkfood << email
+						end						 
 
-									else
+					else
 
-										@remain=@foodids-mealids
+						@remain=@foodids-mealids
 
-										if @remain.length!=0										
-										checkfood << email
-										end
-									end
+						if @remain.length!=0										
+						checkfood << email
+						end
+					end
 
-							else
-							BusinessclaimMailer.foodcheck(@notification.message,email,@foodids).deliver
-					      end	
-				end		
+				else
+				BusinessclaimMailer.foodcheck(@notification.message,email,@foodids).deliver
+		      end	
+			end		
 
 			BusinessclaimMailer.foodcheck(@notification.message,checkfood,@foodids).deliver if checkfood.present?										 
-
-
+		   rescheduleDates(notification) if @notification.frequency_type=="second"
 			end
 		end
 
@@ -397,49 +431,48 @@ class NotificationsController < ApplicationController
 
 		checkworkouts= []
 		workoutids=[]
-					@emails.each do |email|
-					@user=User.find_by_email("#{email}")
+		@emails.each do |email|
+		@user=User.find_by_email("#{email}")
 
 				
-							if @notification.duration=="week"
-							workouts=@user.workouts.past_week
-							elsif @notification.duration=="month"
-							workouts=@user.workouts.past_month
-							else 
-							workouts=@user.workouts.today
-							end
-
-
-									if workouts.present?
-
-												workouts.each do |f|
-												@workouts=WorkoutItem.find_by_workout_id(f.id,:select=>:exercise_id)
-												workoutids << @workouts.exercise_id
-												end
-
-												if @notification.do_dont=="1"
-													@remain=@exerciseids-workoutids
-
-													if @remain.length==0
-													checkworkouts << email
-													end						 
-												else
-													@remain=@exerciseids-workoutids
-													if @remain.length!=0
-													checkworkouts << email
-													end
-												end
-
-									else
-									BusinessclaimMailer.workoutscheck(@notification.message,email,@exerciseids ).deliver
-
-									end	
-					end		
-					BusinessclaimMailer.workoutscheck(@notification.message,checkworkouts,@exerciseids).deliver	if checkworkouts.present?									 
-
-
+		if @notification.duration=="week"
+		workouts=@user.workouts.past_week
+		elsif @notification.duration=="month"
+		workouts=@user.workouts.past_month
+		else 
+		workouts=@user.workouts.today
 		end
-		end
+
+
+			if workouts.present?
+
+				workouts.each do |f|
+				@workouts=WorkoutItem.find_by_workout_id(f.id,:select=>:exercise_id)
+				workoutids << @workouts.exercise_id
+				end
+
+				if @notification.do_dont=="1"
+					@remain=@exerciseids-workoutids
+
+					if @remain.length==0
+					checkworkouts << email
+					end						 
+				else
+					@remain=@exerciseids-workoutids
+					if @remain.length!=0
+					checkworkouts << email
+					end
+				end
+
+			else
+			BusinessclaimMailer.workoutscheck(@notification.message,email,@exerciseids ).deliver
+
+		end	
+	end		
+	BusinessclaimMailer.workoutscheck(@notification.message,checkworkouts,@exerciseids).deliver	if checkworkouts.present?									 
+   rescheduleDates(notification) if @notification.frequency_type=="second"
+	end
+	end
 
 
 		#################################### General notifications #######################
@@ -455,14 +488,75 @@ class NotificationsController < ApplicationController
 
 		@emails=f.notificationToId
 		BusinessclaimMailer.usernotifications(@message,@emails).deliver										 
-
+	   rescheduleDates(notification) if @notification.frequency_type=="second"
 #		end
 #		end	
 
 		end
 		end
 
+		##################################################################################
+
+		def checknoti
 		
+		@notification=Notification.find(5)
+		if @notification.present? 	#check if admin has created lunch notification and turnOn the notification
+		@emails=@notification.notificationToId.split(",").collect{|a| a }
+		allrecipient= []
+		@emails.each do |email|
+		@user=User.find_by_email("#{email}")
+
+
+		#bld=@user.meals.where("ate_on < '#{Date.today}' && ate_on >= '#{Date.today-5.days}'" )
+
+		bld=@user.meals.where("ate_on < '#{Date.today}' && ate_on >= '#{Date.today-@notification.inactivityDays.to_i.days}'")				
+		workout=@user.workouts.where("trained_on < '#{Date.today}' && trained_on >= '#{Date.today-@notification.inactivityDays.to_i.days}'")
+						
+				
+			if @notification.do_dont=="1"
+					if bld.present? && workout.present? # if calorie loss amount mentioned achieved... email will be sent....
+					allrecipient << email
+					end
+			else
+					if !bld.present? && !workout.present?  # if calorie loss amount mentioned not achieved... email will be sent....
+					allrecipient << email
+					end			
+			end
+		# mailernotificaton(@notification.message,allrecipient)				
+
+		end
+		end
+			   rescheduleDates(5) if @notification.frequency_type=="second"
+		end
+		
+		####################################################################################
+		
+		def rescheduleDates(id)
+			notificationid=id
+			@notification=Notification.find(notificationid)
+
+				scheduledDates=@notification.notificationFrequency.split(",").collect{|a| a.to_i }
+				if scheduledDates.present?
+				 scheduledDates.delete(scheduledDates.min)
+				 dates=scheduledDates.collect{|a| a.to_s+".days"}.join(",")
+				 if scheduledDates.length > 0
+				 @notification.update_attributes(:notificationFrequency=>dates)
+				 else        			
+				 @notification.destroy 				
+				 end 
+				Notification.updateCronTab
+			  end
+		end
+		
+	 ######################################################################################			
+	
+	  def destroy
+    	@notification = Notification.find(params[:id])
+      @notification.destroy
+      Notification.updateCronTab 
+ 	  end
+  
+	
 		########################### mailer ###############################################
 	
 	
@@ -475,63 +569,4 @@ class NotificationsController < ApplicationController
 
 
 
-
-		##################################################################################
-
-		def checknoti
-		@notification=Notification.find(45)
-		if @notification.present?
-
-		@emails=@notification.notificationToId.split(",").collect{|a| a }
-		@exerciseids=@notification.exerciseslist.split(",").collect{|a| a }
-
-		checkworkouts= []
-		workoutids=[]
-					@emails.each do |email|
-					@user=User.find_by_email("#{email}")
-
-				
-									if @notification.duration=="week"
-									workouts=@user.workouts.past_week
-									elsif @notification.duration=="month"
-									workouts=@user.workouts.past_month
-									else 
-									workouts=@user.workouts.today
-									end
-
-
-
-									if workouts.present?
-
-												workouts.each do |f|
-												@workouts=WorkoutItem.find_by_workout_id(f.id,:select=>:exercise_id)
-												workoutids << @workouts.exercise_id
-												end
-
-												if @notification.do_dont=="1"
-													@remain=@exerciseids-workoutids
-
-													if @remain.length==0
-													checkworkouts << email
-													end						 
-												else
-													@remain=@exerciseids-workoutids
-													if @remain.length!=0
-													checkworkouts << email
-													end
-												end
-
-									else
-
-									BusinessclaimMailer.workoutscheck(@notification.message,email,@exerciseids ).deliver
-
-									end	
-					end	
-						
-					BusinessclaimMailer.workoutscheck(@notification.message,checkworkouts,@exerciseids).deliver	if checkworkouts.present?									 
-		end
-		end
-
-		
-		
 end

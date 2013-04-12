@@ -35,49 +35,5 @@ def to_param
 end
 
 
-  attr_writer :current_step 
-      
-  def business?  
-    current_step == "business"  
-  end  
-    
-
-  def profile?  
-    current_step == "profile"  
-  end  
-
-
-	def all_valid?  
-		steps.all? do |step|  
-		self.current_step = step  
-		valid?  
-		end  
-	end  
-
-
-  def current_step  
-    @current_step || steps.first  
-  end  
-    
-
-  def steps  
-    %w[business profile]  
-  end  
-
-
-	def first_step?  
-	  current_step == steps.first  
-	end 
-
-
-    def next_step  
-      self.current_step = steps[steps.index(current_step)+1]  
-    end  
-
-
-    def last_step?  
-      current_step == steps.last  
-    end  
-
 
 end

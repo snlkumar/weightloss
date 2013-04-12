@@ -1,6 +1,6 @@
 <p>
 	<%= f.label :notification_type, "Notification type:" %>
-<div style="margin-left:12.5em;margin-top:-2em;">   <%=f.select   :notification_type, options_for_select([ ['Weight loss','weight' ],['Supplements','supplements' ] ,['Body fat','bodyfat' ], ['Calories','calories' ], ['Activity','activity' ] , ['Food','food' ], ['Other','other'] ] ) %></div> <br>
+<div style="margin-left:12.5em;margin-top:-2em;">   <%=f.select   :notification_type, options_for_select([ ['Weight loss','weight' ],['Supplements','supplements' ] ,['Body fat%','bodyfat' ], ['Calories','calories' ], ['Activity','activity' ] , ['Food','food' ],['Diary inactivity','inactivity' ],['Breakfast inactivity','breakfast' ], ['Lunch inactivity','lunch' ] , ['Dinner inactivity','dinner' ], ['Other','other'] ] ) %></div> <br>
 
 
 </p>  
@@ -9,7 +9,7 @@
 <div id= "mealnotifications" style="display:none;">
 <p>
 		<label>Choose Food:</label><br/>
-<div style="margin-left:12.5em;margin-top:-2em;"><%=select_tag 'mealslist[]', options_for_select(allfoods.map {|s| ["#{s.name} ", s.id]}), :multiple => true, :size => 2, :id=>"meals",:style=>"width:12em;"%></div>
+<div style="margin-left:12.5em;margin-top:-2em;"><%=select_tag 'mealslist[]', options_for_select(allfoods.map {|s| ["#{s.name} ", s.id]}), :multiple => true, :size => 3, :id=>"meals",:style=>"width:12em;"%></div>
 </p>
 
 </div>
@@ -19,24 +19,58 @@
 <div id="exercisetips" style="display:none;">
 <p>		
 		<label>Recommend Exercise :</label><br/>
-<div style="margin-left:12.5em;margin-top:-3em;"><%=select_tag 'exerciseslist[]', options_for_select(Exercise.all.map {|s| ["#{s.description} ", s.id]}), :multiple => true, :size => 2, :id=>"excercises",:style=>"width:12em;"%></div>
+<div style="margin-left:12.5em;margin-top:-3em;"><%=select_tag 'exerciseslist[]', options_for_select(Exercise.all.map {|s| ["#{s.description} ", s.id]}), :multiple => true, :size => 3, :id=>"excercises",:style=>"width:12em;"%></div>
 
 </p>	
 
 </div>
 
 
+<div id="amountdiv" style="height:2em;">
+
+<%=f.label "Amount:"%>
+<div style="margin-left:12.5em;margin-top:-2em;"> 	<%=f.text_field :amount, :style=>"width:4em;height:1.3em;"%>&nbsp;&nbsp;&nbsp;<%=select_tag   :AmountUnit, options_for_select([ ['Calories','calories' ],['LBS','lbs' ],['Serving size','serving' ], ['%','percent'] ]) %>&nbsp;&nbsp;&nbsp;Per:<%=f.select   :duration, options_for_select([ ['Day','day' ],['Week','week' ],['Month','month' ] ]) %> </div>
+
+
+</div>
+
+
+
+<div id="inactivity"  style="display:none;">
+<%=f.label "Inactive for :"%> <div style="margin-left:12.5em;margin-top:-2em;"> <%=f.select :inactivityDays, options_for_select(1..10)%> Days</div>
+
+</div><br>
+
+
+
+    <label for="notificationFrequency">Frequency:</label>
+<div style="margin-left:12.5em;margin-top:-2em;">    <br><%= radio_button_tag 'notificationFrequency', 'first', true %> <%=select_tag 'times', options_for_select(1..10), :id=>"times"%> &nbsp;&nbsp; Times x &nbsp;&nbsp;&nbsp; <%=select_tag  'notificationFrequency1', options_for_select([ ['Day','day' ],['Week','week' ] ,['Month','month' ], ['Year','year' ]]) %>
+    <br><%= radio_button_tag 'notificationFrequency', 'second' %> <%=text_field_tag "notificationFrequency2", "",:placeholder=>"9,10,12,45"%> Days <span class="help-text">&nbsp;&nbsp;(Comma seperated days)</span><br>
+  
+</div>
+
+
+ <!--  
 <p>
-	<label>Amount :</label>
-<div style="margin-left:12.5em;margin-top:-2em;"> 	<%=f.text_field :amount, :style=>"width:4em;height:1.3em;"%>&nbsp;&nbsp;&nbsp;Per:<%=f.select   :duration, options_for_select([ ['Day','day' ],['Week','week' ],['Month','month' ] ]) %> </div>
+	<%#=f.label  :notificationFrequency, "Frequency :" %><div style="margin-left:12.5em;margin-top:-2em;">  <%#=select_tag 'times', options_for_select(1..10), :id=>"times"%>&nbsp;&nbsp;Times x &nbsp;&nbsp;&nbsp; <%#=select_tag  'notificationFrequency', options_for_select([ ['Day','day' ],['Week','week' ] ,['Month','month' ], ['Year','year' ]]) %> </div> 
 
-</p>
+</p> <br/>  --> 
 
-   
+
+<!--
+
 <p>
-	<%=f.label  :notificationFrequency, "Frequency :" %><div style="margin-left:12.5em;margin-top:-2em;">  <%=select_tag 'times', options_for_select(1..10), :id=>"times"%>&nbsp;&nbsp; x &nbsp;&nbsp;&nbsp; <%=select_tag  'notificationFrequency[]', options_for_select([ ['Day','day' ],['Week','week' ] ,['Month','month' ], ['Year','year' ]]) %> </div> 
+	<%#=f.label "Alert:"%><div style="margin-left:12.5em;margin-top:-2em;">  <%#=select_tag  'alert', options_for_select([ ['Email','email' ],['Text','text' ] ,['Pop up','Popup' ]]) %></div>
+</p> <br/> 
 
-</p> <br/>  
+
+
+-->
+
+<p>
+	<%=f.label "Notification duration:"%><div style="margin-left:12.5em;margin-top:-2em;"> <%=select_tag 'notificationPeriod', options_for_select(1..30)%>&nbsp;&nbsp;X  <%=select_tag  'notificationPeriodUnit', options_for_select([ ['Day','days' ],['Week','weeks' ] ,['Month','months' ],['Year','years' ],['Forever','forever' ]]) %></div>
+</p> <br/> 
+
 
 
 <!--
@@ -56,9 +90,14 @@
    
 <p>
 	<%= f.label :message, "Message:" %><br/><br/>
-<div style="margin-left:12.5em;margin-top:-4.4em;"> 	<%= f.text_area :message , :id=>"message",:style=>"width:18em;height:5em;"%></div>
+<div style="margin-left:12.5em;margin-top:-4.4em;"> 	<%= f.text_area :message , :id=>"message",:style=>"width:18em;height:5em;"%> </div>
 
 </p><br/><br/>
+
+<p>
+	<%#= f.label "Save message to templates" %>	<%#=check_box_tag "templates" , :id=>"templates"%>
+
+</p><br/>
 
  
       

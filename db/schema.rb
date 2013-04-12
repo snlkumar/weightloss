@@ -311,6 +311,9 @@ ActiveRecord::Schema.define(:version => 20130405133937) do
     t.string   "notificationTo"
     t.string   "notificationToId"
     t.string   "message"
+    t.string   "inactivityDays"
+    t.date     "notificationDuration"
+    t.string   "frequency_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -2,33 +2,52 @@
 <script>
 
  $(document).ready(function(){
+
+$("#selectall").click(function(){
+$("#noticefor").find('option').each(function() {
+			$(this).attr('selected', 'selected');
+		});
+
+});
   
 
-	$("#exercisetips, #mealnotifications").css("display","none");
+	$("#exercisetips, #mealnotifications, #inactivity").css("display","none");
 
 	$("#notification_notification_type").change(function(){ 
 
 	type=$("#notification_notification_type").find("option:selected").text();
-
+	$("#amountdiv").css("display","block");
 	if (type=="Food")
 	{
-	$("#exercisetips").css("display","none");
+	$("#exercisetips, #inactivity").css("display","none");
 	$("#mealnotifications").css("display","block");
 
 	}
 	else if (type=="Activity")
 	{
-	$("#mealnotifications").css("display","none");
+	$("#mealnotifications, #inactivity").css("display","none");
 	$("#exercisetips").css("display","block");
 
 	}
+
+	else if (type=="Lunch inactivity" || type=="Breakfast inactivity" || type=="Dinner inactivity" || type=="Diary inactivity")
+	{
+	$("#amountdiv, #exercisetips, #mealnotifications").css("display","none");
+	$("#inactivity").css("display","block")
+
+	}
+	
+	else if (type=="Other")
+	{
+	$("#exercisetips, #mealnotifications,#inactivity,#amountdiv").css("display","none");
+	}
 	else
 	{
-	$("#exercisetips, #mealnotifications").css("display","none");
+	$("#exercisetips, #mealnotifications,#inactivity").css("display","none");	
+	
 	}
-
-
-	});
+ 
+ });
 
 });
 
@@ -36,11 +55,16 @@
 function submitform()
 {
 
-	if ($("#notificationFrequency_").find("option:selected").text()=='')	
-	{
-	alert("Notification frequency field cannot be empty.");
+
+
+	if ($('#notificationFrequency_second').is(':checked') && $("#notificationFrequency2").val()=='')
+   { 
+    
+	alert("frequency text box cannot be empty.");
 	return false;		
-	}
+	
+   }
+	
 	else if ( $("#message").val()=='')	
 	{
 	alert("Message frequency field cannot be empty.");

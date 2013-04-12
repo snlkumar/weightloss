@@ -51,7 +51,7 @@ module Forem
       else
         flash[:error] = t("forem.post.cannot_delete")
       end
-render :text =>"delete successfully"
+      render :text =>"delete successfully"
       #redirect_to [@topic.forum, @topic]
     end
 

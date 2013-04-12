@@ -24,8 +24,10 @@ class CustomFoodsController < ApplicationController
 		params[:food][:shrt_desc]=params[:food][:name]
 		params[:food][:adminApproved]=0
 		@food = Food.new(params[:food])
+		
 		check=verify_recaptcha(request.remote_ip, params)
-
+		check[:status] = 'true' if current_user
+		
 	if check[:status] == 'false'
 	  @notice = "captcha incorrect"
     render :action => "new", :layout=>'custom_food_public'

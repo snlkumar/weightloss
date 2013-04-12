@@ -16,6 +16,9 @@ class CreateNotifications < ActiveRecord::Migration
       t.string :notificationTo
       t.string :notificationToId      
       t.string :message
+      t.string :inactivityDays
+      t.date   :notificationDuration
+      t.string :frequency_type
       t.timestamps
     end
   end

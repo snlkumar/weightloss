@@ -8,10 +8,12 @@
     
     <p>
     </br>
+
+<% if !current_user %>
 	<div style="margin-left: 0%;">
          <%=render '/shared/recaptcha' %>
    </div></br>
-    
+<%end%>    
 	 <%= f.submit 'Create this Food' %> | <%= link_to 'Cancel', new_meal_path %>
     </p>
   <% end %>

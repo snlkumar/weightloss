@@ -1,8 +1,98 @@
 class MywwWebservicesController < ApplicationController
 
 #	before_filter :authenticate_connection, :except=> [:login, :forget_pass, :register_user, :vendordetail, :vendor, :video_category, :video, :show_video, :vendormailer ]
-	
-	
+
+		######################  User Photo Gallery  ################################################
+
+		def photoGallery
+		
+			if params[:id]
+			@user = User.find(params[:id])
+				if params[:type]=="all"
+				@photos= @user.photos.all	 					  
+				else
+				@photos= @user.photos.where("before_after='"+params[:type]+"'")
+				end
+
+				if @photos.empty?
+				@status = nil
+				else
+				@status= @photos.map{|f| { :name =>request.protocol+request.host_with_port+f.photo.url}}
+				end
+			else
+			@status = {"status-msg"=>"User not exist"}
+			end
+		
+		render :json =>@status.to_json			
+		end
+			
+   ####################   Upload User Avatar ##################################
+  
+ 
+		def photo
+
+			if params[:id]
+				@user=User.find(params[:id])
+				@userfile= params[:userfile]
+				@userfile.rewind
+				@filename = "#{Rails.root}/public/"+params[:id].to_s+@userfile.original_filename
+
+				File.open(@filename, "wb") do |file|
+				file.write(@userfile.read)
+				end         
+
+					@user.avatar=File.open(@filename)     
+					if @user.save
+					@status={"status-msg"=>"141"}
+					File.delete(@filename)
+
+					else
+					  @status={"status-msg"=>"142"}
+					end  
+			else
+			@status={"status-msg"=>"user not exist"}
+			end
+
+		render :json =>@status.to_json
+		end 	
+
+
+
+		#######################  Photo Upload in Gallery ######################################
+
+		def galleryPhotoUpload
+			if params[:id]
+					@userfile= params[:userfile]
+					@userfile.rewind
+					@filename = "#{Rails.root}/public/"+rand(1000000000).to_s+@userfile.original_filename
+
+					File.open(@filename, "wb") do |file|
+					file.write(@userfile.read)
+					end         
+
+			#@user.photos=File.open(@filename)
+						if params[:before_after]=="User_Photo"
+						params[:before_after]="user_photo"
+						elsif  params[:before_after]=="Photo_Before_Measurement"
+						params[:before_after]="before"
+						else 
+						params[:before_after]="after"
+						end
+
+					picture=Photo.new(:photo=> open(@filename), :user_id=>params[:id], :before_after=>params[:before_after])
+
+					if picture.save
+					@status={"status-msg"=>"141"}
+					File.delete(@filename)
+					else
+					@status={"status-msg"=>"142"}
+					end 
+			else
+			@status={"status-msg"=>"user not exist"}
+			end
+		render :json =>@status.to_json
+		end   	
+
 
      ##################### Login from mobileApp  ################################################
 	
@@ -10,18 +100,18 @@ class MywwWebservicesController < ApplicationController
 		@user=User.find_by_email(params[:email])
 		@status=""
 
-		if @user!=nil
-		if @user.valid_password?(params[:password])
-		@status={"status-msg"=>"111", "id"=>"#{@user.id}", "Gender"=>"#{@user.gender}"}   #111=>login success
-		cookies[:session] = @user.id		    
-		setCurrentLoginInfo  ## update login detail of user
-		else
-	 	@status={"status-msg"=>"112"}   #112 =>email or password error		     
-		end      
+			if @user!=nil
+				if @user.valid_password?(params[:password])
+				@status={"status-msg"=>"111", "id"=>"#{@user.id}", "Gender"=>"#{@user.gender}"}   #111=>login success
+				cookies[:session] = @user.id		    
+				setCurrentLoginInfo  ## update login detail of user
+				else
+			 	@status={"status-msg"=>"112"}   #112 =>email or password error		     
+				end      
 
-		else
-		@status={"status-msg"=>"113"}       #113 =>email error
-		end
+			else
+			@status={"status-msg"=>"113"}       #113 =>email error
+			end
 		render :json =>@status.to_json
 		end
 
@@ -30,12 +120,12 @@ class MywwWebservicesController < ApplicationController
 
   
 		def getSession
-		if cookies[:session]
-		@status=User.find(cookies[:session])
-		#@avatarpath={"imagepath"=> request.protocol+request.host_with_port+@user.avatar.url(:profile), ""}  # use this for taking weight of user
-		else
-		@status={"status-msg"=>"114"}   #114=> not login
-		end
+			if cookies[:session]
+			@status=User.find(cookies[:session])
+			#@avatarpath={"imagepath"=> request.protocol+request.host_with_port+@user.avatar.url(:profile), ""}  # use this for taking weight of user
+			else
+			@status={"status-msg"=>"114"}   #114=> not login
+			end
 		render :json =>@status.to_json   
 		end
 
@@ -45,12 +135,12 @@ class MywwWebservicesController < ApplicationController
 		def forget_pass
 		@user=User.find_by_email(params[:email])
 		@status="" 
-		if @user!=nil
-		@user.send_reset_password_instructions()
-		@status={"status-msg"=>"600"}       #113 =>email sent
-		else
-		@status={"status-msg"=>"601"}    #113 =>invalid email
-		end
+			if @user!=nil
+			@user.send_reset_password_instructions()
+			@status={"status-msg"=>"600"}       #113 =>email sent
+			else
+			@status={"status-msg"=>"601"}    #113 =>invalid email
+			end
 		render :json =>@status.to_json
 		end
 
@@ -59,12 +149,12 @@ class MywwWebservicesController < ApplicationController
  
   
 		def logout
-		if cookies[:session]
-		cookies.delete("session")
-		@status={"status-msg"=>"116"}   #116=> logout
-		else
-		@status={"status-msg"=>"114"}   #114=> not logout
-		end
+			if cookies[:session]
+			cookies.delete("session")
+			@status={"status-msg"=>"116"}   #116=> logout
+			else
+			@status={"status-msg"=>"114"}   #114=> not logout
+			end
 
 		render :json =>@status.to_json
 		end
@@ -492,61 +582,8 @@ class MywwWebservicesController < ApplicationController
 	   render :json =>@status.to_json
 		end
   
-   ####################   Upload User Avatar ##################################
-  
+
  
-		def photo
-
-		if params[:id]
-		@user=User.find(params[:id])
-		@userfile= params[:userfile]
-		@userfile.rewind
-		@filename = "#{Rails.root}/public/"+params[:id].to_s+@userfile.original_filename
-
-		File.open(@filename, "wb") do |file|
-		file.write(@userfile.read)
-		end         
-
-		@user.avatar=File.open(@filename)     
-		if @user.save
-		@status={"status-msg"=>"141"}
-		File.delete(@filename)
-
-		else
-		  @status={"status-msg"=>"142"}
-		end  
-		else
-		@status={"status-msg"=>"user not exist"}
-		end
-
-		render :json =>@status.to_json
-		end 
- 
-=begin 
- def photo
- 	@user=User.find(:id) 	
- 	@userfile= params[:userfile]
- 	@userfile.rewind
- 	@filename = "#{Rails.root}/public/#{@user.id}"+"@userfile.original_filename"
-	File.open(@filename, "wb") do |file|
-	file.write(@userfile.read)
-	end      
-   
-   @user.avatar=File.open(@filename)
-     
-   if @user.save
-     	@status={"status-msg"=>"141"}
-     	File.delete(@filename)
-   else
-      @status={"status-msg"=>"142"}
-   end  
- 		
- 	respond_to do |format|
-     format.js { render :json =>@status.to_json}
- 	end  
-end
-=end
-
 
  #######################    Update User Profiel   ########################################     
    
@@ -590,6 +627,9 @@ end
 		if params[:filterQuery].nil? 
 		params[:filterQuery]=""	
 		end
+		end
+
+
 		if params[:searchtype].capitalize=="All"
 
 		@data=Vendor.where("city like '%"+params[:filterQuery]+"%' or state like '%"+params[:filterQuery]+"%' or zipcode like '%"+params[:filterQuery]+"%'").page(params[:page] || 1).per(5)
@@ -635,11 +675,11 @@ end
 		def weightmeasurement
 		@user=User.find(params[:id])
 		@meas=@user.weights.all
-		if !@meas.empty?
-		@status=@meas
-		else
-		@status=nil
-		end
+			if !@meas.empty?
+			@status=@meas
+			else
+			@status=nil
+			end
 		render :json =>@status.to_json
 		end
 
@@ -655,23 +695,22 @@ end
 		@status= @dates.map{|f| {:date =>f.strftime("%b %d"), :calorie=>@user.net_calories_on(f)}}
 
 		render :json =>@status.to_json
-
 		end
 
 
 		def range_to_date_map(range)
-		case range
-		when '1wk'
-		1.week.ago
-		when '2wk'
-		2.weeks.ago
-		when '3wk'
-		3.weeks.ago
-		when '1mth'
-		1.month.ago
-		when '2mth'
-		2.months.ago
-		end
+			case range
+			when '1wk'
+			1.week.ago
+			when '2wk'
+			2.weeks.ago
+			when '3wk'
+			3.weeks.ago
+			when '1mth'
+			1.month.ago
+			when '2mth'
+			2.months.ago
+			end
 		end
 
   
@@ -680,52 +719,13 @@ end
 		temp  = Time.zone.today.beginning_of_day
 		arr   = [ temp ]
 
-		while temp > range_to_date_map( range )
-		temp -= 1.day
+			while temp > range_to_date_map( range )
+			temp -= 1.day
 
-		arr << temp
-		end
+			arr << temp
+			end
 		arr
 		end
-
-
-
-		#######################  Photo Upload in Gallery ######################################
-
-		def galleryPhotoUpload
-		if params[:id]
-		@userfile= params[:userfile]
-		@userfile.rewind
-		@filename = "#{Rails.root}/public/"+rand(1000000000).to_s+@userfile.original_filename
-
-		File.open(@filename, "wb") do |file|
-		file.write(@userfile.read)
-		end         
-
-		#@user.photos=File.open(@filename)
-		if params[:before_after]=="User_Photo"
-		params[:before_after]="user_photo"
-		elsif  params[:before_after]=="Photo_Before_Measurement"
-		params[:before_after]="before"
-		else 
-		params[:before_after]="after"
-		end
-
-		picture=Photo.new(:photo=> open(@filename), :user_id=>params[:id], :before_after=>params[:before_after])
-
-		if picture.save
-		@status={"status-msg"=>"141"}
-		File.delete(@filename)
-		else
-		@status={"status-msg"=>"142"}
-		end 
-		else
-		@status={"status-msg"=>"user not exist"}
-		end
-		render :json =>@status.to_json
-		end   	
-		end
-
 
 
 		############################## Body Measurement  ########################################
@@ -767,11 +767,11 @@ end
 		def video
 		if params[:category_id]=="all"
 		@search=OldFlashFile.all
-		if !@search.empty?
-		@status= @search.map{|f| {:title =>f.title, :imageUrl=>request.protocol+request.host_with_port+f.preview_image.url(:small), :videoUrl=>(f.video.content_type=="video/x-flv") ? "#{request.protocol+request.host_with_port+f.video.url}".gsub(".flv", ".mp4") : "#{request.protocol+request.host_with_port+f.video.url}" ,:videotype=>f.video.content_type}}
-		else
-		@status=nil 
-		end
+				if !@search.empty?
+				@status= @search.map{|f| {:title =>f.title, :imageUrl=>request.protocol+request.host_with_port+f.preview_image.url(:small), :videoUrl=>(f.video.content_type=="video/x-flv") ? "#{request.protocol+request.host_with_port+f.video.url}".gsub(".flv", ".mp4") : "#{request.protocol+request.host_with_port+f.video.url}" ,:videotype=>f.video.content_type}}
+				else
+				@status=nil 
+				end
 
 		else
 		args={:search=>{:filter=>params[:filter],:category_id=>params[:category_id]}}
@@ -780,12 +780,12 @@ end
 		@results = Kaminari.paginate_array( @search.results )
 		@total   = @search.total
 
-		if !@results.empty?
-		@status= @results.map{|f| {:title =>f.title, :imageUrl=>request.protocol+request.host_with_port+f.preview_image.url(:small), :videoUrl=>(f.video.content_type=="video/x-flv") ? "#{request.protocol+request.host_with_port+f.video.url}".gsub(".flv", ".mp4") : "#{request.protocol+request.host_with_port+f.video.url}",:videotype=>f.video.content_type}}
+			if !@results.empty?
+			@status= @results.map{|f| {:title =>f.title, :imageUrl=>request.protocol+request.host_with_port+f.preview_image.url(:small), :videoUrl=>(f.video.content_type=="video/x-flv") ? "#{request.protocol+request.host_with_port+f.video.url}".gsub(".flv", ".mp4") : "#{request.protocol+request.host_with_port+f.video.url}",:videotype=>f.video.content_type}}
 
-		else
-		@status=nil 
-		end
+			else
+			@status=nil 
+			end
 		end
 
 		render :json =>@status.to_json
@@ -847,22 +847,22 @@ end
 
 		sum=params[:bodyfat][:chest].to_i+params[:bodyfat][:abdominal].to_i+params[:bodyfat][:thigh].to_i+params[:bodyfat][:subscapular].to_i+params[:bodyfat][:tricep].to_i+params[:bodyfat][:midaxillary].to_i+params[:bodyfat][:suprailiac].to_i
 
-		if gender=="male"
-		bd = (1.12000000-(0.00043499*sum)+(0.00000055*sum)-0.00028826*age).round(4);
+			if gender=="male"
+			bd = (1.12000000-(0.00043499*sum)+(0.00000055*sum)-0.00028826*age).round(4);
 
-		else
-		bd = (1.0970 - (0.00046971*sum) + 0.00000056*sum - 0.00012828*age).round(4); 
+			else
+			bd = (1.0970 - (0.00046971*sum) + 0.00000056*sum - 0.00012828*age).round(4); 
 
-		end
-		fat = (((4.95/bd) - 4.50)*100).round(2);
-		params[:bodyfat][:bodyfat]=fat
-		bodymass=params[:bodyfat][:bodymass]=100-params[:bodyfat][:bodyfat]
-		@fat=Bodyfat.create(params[:bodyfat])
-		if @fat.save
-		@status={"status-msg"=>"160","result"=>{"bodyfat"=>fat, "bodymass"=>bodymass}}
-		else
-		@status={"status-msg"=>"161"}  
-		end 
+			end
+			fat = (((4.95/bd) - 4.50)*100).round(2);
+			params[:bodyfat][:bodyfat]=fat
+			bodymass=params[:bodyfat][:bodymass]=100-params[:bodyfat][:bodyfat]
+			@fat=Bodyfat.create(params[:bodyfat])
+			if @fat.save
+			@status={"status-msg"=>"160","result"=>{"bodyfat"=>fat, "bodymass"=>bodymass}}
+			else
+			@status={"status-msg"=>"161"}  
+			end 
 
 		render :json =>@status.to_json
 		end
@@ -877,11 +877,11 @@ end
 		##########################  Send Email to Vendor  #####################################
 
 		def vendormailer
-		if params[:id] && params[:vendor_type]=="restaurants"
-		@vendor=Restaurant.find(params[:id])	  	
-		else
-		@vendor=Vendor.find(params[:id])
-		end
+			if params[:id] && params[:vendor_type]=="restaurants"
+			@vendor=Restaurant.find(params[:id])	  	
+			else
+			@vendor=Vendor.find(params[:id])
+			end
 		BusinessclaimMailer.vendormailer(@vendor,params[:message],params[:email], params[:name]).deliver
 		@status={"status-msg"=>"600"}  
       render :json =>@status
@@ -914,16 +914,15 @@ end
 
 
 		def topicposts
-		#@forum = Forem::Forum.find(params[:forum_id])
-		#@topic=Forem::Topic.find(params[:topic_id])
-		@posts=Forem::Post.where("topic_id="+params[:topic_id]+"") 
 
-		if @posts.present?
-		#@posts=@topic.posts.all
-		@posts1=@posts.map{|f| { :post=>f.text.html_safe, :created_at =>f.created_at.strftime("%m-%d-%Y"), :topic_id=>f.topic_id, :post_by=>f.try(:user)==nil ? "User No longer exist" : "Post by "+f.try(:user).try(:full_name)}}
-		else
-		@posts1="NULL"
-		end
+			@posts=Forem::Post.where("topic_id="+params[:topic_id]+"") 
+
+			if @posts.present?
+			#@posts=@topic.posts.all
+			@posts1=@posts.map{|f| { :post=>f.text.html_safe, :created_at =>f.created_at.strftime("%m-%d-%Y"), :topic_id=>f.topic_id, :post_by=>f.try(:user)==nil ? "User No longer exist" : "Post by "+f.try(:user).try(:full_name)}}
+			else
+			@posts1="NULL"
+			end
 
 		render :json =>@posts1
 		end 
@@ -931,64 +930,15 @@ end
 		###############################  Post Comment   ##########################################
 
 		def postcomment
-		@post=Forem::Post.create(:topic_id=>params[:topic_id].to_i,:text=>params[:text], :user_id=>params[:user_id].to_i)
-		if @post.save
-		@status={"status"=>"posted"}	  		
-		else
-		@status={"status"=>"failed"}
-		end
+			@post=Forem::Post.create(:topic_id=>params[:topic_id].to_i,:text=>params[:text], :user_id=>params[:user_id].to_i)
+			if @post.save
+			@status={"status"=>"posted"}	  		
+			else
+			@status={"status"=>"failed"}
+			end
 
 		render :json =>@status
 		end
 
-
-		######################  User Photo Gallery  ################################################
-
-		def photoGallery
-		
-		if params[:id]
-		@user = User.find(params[:id])
-		if params[:type]=="all"
-		@photos= @user.photos.all	 					  
-		else
-		@photos= @user.photos.where("before_after='"+params[:type]+"'")
-		end
-
-		if @photos.empty?
-		@status = nil
-		else
-		@status= @photos.map{|f| { :name =>request.protocol+request.host_with_port+f.photo.url}}
-		end
-		else
-		@status = {"status-msg"=>"User not exist"}
-		end
-		
-		render :json =>@status.to_json			
-		end
-
-
-
-
-		##########################################################################################
-
- 	  #this method for testing, to check webservice
-	  def check
-
-	  end  
-
-  
-    ###################################################### Find Connection ##################  
-
-=begin
-	  private
-		 
-	  def authenticate_connection
-	  if !cookies[:session]
-	  @status={"status-msg"=>"User not login"} 
-	  render :json =>@status
-	  end
-
-	  end
-=end
-  
+ 
 end
