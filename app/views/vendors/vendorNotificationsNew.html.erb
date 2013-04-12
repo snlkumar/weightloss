@@ -1,3 +1,8 @@
+<style>
+input:-moz-placeholder {
+color: grey;
+}  
+</style>
 <script>
 
   $(document).ready(function(){
@@ -154,10 +159,10 @@ function submitform()
 
  <h1>New Notification</h1>
   <hr><br />
-<%= form_for(@notification, :as => :notification, :url => admin_notifications_path, :html => {:multipart => true} ) do |f| %>
+<%= form_for(@notification, :as => :notification, :url => vendorNotificationsCreate_vendors_path, :html => {:multipart => true} ) do |f| %>
 
 	<%=f.hidden_field :notificationTo, :value=>"User"%>
-	<%=f.hidden_field :notificationable_type, :value=>"Admin"%>
+	<%=f.hidden_field :notificationable_type, :value=>"Vendor"%>
 	<%=f.hidden_field :notificationable_id, :value=>"#{current_vendor.id}"%>  
  
 

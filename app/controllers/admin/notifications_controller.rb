@@ -36,7 +36,7 @@ class Admin::NotificationsController < ApplicationController
 		 params[:notification][:frequency_type]="first"			
 		else
 
-       params[:notification][:notificationFrequency]=params[:notificationFrequency2].split(",").collect{|a| a+".days" }.join(",").to_s
+       params[:notification][:notificationFrequency]=params[:notificationFrequency2].split(",").collect{|a| a.to_s.strip+".days" }.join(",").to_s
 		 params[:notification][:frequency_type]="second"
 		end
 		
