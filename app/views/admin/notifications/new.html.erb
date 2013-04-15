@@ -6,7 +6,8 @@
 <style>
 input:-moz-placeholder {
 color: grey;
-}  
+} 
+#notification_notification_type{width:7em;} 
 </style>
 
 <script>
@@ -138,14 +139,16 @@ function submitform()
 	<%=f.hidden_field :notificationable_id, :value=>"#{current_user.id}"%>  
  
 
+<div style="width:50em;">
+
 <div style="width:30em;">
 <span class="help-text">Multiple select holding CTRL key</span><br>
-	<%= f.label :notificationToId, "Notification To Users" %>
+	<%= f.label :notificationToId, "Notification To :" %>
 	<%=select_tag 'notificationToId[]', options_for_select(User.find(:all, :order=>'first_name ASC').map {|s| ["#{s.first_name} "+ "#{s.last_name}", s.email]}), :multiple => true, :size => 3, :id=>"noticefor",:style=>"width:10em;margin-bottom:-1em;margin-left:0em;"%>
 
 <input type="button" value="Select all" class="button grid_3" id="selectall" style="float:right;height:24px;font-size:8pt;width:6em;padding:0;margin-top:2em;"/> </div>
 
-<br><br>
+<br><br><br>
 
     <%= render :partial => 'form', :locals => {:f => f} %>
 
