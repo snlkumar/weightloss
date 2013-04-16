@@ -18,3 +18,7 @@ task :sendnotifications4 => :environment do
 								 obj = NotificationsController.new
 							 	 obj.foodAutoNotifications(23)
 							  end
+task :sendnotifications5 => :environment do
+								 obj = NotificationsController.new
+							 	 obj.foodAutoNotifications(24)
+							  end

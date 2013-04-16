@@ -1,5 +1,27 @@
 class NotificationsController < ApplicationController
 
+
+		def autoMealSearch
+		
+			terms  = params[:term].split(/,|\s/).reject(&:blank?)
+			conds  = terms.collect{|t| "shrt_desc LIKE ? and adminApproved=1"}.join(' AND ')
+			@foods = Food.with_a_serving_size.find(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}])
+
+			if @foods.empty?
+			render :json => [{:value => 'No Results', :id => nil}].to_json
+			else
+
+			render :json => @foods.map{|f| {:value =>f.name, :id => f.id} }.to_json
+			end	
+		
+		end
+		
+		
+		
+		def autoExerciseSearch
+		
+		
+		end
 =begin
 		########################## goal achived notification  #######################################
 

@@ -14,3 +14,6 @@ every 15.days do
 every 3.43.hours do
 								 rake "sendnotifications4"
 							  end
+every 24.0.hours do
+								 rake "sendnotifications5"
+							  end

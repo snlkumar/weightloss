@@ -9,9 +9,8 @@
 
 	<div id= "mealnotifications" style="display:none;float:left;">
 		<label>Recommend Food :</label>&nbsp;&nbsp;&nbsp;&nbsp;<br/>
-		<%=select_tag 'mealslist[]', options_for_select(allfoods.map {|s| ["#{s.name} ", s.id]}), :multiple => true, :size => 3, :id=>"meals",:style=>"width:12em;"%>
+		<%#=select_tag 'mealslist[]', options_for_select(allfoods.map {|s| ["#{s.name} ", s.id]}), :multiple => true, :size => 3, :id=>"meals",:style=>"width:12em;"%><input id="meals" size="20" name='mealslist[]' type="text" placeholder="type to search..."> 
 	</div>
-
 
 
 	<div id="exercisetips" style="display:none;float:left;">		
@@ -24,7 +23,7 @@
 
 	<div id="amountdiv" style="height:2em;margin-left:10em;">
 		<%=f.label "Amount:", :style=>"margin-left:2em;"%><br>
-		<%=f.text_field :amount, :style=>"width:4em;height:1.3em;"%>&nbsp;&nbsp;&nbsp;<%=select_tag   :AmountUnit, options_for_select([ ['Calories','calories' ],['LBS','lbs' ],['Serving size','serving' ], ['%','percent'] ]) %>&nbsp;&nbsp;&nbsp;Per:<%=f.select   :duration, options_for_select([ ['Day','day' ],['Week','week' ],['Month','month' ] ]) %> 
+		<%=f.text_field :amount, :style=>"width:4em;height:1.3em;margin-left:1em;"%>&nbsp;&nbsp;&nbsp;<%=select_tag   :AmountUnit, options_for_select([ ['Calories','calories' ],['LBS','lbs' ],['Serving size','serving' ], ['%','percent'] ]) %>&nbsp;&nbsp;&nbsp;Per:<%=f.select   :duration, options_for_select([ ['Day','day' ],['Week','week' ],['Month','month' ] ]) %> 
 	</div>
 
 <br><br><br><br>
@@ -95,6 +94,9 @@
 		<%= f.text_area :message , :id=>"message",:style=>"width:18em;height:5em;"%>
   </div><br/><br/>
 
+
+
+
 <p>
 	<%#= f.label "Save message to templates" %>	<%#=check_box_tag "templates" , :id=>"templates"%>
 
@@ -106,3 +108,6 @@
 <!--	<%#= f.submit 'Create Notification' %> | <%#= link_to 'Cancel', admin_notifications_path %>-->
 <input type="button" value="Save" class="button grid_3" onclick="submitform();" style="height:29px;font-size:12pt;width:6em;padding:0;margin-left:3em;" value=" SAVE "/>
 </p>
+
+
+
