@@ -24,6 +24,7 @@ class Admin::NotificationsController < ApplicationController
 
 
 		if params[:notificationFrequency]=="first"
+		
 			if params[:notificationFrequency1].to_s=="day"
 				params[:notification][:notificationFrequency]="#{(24/params[:times].to_f).round(2)}"+".hours"
 			elsif params[:notificationFrequency1].to_s=="week"
@@ -33,20 +34,23 @@ class Admin::NotificationsController < ApplicationController
 			else
 				params[:notification][:notificationFrequency]="#{(24*30*12/params[:times].to_f).round(2)}"+".hours"
 			end
-		 params[:notification][:frequency_type]="first"			
+		  
+		   params[:notification][:frequency_type]="first"		
+		 	
 		else
 
-       params[:notification][:notificationFrequency]=params[:notificationFrequency2].split(",").collect{|a| a.to_s.strip+".days" }.join(",").to_s
-		 params[:notification][:frequency_type]="second"
+		    params[:notification][:notificationFrequency]=params[:notificationFrequency2].split(",").collect{|a| a.to_s.strip+".days" }.join(",").to_s
+			 params[:notification][:frequency_type]="second"
 		end
 		
 		if params[:notification][:notification_type]=="food"
-			params[:notification][:mealslist]=params[:mealslist].collect{|a| a.split(",") }.join(",").to_s
+			params[:notification][:mealslist]=params[:meals1].collect{|a| a.split(",") }.join(",").to_s
 		end			
-		
+	
 		if params[:notification][:notification_type]=="activity"
-			params[:notification][:exerciseslist]=params[:exerciseslist].collect{|a| a.split(",") }.join(",").to_s					
+			params[:notification][:exerciseslist]=params[:exercise1].collect{|a| a.split(",") }.join(",").to_s					
 		end
+
 
 
 		if params[:notificationPeriodUnit]=="days"
@@ -58,7 +62,9 @@ class Admin::NotificationsController < ApplicationController
 		else
       	params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.years.from_now		
 		end
-		
+	
+
+				
 
 
 #		nextruntime=[]

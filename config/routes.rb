@@ -73,6 +73,7 @@ if ActiveRecord::Base.connection.table_exists? 'meta'
  
  end
  	
+ 	match '/autoExerciseSearch' => 'notifications#autoExerciseSearch' 	
  	match '/autoMealSearch' => 'notifications#autoMealSearch'
    match '/final'     => 'vendors#final' , :as=>"vendorfinal"
    match '/second_step'     => 'vendors#second_step'

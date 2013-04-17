@@ -128,7 +128,6 @@ ul.as-list {
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
-	overflow-y:scroll;
 }
 
 li.as-result-item, li.as-message {

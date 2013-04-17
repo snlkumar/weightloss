@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
 
 		def autoMealSearch
 		
-			terms  = params[:term].split(/,|\s/).reject(&:blank?)
+			terms  = params[:q].split(/,|\s/).reject(&:blank?)
 			conds  = terms.collect{|t| "shrt_desc LIKE ? and adminApproved=1"}.join(' AND ')
 			@foods = Food.with_a_serving_size.find(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}])
 
@@ -19,7 +19,20 @@ class NotificationsController < ApplicationController
 		
 		
 		def autoExerciseSearch
-		
+		    terms     = params[:q].split(/,|\s/).reject(&:blank?)
+			 # category LIKE :#{in_words} OR 
+			 conds     = terms.enum_with_index.map{|t, index| in_words = index.to_s.en.numwords; "description LIKE :#{in_words}"}.join(' AND ')
+			 term_hash = {}
+			 
+			 terms.each_with_index{|term, index| term_hash[index.to_s.en.numwords.to_sym] = "%#{term}%"}
+ 
+          @exercises = Exercise.find(:all, :conditions => [conds, term_hash])
+
+			if @exercises.empty?
+			render :json => [{:value => 'No Results', :id => nil}].to_json
+			else
+			render :json => @exercises.map{|f| {:value =>f.description, :id => f.id} }.to_json
+			end
 		
 		end
 =begin

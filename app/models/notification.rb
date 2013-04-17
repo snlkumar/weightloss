@@ -29,5 +29,8 @@ class Notification < ActiveRecord::Base
 					`whenever -i`
 			 end
 	end	
+ 
+ 
+
   
 end

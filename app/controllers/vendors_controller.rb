@@ -171,7 +171,7 @@ class VendorsController < ApplicationController
 
 
 		def auto_search
-		@city=ActiveRecord::Base.connection.execute("select c.id, c.name,co.name from City c, Country co where c.name like '%"+params[:term]+"%' and c.countrycode=co.code").to_a.flatten
+		@city=ActiveRecord::Base.connection.execute("select c.id, c.name,co.name from City c, Country co where c.name like '%"+params[:search]+"%' and c.countrycode=co.code")
 		render :json =>@city
 		return
 		end 

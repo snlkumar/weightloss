@@ -1,86 +1,21 @@
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
 <style>
 	.ui-autocomplete-loading {
 	background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat;
 	}
-	
 
-`ul.as-list {
-
-height:20em; 
-overflow-y: auto;
-z-index: 20002;
-
-}`	
+input:-moz-placeholder {
+color: grey;
+} 
+#notification_notification_type{width:7em;} 	
+			
 </style>
-
-
-<script>
-	$(function() {
-	function split( val ) {
-	return val.split( "**" );
-	}
-	
-	
-function extractLast( term ) {
-return split( term ).pop();
-}
-
-$( "#meals" )
-// don't navigate away from the field on tab when selecting an item
-.bind( "keydown", function( event ) {
-if ( event.keyCode === $.ui.keyCode.TAB &&
-$( this ).data( "ui-autocomplete" ).menu.active ) {
-event.preventDefault();
-}
-})
-.autocomplete({
-source: function( request, response ) {
-$.getJSON('/autoMealSearch', {
-term: extractLast( request.term )
-}, response );
-},
-search: function() {
-// custom minLength
-var term = extractLast( this.value );
-if ( term.length < 3 ) {
-return false;
-}
-},
-focus: function() {
-// prevent value inserted on focus
-return false;
-},
-select: function( event, ui ) {
-var terms = split( this.value );
-// remove the current input
-terms.pop();
-// add the selected item
-terms.push( ui.item.value );
-// add placeholder to get the comma-and-space at the end
-terms.push( "" );
-this.value = terms.join( " ** " );
-return false;
-}
-});
-});
-</script>
-
 
 
 
   <%#= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
-  <%#= javascript_include_tag "/javascripts/ckeditor/ckeditor.js" %>
-  
-<style>
-input:-moz-placeholder {
-color: grey;
-} 
-#notification_notification_type{width:7em;} 
-</style>
+
 
 <script>
 
@@ -141,63 +76,50 @@ function submitform()
 
 
 	if ($("#noticefor").find("option:selected").text()=='')
-	{
-	alert("Please select recepients.");
-	return false;		
-	}
+		{
+		alert("Please select recepients.");
+		return false;		
+		}
 
-   else if ($('#notificationFrequency_second').is(':checked') && $("#notificationFrequency2").val()=='')
-   { 
-    
-	alert("frequency text box cannot be empty.");
-	return false;		
+  if ($('#notificationFrequency_second').is(':checked') && $("#notificationFrequency2").val()=='')
+		{ 
+		 
+		alert("frequency text box cannot be empty.");
+		return false;			
+		}
 	
-   }
-	
-	else if ( $("#message").val()=='')	
-	{
-	alert("Message frequency field cannot be empty.");
-	return false;		
-	}
-   else
-   {
-   
-	type=$("#notification_notification_type").find("option:selected").text();
+	if ( $("#message").val()=='')	
+		{
+		alert("Message frequency field cannot be empty.");
+		return false;		
+		}
 
-	if (type=="Activity")
-	{
-		 if ($("#excercises").find("option:selected").text()=='')	
-	{
-	alert("Excercises field cannot be empty.");
-	return false;		
-	}
-	else
-	{
-     notification_new.submit();
-	}
+		
+		type=$("#notification_notification_type").find("option:selected").text();
 
-	}
-	else if (type=="Food")
-	{
-		 if ($("#meals").val()=='')	
-	{
-	alert("Meals field cannot be empty.");
-	return false;		
-	}
-	else
-	{
-     notification_new.submit();
-	}
-	}
-	else
-	{
-     $("#notification_new").submit();
-	}
-   
-  }
+		if (type=="Activity" && $("#excercises").val()=='')
+			{
+			alert("Excercises field cannot be empty.");
+			return false;		
+			}
+		else if (type=="Food" && $("#meals").val()=='')
+			{
+			alert("Meals field cannot be empty.");
+			return false;		
+			}
+		else
+		{
+			var meallist = $('.as-values:first').val();
+			var exerciselist = $('.as-values:last').val();
+			$("#meals1").val(meallist);
+			$("#exercise1").val(exerciselist);		
+			notification_new.submit();
+		}
+
  
 }
 </script>
+
 <div class="grid_12" style="margin-left:3em;">
   <h1>New Notification</h1>
   <hr><br />
@@ -209,16 +131,18 @@ function submitform()
 	<%=f.hidden_field :notificationTo, :value=>"User"%>
 	<%=f.hidden_field :notificationable_type, :value=>"Admin"%>
 	<%=f.hidden_field :notificationable_id, :value=>"#{current_user.id}"%>  
- 
-
+   <input type="hidden" name="meals1" id="meals1" value="" />
+   <input type="hidden" name="exercise1" id="exercise1" value="" />
+   
 <div style="width:50em;">
 
 <div style="width:30em;">
-<span class="help-text">Multiple select holding CTRL key</span><br>
-	<%= f.label :notificationToId, "Notification To :" %>
-	<%=select_tag 'notificationToId[]', options_for_select(User.find(:all, :order=>'first_name ASC').map {|s| ["#{s.first_name} "+ "#{s.last_name}", s.email]}), :multiple => true, :size => 3, :id=>"noticefor",:style=>"width:10em;margin-bottom:-1em;margin-left:0em;"%>
+		<span class="help-text">Multiple select holding CTRL key</span><br>
+		<%= f.label :notificationToId, "Notification To :" %>
+		<%=select_tag 'notificationToId[]', options_for_select(User.find(:all, :order=>'first_name ASC').map {|s| ["#{s.first_name} "+ "#{s.last_name}", s.email]}), :multiple => true, :size => 3, :id=>"noticefor",:style=>"width:10em;margin-bottom:-1em;margin-left:0em;"%>
 
-<input type="button" value="Select all" class="button grid_3" id="selectall" style="float:right;height:24px;font-size:8pt;width:6em;padding:0;margin-top:2em;"/> </div>
+		<input type="button" value="Select all" class="button grid_3" id="selectall" style="float:right;height:24px;font-size:8pt;width:6em;padding:0;margin-top:2em;"/> 
+</div>
 
 <br><br><br>
 
