@@ -24,14 +24,14 @@
 
 	
 		<label>Recommend Food :</label>&nbsp;&nbsp;&nbsp;&nbsp;<br/>
-		<%#=select_tag 'mealslist[]', options_for_select(allfoods.map {|s| ["#{s.name} ", s.id]}), :multiple => true, :size => 3, :id=>"meals",:style=>"width:12em;"%><input id="meals" type="text" placeholder="type to search..." style="width:20em;"> 
+		<%#=select_tag 'mealslist[]', options_for_select(allfoods.map {|s| ["#{s.name} ", s.id]}), :multiple => true, :size => 3, :id=>"meals",:style=>"width:12em;"%><input id="meals" type="text" placeholder="type to search..." style="width:35em;"> 
 	</div>
 
 	<div id="exercisetips" style="display:none;float:left;">	
 	
-	  <label>Workout Duration :</label> <input type="text" name="workoutduration" id="durationworkout" value="" style="width:4em;height:1.3em;"/> 	<span class="help-text">minutes</span><br>		
+	  <label>Workout Duration :</label> <input type="text" name="workoutduration" id="durationworkout" value="" style="width:4em;height:1.3em;"/> 			<span class="help-text">minutes</span><br>		
 		<label>Recommend Exercise :</label><br/>
-		<%#=select_tag 'exerciseslist[]', options_for_select(Exercise.all.map {|s| ["#{s.description} ", s.id]}), :multiple => true, :size => 3, :id=>"excercises",:style=>"width:12em;"%><input id="excercises" type="text" placeholder="type to search..." style="width:20em;">
+		<%#=select_tag 'exerciseslist[]', options_for_select(Exercise.all.map {|s| ["#{s.description} ", s.id]}), :multiple => true, :size => 3, :id=>"excercises",:style=>"width:12em;"%><input id="excercises" type="text" placeholder="type to search..." style="width:35em;">
 	</div>
 	
 	<div style="clear:both">&nbsp;</div>
@@ -84,20 +84,11 @@
 		<%= f.text_area :message , :id=>"message",:style=>"width:18em;height:5em;"%>
   </div><br/><br/>
 
-
-
-
-<p>
-	<%#= f.label "Save message to templates" %>	<%#=check_box_tag "templates" , :id=>"templates"%>
-
-</p>
-
- 
       
-<p>
+<div>
 <!--	<%#= f.submit 'Create Notification' %> | <%#= link_to 'Cancel', admin_notifications_path %>-->
 <input type="button" value="Save" class="button grid_3" onclick="submitform();" style="height:29px;font-size:12pt;width:6em;padding:0;margin-left:3em;" value=" SAVE "/>
-</p>
+</div>
 
 
 
@@ -111,3 +102,5 @@ $("input#meals").autoSuggest("/autoMealSearch", {selectedValuesProp: "id", minCh
 
 <!--$("input#meals").autoSuggest(data.items, {selectedItemProp: "name", searchObjProps: "name", startText: "", keyDelay: 50, minChars: 1});-->
 </script>
+
+

@@ -1,30 +1,29 @@
-
-<style>
-	.ui-autocomplete-loading {
-	background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat;
-	}
-
+<style type="text/css">
 input:-moz-placeholder {
 color: grey;
+}
+ 
+#notification_notification_type{
+width:7em;
 } 
-#notification_notification_type{width:7em;} 	
+.as-list {
+height: 300px;
+overflow: auto;
+}
 			
 </style>
 
+<%= javascript_include_tag "application" %>
 
 
-  <%#= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-
-
-<script>
+<script type="text/javascript">
 
  $(document).ready(function(){
 
 $("#selectall").click(function(){
 $("#noticefor").find('option').each(function() {
 			$(this).attr('selected', 'selected');
-		});
+	});
 
 });
   
@@ -136,13 +135,13 @@ function submitform()
    
 <div style="width:50em;">
 
-<div style="width:30em;">
+	<div style="width:30em;">
 		<span class="help-text">Multiple select holding CTRL key</span><br>
 		<%= f.label :notificationToId, "Notification To :" %>
 		<%=select_tag 'notificationToId[]', options_for_select(User.find(:all, :order=>'first_name ASC').map {|s| ["#{s.first_name} "+ "#{s.last_name}", s.email]}), :multiple => true, :size => 3, :id=>"noticefor",:style=>"width:10em;margin-bottom:-1em;margin-left:0em;"%>
 
 		<input type="button" value="Select all" class="button grid_3" id="selectall" style="float:right;height:24px;font-size:8pt;width:6em;padding:0;margin-top:2em;"/> 
-</div>
+	</div>
 
 <br><br><br>
 

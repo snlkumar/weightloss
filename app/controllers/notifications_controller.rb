@@ -1,8 +1,8 @@
 class NotificationsController < ApplicationController
 
-
-		def autoMealSearch
+		###########  searching food from notification settings  ##################################
 		
+		 def autoMealSearch		
 			terms  = params[:q].split(/,|\s/).reject(&:blank?)
 			conds  = terms.collect{|t| "shrt_desc LIKE ? and adminApproved=1"}.join(' AND ')
 			@foods = Food.with_a_serving_size.find(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}])
@@ -17,8 +17,9 @@ class NotificationsController < ApplicationController
 		end
 		
 		
+		###########  searching exercise from notification settings #################################
 		
-		def autoExerciseSearch
+		 def autoExerciseSearch
 		    terms     = params[:q].split(/,|\s/).reject(&:blank?)
 			 # category LIKE :#{in_words} OR 
 			 conds     = terms.enum_with_index.map{|t, index| in_words = index.to_s.en.numwords; "description LIKE :#{in_words}"}.join(' AND ')
@@ -35,6 +36,8 @@ class NotificationsController < ApplicationController
 			end
 		
 		end
+
+
 =begin
 		########################## goal achived notification  #######################################
 
@@ -61,51 +64,153 @@ class NotificationsController < ApplicationController
 		mailernotificaton(@notification.message,allrecipient)
 		end
 		end
+
+=end
+
 	
 		#####################################  Protein notification #################################
 		
-		def proteinNotifications
-		@notification=Notification.where("notification_type='protein' and turnOnNotification=1")
-
+		def proteinAutoNotifications(id)
+		notification=id
+		@notification=Notification.find_by_id(notification)
 
 		if @notification.present? 	#check if admin has created protein notification and turnOn the notification
 		@emails=@notification.notificationToId.split(",").collect{|a| a }
 		allrecipient= []
 		@emails.each do |email|
 		@user=User.find_by_email("#{email}")
-		@userpermission=@user.mywwnotification.protein							
-		if @userpermission=="1"#check if user wants protein notifications							
-		bld=@user.meals.where(:ate_on=>["#{Date.today}","#{Date.today-1.day}","#{Date.today-2.day}"] )
-		if bld.present?
-		#checking for food id
-		bld.each do |f|
-		protein+=f.protein
-		end
 				
-		if protein < 100
-		allrecipient << email											
-		end	
+			if @notification.duration=="week"
+			@meals=@user.meals.past_week
+			elsif @notification.duration=="month"
+			@meals=@user.meals.past_month
+			else 
+			@meals=@user.meals.today
+			end
 
-		else
-		allrecipient << email
-		end
-		end
+	    # @proteinConsumed=@meals.inject(0){|tot, meal| tot += meal.meal_items.inject(0){|meal_tot, meal_item| meal_tot += (Food.find(meal_item.food_id).protein.nil? ? 0 : Food.find(meal_item.food_id).protein*(meal_item.calories/Food.find(meal_item.food_id).energ_kcal)) } }.round(3)
+
+			@proteinConsumed=@meals.inject(0){|tot, meal| tot += meal.meal_items.inject(0){|meal_tot, meal_item| meal_tot += (Food.find_by_id(meal_item.food_id).try(:protein).nil? ? 0 : ( Food.find_by_id(meal_item.food_id).try(:energ_kcal).nil? ? 0 : Food.find_by_id(meal_item.food_id).try(:protein)*(meal_item.calories/Food.find_by_id(meal_item.food_id).try(:energ_kcal) ))) } }.to_f.round(3)
+
+			if @proteinConsumed.present? 
+			#checking for food id
+				
+				if @notification.do_dont=="1"
+					if @proteinConsumed >= @notification.amount.to_f # if protein consumed amount mentioned achieved... email will be sent....
+					allrecipient << email
+					end
+				else
+					if @proteinConsumed < @notification.amount.to_f # if protein consumed amount mentioned notachieved... email will be sent....
+					allrecipient << email
+					end		
+				end	
+
+			else
+			allrecipient << email
+			end
+
+
 		end     
-		mailernotificaton(@notification.message,allrecipient)
+			BusinessclaimMailer.usernotifications(@notification.message,allrecipient).deliver if allrecipient.present?		
+		   rescheduleDates(notification) if @notification.frequency_type=="second"
 
 		end	
 		end
 
 
 
-=end	
+		#####################################  Carbohydrate notification #################################
+		
+		def carbohydrateAutoNotifications(id)
+		notification=id
+		@notification=Notification.find_by_id(notification)
+
+			if @notification.present? 	#check if admin has created protein notification and turnOn the notification
+			@emails=@notification.notificationToId.split(",").collect{|a| a }
+			allrecipient= []
+			@emails.each do |email|
+			@user=User.find_by_email("#{email}")
+				
+			if @notification.duration=="week"
+			@meals=@user.meals.past_week
+			elsif @notification.duration=="month"
+			@meals=@user.meals.past_month
+			else 
+			@meals=@user.meals.today
+			end
+
+	    # @proteinConsumed=@meals.inject(0){|tot, meal| tot += meal.meal_items.inject(0){|meal_tot, meal_item| meal_tot += (Food.find(meal_item.food_id).protein.nil? ? 0 : Food.find(meal_item.food_id).protein*(meal_item.calories/Food.find(meal_item.food_id).energ_kcal)) } }.round(3)
+
+			@proteinConsumed=@meals.inject(0){|tot, meal| tot += meal.meal_items.inject(0){|meal_tot, meal_item| meal_tot += (Food.find_by_id(meal_item.food_id).try(:carbohydrt).nil? ? 0 : ( Food.find_by_id(meal_item.food_id).try(:energ_kcal).nil? ? 0 : Food.find_by_id(meal_item.food_id).try(:carbohydrt)*(meal_item.calories/Food.find_by_id(meal_item.food_id).try(:energ_kcal) ))) } }.to_f.round(3)
+
+			if @proteinConsumed.present? 
+			#checking for food id
+				
+				if @notification.do_dont=="1"
+					if @proteinConsumed >= @notification.amount.to_f # if protein consumed amount mentioned achieved... email will be sent....
+					allrecipient << email
+					end
+				else
+					if @proteinConsumed < @notification.amount.to_f # if protein consumed amount mentioned notachieved... email will be sent....
+					allrecipient << email
+					end		
+				end	
+
+			else
+			allrecipient << email
+			end
+
+
+		end     
+			BusinessclaimMailer.usernotifications(@notification.message,allrecipient).deliver if allrecipient.present?		
+		   rescheduleDates(notification) if @notification.frequency_type=="second"
+
+		end	
+		end
+
+
+
+
+
+
+		############################# Meals Per day ##########################
+		
+		def mealperdayAutoNotifications(id)
+		notification=id
+		@notification=Notification.find_by_id(notification)
+		if @notification.present?
+		@email=@notification.notificationToid.split(",").collect{|a| a}
+		allrecipient=[]
+		
+		@emails.each do |email|
+		@user=User.find_by_email("#{email}")
+		bld=@user.meals.where("ate_on < '#{Date.today}' && ate_on >= '#{Date.today-1}'")
+		
+			if @notification.do_dont=="1"
+				if bld.size >= @notification.amount.to_i
+				allrecipient << email
+				end		
+			else
+				if bld.size < @notification.amount.to_i
+				allrecipient << email
+				end			
+			end
+				
+		end
+			BusinessclaimMailer.usernotifications(@notification.message,allrecipient).deliver if allrecipient.present?		
+		   rescheduleDates(notification) if @notification.frequency_type=="second"
+							
+		end			
+		end		
+
+	
 	
 		############################## Inactive Diary ########################	
 	
 		def inactivityAutoNotifications(id)
 		notification=id
 		@notification=Notification.find_by_id(notification)
-		if @notification.present? 	#check if admin has created lunch notification and turnOn the notification
+		if @notification.present?
 		@emails=@notification.notificationToId.split(",").collect{|a| a }
 		allrecipient= []
 		@emails.each do |email|
@@ -534,35 +639,11 @@ class NotificationsController < ApplicationController
 
 		def checknoti
 		
-		@notification=Notification.find(5)
-		if @notification.present? 	#check if admin has created lunch notification and turnOn the notification
-		@emails=@notification.notificationToId.split(",").collect{|a| a }
-		allrecipient= []
-		@emails.each do |email|
-		@user=User.find_by_email("#{email}")
-
-
-		#bld=@user.meals.where("ate_on < '#{Date.today}' && ate_on >= '#{Date.today-5.days}'" )
-
-		bld=@user.meals.where("ate_on < '#{Date.today}' && ate_on >= '#{Date.today-@notification.inactivityDays.to_i.days}'")				
-		workout=@user.workouts.where("trained_on < '#{Date.today}' && trained_on >= '#{Date.today-@notification.inactivityDays.to_i.days}'")
-						
-				
-			if @notification.do_dont=="1"
-					if bld.present? && workout.present? # if calorie loss amount mentioned achieved... email will be sent....
-					allrecipient << email
-					end
-			else
-					if !bld.present? && !workout.present?  # if calorie loss amount mentioned not achieved... email will be sent....
-					allrecipient << email
-					end			
-			end
-		# mailernotificaton(@notification.message,allrecipient)				
-
-		end
-		end
-			   rescheduleDates(5) if @notification.frequency_type=="second"
-		end
+	   end	
+		
+		
+		
+		
 		
 		####################################################################################
 		
@@ -585,11 +666,11 @@ class NotificationsController < ApplicationController
 		
 	 ######################################################################################			
 	
-	  def destroy
-    	@notification = Notification.find(params[:id])
-      @notification.destroy
-      Notification.updateCronTab 
- 	  end
+		  def destroy
+		 	@notification = Notification.find(params[:id])
+		   @notification.destroy
+		   Notification.updateCronTab 
+	 	  end
   
 	
 		########################### mailer ###############################################
