@@ -4,7 +4,6 @@ class VendorsController < ApplicationController
 	   before_filter :authenticate_vendor!, :only=> [:usersearch,:addmember, :createmember, :memberlist, :addmywwmember,:edit, :update]
 
 
-
       ####################### Vendor Search #######################################
 
 		def search
@@ -291,7 +290,7 @@ class VendorsController < ApplicationController
 
 
 		def memberlist
-		#	 @members=Vendormember.find(:all,:conditions=>["userApproved=? and vendor_id=?",true,session[:vendor].id])
+		#@members=Vendormember.find(:all,:conditions=>["userApproved=? and vendor_id=?",true,session[:vendor].id])
 		@vendor=Vendor.find(current_vendor.id)
 		@members=@vendor.users.where("userApproved=1").order('first_name ASC').page(params[:page] || 1).per(30)
 
@@ -367,42 +366,47 @@ class VendorsController < ApplicationController
 
 
 		def vendorNotificationsNew
+		@vendor=current_vendor
 		@notification = Notification.new
 		@members=current_vendor.users.where("userApproved=1").order('first_name ASC')
+		render :layout=>'vendorprofile'
 		end
 
 
 
 		def vendorNotificationsCreate
 
-		params[:notification][:notificationToId]=params[:notificationToId].collect{|a| a.split(",") }.join(",").to_s
-#		params[:notification][:notificationFrequency]=params[:notificationFrequency].collect{|a| a.split(",") }.join(",").to_s
-
+	params[:notification][:notificationToId]=params[:notificationToId].collect{|a| a.split(",") }.join(",").to_s
 
 		if params[:notificationFrequency]=="first"
-			if params[:notificationFrequency1].to_s=="day"
-				params[:notification][:notificationFrequency]="#{(24/params[:times].to_f).round(2)}"+".hours"
-			elsif params[:notificationFrequency1].to_s=="week"
-				params[:notification][:notificationFrequency]="#{24*7/params[:times].to_f}"+".hours"				
-			elsif params[:notificationFrequency1].to_s=="month"
-				params[:notification][:notificationFrequency]="#{24*30/params[:times].to_f}"+".hours"
-			else
-				params[:notification][:notificationFrequency]="#{(24*30*12/params[:times].to_f).round(2)}"+".hours"
-			end
-		 params[:notification][:frequency_type]="first"			
+		
+		  if params[:notificationFrequency1].to_s=="day"
+			  params[:notification][:notificationFrequency]="#{(24/params[:times].to_f).round(2)}"+".hours"
+		  elsif params[:notificationFrequency1].to_s=="week"
+			  params[:notification][:notificationFrequency]="#{24*7/params[:times].to_f}"+".hours"				
+		  elsif params[:notificationFrequency1].to_s=="month"
+			  params[:notification][:notificationFrequency]="#{24*30/params[:times].to_f}"+".hours"
+		  else
+			  params[:notification][:notificationFrequency]="#{(24*30*12/params[:times].to_f).round(2)}"+".hours"
+		  end
+		  
+           params[:notification][:frequency_type]="first"				 	
 		else
 
-       params[:notification][:notificationFrequency]=params[:notificationFrequency2].split(",").collect{|a| a.to_s.strip+".days" }.join(",").to_s
-		 params[:notification][:frequency_type]="second"
+           params[:notification][:notificationFrequency]=params[:notificationFrequency2].split(",").sort.collect{|a| a.to_s.strip+".days" }.join(",").to_s
+		     params[:notification][:frequency_type]="second"
 		end
 		
 		if params[:notification][:notification_type]=="food"
-			params[:notification][:mealslist]=params[:mealslist].collect{|a| a.split(",") }.join(",").to_s
+	     params[:notification][:mealslist]=params[:meals1].collect{|a| a.split(",") }.join(",").to_s
 		end			
-		
+
+	
 		if params[:notification][:notification_type]=="activity"
-			params[:notification][:exerciseslist]=params[:exerciseslist].collect{|a| a.split(",") }.join(",").to_s					
+		  params[:notification][:exerciseslist]=params[:exercise1].collect{|a| a.split(",") }.join(",").to_s	
+		  params[:notification][:workoutduration]=params[:workoutduration]				
 		end
+
 
 
 		if params[:notificationPeriodUnit]=="days"
@@ -414,19 +418,10 @@ class VendorsController < ApplicationController
 		else
       	params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.years.from_now		
 		end
-		
+	
 
-
-#		nextruntime=[]
-#		params[:notificationFrequency].collect{|a| a.split(",") }.join(",").to_s.each do |frequency|
-#		nextruntime << Date.today+frequency.to_i
-#		end
-#		params[:notification][:nextrundate]=nextruntime.min
-		
-		
 		 	
-       @notification = Notification.create(params[:notification])
-   	 #@emails=User.select(:email)
+    @notification = Notification.create(params[:notification])
     	 if @notification.save
   
 #writing schedule and rake task file

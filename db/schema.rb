@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405133937) do
+ActiveRecord::Schema.define(:version => 20130426132415) do
 
   create_table "City", :primary_key => "ID", :force => true do |t|
     t.string "Name",        :limit => 35, :default => "", :null => false
@@ -191,6 +191,7 @@ ActiveRecord::Schema.define(:version => 20130405133937) do
     t.datetime "avatar_updated_at"
     t.text     "detailes"
     t.integer  "adminApproved",                                     :default => 1
+    t.string   "food_category",                                     :default => "0"
   end
 
   create_table "forem_forums", :force => true do |t|
@@ -314,6 +315,7 @@ ActiveRecord::Schema.define(:version => 20130405133937) do
     t.string   "inactivityDays"
     t.date     "notificationDuration"
     t.string   "frequency_type"
+    t.string   "workoutduration"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

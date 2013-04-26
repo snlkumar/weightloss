@@ -5,11 +5,7 @@ class Vendor < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-
-  # Setup accessible (or protected) attributes for your model
-#  attr_accessible :email, :password, :password_confirmation, :remember_me,:business_name
-#validates :city, :state, :zipcode, :country, :contact1, :email, :password, :presence=>true, :on => [:create]
-   #paperclip
+  #paperclip
   has_many :vendormembers
   has_many :users, :through => :vendormembers   
   has_many :ratings, :as => :ratingable
@@ -25,10 +21,7 @@ class Vendor < ActiveRecord::Base
   has_one :businessclaim
 
   validates_presence_of :business_name, :email, :password, :zipcode, :presence=>true, :on => [:create] 
-# validates_presence_of :city, :state,  :country, :contact1,:presence=>true, :on => [:create], :if => :profile? 
 
- 
-#vendor registration form methods
 
 def to_param
   "#{id}-#{business_name}".downcase.gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").strip

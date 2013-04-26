@@ -1,16 +1,35 @@
-  <%= javascript_include_tag "application" %>
-<script>
+<style type="text/css">
+input:-moz-placeholder {
+color: grey;
+}
+ 
+#notification_notification_type{
+width:7em;
+} 
+.as-list {
+height: 300px;
+overflow: auto;
+}
+			
+</style>
+
+<%= javascript_include_tag "application" %>
+
+<script type="text/javascript">
 
  $(document).ready(function(){
 
 $("#selectall").click(function(){
+//alert($('.as-values:first').val());
+/*
 $("#noticefor").find('option').each(function() {
-			$(this).attr('selected', 'selected');
-		});
+		$(this).attr('selected', 'selected');
+	});
+
+*/
 
 });
   
-
 	$("#exercisetips, #mealnotifications, #inactivity").css("display","none");
 
 	$("#notification_notification_type").change(function(){ 
@@ -21,27 +40,18 @@ $("#noticefor").find('option').each(function() {
 	{
 	$("#exercisetips, #inactivity").css("display","none");
 	$("#mealnotifications").css("display","block");
-
-	}
-	else if (type=="Activity")
+	}else if (type=="Activity")
 	{
 	$("#mealnotifications, #inactivity").css("display","none");
 	$("#exercisetips").css("display","block");
-
-	}
-
-	else if (type=="Lunch inactivity" || type=="Breakfast inactivity" || type=="Dinner inactivity" || type=="Diary inactivity")
-	{
+	}else if (type=="Lunch inactivity" || type=="Breakfast inactivity" || type=="Dinner inactivity" || type=="Diary inactivity"){
 	$("#amountdiv, #exercisetips, #mealnotifications").css("display","none");
 	$("#inactivity").css("display","block")
 
-	}
-	
-	else if (type=="Other")
+	}else if (type=="Other")
 	{
 	$("#exercisetips, #mealnotifications,#inactivity,#amountdiv").css("display","none");
-	}
-	else
+	}else
 	{
 	$("#exercisetips, #mealnotifications,#inactivity").css("display","none");	
 	
@@ -57,58 +67,49 @@ function submitform()
 
 
 
-	if ($('#notificationFrequency_second').is(':checked') && $("#notificationFrequency2").val()=='')
-   { 
-    
-	alert("frequency text box cannot be empty.");
-	return false;		
-	
-   }
-	
-	else if ( $("#message").val()=='')	
-	{
-	alert("Message frequency field cannot be empty.");
-	return false;		
-	}
-   else
-   {
-   
+//	if ($("#noticefor").find("option:selected").text()==''){
+//		alert("Please select recepients.");
+//		return false;		
+//	}
+
+  if ($('#notificationFrequency_second').is(':checked') && $("#notificationFrequency2").val()==''){ 		 
+    alert("frequency text box cannot be empty.");
+	 return false;			
+	 }
+
+
+	if ( $("#message").val()==''){
+	  alert("Message frequency field cannot be empty.");
+	  return false;		
+	  }
+
+		
 	type=$("#notification_notification_type").find("option:selected").text();
 
-	if (type=="Activity")
-	{
-		 if ($("#excercises").find("option:selected").text()=='')	
-	{
-	alert("Excercises field cannot be empty.");
-	return false;		
-	}
-	else
-	{
-     notification_new.submit();
-	}
+	if (type=="Activity" && $("#exercisetips").contents().find('.as-values').val()==''){
+		alert("Excercises field cannot be empty.");
+		return false;		
+		}else if (type=="Food" && $("#mealnotifications").contents().find('.as-values').val()==''){
+		alert("Meals field cannot be empty.");
+		return false;		
+		}else{
+	
+	//getting elements from iframe contents..........................
+		var exerciselist = $("#notification_new").contents().find("#exercisetips").contents().find('.as-values').val();
+		var meallist = $("#notification_new").contents().find("#mealnotifications").contents().find('.as-values').val();
 
+		//$("#notificationToId").val(notificationid);
+
+		$("#meals1").val(meallist);
+		$("#exercise1").val(exerciselist);	
+
+
+		$("form").submit();
 	}
-	else if (type=="Food")
-	{
-		 if ($("#meals").find("option:selected").text()=='')	
-	{
-	alert("Meals field cannot be empty.");
-	return false;		
-	}
-	else
-	{
-     notification_new.submit();
-	}
-	}
-	else
-	{
-     $("#notification_new").submit();
-	}
-   
-  }
- 
 }
 </script>
+
+
 <div class="grid_12" style="margin-left:3em;">
   <h1>New Notification</h1>
   <hr><br />

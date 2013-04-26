@@ -19,6 +19,7 @@ class CreateNotifications < ActiveRecord::Migration
       t.string :inactivityDays
       t.date   :notificationDuration
       t.string :frequency_type
+      t.string :workoutduration      
       t.timestamps
     end
   end

@@ -1,15 +1,13 @@
 <script type="text/javascript">
-
-
-  <% content_for :js do %>
-    $(function() {
-      $("tr").mouseover(function(){
-        $(this).css("background-color","#ccc");
-      }).mouseout(function(){
-        $(this).css("background-color","#FFFFFF");
-      });
+<% content_for :js do %>
+ $(function() {
+   $("tr").mouseover(function(){
+     $(this).css("background-color","#ccc");
+   }).mouseout(function(){
+     $(this).css("background-color","#FFFFFF");
    });
-  <%end%>
+});
+<%end%>
 </script>
 
 

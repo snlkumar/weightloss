@@ -2,6 +2,29 @@ class NotificationsController < ApplicationController
 
 		###########  searching food from notification settings  ##################################
 		
+		 def autoUserSearch		
+			terms  = params[:q].split(/,|\s/).reject(&:blank?)
+			conds  = terms.collect{|t| "first_name LIKE ?"}.join(' AND ')
+			if current_user
+			@users = User.find(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}])
+			else
+			@allusers = current_vendor.users.where("userApproved=1")
+			@users= @allusers.find(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}])
+			
+			end
+			if @users.empty?
+			render :json => [{:value => 'No Results', :id => nil}].to_json
+			else
+
+			render :json => @users.map{|f| {:value =>"#{f.full_name}", :id => f.email} }.to_json
+			end	
+		
+		end
+
+
+
+		###########  searching food from notification settings  ##################################
+		
 		 def autoMealSearch		
 			terms  = params[:q].split(/,|\s/).reject(&:blank?)
 			conds  = terms.collect{|t| "shrt_desc LIKE ? and adminApproved=1"}.join(' AND ')

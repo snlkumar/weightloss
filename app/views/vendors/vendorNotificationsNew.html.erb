@@ -1,20 +1,35 @@
-<style>
+<style type="text/css">
 input:-moz-placeholder {
 color: grey;
-}  
+}
+ 
+#notification_notification_type{
+width:7em;
+} 
+.as-list {
+height: 300px;
+overflow: auto;
+}
+			
 </style>
-<script>
 
-  $(document).ready(function(){
+<%= javascript_include_tag "application" %>
+
+<script type="text/javascript">
+
+ $(document).ready(function(){
 
 $("#selectall").click(function(){
+//alert($('.as-values:first').val());
+/*
 $("#noticefor").find('option').each(function() {
-			$(this).attr('selected', 'selected');
-		});
+		$(this).attr('selected', 'selected');
+	});
+
+*/
 
 });
   
-
 	$("#exercisetips, #mealnotifications, #inactivity").css("display","none");
 
 	$("#notification_notification_type").change(function(){ 
@@ -25,27 +40,18 @@ $("#noticefor").find('option').each(function() {
 	{
 	$("#exercisetips, #inactivity").css("display","none");
 	$("#mealnotifications").css("display","block");
-
-	}
-	else if (type=="Activity")
+	}else if (type=="Activity")
 	{
 	$("#mealnotifications, #inactivity").css("display","none");
 	$("#exercisetips").css("display","block");
-
-	}
-
-	else if (type=="Lunch inactivity" || type=="Breakfast inactivity" || type=="Dinner inactivity" || type=="Diary inactivity")
-	{
+	}else if (type=="Lunch inactivity" || type=="Breakfast inactivity" || type=="Dinner inactivity" || type=="Diary inactivity"){
 	$("#amountdiv, #exercisetips, #mealnotifications").css("display","none");
 	$("#inactivity").css("display","block")
 
-	}
-	
-	else if (type=="Other")
+	}else if (type=="Other")
 	{
 	$("#exercisetips, #mealnotifications,#inactivity,#amountdiv").css("display","none");
-	}
-	else
+	}else
 	{
 	$("#exercisetips, #mealnotifications,#inactivity").css("display","none");	
 	
@@ -61,124 +67,79 @@ function submitform()
 
 
 
-	if ($("#noticefor").find("option:selected").text()=='')
-	{
-	alert("Please select recepients.");
-	return false;		
-	}
+//	if ($("#noticefor").find("option:selected").text()==''){
+//		alert("Please select recepients.");
+//		return false;		
+//	}
 
-   else if ($('#notificationFrequency_second').is(':checked') && $("#notificationFrequency2").val()=='')
-   { 
-    
-	alert("frequency text box cannot be empty.");
-	return false;		
-	
-   }
-	
-	else if ( $("#message").val()=='')	
-	{
-	alert("Message frequency field cannot be empty.");
-	return false;		
-	}
-   else
-   {
-   
+  if ($('#notificationFrequency_second').is(':checked') && $("#notificationFrequency2").val()==''){ 		 
+    alert("frequency text box cannot be empty.");
+	 return false;			
+	 }
+
+  if ($("#usersdiv").contents().find('.as-values').val()==''){
+		alert("Users field cannot be empty.");
+		return false;		
+		}	
+	if ( $("#message").val()==''){
+	  alert("Message frequency field cannot be empty.");
+	  return false;		
+	  }
+
+		
 	type=$("#notification_notification_type").find("option:selected").text();
 
-	if (type=="Activity")
-	{
-		 if ($("#excercises").find("option:selected").text()=='')	
-	{
-	alert("Excercises field cannot be empty.");
-	return false;		
-	}
-	else
-	{
-     notification_new.submit();
-	}
+	if (type=="Activity" && $("#exercisetips").contents().find('.as-values').val()==''){
+		alert("Excercises field cannot be empty.");
+		return false;		
+		}else if (type=="Food" && $("#mealnotifications").contents().find('.as-values').val()==''){
+		alert("Meals field cannot be empty.");
+		return false;		
+		}else{
+	
+	//getting elements from iframe contents..........................
+		var userslist = $("#usersdiv").contents().find('.as-values').val();
 
+		var exerciselist = $("#exercisetips").contents().find('.as-values').val();
+		var meallist = $("#mealnotifications").contents().find('.as-values').val();
+
+		//$("#notificationToId").val(notificationid);
+		$("#notificationToId").val(userslist);					
+		$("#meals1").val(meallist);
+		$("#exercise1").val(exerciselist);	
+
+
+		$("form").submit();
 	}
-	else if (type=="Food")
-	{
-		 if ($("#meals").find("option:selected").text()=='')	
-	{
-	alert("Meals field cannot be empty.");
-	return false;		
-	}
-	else
-	{
-     notification_new.submit();
-	}
-	}
-	else
-	{
-     $("#notification_new").submit();
-	}
-   
-  }
- 
 }
 </script>
-		<div class="grid_5 ">
-			<p id="user-name" class="grid_5" style="font-size:1.5em;"><%= current_vendor.business_name %></p>
-			<div class="profile-avatar avatar"><%= image_tag(current_vendor.photo.url(:profile)) %></div>
-			<div class="sidebar-container" style="">
-
-
-
-			<div class="clear">&nbsp;</div>
-			<ul id="user-settings-tabs">
-			<li class="vendor-class">
-			<%if current_vendor%>
-			<%= link_to 'Add MyWeightWorld Users', usersearch_vendors_path%>                
-			</li>
-			<li class="vendor-class">
-			<%= link_to 'Add a Member', addmember_vendors_path%>
-			</li>                
-			<li class="vendor-class">
-			<%= link_to 'Members List', memberlist_vendors_path%>
-			</li> 
-			<li class="vendor-class">
-			<%= link_to 'Notification Settings', vendorNotificationsNew_vendors_path%>
-			</li> 
-
-			</ul>
-			<%end%>
-			</div>
-		</div>
-
 
 <br><br><%#= link_to 'Back', :back, :style=>"margin-left:5%;" %><br><br>
 
-
-
-
-<div style="margin-left:26em;">
-
-
+<div>
 
  <h1>New Notification</h1>
-  <hr><br />
-<%= form_for(@notification, :as => :notification, :url => vendorNotificationsCreate_vendors_path, :html => {:multipart => true} ) do |f| %>
+ <hr><br />
+ 
+  <%= form_for(@notification, :as => :notification, :url => vendorNotificationsCreate_vendors_path, :html => {:multipart => true} ) do |f| %>
 
 	<%=f.hidden_field :notificationTo, :value=>"User"%>
 	<%=f.hidden_field :notificationable_type, :value=>"Vendor"%>
 	<%=f.hidden_field :notificationable_id, :value=>"#{current_vendor.id}"%>  
- 
-
-<div style="width:30em;">
-<span class="help-text">Multiple select holding CTRL key</span><br>
-	<%= f.label :notificationToId, "Notification To:" %> 
-	<%=select_tag 'notificationToId[]', options_for_select(@members.map {|s| ["#{s.first_name} "+ "#{s.last_name}", s.email]}), :multiple => true, :size => 3, :id=>"noticefor", :style=>"width:10em;margin-bottom:-1em;margin-left:3em;"%>
-
-<input type="button" value="Select all" class="button grid_3" id="selectall" style="float:right;height:24px;font-size:8pt;width:6em;padding:0;margin-top:2em;"/> </div>
-
-<br><br>
+   <input type="hidden" name="meals1" id="meals1" value="" />
+   <input type="hidden" name="exercise1" id="exercise1" value="" />
+   <input type="hidden" name="notificationToId" id="notificationToId" value="" />   
 
 
-    <%= render :partial => 'admin/notifications/form', :locals => {:f => f} %>
-<% end %>
+	<div id="usersdiv" style="width:40em;">
+		<span class="help-text">Multiple select holding CTRL key</span><br>
+		<%= f.label :notificationToId, "Notification To:" %> 
+		<%#=select_tag 'notificationToId[]', options_for_select(@members.map {|s| ["#{s.first_name} "+ "#{s.last_name}", s.email]}), :multiple => true, :size => 3, :id=>"noticefor", :style=>"width:10em;margin-bottom:-1em;margin-left:3em;"%>
+		<input id="users" type="text" placeholder="type to search..." style="width:35em;">
 
-  
-</div>
+		<br><br>
+
+		 <%= render :partial => 'admin/notifications/form', :locals => {:f => f} %>
+			<% end %>	  
+	</div>
 

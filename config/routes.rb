@@ -11,9 +11,7 @@ devise_for :users, :controllers => { :registrations => "registrations", :omniaut
     get '/sign_in', :to => 'devise/sessions#new'
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
    
-  end
-
-
+end
 
 
 resources :notifications
@@ -72,7 +70,8 @@ if ActiveRecord::Base.connection.table_exists? 'meta'
  end
  
  end
-  	match '/checknoti' => 'notifications#checknoti' 		
+  	match '/checknoti' => 'notifications#checknoti' 
+ 	match '/autoUserSearch' => 'notifications#autoUserSearch' 	  			
  	match '/autoExerciseSearch' => 'notifications#autoExerciseSearch' 	
  	match '/autoMealSearch' => 'notifications#autoMealSearch'
    match '/final'     => 'vendors#final' , :as=>"vendorfinal"

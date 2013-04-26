@@ -2,7 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
   
   def create
   
-  		check=verify_recaptcha(request.remote_ip, params)
+	check=verify_recaptcha(request.remote_ip, params)
 
 	if check[:status] == 'false'
 	  #@notice = "captcha value is not correct"

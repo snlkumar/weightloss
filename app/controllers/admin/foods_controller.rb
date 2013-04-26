@@ -34,7 +34,7 @@ class Admin::FoodsController < Admin::BaseController
 
   
   def update
-  
+	 params[:food][:food_category]=params[:food_category].collect{|a| a.split(",") }.join(",").to_s
 
     @food = Food.find(params[:id])
     
