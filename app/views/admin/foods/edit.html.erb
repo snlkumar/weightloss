@@ -9,9 +9,9 @@ height:1.7em;
 <script>
 $(document).ready(function(){
 var foodCategory="<%=@food.food_category%>";
-ravi=foodCategory.split(",");
+newcategory=foodCategory.split(",");
 $("#food_category_").find('option').each(function() {
-		 if (ravi.indexOf($(this).val()) != -1) 
+		 if (newcategory.indexOf($(this).val()) != -1) 
 			{$(this).attr('selected', 'selected');
 			
 			}
@@ -49,16 +49,27 @@ $("#food_category_").find('option').each(function() {
   <%= f.check_box :adminApproved %>
 </div><br/>  
     <!-- new code -->
-    
-        	<%=f.label :food_category, "Food category:"%>
-		<%=select_tag "food_category[]", options_for_select([["Good food","1"],["Bad food","2"],["Fast food","3"],["Nutritious food","4"],["Wrong food","5"],["Fatty foot","6"],["High cholestrol food","7"],["Low calorie food","8"]]),:multiple => true, :size => 5 , :style=>"margin-left:3em;"%>
-    
-    	<%= render :partial => '/custom_foods/form', :locals => {:f => f} %>
-    	
 
-    <p>
-      <%= f.submit 'Update' %> | <%= link_to 'Cancel', admin_foods_path %>
-    </p>
+	<div>    
+        	<%=f.label :food_category, "Food category:"%> <br>
+		<%=select_tag "food_category[]", options_for_select(Food::Food_Category),:multiple => true, :size => 7 , :style=>"margin:-5em 11em;width:10em;"%>        	
+        	
+		<%#=select_tag "food_category[]", options_for_select([["Good food","1"],["Bad food","2"],["Fast food","3"],["Nutritious food","4"],["Wrong food","5"],["Fatty foot","6"],["High cholestrol food","7"],["Low calorie food","8"]]),:multiple => true, :size => 5 , :style=>"margin-left:3em;"%>
+
+	</div>
+	
+	<br><br><br><br>
+
+  
+  <div>    
+    	<%= render :partial => '/custom_foods/form', :locals => {:f => f} %>
+  <div>    	
+
+
+ <div>
+   <%= f.submit 'Update' %> | <%= link_to 'Cancel', admin_foods_path %>
+ </div>
+ 
   <% end %>
   <%= link_to 'Back', admin_foods_path %>
 </div>

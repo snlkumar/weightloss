@@ -1,4 +1,11 @@
 class Food < ActiveRecord::Base
+
+
+#using in admin food edit to categories food........
+
+Food_Category=['Gluten Free', 'Low Carb', 'High Carb', 'Medium Carb', 'Protein', 'Good Fat', 'Bad Fat', 'Vegetables', 'Fruit', 'Paleo', 'Red Meal', 'Seafood', 'Chicken', 'Turkey', 'Lamb', 'Kosher', 'Low fat', 'Low Sugar', 'Vegan', 'Raw Vegan', 'Dairy Free', 'Nut Free', 'Healthy', 'Bad Food', 'Good Food', 'Supplements', 'Protein Powder', 'Bars', 'High Cholesterol', 'Low Calorie', 'Low Sodium']
+
+
   #scope :with_a_serving_size, :conditions => "gmwt_desc1 is NOT NULL OR gmwt_desc2 is NOT NULL"
   scope :with_a_serving_size, :conditions => "(gmwt_desc1 is NOT NULL OR gmwt_1 is NOT NULL) and gmwt_desc1!=''" #OR gmwt_desc2 is NOT NULL"
   has_friendly_id :name, :use_slug => true
