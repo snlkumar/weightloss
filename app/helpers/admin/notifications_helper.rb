@@ -5,7 +5,7 @@ module Admin::NotificationsHelper
 		allusersnames=[]
 		allemail.each do |f|
 		@user=User.find_by_email(f)
-		allusersnames << @user.full_name 
+		allusersnames << @user.try(:full_name) 
 		end
 		allusersnames.collect{|a| a}.join(",").to_s
 	end

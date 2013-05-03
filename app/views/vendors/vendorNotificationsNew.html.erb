@@ -19,14 +19,18 @@ overflow: auto;
 
  $(document).ready(function(){
 
+$("#deselectall").click(function(){
+//alert($('.as-values:first').val());
+$("#usersdiv").contents().find('.as-input').val("").attr("placeholder", "Type a user...").css("color","black");
+$("#usersdiv").contents().find('.as-values').val("");
+
+});
+  
+
 $("#selectall").click(function(){
 //alert($('.as-values:first').val());
-/*
-$("#noticefor").find('option').each(function() {
-		$(this).attr('selected', 'selected');
-	});
-
-*/
+$("#usersdiv").contents().find('.as-input').val("ALL USERS SELECTED").css("color","blue");
+$("#usersdiv").contents().find('.as-values').val("<%= current_vendor.users.where("userApproved=1").map{|f| f.email}.join(",")%>");
 
 });
   
@@ -136,6 +140,9 @@ function submitform()
 		<%= f.label :notificationToId, "Notification To:" %> 
 		<%#=select_tag 'notificationToId[]', options_for_select(@members.map {|s| ["#{s.first_name} "+ "#{s.last_name}", s.email]}), :multiple => true, :size => 3, :id=>"noticefor", :style=>"width:10em;margin-bottom:-1em;margin-left:3em;"%>
 		<input id="users" type="text" placeholder="type to search..." style="width:35em;">
+
+		<input type="button" value="deselect all" class="button grid_3" id="deselectall" style="float:right;height:24px;font-size:8pt;width:6em;padding:0;margin-top:2em;"/> 		
+		<input type="button" value="Select all" class="button grid_3" id="selectall" style="float:right;height:24px;font-size:8pt;width:6em;padding:0;margin-top:2em;"/>
 
 		<br><br>
 

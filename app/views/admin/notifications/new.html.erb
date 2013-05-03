@@ -19,14 +19,18 @@ overflow: auto;
 
  $(document).ready(function(){
 
+$("#deselectall").click(function(){
+//alert($('.as-values:first').val());
+$("#usersdiv").contents().find('.as-input').val("").attr("placeholder", "Type a user...").css("color","black");
+$("#usersdiv").contents().find('.as-values').val("");
+
+});
+  
+
 $("#selectall").click(function(){
 //alert($('.as-values:first').val());
-/*
-$("#noticefor").find('option').each(function() {
-		$(this).attr('selected', 'selected');
-	});
-
-*/
+$("#usersdiv").contents().find('.as-input').val("ALL USERS SELECTED").css("color","blue");
+$("#usersdiv").contents().find('.as-values').val("<%= User.all.map{|f| f.email}.join(",")%>");
 
 });
   
@@ -72,6 +76,7 @@ function submitform()
 //		return false;		
 //	}
 
+
   if ($('#notificationFrequency_second').is(':checked') && $("#notificationFrequency2").val()==''){ 		 
     alert("frequency text box cannot be empty.");
 	 return false;			
@@ -98,9 +103,9 @@ function submitform()
 		}else{
 	
 	//getting elements from iframe contents..........................
-		var userslist = $("#notification_new").contents().find("#usersdiv").contents().find('.as-values').val();
-		var exerciselist = $("#notification_new").contents().find("#exercisetips").contents().find('.as-values').val();
-		var meallist = $("#notification_new").contents().find("#mealnotifications").contents().find('.as-values').val();
+		var userslist = $("#usersdiv").contents().find('.as-values').val();
+		var exerciselist = $("#exercisetips").contents().find('.as-values').val();
+		var meallist = $("#mealnotifications").contents().find('.as-values').val();
 
 		//$("#notificationToId").val(notificationid);
 		$("#notificationToId").val(userslist);					
@@ -135,7 +140,18 @@ function submitform()
 		<span class="help-text">Multiple select holding CTRL key</span><br>
 		<%= f.label :notificationToId, "Notification To :" %>
 		<%#=select_tag 'notificationToId[]', options_for_select(User.find(:all, :order=>'first_name ASC').map {|s| ["#{s.first_name} "+ "#{s.last_name}", s.email]}), :multiple => true, :size => 3, :id=>"noticefor",:style=>"width:10em;margin-bottom:-1em;margin-left:0em;"%>
+
+		
 		<input id="users" type="text" placeholder="type to search..." style="width:35em;">
+
+
+
+		<input type="button" value="deselect all" class="button grid_3" id="deselectall" style="float:right;height:24px;font-size:8pt;width:6em;padding:0;margin-top:2em;"/> 		
+		<input type="button" value="Select all" class="button grid_3" id="selectall" style="float:right;height:24px;font-size:8pt;width:6em;padding:0;margin-top:2em;"/> 
+		
+		
+		</div>
+		
 <!--		<input type="button" value="Select all" class="button grid_3" id="selectall" style="float:right;height:24px;font-size:8pt;width:6em;padding:0;margin-right:-20em;"/> -->
 	</div>
 
