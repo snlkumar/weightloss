@@ -5,7 +5,14 @@
   
   <%= form_for([:admin, @food]) do |f| %>
     <%= f.error_messages %>
-    
+
+	<div>    
+        	<%=f.label :food_category, "Food category:"%> <br>
+		<%=select_tag "food_category[]", options_for_select(Food::Food_Category),:multiple => true, :size => 7 , :style=>"margin:-5em 11em;width:10em;"%>        	
+        	
+		<%#=select_tag "food_category[]", options_for_select([["Good food","1"],["Bad food","2"],["Fast food","3"],["Nutritious food","4"],["Wrong food","5"],["Fatty foot","6"],["High cholestrol food","7"],["Low calorie food","8"]]),:multiple => true, :size => 5 , :style=>"margin-left:3em;"%>
+
+	</div><br><br><br><br><br><br>    
     <%= render :partial => '/custom_foods/form', :locals => {:f => f} %>
 
 

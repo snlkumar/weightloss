@@ -16,7 +16,7 @@ gem 'whenever', :require => false
 #gem 'iconv'
 
 #new added gem
-  gem 'sanitize'
+gem 'sanitize'
 #end
 gem 'sendgrid'
 gem 'rails_autolink'

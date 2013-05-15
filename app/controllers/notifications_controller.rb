@@ -4,7 +4,7 @@ class NotificationsController < ApplicationController
 		
 		 def autoUserSearch		
 			terms  = params[:q].split(/,|\s/).reject(&:blank?)
-			conds  = terms.collect{|t| "first_name LIKE ?"}.join(' AND ')
+			conds  = terms.collect{|t| "first_name or last_name LIKE ?"}.join(' AND ')
 			if current_user
 			@users = User.find(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}])
 			else

@@ -23,7 +23,7 @@ class Vendor < ActiveRecord::Base
 
   validates_presence_of :business_name, :email, :password, :zipcode, :presence=>true, :on => [:create] 
 
-scope :members, :conditions => "(userApproved is 1)"
+
 
 def to_param
   "#{id}-#{business_name}".downcase.gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").strip
