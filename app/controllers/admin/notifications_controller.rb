@@ -2,7 +2,7 @@ class Admin::NotificationsController < ApplicationController
  layout 'new_admin'
   
   def index
-        @notifications = Notification.where('notificationable_type="Admin"').page(params[:page] || 1).per(50).order('created_at ASC')   
+    @notifications = Notification.where('notificationable_type="Admin"').page(params[:page] || 1).per(50).order('created_at ASC')   
     if !params[:page].nil?
       @num=(params[:page].to_i-1)*50
     else
@@ -13,6 +13,7 @@ class Admin::NotificationsController < ApplicationController
 
   def new
     @notification = Notification.new
+    render :layout=> 'new_admin1'
   end
   
   
@@ -23,13 +24,13 @@ class Admin::NotificationsController < ApplicationController
 		if params[:notificationFrequency]=="first"
 		
 		  if params[:notificationFrequency1].to_s=="day"
-			  params[:notification][:notificationFrequency]="#{(24/params[:times].to_f).round(2)}"+".hours"
+	       params[:notification][:notificationFrequency]="#{(24/params[:times].to_f).round(2)}"+".hours"
 		  elsif params[:notificationFrequency1].to_s=="week"
-			  params[:notification][:notificationFrequency]="#{24*7/params[:times].to_f}"+".hours"				
+			 params[:notification][:notificationFrequency]="#{24*7/params[:times].to_f}"+".hours"				
 		  elsif params[:notificationFrequency1].to_s=="month"
-			  params[:notification][:notificationFrequency]="#{24*30/params[:times].to_f}"+".hours"
+			 params[:notification][:notificationFrequency]="#{24*30/params[:times].to_f}"+".hours"
 		  else
-			  params[:notification][:notificationFrequency]="#{(24*30*12/params[:times].to_f).round(2)}"+".hours"
+			 params[:notification][:notificationFrequency]="#{(24*30*12/params[:times].to_f).round(2)}"+".hours"
 		  end
 		  
            params[:notification][:frequency_type]="first"				 	
@@ -41,6 +42,7 @@ class Admin::NotificationsController < ApplicationController
 		
 		if params[:notification][:notification_type]=="food"
 	     params[:notification][:mealslist]=params[:meals1].collect{|a| a.split(",") }.join(",").to_s
+	     params[:notification][:food_category]=params[:food_category].collect{|a| a.split(",") }.join(",").to_s	     
 		end			
 
 	
@@ -48,8 +50,6 @@ class Admin::NotificationsController < ApplicationController
 		  params[:notification][:exerciseslist]=params[:exercise1].collect{|a| a.split(",") }.join(",").to_s	
 		  params[:notification][:workoutduration]=params[:workoutduration]				
 		end
-
-
 
 		if params[:notificationPeriodUnit]=="days"
       	params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.days.from_now		
@@ -68,8 +68,7 @@ class Admin::NotificationsController < ApplicationController
  	 if @notification.save
   
 		#writing schedule and rake task file
-		Notification.updateCronTab
-						       
+		Notification.updateCronTab						       
       redirect_to(admin_notifications_path, :notice => 'Notification was successfully created.')
     else
       render :action => "new"
@@ -77,22 +76,19 @@ class Admin::NotificationsController < ApplicationController
   end
 
 
-
   
   def show
-	  @notification=Notification.find(params[:id])
-	  render :layout =>'new_admin'
+    @notification=Notification.find(params[:id])
+	 render :layout =>'new_admin'
   end
   
 
   
   def destroy
     @notification = Notification.find(params[:id])
-    @notification.destroy
-    
+    @notification.destroy    
 	 Notification.updateCronTab	
-    redirect_to(admin_notifications_path)
-    
+    redirect_to(admin_notifications_path)    
   end
 
 end

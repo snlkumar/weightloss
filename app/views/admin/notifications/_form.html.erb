@@ -20,7 +20,10 @@
             
 	<div id= "mealnotifications" style="display:none;float:left;">
 	  <label>Recommend Food :</label>&nbsp;&nbsp;&nbsp;&nbsp;<br/>
-		  <%#=select_tag 'mealslist[]', options_for_select(allfoods.map {|s| ["#{s.name} ", s.id]}), :multiple => true, :size => 3, :id=>"meals",:style=>"width:12em;"%><input id="meals" type="text" placeholder="type to search..." style="width:35em;"> 
+		  <%#=select_tag 'mealslist[]', options_for_select(allfoods.map {|s| ["#{s.name} ", s.id]}), :multiple => true, :size => 3, :id=>"meals",:style=>"width:12em;"%><input id="meals" type="text" placeholder="type to search..." style="width:35em;"> <br>
+		 		<%=select_tag "food_category[]", options_for_select(Food::Food_Category),:multiple => true, :size => 7 , :id=>"foodCategory", :style=>"margin:-5em 11em;width:10em;"%>   
+	  
+		  
 	</div>
 
 	<div id="exercisetips" style="display:none;float:left;">	

@@ -1,4 +1,18 @@
+<%= javascript_include_tag "application" %>
+
+<!-- for multiselect checkbox jquery.. -->
+<link rel="stylesheet" type="text/css" href="/assets/jquery.multiselect.css" />
+<link rel="stylesheet" type="text/css" href="/assets/prettify.css" />
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" />
+<script type="text/javascript" src="/assets/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/assets/jquery.multiselect.filter.js"></script>
+<script type="text/javascript" src="/assets/jquery.multiselect.js"></script>
+<script type="text/javascript" src="/assets/prettify.js"></script>
+
+
 <style type="text/css">
+
 input:-moz-placeholder {
 color: grey;
 }
@@ -9,11 +23,27 @@ width:7em;
 .as-list {
 height: 300px;
 overflow: auto;
-}
-			
+}			
 </style>
 
-<%= javascript_include_tag "application" %>
+
+<script type="text/javascript">
+
+$(function(){
+	$("#foodCategory").multiselect({
+    noneSelectedText: "food categories"
+	}).multiselectfilter();	
+ }); 
+
+$(function(){
+	$("#notification_notification_type").multiselect({
+	   multiple: false,
+      selectedList: 1
+	}).multiselectfilter();	
+ }); 
+ 
+</script>
+
 
 <script type="text/javascript">
 
@@ -69,8 +99,6 @@ $("#usersdiv").contents().find('.as-values').val("<%= User.all.map{|f| f.email}.
 function submitform()
 {
 
-
-
 //	if ($("#noticefor").find("option:selected").text()==''){
 //		alert("Please select recepients.");
 //		return false;		
@@ -102,7 +130,7 @@ function submitform()
 		return false;		
 		}else{
 	
-	//getting elements from iframe contents..........................
+
 		var userslist = $("#usersdiv").contents().find('.as-values').val();
 		var exerciselist = $("#exercisetips").contents().find('.as-values').val();
 		var meallist = $("#mealnotifications").contents().find('.as-values').val();
@@ -120,7 +148,7 @@ function submitform()
 
 
 
-<div class="grid_12" style="margin-left:3em;">
+<div>
   <h1>New Notification</h1>
   <hr><br />
   
@@ -133,7 +161,7 @@ function submitform()
 	<%=f.hidden_field :notificationable_id, :value=>"#{current_user.id}"%>
    <input type="hidden" name="meals1" id="meals1" value="" />
    <input type="hidden" name="exercise1" id="exercise1" value="" />
-    <input type="hidden" name="notificationToId" id="notificationToId" value="" />  
+   <input type="hidden" name="notificationToId" id="notificationToId" value="" />  
 
 
 	<div id="usersdiv" style="width:40em;">
@@ -161,6 +189,7 @@ function submitform()
 
 
 <% end %>
-  
+ 
+
 </div>
 

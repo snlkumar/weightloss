@@ -2,16 +2,24 @@ class NotificationsController < ApplicationController
 
 		###########  searching food from notification settings  ##################################
 		
-		 def autoUserSearch		
-			terms  = params[:q].split(/,|\s/).reject(&:blank?)
-			conds  = terms.collect{|t| "first_name or last_name LIKE ?"}.join(' AND ')
-			if current_user
-			@users = User.find(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}])
-			else
-			@allusers = current_vendor.users.where("userApproved=1")
-			@users= @allusers.find(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}])
-			
+	   def autoUserSearch		
+		 terms  = params[:q].split(/,|\s/).reject(&:blank?)
+			#conds  = terms.collect{|t| "first_name or last_name LIKE ?"}.join(' AND ')
+		 if current_user
+			terms.each do |term|
+			  @users=User.where("first_name LIKE ? or last_name LIKE ?", term,term)
 			end
+			
+			#@users = User.find(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}])
+		 else
+			@allusers = current_vendor.users.where("userApproved=1")
+			
+			terms.each do |term|
+			  @users=@allusers.where("first_name LIKE ? or last_name LIKE ?", term,term)
+			end
+			#@users= @allusers.find(:all, :conditions => [conds, *terms.collect{|t| "%#{t}%"}])
+			
+		 end
 			if @users.empty?
 			render :json => [{:value => 'No Results', :id => nil}].to_json
 			else

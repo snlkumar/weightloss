@@ -316,6 +316,7 @@ ActiveRecord::Schema.define(:version => 20130426132415) do
     t.date     "notificationDuration"
     t.string   "frequency_type"
     t.string   "workoutduration"
+    t.string   "food_category"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

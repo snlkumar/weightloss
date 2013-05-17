@@ -185,12 +185,22 @@ class UsersController < ApplicationController
    end
 =end
 
-@notification=Notification.new   
-     render :layout => "user_settings" 
+    @notifications=Notification.where("notificationable_type='User' and notificationable_id='#{current_user.id}'").page(params[:page] || 1).per(50).order('created_at ASC')   
+  
+     render :layout => "user_settings1" 
    
 end  
 
 
+  ##############################################################
+
+
+	def notificationnew
+    @notification=Notification.new   
+     render :layout => "user_settings1"		
+	end
+	
+	
    #######################################################################
 
 	def notificationcreate
@@ -238,8 +248,7 @@ end
   
 #writing schedule and rake task file
 	
-				Notification.updateCronTab  
-       
+		Notification.updateCronTab         
       redirect_to(user_path, :notice => 'Notification was successfully created.')
     else
       render :action => "notifications"
@@ -248,25 +257,11 @@ end
 	
 	end
 
-
-
-
    ###########################################################3 
 
  def memberships
  
-=begin  
-@users=User.find(:all)
-
-@users.each do |user|
-    	Mywwnotification.create(:lunch=>1,:dinner=>1,:breakfast=>1,:goal=>1,:user_id=>user.id)
-
-end 
- 
- render :text=>"done"
-=end 
-  
- 	@user =current_user
+	@user =current_user
  	 @memberships=@user.vendormembers.all( :conditions=>['status=? or status=?',"waiting","accepted" ])
  	 	 @vendorRatings=Rating.where("ratingFor='user' and ratingForid='#{@user.id}'") 
 
@@ -297,28 +292,14 @@ end
 ############################################################################
 
 
-def hidenotification
-
-	@notification=Notification.find(params[:id])
-	@notification.update_attributes(:hideNotification=>true)
-	render :text=>"Sucessfully removed"
-end 
-
-
-#######################################################################################
-
-	def changeNotifications
-
-	@user=current_user
- 	@notification=@user.mywwnotification
- 	@notification.update_attributes(:weight=>params[:mywwnotification][:weight],:activity=>params[:mywwnotification][:activity], :food=>params[:mywwnotification][:food], :supplements=>params[:mywwnotification][:supplements],:bodyfat=>params[:mywwnotification][:bodyfat], :calories=>params[:mywwnotification][:calories], :other=>params[:mywwnotification][:other] )
-	if @notification.save
-        redirect_to(user_path, :notice => 'successfully saved.')
-	else
-	   render "notifications"
-    end
-	end
+ def hidenotification
+  @notification=Notification.find(params[:id])
+  @notification.update_attributes(:hideNotification=>true)
+  render :text=>"Sucessfully removed"
+ end 
 	
-###################################################################3
+###################################################################
+
+
 
 end

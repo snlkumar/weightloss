@@ -12,7 +12,7 @@
         	
 		<%#=select_tag "food_category[]", options_for_select([["Good food","1"],["Bad food","2"],["Fast food","3"],["Nutritious food","4"],["Wrong food","5"],["Fatty foot","6"],["High cholestrol food","7"],["Low calorie food","8"]]),:multiple => true, :size => 5 , :style=>"margin-left:3em;"%>
 
-	</div><br><br><br><br><br><br>    
+	</div><br><br>    
     <%= render :partial => '/custom_foods/form', :locals => {:f => f} %>
 
 
@@ -24,3 +24,25 @@
   
   <%= link_to 'Back', admin_foods_path %>
 </div>
+
+
+<!-- for multiselect checkbox jquery.. -->
+
+<link rel="stylesheet" type="text/css" href="/assets/jquery.multiselect.css" />
+<link rel="stylesheet" type="text/css" href="/assets/prettify.css" />
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" />
+<script type="text/javascript" src="/assets/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/assets/jquery.multiselect.filter.js"></script>
+<script type="text/javascript" src="/assets/jquery.multiselect.js"></script>
+<script type="text/javascript" src="/assets/prettify.js"></script>
+
+
+
+<script type="text/javascript">
+$(function(){
+
+	$("select").multiselect().multiselectfilter();
+});
+</script>
+

@@ -1,42 +1,36 @@
-
-
 <style type="text/css">
 
 .even { background: #99ccff; }
 .odd { background: #cccccc; }
 .head-table{background: #ccc; }
-
-}
 </style>
 
 <script tyle="text/javascript">
 
-function membership(userApproved,row,status)
-{
-
-$.get("/users/<%=current_user.id%>/addmembership"+"?userApproved="+userApproved+"&row="+row+"&status="+status).done(function( msg ) {
-
-alert(msg);
-location.reload();
-});
-
-		}
+function membership(userApproved,row,status){
+  $.get("/users/<%=current_user.id%>/addmembership"+"?userApproved="+userApproved+"&row="+row+"&status="+status).done(function( msg ) {
+   alert(msg);
+   location.reload();
+   });
+}
 	
 </script>
 
 <%if !@vendorRatings.blank?%>
- <label>Vendor Rating</label><select name="myRating" class="rating" id="serialStar">
-								 <option value="1">1</option>
-								 <option value="2">2</option>
-								 <option value="3">3</option>
-								 <option value="4">4</option> 
-								 <option value="5">5</option>       
-					</select>
+ <label>Vendor Rating</label>
+ <select name="myRating" class="rating" id="serialStar">
+	 <option value="1">1</option>
+	 <option value="2">2</option>
+	 <option value="3">3</option>
+	 <option value="4">4</option> 
+	 <option value="5">5</option>       
+ </select>
+
 <br/><br/>
 <%end%>
    
 <% if !@memberships.empty? %>
-
+<h2> Vendor want to manage your account to help you reach your health goal</h2>
 <div style="overflow:auto;width:40em;">
   <table style="border-collapse:separate;border-spacing:2px;width:40em;">
     <tr class="head-table">
@@ -48,10 +42,10 @@ location.reload();
     </tr>
     <% @memberships.each do |row| %>
       <tr class="<%= cycle('even','odd') %>">
-          <td style="padding: .3%;"><%=link_to Vendor.find(row.vendor_id).business_name, vendorInfo_path(row.id)+"/"+"#{ Vendor.find(row.vendor_id).vendor_type}/"+ Vendor.find(row.vendor_id).business_name.downcase.gsub(/\W+/, "-").gsub(/^[-]+|[-]$/,"").gsub('.'," ").strip%></td>
+          <td style="padding: .3%;"><%=link_to Vendor.find(row.vendor_id).business_name, vendorInfo_path(row.id)%></td>
           <td style="padding: .3%;"><%=Vendor.find(row.vendor_id).vendor_type.split('_').join(' ')%></td>
           <td><%=row.status%></td>
-          <td style="padding: .3%;"><input type="button" class="button grid_3" style="height:26px;font-size:10pt;width:4em;padding:0;margin:0;" onclick='membership("1", "<%=row.id%>", "accepted")' value=" Accept " /></td>
+          <td style="padding: .3%;"><%if row.status!="accepted"%><input type="button" class="button grid_3" style="height:26px;font-size:10pt;width:4em;padding:0;margin:0;" onclick='membership("1", "<%=row.id%>", "accepted")' value=" Accept " /><%end%></td>
           <td style="padding: .3%;"><input type="button" class="button grid_3" style="height:26px;font-size:10pt;width:4em;padding:0;margin:0;" onclick='membership("0", "<%=row.id%>","rejected")' value="Reject " /></td>
           
     <%end%>
