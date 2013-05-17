@@ -1,3 +1,33 @@
+<!-- for multiselect checkbox jquery.. -->
+
+<link rel="stylesheet" type="text/css" href="/assets/jquery.multiselect.css" />
+<link rel="stylesheet" type="text/css" href="/assets/prettify.css" />
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" />
+<script type="text/javascript" src="/assets/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/assets/jquery.multiselect.filter.js"></script>
+<script type="text/javascript" src="/assets/jquery.multiselect.js"></script>
+<script type="text/javascript" src="/assets/prettify.js"></script>
+
+
+
+<script type="text/javascript">
+
+$(function(){
+	$("select").multiselect().multiselectfilter();
+	
+});
+
+$(document).ready(function(){
+var Food = "<%=@food.food_category%>"; 
+var foodCategory = Food.split(',');
+for (var dx = 0; dx < foodCategory.length; dx++) {
+    if (!(foodCategory[dx] == '')) {
+        $('input[type="checkbox"][value="' + foodCategory[dx] + '"]').attr('checked', true).trigger('click').attr('checked', true);
+     }
+   }
+});
+</script>
 
 <style>
 select#food_food_category{
@@ -39,7 +69,7 @@ height:1.7em;
     <!-- new code -->
 
 	<div>    
-        	<%=f.label :food_category, "Food category:"%> <br>
+        	<%=f.label :food_category, "Food category:"%> 
 		<%=select_tag "food_category[]", options_for_select(Food::Food_Category),:multiple => true, :size => 7 , :style=>"margin:-5em 11em;width:10em;"%>        	
         	
 		<%#=select_tag "food_category[]", options_for_select([["Good food","1"],["Bad food","2"],["Fast food","3"],["Nutritious food","4"],["Wrong food","5"],["Fatty foot","6"],["High cholestrol food","7"],["Low calorie food","8"]]),:multiple => true, :size => 5 , :style=>"margin-left:3em;"%>
@@ -62,34 +92,5 @@ height:1.7em;
 </div>
 
 
-<!-- for multiselect checkbox jquery.. -->
 
-<link rel="stylesheet" type="text/css" href="/assets/jquery.multiselect.css" />
-<link rel="stylesheet" type="text/css" href="/assets/prettify.css" />
-<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" />
-<script type="text/javascript" src="/assets/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/assets/jquery.multiselect.filter.js"></script>
-<script type="text/javascript" src="/assets/jquery.multiselect.js"></script>
-<script type="text/javascript" src="/assets/prettify.js"></script>
-
-
-
-<script type="text/javascript">
-
-$(function(){
-	$("select").multiselect().multiselectfilter();
-	
-});
-
-$(document).ready(function(){
-var Food = "<%=@food.food_category%>"; 
-var foodCategory = Food.split(',');
-for (var dx = 0; dx < foodCategory.length; dx++) {
-    if (!(foodCategory[dx] == '')) {
-        $('input[type="checkbox"][value="' + foodCategory[dx] + '"]').attr('checked', true).trigger('click').attr('checked', true);
-     }
-   }
-});
-</script>
 

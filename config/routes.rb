@@ -302,6 +302,8 @@ if ActiveRecord::Base.connection.table_exists? 'meta'
 		get :memberships
 		get :addmembership
 		get :notificationnew
+		get :deleteNotification
+		get :notificationDetail
 		put :changeNotifications				
 		#end
     end

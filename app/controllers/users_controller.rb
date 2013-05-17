@@ -152,9 +152,7 @@ class UsersController < ApplicationController
 	def measurement 
     @user = current_user
     @meas=Measurement.new
-
    end
-
 
   
   def newmeasurement
@@ -201,35 +199,59 @@ end
 	end
 	
 	
-   #######################################################################
+   ##############################################################
 
+
+	def deleteNotification
+	  @notification=Notification.find(params[:id])
+	  @notification.destroy
+     redirect_to(user_path(current_user), :notice => 'notification was successfully saved.')	  
+	end
+
+		
+		
+	#############################################################
+	
+	def notificationDetail
+	  @notification=Notification.find(params[:id]) 
+     render :layout => "user_settings"		
+	end	
+		
+
+	##############################################################
+	
+	
 	def notificationcreate
 	
 		if params[:notificationFrequency]=="first"
-			if params[:notificationFrequency1].to_s=="day"
-				params[:notification][:notificationFrequency]="#{(24/params[:times].to_f).round(2)}"+".hours"
-			elsif params[:notificationFrequency1].to_s=="week"
-				params[:notification][:notificationFrequency]="#{24*7/params[:times].to_f}"+".hours"				
-			elsif params[:notificationFrequency1].to_s=="month"
-				params[:notification][:notificationFrequency]="#{24*30/params[:times].to_f}"+".hours"
-			else
-				params[:notification][:notificationFrequency]="#{(24*30*12/params[:times].to_f).round(2)}"+".hours"
-			end
-		   params[:notification][:frequency_type]="first"			
+		
+		  if params[:notificationFrequency1].to_s=="day"
+	       params[:notification][:notificationFrequency]="#{(24/params[:times].to_f).round(2)}"+".hours"
+		  elsif params[:notificationFrequency1].to_s=="week"
+			 params[:notification][:notificationFrequency]="#{24*7/params[:times].to_f}"+".hours"				
+		  elsif params[:notificationFrequency1].to_s=="month"
+			 params[:notification][:notificationFrequency]="#{24*30/params[:times].to_f}"+".hours"
+		  else
+			 params[:notification][:notificationFrequency]="#{(24*30*12/params[:times].to_f).round(2)}"+".hours"
+		  end
+		  
+           params[:notification][:frequency_type]="first"				 	
 		else
 
-       params[:notification][:notificationFrequency]=params[:notificationFrequency2].split(",").collect{|a| a.to_s.strip+".days" }.join(",").to_s
-		 params[:notification][:frequency_type]="second"
+           params[:notification][:notificationFrequency]=params[:notificationFrequency2].split(",").sort.collect{|a| a.to_s.strip+".days" }.join(",").to_s
+		     params[:notification][:frequency_type]="second"
 		end
 		
 		if params[:notification][:notification_type]=="food"
-			params[:notification][:mealslist]=params[:mealslist].collect{|a| a.split(",") }.join(",").to_s
+	     params[:notification][:mealslist]=params[:meals1].collect{|a| a.split(",") }.join(",").to_s
+	     params[:notification][:food_category]=params[:food_category].collect{|a| a.split(",") }.join(",").to_s	     
 		end			
-		
-		if params[:notification][:notification_type]=="activity"
-			params[:notification][:exerciseslist]=params[:exerciseslist].collect{|a| a.split(",") }.join(",").to_s					
-		end
 
+	
+		if params[:notification][:notification_type]=="activity"
+		  params[:notification][:exerciseslist]=params[:exercise1].collect{|a| a.split(",") }.join(",").to_s	
+		  params[:notification][:workoutduration]=params[:workoutduration]				
+		end
 
 		if params[:notificationPeriodUnit]=="days"
       	params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.days.from_now		

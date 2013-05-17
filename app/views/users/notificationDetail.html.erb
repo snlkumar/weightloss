@@ -1,0 +1,63 @@
+
+
+<style type="text/css">
+.even { background: #E6EEEE; }
+.odd { background: #cccccc; }
+.head-table{background: #ccc; }
+</style>
+
+<script type="text/javascript">
+  <%content_for :js do%>
+    $("table tbody tr").mouseover(function(){
+      $(this).css("background-color","#ccc");
+    }).mouseout(function(){
+      $(this).css("background-color","");
+    });
+          
+  <%end%>
+</script>
+
+
+
+<h2 style="font-size:20px;text-align:center;background-color:#0B2B42;width:30em;margin-left:3em;">Notification details</h2>
+
+     <table border="0" width="95%" style="margin-left:5em;background-color:#FFFFFF;border:1px solid;">
+		<tbody>
+
+
+	<tr>
+	 <td style="padding:15px 25px;font-size:16px;color:#2E8EC1;width:35%" valign="top">Notification from:</td>
+
+	 <td style="padding:15px 15px;font-size:15px" valign="top">
+   <%=@notification.notificationable_type%>
+	</td>
+	</tr>
+	
+	
+
+
+
+		<tr>
+			 <td style="padding:15px 25px;font-size:16px;color:#2E8EC1;" valign="top">Created on:</td>
+
+			 <td style="padding:15px 15px;font-size:15px" valign="top">
+		<%=@notification.created_at.strftime("%m/%d/%y")%>
+			</td>
+			
+		</tr>
+		
+		
+		<tr>
+			 <td style="padding:15px 25px;font-size:16px;color:#2E8EC1;" valign="top">Message:</td>
+
+			 <td style="padding:15px 15px;font-size:15px" valign="top">
+		<%=@notification.message.html_safe%>
+			</td>
+			
+		</tr>
+
+
+
+
+	</tbody>
+</table>

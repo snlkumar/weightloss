@@ -118,10 +118,11 @@ function submitform()
 	
 	//getting elements from iframe contents..........................
 		var exerciselist = $("#notification_new").contents().find("#exercisetips").contents().find('.as-values').val();
-		var meallist = $("#notification_new").contents().find("#mealnotifications").contents().find('.as-values').val();
+		//var meallist = $("#notification_new").contents().find("#mealnotifications").contents().find('.as-values').val();
+		
+		var meallist =$("#mealnotifications").contents().find('.as-values').val()
 
 		//$("#notificationToId").val(notificationid);
-
 		$("#meals1").val(meallist);
 		$("#exercise1").val(exerciselist);	
 
@@ -141,9 +142,7 @@ function submitform()
 	<%=f.hidden_field :notificationable_type, :value=>"User"%>
 	<%=f.hidden_field :notificationable_id, :value=>"#{current_user.id}"%>  
 	<%=f.hidden_field :notificationToId, :value=>"#{current_user.email}"%> 
-
-
-
+   <input type="hidden" name="meals1" id="meals1" value="" />
 
     <%= render :partial => 'admin/notifications/form', :locals => {:f => f} %>
 
