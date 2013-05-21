@@ -15,12 +15,12 @@ class Admin::FoodsController < Admin::BaseController
   
   def new
     @food = Food.new(:custom => true)
-    render :layout=>'new_admin1'
+    #render :layout=>'new_admin1'
   end
   
   def edit
     @food = Food.find(params[:id])
-    render :layout=>'new_admin1'
+    #render :layout=>'new_admin1'
   end
   
   def create

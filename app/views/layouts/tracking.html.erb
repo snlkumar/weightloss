@@ -11,6 +11,7 @@
 <meta name="description" content="<%= @meta_description %>" />
 <!---new code ended for meta -->
     <%= render :partial => '/layouts/head' %>
+    <%= render :partial => "layouts/js_libs" %>
   </head>
   <body>
     <div id="wrap" class="full">
@@ -106,7 +107,7 @@
      
     <%= render :partial => 'layouts/footer' %>
     
-    <%= render :partial => "layouts/js_libs" %>
+
     
     <script type="text/javascript" charset="utf-8">
       $(document).ready(function() {

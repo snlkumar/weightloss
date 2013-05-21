@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :set_defaults,       :only => [:step_two, :edit, :personal_info]
   
   layout 'signup', :only => [:create, :step_two, :finalize]
-  layout 'user_settings', :only => [:update, :account_info, :personal_info, :nutrition_info, :exercise_info, :measurement,:newmeasurement, :bodyfatpercent]
+  layout 'user_settings', :only => [:update, :account_info, :personal_info, :nutrition_info, :exercise_info, :measurement,:newmeasurement, :bodyfatpercent, :notificationnew , :notificationDetail, :notifications]
   
   def show
 
@@ -185,8 +185,7 @@ class UsersController < ApplicationController
 
     @notifications=Notification.where("notificationable_type='User' and notificationable_id='#{current_user.id}'").page(params[:page] || 1).per(50).order('created_at ASC')   
   
-     render :layout => "user_settings1" 
-   
+  
 end  
 
 
@@ -195,7 +194,6 @@ end
 
 	def notificationnew
     @notification=Notification.new   
-     render :layout => "user_settings1"		
 	end
 	
 	
@@ -213,8 +211,7 @@ end
 	#############################################################
 	
 	def notificationDetail
-	  @notification=Notification.find(params[:id]) 
-     render :layout => "user_settings"		
+	  @notification=Notification.find(params[:id])
 	end	
 		
 

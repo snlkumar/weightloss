@@ -10,11 +10,11 @@ class CustomFoodsController < ApplicationController
       @food = Food.new(:custom => true)
     end
 
-			if current_user
-				  render :layout=>'tracking'
-				else
-				  render :layout=>'custom_food_public'
-			end    
+		if current_user
+		  render :layout=>'tracking'
+	   else
+		  render :layout=>'custom_food_public'
+		end    
     
   end
 
@@ -35,11 +35,11 @@ class CustomFoodsController < ApplicationController
  else
 		
     if @food.save
-		  if current_user
-		   redirect_to new_meal_path
-		   else
-		   redirect_to (custom_foods_path  , :notice=> "Food created.  Waiting admin approval.") 
-		   end    
+	   if current_user
+	    redirect_to new_meal_path
+	   else
+	    redirect_to (custom_foods_path  , :notice=> "Food created.  Waiting admin approval.") 
+	   end    
     else
       render :action => 'new',:layout=>'custom_food_public'
     end
