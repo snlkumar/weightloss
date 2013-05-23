@@ -203,7 +203,7 @@ end
 	def deleteNotification
 	  @notification=Notification.find(params[:id])
 	  @notification.destroy
-     redirect_to(user_path(current_user), :notice => 'notification was successfully saved.')	  
+     redirect_to(user_path(current_user), :notice => 'notification was successfully deleted.')	  
 	end
 
 		

@@ -1,4 +1,4 @@
 task :sendnotifications0 => :environment do
 								 obj = NotificationsController.new
-							 	 obj.foodAutoNotifications(7)
+							 	 obj.foodAutoNotifications(10)
 							  end

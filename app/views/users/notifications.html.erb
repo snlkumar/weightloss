@@ -20,7 +20,7 @@
            <td ><%=note.created_at.strftime("%Y-%m-%d")%></td>                  
           <td class="actions">
             <%= link_to 'Show', notificationDetail_user_path(note) %> | 
-            <%= link_to 'Delete', deleteNotification_user_path(note), :confirm => 'Are you sure?', :method => :delete %>
+            <%= link_to 'Delete', deleteNotification_user_path(note), :confirm => 'Are you sure?' %>
           </td>
         </tr>
       <% end %>

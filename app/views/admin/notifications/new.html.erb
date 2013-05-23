@@ -13,7 +13,7 @@
 
 <style type="text/css">
 
-input:-moz-placeholder {
+input:-moz-placeholder{
 color: grey;
 }
  
@@ -37,8 +37,8 @@ $(function(){
 
 $(function(){
 	$("#notification_notification_type").multiselect({
-	   multiple: false,
-      selectedList: 1
+	 multiple: false,
+    selectedList: 1
 	}).multiselectfilter();	
  }); 
  
@@ -48,51 +48,44 @@ $(function(){
 <script type="text/javascript">
 
  $(document).ready(function(){
-
-$("#deselectall").click(function(){
-//alert($('.as-values:first').val());
-$("#usersdiv").contents().find('.as-input').val("").attr("placeholder", "Type a user...").css("color","black");
-$("#usersdiv").contents().find('.as-values').val("");
-
-});
-  
-
-$("#selectall").click(function(){
-//alert($('.as-values:first').val());
-$("#usersdiv").contents().find('.as-input').val("ALL USERS SELECTED").css("color","blue");
-$("#usersdiv").contents().find('.as-values').val("<%= User.all.map{|f| f.email}.join(",")%>");
-
-});
-  
-	$("#exercisetips, #mealnotifications, #inactivity").css("display","none");
-
-	$("#notification_notification_type").change(function(){ 
-
-	type=$("#notification_notification_type").find("option:selected").text();
-	$("#amountdiv").css("display","block");
-	if (type=="Food")
-	{
-	$("#exercisetips, #inactivity").css("display","none");
-	$("#mealnotifications").css("display","block");
-	}else if (type=="Activity")
-	{
-	$("#mealnotifications, #inactivity").css("display","none");
-	$("#exercisetips").css("display","block");
-	}else if (type=="Lunch inactivity" || type=="Breakfast inactivity" || type=="Dinner inactivity" || type=="Diary inactivity"){
-	$("#amountdiv, #exercisetips, #mealnotifications").css("display","none");
-	$("#inactivity").css("display","block")
-
-	}else if (type=="Other")
-	{
-	$("#exercisetips, #mealnotifications,#inactivity,#amountdiv").css("display","none");
-	}else
-	{
-	$("#exercisetips, #mealnotifications,#inactivity").css("display","none");	
-	
-	}
  
+  $("#deselectall").click(function(){
+   //alert($('.as-values:first').val());
+   $("#usersdiv").contents().find('.as-input').val("").attr("placeholder", "Type a user...").css("color","black");
+   $("#usersdiv").contents().find('.as-values').val("");
+  });
+  
+
+ $("#selectall").click(function(){
+   //alert($('.as-values:first').val());
+   $("#usersdiv").contents().find('.as-input').val("ALL USERS SELECTED").css("color","blue");
+   $("#usersdiv").contents().find('.as-values').val("<%= User.all.map{|f| f.email}.join(",")%>");
  });
 
+  
+  $("#exercisetips, #mealnotifications, #inactivity").css("display","none");
+
+
+  $("#notification_notification_type").change(function(){  
+	  type=$("#notification_notification_type").find("option:selected").text();
+	  $("#amountdiv").css("display","block");
+	  if (type=="Food"){
+//	    $("#exercisetips, #inactivity").css("display","none");
+//	    $("#mealnotifications").css("display","block");
+	    $("#amountdiv, #exercisetips").css("display","none");
+	    $("#inactivity, #mealnotifications").css("display","block")
+	  }else if (type=="Activity"){
+	    $("#mealnotifications, #inactivity").css("display","none");
+	    $("#exercisetips").css("display","block");
+	  }else if (type=="Lunch inactivity" || type=="Breakfast inactivity" || type=="Dinner inactivity" || type=="Diary inactivity"){
+	    $("#amountdiv, #exercisetips, #mealnotifications").css("display","none");
+	    $("#inactivity").css("display","block")
+	  }else if (type=="Other"){
+	    $("#exercisetips, #mealnotifications,#inactivity,#amountdiv").css("display","none");
+	  }else{
+	    $("#exercisetips, #mealnotifications,#inactivity").css("display","none");		
+	 } 
+  });
 });
 
 
@@ -105,41 +98,42 @@ function submitform()
 //	}
 
 
-  if ($('#notificationFrequency_second').is(':checked') && $("#notificationFrequency2").val()==''){ 		 
+  	if($('#notificationFrequency_second').is(':checked') && $("#notificationFrequency2").val()==''){ 		 
     alert("frequency text box cannot be empty.");
 	 return false;			
-	 }
-
-  if ($("#usersdiv").contents().find('.as-values').val()==''){
-		alert("Users field cannot be empty.");
-		return false;		
-		}	
-	if ( $("#message").val()==''){
-	  alert("Message frequency field cannot be empty.");
-	  return false;		
-	  }
+	}
+   if($("#usersdiv").contents().find('.as-values').val()==''){
+	 alert("Users field cannot be empty.");
+	 return false;		
+	}	
+	if( $("#message").val()==''){
+	 alert("Message frequency field cannot be empty.");
+	 return false;		
+   }
 
 		
-	type=$("#notification_notification_type").find("option:selected").text();
+	 type=$("#notification_notification_type").find("option:selected").text();
 
-	if (type=="Activity" && $("#exercisetips").contents().find('.as-values').val()==''){
+	 if(type=="Activity" && $("#exercisetips").contents().find('.as-values').val()==''){
 		alert("Excercises field cannot be empty.");
 		return false;		
-		}else if (type=="Food" && $("#mealnotifications").contents().find('.as-values').val()==''){
+		}
+		/*
+		else if (type=="Food" && $("#mealnotifications").contents().find('.as-values').val()==''){
 		alert("Meals field cannot be empty.");
 		return false;		
-		}else{
-	
-
-		var userslist = $("#usersdiv").contents().find('.as-values').val();
-		var exerciselist = $("#exercisetips").contents().find('.as-values').val();
-		var meallist = $("#mealnotifications").contents().find('.as-values').val();
+		}
+		*/		
+		
+	 else{
+		   var userslist = $("#usersdiv").contents().find('.as-values').val();
+		   var exerciselist = $("#exercisetips").contents().find('.as-values').val();
+		   var meallist = $("#mealnotifications").contents().find('.as-values').val();
 
 		//$("#notificationToId").val(notificationid);
 		$("#notificationToId").val(userslist);					
 		$("#meals1").val(meallist);
 		$("#exercise1").val(exerciselist);	
-
 
 		$("form").submit();
 	}
@@ -149,12 +143,11 @@ function submitform()
 
 
 <div>
-  <h1>New Notification</h1>
-  <hr><br />
+   <h1>New Notification</h1>
+   <hr><br />
   
-
-  
-<%= form_for(@notification, :as => :notification, :url => admin_notifications_path, :html => {:multipart => true} ) do |f| %>
+ 
+ <%= form_for(@notification, :as => :notification, :url => admin_notifications_path, :html => {:multipart => true} ) do |f| %>
 
 	<%=f.hidden_field :notificationTo, :value=>"User"%>
 	<%=f.hidden_field :notificationable_type, :value=>"Admin"%>
@@ -168,17 +161,13 @@ function submitform()
 		<span class="help-text">Multiple select holding CTRL key</span><br>
 		<%= f.label :notificationToId, "Notification To :" %>
 		<%#=select_tag 'notificationToId[]', options_for_select(User.find(:all, :order=>'first_name ASC').map {|s| ["#{s.first_name} "+ "#{s.last_name}", s.email]}), :multiple => true, :size => 3, :id=>"noticefor",:style=>"width:10em;margin-bottom:-1em;margin-left:0em;"%>
-
 		
 		<input id="users" type="text" placeholder="type to search..." style="width:35em;">
 
-
-
 		<input type="button" value="deselect all" class="button grid_3" id="deselectall" style="float:right;height:24px;font-size:8pt;width:6em;padding:0;margin-top:2em;"/> 		
 		<input type="button" value="Select all" class="button grid_3" id="selectall" style="float:right;height:24px;font-size:8pt;width:6em;padding:0;margin-top:2em;"/> 
-		
-		
-		</div>
+			
+	</div>
 		
 <!--		<input type="button" value="Select all" class="button grid_3" id="selectall" style="float:right;height:24px;font-size:8pt;width:6em;padding:0;margin-right:-20em;"/> -->
 	</div>
@@ -186,10 +175,7 @@ function submitform()
 <br><br><br>
 
     <%= render :partial => 'form', :locals => {:f => f} %>
-
-
 <% end %>
- 
 
 </div>
 

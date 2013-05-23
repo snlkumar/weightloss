@@ -1,3 +1,4 @@
+
 <div >
 
 	<div style="float:left;">	
@@ -8,7 +9,7 @@
 
 	<div id="amountdiv" style="height:2em;margin-left:10em;">
 	  <%=f.label "Size/Times:", :style=>"margin-left:2em;"%><br>
-	  <%=f.text_field :amount, :style=>"width:4em;height:1.3em;margin-left:1em;"%>&nbsp;&nbsp;&nbsp;<%=select_tag   :AmountUnit, options_for_select([ ['Calories','calories' ],['LBS','lbs' ],['Servings','serving' ], ['%','percent'], ['gram','gram'],['times','times'] ]) %>&nbsp;&nbsp;&nbsp;Per:<%=f.select   :duration, options_for_select([ ['Day','day' ],['Week','week' ],['Month','month' ] ]) %> 
+	  <%=f.text_field :amount, :style=>"width:4em;height:1.3em;margin-left:1em;"%>&nbsp;&nbsp;&nbsp;<%=select_tag :AmountUnit, options_for_select([ ['Calories','calories' ],['LBS','lbs' ],['Servings','serving' ], ['%','percent'], ['gram','gram'],['times','times'] ]) %>&nbsp;&nbsp;&nbsp;Per:<%=f.select   :duration, options_for_select([ ['Day','day' ],['Week','week' ],['Month','month' ] ]) %> 
 	</div>
 
 </div>
@@ -18,27 +19,26 @@
 <div style="clear:both">&nbsp;</div>
             
             
-	<div id= "mealnotifications" style="display:none;float:left;">
-	  <label>Recommend Food :</label>&nbsp;&nbsp;&nbsp;&nbsp;<br/>
-		  <%#=select_tag 'mealslist[]', options_for_select(allfoods.map {|s| ["#{s.name} ", s.id]}), :multiple => true, :size => 3, :id=>"meals",:style=>"width:12em;"%><input id="meals" type="text" placeholder="type to search..." style="width:35em;"> <br>
-		 		<%=select_tag "food_category[]", options_for_select(Food::Food_Category),:multiple => true, :size => 7 , :id=>"foodCategory", :style=>"margin:-5em 11em;width:10em;"%>   
-	  
-		  
-	</div>
+  <div id= "mealnotifications" style="display:none;float:left;">
 
-	<div id="exercisetips" style="display:none;float:left;">	
+	<label>Recommend Food :</label>&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+<!--	<%#=select_tag 'mealslist[]', options_for_select(allfoods.map {|s| ["#{s.name} ", s.id]}), :multiple => true, :size => 3, :id=>"meals",:style=>"width:12em;"%><input id="meals" type="text" placeholder="type to search..." style="width:35em;"> <br>-->
+	<%=select_tag "food_category[]", options_for_select(Food::Food_Category),:multiple => true, :size => 7 , :id=>"foodCategory", :style=>"margin:-5em 11em;width:10em;"%> 
+		  
+  </div>
+
+  <div id="exercisetips" style="display:none;float:left;">	
 	
 	  <label>Workout Duration :</label> <input type="text" name="workoutduration" id="durationworkout" value="" style="width:4em;height:1.3em;"/> 			<span class="help-text">minutes</span><br>		
 		<label>Recommend Exercise :</label><br/>
 		<%#=select_tag 'exerciseslist[]', options_for_select(Exercise.all.map {|s| ["#{s.description} ", s.id]}), :multiple => true, :size => 3, :id=>"excercises",:style=>"width:12em;"%><input id="excercises" type="text" placeholder="type to search..." style="width:35em;">
+
 	</div>
 	
 	<div style="clear:both">&nbsp;</div>
 
-
-
 	<div id="inactivity"  style="display:none;">
-		<%=f.label "Inactive for :"%> <%=f.select :inactivityDays, options_for_select(1..10)%> Days <br><br>
+	 <%=f.label "Inactive for :"%> <%=f.select :inactivityDays, options_for_select(1..10)%> Days <br><br>
 	</div>
 
 
@@ -52,44 +52,30 @@
 
 
 
-<!--
-<p>
- <%#=f.label  "Send notification at:"%>
-  <%#= f.select "time", options_for_select([["6am", "6:00 am"], ["7am", "7:00 am"], ["8am", "8:00 am"], ["9am", "9:00 am"], ["10am", "10:00 am"], ["11am","11:00 am"], ["12pm","12:00 pm"], ["1pm", "1:00 pm"], ["2pm", "2:00 pm"], ["3pm", "3:00 pm"], ["4pm", "4:00 pm"], ["5pm", "5:00 pm"], ["6pm", "6:00 pm"], ["7pm", "7:00 pm"], ["8pm", "8:00 pm"], ["9pm", "9:00 pm"], ["10pm", "10:00 pm"], ["11pm", "11:00 pm"], ["12am", "12:00 am"], ["1am", "1:00 am"], ["2am", "2:00 am"], ["3am", "3:00 am"], ["4am","4:00 am" ], ["5am", "5:00 am"]])%>
-
-<p></br>
-
--->
-
-
 <div>
 
-		<div style="float:left;">		
-			<%=f.label "Notification duration:"%><br> <%=select_tag 'notificationPeriod', options_for_select(1..30)%>&nbsp;&nbsp;X  <%=select_tag  'notificationPeriodUnit', options_for_select([ ['Day','days' ],['Week','weeks' ] ,['Month','months' ],['Year','years' ],['Forever','forever' ]]) %>
-		</div>
+	<div style="float:left;">		
+	  <%=f.label "Notification duration:"%><br> <%=select_tag 'notificationPeriod', options_for_select(1..30)%>&nbsp;&nbsp;X  <%=select_tag  'notificationPeriodUnit', options_for_select([ ['Day','days' ],['Week','weeks' ] ,['Month','months' ],['Year','years' ],['Forever','forever' ]]) %>
+	</div>
 
 
-		<div >
-			<%= f.label :do_dont, "Do/Don't" %><br>
-		 	<%=f.select   :do_dont, options_for_select([ ['Do','1' ],['Dont','0' ] ]) %>
-
-		</div> <br/>
+	<div >
+		<%= f.label :do_dont, "Do/Don't" %><br>
+	 	<%=f.select   :do_dont, options_for_select([ ['Do','1' ],['Dont','0' ] ]) %>
+	</div> <br/>
 		
 </div>   
-		
 
 	<div>
 		<%= f.label :message, "Message:" %><br/>
 		<%= f.text_area :message , :id=>"message",:style=>"width:18em;height:5em;"%>
   </div><br/><br/>
-
       
 <div>
+
 <!--	<%#= f.submit 'Create Notification' %> | <%#= link_to 'Cancel', admin_notifications_path %>-->
-<input type="button" value="Save" class="button grid_3" onclick="submitform();" style="height:29px;font-size:12pt;width:6em;padding:0;margin-left:3em;" value=" SAVE "/>
+  <input type="button" value="Save" class="button grid_3" onclick="submitform();" style="height:29px;font-size:12pt;width:6em;padding:0;margin-left:3em;" value=" SAVE "/>
 </div>
-
-
 
 
 <%= javascript_include_tag "/assets/jquery.autoSuggest.packed.js" %>    

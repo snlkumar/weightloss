@@ -13,7 +13,6 @@ class Admin::NotificationsController < ApplicationController
 
   def new
     @notification = Notification.new
-    render :layout=> 'new_admin1'
   end
   
   
