@@ -60,8 +60,10 @@ $("#noticefor").find('option').each(function() {
 	$("#amountdiv").css("display","block");
 	if (type=="Food")
 	{
-	$("#exercisetips, #inactivity").css("display","none");
-	$("#mealnotifications").css("display","block");
+	//$("#exercisetips, #inactivity").css("display","none");
+	//$("#mealnotifications").css("display","block");
+    $("#amountdiv, #exercisetips").css("display","none");
+    $("#inactivity, #mealnotifications").css("display","block");
 	}else if (type=="Activity")
 	{
 	$("#mealnotifications, #inactivity").css("display","none");
@@ -111,10 +113,14 @@ function submitform()
 	if (type=="Activity" && $("#exercisetips").contents().find('.as-values').val()==''){
 		alert("Excercises field cannot be empty.");
 		return false;		
-		}else if (type=="Food" && $("#mealnotifications").contents().find('.as-values').val()==''){
+		}
+		/*
+		else if (type=="Food" && $("#mealnotifications").contents().find('.as-values').val()==''){
 		alert("Meals field cannot be empty.");
 		return false;		
-		}else{
+		}
+		*/
+		else{
 	
 	//getting elements from iframe contents..........................
 		var exerciselist = $("#notification_new").contents().find("#exercisetips").contents().find('.as-values').val();

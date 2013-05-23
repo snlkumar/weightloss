@@ -65,8 +65,10 @@ $("#usersdiv").contents().find('.as-values').val("<%= current_vendor.users.where
 	$("#amountdiv").css("display","block");
 	if (type=="Food")
 	{
-	$("#exercisetips, #inactivity").css("display","none");
-	$("#mealnotifications").css("display","block");
+	//$("#exercisetips, #inactivity").css("display","none");
+	//$("#mealnotifications").css("display","block");
+    $("#amountdiv, #exercisetips").css("display","none");
+    $("#inactivity, #mealnotifications").css("display","block");
 	}else if (type=="Activity")
 	{
 	$("#mealnotifications, #inactivity").css("display","none");
