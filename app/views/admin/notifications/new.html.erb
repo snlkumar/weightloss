@@ -63,26 +63,27 @@ $(function(){
  });
 
   
-  $("#exercisetips, #mealnotifications, #inactivity").css("display","none");
+  $("#exercisetips, #mealnotifications, #inactivity, #mealCategory").css("display","none");
 
-
-  $("#notification_notification_type").change(function(){  
+  $("#notification_notification_type").change(function(){
+    $("#exercisetips, #mealnotifications, #inactivity, #mealCategory").css("display","none");  
 	  type=$("#notification_notification_type").find("option:selected").text();
 	  $("#amountdiv").css("display","block");
 	  if (type=="Food"){
-//	    $("#exercisetips, #inactivity").css("display","none");
-//	    $("#mealnotifications").css("display","block");
-	    $("#amountdiv, #exercisetips").css("display","none");
-	    $("#inactivity, #mealnotifications").css("display","block")
-	  }else if (type=="Activity"){
-	    $("#mealnotifications, #inactivity").css("display","none");
+	    $("#exercisetips, #inactivity, #mealCategory").css("display","none");
+	    $("#amountdiv, #mealnotifications").css("display","block")
+	    }else if(type=="Food Type"){
+	      $("#amountdiv, #exercisetips, #mealnotifications").css("display","none");
+	      $("#inactivity, #mealCategory").css("display","block")
+	   }else if (type=="Activity"){
+	    $("#mealnotifications, #inactivity, #mealCategory").css("display","none");
 	    $("#exercisetips").css("display","block");
-	  }else if (type=="Lunch inactivity" || type=="Breakfast inactivity" || type=="Dinner inactivity" || type=="Diary inactivity"){
+	   }else if (type=="Lunch inactivity" || type=="Breakfast inactivity" || type=="Dinner inactivity" || type=="Diary inactivity"){
 	    $("#amountdiv, #exercisetips, #mealnotifications").css("display","none");
 	    $("#inactivity").css("display","block")
-	  }else if (type=="Other"){
+	   }else if (type=="Other"){
 	    $("#exercisetips, #mealnotifications,#inactivity,#amountdiv").css("display","none");
-	  }else{
+	   }else{
 	    $("#exercisetips, #mealnotifications,#inactivity").css("display","none");		
 	 } 
   });

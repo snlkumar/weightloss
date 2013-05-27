@@ -241,9 +241,12 @@ end
 		
 		if params[:notification][:notification_type]=="food"
 	     params[:notification][:mealslist]=params[:meals1].collect{|a| a.split(",") }.join(",").to_s
-	     params[:notification][:food_category]=params[:food_category].collect{|a| a.split(",") }.join(",").to_s	     
 		end			
 
+
+		if params[:notification][:notification_type]=="food_type"
+	     params[:notification][:food_category]=params[:food_category].collect{|a| a.split(",") }.join(",").to_s	    
+		end	
 	
 		if params[:notification][:notification_type]=="activity"
 		  params[:notification][:exerciseslist]=params[:exercise1].collect{|a| a.split(",") }.join(",").to_s	

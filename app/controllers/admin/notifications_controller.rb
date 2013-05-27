@@ -18,7 +18,7 @@ class Admin::NotificationsController < ApplicationController
   
   def create
 
-	params[:notification][:notificationToId]=params[:notificationToId].collect{|a| a.split(",") }.join(",").to_s
+	 params[:notification][:notificationToId]=params[:notificationToId].collect{|a| a.split(",") }.join(",").to_s
 
 		if params[:notificationFrequency]=="first"
 		
@@ -41,23 +41,28 @@ class Admin::NotificationsController < ApplicationController
 		
 		if params[:notification][:notification_type]=="food"
 	     params[:notification][:mealslist]=params[:meals1].collect{|a| a.split(",") }.join(",").to_s
-	     params[:notification][:food_category]=params[:food_category].collect{|a| a.split(",") }.join(",").to_s	     
 		end			
 
-	
+
+		if params[:notification][:notification_type]=="food_type"
+	     params[:notification][:food_category]=params[:food_category].collect{|a| a.split(",") }.join(",").to_s	    
+		end	
+
+			
 		if params[:notification][:notification_type]=="activity"
 		  params[:notification][:exerciseslist]=params[:exercise1].collect{|a| a.split(",") }.join(",").to_s	
 		  params[:notification][:workoutduration]=params[:workoutduration]				
 		end
 
+
 		if params[:notificationPeriodUnit]=="days"
-      	params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.days.from_now		
+        params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.days.from_now		
 		elsif params[:notificationPeriodUnit]=="weeks"
-	   	params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.weeks.from_now		
+	     params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.weeks.from_now		
 		elsif params[:notificationPeriodUnit]=="months"
-      	params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.months.from_now		
+        params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.months.from_now		
 		else
-      	params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.years.from_now		
+        params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.years.from_now		
 		end
 	
 

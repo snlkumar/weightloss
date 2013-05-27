@@ -512,8 +512,65 @@ class NotificationsController < ApplicationController
 
 		############################## Food ############################################
 
-		
 		def foodAutoNotifications(id)
+		notification=id
+		@notification=Notification.find(notification)		
+		if @notification.present?
+
+		 @emails=@notification.notificationToId.split(",").collect{|a| a }
+		 @foodids=@notification.mealslist.split(",").collect{|a| a.to_i }
+
+		 checkfood=[]
+		 mealids=[]
+			@emails.each do |email|
+			@user=User.find_by_email("#{email}")
+				
+			if @notification.duration=="week"
+			  meals=@user.meals.past_week
+			elsif @notification.duration=="month"
+			  meals=@user.meals.past_month
+			else 
+			  meals=@user.meals.today
+			end	
+
+			
+			 if meals.present?
+
+				meals.each do |p|
+				 @mealids=MealItem.find_by_meal_id(p.id,:select=>:food_id)
+				 mealids << @mealids.food_id
+				end
+
+				if @notification.do_dont=="1"											
+		
+					@remain=@foodids-mealids
+					if @remain.length==0	
+					  checkfood << email
+					end						 
+
+				else
+
+					@remain=@foodids-mealids
+
+					if @remain.length!=0										
+					  checkfood << email
+					end
+				end
+
+			else
+			BusinessclaimMailer.foodcheck(@notification.message,email,@foodids).deliver
+	      end	
+		end		
+			BusinessclaimMailer.foodcheck(@notification.message,checkfood,@foodids).deliver if checkfood.present?										 
+		   rescheduleDates(notification) if @notification.frequency_type=="second"
+			end
+		end
+
+
+
+		############################## food Category type ###########################################
+		
+		def food_typeAutoNotifications(id)
 		notification=id
 		@notification=Notification.find(notification)		
 		if @notification.present?
