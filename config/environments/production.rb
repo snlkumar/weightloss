@@ -55,7 +55,7 @@ Myweightworld::Application.configure do
   
   config.assets.digest = true
   
-  # SendGrid Configuration
+
    config.middleware.use ExceptionNotifier,
     :email_prefix => "An exception occured: ",
     :sender_address => %{"notifier" <no-reply@myweightworld.com>},

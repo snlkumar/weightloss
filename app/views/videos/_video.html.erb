@@ -1,6 +1,17 @@
+<style>
+
+.OverlayIconsmall{
+    position: absolute;
+    margin-top: 4%;
+    margin-left: -15%;
+}
+</style>
+
 <div class="post">
-  <div class="post-image" style="width: 145px; height: 105px;">
-    <%= image_tag video.preview_image.url(:small)%>
+  <div class="post-image" style="width: 145px; height: 105px;"> 
+  <%= link_to video_path(video) do %>   
+   <div class="image"><%=image_tag video.preview_image.url(:small)%><%=image_tag("/assets/playbuttonSmall.png", :class=>"OverlayIconsmall")%></div>
+  <%end%>
   </div>
   <div class="post-content">
     <h3 class="post-title"><%= link_to video.title, video_path(video) %></h3>

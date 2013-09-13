@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130426132415) do
+ActiveRecord::Schema.define(:version => 20130405133937) do
 
   create_table "City", :primary_key => "ID", :force => true do |t|
     t.string "Name",        :limit => 35, :default => "", :null => false
@@ -680,7 +680,6 @@ ActiveRecord::Schema.define(:version => 20130426132415) do
     t.datetime "photoafter_updated_at"
     t.float    "bodyfat"
     t.datetime "reset_password_sent_at"
-    t.integer  "blockForemPost",           :default => 0
     t.integer  "hideForemPost",            :default => 0
   end
 

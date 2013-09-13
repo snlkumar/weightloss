@@ -1,5 +1,4 @@
 <div class='user'>
-  <div class='icon'><%=link_to avatar(user, :size => 60), "/users/#{user.friendly_id}" if user%></div>
+  <div class='icon'><%=link_to avatar(user, :size => 60), "/users/#{user.friendly_id}" if user%>  <div class='username' style="position:relative; bottom:0;font-size:12px;width:10em;"><%=link_to user, "/users/#{user.friendly_id}" if user%></div></div>
   
-  <div class='username' style="position:relative; bottom:0;font-size:12px;"><%=link_to user, "/users/#{user.friendly_id}" if user%></div>
 </div>

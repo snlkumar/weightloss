@@ -242,9 +242,8 @@ $("#closeReply").click(function(){
 <!-- to show reply messages through ajax -->
 <script type="text/javascript">
 
-function submitme()
-{
-user_new.submit();
+function submitme(){
+  user_new.submit();
 }
 
 
@@ -271,11 +270,10 @@ else
 $("#replyBox, #closeReply").css("display","block");
 },
       error : function() {
-alert("Sorry, page not found.");
+        alert("Sorry, page not found.");
       }
     });
-}
-
+   }
 }
 
 

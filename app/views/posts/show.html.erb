@@ -58,7 +58,22 @@
 
     <p>We have an extensive library to help you with many facets of fitness and wellness - peruse by category</p>
 
-    <ul id="search-categories">
+    <%= content_for :js do %>
+ jQuery("#search-categories").superfish({
+       delay:       1,                            // one second delay on mouseout
+       animation:   {height:'show'},  // fade-in and slide-down animation
+       speed:       'medium',                          // faster animation speed
+       dropShadows: true                            // disable drop shadows
+     }).bgIframe({opacity:false});
+
+
+
+    <% end %>
+
+    <ul class="sf-menu sf-vertical" id="search-categories">
+      <li>
+        <%= link_to 'All', searches_path %>
+      </li>
       <%= render :partial => '/searches/post_category', :collection => @categories, :as => :category %>
     </ul>
 

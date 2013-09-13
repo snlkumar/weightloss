@@ -3,7 +3,7 @@ class Food < ActiveRecord::Base
 
 #using in admin food edit to categories food........
 
-Food_Category=['Gluten Free', 'Low Carb', 'High Carb', 'Medium Carb', 'Protein', 'Good Fat', 'Bad Fat', 'Vegetables', 'Fruit', 'Paleo', 'Red Meat', 'Seafood', 'Chicken', 'Turkey', 'Lamb', 'Kosher', 'Low fat', 'Low Sugar', 'Vegan', 'Raw Vegan', 'Dairy', 'Nut Free', 'Healthy', 'Bad Food', 'Good Food', 'Supplements', 'Protein Powder', 'Bars', 'High Cholesterol', 'Low Calorie', 'Low Sodium', 'Fat','Healthy','Snacks','Breakfast','High Sugar','Vegetarian']
+Food_Category=['Gluten Free', 'Low Carb', 'High Carb', 'Medium Carb', 'Protein', 'Good Fat', 'Bad Fat', 'Vegetables', 'Fruit', 'Paleo', 'Red Meat', 'Seafood', 'Chicken', 'Turkey', 'Lamb', 'Kosher', 'Low fat', 'Low Sugar', 'Vegan', 'Raw Vegan', 'Dairy', 'Contains Nuts', 'Bad Food', 'Good Food', 'Supplements', 'Protein Powder', 'Bars', 'High Cholesterol', 'Low Calorie', 'Low Sodium', 'Fat','Healthy','Snacks','Breakfast','High Sugar','Vegetarian']
 
 
 

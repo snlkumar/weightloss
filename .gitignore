@@ -18,3 +18,4 @@ lib/tasks/rcov.rake
 capybara*
 .idea/*
 .tags
+public/*

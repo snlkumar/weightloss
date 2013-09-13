@@ -37,6 +37,10 @@ has_attached_file :photoafter, :styles      => { :thumb   => "16x16#", :medium =
 
   
   # Associations
+  has_many :forem_topics, :dependent => :destroy, :class_name=>"Forem::Topic"
+  has_many :forem_posts, :dependent => :destroy, :class_name=>"Forem::Post"
+  has_many :forem_views, :dependent => :destroy, :class_name=>"Forem::View"
+  
   has_many :measurements,    :dependent => :destroy
   has_many :photos,    :dependent => :destroy
   has_many :meals,    :dependent => :destroy

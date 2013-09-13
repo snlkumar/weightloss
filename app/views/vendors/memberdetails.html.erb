@@ -68,10 +68,10 @@ th{
 				 $("#serialStar").change(function(){ 
               vendorrating=$('#serialStar').val();
 
-							$.get("/vendors/ratings/"+<%=@user.id%>+"/"+vendorrating)
-							.done(function(data) {
-							alert(data);
-							});
+					$.get("/vendors/ratings/"+<%=@user.id%>+"/"+vendorrating)
+					.done(function(data) {
+					alert(data);
+					});
 								  		
 				});			
 

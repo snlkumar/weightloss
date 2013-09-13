@@ -15,6 +15,15 @@
   <span  class="st_plusone_button" displayText="Google +1"></span>
 </p>
 
+
+<script type="text/javascript" charset="utf-8">
+  <% content_for :js do %>
+    flowplayer("player", "/flowplayer-3.2.7.swf", {clip: {scaling: 'orig', autoPlay: true}});
+  <% end %>
+</script>
+
+
+
 <% content_for :sidebar do %>
   <!-- Categories  -->
   <div id="search-categories-sidebar" class="sidebar-container subsection" >
@@ -22,16 +31,23 @@
 
     <p>We have an extensive library to help you with many facets of fitness and wellness - peruse by category</p>
 
-    <ul id="search-categories">
+    <%= content_for :js do %>
+ jQuery("#search-categories").superfish({
+       delay:       1,                            // one second delay on mouseout
+       animation:   {height:'show'},  // fade-in and slide-down animation
+       speed:       'medium',                          // faster animation speed
+       dropShadows: true                            // disable drop shadows
+     }).bgIframe({opacity:false});
+
+    <% end %>
+
+    <ul class="sf-menu sf-vertical" id="search-categories">
+      <li>
+        <%= link_to 'All', searches_path %>
+      </li>
       <%= render :partial => '/searches/video_category', :collection => @categories, :as => :category %>
     </ul>
 
     <div class="clear">&nbsp;</div>
   </div>
 <% end %>
-
-<script type="text/javascript" charset="utf-8">
-  <% content_for :js do %>
-    flowplayer("player", "/flowplayer-3.2.7.swf", {clip: {scaling: 'orig', autoPlay: false}});
-  <% end %>
-</script>

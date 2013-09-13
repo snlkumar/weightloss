@@ -7,7 +7,7 @@ class VendorsController < ApplicationController
       ####################### Vendor Search #######################################
 
 		def search
-		if !params[:searchtype].nil?
+		 if !params[:searchtype].nil?
 		if params[:filterQuery].nil? 
 		params[:filterQuery]=""	
 		end
@@ -329,8 +329,6 @@ class VendorsController < ApplicationController
 		end
 
 
-
-
 		def  userbodyfatcreate
 		@user=User.find(params[:id])
 		@fat=@user.bodyfats.create(params[:bodyfat])
@@ -381,9 +379,9 @@ class VendorsController < ApplicationController
 		if params[:notificationFrequency]=="first"
 		
 		  if params[:notificationFrequency1].to_s=="day"
-			  params[:notification][:notificationFrequency]="#{(24/params[:times].to_f).round(2)}"+".hours"
+		    params[:notification][:notificationFrequency]="#{(24/params[:times].to_f).round(2)}"+".hours"
 		  elsif params[:notificationFrequency1].to_s=="week"
-			  params[:notification][:notificationFrequency]="#{24*7/params[:times].to_f}"+".hours"				
+			 params[:notification][:notificationFrequency]="#{24*7/params[:times].to_f}"+".hours"				
 		  elsif params[:notificationFrequency1].to_s=="month"
 			  params[:notification][:notificationFrequency]="#{24*30/params[:times].to_f}"+".hours"
 		  else
@@ -413,15 +411,14 @@ class VendorsController < ApplicationController
 		end
 
 
-
 		if params[:notificationPeriodUnit]=="days"
-      	params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.days.from_now		
+        params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.days.from_now		
 		elsif params[:notificationPeriodUnit]=="weeks"
-	   	params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.weeks.from_now		
+	     params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.weeks.from_now		
 		elsif params[:notificationPeriodUnit]=="months"
-      	params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.months.from_now		
+        params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.months.from_now		
 		else
-      	params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.years.from_now		
+        params[:notification][:notificationDuration]=params[:notificationPeriod].to_i.years.from_now		
 		end
 	
 
@@ -509,8 +506,11 @@ class VendorsController < ApplicationController
 		end
 		
 
-		############################## Calculating fat carb etc. in meals  ######################################### 
+  private
+     
 
+		############################## Calculating fat carb etc. in meals  ######################################### 
+      
 
 		def calculate_calories(fid, calories, type)
 

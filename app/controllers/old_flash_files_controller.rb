@@ -23,7 +23,7 @@ class OldFlashFilesController < ApplicationController
     
     if @flash_file.save
       redirect_to(old_flash_files_url, :notice => 'FlashFile was successfully created.')
-      	@meta=Meta.create(:url=>"videos/"+@flash_file.gsub(/[^0-9a-z’_ ]/i, '').strip.gsub(/\s+/, "-"), :metatitle=>@flash_file.title, :controller=>"VideosLibrary", :page=>@flash_file.title, :action=>"show")
+      	@meta=Meta.create(:url=>"videos/"+@flash_file.video_file_name.gsub(/[^0-9a-z’_ ]/i, '').strip.gsub(/\s+/, "-"), :metatitle=>@flash_file.title, :controller=>"VideosLibrary", :page=>@flash_file.title, :action=>"show")
     else
       render :action => "new"
     end

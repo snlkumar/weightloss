@@ -1,3 +1,18 @@
+<style>
+
+.OverlayIconBig{
+    position: absolute;
+    top: 25%;
+    left: 35%;
+}
+
+.OverlayIconsmall{
+    position: absolute;
+    top: 13%;
+    left: 30%;
+}
+</style>
+
 
 <h2 id="video">Video Library</h2>
 
@@ -6,7 +21,7 @@
 <% @latest.each do |latest| %>
   <div class="video-library-featured">
     <%= link_to video_path(latest) do %>
-      <div class="image"><%= image_tag latest.preview_image.url(:large) %></div>
+      <div class="image"><%= image_tag(latest.preview_image.url(:large)) %><%=image_tag("/assets/playbutton.png", :class=> "OverlayIconBig")%></div>
       <div class="title"><%= latest.title %></div>
       <div class="text"><%= truncate(latest.description, :length => 100) %></div>
     <% end %>
@@ -21,7 +36,7 @@
   <% @medicals.each do |medical| %>
     <div class="video-library">
       <%= link_to video_path(medical) do %>
-        <div class="image"><%= image_tag medical.preview_image.url(:small) %></div>
+        <div class="image"><%= image_tag(medical.preview_image.url(:small)) %><%=image_tag("/assets/playbuttonSmall.png", :class=> "OverlayIconsmall")%></div>
         <div class="title"><%= medical.title %></div>
         <div class="text"><%= truncate(medical.description, :length => 50) %></div>
       <% end %>
@@ -34,7 +49,7 @@
   <% @exercises.each do |exercise| %>
     <div class="video-library">
       <%= link_to video_path(exercise) do %>
-        <div class="image"><%= image_tag exercise.preview_image.url(:small) %></div>
+        <div class="image"><%= image_tag exercise.preview_image.url(:small) %><%=image_tag("/assets/playbuttonSmall.png", :class=> "OverlayIconsmall")%></div>
         <div class="title"><%= exercise.title %></div>
         <div class="text"><%= truncate(exercise.description, :length => 50) %></div>
       <% end %>
@@ -49,7 +64,7 @@
   <% @recipes.each do |recipe| %>
     <div class="video-library">
       <%= link_to video_path(recipe) do %>
-        <div class="image"><%= image_tag recipe.preview_image.url(:small) %></div>
+        <div class="image"><%= image_tag recipe.preview_image.url(:small) %><%=image_tag("/assets/playbuttonSmall.png", :class=> "OverlayIconsmall")%></div>
         <div class="title"><%= recipe.title %></div>
         <div class="text"><%= truncate(recipe.description, :length => 50) %></div>
       <% end %>
@@ -62,7 +77,7 @@
   <% @nutritions.each do |nutrition| %>
     <div class="video-library">
       <%= link_to video_path(nutrition) do %>
-        <div class="image"><%= image_tag nutrition.preview_image.url(:small) %></div>
+        <div class="image"><%= image_tag nutrition.preview_image.url(:small) %><%=image_tag("/assets/playbuttonSmall.png", :class=> "OverlayIconsmall")%></div>
         <div class="title"><%= nutrition.title %></div>
         <div class="text"><%= truncate(nutrition.description, :length => 100) %></div>
       <% end %>
@@ -79,7 +94,17 @@
 
     <p>We have an extensive library to help you with many facets of fitness and wellness - peruse by category</p>
 
-    <ul id="search-categories">
+    <%= content_for :js do %>
+ jQuery("#search-categories").superfish({
+       delay:       1,                            // one second delay on mouseout
+       animation:   {height:'show'},  // fade-in and slide-down animation
+       speed:       'medium',                          // faster animation speed
+       dropShadows: true                            // disable drop shadows
+     }).bgIframe({opacity:false});
+     
+    <% end %>
+
+    <ul class="sf-menu sf-vertical" id="search-categories">
       <li>
         <%= link_to 'All', searches_path %>
       </li>
@@ -89,3 +114,5 @@
     <div class="clear">&nbsp;</div>
   </div>
 <% end %>
+
+

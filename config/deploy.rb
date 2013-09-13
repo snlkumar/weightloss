@@ -11,15 +11,15 @@ set :repository,  "git@myweightworld.unfuddle.com:myweightworld/myww.git"
 set :use_sudo,  false
 
 set :scm, "git"
-set :user,      'myweightworld'
-set :password,  'MYweight404'
+set :user,      'pptwhite'#'myweightworld'
+set :password,  'Fitnesslove101' #'MYweight404'
 
 set :keep_releases, 5
 set :branch, "master"
 
 set :rails_env, 'production'
 
-set :deploy_to, "/home/#{user}/apps/#{application}"
+set :deploy_to, "/var/www/vhosts/myweightworld.com/myww" #"/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 
 default_run_options[:pty] = true
