@@ -9,7 +9,7 @@ tmp/*
 coverage
 features_rcov/
 rerun.txt
-public/system
+public/*
 config/database.yml
 .idea
 lib/tasks/rcov.rake.old
@@ -18,4 +18,4 @@ lib/tasks/rcov.rake
 capybara*
 .idea/*
 .tags
-public/*
+

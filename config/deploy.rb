@@ -3,7 +3,7 @@ require "bundler/capistrano"
 
 server = "173.201.44.207" 
 
-set :application, "myweightworld"
+set :application, "myww"
 set :repository,  "git@myweightworld.unfuddle.com:myweightworld/myww.git"
 #set :repository, "git@github.com:supairish/MyWeightWorld.git"
 #set :port, 6969

@@ -1,13 +1,18 @@
 <% if category.has_content? %>
   <li class="<%= params[:search] && params[:search][:category_id] == category.id.to_s ? 'selected' : '' %>">
     <%= link_to category.name, searches_path("search[category_id]" => category.id, "search[filter]" => 'videos'), "data-id" => category.id %>
+    <% if category.descendants.present? %>
+      <ul>
+        <% category.descendants.each do |sub_category| %>
+          <%# if sub_category.has_content? %>
+            <li class="<%= params[:search] && params[:search][:category_id] == sub_category.id.to_s ? 'selected' : '' %>">
+              <%= link_to sub_category.name, searches_path("search[category_id]" => sub_category.id, "search[filter]" => 'articles'), "data-id" => sub_category.id %>
+      		  </li>
+          <%# end %>
+        <% end %>
+      </ul>
+    <% end %>
+    
   </li>
 <% end %>
 
-<!--
-<%# if category.has_video_content? %>
-  <li class="<%#= params[:search] && params[:search][:category_id] == category.id.to_s ? 'selected' : '' %>">
-    <%#= link_to category.name, searches_path("search[category_id]" => category.id, "search[filter]" => 'videos'), "data-id" => category.id %>
-  </li>
-<%# end %>
--->
