@@ -252,14 +252,15 @@ if ActiveRecord::Base.connection.table_exists? 'meta'
   resources :categories, :subcategories, :custom_foods
   resources :videos, :posts, :except => [:show, :index]
   
-  resources :meals, :except => [:new] do
+  resources :meals do
     collection do
       post :meal_item
     end
   end
   
-  resources :workouts, :except=>[:new] do
+  resources :workouts do
     collection do
+      get :dairy
       post :workout_item
     end
   end

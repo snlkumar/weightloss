@@ -102,7 +102,7 @@ class WorkoutsController < ApplicationController
 		
     #@workout = current_user.workouts.build(params[:workout])
     #@workout.save
-    redirect_to dairy_workout_path #workouts_path
+    redirect_to dairy_workouts_path #workouts_path
   end
   
   def update

@@ -155,10 +155,10 @@ ActiveRecord::Schema.define(:version => 20130426132415) do
     t.decimal  "gmwt_2",              :precision => 8, :scale => 3
     t.string   "gmwt_desc2"
     t.decimal  "refuse_pct",          :precision => 8, :scale => 3
-    t.boolean  "custom"
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.boolean  "custom"
     t.decimal  "total_fat",           :precision => 6, :scale => 1
     t.decimal  "saturated_fat",       :precision => 6, :scale => 1
     t.decimal  "trans_fat",           :precision => 6, :scale => 1
@@ -217,7 +217,7 @@ ActiveRecord::Schema.define(:version => 20130426132415) do
 
   create_table "meals", :force => true do |t|
     t.integer  "user_id"
-    t.datetime "ate_on"
+    t.date     "ate_on"
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -577,16 +577,16 @@ ActiveRecord::Schema.define(:version => 20130426132415) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                   :null => false
+    t.string   "email",                                    :null => false
     t.string   "username"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "password"
     t.string   "password_confirmation"
     t.string   "status"
-    t.string   "encrypted_password",                      :null => false
-    t.integer  "login_count",              :default => 0, :null => false
-    t.integer  "failed_login_count",       :default => 0, :null => false
+    t.string   "encrypted_password",       :default => ""
+    t.integer  "login_count",              :default => 0,  :null => false
+    t.integer  "failed_login_count",       :default => 0,  :null => false
     t.integer  "weight"
     t.integer  "avatar_file_size"
     t.datetime "last_request_at"

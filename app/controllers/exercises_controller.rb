@@ -6,7 +6,7 @@ class ExercisesController < ApplicationController
   def search
     terms     = params[:term].split(/,|\s/).reject(&:blank?)
     # category LIKE :#{in_words} OR 
-    conds     = terms.enum_with_index.map{|t, index| in_words = index.to_s.en.numwords; "description LIKE :#{in_words}"}.join(' AND ')
+    conds     = terms.each_with_index.map{|t, index| in_words = index.to_s.en.numwords; "description LIKE :#{in_words}"}.join(' AND ')
     term_hash = {}
     
     terms.each_with_index{|term, index| term_hash[index.to_s.en.numwords.to_sym] = "%#{term}%"}

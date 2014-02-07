@@ -35,7 +35,7 @@ class Admin::PostsController < Admin::BaseController
     @post = OldTextFile.new(params[:post])
     
     if @post.save
-   @meta=Meta.create(:url=>"articles/"+@post.page_title.gsub(/[^0-9a-z’_ ]/i, '').strip.gsub(/\s+/, "-") , :controller=>"ArticlesLibrary", :page=>@post.page_title, :action=>"show", :metatitle=>@post.page_title)
+   @meta=Meta.create(:url=>"articles/"+@post.page_title.gsub(/[^0-9a-z'_ ]/i, '').strip.gsub(/\s+/, "-") , :controller=>"ArticlesLibrary", :page=>@post.page_title, :action=>"show", :metatitle=>@post.page_title)
       redirect_to(admin_posts_path, :notice => 'Post was successfully created.')
     else
       render :action => "new"

@@ -27,7 +27,7 @@ class MealsController < ApplicationController
 	end
 
 	def new
-
+  puts "i am in new with params#{params}"
    	 @meal = current_user.meals.new(:ate_on => Time.zone.now)
    	 
 	  end
@@ -65,7 +65,7 @@ class MealsController < ApplicationController
 			@meal.meal_items.create(:food_id=>8443,:calories=>params[:meal][:calories])
 		end
    #
-    redirect_to dairy_workout_path #meals_path
+    redirect_to dairy_workouts_path #meals_path
   end
 
 
@@ -83,7 +83,7 @@ class MealsController < ApplicationController
     @meal.destroy	#for meal record deleted
 		@meal.meal_items.destroy	#for meal_items record deleted
 		
-    redirect_to dairy_workout_path #meals_path
+    redirect_to dairy_workouts_path #meals_path
   end
   
 

@@ -52,11 +52,11 @@
           <% if user_signed_in? %>        
           
             <div id="add-meal" class="button">
-              <%= link_to "+ Add Meal", new_meal_path, :title => 'Add a Meal' %>
+              <%= link_to "+ Add Meal", meals_path, :title => 'Add a Meal' %>
             </div>
             
             <div id="add-activity" class="button">
-              <%= link_to "+ Add Activity", new_workout_path, :title => 'Add a Workout' %>
+              <%= link_to "+ Add Activity", workouts_path, :title => 'Add a Workout' %>
             </div>
           <% end %>
           
