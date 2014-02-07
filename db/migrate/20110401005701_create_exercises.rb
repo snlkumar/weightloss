@@ -1,3 +1,4 @@
+require 'csv'
 class CreateExercises < ActiveRecord::Migration
   def self.up
     create_table :exercises do |t|
@@ -7,7 +8,7 @@ class CreateExercises < ActiveRecord::Migration
       t.timestamps
     end
     
-    csv = FasterCSV.read(File.join(::Rails.root.to_s, 'utils', "exercise_mets.csv"))
+    csv = CSV.read(File.join(::Rails.root.to_s, 'utils', "exercise_mets.csv"))
     headers = csv[0].collect{|col| puts col; col.downcase }
     
     csv.shift

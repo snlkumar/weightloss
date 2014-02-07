@@ -15,7 +15,7 @@
   <div id="main-nav" class="full">
     <div class="main-nav container_16" style="position:relative;">
       
-      <h2 id="logo" class="grid_5 sidebar-container"><%= link_to image_tag("MWW-logo.png"), home_path %></h2>
+      <h2 id="logo" class="grid_5 sidebar-container"><%= link_to image_tag("MWW-logo.png"), root_path %></h2>
       
       <%= form_tag searches_path, :id => 'global-search' do %>
         <%= text_field_tag 'search[keywords]', (params[:search] ? params[:search][:keywords] : ''), 

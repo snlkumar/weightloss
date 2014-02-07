@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,23 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405133937) do
-
-  create_table "City", :primary_key => "ID", :force => true do |t|
-    t.string "Name",        :limit => 35, :default => "", :null => false
-    t.string "CountryCode", :limit => 3,  :default => "", :null => false
-    t.string "District",    :limit => 20, :default => "", :null => false
-  end
-
-  add_index "City", ["CountryCode"], :name => "CountryCode"
-
-  create_table "Country", :primary_key => "Code", :force => true do |t|
-    t.string "Name",      :limit => 52, :default => "",     :null => false
-    t.string "Continent", :limit => 0,  :default => "Asia", :null => false
-    t.string "Region",    :limit => 26, :default => "",     :null => false
-    t.string "LocalName", :limit => 45, :default => "",     :null => false
-    t.string "Code2",     :limit => 2,  :default => "",     :null => false
-  end
+ActiveRecord::Schema.define(:version => 20130426132415) do
 
   create_table "bodyfats", :force => true do |t|
     t.integer  "user_id"
@@ -57,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20130405133937) do
     t.integer  "vendor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password"
   end
 
   create_table "categories", :force => true do |t|
@@ -69,10 +55,6 @@ ActiveRecord::Schema.define(:version => 20130405133937) do
     t.string  "description"
     t.integer "position"
     t.integer "pictures_count"
-  end
-
-  create_table "colleges", :force => true do |t|
-    t.string "colleges", :limit => 51
   end
 
   create_table "comments", :force => true do |t|
@@ -88,10 +70,6 @@ ActiveRecord::Schema.define(:version => 20130405133937) do
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
-
-  create_table "degrees", :force => true do |t|
-    t.string "degrees", :limit => 55
-  end
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -177,10 +155,10 @@ ActiveRecord::Schema.define(:version => 20130405133937) do
     t.decimal  "gmwt_2",              :precision => 8, :scale => 3
     t.string   "gmwt_desc2"
     t.decimal  "refuse_pct",          :precision => 8, :scale => 3
+    t.boolean  "custom"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
-    t.boolean  "custom"
     t.decimal  "total_fat",           :precision => 6, :scale => 1
     t.decimal  "saturated_fat",       :precision => 6, :scale => 1
     t.decimal  "trans_fat",           :precision => 6, :scale => 1
@@ -239,7 +217,7 @@ ActiveRecord::Schema.define(:version => 20130405133937) do
 
   create_table "meals", :force => true do |t|
     t.integer  "user_id"
-    t.date     "ate_on"
+    t.datetime "ate_on"
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -444,14 +422,6 @@ ActiveRecord::Schema.define(:version => 20130405133937) do
     t.datetime "updated_at"
   end
 
-  create_table "pages", :force => true do |t|
-    t.string   "url"
-    t.string   "controller"
-    t.string   "action"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "photos", :force => true do |t|
     t.string   "photo_file_name"
     t.string   "photo_content_type"
@@ -607,16 +577,16 @@ ActiveRecord::Schema.define(:version => 20130405133937) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                    :null => false
+    t.string   "email",                                   :null => false
     t.string   "username"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "password"
     t.string   "password_confirmation"
     t.string   "status"
-    t.string   "encrypted_password",       :default => ""
-    t.integer  "login_count",              :default => 0,  :null => false
-    t.integer  "failed_login_count",       :default => 0,  :null => false
+    t.string   "encrypted_password",                      :null => false
+    t.integer  "login_count",              :default => 0, :null => false
+    t.integer  "failed_login_count",       :default => 0, :null => false
     t.integer  "weight"
     t.integer  "avatar_file_size"
     t.datetime "last_request_at"
@@ -713,8 +683,6 @@ ActiveRecord::Schema.define(:version => 20130405133937) do
     t.string   "custom_field4"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "status"
-    t.string   "reason"
     t.string   "vendor_name"
     t.string   "biography"
     t.float    "cost"

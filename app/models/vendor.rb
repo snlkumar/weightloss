@@ -21,7 +21,7 @@ class Vendor < ActiveRecord::Base
                              :path => ":rails_root/public/system/:class/:id/:style/:photo"
   has_one :businessclaim
 
-  validates_presence_of :business_name, :email, :password, :zipcode, :presence=>true, :on => [:create] 
+  validates_presence_of :business_name, :email, :password, :zipcode, :presence=>true
 
 
 

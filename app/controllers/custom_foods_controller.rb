@@ -38,7 +38,7 @@ class CustomFoodsController < ApplicationController
 	   if current_user
 	    redirect_to new_meal_path
 	   else
-	    redirect_to (custom_foods_path  , :notice=> "Food created.  Waiting admin approval.") 
+	    redirect_to custom_foods_path,:notice=> "Food created.  Waiting admin approval." 
 	   end    
     else
       render :action => 'new',:layout=>'custom_food_public'

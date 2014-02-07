@@ -1,13 +1,13 @@
 <div class="grid_8">
   <div class="grid_2 alpha" style="height: 108px; background-color: #CCC;">
-    <%= link_to image_tag(post.image1.url(:small)), post_path(post) %> <%#= image_tag post.image1.url(:small) %>
+    <%= link_to image_tag(post.image1.url(:small)), posts_path(post) unless post.blank? %> <%#= image_tag post.image1.url(:small) %>
   </div>
   <div class="grid_6 omega">
     <span>
-      <%= link_to post.page_title, post_path(post),html_options = {:style=>'color:black'} %>
+      <%= link_to post.page_title, post_path(post),html_options = {:style=>'color:black'} unless post.blank? %>
     </span>
     <br/>
-    <span><%= truncate(strip_tags(post.body), :length => 225).html_safe %></span>
+    <span><%= truncate(strip_tags(post.body), :length => 225).html_safe unless post.blank?%></span>
   </div>
   
   <div style="clear:both">&nbsp;</div>
